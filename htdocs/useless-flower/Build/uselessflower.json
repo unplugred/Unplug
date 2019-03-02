@@ -1,0 +1,13 @@
+{
+"companyName": "Ari Hanan",
+"productName": "useless flower",
+"dataUrl": "uselessflower.data.unityweb",
+"asmCodeUrl": "uselessflower.asm.code.unityweb",
+"asmMemoryUrl": "uselessflower.asm.memory.unityweb",
+"asmFrameworkUrl": "uselessflower.asm.framework.unityweb",
+"TOTAL_MEMORY": 268435456,
+"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Light",
+"backgroundColor": "#FFFFFF"
+}
