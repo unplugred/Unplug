@@ -21,7 +21,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<iframe src="https://www.youtube-nocookie.com/embed/8jS2nvwqzpA?autoplay=1&loop=1&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&controls=0&disablekb=1" class="vid" frameborder="0"></iframe>
+		<video class="vid" autoplay muted>
+			<source src="/assets/crystals.mp4" type="video/mp4">
+		</video>
 		<div class="mainimage">
 			i am a bus now
 			<br/>

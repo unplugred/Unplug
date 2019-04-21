@@ -1,409 +1,208 @@
-<!DOCTYPE html>
-<html>
-	<head><!-----
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52381925-3"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'UA-52381925-3');
-		</script>
-		---->
-		<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-
-		<meta name="theme-color" content="#4B7071">
-		<link rel="icon" type="image/png" href="/assets/shortcut-icon.png">
-		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/shortcut-icon.png">
-		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
-		<title>red</title>
-
-		<meta charset="utf-8">
-		<meta name="keywords" content="ari,hanan,arihanan,red,redflux,red#3510,redmakesstuff,redmakesart,redmakesgames,redmakesmusic">
-		<meta name="dcterms.rightsHolder" content="Ari Hanan">
-
-		<meta property="og:site_name" content="red"/>
-		<meta name="twitter:site" content="red">
-		<meta property="og:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>" />
-		<meta name="twitter:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
-		<meta property="og:type" content="blog"/>
-		<meta name="twitter:card" content="summary">
-		<meta property="og:title" content="red"/>
-		<meta name="twitter:title" content="red">
-		<meta property="og:description" content="abstract thoughts of mine.">
-		<meta name="twitter:description" content="abstract thoughts of mine.">
-		<meta name="description" content="abstract thoughts of mine.">
-		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/anim.gif">
-		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/anim.gif">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
-		<link rel=StyleSheet href="/blog/blog.css" type="text/css" media=screen>
-
+<?php
+$color = "#000000";
+$title = "red";
+include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>
-			body, html{
-				overflow-x: hidden;
+			.window{
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				position: fixed;
 			}
 
-			#headerwrapper{
-				display: flex;
+			.mainimage {
+				width: 528px;
+				height: 395px;
+				background-image: url("/assets/unplug/unplug.png");
+				margin-top: calc(50vh - 185px);
+				margin-left: calc(50vw - 224px);
 			}
 
-			#header{
-				height: 136px;
-				margin: 30px auto;
-				display: flex;
-				max-width: calc(100% - 20px);
+			.secondaryimage {
+				width: 189px;
+				height: 372px;
+				background-image: url("/assets/unplug/smolwindo.png");
+				margin-top: calc(41vh - 216px);
+				margin-left: calc(43vw - 291px);
 			}
-			
-			#headerlinebreakthing{
-				display: block;
-				height: 20px;
+
+			.thirdimage {
+				width: 378px;
+				height: 185px;
+				background-image: url("/assets/unplug/biowindo.png");
+				margin-top: calc(65vh + 28px);
+				margin-left: calc(68vw - 143px);
+			}
+
+			.fourthimage {
+				width: 88px;
+				height: 107px;
+				background-image: url("/assets/unplug/concrete.png");
+				margin-top: 38px;
+				margin-left: calc(100vw - 107px);
+			}
+
+			#bio{
+				margin: 32px 13px 0 166px;
+				font-size: 20px;
+				font-family: serif;
+			}
+
+			.main-thingy{
+				margin: 22px 3px 3px 3px;
+				width: calc(100% - 6px);
+				height: calc(100% - 25px);
+				position: absolute;
+			}
+
+			.close{
+				margin: 5px 5px 0 calc(100% - 21px);
+				width: 16px;
+				height: 14px;
+				position: absolute;
+				background-image: url("/assets/unplug/close.png");
+			}
+
+			.close:active{
+				background-image: url("/assets/unplug/closed.png");
+			}
+
+			.mobile-thing {
+				background-image: url("/assets/unplug/best-on-a-computer.png");
+				background-repeat: no-repeat;
+				background-size: contain;
+				width: 100vw;
+				height: 100vh;
+				max-width: 100vh;
+				max-height: 100vw;
+				margin: auto auto;
+
+			}
+
+			.anyway-wrap {
+				margin-left: 48%;
+				margin-top: 48%;
+				display: inline-grid;
+				width: 26vw;
+				max-width: 26vh;
+				background-image: url("/assets/unplug/anyway-on.png");
+				background-size: contain;
+				background-repeat: no-repeat;
+			}
+
+			.anyway {
+				width: 100%;
+			}
+
+			.anyway:hover {
+				opacity: 0;
+			}
+
+			.mobile-wrapper{
+				position: absolute;
+				width:100vw;
+				height:100vh;
+
+				display: none;
+			}
+
+			.mobile-wrapper-two-point-o{
+				display: table-cell;
+				vertical-align: middle;
+				width:100vw;
+				height:100vh;
+			}
+
+			#desktop{
+				display: none;
 			}
 
 			#rotato-cubo{
 			    height: 136px;
 				width: 143px;
-				background-image: url("/blog/red.gif");
+				background-image: url("/assets/red.gif");
 				display: inline-block;
+				margin: 42px 23px 0 23px;
 			}
 
 			#separator{
-			    height: 100%;
-				width: 6px;
+				height: 6px;
+				width: 143px;
 				border-radius: 3px;
 				background-color: #D8E0E0;
 				display: inline-block;
-				margin: 0 30px;
+				margin: 15px 23px 10px 23px;
+			}
+
+			#links a{
+				font-size: 20px;
+				color: #D8E0E0;
+				font-family: Trebuchet MS, Trebuchet, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+				font-style: oblique;
+				text-decoration: none;
 			}
 
 			#links{
-				height: 100%;
-			    display: inline-flex;
-				flex-direction: column;
-				justify-content: space-around;
-				align-items: baseline;
-				width: calc(100% - 209px);
-			}
-
-			.link{
-				display: block;
-			}
-
-			.project{
-				width: 100%;
-				height: 250px;
-				border-top: solid black 10px;
-				background-attachment: fixed;
-				background-position: center center;
-				display: block;
-			}
-
-			.center{
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-
-			#aircompressor{
-				background-color: #808080;
-				background-image: url("/img/aircompressor_bg.png");
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
-
-			#aircompressor-logo-wrapper{
-				background-color: #FFF;
-				border: 7px solid black;
-				margin: 0 10px;
-				max-width: calc(85% - 34px);
-			}
-
-			#aircompressor-logo{
-				margin: 10px;
-				display: block;
-				max-width: calc(100% - 20px);
-			}
-
-			#headspace{
-				background-color: #000;
-				background-image: url("/img/headspace_bg.gif");
-			}
-
-			#headspace-logo{
-				max-width: 80%;
-			}
-
-			#rooms-logo{
-				max-width: 80%;
-			}
-
-			#rooms{
-				background-color: #000;
-				background-image: url("/img/rooms_bg.png");
-			}
-
-			#rooms-gradient{
-				background: rgba(0,0,0,1);
-				background: -moz-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-				background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,0)));
-				background: -webkit-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-				background: -o-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-				background: -ms-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
-				background: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 100%);
-				width: 100%;
-				height: 100%;
-				display: flex;
-				justify-content: center;
-				align-items: baseline;
-			}
-
-			#rooms-mobile{
-				display: none;
-			}
-
-			#unplug{
-				background-color: #000;
-				display: flex;
-				flex-direction: column;
-				justify-content: space-between;
-				align-items: stretch;
-			}
-
-			#unplug-logo{
-				max-width: 80%;
-			}
-
-			#unplug-bg{
-				background-image: url("/img/unplug_bg.png");
-				background-attachment: fixed;
-				width: calc(100% - 20px);
-				height: calc(100% - 20px);
-				border: 10px solid black;
-				background-size: cover;
-				background-position: center center;
-			}
-
-			.unplug-horizontal{
-				background-color: #000;
-				display: flex;
-				justify-content: space-between;
-				align-items: stretch;
-			}
-
-			#unplug-top{
-				background-image: url("/img/unplug-top.png");
-				height: 22px;
-			}
-
-			#unplug-bottom{
-				background-image: url("/img/unplug-bottom.png");
-				height: 3px;
-			}
-
-			#unplug-middle{
-				height: 100%;
-			}
-
-			#unplug-right{
-				background-image: url("/img/unplug-right.png");
-				width: 3px;
-			}
-
-			#unplug-left{
-				background-image: url("/img/unplug-left.png");
-				width: 3px;
-			}
-
-			#unplug-bottom-left{
-				background-image: url("/img/unplug-bottom-left.png");
-				height: 3px;
-				width: 3px;
-			}
-
-			#unplug-top-left{
-				background-image: url("/img/unplug-top-left.png");
-				height: 22px;
-				width: 100%;
-				background-repeat: no-repeat;
-			}
-
-			#unplug-top-right{
-				background-image: url("/img/unplug-top-right.png");
-				height: 22px;
-				width: 21px;
-				float: right;
-			}
-
-			#unplug-bottom-right{
-				background-image: url("/img/unplug-bottom-right.png");
-				height: 3px;
-				width: 3px;
-			}
-
-			#worseforthebetter{
-				background-image: url("/img/worseforthebetter_bg.png");
-				background-color: #808080;
-			}
-
-			#worseforthebetter-logo{
-				background-image: url("/img/worseforthebetter_logo.png");
-				background-position: center center;
-				background-repeat: no-repeat;
-				width: 100%;
-				height: 100%;
-			}
-
-			#worseforthebetter-pill{
-				background-image: url("/img/worseforthebetter_pill.png");
-				background-position: left center;
-				background-repeat: no-repeat;
-				display: flex;
-				width: 100%;
-				height: 100%;
-			}
-
-			#uselessflower{
-				background-color: #FFF;
-				background-image: url("/img/uselessflower_bg.png");
-				background-position: left top;
-				background-attachment: inherit;
-				background-repeat: no-repeat;
-			}
-
-			#uselessflower-logo{
-				max-width: 80%;
-			}
-
-			#footer{
-				width: 100%;
-				height: 40px;
-				display: block;
-				border-top: solid black 10px;
-			}
-
-			#footer-text{
-				text-align: center;
-				margin: 0;
-				margin-top: 10px;
-			}
-
-			@media only screen and (max-width: 485px) {
-				body, html {
-					overflow-y: visible;
-				}
-
-				#header{
-					width: calc(100% - 20px);
-					height: auto;
-					flex-direction: column;
-					align-items: center;
-				}
-
-				#separator{
-					height: 6px;
-					width: 100%;
-					margin: 30px 0;
-					display: block;
-				}
-
-				.icon{
-					margin-left: 20px;
-					margin-right: 0;
-				}
-
-				#links{
-					height: auto;
-					width: 100%;
-				}
-			}
-
-			@media only screen and (max-width: 660px) {
-				#worseforthebetter-pill{
-					background-image: none;
-				}
-
-				#rooms-mobile{
-					display: flex;
-					width: 100%;
-					height: 100%;
-					background-image: url("/img/rooms_mobile.png");
-					background-repeat: no-repeat;
-					background-position: center top;
-				}
-
-				#rooms-text{
-					width: 100%;
-					height: 100%;
-					background-image: url("/img/rooms_text.png");
-					background-repeat: no-repeat;
-					background-position: center center;
-					background-size: contain;
-					max-width: 457px;
-				}
-
-				#rooms-logo{
-					display: none;
-				}
+    			text-align: center;
+    			line-height: 1.7;
 			}
 		</style>
 	</head>
-	<body
-		><div id="headerwrapper"
-			><div id="header"
-				><a id="rotato-cubo" href="/unplug"></a
-				><div id="separator"></div
-				><div id="links"
-					>Hi. im red. this site is mostly dedicated to my works.<div id="headerlinebreakthing"></div>
-					<a class="link"" href="https://www.twitter.com/unplugred">Twitter</a
-					><a class="link" href="https://unplugred.tumblr.com/">Angst automatism art blog</a
-					><a class="link"" href="https://www.twitter.com/unplugred">Music</a
-				></div
-			></div
-		></div
-		><a href="https://unplugred.itch.io/air-compressor" class="project" id="aircompressor"
-			><div id="aircompressor-logo-wrapper"
-				><img src="/img/aircompressor_logo.png" id="aircompressor-logo"></img
-			></div
-		></div
-		><a href="https://unplugred.itch.io/headspace" class="project center" id="headspace"
-			><img id="headspace-logo" src="/img/headspace_logo.png"></img
-		></a
-		><a href="https://unplugred.itch.io/rooms" class="project" id="rooms"
-			><div id="rooms-gradient"
-				><img id="rooms-logo" src="/img/rooms_logo.png"></img
-				><div class="center" id="rooms-mobile"
-					><div id="rooms-text"></div
-				></div
-			></div
-		></a
-		><a href="/unplug" class="project" id="unplug"
-			><div id="unplug-top"
-				><div id="unplug-top-left"
-					><div id="unplug-top-right"></div
-				></div
-			></div
-			><div class="unplug-horizontal" id="unplug-middle"
-				><div id="unplug-left"></div
-					><div class="center" id="unplug-bg"
-						><img id="unplug-logo" src="/img/unplug_logo.png"></img
-					></div
-				><div id="unplug-right"></div
-			></div
-			><div class="unplug-horizontal" id="unplug-bottom"
-				><div id="unplug-bottom-left"></div
-				><div id="unplug-bottom-right"></div
-			></div
-		></a
-		><a href="https://unplugred.itch.io/worse-for-the-better" class="project" id="worseforthebetter"
-			><div id="worseforthebetter-pill"
-				><div id="worseforthebetter-logo"></div
-			></div
-		></a
-		><a href="https://unplugred.itch.io/uselessflower" class="project center" id="uselessflower"
-			><img id="uselessflower-logo" src="/img/uselessflower_logo.png"></img
-		></a
-		><div id="footer"
-			><p id="footer-text">Copyright © Ari Hanan 2018-<?php echo date("Y"); ?></p
-		></div
-><?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+	<body>
+
+		<div class="mobile-wrapper" id="mobile">
+			<div class="mobile-wrapper-two-point-o">
+				<div class="mobile-thing">
+					<a class="anyway-wrap" href="javascript:void(0)" onclick="Switch()">
+						<img class="anyway" src="/assets/unplug/anyway.png"/>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div id="desktop">
+			<div class="mainimage window">
+				<a class="main-thingy" href="/bulb"></a>
+				<a class="close" href="javascript:void(0)"></a>
+			</div>
+			<div class="thirdimage window">
+				<a class="close" href="javascript:void(0)"></a>
+				<div id="bio">hey, my name is Ari Hanan (AKA Red) and this is my cool ass website</div>
+			</div>
+			<div class="secondaryimage window">
+				<a class="close" href="javascript:void(0)"></a>
+				<div id="rotato-cubo"></div>
+				<div id="separator"></div>
+				<div id="links"><a href="https://unplugred.itch.io/">my games</a><br/><a href="https://unplugred.tumblr.com/">my art</a><br/><a href="https://twitter.com/unplugred/">twitter</a></div>
+			</div>
+			<div class="fourthimage window">
+				<a class="main-thingy" href="/concrete"></a>
+				<a class="close" href="javascript:void(0)"></a>
+			</div>
+		</div>
+		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+		<script>
+			if(/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent) 
+				|| /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0,4))) { 
+				document.getElementById("mobile").style.display = "table";
+			}
+			else{
+				document.getElementById("desktop").style.display = "block";
+			}
+
+			function Switch(){
+				document.getElementById("mobile").style.display = "none";
+				document.getElementById("desktop").style.display = "block";
+			}
+
+			var closedwindows = 0;
+
+			$(".window").draggable();
+			$('.close').on('click',function(){
+			    $(this).parent().css("display", "none");
+			    if(++closedwindows >= 4){
+			    	window.location = "/bye";
+			    }
+			});
+		</script>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

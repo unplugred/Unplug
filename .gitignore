@@ -5,6 +5,8 @@
 
 #added by me
 [Cc]ache/
+depricated/
+Thumbs.db
 
 # User-specific files
 *.suo
