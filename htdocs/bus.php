@@ -17,6 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				width: 100vw;
 				height: 100vh;
 				z-index: -10000;
+				object-fit: cover;
 			}
 		</style>
 	</head>
