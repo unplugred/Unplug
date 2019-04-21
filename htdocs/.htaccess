@@ -2,25 +2,17 @@ RewriteEngine on
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^art/(.*)$ /img.php?src=art/$1 [L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^blog/([0-9]+)$ /blog/post.php?page=$1 [L]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)/$ /$1 [L,R]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-ErrorDocument 400 /404
-ErrorDocument 401 /404
-ErrorDocument 403 /404
-ErrorDocument 404 /404
-ErrorDocument 500 /404
+ErrorDocument 400 /404.shtml
+ErrorDocument 401 /404.shtml
+ErrorDocument 403 /404.shtml
+ErrorDocument 404 /404.shtml
+ErrorDocument 500 /404.shtml
 
 DirectoryIndex index.php
 

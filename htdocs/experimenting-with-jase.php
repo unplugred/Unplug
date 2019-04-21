@@ -60,7 +60,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			given these instructions, i came up with the following:
 			<img src="/assets/experimenting-with-jase/melting-rose.png"/>
 			</p>
-			<p><a href="/blog/0100" target="popup" onclick="window.open('/blog/0100','popup','width=700,height=770'); return false;">#0100 is also part of my experimentation with jase.</a></p>
+			<p><a href="https://unplugred.tumblr.com/post/174713219047/0100#notes" target="popup" onclick="window.open('https://unplugred.tumblr.com/post/174713219047/0100#notes','popup','width=700,height=770'); return false;">#0100 is also part of my experimentation with jase.</a></p>
 			<p>
 			also, jase's blog can be found <a href="https://rgb-trash.tumblr.com/">here</a>.
 			</p>
