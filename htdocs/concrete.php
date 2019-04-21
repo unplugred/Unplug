@@ -24,14 +24,14 @@
 		<meta property="og:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
 		<meta name="twitter:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
 		<meta property="og:type" content="article">
-		<meta name="twitter:card" content="summary">
+		<meta name="twitter:card" content="summary_large_image">
 		<meta property="og:title" content="Concrete">
 		<meta name="twitter:title" content="Concrete">
 		<meta property="og:description" content="Coming soon on a virtual environment.">
 		<meta name="twitter:description" content="Coming soon on a virtual environment.">
 		<meta name="description" content="Coming soon on a virtual environment.">
-		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/h.gif">
-		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/h.gif">
+		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/concrete/opengraph.png">
+		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/concrete/opengraph.png">
 
 		<style>
 			::selection {
