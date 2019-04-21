@@ -35,13 +35,11 @@
 
 		<style>
 			::selection {
-				color: #333;
-				background: #999999fe;
+				background: transparent;
 			}
 
 			::-moz-selection {
-				color: #333;
-				background: #999999fe;
+				background: transparent;
 			}
 
 			body::-webkit-scrollbar {
