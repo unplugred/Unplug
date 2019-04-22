@@ -63,7 +63,7 @@
 				position: absolute;
 			}
 
-			.snow{
+			.santa{
 				width: 100px;
 				height: 100px;
 				background-image: url("/assets/h.gif");
@@ -84,5 +84,5 @@
 				<a href="/">click here</a> to get back.
 			</div>
 		</div>
-		<a href="/snow" class="snow"></a>
+		<a href="/santa" class="santa"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
