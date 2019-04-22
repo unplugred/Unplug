@@ -28,10 +28,39 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				z-index:1000;
 				position: absolute;
 			}
+
+			#fade{
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				background-color: transparent;
+				animation-name: fade;
+				animation-duration: 0.7s;
+				animation-timing-function: cubic-bezier(1,0,1,0);
+			}
+
+			@keyframes fade {
+				0% {background-color: black;}
+				25% {background-color: #000000bd;}
+				50% {background-color: #0000007f;}
+				75% {background-color: #0000003f;}
+				100% {background-color: transparent;}
+			}
+
+			#black{
+				background-color: black;
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				z-index: -1;
+			}
 		</style>
 	</head>
 	<body>
+		<div id="black"></div>
 		<div class="mainimage" id="appendme"></div>
+		<div id="fade"></div>
 		<script type="text/javascript">
 			for (x = 0; x < Math.min(window.innerWidth/2 + 125, window.innerHeight/2 + 121); x += 40) { 
 				var div = document.createElement("div");
