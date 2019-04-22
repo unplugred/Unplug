@@ -131,7 +131,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				border-radius: 3px;
 				background-color: #D8E0E0;
 				display: inline-block;
-				margin: 15px 23px 10px 23px;
+				margin: 15px 23px;
 			}
 
 			#links a{
