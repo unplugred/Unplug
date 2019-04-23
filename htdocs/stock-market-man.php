@@ -57,7 +57,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			<img class="movie" src="/assets/stock-market-man/11.png" onclick="plusDivs()"/>
 			<img class="movie" src="/assets/stock-market-man/12.png" onclick="plusDivs()"/>
 		</a>
-		<a href="/glow">
 			<img class="movie" src="/assets/stock-market-man/13.png"/>
-		</a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

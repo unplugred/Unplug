@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				background-color: white;
 			}
 
-			a{
+			#lines{
 				display: block;
 				width: 100vw;
 				height: 100vh;
@@ -18,5 +18,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a href="/lion"></a>
+		<div id="lines"></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
