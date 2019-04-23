@@ -14,5 +14,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a class="mainimage" href="/snow"></a>
+		<div class="mainimage"></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
