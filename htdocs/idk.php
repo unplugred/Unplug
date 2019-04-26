@@ -56,7 +56,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				ctx.fillStyle = getRandomColor();
 				ctx.fillRect(x,y,size,size);
 
-				var attempt = 0;
+				let attempt = 0;
 				while (x + directionX + size > canvas.width || x + directionX < 0 || y + directionY + size > canvas.height || y + directionY < 0)
 				{
 					hit();
@@ -72,16 +72,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 
 			function hit()
 			{
-				var dir = Math.random() * Math.PI * 2;
+				let dir = Math.random() * Math.PI * 2;
 				directionX = Math.sin(dir) * spacing;
 				directionY = Math.cos(dir) * spacing;
 			}
 
-
+			var letters = '0123456789ABCDEF';
 			function getRandomColor()
 			{
-				var letters = '0123456789ABCDEF';
-				var color = (Math.floor(Math.random() * 150 + 50)).toString(16);
+				let color = (Math.floor(Math.random() * 150 + 50)).toString(16);
 				return '#' + color + color + color;
 			}
 
