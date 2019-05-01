@@ -37,7 +37,6 @@
 		<link rel=StyleSheet href="index.css" type="text/css" media=screen>
 		<meta charset="utf-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>useless flower</title>
 		
 		<script src="Build/UnityLoader.js"></script>
 		<script>var gameInstance = UnityLoader.instantiate("gameContainer", "Build/uselessflower.json");</script>
