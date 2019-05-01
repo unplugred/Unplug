@@ -1,0 +1,16 @@
+{
+"companyName": "unplugred",
+"productName": "Hyperaction",
+"productVersion": "0.1",
+"dataUrl": "hyperaction.data.unityweb",
+"wasmCodeUrl": "hyperaction.wasm.code.unityweb",
+"wasmFrameworkUrl": "hyperaction.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Light",
+"backgroundColor": "#FFFFFF",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.1.0f2"
+}

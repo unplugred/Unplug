@@ -1,13 +1,17 @@
 {
 "companyName": "Ari Hanan",
 "productName": "worse for the better",
+"productVersion": "1.0",
 "dataUrl": "worseforthebetter.data.unityweb",
 "asmCodeUrl": "worseforthebetter.asm.code.unityweb",
 "asmMemoryUrl": "worseforthebetter.asm.memory.unityweb",
 "asmFrameworkUrl": "worseforthebetter.asm.framework.unityweb",
 "TOTAL_MEMORY": 268435456,
-"graphicsAPI": ["WebGL 2.0", "WebGL 1.0"],
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},
 "splashScreenStyle": "Light",
-"backgroundColor": "#808080"
+"backgroundColor": "#808080",
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.1.0f2"
 }
