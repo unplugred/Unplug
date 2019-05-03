@@ -1,1 +1,10 @@
 User-agent: *
+Disallow: /assets/tracking.php
+Disallow: /assets/tracking
+Disallow: /assets/header.php
+Disallow: /assets/header
+Disallow: /assets/footer.php
+Disallow: /assets/footer
+Disallow: /404.shtml
+Disallow: /404.php
+Disallow: /404
