@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
   	<head>
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52381925-3"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'UA-52381925-3');
-		</script>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
 
 		<meta name="theme-color" content="#808080">
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -34,10 +27,11 @@
 		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/worse-for-the-better/cover.png">
 		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/worse-for-the-better/cover.png">
 
-		<link rel=StyleSheet href="/assets/unity.css" type="text/css" media=screen>
+		<link rel=StyleSheet href="index.css" type="text/css" media=screen>
+		<meta charset="utf-8">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-		<script src="/assets/UnityLoader.js"></script>
+		<script src="Build/UnityLoader.js"></script>
 		<script>var gameInstance = UnityLoader.instantiate("gameContainer", "Build/worseforthebetter.json");</script>
 	</head>
 	<body>

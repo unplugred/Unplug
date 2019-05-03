@@ -1,14 +1,7 @@
 <html>
 	<head>
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52381925-3"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
+<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
 
-			gtag('config', 'UA-52381925-3');
-		</script>
-		
 		<meta name="theme-color" content="#822D1D">
 		<link rel="icon" type="image/png" href="/assets/shortcut-icon.png">
 		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/shortcut-icon.png">
