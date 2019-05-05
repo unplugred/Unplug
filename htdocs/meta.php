@@ -14,6 +14,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				margin-left: -150px;
 				margin-top: -40px;
 				animation: anim 10s linear infinite;
+				text-decoration: none;
 			}
 
 			body{
@@ -58,9 +59,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div id="mainimage">
+		<a href="/paper" id="mainimage">
 			lol, thats so meta
-		</div>
+		</a>
 		<script type="text/javascript">
 			var sizex = 0, sizey = 0, spacing = 5, speed = 5,
 			x, y, directionX, directionY;
