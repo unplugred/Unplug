@@ -1,6 +1,6 @@
 <?php
 $color = "#000000";
-$title = "important";
+$title = "time";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>
 			body {
