@@ -1,5 +1,5 @@
 <?php
-$color = "#000000";
+$color = "#ffffff";
 $title = "lines";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>
