@@ -87,6 +87,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
                 display: none;
             }
         </style>
+
+        <link rel="prefetch" href="/assets/unplug/close.png" />
     </head>
     <body>
 
