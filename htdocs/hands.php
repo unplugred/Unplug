@@ -122,37 +122,36 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<a id="hand3" class="hand" href="/lion"><div class="center"></div></a>
 		<a id="hand4" class="hand" href="/fuck"><div class="center"></div></a>
 		<a id="hand5" class="hand" href="/square"><div class="center"></div></a>
-		<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-		<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script>
 			var cursorX,cursorY;
 			document.onmousemove = function(e){
-			    cursorX = e.pageX;
-			    cursorY = e.pageY;
+				cursorX = e.pageX;
+				cursorY = e.pageY;
 			}
 
 			setInterval(timer, 20);
 			function timer(){
-			    $('.center').each(function(i, obj) {
-			    	let offset = $(this).offset();
-			    	let hand = $(this).parent();
-			    	let values = hand.css("transform").split('(')[1].split(')')[0].split(',');
-			    	let currentrot = Math.atan2(values[1], values[0]) * (180/Math.PI);
-			    	let targetrot = 0;
-			    	if(hand.is(":hover"))
+				$('.center').each(function(i, obj) {
+					let offset = $(this).offset();
+					let hand = $(this).parent();
+					let values = hand.css("transform").split('(')[1].split(')')[0].split(',');
+					let currentrot = Math.atan2(values[1], values[0]) * (180/Math.PI);
+					let targetrot = 0;
+					if(hand.is(":hover"))
 						targetrot = currentrot + 4;
-			    	else
-			    		targetrot = 180 * Math.atan2(cursorY - offset.top, cursorX - offset.left) / Math.PI;
+					else
+						targetrot = 180 * Math.atan2(cursorY - offset.top, cursorX - offset.left) / Math.PI;
 					hand.css("transform", "rotate(" + lerp360(currentrot, targetrot, .8) + "deg)");
 				});
 			}
-		    function lerp360(a,b,c){
-		    	if(Math.abs(b - a) > Math.abs(b - (a - 360)))
-		    		a -= 360;
-		    	if(Math.abs(a - b) > Math.abs(a - (b - 360)))
-		    		b -= 360;
-		    	
-		    	return (a * c) + (b * (1 - c));
-		    }
+			function lerp360(a,b,c){
+				if(Math.abs(b - a) > Math.abs(b - (a - 360)))
+					a -= 360;
+				if(Math.abs(a - b) > Math.abs(a - (b - 360)))
+					b -= 360;
+
+				return (a * c) + (b * (1 - c));
+			}
 		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
