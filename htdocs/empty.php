@@ -24,6 +24,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			<a href="/bars"><img class="mainimagelink" src="/assets/empty.jpg"/></a>
 			also,
 			<br/>
-			im sitting in an <a href="/useless-flower">empty class</a>
+			im sitting in an <a href="/useless-flower/">empty class</a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
