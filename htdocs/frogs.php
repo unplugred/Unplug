@@ -107,6 +107,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<a class="describe" href="/sophistication"></a>
 		<a class="frogs" href="/head"></a>
 		<a class="kidney" href="/important"></a>
-		<a class="boney" href="/worse-for-the-better"></a>
+		<a class="boney" href="/worse-for-the-better/"></a>
 		<div class="display"></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
