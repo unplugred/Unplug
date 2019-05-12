@@ -14,3 +14,7 @@ Disallow: /assets/sendcommnet.php
 Disallow: /assets/sendcommnet
 Disallow: /assets/comments.html
 Disallow: /assets/comments
+Disallow: /administrator/
+Disallow: /administrator
+Disallow: /wp-login.php
+Disallow: /wp-login
