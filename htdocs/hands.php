@@ -12,9 +12,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.hand {
 				display: block;
 				position: absolute;
-			    display: flex;
-			    justify-content: center;
-			    align-items: center;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 			}
 
 			#hand1 {
@@ -117,11 +117,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a id="hand1" class="hand" href="/glow"><div class="center"></div></a>
-		<a id="hand2" class="hand" href="/snow"><div class="center"></div></a>
-		<a id="hand3" class="hand" href="/lion"><div class="center"></div></a>
-		<a id="hand4" class="hand" href="/fuck"><div class="center"></div></a>
-		<a id="hand5" class="hand" href="/square"><div class="center"></div></a>
+		<a id="hand5" class="hand" href="/square" title="tinker"><div class="center"></div></a>
+		<a id="hand4" class="hand" href="/fuck" title="tailor"><div class="center"></div></a>
+		<a id="hand3" class="hand" href="/lion" title="sinker"><div class="center"></div></a>
+		<a id="hand1" class="hand" href="/glow" title="sailor"><div class="center"></div></a>
+		<a id="hand2" class="hand" href="/snow" title="thief"><div class="center"></div></a>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script>
 			var cursorX,cursorY;

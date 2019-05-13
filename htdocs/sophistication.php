@@ -19,5 +19,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a class="mainimage" href="/gradient"></a>
+		<a class="mainimage" href="/gradient" title="come down to me from up above ladders"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

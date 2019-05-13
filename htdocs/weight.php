@@ -13,5 +13,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a class="mainimage" href="/hugs"></a>
+		<a class="mainimage" href="/hugs" title="a weight has appeared"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

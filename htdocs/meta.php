@@ -59,7 +59,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a href="/paper" id="mainimage">
+		<a href="/paper" id="mainimage" title="haha">
 			lol, thats so meta
 		</a>
 		<script type="text/javascript">

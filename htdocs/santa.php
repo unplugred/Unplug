@@ -18,5 +18,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div class="mainimage" href="/snow"></div>
+		<div class="mainimage" href="/snow" title="mr. santa himself"></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

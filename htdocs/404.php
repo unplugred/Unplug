@@ -68,7 +68,7 @@
 	</head>
 	<body>
 		<div class="mainthing">
-			<div class="mainimage"></div>
+			<div class="mainimage" title="404"></div>
 
 			<div class="bodytext">
 				<b>you got lost.</b>

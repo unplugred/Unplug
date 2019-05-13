@@ -163,29 +163,29 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			<div class="mobile-wrapper-two-point-o">
 				<div class="mobile-thing">
 					<a class="anyway-wrap" href="javascript:void(0)" onclick="Switch()">
-						<img class="anyway" src="/assets/unplug/anyway.png"/>
+						<img class="anyway" src="/assets/unplug/anyway.png" title="continue anyway"/>
 					</a>
 				</div>
 			</div>
 		</div>
 		<div id="desktop">
-			<div class="mainimage window">
+			<div class="mainimage window" title="unplug your mind for best experience">
 				<a class="main-thingy" href="/bulb"></a>
-				<a class="close" href="javascript:void(0)"></a>
+				<a class="close" href="javascript:void(0)" title="close"></a>
 			</div>
-			<div class="thirdimage window">
-				<a class="close" href="javascript:void(0)"></a>
+			<div class="thirdimage window" title="me_irl">
+				<a class="close" href="javascript:void(0)" title="close"></a>
 				<div id="bio">hey, my name is Ari Hanan (AKA Red) and this is my cool ass website</div>
 			</div>
-			<div class="secondaryimage window">
-				<a class="close" href="javascript:void(0)"></a>
+			<div class="secondaryimage window" title="check out my shit">
+				<a class="close" href="javascript:void(0)" title="close"></a>
 				<div id="rotato-cubo"></div>
 				<div id="separator"></div>
-				<div id="links"><a href="https://unplugred.itch.io/">my games</a><br/><a href="https://unplugred.tumblr.com/">my art</a><br/><a href="https://twitter.com/unplugred/">twitter</a></div>
+				<div id="links"><a href="https://unplugred.itch.io/">my games</a><br/><a href="https://art.unplug.red/">my art</a><br/><a href="https://twitter.com/unplugred/">twitter</a></div>
 			</div>
-			<div class="fourthimage window">
+			<div class="fourthimage window" title="concrete">
 				<a class="main-thingy" href="/concrete"></a>
-				<a class="close" href="javascript:void(0)"></a>
+				<a class="close" href="javascript:void(0)" title="close"></a>
 			</div>
 			<div id="copyrightstuff">© Ari Hanan 2018-2019 | <a href="/privacy-policy">privacy policy</a> | <3</div>
 		</div>

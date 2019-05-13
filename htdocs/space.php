@@ -24,7 +24,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimage">
-			<a class="mainimagelink" href="/knowledge"></a>
+			<a class="mainimagelink" title="hello i am from outer space
+ive come to bring you cake." href="/knowledge"></a>
 			<br/>
 			messages from outer space
 			<br/>

@@ -15,18 +15,18 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				display: block;
 				margin: 0 auto;
 			}
-			
+
 			.hov {
 				display: block;
 				width: 100%;
 				height: 100%;
 				opacity: 0;
 			}
-			
+
 			.hov:hover {
 				opacity: 1;
 			}
-			
+
 			.one {
 				width: 33px;
 				height: 66px;
@@ -71,15 +71,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			....i need to replace the bulb
 			<br/>
 			<br/>
-			<div class="two num"><a class="twoh hov" href="/who"></a></div>
+			<div class="two num" title="2"><a class="twoh hov" href="/who"></a></div>
 			moving
 			<br/>
 			<br/>
-			<div class="three num"><a class="threeh hov" href="/frogs"></a></div>
+			<div class="three num" title="3"><a class="threeh hov" href="/frogs"></a></div>
 			all over again
 			<br/>
 			<br/>
-			<div class="one num"><a class="oneh hov" href="/bus"></a></div>
+			<div class="one num" title="1"><a class="oneh hov" href="/bus"></a></div>
 			thats me
 			<br/>
 			<br/>

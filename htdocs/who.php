@@ -35,8 +35,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimage">
-			<a class="who" href="/myself-today"></a>
-			<a class="phone" href="/lines"></a>
-			<a class="question" href="/answer"></a>
+			<a class="who" href="/myself-today" title="who"></a>
+			<a class="phone" href="/lines" title="phone"></a>
+			<a class="question" href="/answer" title="?"></a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

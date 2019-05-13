@@ -11,5 +11,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<img src="/assets/cherry.png"/>
+		<img src="/assets/cherry.png" title="cherry"/>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
