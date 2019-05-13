@@ -28,6 +28,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	<body>
 		<div class="mainimage">
 			<a href="/assets/important.txt" download="important.txt">important.txt</a>
-			<a href="/hyperaction/" id="corner"></a>
+			<a href="/hyperaction/" id="corner" title="maybe not"></a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

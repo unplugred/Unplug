@@ -9,14 +9,14 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				background-position: bottom left;
 				background-repeat: no-repeat;
 			}
-			
+
 			#sqr{
 				display: block;
 				margin: 38% 18%;
 				width: 46%;
 				height: 46%;
 			}
-			
+
 			#wrap{
 				width: 100vw;
 				height: 100vw;
@@ -29,6 +29,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<div id="wrap">
-			<a id="sqr" href="/todo"></a>
+			<a id="sqr" href="/todo" title="square"></a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

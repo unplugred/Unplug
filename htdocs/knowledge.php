@@ -14,5 +14,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a class="mainimage" href="/never"></a>
+		<a class="mainimage" href="/never" title="do you wanna know???
+consider typing
+they told me they are afraid of it"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

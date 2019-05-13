@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				margin: 0 calc(50vw - 28vh);
 				position: absolute;
 			}
-			
+
 			.lankkk{
 				display: block;
 				position: absolute;
@@ -20,5 +20,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<img src="/assets/todo.png" class="mainimage">
-		<a class="lankkk" href="/photography"></a>
+		<a class="lankkk" href="/photography" title="trapped in an infinite checklist"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				text-align: center;
 				font-weight: bold;
 			}
-			
+
 			#final-form{
 				width: 100px;
 				height: 100px;
@@ -16,17 +16,17 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				margin: calc(50vh - 50px) calc(50vw - 50px);
 				background-image: url("countdown.gif");
 			}
-			
+
 			#timer {
 				height: 100vh;
 				margin-top: calc(50vh - 10vw);
 			}
-			
+
 			@media screen and (orientation:landscape) {
 				body{
 					font-size: 20vh;
 				}
-			
+
 				#timer {
 					height: 100vh;
 					margin-top: 40vh;
@@ -36,14 +36,14 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<p id="timer">08:00:00</p>
-		<a href="countdown" id="final-form"></a>
+		<a href="countdown/" id="final-form"></a>
 		<script type="text/javascript">
-			var timer = document.getElementById("timer");			
+			var timer = document.getElementById("timer");
 			var interval = setInterval(myTimer, 1000);
 			var hours = 8;
 			var minutes = 0;
 			var seconds = 0;
-			
+
 			function myTimer() {
 				if(--seconds < 0){
 					if(--minutes < 0){

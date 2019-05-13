@@ -54,7 +54,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<div id="bg"></div>
-		<a id="red" class="light" href="/cookies"></a>
-		<a id="blue" class="light" href="/time"></a>
-		<a id="green" class="light" href="/meta"></a>
+		<a id="red" class="light" href="/cookies" title="red"></a>
+		<a id="blue" class="light" href="/time" title="yellow"></a>
+		<a id="green" class="light" href="/meta" title="green"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

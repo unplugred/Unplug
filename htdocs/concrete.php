@@ -90,5 +90,5 @@
 		<img src="/assets/concrete/3.png" class="imge"></img>
 		<img src="/assets/concrete/5.png" class="imge"></img>
 		<img src="/assets/concrete/4.png" class="imge"></img>
-		<img src="/assets/concrete/text.png" id="text"></img>
+		<img src="/assets/concrete/text.png" id="text" alt="Coming soon to a virtual environment."></img>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

@@ -24,7 +24,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div class="mainimage">
+		<div class="mainimage" title="i once read a book about how to be happy.">
 			<a class="mainimagelink" href="/joke"></a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>

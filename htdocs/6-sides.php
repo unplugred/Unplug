@@ -84,7 +84,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				}
 			}
 		</script>
-		<div class="mainimage">
+		<div class="mainimage" title="a cube has 6 sides.">
 			<a class="art" id="first" onclick="switchery('first')" href="javascript:void(0)"></a><img class="is" src="/assets/6-sides/is.png"/><a class="eternal" id="second" onclick="switchery('second')" href="javascript:void(0)"></a><img class="is" src="/assets/6-sides/comma.png"/><a class="death" id="third" onclick="switchery('third')" href="javascript:void(0)"></a><img class="is" src="/assets/6-sides/is.png"/><a class="meaningless" id="fourth" onclick="switchery('fourth')" href="javascript:void(0)"></a><img class="is" src="/assets/6-sides/dot.png"/><br/><img class="is" src="/assets/6-sides/a-cube-has.png"/><a class="six" href="/idk"></a><img class="is" src="/assets/6-sides/sides.png"/>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
