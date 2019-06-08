@@ -158,7 +158,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-
 		<div class="mobile-wrapper" id="mobile">
 			<div class="mobile-wrapper-two-point-o">
 				<div class="mobile-thing">
@@ -187,7 +186,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				<a class="main-thingy" href="/concrete"></a>
 				<a class="close" href="javascript:void(0)" title="close"></a>
 			</div>
-			<div id="copyrightstuff">© Ari Hanan 2018-2019 | <a href="/privacy-policy">privacy policy</a> | <3</div>
+			<div id="copyrightstuff">© Ari Hanan 2018-2019 | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>
 		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">

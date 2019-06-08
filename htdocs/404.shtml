@@ -1,22 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<!-- Matomo -->
-		<script type="text/javascript">
-		  var _paq = window._paq || [];
-		  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
-		  _paq.push(["disableCookies"]);
-		  _paq.push(['trackPageView']);
-		  _paq.push(['enableLinkTracking']);
-		  (function() {
-		    var u="//unplug.red/piwik/";
-		    _paq.push(['setTrackerUrl', u+'matomo.php']);
-		    _paq.push(['setSiteId', '1']);
-		    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-		    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-		  })();
-		</script>
-		<!-- End Matomo Code -->
+<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
 
 		<meta name="theme-color" content="#4B7071">
 		<link rel="icon" type="image/png" href="/assets/shortcut-icon.png">
@@ -44,7 +29,7 @@
 
 		<link rel=StyleSheet href="/assets/unplug.css" type="text/css" media=screen>
 		<meta http-equiv="refresh" content="0; url=/404">
-		<script type="text/javascript">
+		<script>
 			window.location.href = "/404"
 		</script>
 		<style>

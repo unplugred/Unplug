@@ -72,7 +72,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<div id="black"></div>
 		<div class="mainimage" id="appendme" title="bye"></div>
 		<div id="fade"></div>
-		<script type="text/javascript">
+		<script>
 			for (x = 0; x < Math.min(window.innerWidth/2 + 125, window.innerHeight/2 + 121); x += 40) {
 				var div = document.createElement("div");
 				div.style.margin = (42 + x) + "px 0 0 " + (28 + x) + "px";

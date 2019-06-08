@@ -31,7 +31,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<div class="mainimage">
 			i dont even know.
 		</div>
-		<script type="text/javascript">
+		<script>
 			var canvas = document.getElementById("canva");
 			var ctx = canvas.getContext("2d");
 			canvas.width  = window.innerWidth;

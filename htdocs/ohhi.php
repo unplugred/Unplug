@@ -1,5 +1,3 @@
-<html>
-</html>
 <?php
 $color = "#000000";
 $title = "ohhi";
@@ -7,7 +5,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<script>
 			gtag('event', 'conversion', {'send_to': 'AW-971029553/6cGDCLSmv5oBELH4gs8D'});
 		</script>
-        <script type="text/javascript">
+        <script>
             window.location.href = "/"
         </script>
         <style>
