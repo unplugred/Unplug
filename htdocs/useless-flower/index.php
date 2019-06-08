@@ -27,14 +27,9 @@
 		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/useless-flower/cover.png">
 		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/useless-flower/cover.png">
 
-		<link rel=StyleSheet href="index.css" type="text/css" media=screen>
-		<meta charset="utf-8">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-		<script src="Build/UnityLoader.js"></script>
+		<link rel=StyleSheet href="/assets/unity.css" type="text/css" media=screen>
+		<script src="/assets/UnityLoader.js"></script>
 		<script>var gameInstance = UnityLoader.instantiate("gameContainer", "Build/uselessflower.json");</script>
 	</head>
-	<body>
-		<div id="gameContainer"></div>
-	</body>
+	<body><div id="gameContainer"></div></body>
 </html>
