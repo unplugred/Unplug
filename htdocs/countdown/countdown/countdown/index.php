@@ -37,7 +37,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	<body>
 		<p id="timer">80:000:00:00:00</p>
 		<a href="countdown/" id="final-form"></a>
-		<script type="text/javascript">
+		<script>
 			var timer = document.getElementById("timer");
 			var interval = setInterval(myTimer, 1000);
 			var years = 80;

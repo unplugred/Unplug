@@ -62,7 +62,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<a href="/paper" id="mainimage" title="haha">
 			lol, thats so meta
 		</a>
-		<script type="text/javascript">
+		<script>
 			var sizex = 0, sizey = 0, spacing = 5, speed = 5,
 			x, y, directionX, directionY;
 			var thng = document.getElementById("mainimage");

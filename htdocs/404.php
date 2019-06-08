@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
 

@@ -91,7 +91,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
         <link rel="prefetch" href="/assets/unplug/close.png" />
     </head>
     <body>
-
         <div class="mobile-wrapper" id="mobile">
             <div class="mobile-wrapper-two-point-o">
                 <div class="mobile-thing">
