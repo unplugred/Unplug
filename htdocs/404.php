@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta charset="utf-8">
+		<title>404</title>
+
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
 
 		<meta name="theme-color" content="#000000">
 		<link rel="icon" type="image/png" href="/assets/shortcut-icon.png">
 		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/shortcut-icon.png">
 		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
-		<title>404</title>
-
-		<meta charset="utf-8">
 		<meta name="keywords" content="ari,hanan,arihanan,red,redflux,red#3510,404,not found">
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 

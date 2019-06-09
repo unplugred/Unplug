@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en-us">
   	<head>
+		<meta charset="utf-8">
+		<title>worse for the better</title>
+
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
 
 		<meta name="theme-color" content="#808080">
 		<link rel="icon" type="image/x-icon" href="favicon.ico">
 		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/worse-for-the-better/favicon.ico">
 		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
-		<title>worse for the better</title>
 
-		<meta charset="utf-8">
 		<meta name="keywords" content="ari,hanan,arihanan,red,redflux,red#3510,worse,for,the,better">
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 
