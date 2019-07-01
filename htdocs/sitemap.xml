@@ -224,7 +224,7 @@
 
 <url>
 <loc>https://unplug.red/symbolism</loc>
-<lastmod>2019-05-13T03:53:33+00:00</lastmod>
+<lastmod>2019-07-01T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
 </url>
 
@@ -347,6 +347,12 @@
 <loc>https://unplug.red/piwik/</loc>
 <lastmod>2019-06-08T03:53:33+00:00</lastmod>
 <priority>0.00</priority>
+</url>
+
+<url>
+<loc>https://unplug.red/weeeee</loc>
+<lastmod>2019-07-01T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
 </url>
 
 </urlset>

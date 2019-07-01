@@ -14,5 +14,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div class="mainimage" title="symbolism continued."></div>
+		<a class="mainimage" title="symbolism continued." href="/weeeee"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
