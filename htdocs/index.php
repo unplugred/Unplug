@@ -27,11 +27,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 
 			.thirdimage {
-				width: 378px;
+				width: 225px;
 				height: 185px;
-				background-image: url("/assets/unplug/biowindo.png");
+				background-image: url("/assets/unplug/biowindow.png");
 				margin-top: calc(65vh + 28px);
-				margin-left: calc(68vw - 143px);
+				margin-left: calc(68vw - 100px);
 			}
 
 			.fourthimage {
@@ -43,7 +43,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 
 			#bio{
-				margin: 32px 13px 0 166px;
+				margin: 32px 13px 0 13px;
 				font-size: 20px;
 				font-family: serif;
 			}
@@ -174,7 +174,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			</div>
 			<div class="thirdimage window" title="me_irl">
 				<a class="close" href="javascript:void(0)" title="close"></a>
-				<div id="bio">hey, my name is Ari Hanan (AKA Red) and this is my cool ass website</div>
+				<div id="bio">hey, im Red and this is my cool ass website<br><br>:D</div>
 			</div>
 			<div class="secondaryimage window" title="check out my shit">
 				<a class="close" href="javascript:void(0)" title="close"></a>
