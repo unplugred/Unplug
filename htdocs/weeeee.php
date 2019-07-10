@@ -106,9 +106,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				this.position = [ Math.random() * 100, Math.random() * 10, Math.floor(Math.random() * 1024), Math.floor(Math.random() * 1024) ];
 				this.speed = Math.random() - .1;
 				this.div.style.left = this.position[0] + "vw";
-				var tex = Math.floor(Math.random() * 7);
+				var tex = Math.floor(Math.random() * 8);
 				this.scrollablebg = tex != 3;
 				if(tex < 2) tex += Math.random() > .5 ? "a" : "b";
+				if(tex == 7) tex += Math.random() > .5 ? (Math.random() > .5 ? "a" : "b") : (Math.random() > .5 ? "c" : "d");
 				this.div.style.backgroundImage = "url(\"/assets/weeeee/" + tex + ".png\")";
 				this.div.className = "block";
 			}
