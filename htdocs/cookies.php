@@ -16,7 +16,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				transition: margin-top 10s;
 				max-width: 900px;
 			}
-			#accept {
+			#accept{
 				display: block;
 				background-color: gray;
 				color: black;
@@ -35,6 +35,14 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				align-items: center;
 				justify-content: center;
 			}
+			#cookieclick{
+				display: block;
+				width: 208px;
+				height: 161px;
+				position: absolute;
+				bottom: 0;
+				left: calc(50vw - 104px);
+			}
 		</style>
 	</head>
 	<body>
@@ -42,6 +50,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			<div id="nocookies">NO COOKIES</div>
 			<a id="accept" href="javascript:void(0)" onclick="riseitup()">i accept.</a>
 		</div>
+		<a id="cookieclick" href="/nqiregvfrzrag"></a>
 		<script>
 			function riseitup(){
 				document.getElementById("form").style.marginTop = "calc(-100vh - 100%)";

@@ -200,7 +200,7 @@
 
 <url>
 <loc>https://unplug.red/cookies</loc>
-<lastmod>2019-05-13T03:53:33+00:00</lastmod>
+<lastmod>2019-07-10T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
 </url>
 
@@ -352,6 +352,12 @@
 <url>
 <loc>https://unplug.red/weeeee</loc>
 <lastmod>2019-07-01T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
+<url>
+<loc>https://unplug.red/nqiregvfrzrag</loc>
+<lastmod>2019-07-10T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
 </url>
 
