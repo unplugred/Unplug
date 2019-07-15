@@ -19,11 +19,17 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				z-index: -10000;
 				object-fit: cover;
 			}
+
+			body {
+				background-image: url("/assets/bus/thumbnail.png");
+				background-size: cover;
+				background-position: center center;
+			}
 		</style>
 	</head>
 	<body>
 		<video class="vid" autoplay muted>
-			<source src="/assets/crystals.mp4" type="video/mp4">
+			<source src="/assets/bus/crystals.mp4" type="video/mp4">
 		</video>
 		<div class="mainimage">
 			i am a bus now
