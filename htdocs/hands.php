@@ -1,3 +1,4 @@
+'
 <?php
 $color = "#F4F4F4";
 $title = "hands";
@@ -16,6 +17,14 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				justify-content: center;
 				align-items: center;
 			}
+			.innerhand {
+				width: 100%;
+				height: 100%;
+				opacity: 0;
+			}
+			.innerhand:hover {
+				opacity: 1;
+			}
 
 			#hand1 {
 				top: calc(43vh - 80px);
@@ -25,7 +34,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				background-image: url("/assets/hands/1.png");
 				transform: rotate(166.631deg);
 			}
-			#hand1:hover {
+			#hand1>.innerhand {
 				background-image: url("/assets/hands/1h.png");
 			}
 
@@ -37,7 +46,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				background-image: url("/assets/hands/2.png");
 				transform: rotate(-174.517deg);
 			}
-			#hand2:hover {
+			#hand2>.innerhand {
 				background-image: url("/assets/hands/2h.png");
 			}
 
@@ -49,7 +58,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				background-image: url("/assets/hands/3.png");
 				transform: rotate(160.276deg);
 			}
-			#hand3:hover {
+			#hand3>.innerhand {
 				background-image: url("/assets/hands/3h.png");
 			}
 
@@ -61,7 +70,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				background-image: url("/assets/hands/4.png");
 				transform: rotate(-22.9963deg);
 			}
-			#hand4:hover {
+			#hand4>.innerhand {
 				background-image: url("/assets/hands/4h.png");
 			}
 
@@ -73,7 +82,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				background-image: url("/assets/hands/5.png");
 				transform: rotate(2.6822deg);
 			}
-			#hand5:hover {
+			#hand5>.innerhand {
 				background-image: url("/assets/hands/5h.png");
 			}
 
@@ -112,16 +121,35 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.center {
 				width: 1px;
 				height: 1px;
-				background-color: red;
 			}
 		</style>
 	</head>
 	<body>
-		<a id="hand5" class="hand" href="/square" title="tinker"><div class="center"></div></a>
-		<a id="hand4" class="hand" href="/fuck" title="tailor"><div class="center"></div></a>
-		<a id="hand3" class="hand" href="/lion" title="sinker"><div class="center"></div></a>
-		<a id="hand1" class="hand" href="/glow" title="sailor"><div class="center"></div></a>
-		<a id="hand2" class="hand" href="/snow" title="thief"><div class="center"></div></a>
+		<div id="hand5" class="hand" title="tinker">
+			<a class="innerhand" href="/square">
+				<div class="center"></div>
+			</a>
+		</div>
+		<div id="hand4" class="hand" title="tailor">
+			<a class="innerhand" href="/fuck">
+				<div class="center"></div>
+			</a>
+		</div>
+		<div id="hand3" class="hand" title="sinker">
+			<a class="innerhand" href="/lion">
+				<div class="center"></div>
+			</a>
+		</div>
+		<div id="hand1" class="hand" title="sailor">
+			<a class="innerhand" href="/glow">
+				<div class="center"></div>
+			</a>
+		</div>
+		<div id="hand2" class="hand" title="thief">
+			<a class="innerhand" href="/snow">
+				<div class="center"></div>
+			</a>
+		</div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script>
 			var cursorX,cursorY;
@@ -134,7 +162,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			function timer(){
 				$('.center').each(function(i, obj) {
 					let offset = $(this).offset();
-					let hand = $(this).parent();
+					let hand = $(this).parent().parent();
 					let values = hand.css("transform").split('(')[1].split(')')[0].split(',');
 					let currentrot = Math.atan2(values[1], values[0]) * (180/Math.PI);
 					let targetrot = 0;
