@@ -24,10 +24,18 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				background-position: left top;
 				top: 0;
 			}
+
+			#linkone
+			{
+				display: block;
+				width: 194px;
+				height: 17px;
+				margin: 108px auto;
+			}
 		</style>
 	</head>
 	<body>
-		<div id="img"></div>
+		<div id="img"><a href="/planet" id="linkone"></a></div>
 		<div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div>
 		<script>
 			var numerica = document.getElementsByClassName("numerica");
@@ -46,7 +54,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			{
 				for (var i = 0; i < numerica.length; i++)
 				{
-					console.log("hi");
 					s[i] += 10;
 					numerica[i].style.left = s[i] + "px";
 					if(s[i] > document.documentElement.clientWidth)
