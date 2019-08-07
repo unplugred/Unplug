@@ -7,10 +7,10 @@
 "wasmFrameworkUrl": "planet.wasm.framework.unityweb",
 "graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
 "webglContextAttributes": {"preserveDrawingBuffer": false},
-"splashScreenStyle": "Dark",
-"backgroundColor": "#000000",
+"splashScreenStyle": "Light",
+"backgroundColor": "#FFFFFF",
 "cacheControl": {"default": "must-revalidate"},
 "developmentBuild": false,
 "multithreading": false,
-"unityVersion": "2019.3.0a10"
+"unityVersion": "2019.3.0a11"
 }

@@ -1,7 +1,7 @@
 {
-"companyName": "Ari Hanan",
+"companyName": "unplugred",
 "productName": "useless flower",
-"productVersion": "1.5.0",
+"productVersion": "1.7.0",
 "dataUrl": "uselessflower.data.unityweb",
 "asmCodeUrl": "uselessflower.asm.code.unityweb",
 "asmMemoryUrl": "uselessflower.asm.memory.unityweb",
@@ -11,7 +11,8 @@
 "webglContextAttributes": {"preserveDrawingBuffer": false},
 "splashScreenStyle": "Light",
 "backgroundColor": "#FFFFFF",
+"cacheControl": {"default": "must-revalidate"},
 "developmentBuild": false,
 "multithreading": false,
-"unityVersion": "2019.1.0f2"
+"unityVersion": "2019.2.0f1"
 }
