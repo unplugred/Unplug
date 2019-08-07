@@ -28,9 +28,12 @@
 		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/hyperaction/cover.png">
 		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/hyperaction/cover.png">
 
-		<link rel=StyleSheet href="/assets/unity.css" type="text/css" media=screen>
+		<link rel="stylesheet" href="style.css">
+		<script src="UnityProgress.js"></script>
 		<script src="/assets/UnityLoader.js"></script>
-		<script>var gameInstance = UnityLoader.instantiate("gameContainer", "Build/hyperaction.json");</script>
+		<script>
+			var unityInstance = UnityLoader.instantiate("gameContainer", "Build/hyperaction.json", {onProgress: UnityProgress});
+		</script>
 	</head>
 	<body><div id="gameContainer"></div></body>
 </html>

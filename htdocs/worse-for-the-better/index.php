@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  	<head>
+	<head>
 		<meta charset="utf-8">
 		<title>worse for the better</title>
 
@@ -28,9 +28,12 @@
 		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/worse-for-the-better/cover.png">
 		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/worse-for-the-better/cover.png">
 
-		<link rel=StyleSheet href="/assets/unity.css" type="text/css" media=screen>
+		<link rel="stylesheet" href="style.css">
+		<script src="UnityProgress.js"></script>
 		<script src="/assets/UnityLoader.js"></script>
-		<script>var gameInstance = UnityLoader.instantiate("gameContainer", "Build/worseforthebetter.json");</script>
+		<script>
+			var unityInstance = UnityLoader.instantiate("gameContainer", "Build/worseforthebetter.json", {onProgress: UnityProgress});
+		</script>
 	</head>
 	<body><div id="gameContainer"></div></body>
 </html>

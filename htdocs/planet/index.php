@@ -2,7 +2,7 @@
 <html lang="en-us">
 	<head>
 		<meta charset="utf-8">
-		<title>planet</title>
+		<title>Planet</title>
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
 
@@ -28,27 +28,12 @@
 		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/planet/cover.png">
 		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/planet/cover.png">
 
-		<link rel=StyleSheet href="/assets/unity.css" type="text/css" media=screen>
+		<link rel="stylesheet" href="style.css">
+		<script src="UnityProgress.js"></script>
 		<script src="/assets/UnityLoader.js"></script>
-		<script>var gameInstance = UnityLoader.instantiate("gameContainer", "Build/planet.json");</script>
-
-		<style>
-			#gameContainer
-			{
-				width: 100vw;
-				height: 100vw;
-				max-width: 100vh;
-				max-height: 100vh;
-			}
-
-			body
-			{
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				background-color: black;
-			}
-		</style>
+		<script>
+			var unityInstance = UnityLoader.instantiate("gameContainer", "Build/planet.json", {onProgress: UnityProgress});
+		</script>
 	</head>
 	<body><div id="gameContainer"></div></body>
 </html>

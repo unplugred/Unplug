@@ -1,5 +1,5 @@
 {
-"companyName": "Ari Hanan",
+"companyName": "unplugred",
 "productName": "worse for the better",
 "productVersion": "1.0",
 "dataUrl": "worseforthebetter.data.unityweb",
@@ -13,5 +13,5 @@
 "backgroundColor": "#808080",
 "developmentBuild": false,
 "multithreading": false,
-"unityVersion": "2019.1.0f2"
+"unityVersion": "2019.2.0f1"
 }
