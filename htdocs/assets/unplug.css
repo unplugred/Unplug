@@ -1,3 +1,11 @@
+*{
+	cursor: url("/assets/cursors/default.png") 0 0, default;
+}
+
+a{
+	cursor: url("/assets/cursors/pointer.png") 6 0, pointer;
+}
+
 ::selection {
 	color: #333;
 	background: #999999fe;
