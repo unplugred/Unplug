@@ -16,4 +16,4 @@ ErrorDocument 500 /404.shtml
 
 DirectoryIndex index.php
 
-SetEnv SERVER_ADMIN AriHanan@Protonmail.com
+SetEnv SERVER_ADMIN AriHanan@pm.me
