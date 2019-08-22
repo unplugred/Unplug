@@ -3,7 +3,7 @@
 }
 
 a{
-	cursor: url("/assets/cursors/pointer.png") 6 0, pointer;
+	cursor: url("/assets/cursors/pointer.png") 6 0, pointer !important;
 }
 
 ::selection {
