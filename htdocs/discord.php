@@ -1,5 +1,4 @@
 <?php
-$color = "#000000";
 $title = "discord";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 
@@ -14,13 +13,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				opacity: 0.1;
 				animation: background 16s 0s linear infinite;
 			}
-			
+
 			.wrap {
 				display: inline-block;
 				line-height: 0;
 				position: absolute;
 			}
-			
+
 			#verticle{
 				animation: vert 3s 0s ease-in-out infinite;
 			}
@@ -33,7 +32,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				font-weight: bold;
 				font-family: 'Saira Extra Condensed', sans-serif;
 			}
-			
+
 			@keyframes vert {
 				0% {
 					margin-top: calc(50vh + 5vw);

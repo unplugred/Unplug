@@ -1,5 +1,4 @@
 <?php
-$color = "#000000";
 $title = "who";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>

@@ -1,5 +1,4 @@
 <?php
-$color = "#000000";
 $title = "stock market man";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>
@@ -42,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				}
 				x[slideIndex-1].style.display = "block";
 			}
-		</script> 
+		</script>
 		<a href="javascript:void(0)">
 			<img class="movie" src="/assets/stock-market-man/01.png" onclick="plusDivs()" style="display: block"/>
 			<img class="movie" src="/assets/stock-market-man/02.png" onclick="plusDivs()"/>
