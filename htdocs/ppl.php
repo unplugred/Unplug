@@ -31,7 +31,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 			var bg = [document.getElementById("bg1"), document.getElementById("bg2"), document.getElementById("prsn")];
 			var tim = Math.random() * 3.14;
 			var timetillblink = [0, 0, 0, Math.random() * 3, Math.random() * 3, Math.random() * 3, Math.random() * 200 + 500, Math.random() * 200 + 500, Math.random() * 200 + 500];
-			var img = Math.floor(Math.random() * 200);
+			var img = Math.floor(Math.random() * 500);
 
 			setInterval(Update, 100);
 			function Update() {
@@ -57,7 +57,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 					timetillblink[8] = Math.random() * 500 + 500;
 
 					bg[2].style.backgroundImage = "url(\"/assets/ppl/" + img + ".gif\")";
-					img = img >= 199 ? 0 : (img + 1);
+					img = img >= 499 ? 0 : (img + 1);
 				}
 				timetillblink[0] += 0.1;
 				timetillblink[1] += 0.1;
