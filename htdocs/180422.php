@@ -7,7 +7,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				position: absolute;
 				top: 0;
 				left: 0;
-				width: <?php $daysthismonth = (float)date("t"); echo fmod((((int)date("Y")) * 12) + ((int)date("n")) + (((float)date("j")) / $daysthismonth) - (18 / $daysthismonth) + 20, 32) / .32; ?>vw;
 				height: 100vh;
 				background-image: url("/assets/180422.png");
 				background-size: cover;
@@ -54,4 +53,16 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<div id="bg"></div>
 		<p id="text">180422</p>
 		<div id="scanlines"></div>
+		<script>
+			var starting = new Date(2019, 7, 18, 7, 30, 0, 0);
+			var ending = new Date(2022, 3, 18, 15, 0, 0, 0);
+			var bg = document.getElementById("bg");
+
+			setInterval(update, 5000);
+			function update()
+			{
+				bg.style.width = ((((Date.now() - starting.getTime())/(ending.getTime() - starting.getTime()) + 18) % 1) * 100) + "vw";
+			}
+			update();
+		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
