@@ -1,5 +1,4 @@
 <?php
-$color = "#000000";
 $title = "symbolism";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>

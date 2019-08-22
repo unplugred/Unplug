@@ -1,5 +1,4 @@
 <?php
-$color = "#000000";
 $title = "old edgy art";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>
@@ -45,7 +44,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				}
 				x[slideIndex-1].style.display = "block";
 			}
-		</script> 
+		</script>
 		<a href="javascript:void(0)">
 			<img class="movie" src="/assets/old-edgy-art/1.png" onclick="plusDivs()" style="display: block"/>
 			<img class="movie" src="/assets/old-edgy-art/2.png" onclick="plusDivs()"/>

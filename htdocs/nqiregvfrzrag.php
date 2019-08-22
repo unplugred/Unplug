@@ -1,5 +1,4 @@
 <?php
-$color = "#000000";
 $title = "nqiregvfrzrag";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">

@@ -1,5 +1,4 @@
 <?php
-$color = "#000000";
 $title = "experimenting with jase";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>
@@ -39,7 +38,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			<img src="/assets/experimenting-with-jase/boat2.png"/>
 			</p>
 			<p>
-			seeing it, i decided i should try my hand at making it glittery 
+			seeing it, i decided i should try my hand at making it glittery
 			<img src="/assets/experimenting-with-jase/boat3.png"/>
 			</p>
 			<p>
