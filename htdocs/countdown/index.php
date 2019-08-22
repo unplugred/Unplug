@@ -1,12 +1,17 @@
 <?php
-$color = "#000000";
 $title = "countdown";
+$icon = "/countdown/favicon.ico";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>
 			body{
 				font-size: 33vw;
 				text-align: center;
 				font-weight: bold;
+				background-color: #110000;
+			}
+
+			*{
+				cursor: url("/assets/cursors/wait.png") 6 0, wait;
 			}
 
 			#final-form{
@@ -39,7 +44,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<a href="countdown/" id="final-form"></a>
 		<script>
 			var timer = document.getElementById("timer");
-			var interval = setInterval(myTimer, 1000);
+			var interval = setInterval(myTimer, 500);
 			var minutes = 8;
 			var seconds = 0;
 
@@ -51,10 +56,12 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 						clearInterval(interval);
 					}
 					else{
-						seconds = 59;
+						seconds = 119;
 					}
 				}
-				timer.innerHTML = `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+				if(seconds % 2 == 0) timer.innerHTML = `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 20 ? `0${(seconds * .5)}` : (seconds * .5)}`;
+
+				document.body.style.backgroundColor = seconds % 2 == 0 ? "#110000" : "#000000";
 			}
 		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
