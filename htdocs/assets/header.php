@@ -6,8 +6,8 @@
 
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
 
-		<meta name="theme-color" content="<?php echo $color ?>">
-		<link rel="icon" type="image/png" href="/assets/shortcut-icon.png">
+		<meta name="theme-color" content="<?php echo (isset($color) ? $color : "#000000") ?>">
+		<link rel="icon" type="image/png" href="<?php echo (isset($icon) ? $icon : "/assets/shortcut-icon.png") ?>">
 		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/shortcut-icon.png">
 		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
 
