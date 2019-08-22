@@ -8,7 +8,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 				display: block;
 				width: 300px;
 				margin: calc(50vh - 150px) calc(50vw - 150px);
-				background-image: url("/assets/ppl/done/1.gif");
 				background-size: cover;
 				background-position: top right;
 				position: absolute;
@@ -57,7 +56,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 					timetillblink[5] = Math.random() * 2 + .5;
 					timetillblink[8] = Math.random() * 500 + 500;
 
-					bg[2].style.backgroundImage = "url(\"/assets/ppl/done/" + img + ".gif\")";
+					bg[2].style.backgroundImage = "url(\"/assets/ppl/" + img + ".gif\")";
 					img = img >= 199 ? 0 : (img + 1);
 				}
 				timetillblink[0] += 0.1;
