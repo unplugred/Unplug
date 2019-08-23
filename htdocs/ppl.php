@@ -19,14 +19,14 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 				position: absolute;
 				background-image: url("/assets/ppl/layer.png");
 				opacity: .4;
-			    background-blend-mode: screen;
+				background-blend-mode: screen;
 			}
 		</style>
 	</head>
 	<body>
 		<div id="bg1" class="bg"></div>
 		<div id="bg2" class="bg"></div>
-		<a id="prsn" href="/180422" title="prsn"></a>
+		<a id="prsn" href="/new" title="prsn"></a>
 		<script>
 			var bg = [document.getElementById("bg1"), document.getElementById("bg2"), document.getElementById("prsn")];
 			var tim = Math.random() * 3.14;
