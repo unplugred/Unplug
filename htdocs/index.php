@@ -154,6 +154,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				left: 10px;
 				font-weight: bold;
 			}
+
+			#namething {
+				display: inline;
+			}
 		</style>
 	</head>
 	<body>
@@ -173,7 +177,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			</div>
 			<div class="thirdimage window" title="me_irl">
 				<a class="close" href="javascript:void(0)" title="close"></a>
-				<div id="bio">hey, im Red and this is my cool ass website<br><br>:D</div>
+				<div id="bio">hey, im <div id="namething"></div> and this is my cool ass website<br><br>:D</div>
 			</div>
 			<div class="secondaryimage window" title="check out my shit">
 				<a class="close" href="javascript:void(0)" title="close"></a>
@@ -208,10 +212,16 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 
 			$(".window").draggable();
 			$('.close').on('click',function(){
-			    $(this).parent().css("display", "none");
-			    if(++closedwindows >= 4){
-			    	window.location = "/bye";
-			    }
+				$(this).parent().css("display", "none");
+				if(++closedwindows >= 4){
+					window.location = "/bye";
+				}
 			});
+
+			setTimeout(setname, 500);
+			function setname()
+			{
+				document.getElementById("namething").innerHTML = Math.random() > .2 ? "red" : "8708198";
+			}
 		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
