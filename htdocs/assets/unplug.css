@@ -6,6 +6,10 @@ a{
 	cursor: url("/assets/cursors/pointer.png") 6 0, pointer !important;
 }
 
+a *{
+	cursor: url("/assets/cursors/pointer.png") 6 0, pointer !important;
+}
+
 ::selection {
 	color: #333;
 	background: #999999fe;

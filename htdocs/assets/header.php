@@ -11,7 +11,7 @@
 		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/shortcut-icon.png">
 		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
 
-		<meta name="keywords" content="ari,hanan,arihanan,red,redflux,red#3510,unplug,<?php echo $title ?>">
+		<meta name="keywords" content="red,unplugred,unplug,<?php echo (isset($tags) ? $tags.",".$title : $title) ?>">
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 
 		<meta property="og:site_name" content="red">
@@ -28,4 +28,4 @@
 		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/h.gif">
 		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/h.gif">
 
-		<link rel=StyleSheet href="/assets/unplug.css" type="text/css" media=screen>
+		<link rel=StyleSheet href="/assets/unplug.css?v=2" type="text/css" media=screen>
