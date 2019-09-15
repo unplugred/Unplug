@@ -26,7 +26,7 @@
 		<link rel="shortcut icon" href="https://unplug.red/assets/shortcut-icon.png">
 		<link rel="apple-touch-icon-precomposed" href="https://unplug.red/apple-touch-icon.png">
 
-		<meta name="keywords" content="ari,hanan,arihanan,red,redflux,red#3510,unplug,404 - Page does not exist">
+		<meta name="keywords" content="red,unplugred,unplug,404,page,not,found">
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 
 		<meta property="og:site_name" content="red">
@@ -35,13 +35,13 @@
 		<meta name="twitter:url" content="https://unplug.red/">
 		<meta property="og:type" content="article">
 		<meta name="twitter:card" content="summary">
-		<meta property="og:title" content="404 - Page not found.">
-		<meta name="twitter:title" content="404 - Page not found.">
-		<meta property="og:description" content=":(">
-		<meta name="twitter:description" content=":(">
-		<meta name="description" content=":(">
-		<meta property="og:image" content="https://unplug.red/assets/h.gif">
-		<meta name="twitter:image" content="https://unplug.red/assets/h.gif">
+		<meta property="og:title" content="404"/>
+		<meta name="twitter:title" content="404">
+		<meta property="og:description" content="you got lost.">
+		<meta name="twitter:description" content="you got lost.">
+		<meta name="description" content="you got lost.">
+		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/objects/object2.gif">
+		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/objects/object1.gif">
 
 		<link rel=StyleSheet href="/assets/unplug.css" type="text/css" media=screen>
 		<meta http-equiv="refresh" content="0; url=/404">

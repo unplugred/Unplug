@@ -1,32 +1,11 @@
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>Concrete</title>
-
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
-
-		<meta name="theme-color" content="#822D1D">
-		<link rel="icon" type="image/png" href="/assets/shortcut-icon.png">
-		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/shortcut-icon.png">
-		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
-
-		<meta name="keywords" content="ari,hanan,arihanan,red,redflux,red#3510,unplug,concrete">
-		<meta name="dcterms.rightsHolder" content="Ari Hanan">
-
-		<meta property="og:site_name" content="red">
-		<meta name="twitter:site" content="red">
-		<meta property="og:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
-		<meta name="twitter:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
-		<meta property="og:type" content="article">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta property="og:title" content="Concrete">
-		<meta name="twitter:title" content="Concrete">
-		<meta property="og:description" content="Coming soon on a virtual environment.">
-		<meta name="twitter:description" content="Coming soon on a virtual environment.">
-		<meta name="description" content="Coming soon on a virtual environment.">
-		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/concrete/opengraph.png">
-		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/assets/concrete/opengraph.png">
-
+<?php
+$title = "Concrete";
+$description = "Coming soon on a virtual environment.";
+$color = "#822D1D";
+$card = "summary_large_image";
+$ogimage = "/assets/concrete/opengraph.png";
+$css = false;
+include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>
 			::selection {
 				background: transparent;
