@@ -1,5 +1,6 @@
 <?php
 $title = "countdown";
+$icontype = "x-icon";
 $icon = "/countdown/favicon.ico";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>

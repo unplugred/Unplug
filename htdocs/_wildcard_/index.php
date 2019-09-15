@@ -9,7 +9,6 @@
 		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/shortcut-icon.png">
 		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
 
-		<meta name="keywords" content="ari,hanan,arihanan,red,redflux,red#3510,unplug,Welcome">
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 
 		<meta property="og:site_name" content="red">
