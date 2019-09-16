@@ -4,8 +4,6 @@
 		<meta charset="utf-8">
 		<title><?php echo $title ?></title>
 
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/tracking.php'; ?>
-
 		<meta name="theme-color" content="<?php echo (isset($color) ? $color : "#000000") ?>">
 		<link rel="icon" type="image/<?php echo (isset($icontype) ?
 		$icontype : "png") ?>" href="<?php echo (isset($icon) ?
