@@ -4,10 +4,8 @@
 		<meta charset="utf-8">
 		<title>404 - Page does not exist</title>
 
-		<!-- Matomo -->
 		<script>
 			var _paq = window._paq || [];
-			/* tracker methods like "setCustomDimension" should be called before "trackPageView" */
 			_paq.push(["disableCookies"]);
 			_paq.push(['trackPageView']);
 			_paq.push(['enableLinkTracking']);
@@ -19,16 +17,12 @@
 				g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
 			})();
 		</script>
-		<!-- End Matomo Code -->
 
 		<meta name="theme-color" content="#4B7071">
 		<link rel="icon" type="image/png" href="/assets/shortcut-icon.png">
 		<link rel="shortcut icon" href="https://unplug.red/assets/shortcut-icon.png">
 		<link rel="apple-touch-icon-precomposed" href="https://unplug.red/apple-touch-icon.png">
-
-		<meta name="keywords" content="red,unplugred,unplug,404,page,not,found">
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
-
 		<meta property="og:site_name" content="red">
 		<meta name="twitter:site" content="red">
 		<meta property="og:url" content="https://unplug.red/">

@@ -1,6 +1,5 @@
 <?php
 $title = "Hyperaction";
-$tags = "hyper,action";
 $description = "a game.";
 $card = "summary_large_image";
 $icontype = "x-icon";
