@@ -1,13 +1,13 @@
 <?php
 $title = "404";
 $description = "you got lost.";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				width: 702px;
 				height: 236px;
 				background-size: contain;
-				background-image: url("/assets/404.gif");
+				background-image: url("<?php echo $assets ?>/404.gif");
 				background-repeat: no-repeat;
 				background-position: center;
 				margin-top: 15px;
@@ -32,7 +32,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.santa{
 				width: 100px;
 				height: 100px;
-				background-image: url("/assets/objects/object1.gif");
+				background-image: url("<?php echo $assets ?>/objects/object1.gif");
 				position: absolute;
 				margin-top: calc(105vh - 170px);
 				margin-left: calc(100vw - 120px);
@@ -51,4 +51,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			</div>
 		</div>
 		<a href="/santa" class="santa"></a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

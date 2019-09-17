@@ -1,7 +1,7 @@
 <?php
 $color = "#ffffff";
 $title = "lines";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				background-color: white;
@@ -11,7 +11,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				display: block;
 				width: 100vw;
 				height: 100vh;
-				background-image: url("/assets/lines.png");
+				background-image: url("<?php echo $assets ?>/lines.png");
 				background-size: cover;
 				background-position: top right;
 			}
@@ -19,4 +19,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<a href="/traffic" id="lines" title="what even"></a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

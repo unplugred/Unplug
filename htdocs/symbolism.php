@@ -1,6 +1,6 @@
 <?php
 $title = "symbolism";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				margin-top: calc(50vh - 134px);
@@ -8,10 +8,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				display: block;
 				width: 472px;
 				height: 268px;
-				background-image: url("/assets/symbolism.png");
+				background-image: url("<?php echo $assets ?>/symbolism.png");
 			}
 		</style>
 	</head>
 	<body>
 		<a class="mainimage" title="symbolism continued." href="/weeeee"></a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

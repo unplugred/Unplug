@@ -1,6 +1,6 @@
 <?php
 $title = "cookies";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			#nocookies{
 				font-size: 150px;
@@ -27,7 +27,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				text-decoration: none;
 			}
 			body{
-				background-image: url("/assets/cookies.png");
+				background-image: url("<?php echo $assets ?>/cookies.png");
 				background-repeat: no-repeat;
 				background-position: bottom center;
 				display: flex;
@@ -55,4 +55,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				document.getElementById("form").style.marginTop = "calc(-100vh - 100%)";
 			}
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

@@ -1,6 +1,6 @@
 <?php
 $title = "glow";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				width: 100vw;
@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				margin-left: calc(50vw - 200px);
 				width: 434px;
 				height: 367px;
-				background-image: url("/assets/glow.png");
+				background-image: url("<?php echo $assets ?>/glow.png");
 				position: absolute;
 			}
 
@@ -26,5 +26,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimagelink"></div>
-		<a class="textish" href="/countdown">can you see me in the dark</a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+		<a class="textish" href="/countdown/">can you see me in the dark</a>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

@@ -1,9 +1,9 @@
 <?php
 $title = "snow";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			#snow{
-				background-image: url("/assets/snow.png");
+				background-image: url("<?php echo $assets ?>/snow.png");
 				background-size: contain;
 				background-repeat: no-repeat;
 				display: block;
@@ -15,4 +15,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<a id="snow" href="/sick" title="come back snow"></a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

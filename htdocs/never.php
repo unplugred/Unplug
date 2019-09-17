@@ -1,7 +1,7 @@
 	<?php
 	$color = "#32363B";
 	$title = "never";
-	include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+	include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			<style>
 
 				body{
@@ -14,10 +14,10 @@
 					display: block;
 					width: 98px;
 					height: 520px;
-					background-image: url("/assets/never.png");
+					background-image: url("<?php echo $assets ?>/never.png");
 				}
 			</style>
 		</head>
 		<body>
 			<div class="mainimage" title="but i never said that"></div>
-	<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+	<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

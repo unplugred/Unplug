@@ -1,9 +1,9 @@
 <?php
 $title = "joke";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			#bg {
-				background-image: url("/assets/static.gif");
+				background-image: url("<?php echo $assets ?>/static.gif");
 				width: 100vw;
 				height: 100vh;
 				position: absolute;
@@ -25,4 +25,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<div class="mainimage">
 			i dont get the joke
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

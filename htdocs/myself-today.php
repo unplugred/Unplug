@@ -1,7 +1,7 @@
 <?php
 $color = "#36393E";
 $title = "myself, today";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				background-color:#36393E;
@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				margin: 0 auto;
 				width: 61px;
 				height: 18px;
-				background-image: url("/assets/myself-today.png");
+				background-image: url("<?php echo $assets ?>/myself-today.png");
 				margin-bottom: 20px;
 			}
 		</style>
@@ -27,4 +27,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			<div class="mainimagelink"></div>
 			<a href="/old-edgy-art">myself</a>, <a href="/space">today</a>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

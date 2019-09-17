@@ -1,7 +1,7 @@
 <?php
 $color = "#aa0000";
 $title = "books";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				margin-top: calc(40vh - 100px);
@@ -9,7 +9,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				display: block;
 				width: 450px;
 				height: 200px;
-				background-image: url("/assets/books.png");
+				background-image: url("<?php echo $assets ?>/books.png");
 				border: 4px #aa0000 solid;
 			}
 
@@ -27,4 +27,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<div class="mainimage" title="i once read a book about how to be happy.">
 			<a class="mainimagelink" href="/joke"></a>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

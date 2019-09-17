@@ -1,6 +1,6 @@
 <?php
 $title = "bars";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				margin: calc(10vh) auto;
@@ -22,8 +22,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimage">
-			<a href="/assets/im-alone-in-class-again.mp3"><img class="mainimagelink" src="/assets/bars.jpg"/></a>
+			<a href="<?php echo $assets ?>/im-alone-in-class-again.mp3"><img class="mainimagelink" src="<?php echo $assets ?>/bars.jpg"/></a>
 			<br/>
 			bars
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

@@ -2,11 +2,11 @@
 <?php
 $color = "#F4F4F4";
 $title = "hands";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				background-color: #F4F4F4;
-				background-image: url("/assets/hands/bg.png");
+				background-image: url("<?php echo $assets ?>/hands/bg.png");
 				background-repeat: repeat;
 			}
 
@@ -31,11 +31,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				left: calc(64vw - 151px);
 				width: 199px;
 				height: 90px;
-				background-image: url("/assets/hands/1.png");
+				background-image: url("<?php echo $assets ?>/hands/1.png");
 				transform: rotate(166.631deg);
 			}
 			#hand1>.innerhand {
-				background-image: url("/assets/hands/1h.png");
+				background-image: url("<?php echo $assets ?>/hands/1h.png");
 			}
 
 			#hand2 {
@@ -43,11 +43,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				left: calc(83vw - 153px);
 				width: 201px;
 				height: 86px;
-				background-image: url("/assets/hands/2.png");
+				background-image: url("<?php echo $assets ?>/hands/2.png");
 				transform: rotate(-174.517deg);
 			}
 			#hand2>.innerhand {
-				background-image: url("/assets/hands/2h.png");
+				background-image: url("<?php echo $assets ?>/hands/2h.png");
 			}
 
 			#hand3 {
@@ -55,11 +55,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				left: calc(80vw - 149px);
 				width: 202px;
 				height: 82px;
-				background-image: url("/assets/hands/3.png");
+				background-image: url("<?php echo $assets ?>/hands/3.png");
 				transform: rotate(160.276deg);
 			}
 			#hand3>.innerhand {
-				background-image: url("/assets/hands/3h.png");
+				background-image: url("<?php echo $assets ?>/hands/3h.png");
 			}
 
 			#hand4 {
@@ -67,11 +67,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				left: calc(40vw - 202px);
 				width: 328px;
 				height: 167px;
-				background-image: url("/assets/hands/4.png");
+				background-image: url("<?php echo $assets ?>/hands/4.png");
 				transform: rotate(-22.9963deg);
 			}
 			#hand4>.innerhand {
-				background-image: url("/assets/hands/4h.png");
+				background-image: url("<?php echo $assets ?>/hands/4h.png");
 			}
 
 			#hand5 {
@@ -79,11 +79,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				left: calc(20vw - 221px);
 				width: 331px;
 				height: 179px;
-				background-image: url("/assets/hands/5.png");
+				background-image: url("<?php echo $assets ?>/hands/5.png");
 				transform: rotate(2.6822deg);
 			}
 			#hand5>.innerhand {
-				background-image: url("/assets/hands/5h.png");
+				background-image: url("<?php echo $assets ?>/hands/5h.png");
 			}
 
 			@media screen and (orientation: portrait) {
@@ -182,4 +182,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				return (a * c) + (b * (1 - c));
 			}
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

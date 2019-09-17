@@ -1,6 +1,6 @@
 <?php
 $title = "meta";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			#mainimage {
 				position: absolute;
@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 
 			body{
-				background-image: url("/assets/meta.png");
+				background-image: url("<?php echo $assets ?>/meta.png");
 				animation: nanim 5s linear infinite;
 			}
 
@@ -101,4 +101,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				y = Math.floor(Math.random() * (window.innerHeight - sizey));
 			}
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

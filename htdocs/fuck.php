@@ -1,6 +1,6 @@
 <?php
 $title = "fuck";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				margin-top: calc(50vh - 232px);
@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				display: block;
 				width: 400px;
 				height: 487px;
-				background-image: url("/assets/fuck.gif");
+				background-image: url("<?php echo $assets ?>/fuck.gif");
 			}
 
 			#linktonextpage {
@@ -23,4 +23,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimage"><a title="fuck you." id="linktonextpage" href="/ppl"></a></div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

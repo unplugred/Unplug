@@ -1,7 +1,7 @@
 <?php
 $color = "#36393E";
 $title = "sophistication";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				background-color:#36393E;
@@ -13,11 +13,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				display: block;
 				width: 596px;
 				height: 243px;
-				background-image: url("/assets/sophistication.png");
+				background-image: url("<?php echo $assets ?>/sophistication.png");
 				display: block;
 			}
 		</style>
 	</head>
 	<body>
 		<a class="mainimage" href="/gradient" title="come down to me from up above ladders"></a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

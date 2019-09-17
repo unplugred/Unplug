@@ -1,6 +1,6 @@
 <?php
 $title = "message";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body {
 				overflow-y: auto;
@@ -68,12 +68,12 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 .
 .
 .
-	</div>
-		<form method="post" id="bleh" action="/assets/sendcommnet.php">
+		</div>
+		<form method="post" id="bleh" action="/access/sendcommnet.php">
 			<textarea id="text" name="comment" rows="3" cols="44" maxlength="80"></textarea>
 			<input id="submit" type="submit" name="submit" value="send"/>
 		</form>
-		<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/comments.html'; ?>
+		<?php include $_SERVER['DOCUMENT_ROOT'].'/access/comments.html'; ?>
 		<script>
 			if (!sessionStorage.getItem("PageVisited")) {
 				document.getElementById("bleh").style.display = "flex";
@@ -85,4 +85,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				}
 			}
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

@@ -3,9 +3,9 @@ $title = "Concrete";
 $description = "Coming soon on a virtual environment.";
 $color = "#822D1D";
 $card = "summary_large_image";
-$ogimage = "/assets/concrete/opengraph.png";
+$ogimage = "<?php echo $assets ?>/concrete/opengraph.png";
 $css = false;
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			::selection {
 				background: transparent;
@@ -28,7 +28,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 
 			body{
-				background-image: url("/assets/concrete/bg.png");
+				background-image: url("<?php echo $assets ?>/concrete/bg.png");
 			    overflow-y: visible;
 			    overflow-x: hidden;
 			    margin: 0;
@@ -41,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				height: 432px;
 				max-width: 90vw;
 				max-height: 90vw;
-				background-image: url("/assets/concrete/logo.png");
+				background-image: url("<?php echo $assets ?>/concrete/logo.png");
 				margin: 34px auto;
 				background-repeat: no-repeat;
 			}
@@ -65,10 +65,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<div id="logo"></div>
-		<img src="/assets/concrete/1.png" class="imge"></img>
-		<img src="/assets/concrete/2.png" class="imge"></img>
-		<img src="/assets/concrete/3.png" class="imge"></img>
-		<img src="/assets/concrete/5.png" class="imge"></img>
-		<img src="/assets/concrete/4.png" class="imge"></img>
-		<img src="/assets/concrete/text.png" id="text" alt="Coming soon to a virtual environment."></img>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+		<img src="<?php echo $assets ?>/concrete/1.png" class="imge"></img>
+		<img src="<?php echo $assets ?>/concrete/2.png" class="imge"></img>
+		<img src="<?php echo $assets ?>/concrete/3.png" class="imge"></img>
+		<img src="<?php echo $assets ?>/concrete/5.png" class="imge"></img>
+		<img src="<?php echo $assets ?>/concrete/4.png" class="imge"></img>
+		<img src="<?php echo $assets ?>/concrete/text.png" id="text" alt="Coming soon to a virtual environment."></img>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

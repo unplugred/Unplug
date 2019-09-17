@@ -1,6 +1,6 @@
 <?php
 $title = "red";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.window{
 				background-size: contain;
@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			#clock {
 				width: 106px;
 				height: 125px;
-				background-image: url("/assets/unplug/clock.png");
+				background-image: url("<?php echo $assets ?>/unplug/clock.png");
 				margin-top: calc(24vh - 115px);
 				margin-left: calc(87vw + 6px);
 			}
@@ -29,7 +29,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			#grid {
 				width: 76px;
 				height: 225px;
-				background-image: url("/assets/unplug/grid.png");
+				background-image: url("<?php echo $assets ?>/unplug/grid.png");
 				margin-top: calc(50vh - 15px);
 				margin-left: calc(63vw + 210px);
 			}
@@ -37,7 +37,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			#utah {
 				width: 243px;
 				height: 209px;
-				background-image: url("/assets/unplug/teapot.png?v=2");
+				background-image: url("<?php echo $assets ?>/unplug/teapot.png?v=2");
 				margin-top: calc(58vh + 5px);
 				margin-left: calc(62vw + 10px);
 			}
@@ -50,7 +50,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.twitterwindow {
 				width: 528px;
 				height: 395px;
-				background-image: url("/assets/unplug/twitter.png");
+				background-image: url("<?php echo $assets ?>/unplug/twitter.png");
 				margin-top: calc(50vh - 185px);
 				margin-left: calc(50vw - 224px);
 				display: none;
@@ -59,7 +59,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.mainimage {
 				width: 528px;
 				height: 395px;
-				background-image: url("/assets/unplug/unplug.png");
+				background-image: url("<?php echo $assets ?>/unplug/unplug.png");
 				margin-top: calc(50vh - 185px);
 				margin-left: calc(50vw - 224px);
 			}
@@ -72,7 +72,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.thirdimage {
 				width: 126px;
 				height: 145px;
-				background-image: url("/assets/unplug/aboutright.png");
+				background-image: url("<?php echo $assets ?>/unplug/aboutright.png");
 				background-position: right;
 				background-repeat: repeat-y;
 				background-color: #4B7071;
@@ -96,15 +96,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				width: 16px;
 				height: 14px;
 				position: absolute;
-				background-image: url("/assets/unplug/close.png");
+				background-image: url("<?php echo $assets ?>/unplug/close.png");
 			}
 
 			.close:active{
-				background-image: url("/assets/unplug/closed.png");
+				background-image: url("<?php echo $assets ?>/unplug/closed.png");
 			}
 
 			.mobile-thing {
-				background-image: url("/assets/unplug/best-on-a-computer.png");
+				background-image: url("<?php echo $assets ?>/unplug/best-on-a-computer.png");
 				background-repeat: no-repeat;
 				background-size: contain;
 				width: 100vw;
@@ -121,7 +121,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				display: inline-grid;
 				width: 26vw;
 				max-width: 26vh;
-				background-image: url("/assets/unplug/anyway-on.png");
+				background-image: url("<?php echo $assets ?>/unplug/anyway-on.png");
 				background-size: contain;
 				background-repeat: no-repeat;
 			}
@@ -156,7 +156,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			#rotato-cubo{
 				height: 100px;
 				width: 100px;
-				background-image: url("/assets/red.gif");
+				background-image: url("<?php echo $assets ?>/red.gif");
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
@@ -221,21 +221,21 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 
 			.art .object {
-				background-image: url("/assets/objects/object1.gif");
+				background-image: url("<?php echo $assets ?>/objects/object1.gif");
 			}
 
 			.games .object {
-				background-image: url("/assets/objects/object2.gif");
+				background-image: url("<?php echo $assets ?>/objects/object2.gif");
 			}
 
 			.art.secondaryimage {
-				background-image: url("/assets/unplug/object1.png?v=2");
+				background-image: url("<?php echo $assets ?>/unplug/object1.png?v=2");
 				margin-top: calc(38vh - 170px);
 				margin-left: calc(41vw - 250px);
 			}
 
 			.games.secondaryimage {
-				background-image: url("/assets/unplug/object2.png?v=2");
+				background-image: url("<?php echo $assets ?>/unplug/object2.png?v=2");
 				margin-top: calc(46vh - 127px);
 				margin-left: calc(43vw - 191px);
 			}
@@ -250,13 +250,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				width: 100%;
 			}
 
-			#abouttopleft {background-image: url("/assets/unplug/abouttopleft.png");width: 415px;}
-			#abouttop {background-image: url("/assets/unplug/abouttop.png");height: 23px;}
-			#abouttopright {background-image: url("/assets/unplug/abouttopright.png");right: 0;}
-			#aboutleft {background-image: url("/assets/unplug/aboutleft.png");}
-			#aboutbottomleft {background-image: url("/assets/unplug/aboutbottomleft.png");}
-			#aboutbottom {background-image: url("/assets/unplug/aboutbottom.png");bottom: 0;height: 4px;}
-			#aboutbottomright {background-image: url("/assets/unplug/aboutbottomright.png");right: 0;}
+			#abouttopleft {background-image: url("<?php echo $assets ?>/unplug/abouttopleft.png");width: 415px;}
+			#abouttop {background-image: url("<?php echo $assets ?>/unplug/abouttop.png");height: 23px;}
+			#abouttopright {background-image: url("<?php echo $assets ?>/unplug/abouttopright.png");right: 0;}
+			#aboutleft {background-image: url("<?php echo $assets ?>/unplug/aboutleft.png");}
+			#aboutbottomleft {background-image: url("<?php echo $assets ?>/unplug/aboutbottomleft.png");}
+			#aboutbottom {background-image: url("<?php echo $assets ?>/unplug/aboutbottom.png");bottom: 0;height: 4px;}
+			#aboutbottomright {background-image: url("<?php echo $assets ?>/unplug/aboutbottomright.png");right: 0;}
 
 			#aboutcontent {
 				top: 50%;
@@ -281,7 +281,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			<div class="mobile-wrapper-two-point-o">
 				<div class="mobile-thing">
 					<a class="anyway-wrap" href="javascript:void(0)" onclick="Switch()">
-						<img class="anyway" src="/assets/unplug/anyway.png" title="continue anyway"/>
+						<img class="anyway" src="<?php echo $assets ?>/unplug/anyway.png" title="continue anyway"/>
 					</a>
 				</div>
 			</div>
@@ -461,7 +461,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 			renderer.precision = "lowp";
 
 			var loader = new THREE.TextureLoader();
-			var bg = loader.load("/assets/unplug/checkers.png");
+			var bg = loader.load("/access/checkers.png");
 			bg.wrapS = THREE.RepeatWrapping;
 			bg.wrapT = THREE.RepeatWrapping;
 			bg.repeat.set(14.5625, 11.25);
@@ -473,7 +473,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 			var material = new THREE.MeshNormalMaterial();
 			var teapot;
 			loader = new THREE.ObjectLoader();
-			loader.load("/assets/unplug/pot.json", function ( obj ) {
+			loader.load("/access/pot.json", function(obj){
 				obj.material = material;
 				scene.add(obj);
 				teapot = obj;
@@ -502,4 +502,4 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 				document.getElementById('quicksand').href = "https://fonts.googleapis.com/css?family=Quicksand:500,700&display=swap";
 			}
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

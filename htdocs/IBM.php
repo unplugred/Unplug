@@ -1,11 +1,11 @@
 <?php
 $color = "#ffffff";
 $title = "IBM";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				background-color: white;
-				background-image: url("/assets/ibm.png");
+				background-image: url("<?php echo $assets ?>/ibm.png");
 				background-size: contain;
 				background-position: center;
 				background-repeat:no-repeat;
@@ -13,4 +13,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body title="computers with power.">
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

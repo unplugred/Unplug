@@ -1,6 +1,6 @@
 <?php
 $title = "privacy policy";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			html{
 				display: flex;
@@ -40,7 +40,7 @@ but like i turned off cookie collections so you aint got no cookies on your comp
 oh also if anyone threatens me with guns n shit to hand the info i *will* hand them the info so keep that in mind.<br/>
 but also like, its all anonymous so you shouldnt worry<br/>
 <br/>
-if you have any questions hmu on twitter dms or send me an email at arihanan@protonmail.com<br/>
+if you have any questions hmu on twitter dms or send me an email at arihanan@pm.me<br/>
 <br/>
 alright thnx for coming to my ted talk, lov yall
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

@@ -1,3 +1,4 @@
+<?php $assets = "https://assets.unplug.red" ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -7,9 +8,10 @@
 		<meta name="theme-color" content="<?php echo (isset($color) ? $color : "#000000") ?>">
 		<link rel="icon" type="image/<?php echo (isset($icontype) ?
 		$icontype : "png") ?>" href="<?php echo (isset($icon) ?
-		$icon : $icon = "/assets/shortcut-icon.png") ?>">
-		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'].$icon ?>">
-		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
+		$icon : $icon = $assets."/shortcut-icon.png") ?>">
+		<link rel="shortcut icon" href="<?php echo $icon ?>">
+		<link rel="apple-touch-icon-precomposed" href="<?php echo $assets ?>/apple-touch-icon.png">
+
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 		<meta property="og:site_name" content="red">
 		<meta name="twitter:site" content="red">
@@ -22,7 +24,7 @@
 		<meta property="og:description" content="<?php echo (isset($description) ? $description : ($description = "unplug your mind for best experience.")) ?>">
 		<meta name="twitter:description" content="<?php echo $description ?>">
 		<meta name="description" content="<?php echo $description ?>">
-		<meta property="og:image" content="https://<?php echo $ogimage = $_SERVER['HTTP_HOST'].(isset($ogimage) ? $ogimage : "/assets/objects/object".rand(1, 2).".gif") ?>">
-		<meta name="twitter:image" content="https://<?php echo $ogimage ?>">
+		<meta property="og:image" content="<?php echo $ogimage = (isset($ogimage) ? $ogimage : $assets."/objects/object".rand(1, 2).".gif") ?>">
+		<meta name="twitter:image" content="<?php echo $ogimage ?>">
 
-<?php if(!isset($css)) echo "		<link rel=StyleSheet href=\"/assets/unplug.css?v=2\" type=\"text/css\" media=screen>\n\n"?>
+<?php if(!isset($css)) echo "		<link rel=StyleSheet href=\"".$assets."/unplug.css?v=2\" type=\"text/css\" media=screen>\n\n"?>

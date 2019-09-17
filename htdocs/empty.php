@@ -1,6 +1,6 @@
 <?php
 $title = "empty";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				margin: calc(10vh) auto;
@@ -20,9 +20,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	<body>
 		<div class="mainimage">
 			empty class
-			<a href="/bars"><img class="mainimagelink" src="/assets/empty.jpg"/></a>
+			<a href="/bars"><img class="mainimagelink" src="<?php echo $assets ?>/empty.jpg"/></a>
 			also,
 			<br/>
 			im sitting in an <a href="/useless-flower/">empty class</a>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

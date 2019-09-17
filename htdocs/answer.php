@@ -1,7 +1,7 @@
 <?php
 $color = "#36393E";
 $title = "answer";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				background-color:#36393E;
@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.mainimagelink {
 				width: 749px;
 				height: 62px;
-				background-image: url("/assets/answer.png");
+				background-image: url("<?php echo $assets ?>/answer.png");
 				display: block;
 			}
 		</style>
@@ -29,4 +29,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			<br/>
 			<a class="mainimagelink" href="/h" title="answer me."></a>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
