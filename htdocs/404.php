@@ -1,6 +1,5 @@
 <?php
 $title = "404";
-$tags = "page,not,found";
 $description = "you got lost.";
 include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<style>

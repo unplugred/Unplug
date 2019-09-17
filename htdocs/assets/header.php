@@ -10,10 +10,7 @@
 		$icon : $icon = "/assets/shortcut-icon.png") ?>">
 		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'].$icon ?>">
 		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
-
-		<meta name="keywords" content="red,unplugred,unplug,<?php echo (isset($tags) ? $tags.",".$title : $title) ?>">
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
-
 		<meta property="og:site_name" content="red">
 		<meta name="twitter:site" content="red">
 		<meta property="og:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
