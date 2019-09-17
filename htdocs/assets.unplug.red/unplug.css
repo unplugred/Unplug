@@ -1,13 +1,13 @@
 *{
-	cursor: url("/assets/cursors/default.png") 0 0, default;
+	cursor: url("cursors/default.png") 0 0, default;
 }
 
 a{
-	cursor: url("/assets/cursors/pointer.png") 6 0, pointer !important;
+	cursor: url("cursors/pointer.png") 6 0, pointer !important;
 }
 
 a *{
-	cursor: url("/assets/cursors/pointer.png") 6 0, pointer !important;
+	cursor: url("cursors/pointer.png") 6 0, pointer !important;
 }
 
 ::selection {

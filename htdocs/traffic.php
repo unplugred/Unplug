@@ -1,6 +1,6 @@
 <?php
 $title = "traffic";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				background-color: white;
@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				display: block;
 				width: 100vw;
 				height: 100vh;
-				background-image: url("/assets/traffic/off.png");
+				background-image: url("<?php echo $assets ?>/traffic/off.png");
 				background-size: cover;
 				background-position: center center;
 			}
@@ -20,7 +20,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				height: 4.878048780487805vmax;
 				top: calc(50vh - 8vmax);
 				left: calc(50vw - 3.6vmax);
-				background-image: url("/assets/traffic/red.png");
+				background-image: url("<?php echo $assets ?>/traffic/red.png");
 			}
 
 			#blue{
@@ -28,7 +28,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				height: 4.878048780487805vmax;
 				top: calc(50vh - 4.1vmax);
 				left: calc(50vw - 3.6vmax);
-				background-image: url("/assets/traffic/yellow.png");
+				background-image: url("<?php echo $assets ?>/traffic/yellow.png");
 			}
 
 			#green{
@@ -36,7 +36,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				height: 4.607046070460705vmax;
 				top: calc(50vh + .5vmax);
 				left: calc(50vw - 3vmax);
-				background-image: url("/assets/traffic/green.png");
+				background-image: url("<?php echo $assets ?>/traffic/green.png");
 			}
 
 			.light{
@@ -56,4 +56,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<a id="red" class="light" href="/cookies" title="red"></a>
 		<a id="blue" class="light" href="/time" title="yellow"></a>
 		<a id="green" class="light" href="/meta" title="green"></a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

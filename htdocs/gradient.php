@@ -1,7 +1,7 @@
 <?php
 $color = "#36393E";
 $title = "gradient";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				background-color:#36393E;
@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.mainimagelink {
 				width: 1000px;
 				height: 48px;
-				background-image: url("/assets/gradient.png");
+				background-image: url("<?php echo $assets ?>/gradient.png");
 				display: block;
 			}
 		</style>
@@ -26,4 +26,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<div class="mainimage">
 			<a class="mainimagelink" href="/symbolism" title="oops"></a>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

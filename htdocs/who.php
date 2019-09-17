@@ -1,6 +1,6 @@
 <?php
 $title = "who";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				margin: calc(50vh - 31px) auto;
@@ -10,7 +10,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.who {
 				width: 35px;
 				height: 15px;
-				background-image: url("/assets/who/who.png");
+				background-image: url("<?php echo $assets ?>/who/who.png");
 				display: block;
 				margin: 10px auto;
 			}
@@ -18,7 +18,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.phone {
 				width: 48px;
 				height: 14px;
-				background-image: url("/assets/who/phone.png");
+				background-image: url("<?php echo $assets ?>/who/phone.png");
 				display: block;
 				margin: 10px auto;
 			}
@@ -26,7 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.question {
 				width: 6px;
 				height: 13px;
-				background-image: url("/assets/who/question.png");
+				background-image: url("<?php echo $assets ?>/who/question.png");
 				display: block;
 				margin: 10px auto;
 			}
@@ -38,4 +38,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			<a class="phone" href="/lines" title="phone"></a>
 			<a class="question" href="/answer" title="?"></a>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

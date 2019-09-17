@@ -1,12 +1,12 @@
 <?php
 $title = "discord";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 
 		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet">
 
 		<style>
 			#bg {
-				background-image: url("/assets/discord.png");
+				background-image: url("<?php echo $assets ?>/discord.png");
 				width: calc(100vw + 520px);
 				height: calc(100vh + 520px);
 				position: absolute;
@@ -86,4 +86,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				</div>
 			</div>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

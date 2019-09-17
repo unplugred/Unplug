@@ -1,6 +1,6 @@
 <?php
 $title = "countdown";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

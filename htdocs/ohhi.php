@@ -1,6 +1,6 @@
 <?php
 $title = "ohhi";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<script>
 			gtag('event', 'conversion', {'send_to': 'AW-971029553/6cGDCLSmv5oBELH4gs8D'});
 		</script>
@@ -19,4 +19,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		Page moved to <a href='/'>here</a>.
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

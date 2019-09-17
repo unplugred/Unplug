@@ -1,12 +1,12 @@
 <?php
 $title = "nqiregvfrzrag";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<style>
 			#img
 			{
-				background-image: url("/assets/nqiregvfrzrag/nqiregvfrzrag.png");
+				background-image: url("<?php echo $assets ?>/nqiregvfrzrag/nqiregvfrzrag.png");
 				width: 292px;
 				height: 282px;
 				position: fixed;
@@ -14,7 +14,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 
 			.numerica {
-				background-image: url(/assets/nqiregvfrzrag/bg.png);
+				background-image: url(<?php echo $assets ?>/nqiregvfrzrag/bg.png);
 				z-index: -1;
 				width: 200px;
 				height: 16px;
@@ -34,7 +34,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div id="img"><a href="/planet" id="linkone"></a></div>
+		<div id="img"><a href="/planet/" id="linkone"></a></div>
 		<div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div>
 		<script>
 			var numerica = document.getElementsByClassName("numerica");
@@ -67,4 +67,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 			setInterval(update, 100);
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

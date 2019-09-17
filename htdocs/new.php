@@ -1,7 +1,7 @@
 <?php
 $color = "#FFFFFF";
 $title = "new";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php';
 ?>
 		<style>
 			body {
@@ -9,7 +9,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 			}
 
 			#link{
-				background-image: url("/assets/new.png");
+				background-image: url("<?php echo $assets ?>/new.png");
 				position: absolute;
 				top: 2vw;
 				left: 2vw;
@@ -21,4 +21,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 	<body>
 		<div id="link" title="a new plane of existence,
 reserved just for you."></div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

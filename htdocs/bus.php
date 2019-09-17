@@ -1,6 +1,6 @@
 <?php
 $title = "bus";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				text-align: center;
@@ -20,7 +20,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 
 			body {
-				background-image: url("/assets/bus/thumbnail.png");
+				background-image: url("<?php echo $assets ?>/bus/thumbnail.png");
 				background-size: cover;
 				background-position: center center;
 			}
@@ -28,7 +28,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 	</head>
 	<body>
 		<video class="vid" autoplay muted>
-			<source src="/assets/bus/crystals.mp4" type="video/mp4">
+			<source src="<?php echo $assets ?>/bus/crystals.mp4" type="video/mp4">
 		</video>
 		<div class="mainimage">
 			i am a bus now
@@ -37,4 +37,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				where will i go?
 			</a>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

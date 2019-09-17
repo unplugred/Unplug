@@ -1,6 +1,6 @@
 <?php
 $title = "todo";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				height: 100vh;
@@ -18,6 +18,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<img src="/assets/todo.png" class="mainimage">
+		<img src="<?php echo $assets ?>/todo.png" class="mainimage">
 		<a class="lankkk" href="/photography" title="trapped in an infinite checklist"></a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

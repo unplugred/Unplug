@@ -1,6 +1,6 @@
 <?php
 $title = "bye";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			#fade{
 				position: absolute;
@@ -29,8 +29,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<img id="bg" title="bye" src="/assets/bye/fakery.png" style="display: none;"></div>
-		<img id="bye" title="bye" src="/assets/bye/bye.png" style="display: none;"></div>
+		<img id="bg" title="bye" src="<?php echo $assets ?>/bye/fakery.png" style="display: none;"></div>
+		<img id="bye" title="bye" src="<?php echo $assets ?>/bye/bye.png" style="display: none;"></div>
 		<canvas id="canva"></canvas>
 		<div id="fade" style="display: none;"></div>
 		<script>
@@ -56,4 +56,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 					ctx.drawImage(bye, x + hw, x + hh + 3);
 			}
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

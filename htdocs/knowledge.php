@@ -1,6 +1,6 @@
 <?php
 $title = "knowledge";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				margin-top: calc(50vh - 148px);
@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				display: block;
 				width: 720px;
 				height: 296px;
-				background-image: url("/assets/knowledge.png");
+				background-image: url("<?php echo $assets ?>/knowledge.png");
 			}
 		</style>
 	</head>
@@ -16,4 +16,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<a class="mainimage" href="/never" title="do you wanna know???
 consider typing
 they told me they are afraid of it"></a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

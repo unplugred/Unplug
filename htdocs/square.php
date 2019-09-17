@@ -1,9 +1,9 @@
 <?php
 $title = "square";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
-				background-image: url("/assets/square.png");
+				background-image: url("<?php echo $assets ?>/square.png");
 				background-size: contain;
 				background-position: bottom left;
 				background-repeat: no-repeat;
@@ -30,4 +30,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<div id="wrap">
 			<a id="sqr" href="/todo" title="square"></a>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

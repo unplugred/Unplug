@@ -1,10 +1,10 @@
 <?php
 $title = "frogs";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.display {
 				background-size: contain;
-				background-image: url("/assets/frogs/base.png");
+				background-image: url("<?php echo $assets ?>/frogs/base.png");
 				background-repeat: no-repeat;
 				width: 100vw;
 				height: 100vw;
@@ -14,42 +14,42 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				margin: 3.5vw 0 0 2.5vw;
 				width: 2vw;
 				height: 2vw;
-				background-image: url("/assets/frogs/aster.png");
+				background-image: url("<?php echo $assets ?>/frogs/aster.png");
 			}
 
 			.fish{
 				margin: 11.5vw 0 0 13vw;
 				width: 15vw;
 				height: 3vw;
-				background-image: url("/assets/frogs/fish.png");
+				background-image: url("<?php echo $assets ?>/frogs/fish.png");
 			}
 
 			.describe{
 				margin: 14.5vw 0 0 4vw;
 				width: 9vw;
 				height: 3vw;
-				background-image: url("/assets/frogs/describe.png");
+				background-image: url("<?php echo $assets ?>/frogs/describe.png");
 			}
 
 			.frogs{
 				margin: 14.5vw 0 0 16.5vw;
 				width: 24vw;
 				height: 3vw;
-				background-image: url("/assets/frogs/frogs.png");
+				background-image: url("<?php echo $assets ?>/frogs/frogs.png");
 			}
 
 			.kidney{
 				margin: 20vw 0 0 19.5vw;
 				width: 19.5vw;
 				height: 3vw;
-				background-image: url("/assets/frogs/kidney.png");
+				background-image: url("<?php echo $assets ?>/frogs/kidney.png");
 			}
 
 			.boney{
 				margin: 28.5vw 0 0 4vw;
 				width: 25vw;
 				height: 3vw;
-				background-image: url("/assets/frogs/boney.png");
+				background-image: url("<?php echo $assets ?>/frogs/boney.png");
 			}
 
 			.hide{
@@ -79,4 +79,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		<a class="click kidney" title="kidney" href="/important"></a>
 		<a class="click boney" title="boney fish" href="/worse-for-the-better/"></a>
 		<div class="display"></div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

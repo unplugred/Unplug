@@ -1,6 +1,6 @@
 <?php
 $title = "weeeee";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<style>
@@ -19,7 +19,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				position: fixed;
 				width: 359px;
 				height: 19px;
-				background-image: url(/assets/weeeee/title.png);
+				background-image: url(<?php echo $assets ?>/weeeee/title.png);
 				background-size: cover;
 				background-position: top right;
 				top: 50vh;
@@ -49,15 +49,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 
 			#w{
-				background-image: url("/assets/weeeee/w.png");
+				background-image: url("<?php echo $assets ?>/weeeee/w.png");
 			}
 
 			#e{
-				background-image: url("/assets/weeeee/e.png");
+				background-image: url("<?php echo $assets ?>/weeeee/e.png");
 			}
 
 			#m{
-				background-image: url("/assets/weeeee/m.png");
+				background-image: url("<?php echo $assets ?>/weeeee/m.png");
 			}
 		</style>
 	</head>
@@ -109,7 +109,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				this.scrollablebg = tex != 3;
 				if(tex < 2) tex += Math.random() > .5 ? "a" : "b";
 				if(tex == 7) tex += Math.random() > .5 ? (Math.random() > .5 ? "a" : "b") : (Math.random() > .5 ? "c" : "d");
-				this.div.style.backgroundImage = "url(\"/assets/weeeee/" + tex + ".png\")";
+				this.div.style.backgroundImage = "url(\"<?php echo $assets ?>/weeeee/" + tex + ".png\")";
 				this.div.className = "block";
 			}
 
@@ -218,4 +218,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 
 			draw();
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

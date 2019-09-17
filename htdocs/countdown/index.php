@@ -2,7 +2,7 @@
 $title = "countdown";
 $icontype = "x-icon";
 $icon = "/countdown/favicon.ico";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				font-size: 33vw;
@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			}
 
 			*{
-				cursor: url("/assets/cursors/wait.png") 6 0, wait;
+				cursor: url("<?php echo $assets ?>/cursors/wait.png") 6 0, wait;
 			}
 
 			#final-form{
@@ -65,4 +65,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				document.body.style.backgroundColor = seconds % 2 == 0 ? "#110000" : "#000000";
 			}
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

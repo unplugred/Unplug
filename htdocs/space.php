@@ -1,7 +1,7 @@
 <?php
 $color = "#36393E";
 $title = "space";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				background-color:#36393E;
@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 			.mainimagelink {
 				width: 542px;
 				height: 98px;
-				background-image: url("/assets/space.png");
+				background-image: url("<?php echo $assets ?>/space.png");
 				display: block;
 			}
 		</style>
@@ -31,4 +31,4 @@ ive come to bring you cake." href="/knowledge"></a>
 			<br/>
 			satellites. <a href="/stock-market-man">what do they want from me?</a>
 		</div>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

@@ -1,6 +1,6 @@
 <?php
 $title = "paper";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
 				display: flex;
@@ -10,5 +10,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a href="/cherry"><img src="/assets/paper.png" title="papers"/></a>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+		<a href="/cherry"><img src="<?php echo $assets ?>/paper.png" title="papers"/></a>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

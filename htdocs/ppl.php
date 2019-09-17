@@ -1,7 +1,7 @@
 <?php
 $color = "#0000FF";
 $title = "ppl";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php';
 ?>
 		<style>
 			#prsn {
@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 				height: 100vh;
 				background-attachment: fixed;
 				position: absolute;
-				background-image: url("/assets/ppl/layer.png");
+				background-image: url("<?php echo $assets ?>/ppl/layer.png");
 				opacity: .4;
 				background-blend-mode: screen;
 			}
@@ -56,7 +56,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 					timetillblink[5] = Math.random() * 2 + .5;
 					timetillblink[8] = Math.random() * 500 + 500;
 
-					bg[2].style.backgroundImage = "url(\"/assets/ppl/" + img + ".gif\")";
+					bg[2].style.backgroundImage = "url(\"<?php echo $assets ?>/ppl/" + img + ".gif\")";
 					img = img >= 499 ? 0 : (img + 1);
 				}
 				timetillblink[0] += 0.1;
@@ -70,4 +70,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php';
 				bg[2].style.height = bleh + "px";
 			}
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

@@ -1,6 +1,6 @@
 <?php
 $title = "idk";
-include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
+include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			.mainimage {
 				margin: calc(50vh - 42px) calc(50vw - 152px);
@@ -91,4 +91,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/assets/header.php'; ?>
 				y = Math.floor(Math.random() * (canvas.height - size));
 			}
 		</script>
-<?php include $_SERVER['DOCUMENT_ROOT'].'/assets/footer.php'; ?>
+<?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
