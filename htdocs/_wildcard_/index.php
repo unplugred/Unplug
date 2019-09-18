@@ -13,8 +13,8 @@
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 		<meta property="og:site_name" content="red">
 		<meta name="twitter:site" content="red">
-		<meta property="og:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
-		<meta name="twitter:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
+		<meta property="og:url" content="https://unplug.red/">
+		<meta name="twitter:url" content="https://unplug.red/">
 		<meta property="og:type" content="article">
 		<meta name="twitter:card" content="summary">
 		<meta property="og:title" content="Welcome">
