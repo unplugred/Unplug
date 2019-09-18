@@ -383,7 +383,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 					biowindow.style.transitionDuration = null;
 				}, 1000);
 
-				if(biox == -1)
+				if(biox === -1)
 				{
 					biox = biowindow.style.left;
 					bioy = biowindow.style.top;
@@ -446,7 +446,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 				ctx.stroke();
 
 				var imageData = ctx.getImageData(0, 0, 100, 100);
-				for(i = 0; i != imageData.data.length; i++)
+				for(i = 0; i !== imageData.data.length; i++)
 					imageData.data[i] = (imageData.data[i] >> 7) * 0xFF;
 				ctx.putImageData(imageData, 0, 0);
 			}
@@ -484,7 +484,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 
 			var rotx = 0, roty = 0;
 			function animate() {
-				if(scene.children.length == 1 && !isdesktop)
+				if(scene.children.length === 1 && !isdesktop)
 					teapot.rotation.set(
 						teapot.rotation.x*.93 + rotx*.07,
 						teapot.rotation.y*.93 + roty*.07, 0);
@@ -498,14 +498,14 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 			var canvasdom = $("#utah>canvas");
 
 			document.onmousemove = function(e){
-				if(scene.children.length == 1)
+				if(scene.children.length === 1)
 				{
 					var offset = canvasdom.offset();
-					if(isdesktop != -1)
+					if(isdesktop !== -1)
 					{
 						rotx = (e.pageY - offset.top - 90)*.001;
 						roty = (e.pageX - offset.left - 116.5)*.001;
-						if(isdesktop == 1)
+						if(isdesktop === 1)
 						{
 							teapot.rotation.x = rotx;
 							teapot.rotation.y = roty;

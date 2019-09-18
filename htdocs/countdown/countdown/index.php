@@ -67,9 +67,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 						seconds = 119;
 					}
 				}
-				if(seconds % 2 == 0) timer.innerHTML = `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 20 ? `0${(seconds * .5)}` : (seconds * .5)}`;
+				if(seconds % 2 === 0) timer.innerHTML = `${hours < 10 ? `0${hours}` : hours}:${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 20 ? `0${(seconds * .5)}` : (seconds * .5)}`;
 
-				document.body.style.backgroundColor = seconds % 2 == 0 ? "#110000" : "#000000";
+				document.body.style.backgroundColor = seconds % 2 === 0 ? "#110000" : "#000000";
 			}
 		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

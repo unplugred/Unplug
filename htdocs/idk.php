@@ -13,9 +13,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				border: 4px solid black;
 				color: black;
 				background-color: #666;
-				background-image: url("assets/tastefulnoise.png");
-				background-repeat: repeat;
-				background-attachment: fixed;
 			}
 
 			#canva {
@@ -44,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			setInterval(timer, speed * spacing);
 			function timer()
 			{
-				if(canvas.width != window.innerWidth || canvas.height != window.innerHeight)
+				if(canvas.width !== window.innerWidth || canvas.height !== window.innerHeight)
 				{
 					canvas.width  = window.innerWidth;
 					canvas.height = window.innerHeight;
