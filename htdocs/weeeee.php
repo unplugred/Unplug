@@ -106,9 +106,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				this.speed = Math.random() - .1;
 				this.div.style.left = this.position[0] + "vw";
 				var tex = Math.floor(Math.random() * 8);
-				this.scrollablebg = tex != 3;
+				this.scrollablebg = tex !== 3;
 				if(tex < 2) tex += Math.random() > .5 ? "a" : "b";
-				if(tex == 7) tex += Math.random() > .5 ? (Math.random() > .5 ? "a" : "b") : (Math.random() > .5 ? "c" : "d");
+				if(tex === 7) tex += Math.random() > .5 ? (Math.random() > .5 ? "a" : "b") : (Math.random() > .5 ? "c" : "d");
 				this.div.style.backgroundImage = "url(\"<?php echo $assets ?>/weeeee/" + tex + ".png\")";
 				this.div.className = "block";
 			}
@@ -122,7 +122,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				scrollTop = (document.documentElement ? document.documentElement.scrollTop : document.body.scrollTop)*scrollspeed + scrollTop*(1 - scrollspeed);
 				prevscroll += scrollTop - scrolldif;
 
-				if(Math.floor(scrollTop) != Math.floor(scrolldif))
+				if(Math.floor(scrollTop) !== Math.floor(scrolldif))
 				{
 					draw();
 
@@ -212,8 +212,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 							break;
 					}
 				}
-
-				console.log("strgk");
 			}
 
 			draw();
