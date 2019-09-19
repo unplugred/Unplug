@@ -8,12 +8,31 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
-ErrorDocument 400 /404.shtml
-ErrorDocument 401 /404.shtml
-ErrorDocument 403 /404.shtml
-ErrorDocument 404 /404.shtml
-ErrorDocument 500 /404.shtml
+ErrorDocument 400 /404.php
+ErrorDocument 401 /404.php
+ErrorDocument 403 /404.php
+ErrorDocument 404 /404.php
+ErrorDocument 500 /404.php
 
 DirectoryIndex index.php
 
 SetEnv SERVER_ADMIN AriHanan@pm.me
+
+Options -Indexes
+
+Redirect /wp-login.php /evilbots
+Redirect /wordpress/wp-login.php /evilbots
+Redirect /cms/wp-login.php /evilbots
+Redirect /user/login.php /evilbots
+Redirect /administrator/index.php /evilbots
+Redirect /administrator/index /evilbots
+Redirect /administrator /evilbots
+
+<IfModule mod_mime.c>
+  AddEncoding br .unityweb
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+</IfModule>

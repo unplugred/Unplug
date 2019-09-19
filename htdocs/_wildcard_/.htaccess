@@ -12,6 +12,13 @@ SetEnv SERVER_ADMIN AriHanan@pm.me
 
 Options -Indexes
 
+RedirectMatch "(.*)\/wp-login((\.php)?)$" "/evilbots"
+Redirect /user/login.php /evilbots
+Redirect /user/login /evilbots
+Redirect /administrator/index.php /evilbots
+Redirect /administrator/index /evilbots
+Redirect /administrator /evilbots
+
 <IfModule mod_expires.c>
   ExpiresActive On
 
