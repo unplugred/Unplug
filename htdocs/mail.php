@@ -5,7 +5,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			body{
 				background-size: initial;
 				background-repeat: repeat;
-				background-image: url("<?php echo $assets ?>/mail.png");
+				background-image: url("<?php echo $assets ?>/mail.png?v=2");
 				animation: bgmove 100s linear infinite;
 			}
 
