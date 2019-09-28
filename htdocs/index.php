@@ -9,6 +9,44 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				position: fixed;
 			}
 
+			#mc_embed_signup {
+				width: 332px;
+				height: 72px;
+				background-image: url("<?php echo $assets ?>/unplug/mail.png");
+				margin-top: calc(61vh + 100px);
+				margin-left: calc(44vw + -175px);
+			}
+
+			#mc-embedded-subscribe {
+				font-family: Courier New, monospace;
+				background-color: #A8A8A8;
+				border: 0;
+				font-weight: bold;
+				font-size: 16px;
+				position: relative;
+				top: 0px;
+				left: 220px;
+				height: 26px;
+				width: 98px;
+				color: #333;
+			}
+
+			#mce-EMAIL {
+				font-family: Courier New, monospace;
+				background-color: transparent;
+				border: 2px solid #A8A8A8;
+				border-right: 0;
+				font-size: 16px;
+				color: #c1c1c1;
+				height: 22px;
+				width: 205px;
+				padding: 0;
+				position: relative;
+				top: 29px;
+				left: 13px;
+				text-align: center;
+			}
+
 			#clock {
 				width: 106px;
 				height: 125px;
@@ -293,6 +331,28 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				<a class="close" href="javascript:void(0)" title="close"></a>
 			</div>
 
+			<div class="window" id="mc_embed_signup">
+				<a class="close" href="javascript:void(0)" title="close"></a>
+				<form action="https://pm.us20.list-manage.com/subscribe/post?u=526092f6456b91b0afdff2b1c&amp;id=2ea9fdbe2b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+					<div id="mc_embed_signup_scroll">
+						<div class="mc-field-group">
+							<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="email adress">
+						</div>
+						<div id="mce-responses" class="clear">
+							<div class="response" id="mce-error-response" style="display:none"></div>
+							<div class="response" id="mce-success-response" style="display:none"></div>
+						</div>
+						<div style="position: absolute; left: -5000px;" aria-hidden="true">
+							<input type="text" name="b_526092f6456b91b0afdff2b1c_2ea9fdbe2b" tabindex="-1" value="">
+						</div>
+						<div class="clear">
+							<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+						</div>
+					</div>
+				</form>
+			</div>
+
 			<div class="thirdimage window" id="hhh" title="me_irl" style="left: 0.0px; top: 0.0px;">
 				<div class="aboutwin" id="aboutleft"></div>
 				<div class="aboutwin aboutslider" id="abouttop">
@@ -373,7 +433,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 			$(".window").draggable();
 			$(".close").on("click",function(){
 				$(this).parent().css("display", "none");
-				if(++closedwindows >= 7){
+				if(++closedwindows >= 8){
 					window.location = "/bye";
 				}
 			});
