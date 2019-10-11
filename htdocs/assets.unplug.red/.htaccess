@@ -12,12 +12,16 @@ SetEnv SERVER_ADMIN AriHanan@pm.me
 
 Options -Indexes
 
-RedirectMatch "(.*)\/wp-login((\.php)?)$" "/evilbots"
-Redirect /user/login.php /evilbots
-Redirect /user/login /evilbots
-Redirect /administrator/index.php /evilbots
-Redirect /administrator/index /evilbots
-Redirect /administrator /evilbots
+RedirectMatch "(.*)\/wp-login((\.php)?)$" "/evilbots.php"
+Redirect /user/login.php /evilbots.php
+Redirect /user/login /evilbots.php
+Redirect /administrator/index.php /evilbots.php
+Redirect /administrator/index /evilbots.php
+Redirect /administrator /evilbots.php
+
+<IfModule mod_mime.c>
+  AddEncoding br .unityweb
+</IfModule>
 
 <IfModule mod_expires.c>
   ExpiresActive On
