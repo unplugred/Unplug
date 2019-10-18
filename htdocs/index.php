@@ -235,6 +235,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				position: absolute;
 				top: 0;
 				left: -20px;
+				box-shadow: 0 1.2px 5px 0px rgba(0,0,0,0.15);
 			}
 
 			#copyrightstuff {
@@ -404,7 +405,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 				<a class="close" href="javascript:void(0)" title="close"></a>
 			</div>
 
-			<div id="copyrightstuff">© Ari Hanan 2018-<?php echo date("Y"); ?> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>
+			<div id="copyrightstuff">© Ari Hanan 2018-<?php echo date("Y"); ?> | <a href="https://rss.unplug.red/">RSS</a> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>
 		</div>
 		<script type="text/javascript">
 			var isdesktop = -1;

@@ -27,4 +27,6 @@
 		<meta property="og:image" content="<?php echo $ogimage = (isset($ogimage) ? $ogimage : $assets."/objects/object".rand(1, 2).".gif") ?>">
 		<meta name="twitter:image" content="<?php echo $ogimage ?>">
 
+		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="https://rss.unplug.red/" />
+
 <?php if(!isset($css)) echo "		<link rel=StyleSheet href=\"".$assets."/unplug.css?v=2\" type=\"text/css\" media=screen>\n\n"?>
