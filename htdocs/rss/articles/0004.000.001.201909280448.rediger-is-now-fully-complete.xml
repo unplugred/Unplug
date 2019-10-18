@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<document>
+	<title><![CDATA[Rediger is now fully complete!]]></title>
+	<allow_com></allow_com>
+	<template><![CDATA[article.php]]></template>
+	<chapo><![CDATA[]]></chapo>
+	<content><![CDATA[<center><img src="data/medias/rediger.png"/></center><br/>
+i finally took the time to finish the damn thing so now you can play it in your browser today now this moment!<br/>
+do it by clicking <a href="data/medias/rediger.png">this link.</a><br/>
+did you do it yet?<br/>
+proud of you.]]></content>
+	<tags><![CDATA[]]></tags>
+	<meta_description><![CDATA[]]></meta_description>
+	<meta_keywords><![CDATA[]]></meta_keywords>
+	<title_htmltag><![CDATA[]]></title_htmltag>
+	<thumbnail><![CDATA[]]></thumbnail>
+	<thumbnail_alt><![CDATA[]]></thumbnail_alt>
+	<thumbnail_title><![CDATA[]]></thumbnail_title>
+	<date_creation><![CDATA[201909280448]]></date_creation>
+	<date_update><![CDATA[201909280551]]></date_update>
+</document>
