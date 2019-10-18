@@ -64,6 +64,12 @@
 				border-right: 3px solid white;
 			}
 
+			audio{
+				margin: 50px auto;
+				display: block;
+				max-width: 90%;
+			}
+
 			img{
 				margin: 50px auto;
 				display: block;
@@ -79,13 +85,18 @@
 	</head>
 	<body>
 		<img id="title" src="/hof.png"/>
-		<script>
-			for(i = 1; i <= <?php echo iterator_count(new FileSystemIterator("hof", FilesystemIterator::SKIP_DOTS)) ?>; i++)
-			{
-				var img = document.createElement("img");
-				img.src = "/hof/" + i + ".png";
-				document.body.appendChild(img);
+		<?php
+			function get_file_extension($file_name) {
+				return strrchr($file_name,'.');
 			}
-		</script>
+			$fileList = glob('hof/*');
+			foreach($fileList as $filename){
+				$extension = get_file_extension($filename);
+				if($extension == ".mp3" || $extension == ".wav" || $extension == ".ogg")
+					echo "<audio src=\"".$filename."\" controls></audio>";
+				else
+					echo "<img src=\"".$filename."\"/>";
+			}
+		?>
 	</body>
 </html>
