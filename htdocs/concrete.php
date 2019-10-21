@@ -3,7 +3,7 @@ $title = "Concrete";
 $description = "Coming soon on a virtual environment.";
 $color = "#822D1D";
 $card = "summary_large_image";
-$ogimage = "<?php echo $assets ?>/concrete/opengraph.png";
+$ogimage = "/concrete/opengraph.png";
 $css = false;
 include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
@@ -29,9 +29,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 
 			body{
 				background-image: url("<?php echo $assets ?>/concrete/bg.png");
-			    overflow-y: visible;
-			    overflow-x: hidden;
-			    margin: 0;
+				overflow-y: visible;
+				overflow-x: hidden;
+				margin: 0;
 				background-attachment: fixed;
 				background-color: #822D1D;
 			}
@@ -50,8 +50,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 100vw;
 				max-width: 125vh;
 				margin: 25px auto;
-    			display: block;
-    			-webkit-box-shadow: 0 0 50px 0 black;
+				display: block;
+				-webkit-box-shadow: 0 0 50px 0 black;
 				-moz-box-shadow: 0 0 50px 0 black;
 				box-shadow: 0 0 50px 0 black;
 			}
@@ -70,5 +70,4 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<img src="<?php echo $assets ?>/concrete/3.png" class="imge"></img>
 		<img src="<?php echo $assets ?>/concrete/5.png" class="imge"></img>
 		<img src="<?php echo $assets ?>/concrete/4.png" class="imge"></img>
-		<img src="<?php echo $assets ?>/concrete/text.png" id="text" alt="Coming soon to a virtual environment."></img>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
