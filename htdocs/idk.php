@@ -13,6 +13,12 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				border: 4px solid black;
 				color: black;
 				background-color: #666;
+				display: block;
+				text-decoration: none;
+			}
+
+			.mainimage:hover {
+				text-decoration: line-through;
 			}
 
 			#canva {
@@ -24,9 +30,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<canvas id="canva"></canvas>
-		<div class="mainimage">
+		<a class="mainimage" href="/tsop1736">
 			i dont even know.
-		</div>
+		</a>
 		<script>
 			var canvas = document.getElementById("canva");
 			var ctx = canvas.getContext("2d");
@@ -34,7 +40,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			canvas.height = window.innerHeight;
 
 			var size = 10, spacing = 5, speed = 5,
-			x, y, directionX, directionY;
+			x, y, directionX, directionY, multiplier = 0;
 			resetPosition();
 			hit();
 
@@ -45,10 +51,12 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				{
 					canvas.width  = window.innerWidth;
 					canvas.height = window.innerHeight;
+					multiplier = 0;
 					if(x > canvas.width || y > canvas.height)
 						resetPosition();
 				}
 
+				multiplier = Math.min(multiplier + .01, 1);
 				ctx.fillStyle = getRandomColor();
 				ctx.fillRect(x,y,size,size);
 
@@ -76,7 +84,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			var letters = '0123456789ABCDEF';
 			function getRandomColor()
 			{
-				let color = (Math.floor(Math.random() * 150 + 50)).toString(16);
+				let color = (Math.floor((Math.random() * 150 + 50)*multiplier)).toString(16);
+				if(color.length == 1) color = "0" + color;
 				return '#' + color + color + color;
 			}
 
