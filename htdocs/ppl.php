@@ -26,7 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php';
 	<body>
 		<div id="bg1" class="bg"></div>
 		<div id="bg2" class="bg"></div>
-		<a id="prsn" href="/new" title="prsn"></a>
+		<a id="prsn" href="/new" title="new"></a>
 		<script>
 			var bg = [document.getElementById("bg1"), document.getElementById("bg2"), document.getElementById("prsn")];
 			var tim = Math.random() * 3.14;

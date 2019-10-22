@@ -320,20 +320,20 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			<div class="mobile-wrapper-two-point-o">
 				<div class="mobile-thing">
 					<a class="anyway-wrap" href="javascript:void(0)" onclick="Switch()">
-						<img class="anyway" src="<?php echo $assets ?>/unplug/anyway.png" title="continue anyway"/>
+						<img class="anyway" src="<?php echo $assets ?>/unplug/anyway.png"/>
 					</a>
 				</div>
 			</div>
 		</div>
 		<div id="desktop">
 
-			<div class="mainimage window" title="unplug your mind for best experience">
+			<div class="mainimage window" title="begin">
 				<a class="main-thingy" href="/bulb"></a>
-				<a class="close" href="javascript:void(0)" title="close"></a>
+				<a class="close" href="javascript:void(0)"></a>
 			</div>
 
-			<div class="window" id="mc_embed_signup">
-				<a class="close" href="javascript:void(0)" title="close"></a>
+			<div class="window" id="mc_embed_signup" title="join my death cult (cool people only)">
+				<a class="close" href="javascript:void(0)"></a>
 				<form action="https://pm.us20.list-manage.com/subscribe/post?u=526092f6456b91b0afdff2b1c&amp;id=2ea9fdbe2b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 
 					<div id="mc_embed_signup_scroll">
@@ -379,30 +379,30 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 					<div class="aboutwin" id="aboutbottomleft"></div>
 					<div class="aboutwin" id="aboutbottomright"></div>
 				</div>
-				<a class="close" href="javascript:void(0)" title="close"></a>
+				<a class="close" href="javascript:void(0)"></a>
 			</div>
 
 			<div class="secondaryimage window art" title="art blog">
-				<a class="close" href="javascript:void(0)" title="close"></a>
+				<a class="close" href="javascript:void(0)"></a>
 				<a class="object" href="https://art.unplug.red/"></a>
 			</div>
 
 			<div class="secondaryimage window games" title="games">
-				<a class="close" href="javascript:void(0)" title="close"></a>
+				<a class="close" href="javascript:void(0)"></a>
 				<a class="object" href="https://unplugred.itch.io/"></a>
 			</div>
 
-			<div id="clock" class="window">
-				<a class="close" href="javascript:void(0)" title="close"></a>
+			<div id="clock" class="window" title="any second you spend on this site is a second wasted from your life">
+				<a class="close" href="javascript:void(0)"></a>
 				<canvas id="clockcanvas"></canvas>
 			</div>
 
 			<div id="grid" class="window">
-				<a class="close" href="javascript:void(0)" title="close"></a>
+				<a class="close" href="javascript:void(0)"></a>
 			</div>
 
-			<div id="utah" class="window">
-				<a class="close" href="javascript:void(0)" title="close"></a>
+			<div id="utah" class="window" title="tea is a human right">
+				<a class="close" href="javascript:void(0)"></a>
 			</div>
 
 			<div id="copyrightstuff">© Ari Hanan 2018-<?php echo date("Y"); ?> | <a href="https://rss.unplug.red/">RSS</a> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>

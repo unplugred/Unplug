@@ -27,6 +27,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			a <a href="/books">person</a> came to me and said:
 			<br/>
 			<br/>
-			<a class="mainimagelink" href="/h" title="answer me."></a>
+			<a class="mainimagelink" href="/h" title="h"></a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

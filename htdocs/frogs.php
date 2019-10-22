@@ -72,11 +72,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a class="click aster" title="*" href="/IBM"></a>
-		<a class="click fish" title="fish" href="/weight"></a>
-		<a class="click describe" title="describe" href="/sophistication"></a>
-		<a class="click frogs" title="frogs" href="/head"></a>
-		<a class="click kidney" title="kidney" href="/important"></a>
-		<a class="click boney" title="boney fish" href="/worse-for-the-better/"></a>
+		<a class="click aster" title="IBM" href="/IBM"></a>
+		<a class="click fish" title="weight" href="/weight"></a>
+		<a class="click describe" title="sophistication" href="/sophistication"></a>
+		<a class="click frogs" title="head" href="/head"></a>
+		<a class="click kidney" title="important" href="/important"></a>
+		<a class="click boney" title="worse for the better" href="/worse-for-the-better/"></a>
 		<div class="display"></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

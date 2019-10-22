@@ -22,7 +22,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<video class="vid" autoplay muted loop>
 			<source src="<?php echo $assets ?>/blob.webm" type="video/webm">
 		</video>
-		<canvas id="mainimage" width="216" height="216"></canvas>
+		<canvas id="mainimage" width="216" height="216" title="/////...*"></canvas>
 		<script>
 			var canvas = document.getElementById("mainimage");
 			var ctx = canvas.getContext("2d");

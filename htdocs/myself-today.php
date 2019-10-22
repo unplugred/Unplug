@@ -25,6 +25,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	<body>
 		<div class="mainimage">
 			<div class="mainimagelink"></div>
-			<a href="/old-edgy-art">myself</a>, <a href="/space">today</a>
+			<a href="/old-edgy-art" title="old edgy art">myself</a>, <a href="/space" title="space">today</a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

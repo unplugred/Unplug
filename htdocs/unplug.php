@@ -101,8 +101,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
         </div>
         <div id="desktop">
             <div class="mainimage window">
-                <a class="main-thingy" href="/bulb" title="unplug your mind for best experience."></a>
-                <a class="close" href="/bye" title="close"></a>
+                <a class="main-thingy" href="/bulb" title="begin"></a>
+                <a class="close" href="/bye"></a>
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>

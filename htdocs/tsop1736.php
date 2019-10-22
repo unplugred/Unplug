@@ -59,9 +59,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	<body>
 		<div class="mainimage">
 			<div id="hoverthing"></div>
-			<a href="/blob" id="gnd" onmouseover="change(1)" onmouseout="change(0)"></a>
-			<a href="/rediger" id="vs" onmouseover="change(2)" onmouseout="change(0)"></a>
-			<a href="/greece" id="out" onmouseover="change(3)" onmouseout="change(0)"></a>
+			<a href="/blob" title="blob" id="gnd" onmouseover="change(1)" onmouseout="change(0)"></a>
+			<a href="/rediger" title="rediger" id="vs" onmouseover="change(2)" onmouseout="change(0)"></a>
+			<a href="/greece" title="greece" id="out" onmouseover="change(3)" onmouseout="change(0)"></a>
 		</div>
 		<script>
 			function change(num)

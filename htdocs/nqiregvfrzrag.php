@@ -34,7 +34,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div id="img"><a href="/planet/" id="linkone"></a></div>
+		<div id="img"><a href="/planet/" title="planet" id="linkone"></a></div>
 		<div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div>
 		<script>
 			var numerica = document.getElementsByClassName("numerica");

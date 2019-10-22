@@ -26,5 +26,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimagelink"></div>
-		<a class="textish" href="/countdown/">can you see me in the dark</a>
+		<a class="textish" href="/countdown/" title="countdown">can you see me in the dark</a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

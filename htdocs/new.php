@@ -19,6 +19,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php';
 		</style>
 	</head>
 	<body>
-		<div id="link" title="a new plane of existence,
-reserved just for you."></div>
+		<div id="link"></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

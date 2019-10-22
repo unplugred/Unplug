@@ -27,6 +27,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	<body>
 		<div class="mainimage">
 			<a href="<?php echo $assets ?>/important.txt" download="important.txt">important.txt</a>
-			<a href="/hyperaction/" id="corner" title="maybe not"></a>
+			<a href="/hyperaction/" id="corner" title="hyperaction"></a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

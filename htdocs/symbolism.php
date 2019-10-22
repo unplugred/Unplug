@@ -13,5 +13,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a class="mainimage" title="symbolism continued." href="/weeeee"></a>
+		<a class="mainimage" title="weeeee" href="/weeeee"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

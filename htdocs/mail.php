@@ -70,9 +70,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div class="window" id="mc_embed_signup">
-			<a class="close" href="javascript:void(0)" title="close"></a>
 			<form action="https://pm.us20.list-manage.com/subscribe/post?u=526092f6456b91b0afdff2b1c&amp;id=2ea9fdbe2b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-
 				<div id="mc_embed_signup_scroll">
 					<div class="mc-field-group">
 						<label for="mce-EMAIL" id="coollabel">i command you to subscribe to my mailing list (pleasE)</label>

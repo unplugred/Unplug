@@ -41,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainthing">
-			<div class="mainimage" title="404"></div>
+			<div class="mainimage"></div>
 
 			<div class="bodytext">
 				<b>you got lost.</b>
@@ -50,5 +50,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				<a href="/">click here</a> to get back.
 			</div>
 		</div>
-		<a href="/santa" class="santa"></a>
+		<a href="/santa" class="santa" title="santa"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
