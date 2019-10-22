@@ -6,16 +6,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 216px;
 				height: 216px;
 				background-color: black;
-				top: calc(50vh - 108px);
+				top: calc(50% - 108px);
 				position: absolute;
-				left: calc(50vw - 108px);
+				left: calc(50% - 108px);
 			}
 
 			.vid {
 				position: absolute;
-				width: 100vh;
-				height: 100vh;
-				left: calc(50vw - 50vh);
+				width: 100%;
+				height: 100%;
 			}
 		</style>
 	</head>
