@@ -28,6 +28,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div id="wrap">
-			<a id="sqr" href="/todo" title="square"></a>
+			<a id="sqr" href="/todo" title="todo"></a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

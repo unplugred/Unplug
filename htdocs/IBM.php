@@ -12,5 +12,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 		</style>
 	</head>
-	<body title="computers with power.">
+	<body title="deer of death">
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

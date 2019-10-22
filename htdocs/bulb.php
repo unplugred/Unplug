@@ -70,21 +70,21 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			....i need to replace the bulb
 			<br/>
 			<br/>
-			<div class="two num" title="2"><a class="twoh hov" href="/who"></a></div>
+			<div class="two num" title="who"><a class="twoh hov" href="/who"></a></div>
 			moving
 			<br/>
 			<br/>
-			<div class="three num" title="3"><a class="threeh hov" href="/frogs"></a></div>
+			<div class="three num" title="frogs"><a class="threeh hov" href="/frogs"></a></div>
 			all over again
 			<br/>
 			<br/>
-			<div class="one num" title="1"><a class="oneh hov" href="/bus"></a></div>
+			<div class="one num" title="bus"><a class="oneh hov" href="/bus"></a></div>
 			thats me
 			<br/>
 			<br/>
 			<br/>
 			<br/>
-			<a href="/reality">
+			<a href="/reality" title="reality">
 				<div class="button"></div>
 				you know youre my favorite flower on the wall
 			</a>

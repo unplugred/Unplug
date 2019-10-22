@@ -14,5 +14,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a id="snow" href="/sick" title="come back snow"></a>
+		<a id="snow" href="/sick" title="sick"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

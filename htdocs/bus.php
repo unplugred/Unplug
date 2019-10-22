@@ -33,7 +33,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<div class="mainimage">
 			i am a bus now
 			<br/>
-			<a href="/empty">
+			<a href="/empty" title="empty">
 				where will i go?
 			</a>
 		</div>

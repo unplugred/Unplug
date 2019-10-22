@@ -68,7 +68,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			<div id="e" class="t"></div>
 			<div id="m" class="t"></div>
 		</div>
-		<div id="title" title="Scroll really fast up and down for max fun"></div>
+		<div id="title"></div>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script>
 			function makeEven(val){

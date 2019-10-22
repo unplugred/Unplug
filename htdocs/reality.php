@@ -23,7 +23,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimage">
-			<div class="mainimagelink" title="reality?"></div>
-			there was a time when i was <a href="/clouds">gone</a>
+			<div class="mainimagelink"></div>
+			there was a time when i was <a href="/clouds" title="clouds">gone</a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

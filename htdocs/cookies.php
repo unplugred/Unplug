@@ -49,7 +49,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			<div id="nocookies">NO COOKIES</div>
 			<a id="accept" href="javascript:void(0)" onclick="riseitup()">i accept.</a>
 		</div>
-		<a id="cookieclick" href="/nqiregvfrzrag"></a>
+		<a id="cookieclick" href="/nqiregvfrzrag" title="nqiregvfrzrag"></a>
 		<script>
 			function riseitup(){
 				document.getElementById("form").style.marginTop = "calc(-100vh - 100%)";

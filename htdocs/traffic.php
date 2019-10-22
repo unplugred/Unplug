@@ -53,7 +53,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div id="bg"></div>
-		<a id="red" class="light" href="/cookies" title="red"></a>
-		<a id="blue" class="light" href="/time" title="yellow"></a>
-		<a id="green" class="light" href="/meta" title="green"></a>
+		<a id="red" class="light" href="/cookies" title="cookies"></a>
+		<a id="blue" class="light" href="/time" title="time"></a>
+		<a id="green" class="light" href="/meta" title="meta"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

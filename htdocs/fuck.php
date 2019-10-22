@@ -22,5 +22,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div class="mainimage"><a title="fuck you." id="linktonextpage" href="/ppl"></a></div>
+		<div class="mainimage"><a title="ppl" id="linktonextpage" href="/ppl"></a></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

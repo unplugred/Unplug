@@ -34,8 +34,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimage">
-			<a class="who" href="/myself-today" title="who"></a>
-			<a class="phone" href="/lines" title="phone"></a>
-			<a class="question" href="/answer" title="?"></a>
+			<a class="who" href="/myself-today" title="myself-today"></a>
+			<a class="phone" href="/lines" title="lines"></a>
+			<a class="question" href="/answer" title="answer"></a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

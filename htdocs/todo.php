@@ -19,5 +19,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<img src="<?php echo $assets ?>/todo.png" class="mainimage">
-		<a class="lankkk" href="/photography" title="trapped in an infinite checklist"></a>
+		<a class="lankkk" href="/photography" title="photography"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
