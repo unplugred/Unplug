@@ -1,4 +1,4 @@
-<?php $assets = "https://assets.unplug.red" ?>
+<?php $assets = "/assets.unplug.red" ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -24,7 +24,7 @@
 		<meta property="og:description" content="<?php echo (isset($description) ? $description : ($description = "unplug your mind for best experience.")) ?>">
 		<meta name="twitter:description" content="<?php echo $description ?>">
 		<meta name="description" content="<?php echo $description ?>">
-		<meta property="og:image" content="<?php echo $ogimage = (isset($ogimage) ? $ogimage : $assets."/objects/object".rand(1, 2).".gif") ?>">
+		<meta property="og:image" content="<?php echo $ogimage = (isset($ogimage) ? $ogimage : $assets."/objects/c".rand(0, 6).".gif") ?>">
 		<meta name="twitter:image" content="<?php echo $ogimage ?>">
 
 		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="https://rss.unplug.red/" />

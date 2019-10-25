@@ -21,8 +21,10 @@
 		<meta property="og:description" content="you got lost.">
 		<meta name="twitter:description" content="you got lost.">
 		<meta name="description" content="you got lost.">
-		<meta property="og:image" content="https://assets.unplug.red/objects/object1.gif">
-		<meta name="twitter:image" content="https://assets.unplug.red/objects/object2.gif">
+		<meta property="og:image" content="https://assets.unplug.red/objects/c0.gif">
+		<meta name="twitter:image" content="https://assets.unplug.red/objects/c1.gif">
+
+		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="https://rss.unplug.red/" />
 
 		<link rel=StyleSheet href="https://assets.unplug.red/unplug.css?v=2" type="text/css" media=screen>
 
