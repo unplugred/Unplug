@@ -260,11 +260,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.art .object {
-				background-image: url("<?php echo $assets ?>/objects/object1.gif");
+				background-image: url("<?php echo $assets ?>/objects/0.gif");
 			}
 
 			.games .object {
-				background-image: url("<?php echo $assets ?>/objects/object2.gif");
+				background-image: url("<?php echo $assets ?>/objects/a1.gif");
 			}
 
 			.art.secondaryimage {

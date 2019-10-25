@@ -22,7 +22,7 @@
 		<meta property="og:description" content="unplug your mind for best experience.">
 		<meta name="twitter:description" content="unplug your mind for best experience.">
 		<meta name="description" content="unplug your mind for best experience.">
-		<meta property="og:image" content="<?php echo $ogimage = $assets."/objects/object".rand(1, 2).".gif" ?>">
+		<meta property="og:image" content="<?php echo $ogimage = $assets."/objects/c".rand(0, 6).".gif" ?>">
 		<meta name="twitter:image" content="<?php echo $ogimage ?>">
 
 		<style>
