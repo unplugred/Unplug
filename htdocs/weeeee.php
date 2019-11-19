@@ -146,8 +146,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				var ay = 0;
 				var bx = 0;
 				var by = 0;
-				var cx = 0;
-				var cy = 0;
 				for(px = bgx; px < w; px += patterns[bg].width)
 				{
 					for(py = bgy; py < h; py += patterns[bg].height)
@@ -170,16 +168,16 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				{
 					boxpos = (bloxes[x].position[1] * window.innerHeight + (scrollTop - window.innerHeight*5) * bloxes[x].speed - scrollTop);
 					drawbox(
-						bloxes[x].position[0] * canvas.width - (bloxes[x].width*.5),
-						boxpos - (bloxes[x].height*.5),
+						Math.floor(bloxes[x].position[0] * canvas.width - (bloxes[x].width*.5)),
+						Math.floor(boxpos - (bloxes[x].height*.5)),
 						bloxes[x].width,
 						bloxes[x].height,
 						bloxes[x].bg,
-						-(bloxes[x].position[2] % patterns[bloxes[x].bg].width),
-						-((bloxes[x].position[3] + boxpos*(bloxes[x].bg !== 5 ? .5 : 1) + 2048) % patterns[bloxes[x].bg].width));
+						-Math.floor(bloxes[x].position[2] % patterns[bloxes[x].bg].width),
+						-Math.floor((bloxes[x].position[3] + boxpos*(bloxes[x].bg !== 5 ? .5 : 1) + 2048) % patterns[bloxes[x].bg].width));
 				}
 
-				ctx.drawImage(title, window.innerWidth*.5 - 180, window.innerHeight*.5 - scrollTop);
+				ctx.drawImage(title, Math.floor(window.innerWidth*.5 - 180), Math.floor(window.innerHeight*.5 - scrollTop));
 			}
 		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
