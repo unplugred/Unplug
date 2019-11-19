@@ -194,7 +194,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			#rotato-cubo{
 				height: 100px;
 				width: 100px;
-				background-image: url("<?php echo $assets ?>/red.gif");
+				background-image: url("<?php echo $assets ?>/unplug/a.gif");
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
