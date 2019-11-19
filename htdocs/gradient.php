@@ -3,27 +3,34 @@ $color = "#36393E";
 $title = "gradient";
 include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
-			body{
-				background-color:#36393E;
+			body {
+				background-image: url("<?php echo $assets ?>/gradient/bg.png"), -webkit-linear-gradient(left, #36393E 49%, black 50%);
+				background-image: url("<?php echo $assets ?>/gradient/bg.png"), -o-linear-gradient(left, #36393E 49%, black 50%);
+				background-image: url("<?php echo $assets ?>/gradient/bg.png"), linear-gradient(to right, #36393E 49%, black 50%);
+				background-position: center center;
+				background-repeat: repeat-y;
 			}
 
 			.mainimage {
-				margin-top: calc(50vh - 24px);
-				margin-left: calc(50vw - 500px);
-				display: block;
-				max-width:542px;
+				margin: auto auto;
+				max-width: 100%;
 			}
 
 			.mainimagelink {
-				width: 1000px;
-				height: 48px;
-				background-image: url("<?php echo $assets ?>/gradient.png");
-				display: block;
+				width: 100%;
+				height: 100%;
+				display: flex;
+			}
+
+			@media (max-width: 1000px) {
+				body {
+					background-size: contain;
+				}
 			}
 		</style>
 	</head>
 	<body>
-		<div class="mainimage">
-			<a class="mainimagelink" href="/symbolism" title="oops"></a>
-		</div>
+			<a class="mainimagelink" href="/symbolism" title="oops">
+				<img class="mainimage" src="<?php echo $assets ?>/gradient/gradient.png">
+			</a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
