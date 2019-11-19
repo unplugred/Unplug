@@ -22,8 +22,10 @@
 		<meta property="og:description" content="you got lost.">
 		<meta name="twitter:description" content="you got lost.">
 		<meta name="description" content="you got lost.">
-		<meta property="og:image" content="https://<?php echo $ogimage = $_SERVER['HTTP_HOST']."/objects/object".rand(1, 2) ?>.gif">
+		<meta property="og:image" content="https://<?php echo $ogimage = $_SERVER['HTTP_HOST']."/objects/c".rand(0, 6) ?>.gif">
 		<meta name="twitter:image" content="https://<?php echo $ogimage ?>.gif">
+
+		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="https://rss.unplug.red/" />
 
 		<link rel=StyleSheet href="/unplug.css?v=2" type="text/css" media=screen>
 
@@ -57,7 +59,7 @@
 			.santa{
 				width: 100px;
 				height: 100px;
-				background-image: url("/objects/object1.gif");
+				background-image: url("/objects/0.gif");
 				position: absolute;
 				margin-top: calc(105vh - 170px);
 				margin-left: calc(100vw - 120px);
@@ -66,7 +68,7 @@
 	</head>
 	<body>
 		<div class="mainthing">
-			<div class="mainimage" title="404"></div>
+			<div class="mainimage"></div>
 
 			<div class="bodytext">
 				<b>you got lost.</b>
@@ -75,6 +77,6 @@
 				<a href="<?php echo $surface ?>/">click here</a> to get back.
 			</div>
 		</div>
-		<a href="<?php echo $surface ?>/santa" class="santa"></a>
+		<a href="<?php echo $surface ?>/santa" class="santa" title="santa"></a>
 	</body>
 </html>
