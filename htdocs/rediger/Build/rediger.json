@@ -1,0 +1,16 @@
+{
+"companyName": "unplugred",
+"productName": "rédiger",
+"productVersion": "1.0",
+"dataUrl": "rediger.data.unityweb",
+"wasmCodeUrl": "rediger.wasm.code.unityweb",
+"wasmFrameworkUrl": "rediger.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#000000",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.3.0b3"
+}
