@@ -22,7 +22,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				100% { background-color: transparent; }
 			}
 
-			.mainimage {
+			#mainimage {
 				margin-top: calc(50vh - 60px);
 				margin-left: calc(50vw - 262px);
 				display: block;
@@ -33,6 +33,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div class="mainimage"></div>
-		<div id="fade"></div>
+		<div id="mainimage" style="display: none;"></div>
+		<div id="fade" style="display: none;"></div>
+		<script>
+			window.onload = function(){
+				document.getElementById("fade").style.display = null;
+				document.getElementById("mainimage").style.display = null;
+				redraw();
+			};
+		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
