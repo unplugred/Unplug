@@ -1,3 +1,17 @@
+
+<!-----------------\
+| \                 \
+|  \                 \
+|   \-----------------\
+|   |                 |
+|   |    %%%  %%%     |    Made via the power of
+|   |   %%%%%%%%%%    |     love and friendship
+\   |    %%%%%%%%     |
+ \  |     %%%%%%      |     (and other cheesy
+  \ |       %%        |       abstract concepts)
+   \|                 |
+    \----------------->
+
 <?php
 $title = "red";
 include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
