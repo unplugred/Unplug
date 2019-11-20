@@ -85,6 +85,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 24px;
 			}
 		</style>
+		<link rel="prefetch" href="<?php echo $assets ?>/trash/folderfull.png" />
+		<link rel="prefetch" href="<?php echo $assets ?>/trash/trashfull.png" />
 	</head>
 	<body>
 		<a href="javascript:void(0)" onclick="clickleft()" class="icon file" id="iconleft"></a>
@@ -98,9 +100,36 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			var stage = 0;
 			var isleft = true;
 			var istaken = false;
+			var currentpos = [-12,-112];
+			var desiredpos = [-12,-112];
+			var lerp = .83;
+			var clickable = true;
+
+			var mobile = false;
+
+			window.addEventListener('touchstart', function onFirstTouch() {
+				if(mobile) return;
+				mobile = true;
+				function lerppaper()
+				{
+					currentpos[0] = currentpos[0] * lerp + desiredpos[0] * (1 - lerp);
+					currentpos[1] = currentpos[1] * lerp + desiredpos[1] * (1 - lerp);
+					paper.style.top  = "calc(50vh + " + currentpos[0] + "px)";
+					paper.style.left = "calc(50vw + " + currentpos[1] + "px)";
+				}
+				setInterval(lerppaper, 33);
+				window.removeEventListener('touchstart', onFirstTouch, false);
+			}, false);
+
+			document.onmousemove = function(e){
+				if(mobile) return;
+				paper.style.top  = (e.pageY - 12) + "px";
+				paper.style.left = (e.pageX - 12) + "px";
+			}
 
 			function clickleft()
 			{
+				if(!clickable) return;
 				if(stage == 2)
 				{
 					document.getElementById("fade").style.display = "block";
@@ -112,48 +141,61 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				if(istaken)
 				{
 					istaken = false;
-					left.classList.remove("empty");
-					document.body.classList.remove("cursorthing");
-					paper.style.display = "none";
-					replace(right, "icon trash empty", "/blob");
+					clickable = false;
+					setTimeout(function(){
+						clickable = true;
+						left.classList.remove("empty");
+						document.body.classList.remove("cursorthing");
+						paper.style.display = "none";
+						replace(right, "icon trash empty", "/blob");
+					}, mobile ? 500 : 0);
+					desiredpos = [-12,-112];
 				}
 				else
 				{
 					istaken = true;
 					left.classList.add("empty");
-					document.body.classList.add("cursorthing");
+					if(!mobile) document.body.classList.add("cursorthing");
 					paper.style.display = "block";
 					isleft = false;
 					right.href = "javascript:void(0)";
+					desiredpos = [-50,0];
 				}
 			}
 
 			function clickright()
 			{
+				if(!clickable) return;
 				if(stage == 2) return;
 				if(isleft) return;
 				if(istaken)
 				{
 					istaken = false;
-					right.classList.remove("empty");
-					document.body.classList.remove("cursorthing");
-					paper.style.display = "none";
-					if(stage == 0) replace(left, "icon folder empty", "/santa");
-					else
-					{
-						replace(right, "icon trash", "/h");
-						replace(left, "icon off", "javascript:void(0)");
-					}
 					stage++;
+					clickable = false;
+					setTimeout(function(){
+						clickable = true;
+						right.classList.remove("empty");
+						document.body.classList.remove("cursorthing");
+						paper.style.display = "none";
+						if(stage == 1) replace(left, "icon folder empty", "/santa");
+						else
+						{
+							replace(right, "icon trash", "/h");
+							replace(left, "icon off", "javascript:void(0)");
+						}
+					}, mobile ? 500 : 0);
+					desiredpos = [-12,88];
 				}
 				else
 				{
 					istaken = true;
 					right.classList.add("empty");
-					document.body.classList.add("cursorthing");
+					if(!mobile) document.body.classList.add("cursorthing");
 					paper.style.display = "block";
 					isleft = true;
 					left.href = "javascript:void(0)";
+					desiredpos = [-50,0];
 				}
 			}
 
@@ -163,11 +205,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 					div.className = classs;
 					div.href = href;
 				}, 250);
-			}
-
-			document.onmousemove = function(e){
-				paper.style.top = (e.pageY - 12) + "px";
-				paper.style.left = (e.pageX - 12) + "px";
 			}
 		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
