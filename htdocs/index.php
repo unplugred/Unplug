@@ -405,7 +405,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 				<a class="close" href="javascript:void(0)"></a>
 			</div>
 
-			<div id="copyrightstuff">© Ari Hanan 2018-<?php echo date("Y"); ?> | <a href="https://rss.unplug.red/">RSS</a> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>
+			<div id="copyrightstuff">© May2018-2019 | <a href="https://rss.unplug.red/">RSS</a> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>
 		</div>
 		<script type="text/javascript">
 			var isdesktop = -1;
@@ -420,8 +420,14 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 			function Switch(){
 				document.getElementById("mobile").style.display = "none";
 				document.getElementById("desktop").style.display = "block";
-				isdesktop = 0;
+				isdesktop = 1;
 			}
+
+			window.addEventListener('touchstart', function onFirstTouch() {
+				if(isdesktop === -1) return;
+				isdesktop = 0;
+				window.removeEventListener('touchstart', onFirstTouch, false);
+			}, false);
 		</script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -545,7 +551,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 
 			var rotx = 0, roty = 0;
 			function animate() {
-				if(scene.children.length === 1 && !isdesktop)
+				if(scene.children.length === 1 && isdesktop === 0)
 					teapot.rotation.set(
 						teapot.rotation.x*.93 + rotx*.07,
 						teapot.rotation.y*.93 + roty*.07, 0);
