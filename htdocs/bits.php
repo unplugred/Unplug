@@ -68,7 +68,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			var windowsss = $(".window:first");
 			var cloneshit = setInterval(function()
 			{
-				if(wins++ >= 10) clearInterval(cloneshit);
+				if(wins++ >= 20) clearInterval(cloneshit);
 				var clone = windowsss.clone();
 				clone.appendTo("body");
 				dothing(clone);
@@ -98,7 +98,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				var ob = obj.find(".object")[0];
 
 				var bgn = Math.floor(Math.random()*7);
-				var obn = Math.floor(Math.random()*7);
+				var obn = Math.floor(Math.random()*9);
 				var color = Math.floor(Math.random()*3);
 
 				if(bgn == 0)
