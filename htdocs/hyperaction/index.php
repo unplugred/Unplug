@@ -18,6 +18,21 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				background-position: center center !important;
+				background-repeat: no-repeat !important;
+				background-size: 64px !important;
+				image-rendering: -moz-crisp-edges;
+				image-rendering: crisp-edges;
+				image-rendering: pixelated;
+				background-image: url("play.png");
+			}
+
+			.transition {
+				background-image: url("transition.gif"), url("play.png") !important;
+			}
+
+			.loading {
+				background-image: url("loading.gif"), url("transition.gif") !important;
 			}
 
 			body {
@@ -33,23 +48,27 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				margin: 0;
 			}
 
-			#full {
-				background-color: black;
-			}
-
-			#progress
-			{
-				display: flex;
-				width: 150px;
-				height: 10px;
-				border: 5px black solid;
+			#play {
+				width: 64px;
+				height: 64px;
 			}
 		</style>
-		<script src="UnityProgress.js"></script>
+		<link rel="prefetch" href="transition.gif" />
+		<link rel="prefetch" href="loading.gif" />
+	</head>
+	<body>
+		<div id="gameContainer" style="background-image: url('play.png')"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>
+		<script src="<?php echo $assets ?>/UnityProgress.js"></script>
 		<script src="<?php echo $assets ?>/UnityLoader.js"></script>
 		<script>
-			var unityInstance = UnityLoader.instantiate("gameContainer", "Build/hyperaction.json", {onProgress: UnityProgress});
+			function play()
+			{
+				document.getElementById("play").style.display = "none";
+				document.getElementById("gameContainer").className = "transition";
+				setTimeout(function(){
+					document.getElementById("gameContainer").className = "loading";
+				}, 300);
+				var unityInstance = UnityLoader.instantiate("gameContainer", "Build/hyperaction.json", {onProgress: UnityProgress});
+			}
 		</script>
-	</head>
-	<body><div id="gameContainer"></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

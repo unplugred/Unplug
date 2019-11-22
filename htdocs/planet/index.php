@@ -21,6 +21,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: flex;
 				justify-content: center;
 				align-items: center;
+				background-color: white;
+				background-position: center center !important;
+				background-repeat: no-repeat !important;
+			}
+
+			.loading {
+				background-image: url("loading.gif") !important;
 			}
 
 			body {
@@ -40,24 +47,24 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				margin: 0;
 			}
 
-			#full {
-				background-color: black;
-			}
-
-			#progress
-			{
-				display: flex;
-				width: 130px;
-				height: 15px;
-				border: 8px black solid;
-				border-radius: 50px;
+			#play {
+				width: 134px;
+				height: 60px;
 			}
 		</style>
-		<script src="UnityProgress.js"></script>
+		<link rel="prefetch" href="loading.gif" />
+	</head>
+	<body>
+		<div id="gameContainer"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>
+		<script src="<?php echo $assets ?>/UnityProgress.js"></script>
 		<script src="<?php echo $assets ?>/UnityLoader.js"></script>
 		<script>
-			var unityInstance = UnityLoader.instantiate("gameContainer", "Build/planet.json", {onProgress: UnityProgress});
+			document.getElementById("play").style.backgroundImage = "url(\"start.gif?" + Math.random() + "\")";
+			function play()
+			{
+				document.getElementById("play").style.display = "none";
+				document.getElementById("gameContainer").className = "loading";
+				var unityInstance = UnityLoader.instantiate("gameContainer", "Build/planet.json", {onProgress: UnityProgress});
+			}
 		</script>
-	</head>
-	<body><div id="gameContainer"></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
