@@ -19,9 +19,12 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				background-image: url("bg.png") !important;
 				background-position: center center !important;
 				background-repeat: no-repeat !important;
+			}
+
+			.loading {
+				background-image: url("bg.png") !important;
 			}
 
 			body {
@@ -29,6 +32,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 100%;
 				margin: 0;
 				overflow: hidden;
+				background-color: #808080;
 			}
 
 			html {
@@ -37,26 +41,30 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				margin: 0;
 			}
 
-			#full
-			{
-				background-color: #3C3C3C;
+			#play {
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 35px 0 35px 60.6px;
+				border-color: transparent transparent transparent #3C3C3C;
+				transition: .2s;
 			}
 
-			#progress
-			{
-				background-color: #808080;
-				display: flex;
-			    width: 351px;
-				height: 10px;
-				border: 5px #3C3C3C solid;
-				border-radius: 50px;
+			#play:hover {
+				border-width: 40px 0 40px 69.3px;
 			}
 		</style>
-		<script src="UnityProgress.js"></script>
+	</head>
+	<body>
+		<div id="gameContainer"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>
+		<script src="<?php echo $assets ?>/UnityProgress.js"></script>
 		<script src="<?php echo $assets ?>/UnityLoader.js"></script>
 		<script>
-			var unityInstance = UnityLoader.instantiate("gameContainer", "Build/worseforthebetter.json", {onProgress: UnityProgress});
+			function play()
+			{
+				document.getElementById("play").style.display = "none";
+				document.getElementById("gameContainer").className = "loading";
+				var unityInstance = UnityLoader.instantiate("gameContainer", "Build/worseforthebetter.json", {onProgress: UnityProgress});
+			}
 		</script>
-	</head>
-	<body><div id="gameContainer"></div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
