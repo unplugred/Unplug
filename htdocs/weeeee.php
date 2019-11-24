@@ -4,6 +4,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<style>
+			*::-webkit-scrollbar {
+			    width: 0!important;
+			}
+
 			html{
 				overflow-y: scroll;
 			}
@@ -23,9 +27,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<img style="display: none" id="w" src="<?php echo $assets ?>/weeeee/w.png">
-		<img style="display: none" id="e" src="<?php echo $assets ?>/weeeee/e.png">
-		<img style="display: none" id="m" src="<?php echo $assets ?>/weeeee/m.png">
 		<img style="display: none" id="title" src="<?php echo $assets ?>/weeeee/title.png">
 		<img style="display: none" id="0a" src="<?php echo $assets ?>/weeeee/0a.png?v=2">
 		<img style="display: none" id="0b" src="<?php echo $assets ?>/weeeee/0b.png?v=2">
@@ -44,10 +45,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<script>
 			var canvas = document.getElementById("canva");
 			var ctx = canvas.getContext("2d");
-			var letters = [
-				document.getElementById("w"),
-				document.getElementById("e"),
-				document.getElementById("m")];
 			var title = document.getElementById("title");
 			var patterns = [
 				document.getElementById("0a"),
@@ -65,16 +62,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				document.getElementById("7d")];
 
 			var scrollspeed = .15;
-			var weespeed = .5;
-			var weetop, weeanchor;
-			var weestage = 6;
-			var weeheight = 999999;
-			var weeend = Math.random() * 500 + 500;
-			var scrollTop = document.documentElement ? document.documentElement.scrollTop : document.body.scrollTop;
-			var prevscroll = 0;
+			var scroll = 0;
+			var scrollprelerp = 0;
+			var diff = 0;
 
 			window.onload = function(){
 				redraw();
+				setInterval(update, 33);
 			};
 			window.onresize = function(){ redraw(); };
 
@@ -82,24 +76,30 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			{
 				canvas.width = window.innerWidth;
 				canvas.height = window.innerHeight;
-				draw();
-			}
+				window.scrollTo(0, window.innerHeight*5);
 
-			function makeEven(val)
-			{
-				return Math.floor(val * .5) * 2;
+				draw();
 			}
 
 			function Blox()
 			{
 				var w = Math.random() * .9 + .05;
 				var s = Math.random() * 600 + 40;
-				this.width = makeEven(Math.min(1 - w, w) * s);
-				this.height = makeEven(Math.max(1 - w, w) * s);
+				this.width = Math.min(1 - w, w) * s;
+				this.height = Math.max(1 - w, w) * s;
 
-				this.position = [ Math.random(), Math.random() * 10, Math.floor(Math.random() * 1024), Math.floor(Math.random() * 1024) ];
+				var y;
+				if(diff == 0) y = Math.random();
+				else if(diff < 0) y = 1 + (this.height*.5)/window.innerHeight;
+				else if(diff > 0) y = -(this.height*.5 + 5)/window.innerHeight;
 
-				this.speed = Math.random() - .1;
+				this.position = [
+					Math.random(),
+					y,
+					Math.floor(Math.random() * 1024),
+					Math.floor(Math.random() * 1024)];
+
+				this.speed = Math.random() + .2;
 
 				var tex = Math.floor(Math.random() * 8);
 				this.bg = tex;
@@ -121,27 +121,21 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			var bloxes = [];
-			for (x = 0; x < 200; x += 1) bloxes[x] = new Blox();
+			for (x = 0; x < 50; x++) bloxes[x] = new Blox();
 
 			function update() {
-				var scrolldif = scrollTop;
-				scrollTop = (document.documentElement ? document.documentElement.scrollTop : document.body.scrollTop)*scrollspeed + scrollTop*(1 - scrollspeed);
-				prevscroll += scrollTop - scrolldif;
+				diff = scroll;
+				scrollprelerp += (document.documentElement.scrollTop - window.innerHeight*5)*.3;
+				scroll = scrollprelerp*scrollspeed + scroll*(1 - scrollspeed);
+				diff -= scroll;
+				if(diff !== 0) draw();
 
-				if(Math.floor(scrollTop) !== Math.floor(scrolldif))
-				{
-					draw();
-
-					prevscroll = 0;
-				}
+				window.scrollTo(0, window.innerHeight*5);
 			}
-
-			setInterval(update, 33);
 
 			function drawbox(x,y,w,h,bg,bgx,bgy)
 			{
 				ctx.fillRect(x + 5,y + 5,w,h);
-				if(y > canvas.height || y < -h) return;
 				var ax = 0;
 				var ay = 0;
 				var bx = 0;
@@ -163,21 +157,24 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			{
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-				var boxpos;
+				var boxpos, y;
 				for(x = 0; x < bloxes.length; x++)
 				{
-					boxpos = (bloxes[x].position[1] * window.innerHeight + (scrollTop - window.innerHeight*5) * bloxes[x].speed - scrollTop);
-					drawbox(
-						Math.floor(bloxes[x].position[0] * canvas.width - (bloxes[x].width*.5)),
-						Math.floor(boxpos - (bloxes[x].height*.5)),
+					bloxes[x].position[1] += (bloxes[x].speed * diff) / window.innerHeight;
+					boxpos = bloxes[x].position[1] * window.innerHeight;
+					y = Math.floor(boxpos - (bloxes[x].height*.5));
+					if(y > window.innerHeight || y < -bloxes[x].height - 5) bloxes[x] = new Blox();
+					else drawbox(
+						Math.floor(bloxes[x].position[0] * window.innerWidth - (bloxes[x].width*.5)),
+						y,
 						bloxes[x].width,
 						bloxes[x].height,
 						bloxes[x].bg,
 						-Math.floor(bloxes[x].position[2] % patterns[bloxes[x].bg].width),
-						-Math.floor((bloxes[x].position[3] + boxpos*(bloxes[x].bg !== 5 ? .5 : 1) + 2048) % patterns[bloxes[x].bg].width));
+						bloxes[x].bg === 5 ?-(y%2) : -Math.floor((bloxes[x].position[3] + boxpos*.5 + 2048) % patterns[bloxes[x].bg].width));
 				}
 
-				ctx.drawImage(title, Math.floor(window.innerWidth*.5 - 180), Math.floor(window.innerHeight*.5 - scrollTop));
+				ctx.drawImage(title, Math.floor(window.innerWidth*.5 - 180), Math.floor(window.innerHeight*.5 - scroll));
 			}
 		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
