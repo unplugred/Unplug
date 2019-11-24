@@ -16,6 +16,12 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 100%;
 				height: 100%;
 			}
+
+			@media all and (orientation:portrait) {
+				.vid {
+					transform: rotate(-90deg);
+				}
+			}
 		</style>
 	</head>
 	<body>
@@ -127,9 +133,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				ctx.createImageData(8,8)];
 			for(var s = 0; s < shapesdata.length; s++)
 				for(var x = 0; x < shapes[s].length*4; x++)
-				{
 					shapesdata[s].data[x] = shapes[s][Math.floor(x*.25)]*255;
-				}
 			shapes = 0;
 
 			setInterval(timer,1);
