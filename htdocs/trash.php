@@ -90,7 +90,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<a href="javascript:void(0)" onclick="clickleft()" class="icon file" id="iconleft"></a>
-		<a href="/greece" onclick="clickright()" class="icon folder empty" id="iconright"></a>
+		<a href="/joke" onclick="clickright()" class="icon folder empty" id="iconright"></a>
 		<div id="paper" style="display: none"></div>
 		<div id="fade" style="display: none"></div>
 		<script>

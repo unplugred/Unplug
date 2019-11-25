@@ -9,9 +9,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				justify-content: space-between;
 				align-content: space-between;
 				width: 112px;
-				height: 78px;
+				height: 112px;
 				margin-left: calc(50vw - 56px);
-				margin-top: calc(50vh - 39px);
+				margin-top: calc(50vh - 56px);
 				background-color: #3B6EA5;
 			}
 
@@ -42,5 +42,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<a href="/bits" title="bits" class="icon computer on"></a>
 		<a href="/disconnected" title="DISCONNECTED" class="icon computer"></a>
 		<a href="/discord" title="discord" class="icon computer on"></a>
+		<a href="/reference" title="reference" class="icon computer on"></a>
+		<a href="/headspace" title="headspace" class="icon computer on"></a>
+		<a href="/greece" title="greece" class="icon computer on"></a>
 		<a href="/crisis" title="." class="icon file"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
