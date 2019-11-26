@@ -19,5 +19,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php';
 		</style>
 	</head>
 	<body>
-		<div id="link"></div>
+		<a href="/rediger" title="rediger" id="link"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
