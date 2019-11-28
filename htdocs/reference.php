@@ -18,5 +18,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div class="mainimage" title="hexagon sun called"></div>
+		<a href="/merzbau" class="mainimage" title="hexagon sun called"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

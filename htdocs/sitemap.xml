@@ -475,4 +475,16 @@
 <priority>0.80</priority>
 </url>
 
+<url>
+<loc>https://unplug.red/seconds</loc>
+<lastmod>2019-11-27T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
+<url>
+<loc>https://unplug.red/merzbau</loc>
+<lastmod>2019-11-27T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
 </urlset>
