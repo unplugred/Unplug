@@ -25,6 +25,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				image-rendering: crisp-edges;
 				image-rendering: pixelated;
 				background-image: url("play.png");
+				background-color: white;
 			}
 
 			.transition {
