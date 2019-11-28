@@ -26,6 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<script>
 			var canvas = document.getElementById("mainimage");
 			var ctx = canvas.getContext("2d");
+			var imageData;
 			var dots = [];
 			for (n = 0; n < 30; n++)
 				dots[n] = getcords();
@@ -51,7 +52,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 
 				ctx.stroke();
 
-				var imageData = ctx.getImageData(0, 0, 216, 216);
+				imageData = ctx.getImageData(0, 0, 216, 216);
 				for(i = 0; i !== imageData.data.length; i++)
 					imageData.data[i] = (imageData.data[i] >> 7) * 0xFF;
 				ctx.putImageData(imageData, 0, 0);

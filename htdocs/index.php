@@ -71,8 +71,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 
 			#clockcanvas {
 				position: absolute;
-				left: 3px;
-				top: 22px;
+				left: 9px;
+				top: 28px;
 				width: 100px;
 				height: 100px;
 				opacity: .5;
@@ -480,7 +480,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 					setTimeout(setname, 500);
 					function setname()
 					{
-						document.getElementById("namething").innerHTML = Math.random() > .2 ? "red" : "8708198";
+						document.getElementById("namething").innerHTML = Math.random() > .2 ? "ari" : "8708198";
 					}
 
 					$("#hhh").draggable("disable");
@@ -499,34 +499,37 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 
 			var clock = document.getElementById("clockcanvas");
 			var ctx = clock.getContext("2d");
+			var imageData;
 			clock.width = 100;
 			clock.height = 100;
 			setInterval(updateclock, 1000);
 			updateclock();
 			function updateclock()
 			{
-				ctx.clearRect(0, 0, 100, 100);
+				ctx.clearRect(0, 0, 88, 88);
+				ctx.beginPath();
 				ctx.strokeStyle = "#FFFFFF";
 				ctx.lineWidth = 3;
-				ctx.beginPath();
-				ctx.arc(50, 50, 42, 0, 2 * Math.PI);
-				ctx.moveTo(50, 50);
+				ctx.arc(44, 44, 42, 0, 2 * Math.PI);
+
 				var time = new Date();
 				var angle = time.getMinutes()/30.0*Math.PI;
-				ctx.lineTo(Math.sin(angle) * 32 + 50, Math.cos(angle)* -32 + 50);
-				ctx.moveTo(50, 50);
+				ctx.moveTo(Math.sin(angle) * 32 + 44, Math.cos(angle)* -32 + 44);
+				ctx.lineTo(44, 44);
+
 				angle = time.getHours()/6.0*Math.PI;
-				ctx.lineTo(Math.sin(angle) * 18 + 50, Math.cos(angle)* -18 + 50);
-				ctx.stroke();
-				ctx.strokeStyle = "#FF0000";
-				ctx.lineWidth = 1;
-				ctx.beginPath();
-				ctx.moveTo(50, 50);
-				angle = time.getSeconds()/30.0*Math.PI;
-				ctx.lineTo(Math.sin(angle) * 36 + 50, Math.cos(angle)* -36 + 50);
+				ctx.lineTo(Math.sin(angle) * 18 + 44, Math.cos(angle)* -18 + 44);
 				ctx.stroke();
 
-				var imageData = ctx.getImageData(0, 0, 100, 100);
+				ctx.beginPath();
+				ctx.strokeStyle = "#FF0000";
+				ctx.lineWidth = 1;
+				ctx.moveTo(44, 44);
+				angle = time.getSeconds()/30.0*Math.PI;
+				ctx.lineTo(Math.sin(angle) * 36 + 44, Math.cos(angle)* -36 + 44);
+				ctx.stroke();
+
+				imageData = ctx.getImageData(0, 0, 88, 88);
 				for(i = 0; i !== imageData.data.length; i++)
 					imageData.data[i] = (imageData.data[i] >> 7) * 0xFF;
 				ctx.putImageData(imageData, 0, 0);
