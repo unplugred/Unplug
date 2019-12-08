@@ -6,7 +6,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: block;
 				width: 100vw;
 				height: 100vh;
-				background-image: url("<?php echo $assets ?>/clouds.png");
+				background-image: url("<?php echo assets ?>/clouds.png");
 				background-size: inherit;
 				background-position: center;
 			}

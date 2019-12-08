@@ -9,7 +9,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: block;
 				width: 246px;
 				height: 196px;
-				background-image: url("<?php echo $assets ?>/tsop1736/0.png");
+				background-image: url("<?php echo assets ?>/tsop1736/0.png");
 			}
 
 			#hoverthing{
@@ -52,9 +52,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: block;
 			}
 		</style>
-		<link rel="prefetch" href="<?php echo $assets ?>/tsop1736/1.png" />
-		<link rel="prefetch" href="<?php echo $assets ?>/tsop1736/2.png" />
-		<link rel="prefetch" href="<?php echo $assets ?>/tsop1736/3.png" />
+		<link rel="prefetch" href="<?php echo assets ?>/tsop1736/1.png" />
+		<link rel="prefetch" href="<?php echo assets ?>/tsop1736/2.png" />
+		<link rel="prefetch" href="<?php echo assets ?>/tsop1736/3.png" />
 	</head>
 	<body>
 		<div class="mainimage">
@@ -66,7 +66,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<script>
 			function change(num)
 			{
-				document.getElementById("hoverthing").style.backgroundImage = "url(\"<?php echo $assets ?>/tsop1736/" + num + ".png\")";
+				document.getElementById("hoverthing").style.backgroundImage = "url(\"<?php echo assets ?>/tsop1736/" + num + ".png\")";
 			}
 		</script>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

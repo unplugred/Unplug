@@ -26,7 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			#mc_embed_signup {
 				width: 332px;
 				height: 72px;
-				background-image: url("<?php echo $assets ?>/unplug/mail.png");
+				background-image: url("<?php echo assets ?>/unplug/mail.png");
 				margin-top: calc(61vh + 100px);
 				margin-left: calc(44vw + -175px);
 			}
@@ -64,7 +64,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			#clock {
 				width: 106px;
 				height: 125px;
-				background-image: url("<?php echo $assets ?>/unplug/clock.png");
+				background-image: url("<?php echo assets ?>/unplug/clock.png");
 				margin-top: calc(24vh - 115px);
 				margin-left: calc(87vw + 6px);
 			}
@@ -81,7 +81,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			#grid {
 				width: 76px;
 				height: 225px;
-				background-image: url("<?php echo $assets ?>/unplug/grid.png");
+				background-image: url("<?php echo assets ?>/unplug/grid.png");
 				margin-top: calc(50vh - 15px);
 				margin-left: calc(63vw + 210px);
 			}
@@ -89,7 +89,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			#utah {
 				width: 243px;
 				height: 209px;
-				background-image: url("<?php echo $assets ?>/unplug/teapot.png?v=2");
+				background-image: url("<?php echo assets ?>/unplug/teapot.png?v=2");
 				margin-top: calc(58vh + 5px);
 				margin-left: calc(62vw + 10px);
 			}
@@ -102,7 +102,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			.twitterwindow {
 				width: 528px;
 				height: 395px;
-				background-image: url("<?php echo $assets ?>/unplug/twitter.png");
+				background-image: url("<?php echo assets ?>/unplug/twitter.png");
 				margin-top: calc(50vh - 185px);
 				margin-left: calc(50vw - 224px);
 				display: none;
@@ -111,7 +111,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			.mainimage {
 				width: 528px;
 				height: 395px;
-				background-image: url("<?php echo $assets ?>/unplug/unplug.png");
+				background-image: url("<?php echo assets ?>/unplug/unplug.png");
 				margin-top: calc(50vh - 185px);
 				margin-left: calc(50vw - 224px);
 			}
@@ -124,7 +124,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			.thirdimage {
 				width: 126px;
 				height: 145px;
-				background-image: url("<?php echo $assets ?>/unplug/aboutright.png");
+				background-image: url("<?php echo assets ?>/unplug/aboutright.png");
 				background-position: right;
 				background-repeat: repeat-y;
 				background-color: #4B7071;
@@ -148,15 +148,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 16px;
 				height: 14px;
 				position: absolute;
-				background-image: url("<?php echo $assets ?>/unplug/close.png");
+				background-image: url("<?php echo assets ?>/unplug/close.png");
 			}
 
 			.close:active{
-				background-image: url("<?php echo $assets ?>/unplug/closed.png");
+				background-image: url("<?php echo assets ?>/unplug/closed.png");
 			}
 
 			.mobile-thing {
-				background-image: url("<?php echo $assets ?>/unplug/best-on-a-computer.png");
+				background-image: url("<?php echo assets ?>/unplug/best-on-a-computer.png");
 				background-repeat: no-repeat;
 				background-size: contain;
 				width: 100vw;
@@ -173,7 +173,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: inline-grid;
 				width: 26vw;
 				max-width: 26vh;
-				background-image: url("<?php echo $assets ?>/unplug/anyway-on.png");
+				background-image: url("<?php echo assets ?>/unplug/anyway-on.png");
 				background-size: contain;
 				background-repeat: no-repeat;
 			}
@@ -208,7 +208,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			#rotato-cubo{
 				height: 100px;
 				width: 100px;
-				background-image: url("<?php echo $assets ?>/unplug/a.gif");
+				background-image: url("<?php echo assets ?>/unplug/a.gif");
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
@@ -274,21 +274,21 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.art .object {
-				background-image: url("<?php echo $assets ?>/objects/0.gif");
+				background-image: url("<?php echo assets ?>/objects/0.gif");
 			}
 
 			.games .object {
-				background-image: url("<?php echo $assets ?>/objects/a1.gif");
+				background-image: url("<?php echo assets ?>/objects/a1.gif");
 			}
 
 			.art.secondaryimage {
-				background-image: url("<?php echo $assets ?>/unplug/object1.png?v=2");
+				background-image: url("<?php echo assets ?>/unplug/object1.png?v=2");
 				margin-top: calc(38vh - 170px);
 				margin-left: calc(41vw - 250px);
 			}
 
 			.games.secondaryimage {
-				background-image: url("<?php echo $assets ?>/unplug/object2.png?v=2");
+				background-image: url("<?php echo assets ?>/unplug/object2.png?v=2");
 				margin-top: calc(46vh - 127px);
 				margin-left: calc(43vw - 191px);
 			}
@@ -303,13 +303,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 100%;
 			}
 
-			#abouttopleft {background-image: url("<?php echo $assets ?>/unplug/abouttopleft.png");width: 415px;}
-			#abouttop {background-image: url("<?php echo $assets ?>/unplug/abouttop.png");height: 23px;}
-			#abouttopright {background-image: url("<?php echo $assets ?>/unplug/abouttopright.png");right: 0;}
-			#aboutleft {background-image: url("<?php echo $assets ?>/unplug/aboutleft.png");}
-			#aboutbottomleft {background-image: url("<?php echo $assets ?>/unplug/aboutbottomleft.png");}
-			#aboutbottom {background-image: url("<?php echo $assets ?>/unplug/aboutbottom.png");bottom: 0;height: 4px;}
-			#aboutbottomright {background-image: url("<?php echo $assets ?>/unplug/aboutbottomright.png");right: 0;}
+			#abouttopleft {background-image: url("<?php echo assets ?>/unplug/abouttopleft.png");width: 415px;}
+			#abouttop {background-image: url("<?php echo assets ?>/unplug/abouttop.png");height: 23px;}
+			#abouttopright {background-image: url("<?php echo assets ?>/unplug/abouttopright.png");right: 0;}
+			#aboutleft {background-image: url("<?php echo assets ?>/unplug/aboutleft.png");}
+			#aboutbottomleft {background-image: url("<?php echo assets ?>/unplug/aboutbottomleft.png");}
+			#aboutbottom {background-image: url("<?php echo assets ?>/unplug/aboutbottom.png");bottom: 0;height: 4px;}
+			#aboutbottomright {background-image: url("<?php echo assets ?>/unplug/aboutbottomright.png");right: 0;}
 
 			#aboutcontent {
 				top: 50%;
@@ -334,7 +334,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			<div class="mobile-wrapper-two-point-o">
 				<div class="mobile-thing">
 					<a class="anyway-wrap" href="javascript:void(0)" onclick="Switch()">
-						<img class="anyway" src="<?php echo $assets ?>/unplug/anyway.png"/>
+						<img class="anyway" src="<?php echo assets ?>/unplug/anyway.png"/>
 					</a>
 				</div>
 			</div>
@@ -398,7 +398,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 
 			<div class="secondaryimage window art" title="art blog">
 				<a class="close" href="javascript:void(0)"></a>
-				<a class="object" href="https://art.unplug.red/"></a>
+				<a class="object" href="https://tumblr.unplug.red/"></a>
 			</div>
 
 			<div class="secondaryimage window games" title="games">

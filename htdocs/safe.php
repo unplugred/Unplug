@@ -28,7 +28,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: block;
 				width: 524px;
 				height: 120px;
-				background-image: url("<?php echo $assets ?>/safe.png");
+				background-image: url("<?php echo assets ?>/safe.png");
 			}
 		</style>
 	</head>

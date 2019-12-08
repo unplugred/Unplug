@@ -56,8 +56,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div id="gameContainer"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>
-		<script src="<?php echo $assets ?>/UnityProgress.js"></script>
-		<script src="<?php echo $assets ?>/UnityLoader.js"></script>
+		<script src="<?php echo assets ?>/UnityProgress.js"></script>
+		<script src="<?php echo assets ?>/UnityLoader.js"></script>
 		<script>
 			document.getElementById("play").style.backgroundImage = "url(\"start.gif?" + Math.random() + "\")";
 			function play()

@@ -43,18 +43,18 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 		</script>
 		<a href="javascript:void(0)">
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/01.png" onclick="plusDivs()" style="display: block"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/02.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/03.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/04.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/05.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/06.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/07.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/08.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/09.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/10.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/11.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/12.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/01.png" onclick="plusDivs()" style="display: block"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/02.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/03.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/04.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/05.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/06.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/07.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/08.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/09.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/10.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/11.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/12.png" onclick="plusDivs()"/>
 		</a>
-			<img class="movie" src="<?php echo $assets ?>/stock-market-man/13.png"/>
+			<img class="movie" src="<?php echo assets ?>/stock-market-man/13.png"/>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

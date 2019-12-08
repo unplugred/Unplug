@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 702px;
 				height: 236px;
 				background-size: contain;
-				background-image: url("<?php echo $assets ?>/404.gif");
+				background-image: url("<?php echo assets ?>/404.gif");
 				background-repeat: no-repeat;
 				background-position: center;
 				margin-top: 15px;
@@ -32,7 +32,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			.santa{
 				width: 100px;
 				height: 100px;
-				background-image: url("<?php echo $assets ?>/objects/0.gif");
+				background-image: url("<?php echo assets ?>/objects/0.gif");
 				position: absolute;
 				margin-top: calc(105vh - 170px);
 				margin-left: calc(100vw - 120px);

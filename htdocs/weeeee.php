@@ -27,20 +27,20 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<img style="display: none" id="title" src="<?php echo $assets ?>/weeeee/title.png">
-		<img style="display: none" id="0a" src="<?php echo $assets ?>/weeeee/0a.png?v=2">
-		<img style="display: none" id="0b" src="<?php echo $assets ?>/weeeee/0b.png?v=2">
-		<img style="display: none" id="1a" src="<?php echo $assets ?>/weeeee/1a.png?v=2">
-		<img style="display: none" id="1b" src="<?php echo $assets ?>/weeeee/1b.png?v=2">
-		<img style="display: none" id="2" src="<?php echo $assets ?>/weeeee/2.png?v=2">
-		<img style="display: none" id="3" src="<?php echo $assets ?>/weeeee/3.png?v=2">
-		<img style="display: none" id="4" src="<?php echo $assets ?>/weeeee/4.png?v=2">
-		<img style="display: none" id="5" src="<?php echo $assets ?>/weeeee/5.png?v=2">
-		<img style="display: none" id="6" src="<?php echo $assets ?>/weeeee/6.png?v=2">
-		<img style="display: none" id="7a" src="<?php echo $assets ?>/weeeee/7a.png?v=2">
-		<img style="display: none" id="7b" src="<?php echo $assets ?>/weeeee/7b.png?v=2">
-		<img style="display: none" id="7c" src="<?php echo $assets ?>/weeeee/7c.png?v=2">
-		<img style="display: none" id="7d" src="<?php echo $assets ?>/weeeee/7d.png?v=2">
+		<img style="display: none" id="title" src="<?php echo assets ?>/weeeee/title.png">
+		<img style="display: none" id="0a" src="<?php echo assets ?>/weeeee/0a.png?v=2">
+		<img style="display: none" id="0b" src="<?php echo assets ?>/weeeee/0b.png?v=2">
+		<img style="display: none" id="1a" src="<?php echo assets ?>/weeeee/1a.png?v=2">
+		<img style="display: none" id="1b" src="<?php echo assets ?>/weeeee/1b.png?v=2">
+		<img style="display: none" id="2" src="<?php echo assets ?>/weeeee/2.png?v=2">
+		<img style="display: none" id="3" src="<?php echo assets ?>/weeeee/3.png?v=2">
+		<img style="display: none" id="4" src="<?php echo assets ?>/weeeee/4.png?v=2">
+		<img style="display: none" id="5" src="<?php echo assets ?>/weeeee/5.png?v=2">
+		<img style="display: none" id="6" src="<?php echo assets ?>/weeeee/6.png?v=2">
+		<img style="display: none" id="7a" src="<?php echo assets ?>/weeeee/7a.png?v=2">
+		<img style="display: none" id="7b" src="<?php echo assets ?>/weeeee/7b.png?v=2">
+		<img style="display: none" id="7c" src="<?php echo assets ?>/weeeee/7c.png?v=2">
+		<img style="display: none" id="7d" src="<?php echo assets ?>/weeeee/7d.png?v=2">
 		<canvas id="canva"></canvas>
 		<script>
 			var canvas = document.getElementById("canva");

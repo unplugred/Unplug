@@ -9,7 +9,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: block;
 				width: 450px;
 				height: 200px;
-				background-image: url("<?php echo $assets ?>/books.png");
+				background-image: url("<?php echo assets ?>/books.png");
 				border: 4px #aa0000 solid;
 			}
 

@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				top: 0;
 				left: 0;
 				height: 100vh;
-				background-image: url("<?php echo $assets ?>/180422.png");
+				background-image: url("<?php echo assets ?>/180422.png");
 				background-size: cover;
 				background-position: center center;
 				opacity: 0.8;
@@ -33,7 +33,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 100vh;
 				top: 0;
 				left: 0;
-				background-image: url("<?php echo $assets ?>/scanlines.png");
+				background-image: url("<?php echo assets ?>/scanlines.png");
 				opacity: 0.4;
 			}
 

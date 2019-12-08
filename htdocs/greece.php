@@ -22,7 +22,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: block;
 				width: 100vw;
 				height: 100vh;
-				background-image: url("<?php echo $assets ?>/greece/greece.png");
+				background-image: url("<?php echo assets ?>/greece/greece.png");
 				background-size: contain;
 				background-position: center center;
 				background-repeat: no-repeat;
@@ -33,7 +33,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 77%;
 				left: 62.85%;
 				top: 21.3%;
-				background-image: url("<?php echo $assets ?>/greece/1.png");
+				background-image: url("<?php echo assets ?>/greece/1.png");
 			}
 
 			#b{
@@ -41,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 62%;
 				left: 10.45%;
 				top: 17.7%;
-				background-image: url("<?php echo $assets ?>/greece/2.png");
+				background-image: url("<?php echo assets ?>/greece/2.png");
 			}
 
 			#c{
@@ -49,7 +49,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 47%;
 				left: 33.5%;
 				top: 45.4%;
-				background-image: url("<?php echo $assets ?>/greece/3.png");
+				background-image: url("<?php echo assets ?>/greece/3.png");
 			}
 
 			#d{
@@ -57,7 +57,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 46%;
 				left: 42.2%;
 				top: 46.2%;
-				background-image: url("<?php echo $assets ?>/greece/4.png");
+				background-image: url("<?php echo assets ?>/greece/4.png");
 			}
 
 			#e{
@@ -65,7 +65,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 35%;
 				left: 50.4%;
 				top: 26.05%;
-				background-image: url("<?php echo $assets ?>/greece/5.png");
+				background-image: url("<?php echo assets ?>/greece/5.png");
 			}
 
 			#f{
@@ -73,7 +73,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 57%;
 				left: 59.65%;
 				top: 26.1%;
-				background-image: url("<?php echo $assets ?>/greece/6.png");
+				background-image: url("<?php echo assets ?>/greece/6.png");
 			}
 
 			#g{
@@ -81,7 +81,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 31%;
 				left: 33.9%;
 				top: 26.9%;
-				background-image: url("<?php echo $assets ?>/greece/7.png");
+				background-image: url("<?php echo assets ?>/greece/7.png");
 			}
 
 			#h{
@@ -89,7 +89,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 13%;
 				left: 43.15%;
 				top: 27.5%;
-				background-image: url("<?php echo $assets ?>/greece/8.png");
+				background-image: url("<?php echo assets ?>/greece/8.png");
 			}
 
 			.prsn{
@@ -129,7 +129,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div class="bg">
-			<img src="<?php echo $assets ?>/greece/greece.png"/>
+			<img src="<?php echo assets ?>/greece/greece.png"/>
 			<div id="a" class="prsn" onmouseover="on('STEVE','*tries too hard')" onmouseout="off('STEVE')"></div>
 			<div id="b" class="prsn" onmouseover="on('MARK','*he f_cks')" onmouseout="off('MARK')"></div>
 			<div id="g" class="prsn" onmouseover="on('TOMMY','')" onmouseout="off('TOMMY')"></div>

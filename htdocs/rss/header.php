@@ -1,5 +1,5 @@
 <?php if (!defined('PLX_ROOT')) exit; ?>
-<?php $assets = "https://assets.unplug.red" ?>
+<?php assets = "https://assets.unplug.red" ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -11,9 +11,9 @@
 		<?php $plxShow->meta('author') ?>
 
 		<meta name="theme-color" content="#4B7071">
-		<link rel="icon" type="image/png" href="<?php echo $assets ?>/shortcut-icon.png">
-		<link rel="shortcut icon" href="<?php echo $assets ?>/shortcut-icon.png">
-		<link rel="apple-touch-icon-precomposed" href="<?php echo $assets ?>/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="<?php echo assets ?>/shortcut-icon.png">
+		<link rel="shortcut icon" href="<?php echo assets ?>/shortcut-icon.png">
+		<link rel="apple-touch-icon-precomposed" href="<?php echo assets ?>/apple-touch-icon.png">
 
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 

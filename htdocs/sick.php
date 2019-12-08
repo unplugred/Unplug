@@ -47,15 +47,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 		</script>
 		<a href="javascript:void(0)">
-			<img class="movie" src="<?php echo $assets ?>/sick/0.png" onclick="plusDivs()" style="display: block"/>
-			<img class="movie" src="<?php echo $assets ?>/sick/1.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/sick/2.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/sick/3.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/sick/4.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/sick/5.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/sick/6.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/sick/7.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/sick/8.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/sick/0.png" onclick="plusDivs()" style="display: block"/>
+			<img class="movie" src="<?php echo assets ?>/sick/1.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/sick/2.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/sick/3.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/sick/4.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/sick/5.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/sick/6.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/sick/7.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/sick/8.png" onclick="plusDivs()"/>
 		</a>
-		<img class="movie" src="<?php echo $assets ?>/sick/beans.png"/>
+		<img class="movie" src="<?php echo assets ?>/sick/beans.png"/>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

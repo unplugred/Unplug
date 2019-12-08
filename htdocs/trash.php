@@ -50,7 +50,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.file {
-				background-image: url(<?php echo $assets ?>/trash/file.png);
+				background-image: url(<?php echo assets ?>/trash/file.png);
 			}
 
 			.file.empty {
@@ -58,35 +58,35 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.folder {
-				background-image: url(<?php echo $assets ?>/trash/folderfull.png);
+				background-image: url(<?php echo assets ?>/trash/folderfull.png);
 			}
 
 			.folder.empty {
-				background-image: url(<?php echo $assets ?>/trash/folderempty.png);
+				background-image: url(<?php echo assets ?>/trash/folderempty.png);
 			}
 
 			.trash {
-				background-image: url(<?php echo $assets ?>/trash/trashfull.png);
+				background-image: url(<?php echo assets ?>/trash/trashfull.png);
 			}
 
 			.trash.empty {
-				background-image: url(<?php echo $assets ?>/trash/trashempty.png);
+				background-image: url(<?php echo assets ?>/trash/trashempty.png);
 			}
 
 			.off {
-				background-image: url(<?php echo $assets ?>/trash/off.png);
+				background-image: url(<?php echo assets ?>/trash/off.png);
 			}
 
 			#paper {
 				pointer-events: none;
 				position: absolute;
-				background-image: url(<?php echo $assets ?>/trash/paper.gif);
+				background-image: url(<?php echo assets ?>/trash/paper.gif);
 				width: 23px;
 				height: 24px;
 			}
 		</style>
-		<link rel="prefetch" href="<?php echo $assets ?>/trash/folderfull.png" />
-		<link rel="prefetch" href="<?php echo $assets ?>/trash/trashfull.png" />
+		<link rel="prefetch" href="<?php echo assets ?>/trash/folderfull.png" />
+		<link rel="prefetch" href="<?php echo assets ?>/trash/trashfull.png" />
 	</head>
 	<body>
 		<a href="javascript:void(0)" onclick="clickleft()" class="icon file" id="iconleft"></a>

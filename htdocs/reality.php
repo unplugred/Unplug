@@ -16,7 +16,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			.mainimagelink {
 				width: 400px;
 				height: 400px;
-				background-image: url("<?php echo $assets ?>/reality.gif");
+				background-image: url("<?php echo assets ?>/reality.gif");
 				display: block;
 			}
 		</style>

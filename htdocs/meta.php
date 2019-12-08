@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			body{
-				background-image: url("<?php echo $assets ?>/meta.png");
+				background-image: url("<?php echo assets ?>/meta.png");
 				animation: nanim 5s linear infinite;
 			}
 

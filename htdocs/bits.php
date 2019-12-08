@@ -3,7 +3,7 @@ $title = "bits";
 include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body {
-				background-image: url("<?php echo $assets ?>/bits/bg.png");
+				background-image: url("<?php echo assets ?>/bits/bg.png");
 			}
 
 			.window {
@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				position: fixed;
 				width: 126px;
 				height: 145px;
-				background-image: url("<?php echo $assets ?>/unplug/object.png");
+				background-image: url("<?php echo assets ?>/unplug/object.png");
 				margin: -72px -63px;
 			}
 
@@ -21,11 +21,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 16px;
 				height: 14px;
 				position: absolute;
-				background-image: url("<?php echo $assets ?>/unplug/close.png");
+				background-image: url("<?php echo assets ?>/unplug/close.png");
 			}
 
 			.close:active {
-				background-image: url("<?php echo $assets ?>/unplug/closed.png");
+				background-image: url("<?php echo assets ?>/unplug/closed.png");
 			}
 
 			.bg {
@@ -86,7 +86,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			{
 				var obj = $(this).parent();
 				dothing(obj);
-				obj.css("-webkit-mask-image","url(\"<?php echo $assets ?>/bits/transition.gif?" + anim++ + "\")");
+				obj.css("-webkit-mask-image","url(\"<?php echo assets ?>/bits/transition.gif?" + anim++ + "\")");
 			}
 
 			function dothing(obj)
@@ -109,10 +109,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				}
 				else
 				{
-					bg.style.backgroundImage = "url(\"<?php echo $assets ?>/objects/b" + bgn + ".png\")";
+					bg.style.backgroundImage = "url(\"<?php echo assets ?>/objects/b" + bgn + ".png\")";
 					bg.style.filter = "saturate(" + ((Math.random()*50 + 50)*Math.min(color,1)) + "%) hue-rotate(" + Math.random() + "turn)";
 				}
-				ob.style.backgroundImage = "url(\"<?php echo $assets ?>/objects/a" + obn + ".gif\")";
+				ob.style.backgroundImage = "url(\"<?php echo assets ?>/objects/a" + obn + ".gif\")";
 				ob.style.filter = "saturate(" + ((Math.random()*50 + 50)*Math.min(2 - color,1)) + "%) hue-rotate(" + Math.random() + "turn)";
 			}
 		</script>

@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			.mainimagelink {
 				width: 542px;
 				height: 98px;
-				background-image: url("<?php echo $assets ?>/space.png");
+				background-image: url("<?php echo assets ?>/space.png");
 				display: block;
 			}
 		</style>

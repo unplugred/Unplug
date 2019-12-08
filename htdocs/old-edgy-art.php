@@ -46,9 +46,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 		</script>
 		<a href="javascript:void(0)">
-			<img class="movie" src="<?php echo $assets ?>/old-edgy-art/1.png" onclick="plusDivs()" style="display: block"/>
-			<img class="movie" src="<?php echo $assets ?>/old-edgy-art/2.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/old-edgy-art/3.png" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/old-edgy-art/4.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/old-edgy-art/1.png" onclick="plusDivs()" style="display: block"/>
+			<img class="movie" src="<?php echo assets ?>/old-edgy-art/2.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/old-edgy-art/3.png" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/old-edgy-art/4.png" onclick="plusDivs()"/>
 		</a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

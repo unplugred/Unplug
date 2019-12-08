@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			*{
-				cursor: url("<?php echo $assets ?>/cursors/wait.png") 6 0, wait;
+				cursor: url("<?php echo assets ?>/cursors/wait.png") 6 0, wait;
 			}
 
 			#final-form{

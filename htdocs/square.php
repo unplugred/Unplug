@@ -3,7 +3,7 @@ $title = "square";
 include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
-				background-image: url("<?php echo $assets ?>/square.png");
+				background-image: url("<?php echo assets ?>/square.png");
 				background-size: contain;
 				background-position: bottom left;
 				background-repeat: no-repeat;

@@ -20,7 +20,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			body {
-				background-image: url("<?php echo $assets ?>/bus/thumbnail.png");
+				background-image: url("<?php echo assets ?>/bus/thumbnail.png");
 				background-size: cover;
 				background-position: center center;
 			}
@@ -28,7 +28,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<video class="vid" autoplay muted>
-			<source src="<?php echo $assets ?>/bus/crystals.mp4" type="video/mp4">
+			<source src="<?php echo assets ?>/bus/crystals.mp4" type="video/mp4">
 		</video>
 		<div class="mainimage">
 			i am a bus now

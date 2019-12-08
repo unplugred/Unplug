@@ -6,7 +6,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			#img
 			{
-				background-image: url("<?php echo $assets ?>/nqiregvfrzrag/nqiregvfrzrag.png");
+				background-image: url("<?php echo assets ?>/nqiregvfrzrag/nqiregvfrzrag.png");
 				width: 292px;
 				height: 282px;
 				position: fixed;
@@ -14,7 +14,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.numerica {
-				background-image: url(<?php echo $assets ?>/nqiregvfrzrag/bg.png);
+				background-image: url(<?php echo assets ?>/nqiregvfrzrag/bg.png);
 				z-index: -1;
 				width: 200px;
 				height: 16px;

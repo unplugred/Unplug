@@ -5,7 +5,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			.mainimage {
 				width: 100vw;
 				height: 100vh;
-				background-image: url("<?php echo $assets ?>/hugs.png");
+				background-image: url("<?php echo assets ?>/hugs.png");
 				background-position:center;
 				background-repeat:no-repeat;
 				background-size:contain;

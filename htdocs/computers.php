@@ -22,19 +22,19 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.computer {
-				background-image: url("<?php echo $assets ?>/computers/off.png");
+				background-image: url("<?php echo assets ?>/computers/off.png");
 			}
 
 			.on:hover {
-				background-image: url("<?php echo $assets ?>/computers/on.png");
+				background-image: url("<?php echo assets ?>/computers/on.png");
 			}
 
 			.file:hover {
-				background-image: url("<?php echo $assets ?>/trash/file.png");
+				background-image: url("<?php echo assets ?>/trash/file.png");
 			}
 		</style>
-		<link rel="prefetch" href="<?php echo $assets ?>/computers/on.png" />
-		<link rel="prefetch" href="<?php echo $assets ?>/trash/file.png" />
+		<link rel="prefetch" href="<?php echo assets ?>/computers/on.png" />
+		<link rel="prefetch" href="<?php echo assets ?>/trash/file.png" />
 	</head>
 	<body>
 		<a href="/trash" title="trash" class="icon computer on"></a>

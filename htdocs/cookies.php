@@ -27,7 +27,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				text-decoration: none;
 			}
 			body{
-				background-image: url("<?php echo $assets ?>/cookies.png");
+				background-image: url("<?php echo assets ?>/cookies.png");
 				background-repeat: no-repeat;
 				background-position: bottom center;
 				display: flex;

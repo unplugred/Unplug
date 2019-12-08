@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				margin-left: calc(50vw - 200px);
 				width: 434px;
 				height: 367px;
-				background-image: url("<?php echo $assets ?>/glow.png");
+				background-image: url("<?php echo assets ?>/glow.png");
 				position: absolute;
 			}
 
