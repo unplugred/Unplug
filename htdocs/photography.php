@@ -46,13 +46,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 		</script>
 		<a href="javascript:void(0)">
-			<img class="movie" src="<?php echo $assets ?>/photography/1.jpg" onclick="plusDivs()" style="display: block"/>
-			<img class="movie" src="<?php echo $assets ?>/photography/2.jpg" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/photography/3.jpg" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/photography/4.jpg" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/photography/5.jpg" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/photography/6.jpg" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/photography/7.jpg" onclick="plusDivs()"/>
-			<img class="movie" src="<?php echo $assets ?>/photography/8.jpg" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/photography/1.jpg" onclick="plusDivs()" style="display: block"/>
+			<img class="movie" src="<?php echo assets ?>/photography/2.jpg" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/photography/3.jpg" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/photography/4.jpg" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/photography/5.jpg" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/photography/6.jpg" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/photography/7.jpg" onclick="plusDivs()"/>
+			<img class="movie" src="<?php echo assets ?>/photography/8.jpg" onclick="plusDivs()"/>
 		</a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

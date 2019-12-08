@@ -28,7 +28,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			body{
-				background-image: url("<?php echo $assets ?>/concrete/bg.png");
+				background-image: url("<?php echo assets ?>/concrete/bg.png");
 				overflow-y: visible;
 				overflow-x: hidden;
 				margin: 0;
@@ -41,7 +41,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 432px;
 				max-width: 90vw;
 				max-height: 90vw;
-				background-image: url("<?php echo $assets ?>/concrete/logo.png");
+				background-image: url("<?php echo assets ?>/concrete/logo.png");
 				margin: 34px auto;
 				background-repeat: no-repeat;
 			}
@@ -65,9 +65,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div id="logo"></div>
-		<img src="<?php echo $assets ?>/concrete/1.png" class="imge"></img>
-		<img src="<?php echo $assets ?>/concrete/2.png" class="imge"></img>
-		<img src="<?php echo $assets ?>/concrete/3.png" class="imge"></img>
-		<img src="<?php echo $assets ?>/concrete/5.png" class="imge"></img>
-		<img src="<?php echo $assets ?>/concrete/4.png" class="imge"></img>
+		<img src="<?php echo assets ?>/concrete/1.png" class="imge"></img>
+		<img src="<?php echo assets ?>/concrete/2.png" class="imge"></img>
+		<img src="<?php echo assets ?>/concrete/3.png" class="imge"></img>
+		<img src="<?php echo assets ?>/concrete/5.png" class="imge"></img>
+		<img src="<?php echo assets ?>/concrete/4.png" class="imge"></img>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

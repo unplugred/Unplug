@@ -29,37 +29,37 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			.one {
 				width: 33px;
 				height: 66px;
-				background-image: url("<?php echo $assets ?>/bulb/1r.png");
+				background-image: url("<?php echo assets ?>/bulb/1r.png");
 			}
 
 			.oneh {
-				background-image: url("<?php echo $assets ?>/bulb/1g.png");
+				background-image: url("<?php echo assets ?>/bulb/1g.png");
 			}
 
 			.two {
 				width: 44px;
 				height: 66px;
-				background-image: url("<?php echo $assets ?>/bulb/2r.png");
+				background-image: url("<?php echo assets ?>/bulb/2r.png");
 			}
 
 			.twoh {
-				background-image: url("<?php echo $assets ?>/bulb/2g.png");
+				background-image: url("<?php echo assets ?>/bulb/2g.png");
 			}
 
 			.three {
 				width: 42px;
 				height: 67px;
-				background-image: url("<?php echo $assets ?>/bulb/3r.png");
+				background-image: url("<?php echo assets ?>/bulb/3r.png");
 			}
 
 			.threeh {
-				background-image: url("<?php echo $assets ?>/bulb/3g.png");
+				background-image: url("<?php echo assets ?>/bulb/3g.png");
 			}
 
 			.button{
 				width:13px;
 				height:13px;
-				background-image:url("<?php echo $assets ?>/bulb/crcl.png");
+				background-image:url("<?php echo assets ?>/bulb/crcl.png");
 				display: block;
 				margin: 0 auto;
 			}

@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				margin-left: calc(50vw - 81px);
 				width: 162px;
 				height: 162px;
-				background-image: url("<?php echo $assets ?>/crisis/delete.png");
+				background-image: url("<?php echo assets ?>/crisis/delete.png");
 				display: block;
 			}
 
@@ -20,14 +20,14 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div id="mainimage" title="bye lol"></div>
-		<img id="txt" src="<?php echo $assets ?>/crisis/existential.gif"/>
+		<img id="txt" src="<?php echo assets ?>/crisis/existential.gif"/>
 		<script>
 			var txt = document.getElementById("txt");
 			var toggle = false;
 
 			function bleh()
 			{
-				txt.src = toggle == false ? "<?php echo $assets ?>/crisis/existential.gif" : "<?php echo $assets ?>/crisis/crisis.gif";
+				txt.src = toggle == false ? "<?php echo assets ?>/crisis/existential.gif" : "<?php echo assets ?>/crisis/crisis.gif";
 				txt.style.top = (Math.random()*100) + "vh";
 				txt.style.left = (Math.random()*100) + "vw";
 				toggle = !toggle;

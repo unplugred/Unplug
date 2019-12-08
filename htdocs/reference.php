@@ -13,7 +13,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: block;
 				width: 122px;
 				height: 68px;
-				background-image: url("<?php echo $assets ?>/reference.gif");
+				background-image: url("<?php echo assets ?>/reference.gif");
 			}
 		</style>
 	</head>

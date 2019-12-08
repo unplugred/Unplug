@@ -3,7 +3,7 @@ $title = "joke";
 include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			#bg {
-				background-image: url("<?php echo $assets ?>/static.gif");
+				background-image: url("<?php echo assets ?>/static.gif");
 				width: 100vw;
 				height: 100vh;
 				position: absolute;

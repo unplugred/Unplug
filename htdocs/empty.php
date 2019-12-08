@@ -20,7 +20,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	<body>
 		<div class="mainimage">
 			empty class
-			<a href="/bars" title="bars"><img class="mainimagelink" src="<?php echo $assets ?>/empty.jpg"/></a>
+			<a href="/bars" title="bars"><img class="mainimagelink" src="<?php echo assets ?>/empty.jpg"/></a>
 			also,
 			<br/>
 			im sitting in an <a href="/useless-flower/" title="useless flower">empty class</a>

@@ -3,7 +3,7 @@ $title = "important";
 include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body {
-				background-image: url("<?php echo $assets ?>/important.png");
+				background-image: url("<?php echo assets ?>/important.png");
 				background-repeat: no-repeat;
 				background-position: bottom right;
 				text-align: center;
@@ -26,7 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimage">
-			<a href="<?php echo $assets ?>/important.txt" download="important.txt">important.txt</a>
+			<a href="<?php echo assets ?>/important.txt" download="important.txt">important.txt</a>
 			<a href="/hyperaction/" id="corner" title="hyperaction"></a>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

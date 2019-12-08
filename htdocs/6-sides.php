@@ -3,7 +3,7 @@ $title = "6 sides";
 include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			body{
-				background-image: url("<?php echo $assets ?>/6-sides/noise.png");
+				background-image: url("<?php echo assets ?>/6-sides/noise.png");
 			}
 
 			.mainimage {
@@ -16,7 +16,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.art{
-				background-image: url("<?php echo $assets ?>/6-sides/art.png");
+				background-image: url("<?php echo assets ?>/6-sides/art.png");
 				display: inline-block;
 				width: 34px;
 				height: 35px;
@@ -26,21 +26,21 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.eternal{
-				background-image: url("<?php echo $assets ?>/6-sides/eternal.png");
+				background-image: url("<?php echo assets ?>/6-sides/eternal.png");
 				display: inline-block;
 				width: 78px;
 				height: 35px;
 			}
 
 			.death{
-				background-image: url("<?php echo $assets ?>/6-sides/death.png");
+				background-image: url("<?php echo assets ?>/6-sides/death.png");
 				display: inline-block;
 				width: 65px;
 				height: 35px;
 			}
 
 			.meaningless{
-				background-image: url("<?php echo $assets ?>/6-sides/meaningless.png");
+				background-image: url("<?php echo assets ?>/6-sides/meaningless.png");
 				display: inline-block;
 				width: 141px;
 				height: 35px;
@@ -54,7 +54,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.six{
-				background-image: url("<?php echo $assets ?>/6-sides/6.png");
+				background-image: url("<?php echo assets ?>/6-sides/6.png");
 				display: inline-block;
 				width: 19px;
 				height: 35px;
@@ -84,6 +84,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 		</script>
 		<div class="mainimage">
-			<a class="art" id="first" onclick="switchery('first')" href="javascript:void(0)"></a><img class="is" src="<?php echo $assets ?>/6-sides/is.png"/><a class="eternal" id="second" onclick="switchery('second')" href="javascript:void(0)"></a><img class="is" src="<?php echo $assets ?>/6-sides/comma.png"/><a class="death" id="third" onclick="switchery('third')" href="javascript:void(0)"></a><img class="is" src="<?php echo $assets ?>/6-sides/is.png"/><a class="meaningless" id="fourth" onclick="switchery('fourth')" href="javascript:void(0)"></a><img class="is" src="<?php echo $assets ?>/6-sides/dot.png"/><br/><img class="is" src="<?php echo $assets ?>/6-sides/a-cube-has.png"/><a class="six" title="idk" href="/idk"></a><img class="is" src="<?php echo $assets ?>/6-sides/sides.png"/>
+			<a class="art" id="first" onclick="switchery('first')" href="javascript:void(0)"></a><img class="is" src="<?php echo assets ?>/6-sides/is.png"/><a class="eternal" id="second" onclick="switchery('second')" href="javascript:void(0)"></a><img class="is" src="<?php echo assets ?>/6-sides/comma.png"/><a class="death" id="third" onclick="switchery('third')" href="javascript:void(0)"></a><img class="is" src="<?php echo assets ?>/6-sides/is.png"/><a class="meaningless" id="fourth" onclick="switchery('fourth')" href="javascript:void(0)"></a><img class="is" src="<?php echo assets ?>/6-sides/dot.png"/><br/><img class="is" src="<?php echo assets ?>/6-sides/a-cube-has.png"/><a class="six" title="idk" href="/idk"></a><img class="is" src="<?php echo assets ?>/6-sides/sides.png"/>
 		</div>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

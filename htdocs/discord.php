@@ -6,7 +6,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 
 		<style>
 			#bg {
-				background-image: url("<?php echo $assets ?>/discord.png");
+				background-image: url("<?php echo assets ?>/discord.png");
 				width: calc(100vw + 520px);
 				height: calc(100vh + 520px);
 				position: absolute;

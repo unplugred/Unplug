@@ -3,7 +3,7 @@ $title = "snow";
 include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<style>
 			#snow{
-				background-image: url("<?php echo $assets ?>/snow.png");
+				background-image: url("<?php echo assets ?>/snow.png");
 				background-size: contain;
 				background-repeat: no-repeat;
 				display: block;

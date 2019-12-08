@@ -59,8 +59,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div id="gameContainer" style="background-image: url('play.png')"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>
-		<script src="<?php echo $assets ?>/UnityProgress.js"></script>
-		<script src="<?php echo $assets ?>/UnityLoader.js"></script>
+		<script src="<?php echo assets ?>/UnityProgress.js"></script>
+		<script src="<?php echo assets ?>/UnityLoader.js"></script>
 		<script>
 			function play()
 			{

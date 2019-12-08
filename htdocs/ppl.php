@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php';
 				height: 100vh;
 				background-attachment: fixed;
 				position: absolute;
-				background-image: url("<?php echo $assets ?>/ppl/layer.png");
+				background-image: url("<?php echo assets ?>/ppl/layer.png");
 				opacity: .4;
 				background-blend-mode: screen;
 			}
@@ -56,7 +56,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php';
 					timetillblink[5] = Math.random() * 2 + .5;
 					timetillblink[8] = Math.random() * 500 + 500;
 
-					bg[2].style.backgroundImage = "url(\"<?php echo $assets ?>/ppl/" + img + ".gif\")";
+					bg[2].style.backgroundImage = "url(\"<?php echo assets ?>/ppl/" + img + ".gif\")";
 					img = img >= 499 ? 0 : (img + 1);
 				}
 				timetillblink[0] += 0.1;

@@ -17,7 +17,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				margin: 0 auto;
 				width: 61px;
 				height: 18px;
-				background-image: url("<?php echo $assets ?>/myself-today.png");
+				background-image: url("<?php echo assets ?>/myself-today.png");
 				margin-bottom: 20px;
 			}
 		</style>

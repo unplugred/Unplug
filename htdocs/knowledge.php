@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: block;
 				width: 720px;
 				height: 296px;
-				background-image: url("<?php echo $assets ?>/knowledge.png");
+				background-image: url("<?php echo assets ?>/knowledge.png");
 			}
 		</style>
 	</head>

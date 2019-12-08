@@ -26,7 +26,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<video class="vid" autoplay muted loop>
-			<source src="<?php echo $assets ?>/blob.webm" type="video/webm">
+			<source src="<?php echo assets ?>/blob.webm" type="video/webm">
 		</video>
 		<canvas id="mainimage" width="216" height="216" title="/////...*"></canvas>
 		<script>

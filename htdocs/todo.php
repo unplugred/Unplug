@@ -18,6 +18,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<img src="<?php echo $assets ?>/todo.png" class="mainimage">
+		<img src="<?php echo assets ?>/todo.png" class="mainimage">
 		<a class="lankkk" href="/photography" title="photography"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>

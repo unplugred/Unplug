@@ -13,7 +13,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php';
 				padding: 139px 460px 90px 40px;
 				max-width: 420px;
 				margin: auto;
-				background-image:  url("<?php echo $assets ?>/merzbau/header.png"),  url("<?php echo $assets ?>/merzbau/stockimage.png"), url("<?php echo $assets ?>/merzbau/line.png");
+				background-image:  url("<?php echo assets ?>/merzbau/header.png"),  url("<?php echo assets ?>/merzbau/stockimage.png"), url("<?php echo assets ?>/merzbau/line.png");
 				background-repeat: no-repeat, no-repeat, repeat-x;
 				background-position: top center, bottom right, bottom right;
 			}
@@ -31,7 +31,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php';
 			}
 
 			ul {
-				list-style-image: url("<?php echo $assets ?>/merzbau/tick.png");
+				list-style-image: url("<?php echo assets ?>/merzbau/tick.png");
 				font-size: 18px;
 			}
 

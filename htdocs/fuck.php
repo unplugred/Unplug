@@ -8,7 +8,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: block;
 				width: 400px;
 				height: 487px;
-				background-image: url("<?php echo $assets ?>/fuck.gif");
+				background-image: url("<?php echo assets ?>/fuck.gif");
 			}
 
 			#linktonextpage {

@@ -12,7 +12,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
             .mainimage {
                 width: 528px;
                 height: 395px;
-                background-image: url("<?php echo $assets ?>/unplug/unplug.png");
+                background-image: url("<?php echo assets ?>/unplug/unplug.png");
                 margin-top: calc(50vh - 197px);
                 margin-left: calc(50vw - 264px);
             }
@@ -29,15 +29,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
                 width: 16px;
                 height: 14px;
                 position: absolute;
-                background-image: url("<?php echo $assets ?>/unplug/close.png");
+                background-image: url("<?php echo assets ?>/unplug/close.png");
             }
 
             .close:active{
-                background-image: url("<?php echo $assets ?>/unplug/closed.png");
+                background-image: url("<?php echo assets ?>/unplug/closed.png");
             }
 
             .mobile-thing {
-                background-image: url("<?php echo $assets ?>/unplug/best-on-a-computer.png");
+                background-image: url("<?php echo assets ?>/unplug/best-on-a-computer.png");
                 background-repeat: no-repeat;
                 background-size: contain;
                 width: 100vw;
@@ -54,7 +54,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
                 display: inline-grid;
                 width: 26vw;
                 max-width: 26vh;
-                background-image: url("<?php echo $assets ?>/unplug/anyway-on.png");
+                background-image: url("<?php echo assets ?>/unplug/anyway-on.png");
                 background-size: contain;
                 background-repeat: no-repeat;
             }
@@ -87,14 +87,14 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
             }
         </style>
 
-        <link rel="prefetch" href="<?php echo $assets ?>/unplug/close.png" />
+        <link rel="prefetch" href="<?php echo assets ?>/unplug/close.png" />
     </head>
     <body>
         <div class="mobile-wrapper" id="mobile">
             <div class="mobile-wrapper-two-point-o">
                 <div class="mobile-thing">
                     <a class="anyway-wrap" href="javascript:void(0)" onclick="Switch()">
-                        <img class="anyway" src="<?php echo $assets ?>/unplug/anyway.png"/>
+                        <img class="anyway" src="<?php echo assets ?>/unplug/anyway.png"/>
                     </a>
                 </div>
             </div>

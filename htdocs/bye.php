@@ -29,8 +29,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<img id="bg" src="<?php echo $assets ?>/bye/fakery.png" style="display: none;"></div>
-		<img id="bye" src="<?php echo $assets ?>/bye/bye.png" style="display: none;"></div>
+		<img id="bg" src="<?php echo assets ?>/bye/fakery.png" style="display: none;"></div>
+		<img id="bye" src="<?php echo assets ?>/bye/bye.png" style="display: none;"></div>
 		<canvas id="canva"></canvas>
 		<div id="fade" style="display: none;"></div>
 		<script>

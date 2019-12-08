@@ -1,4 +1,4 @@
-<?php $assets = "https://assets.unplug.red" ?>
+<?php assets = "https://assets.unplug.red" ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -6,9 +6,9 @@
 		<title>Welcome</title>
 
 		<meta name="theme-color" content="#FF0000">
-		<link rel="icon" type="image/png" href="<?php echo $assets ?>/shortcut-icon.png">
-		<link rel="shortcut icon" href="<?php echo $assets ?>/shortcut-icon.png">
-		<link rel="apple-touch-icon-precomposed" href="<?php echo $assets ?>/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="<?php echo assets ?>/shortcut-icon.png">
+		<link rel="shortcut icon" href="<?php echo assets ?>/shortcut-icon.png">
+		<link rel="apple-touch-icon-precomposed" href="<?php echo assets ?>/apple-touch-icon.png">
 
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 		<meta property="og:site_name" content="red">
@@ -22,7 +22,7 @@
 		<meta property="og:description" content="unplug your mind for best experience.">
 		<meta name="twitter:description" content="unplug your mind for best experience.">
 		<meta name="description" content="unplug your mind for best experience.">
-		<meta property="og:image" content="<?php echo $ogimage = $assets."/objects/c".rand(0, 6).".gif" ?>">
+		<meta property="og:image" content="<?php echo $ogimage = assets."/objects/c".rand(0, 6).".gif" ?>">
 		<meta name="twitter:image" content="<?php echo $ogimage ?>">
 
 		<style>

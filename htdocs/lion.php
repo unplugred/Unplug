@@ -7,7 +7,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 300px;
 				height: 300px;
 				margin: calc(50vh - 150px) calc(50vw - 150px);
-				background-image: url("<?php echo $assets ?>/lion.png");
+				background-image: url("<?php echo assets ?>/lion.png");
 				background-size: cover;
 				background-position: top right;
 			}
