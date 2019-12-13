@@ -20,11 +20,9 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			#text {
-				position: absolute;
-				height: 100vh;
-				margin-top: calc(50vh - 17vw);
-				width: 100vw;
+				margin: calc(50vh - 17vw) auto;
 				color: #fffcf3;
+				display: inline-block;
 			}
 
 			#scanlines {
@@ -35,6 +33,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				left: 0;
 				background-image: url("<?php echo assets ?>/scanlines.png");
 				opacity: 0.4;
+				pointer-events: none;
 			}
 
 			@media screen and (orientation:landscape) {
@@ -50,7 +49,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div id="bg"></div>
-		<p id="text">180422</p>
+		<a href="/waterweek" id="text">180422</a>
 		<div id="scanlines"></div>
 		<script>
 			var starting = new Date(2019, 7, 18, 7, 30, 0, 0);
