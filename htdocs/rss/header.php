@@ -1,5 +1,5 @@
 <?php if (!defined('PLX_ROOT')) exit; ?>
-<?php assets = "https://assets.unplug.red" ?>
+<?php define("assets", "https://assets.unplug.red"); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
