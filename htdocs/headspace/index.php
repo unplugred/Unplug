@@ -54,7 +54,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div id="gameContainer"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>
-		<script src="<?php echo assets ?>/UnityProgress.js"></script>
 		<script src="<?php echo assets ?>/UnityLoader.js"></script>
 		<script>
 			var button = document.getElementById("play");
@@ -78,6 +77,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				clearInterval(interval);
 			};
 
+			function UnityProgress(unityInstance, progress){}
 			function play()
 			{
 				button.style.display = "none";
