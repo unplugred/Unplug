@@ -124,9 +124,15 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			.thirdimage {
 				width: 126px;
 				height: 145px;
-				background-image: url("<?php echo assets ?>/unplug/aboutright.png");
-				background-position: right;
-				background-repeat: repeat-y;
+				background:
+url("<?php echo assets ?>/unplug/abouttopright.png") top right no-repeat,
+url("<?php echo assets ?>/unplug/abouttopleft.png") top left no-repeat,
+url("<?php echo assets ?>/unplug/abouttop.png") top left repeat-x,
+url("<?php echo assets ?>/unplug/aboutbottomright.png") bottom right no-repeat,
+url("<?php echo assets ?>/unplug/aboutbottomleft.png") bottom left no-repeat,
+url("<?php echo assets ?>/unplug/aboutbottom.png") bottom left repeat-x,
+url("<?php echo assets ?>/unplug/aboutleft.png") top left repeat-y,
+url("<?php echo assets ?>/unplug/aboutright.png") top right repeat-y;
 				background-color: #4B7071;
 				background-size: initial;
 				margin-left: calc(30vw - 240px);
@@ -293,24 +299,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				margin-left: calc(43vw - 191px);
 			}
 
-			.aboutwin {
-				position: absolute;
-				width: 4px;
-				height: 100%;
-			}
-
-			.aboutslider {
-				width: 100%;
-			}
-
-			#abouttopleft {background-image: url("<?php echo assets ?>/unplug/abouttopleft.png");width: 415px;}
-			#abouttop {background-image: url("<?php echo assets ?>/unplug/abouttop.png");height: 23px;}
-			#abouttopright {background-image: url("<?php echo assets ?>/unplug/abouttopright.png");right: 0;}
-			#aboutleft {background-image: url("<?php echo assets ?>/unplug/aboutleft.png");}
-			#aboutbottomleft {background-image: url("<?php echo assets ?>/unplug/aboutbottomleft.png");}
-			#aboutbottom {background-image: url("<?php echo assets ?>/unplug/aboutbottom.png");bottom: 0;height: 4px;}
-			#aboutbottomright {background-image: url("<?php echo assets ?>/unplug/aboutbottomright.png");right: 0;}
-
 			#aboutcontent {
 				top: 50%;
 				left: 50%;
@@ -369,11 +357,6 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			</div>
 
 			<div class="thirdimage window" id="hhh" title="me_irl" style="left: 0.0px; top: 0.0px;">
-				<div class="aboutwin" id="aboutleft"></div>
-				<div class="aboutwin aboutslider" id="abouttop">
-					<div class="aboutwin" id="abouttopleft"></div>
-					<div class="aboutwin" id="abouttopright"></div>
-				</div>
 				<div id="aboutclip">
 					<div id="aboutcontent">
 						<a id="rotato-cubo" href="javascript:void(0)"></a>
@@ -388,10 +371,6 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 							<div class="separator"></div>
 						</div>
 					</div>
-				</div>
-				<div class="aboutwin aboutslider" id="aboutbottom">
-					<div class="aboutwin" id="aboutbottomleft"></div>
-					<div class="aboutwin" id="aboutbottomright"></div>
 				</div>
 				<a class="close" href="javascript:void(0)"></a>
 			</div>
