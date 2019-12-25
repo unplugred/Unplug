@@ -97,8 +97,8 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				var bg = obj.find(".bg")[0];
 				var ob = obj.find(".object")[0];
 
-				var bgn = Math.floor(Math.random()*9);
-				var obn = Math.floor(Math.random()*9);
+				var bgn = Math.floor(Math.random()*10);
+				var obn = Math.floor(Math.random()*10);
 				var color = Math.floor(Math.random()*3);
 
 				if(bgn == 0)
