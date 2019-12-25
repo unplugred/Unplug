@@ -493,4 +493,16 @@
 <priority>0.20</priority>
 </url>
 
+<url>
+<loc>https://unplug.red/8ball</loc>
+<lastmod>2019-12-25T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
+<url>
+<loc>https://unplug.red/vanilli</loc>
+<lastmod>2019-12-25T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
 </urlset>
