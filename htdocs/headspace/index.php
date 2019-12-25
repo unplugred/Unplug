@@ -25,7 +25,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.loading {
-				background-image: url("bg.png") !important;
+				background-image: url("<?php echo assets ?>/headspace/bg.png") !important;
 			}
 
 			body {

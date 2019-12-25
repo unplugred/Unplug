@@ -24,16 +24,16 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				image-rendering: -moz-crisp-edges;
 				image-rendering: crisp-edges;
 				image-rendering: pixelated;
-				background-image: url("play.png");
+				background-image: url("<?php echo assets ?>/hyperaction/play.png");
 				background-color: white;
 			}
 
 			.transition {
-				background-image: url("transition.gif"), url("play.png") !important;
+				background-image: url("<?php echo assets ?>/hyperaction/transition.gif"), url("<?php echo assets ?>/hyperaction/play.png") !important;
 			}
 
 			.loading {
-				background-image: url("loading.gif"), url("transition.gif") !important;
+				background-image: url("<?php echo assets ?>/hyperaction/loading.gif"), url("<?php echo assets ?>/hyperaction/transition.gif") !important;
 			}
 
 			body {
@@ -54,11 +54,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 64px;
 			}
 		</style>
-		<link rel="prefetch" href="transition.gif" />
-		<link rel="prefetch" href="loading.gif" />
+		<link rel="prefetch" href="<?php echo assets ?>/hyperaction/transition.gif" />
+		<link rel="prefetch" href="<?php echo assets ?>/hyperaction/loading.gif" />
 	</head>
 	<body>
-		<div id="gameContainer" style="background-image: url('play.png')"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>
+		<div id="gameContainer" style="background-image: url('<?php echo assets ?>/hyperaction/play.png')"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>
 		<script src="<?php echo assets ?>/UnityLoader.js"></script>
 		<script>
 			function UnityProgress(unityInstance, progress){}
