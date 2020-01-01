@@ -459,7 +459,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 					setTimeout(setname, 500);
 					function setname()
 					{
-						document.getElementById("namething").innerHTML = Math.random() > .2 ? "ari" : "8708198";
+						document.getElementById("namething").innerHTML = Math.random() > .2 ? "red" : "8708198";
 					}
 
 					$("#hhh").draggable("disable");
