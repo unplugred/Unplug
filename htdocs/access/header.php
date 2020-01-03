@@ -29,4 +29,4 @@
 
 		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="https://rss.unplug.red/" />
 
-<?php if(!isset($css)) echo "		<link rel=StyleSheet href=\"".assets."/unplug.css?v=2\" type=\"text/css\" media=screen>\n\n"?>
+<?php if(!isset($css)) echo "		<link rel=StyleSheet href=\"".assets."/unplug.css?v=3\" type=\"text/css\" media=screen>\n\n"?>
