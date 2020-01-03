@@ -80,6 +80,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				position: relative;
 			}
 
+			::-webkit-scrollbar-thumb {
+				border: 3px #1f1f1f solid;
+			}
+
 			@media only all and (max-width: 940px) {
 				body {
 					flex-direction: column-reverse;
