@@ -220,8 +220,9 @@ url("<?php echo assets ?>/unplug/aboutright.png") top right repeat-y;
 				background-position: center;
 				display: inline-block;
 				position: absolute;
-				top: -50px;
-				left: -50px;
+				top: -60px;
+				left: -60px;
+				border: 10px solid transparent;
 			}
 
 			#bio{
@@ -274,9 +275,11 @@ url("<?php echo assets ?>/unplug/aboutright.png") top right repeat-y;
 			.object {
 				position: absolute;
 				display: block;
-				margin: 32px 13px 13px 13px;
+				margin: 22px 3px 3px 3px;
 				width: 100px;
 				height: 100px;
+				border: 10px solid transparent;
+				background-repeat: no-repeat;
 			}
 
 			.art .object {
