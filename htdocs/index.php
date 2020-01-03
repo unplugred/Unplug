@@ -517,7 +517,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 				ctx.putImageData(imageData, 0, 0);
 			}
 		</script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r78/three.min.js"></script>
 		<script type="text/javascript">
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera(22.619865, 233 / 180, 0.1, 1000);

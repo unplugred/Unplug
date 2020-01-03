@@ -46,7 +46,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	<body>
 		<a href="javascript:void(0)" onclick="clickk()" id="text">daddy</a>
 		<!-- ALEXA PLAY DORIAN ELECTRA -->
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r70/three.min.js"></script>
 		<script id="vert" type="x-shader/x-vertex">varying vec2 fragCoord;void main(){gl_Position=projectionMatrix*(modelViewMatrix*vec4(position,1));fragCoord=position.xy;}</script>
 		<script id="frag" type="x-shader/x-fragment">
 			uniform float iGlobalTime;
@@ -104,7 +104,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				vertexShader: document.getElementById('vert').textContent,
 				fragmentShader: document.getElementById('frag').textContent
 			});
-			var plane = new THREE.Mesh(new THREE.PlaneGeometry(2, 2, 1, 1), material);
+			var plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(2, 2), material);
 			scene.add(plane);
 
 			startTime = Date.now();
