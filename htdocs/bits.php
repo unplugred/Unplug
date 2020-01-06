@@ -21,11 +21,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 16px;
 				height: 14px;
 				position: absolute;
-				background-image: url("<?php echo assets ?>/unplug/close.png");
+				background-image: url("<?php echo assets ?>/window/close.png");
 			}
 
 			.close:active {
-				background-image: url("<?php echo assets ?>/unplug/closed.png");
+				background-image: url("<?php echo assets ?>/window/closed.png");
 			}
 
 			.bg {
@@ -50,6 +50,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: none;
 			}
 		</style>
+		<link rel="prefetch" href="<?php echo assets ?>/window/closed.png" />
 	</head>
 	<body id="body">
 		<div class="window" style="">
