@@ -90,7 +90,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<a href="javascript:void(0)" onclick="clickleft()" class="icon file" id="iconleft"></a>
-		<a href="/joke" onclick="clickright()" class="icon folder empty" id="iconright"></a>
+		<a href="javascript:void(0)" onclick="clickright()" class="icon folder empty" id="iconright" style="pointer-events: none;"></a>
 		<div id="paper" style="display: none"></div>
 		<div id="fade" style="display: none"></div>
 		<script>
@@ -147,7 +147,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 						left.classList.remove("empty");
 						document.body.classList.remove("cursorthing");
 						paper.style.display = "none";
-						replace(right, "icon trash empty", "/blob");
+						replace(right, "icon trash empty", false);
 					}, mobile ? 500 : 0);
 					desiredpos = [-12,-112];
 				}
@@ -158,7 +158,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 					if(!mobile) document.body.classList.add("cursorthing");
 					paper.style.display = "block";
 					isleft = false;
-					right.href = "javascript:void(0)";
+					right.style.pointerEvents = null;
 					desiredpos = [-50,0];
 				}
 			}
@@ -178,11 +178,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 						right.classList.remove("empty");
 						document.body.classList.remove("cursorthing");
 						paper.style.display = "none";
-						if(stage == 1) replace(left, "icon folder empty", "/santa");
+						if(stage == 1) replace(left, "icon folder empty", false);
 						else
 						{
-							replace(right, "icon trash", "/h");
-							replace(left, "icon off", "javascript:void(0)");
+							replace(right, "icon trash", false);
+							replace(left, "icon off", true);
 						}
 					}, mobile ? 500 : 0);
 					desiredpos = [-12,88];
@@ -194,7 +194,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 					if(!mobile) document.body.classList.add("cursorthing");
 					paper.style.display = "block";
 					isleft = true;
-					left.href = "javascript:void(0)";
+					left.style.pointerEvents = null;
 					desiredpos = [-50,0];
 				}
 			}
@@ -203,7 +203,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			{
 				setTimeout(function(){
 					div.className = classs;
-					div.href = href;
+					if(!href) div.style.pointerEvents = "none";
 				}, 250);
 			}
 		</script>
