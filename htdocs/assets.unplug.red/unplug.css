@@ -20,15 +20,15 @@ a *{
 	background: #999999fe;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
 	width: 12px;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
 	background-color: transparent;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
 	background-color: #999;
 	border: 3px black solid;
 	border-radius: 6px;

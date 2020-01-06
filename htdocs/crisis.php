@@ -19,7 +19,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<div id="mainimage" title="bye lol"></div>
+		<a href="/vanilli" id="mainimage" title="bye lol"></a>
 		<img id="txt" src="<?php echo assets ?>/crisis/existential.gif"/>
 		<script>
 			var txt = document.getElementById("txt");

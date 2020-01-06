@@ -27,7 +27,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.loading {
-				background-image: url("loading.gif") !important;
+				background-image: url("<?php echo assets ?>/planet/loading.gif") !important;
 			}
 
 			body {
@@ -52,13 +52,13 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 60px;
 			}
 		</style>
-		<link rel="prefetch" href="loading.gif" />
+		<link rel="prefetch" href="<?php echo assets ?>/planet/loading.gif" />
 	</head>
 	<body>
 		<div id="gameContainer"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>
 		<script src="<?php echo assets ?>/UnityLoader.js"></script>
 		<script>
-			document.getElementById("play").style.backgroundImage = "url(\"start.gif?" + Math.random() + "\")";
+			document.getElementById("play").style.backgroundImage = "url(\"<?php echo assets ?>/planet/start.gif?" + Math.random() + "\")";
 
 			function UnityProgress(unityInstance, progress){}
 			function play()

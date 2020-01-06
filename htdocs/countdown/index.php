@@ -20,7 +20,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 50px;
 				display: none;
 				margin: calc(50vh - 25px) calc(50vw - 25px);
-				background-image: url("countdown.gif");
+				background-image: url("<?php echo assets ?>/countdown/0.gif");
 			}
 
 			#timer {

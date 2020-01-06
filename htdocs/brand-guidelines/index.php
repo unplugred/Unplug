@@ -279,9 +279,9 @@ other colors should be used tastefully.
 			<h2>font</h2>
 			<p>
 the font used on pages and elements that use the brand logo and palette should use the Quicksand font.<br/>
-<a href="https://fonts.google.com/specimen/Quicksand">the font is available to download at Google Fonts and can be freely used for commercial purposes.</a><br/>
+<a href="https://fonts.google.com/specimen/Quicksand">the font is available to download at Google Fonts and can be freely used for personal and commercial purposes.</a><br/>
 use medium weight (500) for most text and <b>bold (700) for highlights/titles that demand it.</b><br/>
-other weights can be explored with caution on unusual layouts.
+other weights can be explored with caution on more unusual layouts, though keep page loading speed in mind when working for web.
 			</p>
 			<p style="font-family: 'Trebuchet MS', 'Helvetica Neue', HelveticaNeue, Arial, sans-serif">
 when unable to use custom downloaded fonts,<br/>
