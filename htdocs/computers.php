@@ -37,7 +37,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		<link rel="prefetch" href="<?php echo assets ?>/trash/file.png" />
 	</head>
 	<body>
-		<a href="/trash" title="trash" class="icon computer on"></a>
+		<a href="/ppl" title="ppl" class="icon computer on"></a>
 		<a href="/mail" title="mail" class="icon computer on"></a>
 		<a href="/bits" title="bits" class="icon computer on"></a>
 		<a href="/disconnected" title="DISCONNECTED" class="icon computer"></a>
