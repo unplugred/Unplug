@@ -32,7 +32,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				background-image: url("play.png"), url("bg.png");
+				background-image: url("<?php echo assets ?>/useless-flower/play.png"), url("<?php echo assets ?>/useless-flower/bg.png");
 				background-repeat: no-repeat, repeat;
 				background-position: center center, left top;
 			}
@@ -43,12 +43,12 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			.loading {
-				background-image: url("loading.gif"), url("play.png"), url("bg.png") !important;
+				background-image: url("<?php echo assets ?>/useless-flower/loading.gif"), url("<?php echo assets ?>/useless-flower/play.png"), url("<?php echo assets ?>/useless-flower/bg.png") !important;
 				background-repeat: no-repeat, no-repeat, repeat !important;
 				background-position: center center, center center, left top !important;
 			}
 		</style>
-		<link rel="prefetch" href="loading.gif" />
+		<link rel="prefetch" href="<?php echo assets ?>/useless-flower/loading.gif" />
 	</head>
 	<body>
 		<div id="gameContainer"><a id="play" href="javascript:void(0)" onclick="play()"></a></div>

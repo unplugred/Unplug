@@ -23,7 +23,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			#loading {
-				background-image: url("loading.png");
+				background-image: url("<?php echo assets ?>/waterweek/loading.png");
 				animation-name: loadd;
 				animation-duration: 1s;
 				animation-direction: alternate;
@@ -57,7 +57,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 			}
 
 			#play {
-				background-image: url("start.png") !important;
+				background-image: url("<?php echo assets ?>/waterweek/start.png") !important;
 				width: 118px;
 				height: 42px;
 			}
