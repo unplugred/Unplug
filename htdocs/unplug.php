@@ -29,11 +29,11 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
                 width: 16px;
                 height: 14px;
                 position: absolute;
-                background-image: url("<?php echo assets ?>/unplug/close.png");
+                background-image: url("<?php echo assets ?>/window/close.png");
             }
 
             .close:active{
-                background-image: url("<?php echo assets ?>/unplug/closed.png");
+                background-image: url("<?php echo assets ?>/window/closed.png");
             }
 
             .mobile-thing {
@@ -87,7 +87,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
             }
         </style>
 
-        <link rel="prefetch" href="<?php echo assets ?>/unplug/close.png" />
+        <link rel="prefetch" href="<?php echo assets ?>/window/close.png" />
     </head>
     <body>
         <div class="mobile-wrapper" id="mobile">

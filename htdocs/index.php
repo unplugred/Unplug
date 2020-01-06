@@ -125,14 +125,14 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				width: 126px;
 				height: 145px;
 				background:
-url("<?php echo assets ?>/unplug/abouttopright.png") top right no-repeat,
-url("<?php echo assets ?>/unplug/abouttopleft.png") top left no-repeat,
-url("<?php echo assets ?>/unplug/abouttop.png") top left repeat-x,
-url("<?php echo assets ?>/unplug/aboutbottomright.png") bottom right no-repeat,
-url("<?php echo assets ?>/unplug/aboutbottomleft.png") bottom left no-repeat,
-url("<?php echo assets ?>/unplug/aboutbottom.png") bottom left repeat-x,
-url("<?php echo assets ?>/unplug/aboutleft.png") top left repeat-y,
-url("<?php echo assets ?>/unplug/aboutright.png") top right repeat-y;
+url("<?php echo assets ?>/window/wintoprightbar.png") top right no-repeat,
+url("<?php echo assets ?>/unplug/about.png") top left repeat-x,
+url("<?php echo assets ?>/window/wintopbar.png") top left repeat-x,
+url("<?php echo assets ?>/window/winbottomright.png") bottom right no-repeat,
+url("<?php echo assets ?>/window/winbottomleft.png") bottom left no-repeat,
+url("<?php echo assets ?>/window/winbottom.png") bottom left repeat-x,
+url("<?php echo assets ?>/window/winleft.png") top left repeat-y,
+url("<?php echo assets ?>/window/winright.png") top right repeat-y;
 				background-color: #4B7071;
 				background-size: initial;
 				margin-left: calc(30vw - 240px);
@@ -150,15 +150,16 @@ url("<?php echo assets ?>/unplug/aboutright.png") top right repeat-y;
 			}
 
 			.close{
-				margin: 5px 5px 0 calc(100% - 21px);
 				width: 16px;
 				height: 14px;
 				position: absolute;
-				background-image: url("<?php echo assets ?>/unplug/close.png");
+				background-image: url("<?php echo assets ?>/window/close.png");
+				top: 5px;
+				right: 5px;
 			}
 
 			.close:active{
-				background-image: url("<?php echo assets ?>/unplug/closed.png");
+				background-image: url("<?php echo assets ?>/window/closed.png");
 			}
 
 			.mobile-thing {
@@ -318,6 +319,7 @@ url("<?php echo assets ?>/unplug/aboutright.png") top right repeat-y;
 				overflow: hidden;
 			}
 		</style>
+		<link rel="prefetch" href="<?php echo assets ?>/window/closed.png" />
 		<link rel="StyleSheet" id="quicksand" type="text/css" href="">
 	</head>
 	<body>
