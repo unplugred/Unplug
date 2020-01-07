@@ -30,7 +30,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<canvas id="canva"></canvas>
-		<a class="mainimage" href="/tsop1736">
+		<a class="mainimage" href="/tinder">
 			i dont even know.
 		</a>
 		<script>
