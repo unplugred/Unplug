@@ -58,7 +58,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a href="/paper" id="mainimage" title="paper">
+		<a id="mainimage" title="inception" href="/inception">
 			lol, thats so meta
 		</a>
 		<script>

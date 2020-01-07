@@ -24,17 +24,23 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				top: 0;
 			}
 
-			#linkone
-			{
+			#linkone {
 				display: block;
 				width: 194px;
 				height: 17px;
-				margin: 108px auto;
+				margin: 108px auto 0 auto;
+			}
+
+			#linktwo {
+				display: block;
+				margin: 33px auto 0 auto;
+				width: 89px;
+				height: 123px;
 			}
 		</style>
 	</head>
 	<body>
-		<div id="img"><a href="/planet/" title="planet" id="linkone"></a></div>
+		<div id="img"><a href="/planet/" title="planet" id="linkone"></a><a href="/seconds" title="seconds" id="linktwo"></a></div>
 		<div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div><div class="numerica"></div>
 		<script>
 			var numerica = document.getElementsByClassName("numerica");
