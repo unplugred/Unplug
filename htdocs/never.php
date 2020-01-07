@@ -18,5 +18,5 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 		</style>
 	</head>
 	<body>
-		<a class="mainimage" title="inception" href="/inception"></a>
+		<a class="mainimage" title="paper" href="/paper"></a>
 <?php include $_SERVER['DOCUMENT_ROOT'].'/access/footer.php'; ?>
