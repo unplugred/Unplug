@@ -32,6 +32,20 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				animation: anim .9s linear infinite;
 			}
 
+			#seizure {
+				background-image: url("<?php echo assets ?>/seizure-warning-dark.png");
+				position: fixed;
+				width: 258px;
+				height: 35px;
+				right: 20px;
+				bottom: 20px;
+				z-index: 10;
+			}
+
+			.dark {
+				background-image: url("<?php echo assets ?>/seizure-warning.png") !important;
+			}
+
 			@keyframes anim{
 				0%  { color: #FF0000; }
 				17% { color: #FFFF00; }
@@ -42,8 +56,10 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				100%{ color: #FF0000; }
 			}
 		</style>
+		<link rel="prefetch" href="<?php echo assets ?>/seizure-warning.png" />
 	</head>
 	<body>
+		<div id="seizure"></div>
 		<a href="javascript:void(0)" onclick="clickk()" id="text">daddy</a>
 		<!-- ALEXA PLAY DORIAN ELECTRA -->
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r70/three.min.js"></script>
@@ -129,14 +145,17 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 
 
 			var text = document.getElementById("text");
+			var seizure = document.getElementById("seizure");
 			var disco = false;
 			function clickk() {
 				disco = !disco;
 				if(disco) {
 					text.classList.add("disco");
+					seizure.classList.add("dark");
 					renderer.domElement.classList.add("hide");
 				} else {
 					text.classList.remove("disco");
+					seizure.classList.remove("dark");
 					renderer.domElement.classList.remove("hide");
 				}
 			}
