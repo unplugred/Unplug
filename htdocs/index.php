@@ -403,7 +403,8 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 				<a class="close" href="javascript:void(0)"></a>
 			</div>
 
-			<div id="copyrightstuff">© May2018-2020 | <a href="https://rss.unplug.red/">RSS</a> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>
+			<?php include $_SERVER['DOCUMENT_ROOT'].'/access/bottomrow.php'; ?>
+
 		</div>
 		<script type="text/javascript">
 			var isdesktop = -1;
