@@ -22,7 +22,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 	</head>
 	<body>
 		<div class="mainimage">
-			<a href="<?php echo assets ?>/im-alone-in-class-again.mp3"><img class="mainimagelink" src="<?php echo assets ?>/bars.jpg" title="an oddly bent tree"/></a>
+			<a href="/im-alone-in-class-again-mp3"><img class="mainimagelink" src="<?php echo assets ?>/bars.jpg" title="an oddly bent tree"/></a>
 			<br/>
 			bars
 		</div>
