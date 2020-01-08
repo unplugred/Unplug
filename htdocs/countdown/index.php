@@ -38,9 +38,20 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 					margin-top: 33vh;
 				}
 			}
+
+			#seizure {
+				background-image: url("<?php echo assets ?>/seizure-warning.png");
+				position: fixed;
+				width: 258px;
+				height: 35px;
+				right: 20px;
+				bottom: 20px;
+				z-index: 10;
+			}
 		</style>
 	</head>
 	<body>
+		<div id="seizure"></div>
 		<p id="timer">08:00</p>
 		<a href="countdown/" id="final-form"></a>
 		<script>
