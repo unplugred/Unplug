@@ -126,7 +126,7 @@ include $_SERVER['DOCUMENT_ROOT'].'/access/header.php'; ?>
 				height: 145px;
 				background:
 url("<?php echo assets ?>/window/wintoprightbar.png") top right no-repeat,
-url("<?php echo assets ?>/unplug/about.png") top left repeat-x,
+url("<?php echo assets ?>/unplug/about.png") top left no-repeat,
 url("<?php echo assets ?>/window/wintopbar.png") top left repeat-x,
 url("<?php echo assets ?>/window/winbottomright.png") bottom right no-repeat,
 url("<?php echo assets ?>/window/winbottomleft.png") bottom left no-repeat,
