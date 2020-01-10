@@ -61,6 +61,7 @@ app.get('*', function(req, res, next){
 app.use(express.static('static', {
 	index: false,
 	redirect: false
+	maxAge: 2592000000
 }));
 
 //////////////SPECIFIC SHIT GOES HERE/////////////
