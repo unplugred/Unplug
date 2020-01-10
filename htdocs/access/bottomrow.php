@@ -1,1 +1,0 @@
-<div id="copyrightstuff">© May2018-2020, v0.90 | <a href="https://rss.unplug.red/">RSS</a> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>

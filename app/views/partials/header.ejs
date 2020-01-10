@@ -1,0 +1,33 @@
+<%
+if(typeof ogimage == 'undefined') var ogimage = assets + "/objects/c" + (Math.floor(Math.random()*10)) + ".gif";
+if(typeof description == 'undefined') var description = "unplug your mind for best experience.";
+if(typeof icontype == 'undefined') var icontype = "png";
+if(typeof icon == 'undefined') var icon = assets + "/shortcut-icon.png";
+if(typeof color == 'undefined') var color = "#000000";
+if(typeof card == 'undefined') var card = "summary";
+%><!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title><%= title %></title>
+		<meta name="theme-color" content="<%= color %>">
+		<link rel="icon" type="image/<%= icontype %>" href="<%= icon %>">
+		<link rel="shortcut icon" href="<%= icon %>">
+		<link rel="apple-touch-icon-precomposed" href="<%= assets %>/apple-touch-icon.png">
+		<meta name="dcterms.rightsHolder" content="Ari Hanan">
+		<meta property="og:site_name" content="red">
+		<meta name="twitter:site" content="red">
+		<meta property="og:url" content="https://<%= host %>/">
+		<meta name="twitter:url" content="https://<%= host %>/">
+		<meta property="og:type" content="article">
+		<meta name="twitter:card" content="<%= card %>">
+		<meta property="og:title" content="<%= title %>">
+		<meta name="twitter:title" content="<%= title %>">
+		<meta property="og:description" content="<%= description %>">
+		<meta name="twitter:description" content="<%= description %>">
+		<meta name="description" content="<%= description %>">
+		<meta property="og:image" content="<%= ogimage %>">
+		<meta name="twitter:image" content="<%= ogimage %>">
+		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="https://rss.unplug.red/" />
+<% if(typeof css == 'undefined') { %>		<link rel=StyleSheet href="<%= assets %>/unplug.css?v=3" type="text/css" media=screen>
+<% } %>
