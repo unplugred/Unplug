@@ -57,13 +57,6 @@ app.get('*', function(req, res, next){
 	next();
 });
 
-//assets
-app.use(express.static('static', {
-	index: false,
-	redirect: false
-	maxAge: 2592000000
-}));
-
 //////////////SPECIFIC SHIT GOES HERE/////////////
 
 //index
@@ -71,7 +64,12 @@ app.get('/', function(req, res) {
 	res.render('pages/index',{assets:assets,host:req.headers.host,version:version})
 });
 
-//index
+//important.txt
+app.get('/important.txt', function(req, res) {
+	res.download('static/important.txt')
+});
+
+//dreambuster hall of fame
 app.get('/dreambuster/halloffame', function(req, res) {
 	fs.readdir('./static/dreambuster/hof', (err, files) => {
 		res.render('pages/dreambuster/halloffame',{assets:assets,host:req.headers.host,version:version,files:files})
@@ -79,6 +77,13 @@ app.get('/dreambuster/halloffame', function(req, res) {
 });
 
 //////////////SPECIFIC SHIT ENDS HERE/////////////
+
+//assets
+app.use(express.static('static', {
+	index: false,
+	redirect: false,
+	maxAge: 2592000000
+}));
 
 //pages
 app.get('*', function(req, res) {
