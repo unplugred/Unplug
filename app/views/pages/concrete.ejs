@@ -1,0 +1,66 @@
+<%- include('../partials/header',{title:"Concrete",description:"Coming soon on a virtual environment.",color:"#822D1D",card:"summary_large_image",ogimage:assets + "/concrete/opengraph.png",css:false}) %>
+		<style>
+			::selection {
+				background: transparent;
+			}
+
+			::-moz-selection {
+				background: transparent;
+			}
+
+			body::-webkit-scrollbar {
+				width: 6px;
+			}
+
+			body::-webkit-scrollbar-track {
+				background-color: #36130c;
+			}
+
+			body::-webkit-scrollbar-thumb {
+				background-color: #ccc;
+			}
+
+			body{
+				background-image: url("<%= assets %>/concrete/bg.png");
+				overflow-y: visible;
+				overflow-x: hidden;
+				margin: 0;
+				background-attachment: fixed;
+				background-color: #822D1D;
+			}
+
+			#logo{
+				width: 432px;
+				height: 432px;
+				max-width: 90vw;
+				max-height: 90vw;
+				background-image: url("<%= assets %>/concrete/logo.png");
+				margin: 34px auto;
+				background-repeat: no-repeat;
+			}
+
+			.imge{
+				width: 100vw;
+				max-width: 125vh;
+				margin: 25px auto;
+				display: block;
+				-webkit-box-shadow: 0 0 50px 0 black;
+				-moz-box-shadow: 0 0 50px 0 black;
+				box-shadow: 0 0 50px 0 black;
+			}
+
+			#text{
+				margin: 250px auto;
+				max-width: 90vw;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="logo"></div>
+		<img src="<%= assets %>/concrete/1.png" class="imge"></img>
+		<img src="<%= assets %>/concrete/2.png" class="imge"></img>
+		<img src="<%= assets %>/concrete/3.png" class="imge"></img>
+		<img src="<%= assets %>/concrete/5.png" class="imge"></img>
+		<img src="<%= assets %>/concrete/4.png" class="imge"></img>
+<%- include('../partials/footer') %>

@@ -1,0 +1,62 @@
+*{
+	cursor: url("cursors/default.png") 0 0, default;
+}
+
+a{
+	cursor: url("cursors/pointer.png") 6 0, pointer !important;
+}
+
+a *{
+	cursor: url("cursors/pointer.png") 6 0, pointer !important;
+}
+
+::selection {
+	color: #333;
+	background: #999999fe;
+}
+
+::-moz-selection {
+	color: #333;
+	background: #999999fe;
+}
+
+::-webkit-scrollbar {
+	width: 12px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #999;
+	border: 3px black solid;
+	border-radius: 6px;
+	outline: none;
+}
+
+html,body{
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+
+	overflow-y: hidden;
+	overflow-x: hidden;
+}
+
+body{
+	background-color:black;
+	-webkit-font-smoothing: none;
+	-moz-osx-font-smoothing: unset;
+	font-smoothing: unset;
+	font-size: 1.5em;
+	font-family: Courier New, monospace;
+	font-weight: normal;
+	color: #999;
+}
+
+a{
+	color: #aaa;
+	font-weight: bold;
+}
