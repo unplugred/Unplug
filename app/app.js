@@ -72,6 +72,7 @@ app.get('/important.txt', function(req, res) {
 //dreambuster hall of fame
 app.get('/dreambuster/halloffame', function(req, res) {
 	fs.readdir('./static/dreambuster/hof', (err, files) => {
+		res.set('Content-Type', 'text/xml');
 		res.render('pages/dreambuster/halloffame',{assets:assets,host:req.headers.host,version:version,files:files})
 	});
 });
