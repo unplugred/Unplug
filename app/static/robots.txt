@@ -1,14 +1,4 @@
 User-agent: *
-Disallow: /assets/tracking.php
-Disallow: /assets/tracking
-Disallow: /assets/header.php
-Disallow: /assets/header
-Disallow: /assets/footer.php
-Disallow: /assets/footer
-Disallow: /assets/sendcommnet.php
-Disallow: /assets/sendcommnet
-Disallow: /assets/comments.html
-Disallow: /assets/comments
 Disallow: /administrator/
 Disallow: /administrator
 Disallow: /wp-login.php
