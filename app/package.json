@@ -6,9 +6,7 @@
   "scripts": {
     "start": "pm2 start production.js",
     "test": "pm2 start debug.js",
-    "stop": "pm2 stop all",
-    "restart": "pm2 restart all",
-    "status": "pm2 status"
+    "stop": "pm2 stop all"
   },
   "author": "Ari Hanan",
   "license": "MIT",
