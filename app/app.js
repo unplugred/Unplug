@@ -3,8 +3,8 @@ const express = require('express');
 const app = express();
 var version = 0;
 fs.readdir('./views/pages', (err, files) => { version = ((files.length - 3)*.01).toFixed(2); });
-//const assets = "https://assets.unplug.red";
-const assets = "/assets";
+const assets = "https://assets.unplug.red";
+//const assets = "/assets";
 app.set('view engine', 'ejs');
 
 //remove slashes
