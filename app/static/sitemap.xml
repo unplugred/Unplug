@@ -1,7 +1,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
 <url>
-<loc>https://unplug.red/</loc>
+<loc>https://unplug.red</loc>
 <lastmod>2019-09-28T03:53:33+00:00</lastmod>
 <priority>1.00</priority>
 </url>
@@ -16,12 +16,6 @@
 <loc>https://unplug.red/bulb</loc>
 <lastmod>2019-05-13T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
-</url>
-
-<url>
-<loc>https://unplug.red/concrete</loc>
-<lastmod>2019-05-13T03:53:33+00:00</lastmod>
-<priority>0.90</priority>
 </url>
 
 <url>
@@ -103,7 +97,7 @@
 </url>
 
 <url>
-<loc>https://unplug.red/worse-for-the-better/</loc>
+<loc>https://unplug.red/worse-for-the-better</loc>
 <lastmod>2019-08-07T03:53:33+00:00</lastmod>
 <priority>0.80</priority>
 </url>
@@ -169,7 +163,7 @@
 </url>
 
 <url>
-<loc>https://unplug.red/hyperaction/</loc>
+<loc>https://unplug.red/hyperaction</loc>
 <lastmod>2019-08-07T03:53:33+00:00</lastmod>
 <priority>0.80</priority>
 </url>
@@ -181,7 +175,7 @@
 </url>
 
 <url>
-<loc>https://unplug.red/useless-flower/</loc>
+<loc>https://unplug.red/useless-flower</loc>
 <lastmod>2019-08-07T03:53:33+00:00</lastmod>
 <priority>0.80</priority>
 </url>
@@ -289,19 +283,13 @@
 </url>
 
 <url>
-<loc>https://unplug.red/countdown/</loc>
+<loc>https://unplug.red/countdown</loc>
 <lastmod>2019-08-22T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
 </url>
 
 <url>
 <loc>https://unplug.red/sick</loc>
-<lastmod>2019-05-13T03:53:33+00:00</lastmod>
-<priority>0.20</priority>
-</url>
-
-<url>
-<loc>https://unplug.red/experimenting-with-jase</loc>
 <lastmod>2019-05-13T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
 </url>
@@ -340,19 +328,6 @@
 <loc>https://unplug.red/santa</loc>
 <lastmod>2019-05-13T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
-</url>
-
-<url>
-<loc>https://unplug.red/unplug</loc>
-<lastmod>2019-05-13T03:53:33+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-
-
-<url>
-<loc>https://unplug.red/piwik/</loc>
-<lastmod>2019-06-08T03:53:33+00:00</lastmod>
-<priority>0.00</priority>
 </url>
 
 <url>
@@ -458,13 +433,13 @@
 </url>
 
 <url>
-<loc>https://unplug.red/rediger/</loc>
+<loc>https://unplug.red/rediger</loc>
 <lastmod>2019-11-21T03:53:33+00:00</lastmod>
 <priority>0.80</priority>
 </url>
 
 <url>
-<loc>https://unplug.red/waterweek/</loc>
+<loc>https://unplug.red/waterweek</loc>
 <lastmod>2019-12-13T03:53:33+00:00</lastmod>
 <priority>0.80</priority>
 </url>
@@ -476,7 +451,7 @@
 </url>
 
 <url>
-<loc>https://unplug.red/headspace/</loc>
+<loc>https://unplug.red/headspace</loc>
 <lastmod>2019-11-23T03:53:33+00:00</lastmod>
 <priority>0.80</priority>
 </url>
