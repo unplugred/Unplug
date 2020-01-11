@@ -66,7 +66,7 @@ app.get('/', function(req, res) {
 //rss
 app.get('/feed', function(req, res) {
 	res.set('Content-Type', 'text/xml');
-	res.render('pages/index',{assets:GLOBAL.assets,host:req.headers.host,version:version})
+	res.render('pages/feed',{assets:GLOBAL.assets,host:req.headers.host,version:version})
 });
 
 //important.txt
