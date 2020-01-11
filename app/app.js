@@ -38,6 +38,7 @@ app.get('*', function(req, res, next){
 		}
 		else if(req.headers.host == 'rss.unplug.red')
 		{
+			res.set('Content-Type', 'text/xml');
 			res.render('pages/feed',{assets:GLOBAL.assets,host:req.headers.host,version:version});
 			return;
 		}
@@ -47,7 +48,7 @@ app.get('*', function(req, res, next){
 		}
 		else
 		{
-			console.log(req.url);
+			console.log(req.headers.host + req.url);
 			res.render('partials/wildcard',{assets:GLOBAL.assets,host:req.headers.host,version:version});
 			return;
 		}
@@ -62,6 +63,12 @@ app.get('/', function(req, res) {
 	res.render('pages/index',{assets:GLOBAL.assets,host:req.headers.host,version:version})
 });
 
+//rss
+app.get('/feed', function(req, res) {
+	res.set('Content-Type', 'text/xml');
+	res.render('pages/index',{assets:GLOBAL.assets,host:req.headers.host,version:version})
+});
+
 //important.txt
 app.get('/important.txt', function(req, res) {
 	res.download('static/important.txt')
@@ -70,7 +77,6 @@ app.get('/important.txt', function(req, res) {
 //dreambuster hall of fame
 app.get('/dreambuster/halloffame', function(req, res) {
 	fs.readdir('./static/dreambuster/hof', (err, files) => {
-		res.set('Content-Type', 'text/xml');
 		res.render('pages/dreambuster/halloffame',{assets:GLOBAL.assets,host:req.headers.host,version:version,files:files})
 	});
 });
