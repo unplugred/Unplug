@@ -3,8 +3,6 @@ const express = require('express');
 const app = express();
 var version = 0;
 fs.readdir('./views/pages', (err, files) => { version = ((files.length - 3)*.01).toFixed(2); });
-const assets = "https://assets.unplug.red";
-//const assets = "/assets";
 app.set('view engine', 'ejs');
 
 //remove slashes
@@ -32,7 +30,7 @@ app.get('*', function(req, res, next){
 		if(req.headers.host == 'www.unplug.red' || req.headers.host == 'unplug.red')
 		{
 			if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster"))
-				res.render('pages/404',{assets:assets,host:req.headers.host,version:version});
+				res.render('pages/404',{assets:GLOBAL.assets,host:req.headers.host,version:version});
 		}
 		else if(req.headers.host == 'assets.unplug.red')
 		{
@@ -40,7 +38,7 @@ app.get('*', function(req, res, next){
 		}
 		else if(req.headers.host == 'rss.unplug.red')
 		{
-			res.render('pages/feed',{assets:assets,host:req.headers.host,version:version});
+			res.render('pages/feed',{assets:GLOBAL.assets,host:req.headers.host,version:version});
 			return;
 		}
 		else if(req.headers.host == 'dreambuster.unplug.red')
@@ -50,7 +48,7 @@ app.get('*', function(req, res, next){
 		else
 		{
 			console.log(req.url);
-			res.render('partials/wildcard',{assets:assets,host:req.headers.host,version:version});
+			res.render('partials/wildcard',{assets:GLOBAL.assets,host:req.headers.host,version:version});
 			return;
 		}
 	}
@@ -61,7 +59,7 @@ app.get('*', function(req, res, next){
 
 //index
 app.get('/', function(req, res) {
-	res.render('pages/index',{assets:assets,host:req.headers.host,version:version})
+	res.render('pages/index',{assets:GLOBAL.assets,host:req.headers.host,version:version})
 });
 
 //important.txt
@@ -73,7 +71,7 @@ app.get('/important.txt', function(req, res) {
 app.get('/dreambuster/halloffame', function(req, res) {
 	fs.readdir('./static/dreambuster/hof', (err, files) => {
 		res.set('Content-Type', 'text/xml');
-		res.render('pages/dreambuster/halloffame',{assets:assets,host:req.headers.host,version:version,files:files})
+		res.render('pages/dreambuster/halloffame',{assets:GLOBAL.assets,host:req.headers.host,version:version,files:files})
 	});
 });
 
@@ -91,16 +89,16 @@ app.get('*', function(req, res) {
 	const viewdir = app.get('views') + "/pages";
 	if(req.headers.host == 'dreambuster.unplug.red')
 	{
-		res.render('pages/dreambuster/404',{assets:assets,host:req.headers.host,version:version});
+		res.render('pages/dreambuster/404',{assets:GLOBAL.assets,host:req.headers.host,version:version});
 		return;
 	}
 	fs.access(viewdir + req.path + ".ejs", fs.F_OK, (err) => {
 		if (err) {
-			res.render('pages/404',{assets:assets,host:req.headers.host,version:version});
+			res.render('pages/404',{assets:GLOBAL.assets,host:req.headers.host,version:version});
 			return;
 		}
 
-		res.render('pages/' + req.path,{assets:assets,host:req.headers.host,version:version});
+		res.render('pages/' + req.path,{assets:GLOBAL.assets,host:req.headers.host,version:version});
 	});
 });
 

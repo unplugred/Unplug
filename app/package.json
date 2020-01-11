@@ -4,10 +4,11 @@
   "description": "unplug your mind for best experience.",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 start app.js",
-    "stop": "pm2 stop app.js",
-    "restart": "pm2 restart app.js",
-    "status": "pm2 status app.js"
+    "start": "pm2 start production.js",
+    "test": "pm2 start debug.js",
+    "stop": "pm2 stop all",
+    "restart": "pm2 restart all",
+    "status": "pm2 status"
   },
   "author": "Ari Hanan",
   "license": "MIT",
