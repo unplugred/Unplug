@@ -5,15 +5,15 @@
 		<title>Hall of Fame</title>
 
 		<meta name="theme-color" content="#ffffff">
-		<link rel="icon" type="image/png" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/shortcut-icon.png">
-		<link rel="shortcut icon" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/shortcut-icon.png">
-		<link rel="apple-touch-icon-precomposed" href="https://<?php echo $_SERVER['HTTP_HOST'] ?>/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="https://<%= host %>/shortcut-icon.png">
+		<link rel="shortcut icon" href="https://<%= host %>/shortcut-icon.png">
+		<link rel="apple-touch-icon-precomposed" href="https://<%= host %>/apple-touch-icon.png">
 
 		<meta name="dcterms.rightsHolder" content="Dream Buster">
 		<meta property="og:site_name" content="Dream Buster">
 		<meta name="twitter:site" content="Dream Buster">
-		<meta property="og:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
-		<meta name="twitter:url" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>">
+		<meta property="og:url" content="https://<%= host %>/">
+		<meta name="twitter:url" content="https://<%= host %>/">
 		<meta property="og:type" content="article">
 		<meta name="twitter:card" content="summary">
 		<meta property="og:title" content="The Dream Buster Hall of Fame">
@@ -21,8 +21,8 @@
 		<meta property="og:description" content="dumb shit mostly.">
 		<meta name="twitter:description" content="dumb shit mostly.">
 		<meta name="description" content="dumb shit mostly.">
-		<meta property="og:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/ogjerry.png">
-		<meta name="twitter:image" content="https://<?php echo $_SERVER['HTTP_HOST'] ?>/ogjerry.png">
+		<meta property="og:image" content="https://<%= host %>/ogjerry.png">
+		<meta name="twitter:image" content="https://<%= host %>/ogjerry.png">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -92,7 +92,7 @@
 				{  %>
 		<audio src="https://<%= host %>/hof/<%= item %>" controls></audio><%
 				} else { %>
-		<img src="https://<%= host %>/hof/<%= item %>" />;<%
+		<img src="https://<%= host %>/hof/<%= item %>" /><%
 				}}); %>
 	</body>
 </html>
