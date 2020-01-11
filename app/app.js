@@ -11,7 +11,11 @@ app.use((req, res, next) => {
 	if (req.url.substr(-1) === '/' && req.url.length > 1 && !test)
 		res.redirect(301, req.url.slice(0, -1));
 	else
+	{
+		req.headers.host = req.headers.host.toLowerCase();
+		req.url = req.url.toLowerCase();
 		next();
+	}
 });
 
 //evil bots
