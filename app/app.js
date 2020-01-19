@@ -1,8 +1,7 @@
 const fs = require('fs');
 const express = require('express');
 const app = express();
-var version = 0;
-fs.readdir('./views/pages', (err, files) => { version = ((files.length - 3)*.01).toFixed(2); });
+var version = 0
 app.set('view engine', 'ejs');
 
 //remove slashes
@@ -112,5 +111,52 @@ app.get('*', function(req, res) {
 	});
 });
 
-//start
-app.listen(80, () => console.log('SILENCIO! NO HAY BANDA!'));
+fs.readdir('./views/pages', (err, files) => {
+	version = ((files.length - 1)*.01).toFixed(2);
+
+	//startup sequence
+	const startseq = ([
+   80,' '
+,  80,'+------------------\\'
+, 100,'| \\                 \\'
+, 110,'|  \\                 \\'
+, 120,'|   \\-----------------\\'
+,  90,'|   |                 |'
+,  80,'|   |    %%%  %%%     |'
+,  80,'|   |   %%%%%%%%%%    |'
+,  70,'\\   |    %%%%%%%%     |'
+,  90,' \\  |     %%%%%%      |'
+, 100,'  \\ |       %%        |'
+, 100,'   \\|                 |'
+,  90,'    \\-----------------+'
+,  80,' '
+,  80,'Unplug, v' + version
+,  90,'CUBE Tech Ltd.'
+, 110,'All rights reserved.'
+, 100,' '
+,2000,' '
+,1400,'Booting.'
+, 800,'Booting..'
+,1200,'Booting...'
+,1000,'Booting....'
+,1400,'Booting.....'
+, 800,'Booting......'
+,1200,'Booting.......'
+,1000,'Booting........'
+,2400,'Booting.........'
+,  70,'Booted successfully!'
+, 100,' '
+, 120,'All systems operational.'
+,  90,'Asset dir: ' + GLOBAL.assets
+,  80,' '
+, 120,' '
+,  80,'CUBE Tech Ltd. wishes you happy surfing!']).reverse();
+
+	function seq()
+	{
+		if(startseq.length === 0) return;
+		setTimeout(seq, startseq.pop());
+		console.log(startseq.pop());
+	}
+	app.listen(80, seq);
+});
