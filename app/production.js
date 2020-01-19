@@ -1,2 +1,2 @@
-GLOBAL.assets = "https://assets.unplug.red";
+global.assets = "https://assets.unplug.red";
 require('./app.js');

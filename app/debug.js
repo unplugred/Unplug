@@ -1,2 +1,2 @@
-GLOBAL.assets = "/assets";
+global.assets = "/assets";
 require('./app.js');
