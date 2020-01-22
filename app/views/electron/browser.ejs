@@ -157,7 +157,7 @@ url("<%= assets %>/window/winright.png") top right repeat-y, #C0C0C0;
 			<div id="dragbar"></div>
 			<div id="rainbow"></div>
 			<div id="topbar"><button id="back" onclick="backk()" class="off"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div>
-			<div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="http://localhost:6660/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe></div>
+			<div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="http://localhost:6660/bulb" onLoad="updateurl(this.contentWindow.location);"></iframe></div>
 			<a class="close" href="javascript:void(0)" onclick="closee()"></a>
 		</div>
 		<script>
@@ -262,7 +262,11 @@ url("<%= assets %>/window/winright.png") top right repeat-y, #C0C0C0;
 
 			function closee()
 			{
-				require('electron').remote.getCurrentWindow().close();
+				let remota = require('electron').remote;
+				let byewin = remota.getGlobal("byeWindow");
+				byewin.loadURL("http://localhost:6660/bye?6660");
+				byewin.show();
+				remota.getCurrentWindow().close();
 			}
 			input.addEventListener('keydown', function(event)
 			{
