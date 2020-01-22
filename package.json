@@ -1,0 +1,16 @@
+{
+  "name": "unplug",
+  "version": "0.9.2",
+  "description": "unplug your mind for best experience.",
+  "main": "electricfeel.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Ari Hanan",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "electron": "^7.1.9",
+    "express": "^4.17.1"
+  }
+}

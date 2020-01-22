@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 var version = 0
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views/')
 
 //remove slashes
 app.use((req, res, next) => {
@@ -30,10 +31,25 @@ app.get('/administrator/index.php', (req, res) => res.send('fuck off'));
 app.get('*', function(req, res, next){
 	if(req.headers.host != "localhost")
 	{
-		if(req.headers.host == 'www.unplug.red' || req.headers.host == 'unplug.red')
+		if(req.headers.host.startsWith("localhost"))
 		{
-			if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster"))
+			if(
+			req.url.startsWith("/dreambuster") ||
+			req.path === "/privacy-policy" || 
+			req.path === "/brand-guidelines" || 
+			req.path === "/feed")
+			{
 				res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
+				return;
+			}
+		}
+		else if(req.headers.host == 'www.unplug.red' || req.headers.host == 'unplug.red')
+		{
+			if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster") || req.path == "/browser")
+			{
+				res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
+				return;
+			}
 		}
 		else if(req.headers.host == 'assets.unplug.red')
 		{
@@ -74,12 +90,12 @@ app.get('/feed', function(req, res) {
 
 //important.txt
 app.get('/important.txt', function(req, res) {
-	res.download('static/important.txt')
+	res.download(__dirname + '/static/important.txt')
 });
 
 //shady_software.exe
 app.get('/shady_software.exe', function(req, res) {
-	res.download('static/shady_software.exe')
+	res.download(__dirname + '/static/shady_software.exe')
 });
 
 //dreambuster hall of fame
@@ -92,7 +108,7 @@ app.get('/dreambuster/halloffame', function(req, res) {
 //////////////SPECIFIC SHIT ENDS HERE/////////////
 
 //assets
-app.use(express.static('static', {
+app.use(express.static(__dirname + '/static', {
 	index: false,
 	redirect: false,
 	maxAge: 2592000000
@@ -116,8 +132,8 @@ app.get('*', function(req, res) {
 	});
 });
 
-fs.readdir('./views/pages', (err, files) => {
-	version = ((files.length - 1)*.01).toFixed(2);
+fs.readdir(app.get('views') + '/pages', (err, files) => {
+	version = ((files.length - 2)*.01).toFixed(2);
 
 	//startup sequence
 	const startseq = ([
@@ -163,5 +179,5 @@ fs.readdir('./views/pages', (err, files) => {
 		setTimeout(seq, startseq.pop());
 		console.log(startseq.pop());
 	}
-	app.listen(80, seq);
+	app.listen(global.portt, seq);
 });

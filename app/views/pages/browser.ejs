@@ -1,0 +1,286 @@
+<%- include('../partials/header',{title:"unplug",color:"#3B6EA5"}) %>
+		<style>
+			#browser {
+				padding: 2px;
+				display: block;
+				width: calc(100vw - 10px);
+				height: calc(100vh - 29px);
+				background:
+url("<%= assets %>/window/wintoprightbar.png") top right no-repeat,
+url("<%= assets %>/inception/header.png") top left no-repeat,
+url("<%= assets %>/window/wintopbar.png") top left repeat-x,
+url("<%= assets %>/window/winbottomright.png") bottom right no-repeat,
+url("<%= assets %>/window/winbottomleft.png") bottom left no-repeat,
+url("<%= assets %>/window/winbottom.png") bottom left repeat-x,
+url("<%= assets %>/window/winleft.png") top left repeat-y,
+url("<%= assets %>/window/winright.png") top right repeat-y, #C0C0C0;
+				background-size: initial;
+				padding: 24px 5px 5px 5px;
+				position: fixed;
+			}
+
+			input {
+				height: calc(100% - 4px)!important;
+				top: -5.5px;
+				position: relative;
+				direction: ltr!important;
+			}
+
+			.input {
+				display: inline-block;
+				padding: 0;
+				height: 20px;
+				width: calc(100% - 96px);
+			}
+
+			.insetborder1 {
+				border-width: 1px;
+				border-style: solid;
+				border-color: #808080 white white #808080;
+			}
+
+			.insetborder2 {
+				border-width: 1px 0 0 1px;
+				border-style: solid;
+				border-color: black;
+				width: calc(100% - 2px);
+				height: calc(100% - 1px);
+			}
+
+			#back .icon {
+				background-image: url("<%= assets %>/inception/back.png");
+			}
+
+			.off#back .icon {
+				background-image: url("<%= assets %>/inception/backoff.png");
+			}
+
+			#front .icon {
+				background-image: url("<%= assets %>/inception/front.png");
+			}
+
+			.off#front .icon {
+				background-image: url("<%= assets %>/inception/frontoff.png");
+			}
+
+			.off {
+				pointer-events: none;
+			}
+
+			.icon {
+				width: calc(100% - 1px);
+				height: calc(100% - 1px);
+				background-position: center center;
+				background-repeat: no-repeat;
+				border-width: 0 1px 1px 0;
+				border-style: solid;
+				border-color: #808080;
+			}
+
+			.icon:active {
+				border-width: 1px 0 0 1px;
+			}
+
+			#go .icon {
+				background-image: url("<%= assets %>/inception/go.png");
+			}
+
+			#go {
+				width: 42px;
+				margin-right: 0;
+				margin-left: 2px;
+			}
+
+			button {
+				width: 22px;
+				height: 22px;
+				padding: 0;
+				margin-right: 2px;
+				background: #C0C0C0;
+				border-width: 1px;
+				border-style: solid;
+				border-color: white black black white;
+			}
+
+			button:active {
+				border-color: black white white black;
+			}
+
+			#topbar {
+				height: 22px;
+				margin-bottom: 2px;
+			}
+
+			.innerbrowser {
+				width: calc(100% - 4px);
+				height: calc(100% - 28px);
+			}
+
+			.close {
+				-webkit-app-region: no-drag;
+				width: 16px;
+				height: 14px;
+				position: absolute;
+				background-image: url("<%= assets %>/window/close.png");
+				top: 5px;
+				right: 5px;
+			}
+
+			.close:active {
+				background-image: url("<%= assets %>/window/closed.png");
+			}
+
+			#rainbow {
+				background-image: url("<%= assets %>/inception/glitch.png");
+				position: absolute;
+				z-index: 1;
+				height: 15px;
+				left: 95px;
+				top: 27px;
+				max-width: calc(100% - 148px);
+				pointer-events: none;
+			}
+
+			#dragbar {
+				-webkit-app-region: drag;
+				position: absolute;
+				height: 18px;
+				width: calc(100% - 6px);
+				top: 3px;
+				left: 3px;
+			}
+		</style>
+		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
+	</head>
+	<body>
+		<div id="browser">
+			<div id="dragbar"></div>
+			<div id="rainbow"></div>
+			<div id="topbar"><button id="back" onclick="backk()" class="off"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div>
+			<div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="http://localhost:6660/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe></div>
+			<a class="close" href="javascript:void(0)" onclick="closee()"></a>
+		</div>
+		<script>
+			var iframe = document.getElementById("iframe");
+			var input = document.getElementById("input");
+			var back = document.getElementById("back");
+			var front = document.getElementById("front");
+			var rainbow = document.getElementById("rainbow");
+			var hostt = "https://         /";
+
+			var historyy = [];
+			var unhistory = [];
+			var current = validate(iframe.src);
+			input.value = hostt + current;
+			prevvalue = current;
+			rainbow.style.width = Math.ceil(Math.max(Math.min(input.value.length, hostt.length - 1) - 8, 0)*6.6) + "px";
+			rainbow.style.backgroundPositionX = (Math.random()*100) + "%";
+
+			function changeurl()
+			{
+				v = validate(input.value.substr(hostt.length));
+				if(v != current)
+				{
+					historyy.push(current);
+					current = v;
+					unhistory = [];
+					back.className = null;
+					front.className = "off";
+				}
+				iframe.src = tourll(current);
+			}
+
+			function updateurl(urll)
+			{
+				urll = validate(urll);
+				if(urll != current)
+				{
+					historyy.push(current);
+					current = urll;
+					unhistory = [];
+					back.className = null;
+					front.className = "off";
+				}
+				input.value = hostt + current;
+			}
+
+			function validate(v)
+			{
+				var r = singlevalid(v);
+				while(r != v)
+				{
+					v = r;
+					r = singlevalid(r);
+				}
+				return r;
+			}
+
+			function singlevalid(v)
+			{
+				v = String(v).replace(/\s/g,'');
+				if(v.startsWith("http"))
+				{
+					var search = v.substr(8).search("/");
+					if(search !== -1) v = v.substr(search + 9);
+					else v = " ";
+				}
+				while(v.startsWith("/")) v = v.substr(1);
+				if(v.startsWith("unplug")) v = "";
+				if(v.startsWith("?")) v = "";
+				if(v.startsWith("inception?")) v = "inception";
+				return v;
+			}
+
+			function tourll(v)
+			{
+				if(v === "") return "/unplug";
+				if(v.startsWith("inception")) return "/inception?" + Math.floor(Math.random()*10000);
+				return "/" + v;
+			}
+
+			function backk()
+			{
+				unhistory.push(current);
+				current = historyy.pop();
+				input.value = hostt + current;
+				iframe.src = tourll(current);
+				if(historyy.length === 0)
+					back.className = "off";
+				front.className = null;
+			}
+
+			function frontt()
+			{
+				historyy.push(current);
+				current = unhistory.pop();
+				input.value = hostt + current;
+				iframe.src = tourll(current);
+				if(unhistory.length === 0)
+					front.className = "off";
+				back.className = null;
+			}
+
+			function closee()
+			{
+				require('electron').remote.getCurrentWindow().close();
+			}
+			input.addEventListener('keydown', function(event)
+			{
+				if(event.which === 13) changeurl();
+				else setTimeout(function() {
+					if(input.value === prevvalue) return;
+					if(input.value.length <= hostt.length)
+					{
+						input.value = hostt.substr(0, input.value.length);
+						prevvalue = input.value;
+						rainbow.style.width = Math.ceil(Math.max(Math.min(input.value.length, hostt.length - 1) - 8, 0)*6.6) + "px";
+					}
+					else if(input.value.startsWith(hostt))
+						prevvalue = input.value;
+					else
+						input.value = prevvalue;
+					rainbow.style.backgroundPositionX = (Math.random()*100) + "%";
+				});
+			});
+		</script>
+<%- include('../partials/footer') %>
