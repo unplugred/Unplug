@@ -1,22 +1,7 @@
 <%- include('../partials/header',{title:"bye"}) %>
 		<style>
-			#fade{
-				position: absolute;
-				width: 100vw;
-				height: 0;
-				top: 0;
-				background-color: transparent;
-				animation-name: fade;
-				animation-duration: 1.2s;
-				animation-timing-function: cubic-bezier(1,0,1,0);
-			}
-
-			@keyframes fade {
-				0% { background-color: black; height: 100vh; }
-				25% { background-color: #000000bd; }
-				50% { background-color: #0000007f; }
-				75% { background-color: #0000003f; }
-				100% { background-color: transparent; }
+			body, html {
+				background: none;
 			}
 
 			#canva {
@@ -30,17 +15,13 @@
 		<img id="bg" src="<%= assets %>/bye/fakery.png" style="display: none;"></div>
 		<img id="bye" src="<%= assets %>/bye/bye.png" style="display: none;"></div>
 		<canvas id="canva"></canvas>
-		<div id="fade" style="display: none;"></div>
 		<script>
 			var canvas = document.getElementById("canva");
 			var ctx = canvas.getContext("2d");
 			var bg = document.getElementById("bg");
 			var bye = document.getElementById("bye");
 
-			window.onload = function(){
-				document.getElementById("fade").style.display = null;
-				redraw();
-			};
+			window.onload = function(){ redraw(); };
 			window.onresize = function(){ redraw(); };
 
 			function redraw()
@@ -52,6 +33,39 @@
 				ctx.drawImage(bg, hw - 153, hh - 163);
 				for (x = -125; x < Math.min(hw, hh + 3); x += 40)
 					ctx.drawImage(bye, x + hw, x + hh + 3);
+			}
+
+			var remota = require('electron').remote;
+			var win = remota.getCurrentWindow();
+			var op = 1;
+			win.setOpacity(.25);
+			setTimeout(brighten, 300);
+			function brighten()
+			{
+				if(op < 4)
+				{
+					setTimeout(brighten, 300);
+					op++;
+					win.setOpacity(op*.25);
+				}
+				else
+				{
+					setTimeout(darken, 1500);
+				}
+			}
+			function darken()
+			{
+				if(op > 0)
+				{
+					setTimeout(darken, 300);
+					op--;
+					win.setOpacity(op*.25);
+					document.getElementById("mainimage").style.pointerEvents = "none";
+				}
+				else
+				{
+					win.close();
+				}
 			}
 		</script>
 <%- include('../partials/footer') %>

@@ -42,10 +42,25 @@ app.get('*', function(req, res, next){
 				res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
 				return;
 			}
+			if(req.url === "/browser?6660")
+			{
+				res.render('electron/browser',{assets:global.assets,host:req.headers.host,version:version});
+				return;
+			}
+			if(req.url === "/bye?6660")
+			{
+				res.render('electron/bye',{assets:global.assets,host:req.headers.host,version:version});
+				return;
+			}
+			if(req.url === "/unplug?6660")
+			{
+				res.render('electron/unplug',{assets:global.assets,host:req.headers.host,version:version});
+				return;
+			}
 		}
 		else if(req.headers.host == 'www.unplug.red' || req.headers.host == 'unplug.red')
 		{
-			if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster") || req.path == "/browser")
+			if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster"))
 			{
 				res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
 				return;
