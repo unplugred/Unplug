@@ -58,140 +58,14 @@ url("<%= assets %>/inception/taskbarmiddle.png") bottom left repeat-x, #3B6EA5;
 		<a class="dicon" href="/trash" id="trash" title="trash"></a>
 		<a class="dicon" href="/computers" id="computer" title="computer"></a>
 		<a href="javascript:void(0)" id="start" onclick="psychadelic()"></a>
-		<div id="browser">
-			<div id="titletext">unplug</div>
-			<div id="dragbar"></div>
-			<div id="rainbow"></div>
-			<div id="topbar"><button id="back" onclick="backk()" class="off"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div>
-			<div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe></div>
-			<a class="close" href="javascript:void(0)" onclick="closee()"></a>
-		</div>
+		<div id="browser"><div id="titletext">unplug</div><div id="dragbar"></div><div id="rainbow"></div><div id="topbar"><button id="back" onclick="backk()" class="off"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div><div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe></div><a class="close" href="javascript:void(0)" onclick="closee()"></a></div>
 		<canvas id="canva" style="display: none"></canvas>
+		<script type="text/javascript" src="<%= assets %>/inception/browser.js"></script>
 		<script>
-			var iframe = document.getElementById("iframe");
-			var input = document.getElementById("input");
-			var back = document.getElementById("back");
-			var front = document.getElementById("front");
-			var rainbow = document.getElementById("rainbow");
-			var titletext = document.getElementById("titletext");
-			var hostt = "https://         /";
-
-			var historyy = [];
-			var unhistory = [];
-			var current = validate(iframe.src);
-			input.value = hostt + current;
-			prevvalue = current;
-			rainbow.style.width = Math.ceil(Math.max(Math.min(input.value.length, hostt.length - 1) - 8, 0)*6.6) + "px";
-			rainbow.style.backgroundPositionX = (Math.random()*100) + "%";
-
-			function changeurl()
-			{
-				v = validate(input.value.substr(hostt.length));
-				if(v != current)
-				{
-					historyy.push(current);
-					current = v;
-					unhistory = [];
-					back.className = null;
-					front.className = "off";
-				}
-				iframe.src = tourll(current);
-			}
-
-			function updateurl(urll)
-			{
-				titletext.innerHTML = iframe.contentDocument.title;
-				urll = validate(urll);
-				if(urll != current)
-				{
-					historyy.push(current);
-					current = urll;
-					unhistory = [];
-					back.className = null;
-					front.className = "off";
-				}
-				input.value = hostt + current;
-			}
-
-			function validate(v)
-			{
-				var r = singlevalid(v);
-				while(r != v)
-				{
-					v = r;
-					r = singlevalid(r);
-				}
-				return r;
-			}
-
-			function singlevalid(v)
-			{
-				v = String(v).replace(/\s/g,'');
-				if(v.startsWith("http"))
-				{
-					var search = v.substr(8).search("/");
-					if(search !== -1) v = v.substr(search + 9);
-					else v = " ";
-				}
-				while(v.startsWith("/")) v = v.substr(1);
-				if(v.startsWith("unplug")) v = "";
-				if(v.startsWith("?")) v = "";
-				if(v.startsWith("inception?")) v = "inception";
-				return v;
-			}
-
-			function tourll(v)
-			{
-				if(v == "") return "/unplug";
-				if(v.startsWith("inception")) return "/inception?" + Math.floor(Math.random()*10000);
-				return "/" + v;
-			}
-
-			function backk()
-			{
-				unhistory.push(current);
-				current = historyy.pop();
-				input.value = hostt + current;
-				iframe.src = tourll(current);
-				if(historyy.length === 0)
-					back.className = "off";
-				front.className = null;
-			}
-
-			function frontt()
-			{
-				historyy.push(current);
-				current = unhistory.pop();
-				input.value = hostt + current;
-				iframe.src = tourll(current);
-				if(unhistory.length === 0)
-					front.className = "off";
-				back.className = null;
-			}
-
 			function closee()
 			{
 				document.getElementById("browser").style.display = "none";
 			}
-			input.addEventListener('keydown', function(event)
-			{
-				if(event.which == 13) changeurl();
-				else setTimeout(function() {
-					if(input.value == prevvalue) return;
-					if(input.value.length <= hostt.length)
-					{
-						input.value = hostt.substr(0, input.value.length);
-						prevvalue = input.value;
-						rainbow.style.width = Math.ceil(Math.max(Math.min(input.value.length, hostt.length - 1) - 8, 0)*6.6) + "px";
-					}
-					else if(input.value.startsWith(hostt))
-						prevvalue = input.value;
-					else
-						input.value = prevvalue;
-					rainbow.style.backgroundPositionX = (Math.random()*100) + "%";
-				});
-			});
-
 
 			var canvas = document.getElementById("canva");
 			var ctx = canvas.getContext("2d");
@@ -204,7 +78,7 @@ url("<%= assets %>/inception/taskbarmiddle.png") bottom left repeat-x, #3B6EA5;
 				this.color = getRandomColor();
 				let dir = Math.random()*Math.PI*2;
 				dir = Math.floor(Math.random()*4);
-				if(dir % 2 == 0)
+				if(dir % 2 === 0)
 				{
 					this.dirx = (dir - 1)*size;
 					this.diry = 0;
@@ -269,7 +143,7 @@ url("<%= assets %>/inception/taskbarmiddle.png") bottom left repeat-x, #3B6EA5;
 				for (var i = 2; i >= 0; i--)
 				{
 					color = Math.floor(Math.random()*255).toString(16);
-					if(color.length == 1) color = "0" + color;
+					if(color.length === 1) color = "0" + color;
 					str += color;
 				}
 				return str;
