@@ -21,9 +21,6 @@
 			var bg = document.getElementById("bg");
 			var bye = document.getElementById("bye");
 
-			window.onload = function(){ redraw(); };
-			window.onresize = function(){ redraw(); };
-
 			function redraw()
 			{
 				canvas.width = window.innerWidth;
@@ -38,8 +35,12 @@
 			var remota = require('electron').remote;
 			var win = remota.getCurrentWindow();
 			var op = 1;
-			win.setOpacity(.25);
-			setTimeout(brighten, 300);
+
+			window.onload = function(){
+				win.setOpacity(.25);
+				setTimeout(brighten, 300);
+				redraw();
+			}
 			function brighten()
 			{
 				if(op < 4)
@@ -48,10 +49,7 @@
 					op++;
 					win.setOpacity(op*.25);
 				}
-				else
-				{
-					setTimeout(darken, 1500);
-				}
+				else setTimeout(darken, 1500);
 			}
 			function darken()
 			{
@@ -60,12 +58,8 @@
 					setTimeout(darken, 300);
 					op--;
 					win.setOpacity(op*.25);
-					document.getElementById("mainimage").style.pointerEvents = "none";
 				}
-				else
-				{
-					win.close();
-				}
+				else win.close();
 			}
 		</script>
 <%- include('../partials/footer') %>
