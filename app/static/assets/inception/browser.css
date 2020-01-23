@@ -136,7 +136,7 @@ button:active {
 	pointer-events: none;
 }
 
-#dragbar {
+#browserheader {
 	position: absolute;
 	height: 18px;
 	width: calc(100% - 6px);

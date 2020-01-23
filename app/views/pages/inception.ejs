@@ -51,17 +51,61 @@ url("<%= assets %>/inception/taskbarmiddle.png") bottom left repeat-x, #3B6EA5;
 				pointer-events: none;
 			}
 		</style>
-		<link rel=StyleSheet href="<%= assets %>/inception/browser.css" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/inception/browser.css" type="text/css" media=screen />
 		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 	</head>
 	<body>
 		<a class="dicon" href="/trash" id="trash" title="trash"></a>
 		<a class="dicon" href="/computers" id="computer" title="computer"></a>
 		<a href="javascript:void(0)" id="start" onclick="psychadelic()"></a>
-		<div id="browser"><div id="titletext">unplug</div><div id="dragbar"></div><div id="rainbow"></div><div id="topbar"><button id="back" onclick="backk()" class="off"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div><div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe></div><a class="close" href="javascript:void(0)" onclick="closee()"></a></div>
+		<div id="browser"><div id="titletext">unplug</div><div id="browserheader"></div><div id="rainbow"></div><div id="topbar"><button id="back" onclick="backk()" class="off"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div><div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe></div><a class="close" href="javascript:void(0)" onclick="closee()"></a></div>
 		<canvas id="canva" style="display: none"></canvas>
 		<script type="text/javascript" src="<%= assets %>/inception/browser.js"></script>
 		<script>
+			dragElement(document.getElementById("browser"));
+
+			function dragElement(elmnt) {
+				var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+				if (document.getElementById(elmnt.id + "header")) {
+					// if present, the header is where you move the DIV from:
+					document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+				} else {
+					// otherwise, move the DIV from anywhere inside the DIV:
+					elmnt.onmousedown = dragMouseDown;
+				}
+
+				function dragMouseDown(e) {
+					e = e || window.event;
+					e.preventDefault();
+					// get the mouse cursor position at startup:
+					pos3 = e.clientX;
+					pos4 = e.clientY;
+					document.onmouseup = closeDragElement;
+					// call a function whenever the cursor moves:
+					document.onmousemove = elementDrag;
+				}
+
+				function elementDrag(e) {
+					e = e || window.event;
+					e.preventDefault();
+					// calculate the new cursor position:
+					pos1 = pos3 - e.clientX;
+					pos2 = pos4 - e.clientY;
+					pos3 = e.clientX;
+					pos4 = e.clientY;
+					// set the element's new position:
+					elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+					elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+				}
+
+				function closeDragElement() {
+					// stop moving when mouse button is released:
+					document.onmouseup = null;
+					document.onmousemove = null;
+				}
+			}
+
+
 			function closee()
 			{
 				document.getElementById("browser").style.display = "none";
