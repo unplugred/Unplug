@@ -11,7 +11,6 @@
 				width: 126px;
 				height: 145px;
 				background-image: url("<%= assets %>/unplug/object.png");
-				margin: -72px -63px;
 			}
 
 			.close {
@@ -52,49 +51,38 @@
 	</head>
 	<body id="body">
 		<div class="window" style="">
-			<a class="close" href="javascript:void(0)"></a>
+			<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
 			<div class="bg" style=""></div>
 			<div class="object" style=""></div>
 		</div>
-
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
 		<script type="text/javascript">
-			var z = 0;
 			var anim = 0;
-
 			var wins = 1;
-			var windowsss = $(".window:first");
+			var windowsss = document.getElementsByClassName("window")[0];
+
 			var cloneshit = setInterval(function()
 			{
 				if(wins++ >= 20) clearInterval(cloneshit);
-				var clone = windowsss.clone();
-				clone.appendTo("body");
+				var clone = windowsss.cloneNode(true);
+				document.body.appendChild(clone);
 				dothing(clone);
-				clone.draggable();
-				clone.on("mousedown", totop);
-				clone.find(".close").on("click", closee);
+				dragElement(clone, true);
 			}, 50);
 
-			function totop()
+			function closee(obj)
 			{
-				$(this).css("z-index", ++z);
-			}
-
-			function closee()
-			{
-				var obj = $(this).parent();
 				dothing(obj);
-				obj.css("-webkit-mask-image","url(\"<%= assets %>/bits/transition.gif?" + anim++ + "\")");
+				obj.style.WebkitMaskImage = "url(\"<%= assets %>/bits/transition.gif?" + anim++ + "\")";
 			}
 
 			function dothing(obj)
 			{
-				obj[0].style.top = Math.random()*100 + "%";
-				obj[0].style.left = Math.random()*100 + "%";
+				obj.style.top = "calc(" + Math.random()*100 + "% - 72px)";
+				obj.style.left = "calc(" + Math.random()*100 + "% - 63px)";
 
-				var bg = obj.find(".bg")[0];
-				var ob = obj.find(".object")[0];
+				var bg = obj.querySelectorAll(".bg")[0];
+				var ob = obj.querySelectorAll(".object")[0];
 
 				var bgn = Math.floor(Math.random()*10);
 				var obn = Math.floor(Math.random()*10);
