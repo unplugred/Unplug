@@ -21,9 +21,7 @@ app.on('ready', function(){
 		resizable: false,
 		movable: false,
 		alwaysOnTop: true,
-		webPreferences: {
-			nodeIntegration: true
-		}
+		webPreferences: { nodeIntegration: true }
 	});
 	global.unplugWindow.removeMenu();
 	global.unplugWindow.loadURL("http://localhost:6660/unplug?6660");
@@ -39,9 +37,7 @@ app.on('ready', function(){
 		y: res.height*.2 - vmin*.15,
 		darkTheme: true,
 		frame: false,
-		webPreferences: {
-			nodeIntegration: true
-		}
+		webPreferences: { nodeIntegration: true }
 	});
 	global.mainWindow.hide();
 	global.mainWindow.removeMenu();
@@ -58,9 +54,7 @@ app.on('ready', function(){
 		resizable: false,
 		movable: false,
 		alwaysOnTop: true,
-		webPreferences: {
-			nodeIntegration: true
-		}
+		webPreferences: { nodeIntegration: true }
 	});
 	global.byeWindow.hide();
 	global.byeWindow.removeMenu();
