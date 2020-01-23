@@ -18,8 +18,11 @@
 			var remota = require('electron').remote;
 			var win = remota.getCurrentWindow();
 			var op = 1;
-			win.setOpacity(.25);
-			setTimeout(brighten, 300);
+			
+			window.onload = function(){
+				win.setOpacity(.25);
+				setTimeout(brighten, 300);
+			}
 			function brighten()
 			{
 				if(op < 4)
