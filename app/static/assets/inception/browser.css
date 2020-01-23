@@ -1,0 +1,176 @@
+#browser {
+	padding: 2px;
+	display: block;
+	background:
+url("../window/wintoprightbar.png") top right no-repeat,
+url("../window/wintopleftbar.png") top left no-repeat,
+url("../window/wintopbar.png") top left repeat-x,
+url("../window/winbottomright.png") bottom right no-repeat,
+url("../window/winbottomleft.png") bottom left no-repeat,
+url("../window/winbottom.png") bottom left repeat-x,
+url("../window/winleft.png") top left repeat-y,
+url("../window/winright.png") top right repeat-y, #C0C0C0;
+	background-size: initial;
+	padding: 24px 5px 5px 5px;
+	position: fixed;
+}
+
+input {
+	height: calc(100% - 4px)!important;
+	top: -5.5px;
+	position: relative;
+	direction: ltr!important;
+}
+
+.input {
+	display: inline-block;
+	padding: 0;
+	height: 20px;
+	width: calc(100% - 96px);
+}
+
+.insetborder1 {
+	border-width: 1px;
+	border-style: solid;
+	border-color: #808080 white white #808080;
+}
+
+.insetborder2 {
+	border-width: 1px 0 0 1px;
+	border-style: solid;
+	border-color: black;
+	width: calc(100% - 2px);
+	height: calc(100% - 1px);
+}
+
+#back .icon {
+	background-image: url("back.png");
+}
+
+.off#back .icon {
+	background-image: url("backoff.png");
+}
+
+#front .icon {
+	background-image: url("front.png");
+}
+
+.off#front .icon {
+	background-image: url("frontoff.png");
+}
+
+.off {
+	pointer-events: none;
+}
+
+.icon {
+	width: calc(100% - 1px);
+	height: calc(100% - 1px);
+	background-position: center center;
+	background-repeat: no-repeat;
+	border-width: 0 1px 1px 0;
+	border-style: solid;
+	border-color: #808080;
+}
+
+.icon:active {
+	border-width: 1px 0 0 1px;
+}
+
+#go .icon {
+	background-image: url("go.png");
+}
+
+#go {
+	width: 42px;
+	margin-right: 0;
+	margin-left: 2px;
+}
+
+button {
+	width: 22px;
+	height: 22px;
+	padding: 0;
+	margin-right: 2px;
+	background: #C0C0C0;
+	border-width: 1px;
+	border-style: solid;
+	border-color: white black black white;
+}
+
+button:active {
+	border-color: black white white black;
+}
+
+#topbar {
+	height: 22px;
+	margin-bottom: 2px;
+}
+
+.innerbrowser {
+	width: calc(100% - 4px);
+	height: calc(100% - 28px);
+}
+
+.close {
+	width: 16px;
+	height: 14px;
+	position: absolute;
+	background-image: url("../window/close.png");
+	top: 5px;
+	right: 5px;
+}
+
+.close:active {
+	background-image: url("../window/closed.png");
+}
+
+#rainbow {
+	background-image: url("glitch.png");
+	position: absolute;
+	z-index: 1;
+	height: 15px;
+	left: 95px;
+	top: 27px;
+	max-width: calc(100% - 148px);
+	pointer-events: none;
+}
+
+#dragbar {
+	position: absolute;
+	height: 18px;
+	width: calc(100% - 6px);
+	top: 3px;
+	left: 3px;
+}
+
+#titletext {
+	font-family: tahoma8bold, Tahoma, sans-serif;
+	font-weight: 500;
+	font-size: 16px;
+	position: absolute;
+	top: 5px;
+	left: 6px;
+	-webkit-font-smoothing : none;
+	font-smooth: never;
+	color: #D6D6CE;
+}
+
+@font-face {
+	font-family: 'tahoma8';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	-webkit-font-smoothing : none;
+	font-smooth: never;
+	src: url("../window/tahoma8.ttf") format('ttf');
+}
+@font-face {
+	font-family: 'tahoma8bold';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	-webkit-font-smoothing : none;
+	font-smooth: never;
+	src: url("../window/tahoma8bold.ttf") format('ttf');
+}
