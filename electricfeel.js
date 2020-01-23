@@ -8,6 +8,8 @@ app.on('ready', function(){
 	var res = electron.screen.getPrimaryDisplay().size;
 	var vmin = Math.min(res.width, res.height);
 	global.unplugWindow = new BrowserWindow({
+		title: "unplug",
+		icon: "./app/static/favicon.ico",
 		backgroundColor: '#000000',
 		width: 522,
 		height: 370,
@@ -17,6 +19,7 @@ app.on('ready', function(){
 		frame: false,
 		opacity: 0,
 		resizable: false,
+		movable: false,
 		alwaysOnTop: true,
 		webPreferences: {
 			nodeIntegration: true
@@ -27,6 +30,8 @@ app.on('ready', function(){
 
 
 	global.mainWindow = new BrowserWindow({
+		title: "unplug",
+		icon: "./app/static/favicon.ico",
 		backgroundColor: '#000000',
 		width: res.width*.6 + vmin*.3,
 		height: res.height*.6 + vmin*.3,
@@ -43,12 +48,15 @@ app.on('ready', function(){
 	global.mainWindow.loadURL("http://localhost:6660/browser?6660");
 
 	global.byeWindow = new BrowserWindow({
+		title: "bye",
+		icon: "./app/static/favicon.ico",
 		transparent: true,
 		fullscreen: true,
 		darkTheme: true,
 		frame: false,
 		opacity: 0,
 		resizable: false,
+		movable: false,
 		alwaysOnTop: true,
 		webPreferences: {
 			nodeIntegration: true
