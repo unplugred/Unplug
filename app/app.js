@@ -29,63 +29,56 @@ app.get('/administrator/index.php', (req, res) => res.send('fuck off'));
 
 //subdomains
 app.get('*', function(req, res, next){
-	if(req.headers.host != "localhost")
-	{
-		if(req.headers.host.startsWith("localhost"))
-		{
+	if(req.headers.host != "localhost") {
+		if(req.headers.host.startsWith("localhost")) {
 			if(
 			req.url.startsWith("/dreambuster") ||
 			req.path === "/privacy-policy" || 
 			req.path === "/brand-guidelines" || 
-			req.path === "/feed")
-			{
+			req.path === "/feed") {
 				res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
 				return;
 			}
-			if(req.url === "/browser?6660")
-			{
+			if(req.url === "/browser?6660") {
 				res.render('electron/browser',{assets:global.assets,host:req.headers.host,version:version});
 				return;
 			}
-			if(req.url === "/bye?6660")
-			{
+			if(req.url === "/bye?6660") {
 				res.render('electron/bye',{assets:global.assets,host:req.headers.host,version:version});
 				return;
 			}
-			if(req.url === "/unplug?6660")
-			{
+			if(req.url === "/unplug?6660") {
 				res.render('electron/unplug',{assets:global.assets,host:req.headers.host,version:version});
 				return;
 			}
 		}
-		else if(req.headers.host == 'www.unplug.red' || req.headers.host == 'unplug.red')
-		{
+		else if(req.headers.host == 'www.unplug.red' || req.headers.host == 'unplug.red') {
 			if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster"))
 			{
 				res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
 				return;
 			}
 		}
-		else if(req.headers.host == 'assets.unplug.red')
-		{
+		else if(req.headers.host == 'assets.unplug.red') {
 			req.url = '/assets' + req.url;
 		}
-		else if(req.headers.host == 'rss.unplug.red')
-		{
+		else if(req.headers.host == 'rss.unplug.red') {
 			res.set('Content-Type', 'text/xml');
 			res.render('pages/feed',{assets:global.assets,host:req.headers.host,version:version});
 			return;
 		}
-		else if(req.headers.host == 'dreambuster.unplug.red')
-		{
+		else if(req.headers.host == 'dreambuster.unplug.red') {
 			req.url = '/dreambuster' + req.url;
 		}
-		else
-		{
+		else {
 			console.log(req.headers.host + req.url);
 			res.render('partials/wildcard',{assets:global.assets,host:req.headers.host,version:version});
 			return;
 		}
+	}
+	else if(req.path === "/wildcard") {
+		res.render('partials/wildcard',{assets:global.assets,host:req.headers.host,version:version});
+		return;
 	}
 	next();
 });
@@ -132,8 +125,7 @@ app.use(express.static(__dirname + '/static', {
 //pages
 app.get('*', function(req, res) {
 	const viewdir = app.get('views') + "/pages";
-	if(req.headers.host == 'dreambuster.unplug.red')
-	{
+	if(req.headers.host == 'dreambuster.unplug.red') {
 		res.render('pages/dreambuster/404',{assets:global.assets,host:req.headers.host,version:version});
 		return;
 	}
@@ -188,8 +180,7 @@ fs.readdir(app.get('views') + '/pages', (err, files) => {
 , 120,' '
 ,  80,'CUBE Tech Ltd. wishes you happy surfing!']).reverse();
 
-	function seq()
-	{
+	function seq() {
 		if(startseq.length === 0) return;
 		setTimeout(seq, startseq.pop());
 		console.log(startseq.pop());

@@ -1,9 +1,50 @@
-<%- include('../partials/header',{title:"Welcome",color:"FF0000"}) %><style>body{animation: anim 50s linear infinite;width: 100vw;height: 100vh;overflow-y: hidden;overflow-x: hidden;}@keyframes anim{
-0%  {background-color: #FF0000;}
-17% {background-color: #FFFF00;}
-33% {background-color: #00FF00;}
-50% {background-color: #00FFFF;}
-67% {background-color: #0000FF;}
-83% {background-color: #FF00FF;}
-100%{background-color: #FF0000;}}</style></head><body>
+<%- include('../partials/header',{title:"Welcome",color:"FF0000"}) %>
+	</head>
+	<body>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r70/three.min.js"></script>
+		<script id="vert" type="x-shader/x-vertex">varying vec2 fragCoord;void main(){gl_Position=projectionMatrix*(modelViewMatrix*vec4(position,1));fragCoord=position.xy;}</script>
+		<script id="frag" type="x-shader/x-fragment">uniform float iGlobalTime;varying vec2 fragCoord;void main(){gl_FragColor=vec4(.5+.5*cos(iGlobalTime+(fragCoord*.3).xyx+vec3(0,2,4)),1.);}</script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.5, 1.5);
+			camera.position.set(0, 0, 1);
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			renderer.stencil = false;
+			renderer.depth = false;
+			renderer.premultipliedAlpha = false;
+			renderer.precision = "lowp";
+
+			uniforms = {
+				iGlobalTime: { type: "f", value: 1.0 },
+				iResolution: { type: "v2", value: new THREE.Vector2() },};
+			uniforms.iResolution.value.x = window.innerWidth;
+			uniforms.iResolution.value.y = window.innerHeight;
+			material = new THREE.ShaderMaterial({
+				uniforms: uniforms,
+				vertexShader: document.getElementById('vert').textContent,
+				fragmentShader: document.getElementById('frag').textContent
+			});
+			var plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(2, 2), material);
+			scene.add(plane);
+
+			startTime = Date.now();
+			function animate() {
+				uniforms.iGlobalTime.value = (Date.now() - startTime) / 1000.;
+				requestAnimationFrame(animate);
+				renderer.render(scene, camera);
+			}
+			animate();
+
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				uniforms.iResolution.value.x = window.innerWidth;
+				uniforms.iResolution.value.y = window.innerHeight;
+				renderer.setSize(window.innerWidth, window.innerHeight);
+			}
+			window.addEventListener('resize', onWindowResize, false);
+
+			document.body.appendChild(renderer.domElement);
+		</script>
 <%- include('../partials/footer') %>
