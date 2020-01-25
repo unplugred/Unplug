@@ -106,6 +106,11 @@ app.get('/shady_software.exe', function(req, res) {
 	res.download(__dirname + '/static/shady_software.exe')
 });
 
+//alone-in-class-again.mp3
+app.get('/im-alone-in-class-again.mp3', function(req, res) {
+	res.render('partials/im-alone-in-class-again',{assets:global.assets,host:req.headers.host,version:version})
+});
+
 //dreambuster hall of fame
 app.get('/dreambuster/halloffame', function(req, res) {
 	fs.readdir('./static/dreambuster/hof', (err, files) => {
