@@ -1,51 +1,103 @@
 <%- include('../partials/header',{title:"404",description:"you got lost."}) %>
 		<style>
-			.mainimage {
-				width: 702px;
-				height: 236px;
+			#vid {
+				height: 100vh;
+			}
+
+			.window{
 				background-size: contain;
-				background-image: url("<%= assets %>/404.gif");
 				background-repeat: no-repeat;
 				background-position: center;
-				margin-top: 15px;
+				position: fixed;
 			}
 
-			.bodytext{
-				margin: 20px;
+			#numberwin {
+				width: 405px;
+				height: 275px;
+				background-image: url("<%= assets %>/404/404.png");
+				top: calc(45vh - 230px);
+				left: calc(34vw - 194px);
 			}
 
-			b{
-				color:white;
+			#lostwin {
+				width: 102px;
+				height: 382px;
+				background-image: url("<%= assets %>/404/clickhere.png");
+				top: calc(45vh - 110px);
+				left: calc(34vw + 137px);
 			}
 
-			.mainthing{
-				border: 5px #999 solid;
-				width: 702px;
-				margin-top: calc(35vh - 192px);
-				margin-left: calc(50vw - 351px);
+			#clickhere {
+				left: 7px;
+				top: 25px;
+				width: 89px;
+				height: 190px;
+				display: block;
 				position: absolute;
+			}
+
+			#clickhere:hover {
+				background-image: url("<%= assets %>/404/togoback.png");
+			}
+
+			#h {
+				width: 385px;
+				height: 130px;
+				background-image: url("<%= assets %>/404/yougotlost.png");
+				top: calc(45vh - 100px);
+				left: calc(34vw - 177px);
+			}
+
+			.close{
+				width: 16px;
+				height: 14px;
+				position: absolute;
+				background-image: url("<%= assets %>/window/close.png");
+				top: 5px;
+				right: 5px;
+			}
+
+			.close:active{
+				background-image: url("<%= assets %>/window/closed.png");
 			}
 
 			.santa{
 				width: 100px;
 				height: 100px;
-				background-image: url("<%= assets %>/objects/0.gif");
+				background-image: url("<%= assets %>/objects/a2.gif");
 				position: absolute;
-				margin-top: calc(105vh - 170px);
-				margin-left: calc(100vw - 120px);
+				bottom: 20px;
+				right: 20px;
 			}
 		</style>
+		<link rel="prefetch" href="<%= assets %>/404/togoback.png" />
+		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 	</head>
 	<body>
-		<div class="mainthing">
-			<div class="mainimage"></div>
-
-			<div class="bodytext">
-				<b>you got lost.</b>
-				<br/>
-				<br/>
-				<a href="/">click here</a> to get back.
-			</div>
+		<video id="vid" autoplay muted loop>
+			<source src="<%= assets %>/404/bg.webm" type="video/webm">
+		</video>
+		<div id="h" class="window">
+			<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+		</div>
+		<div id="numberwin" class="window">
+			<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+		</div>
+		<div id="lostwin" class="window">
+			<a id="clickhere" href="/"></a>
+			<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
 		</div>
 		<a href="/santa" class="santa" title="santa"></a>
+		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
+		<script>
+			var x = document.getElementsByClassName("window");
+			for (var i = 0; i < x.length; i++) {
+				dragElement(x[i]);
+			}
+
+			function closee(obj)
+			{
+				obj.style.display = "none";
+			}
+		</script>
 <%- include('../partials/footer') %>
