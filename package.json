@@ -1,6 +1,6 @@
 {
   "name": "unplug",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "description": "unplug your mind for best experience.",
   "main": "electricfeel.js",
   "scripts": {
