@@ -33,8 +33,8 @@ app.get('*', function(req, res, next){
 		if(req.headers.host.startsWith("localhost")) {
 			if(
 			req.url.startsWith("/dreambuster") ||
-			req.path === "/privacy-policy" || 
-			req.path === "/brand-guidelines" || 
+			req.path === "/privacy-policy" ||
+			req.path === "/brand-guidelines" ||
 			req.path === "/feed") {
 				res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
 				return;
@@ -87,7 +87,7 @@ app.get('*', function(req, res, next){
 
 //index
 app.get('/', function(req, res) {
-	res.render('pages/index',{assets:global.assets,host:req.headers.host,version:version})
+	res.render('partials/index',{assets:global.assets,host:req.headers.host,version:version})
 });
 
 //rss
@@ -99,11 +99,6 @@ app.get('/feed', function(req, res) {
 //important.txt
 app.get('/important.txt', function(req, res) {
 	res.download(__dirname + '/static/important.txt')
-});
-
-//shady_software.exe
-app.get('/shady_software.exe', function(req, res) {
-	res.download(__dirname + '/static/shady_software.exe')
 });
 
 //alone-in-class-again.mp3
