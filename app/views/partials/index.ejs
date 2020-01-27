@@ -446,6 +446,9 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 				biowindow.style.transitionDuration = "1s";
 				setTimeout(function(){
 					biowindow.style.transitionDuration = null;
+					if(biox === -1) {
+						dragElement(document.getElementById("hhh"));
+					}
 				}, 1000);
 
 				if(biox === -1)
@@ -473,7 +476,6 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 					biocontent.style.left = biowindow.style.zIndex = biowindow.style.width = biowindow.style.height = null;
 					biox = bioy = bioz = -1;
 					document.getElementById("namething").innerHTML = " ";
-					dragElement(document.getElementById("hhh"));
 				}
 			});
 
