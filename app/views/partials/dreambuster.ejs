@@ -5,8 +5,8 @@
 		<title>Dream Buster</title>
 
 		<meta name="theme-color" content="#ffffff">
-		<link rel="icon" type="image/png" href="https://<%= host %>/shortcut-icon.png">
-		<link rel="shortcut icon" href="https://<%= host %>/shortcut-icon.png">
+		<link rel="icon" type="image/png" href="<%= assets %>/shortcut-icon.png">
+		<link rel="shortcut icon" href="<%= assets %>/shortcut-icon.png">
 		<link rel="apple-touch-icon-precomposed" href="https://<%= host %>/apple-touch-icon.png">
 
 		<meta name="dcterms.rightsHolder" content="Dream Buster">
@@ -19,8 +19,8 @@
 		<meta property="og:description" content="Porting games from alternative dimensions since 372X.">
 		<meta name="twitter:description" content="Porting games from alternative dimensions since 372X.">
 		<meta name="description" content="Porting games from alternative dimensions since 372X.">
-		<meta property="og:image" content="https://<%= host %>/og.png">
-		<meta name="twitter:image" content="https://<%= host %>/og.png">
+		<meta property="og:image" content="<%= assets %>/og.png">
+		<meta name="twitter:image" content="<%= assets %>/og.png">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,7 +28,7 @@
 			I want to sincerely apologize for my awful use of flexboxes in this CSS code.
 			thank you for your time -->
 		<style>
-			html, body{
+			html, body {
 				margin: 0;
 				padding: 0;
 				width: 100vw;
@@ -70,7 +70,7 @@
 				outline: none;
 			}
 
-			#bigtitle{
+			#bigtitle {
 				width: 310px;
 				height: calc(100% - 40px);
 				padding: 20px;
@@ -81,133 +81,161 @@
 				z-index: 1000;
 			}
 
-			#logo{
+			#logo {
 				margin: 10px auto 0 calc(50% - 102px);
 			}
 
-			#jerry{
+			#jerry {
 				margin: 10px auto 0 calc(50% - 29px);
 			}
 
-			#games{
+			#games {
 				margin-left: 350px;
 			}
 
-			a{
+			a {
 				color: #000;
 				font-weight: bold;
 			}
 
-			#footer{
+			#footer {
 				color: white;
 				font-weight: bold;
 				text-align: center;
 				opacity: .5;
 			}
 
-			.gaem{
+			.gaem {
 				height: 275px;
 				display: flex;
 				align-items: center;
 				padding-bottom: 70px;
 			}
 
-			.logo{
+			.logo {
 				margin: auto;
 				display: flex;
 				line-height: 0;
 				border: 20px solid transparent;
 			}
 
-			.logo img{
+			.logo img {
 				max-width: 100%;
 				margin: auto;
 			}
 
-			.graphic{
+			.graphic {
 				flex: 2 0 275px;
 				display: flex;
 			}
 
-			.sidebar{
+			.sidebar {
 				flex: 0 0 331px;
 			}
 
-			iframe{
+			iframe {
 				width: calc(100% - 10px);
 				height: 171px;
 				box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
 				background-color: black;
 			}
 
-			#bmcp{
-				background-image: url(/bmcp/end.png);
+			#counter {
+				background: black;
+				opacity: 0.99999;
+				padding: 0;
+				box-shadow: 0px 0px 30px 35px rgba(0,0,0,1);
+				flex-direction: column;
+				display: flex !important;
+				justify-content: center;
+			}
+
+			#counternumber {
+				color: white;
+				text-align: center;
+				font-size: 2.5vw;
+				padding: 0 50px;
+				font-weight: bold;
+			}
+
+			#counterdate {
+				color: white;
+				text-align: center;
+				font-size: 1.5vw;
+				padding: 0 50px;
+			}
+
+			#bmcp {
+				background-image: url(<%= assets %>/bmcp/end.png);
 				background-repeat: repeat-x;
 				background-position: bottom left;
 				position: relative;
 				margin-top: -167px;
 			}
 
-			#bmcpbgbs{
+			#bmcpbgbs {
 				height: 167px;
 				width: 100%;
-				background-image: url(/bmcp/bg.png);
+				background-image: url(<%= assets %>/bmcp/bg.png);
 				background-repeat: repeat;
 				background-position: bottom left;
+				padding-top: 70px;
 			}
 
-			#aoj{
-				background-image: url(/aoj/bg.png), linear-gradient(to bottom, #710032 90%, #FF5C66 90%);
+			#aoj {
+				background-image: url(/dreambuster/aoj/bg.png), linear-gradient(to top, #FF5C66 70px, #710032 70px);
 				background-repeat: repeat, no-repeat;
 				background-position: bottom center;
 				margin-top: -100px;
 				padding-top: 100px;
 			}
 
-			#cdrxiv{
-				background-image: url(/cdrxiv/sun.png), url(/cdrxiv/bg.png), linear-gradient(to bottom, #FF5C66 95%, #000027 95%);
+			#cdrxiv {
+				background-image: url(<%= assets %>/cdrxiv/sun.png), url(<%= assets %>/cdrxiv/bg.png), linear-gradient(to bottom, #FF5C66 95%, #000027 95%);
 				background-repeat: no-repeat, repeat-x, no-repeat;
 				background-position: bottom left;
 			}
 
-			#slogan{
+			#slogan {
 				font-style: italic;
 				text-align: center;
 			}
 
 			@media only screen and (max-width: 1000px) {
-				#bigtitle{
+				#bigtitle {
 					width: auto;
 					height: auto;
 					overflow-y: initial;
 					position: relative;
 				}
 
-				#games{
+				#games {
 					margin-left: 0;
 				}
 
 				@media only screen and (max-width: 750px) {
-					.gaem{
+					.gaem {
 						display: block;
-						padding: 20px;
+						padding: 0 20px 70px 20px;
 						height: 475px;
 					}
 
-					.logo{
+					.logo {
 						height: 185px;
 					}
 
-					#bmcp{
+					#bmcp {
 						margin-top: -367px;
 					}
 
-					#bmcpbgbs{
+					#bmcpbgbs {
 						height: 367px;
 					}
 
-					iframe{
+					iframe {
 						height: 200px;
+						width: 360px;
+						margin-left: calc(50% - 180px);
 					}
 
 					.logo img {
@@ -222,19 +250,23 @@
 	</head>
 	<body>
 		<div id="bigtitle">
-			<img src="/logo.png" id="logo"/>
+			<img src="<%= assets %>/logo.png" id="logo"/>
 			<p id="slogan">Porting games from alternative dimensions since 372X.</p>
 			<p>We are a group of bored individuals who participate in Ludum Dare because we want to.</p>
 			<p>Theres <a href="https://soundcloud.com/the_real_astrodex/">Astro</a> and <a href="https://laulaulau.bandcamp.com">Lau</a> working on the music (lau also does the trailers), <a href="https://twitter.com/James9270Dev">James</a> doing some code magic, <a href="https://twitter.com/Noogai223">Noogai</a> on the sprites, <a href="https://unplug.red/">Red</a> doing 3D models and shaders, and <a href="https://twitter.com/Rjwest071">RJ</a> being the team mascot 🎉</p>
 			<p>You can check out all of our games in our <a href="https://dreambuster.itch.io/">itch.io page</a>, and trailers on our <a href="https://www.youtube.com/channel/UCr70fbLAXeL38wgUol6sGPQ">youtube account</a>.</p>
-			<p>you are also invited to check out the <a href="/halloffame">Dream Buster Hall of Fame</a> for random stuff we send on discord</p>
-			<img src="/jerry.png" id="jerry"/>
+			<p>you are also invited to check out the <a href="<%= assets %>/halloffame">Dream Buster Hall of Fame</a> for random stuff we send on discord</p>
+			<img src="<%= assets %>/jerry.png" id="jerry"/>
 		</div>
 		<div id="games">
+			<div id="counter" class="gaem">
+				<div id="counternumber"></div>
+				<div id="counterdate"></div>
+			</div>
 			<div id="bmcpbgbs"></div>
 			<div id="bmcp" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/bmcp" class="logo"><img src="/bmcp/logo.png"/></a>
+					<a href="https://dreambuster.itch.io/bmcp" class="logo"><img src="<%= assets %>/bmcp/logo.png"/></a>
 				</div>
 				<div class="sidebar">
 					<iframe src="https://www.youtube.com/embed/ypznQaU9SH8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -242,7 +274,7 @@
 			</div>
 			<div id="aoj" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/attack-on-jerry" class="logo"><img src="/aoj/logo.png"/></a>
+					<a href="https://dreambuster.itch.io/attack-on-jerry" class="logo"><img src="<%= assets %>/aoj/logo.png"/></a>
 				</div>
 				<div class="sidebar">
 					<iframe src="https://www.youtube.com/embed/TwTBj7tcUSc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -250,7 +282,7 @@
 			</div>
 			<div id="cdrxiv" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/car-destruction-racer-xiv" class="logo"><img src="/cdrxiv/logo.png"/></a>
+					<a href="https://dreambuster.itch.io/car-destruction-racer-xiv" class="logo"><img src="<%= assets %>/cdrxiv/logo.png"/></a>
 				</div>
 				<div class="sidebar">
 					<iframe src="https://www.youtube.com/embed/jazxOs4PkqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -258,5 +290,50 @@
 			</div>
 			<p id="footer">All rights reserved or smth idk. privacy policy: none we dont track anything<br/>Jerry loves you all</p>
 		</div>
+		<script>
+			function updateeverything()
+			{
+				var start = Date.UTC(2020, 3, 18, 1, 0, 0, 0);
+				if(start < Date.now()) {
+					start = Date.UTC(2020, 3, 21, 1, 0, 0, 0);
+					document.getElementById("counterdate").style.display = "none";
+				}
+				else {	
+					let startdate = new Date(start);
+					let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+					let starttime;
+					if(startdate.getHours() < 12) starttime = startdate.getHours() + ":" + startdate.getMinutes().toString().padStart(2, '0') + "AM";
+					else starttime = (startdate.getHours() - 12) + ":" + startdate.getMinutes().toString().padStart(2, '0') + "PM";
+					let counterdate = document.getElementById("counterdate");
+					counterdate.style.display = null;
+					counterdate.innerHTML = days[startdate.getDay()] + " " + startdate.getDate() + "/" + (startdate.getMonth() + 1) + "/" + startdate.getFullYear() + " " + starttime;
+				}
+
+				if(start < Date.now()) {
+					document.getElementById("counter").style.height = "0";
+					document.getElementById("counter").style.marginTop = "-70px";
+				}
+				else {
+					document.getElementById("counter").style.height = null;
+					document.getElementById("counter").style.marginTop = null;
+					var counternumber = document.getElementById("counternumber");
+					var interval = setInterval(update, 1000);
+					function update()
+					{
+						var compare = start - Date.now();
+						if(compare < 0) {
+							clearInterval(interval);
+							updateeverything();
+						}
+						else {
+							var compdate = new Date(compare);
+							counternumber.innerHTML = Math.floor(compare/86400000.0) + " days, " + compdate.getUTCHours() + " hours, " + compdate.getUTCMinutes() + " minutes, " + compdate.getUTCSeconds() + " seconds";
+						}
+					}
+					update()
+				}
+			}
+			updateeverything();
+		</script>
 	</body>
 </html>

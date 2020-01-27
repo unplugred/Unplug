@@ -114,7 +114,9 @@ app.get('/im-alone-in-class-again.mp3', function(req, res) {
 //dreambuster hall of fame
 app.get('/dreambuster/halloffame', function(req, res) {
 	fs.readdir('./static/dreambuster/hof', (err, files) => {
-		res.render('pages/dreambuster/halloffame',{assets:global.assets,host:req.headers.host,version:version,files:files})
+		res.render('partials/halloffame',{
+			assets:req.headers.host === "localhost" ? "/dreambuster" : "https://" + req.headers.host,
+			host:req.headers.host,version:version,files:files})
 	});
 });
 
@@ -131,7 +133,11 @@ app.use(express.static(__dirname + '/static', {
 app.get('*', function(req, res) {
 	const viewdir = app.get('views') + "/pages";
 	if(req.headers.host == 'dreambuster.unplug.red') {
-		res.render('pages/dreambuster/404',{assets:global.assets,host:req.headers.host,version:version});
+		res.render('partials/dreambuster',{assets:"https://" + req.headers.host,host:req.headers.host,version:version});
+		return;
+	}
+	else if(req.url.startsWith("/dreambuster")) {
+		res.render('partials/dreambuster',{assets:"/dreambuster",host:req.headers.host,version:version});
 		return;
 	}
 	fs.access(viewdir + req.path + ".ejs", fs.F_OK, (err) => {

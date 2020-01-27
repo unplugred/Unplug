@@ -5,9 +5,9 @@
 		<title>Hall of Fame</title>
 
 		<meta name="theme-color" content="#ffffff">
-		<link rel="icon" type="image/png" href="https://<%= host %>/shortcut-icon.png">
-		<link rel="shortcut icon" href="https://<%= host %>/shortcut-icon.png">
-		<link rel="apple-touch-icon-precomposed" href="https://<%= host %>/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="<%= assets %>/shortcut-icon.png">
+		<link rel="shortcut icon" href="<%= assets %>/shortcut-icon.png">
+		<link rel="apple-touch-icon-precomposed" href="<%= assets %>/apple-touch-icon.png">
 
 		<meta name="dcterms.rightsHolder" content="Dream Buster">
 		<meta property="og:site_name" content="Dream Buster">
@@ -21,8 +21,8 @@
 		<meta property="og:description" content="dumb shit mostly.">
 		<meta name="twitter:description" content="dumb shit mostly.">
 		<meta name="description" content="dumb shit mostly.">
-		<meta property="og:image" content="https://<%= host %>/ogjerry.png">
-		<meta name="twitter:image" content="https://<%= host %>/ogjerry.png">
+		<meta property="og:image" content="<%= assets %>/ogjerry.png">
+		<meta name="twitter:image" content="<%= assets %>/ogjerry.png">
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -36,7 +36,7 @@
 				overflow-x: hidden;
 				line-height: 0;
 				background-color: #fff;
-				background-image: url("/bgjerry.png");
+				background-image: url("<%= assets %>/bgjerry.png");
 				background-position: center center;
 			}
 
@@ -84,15 +84,15 @@
 		</style>
 	</head>
 	<body>
-		<img id="title" src="/hof.png"/><%
+		<img id="title" src="<%= assets %>/hof.png"/><%
 			var re = /(?:\.([^.]+))?$/
 			files.forEach(function(item, index, arr) {
 				extension = re.exec(item)[1];
 				if(extension == "mp3" || extension == "wav" || extension == "ogg")
 				{  %>
-		<audio src="https://<%= host %>/hof/<%= item %>" controls></audio><%
+		<audio src="<%= assets %>/hof/<%= item %>" controls></audio><%
 				} else { %>
-		<img src="https://<%= host %>/hof/<%= item %>" /><%
+		<img src="<%= assets %>/hof/<%= item %>" /><%
 				}}); %>
 	</body>
 </html>
