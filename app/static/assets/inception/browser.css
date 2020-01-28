@@ -1,6 +1,4 @@
 #browser {
-	padding: 2px;
-	display: block;
 	background:
 url("../window/wintoprightbar.png") top right no-repeat,
 url("../window/wintopleftbar.png") top left no-repeat,
@@ -10,9 +8,7 @@ url("../window/winbottomleft.png") bottom left no-repeat,
 url("../window/winbottom.png") bottom left repeat-x,
 url("../window/winleft.png") top left repeat-y,
 url("../window/winright.png") top right repeat-y, #C0C0C0;
-	background-size: initial;
 	padding: 24px 5px 5px 5px;
-	position: fixed;
 }
 
 input {

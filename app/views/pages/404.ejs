@@ -8,7 +8,11 @@
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
+				position: relative;
+			}
+			.winwrap {
 				position: fixed;
+				top: 0;
 			}
 
 			#numberwin {
@@ -77,22 +81,28 @@
 		<video id="vid" autoplay muted loop>
 			<source src="<%= assets %>/404/bg.webm" type="video/webm">
 		</video>
-		<div id="h" class="window">
-			<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+		<div class="winwrap">
+			<div id="h" class="window">
+				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+			</div>
 		</div>
-		<div id="numberwin" class="window">
-			<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+		<div class="winwrap">
+			<div id="numberwin" class="window">
+				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+			</div>
 		</div>
-		<div id="lostwin" class="window">
-			<a id="clickhere" href="/"></a>
-			<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+		<div class="winwrap">
+			<div id="lostwin" class="window">
+				<a id="clickhere" href="/"></a>
+				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+			</div>
 		</div>
 		<a href="/santa" class="santa" title="santa"></a>
 		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
 		<script>
 			var x = document.getElementsByClassName("window");
 			for (var i = 0; i < x.length; i++) {
-				dragElement(x[i]);
+				dragElement(x[i].parentNode, x[i]);
 			}
 
 			function closee(obj)
