@@ -6,11 +6,18 @@ url("<%= assets %>/inception/taskbaright.png") bottom right no-repeat,
 url("<%= assets %>/inception/taskbarmiddle.png") bottom left repeat-x, #3B6EA5;
 			}
 
+			#browserwrap {
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+
 			#browser {
 				width: calc(60vw + 30vmin);
 				height: calc(50vh + 30vmin);
 				top: calc(20vh - 15vmin);
 				left: calc(25vw - 20vmin);
+				position: relative;
 			}
 
 			.dicon {
@@ -51,19 +58,19 @@ url("<%= assets %>/inception/taskbarmiddle.png") bottom left repeat-x, #3B6EA5;
 				pointer-events: none;
 			}
 		</style>
-		<link rel=StyleSheet href="<%= assets %>/inception/browser.css" type="text/css" media=screen />
+		<link rel=StyleSheet href="<%= assets %>/inception/browser.css?v=2" type="text/css" media=screen />
 		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 	</head>
 	<body>
 		<a class="dicon" href="/trash" id="trash" title="trash"></a>
 		<a class="dicon" href="/computers" id="computer" title="computer"></a>
 		<a href="javascript:void(0)" id="start" onclick="psychadelic()"></a>
-		<div id="browser"><div id="titletext">unplug</div><div id="browserheader"></div><div id="rainbow"></div><div id="topbar"><button id="back" onclick="backk()" class="off"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div><div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe></div><a class="close" href="javascript:void(0)" onclick="closee()"></a></div>
+		<div id="browserwrap"><div id="browser"><div id="titletext">unplug</div><div id="browserheader"></div><div id="rainbow"></div><div id="topbar"><button id="back" onclick="backk()" class="off"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div><div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe></div><a class="close" href="javascript:void(0)" onclick="closee()"></a></div></div>
 		<canvas id="canva" style="display: none"></canvas>
 		<script type="text/javascript" src="<%= assets %>/inception/browser.js"></script>
 		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
 		<script>
-			dragElement(document.getElementById("browser"));
+			dragElement(document.getElementById("browserwrap"), document.getElementById("browserheader"));
 			function closee()
 			{
 				document.getElementById("browser").style.display = "none";

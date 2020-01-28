@@ -1,5 +1,5 @@
 
- <!-----------------\
+<!------------------\
  | \                 \
  |  \                 \
  |   \-----------------\
@@ -18,7 +18,12 @@
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
+				position: relative;
+			}
+			.winwrap {
 				position: fixed;
+				top: 0;
+				left: 0;
 			}
 
 			#mc_embed_signup {
@@ -119,7 +124,7 @@
 				height: 145px;
 			}
 
-			.thirdimage {
+			#hhh {
 				width: 126px;
 				height: 145px;
 				background:
@@ -136,8 +141,6 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				left: calc(30vw - 240px);
 				top: calc(63vh + 20px);
 				overflow: hidden;
-				transition-property: width, height, top, left;
-				z-index: 100;
 			}
 
 			.main-thingy{
@@ -331,74 +334,89 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 			</div>
 		</div>
 		<div id="desktop">
-
-			<div class="mainimage window" title="begin">
-				<a class="main-thingy" href="/bulb"></a>
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-			</div>
-
-			<div class="window" id="mc_embed_signup" title="join my death cult (cool people only)">
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-				<form action="https://pm.us20.list-manage.com/subscribe/post?u=526092f6456b91b0afdff2b1c&amp;id=2ea9fdbe2b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-
-					<div id="mc_embed_signup_scroll">
-						<div class="mc-field-group">
-							<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="email adress">
-						</div>
-						<div id="mce-responses" class="clear">
-							<div class="response" id="mce-error-response" style="display:none"></div>
-							<div class="response" id="mce-success-response" style="display:none"></div>
-						</div>
-						<div style="position: absolute; left: -5000px;" aria-hidden="true">
-							<input type="text" name="b_526092f6456b91b0afdff2b1c_2ea9fdbe2b" tabindex="-1" value="">
-						</div>
-						<div class="clear">
-							<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-						</div>
-					</div>
-				</form>
-			</div>
-
-			<div class="thirdimage window" id="hhh" title="me_irl">
-				<div id="aboutclip">
-					<div id="aboutcontent">
-						<a id="rotato-cubo" href="javascript:void(0)" onclick="cubeexpand()"></a>
-						<div id="bio">
-hey, im <div id="namething"></div> and this is my cool ass website<br/>
-i sometimes make weird games. when im not making games im making other stuff.<br/>
-you can find most of that stuff in this website.<br/>
-i really dont have a lot to say other than that, i have no idea what im doing tbh<br/>
-<br/>
-you can reach me at <b>arihanan@pm.me</b><br/>
-also i have a <a href="https://twitter.com/unplugred/">twitter</a>
-							<div class="separator"></div>
-						</div>
-					</div>
+			<div class="winwrap">
+				<div class="mainimage window" title="begin">
+					<a class="main-thingy" href="/bulb"></a>
+					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
 				</div>
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
 			</div>
 
-			<div class="secondaryimage window art" title="art blog">
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-				<a class="object" href="https://tumblr.unplug.red/"></a>
+			<div class="winwrap">
+				<div class="window" id="mc_embed_signup" title="join my death cult (cool people only)">
+					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+					<form action="https://pm.us20.list-manage.com/subscribe/post?u=526092f6456b91b0afdff2b1c&amp;id=2ea9fdbe2b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+						<div id="mc_embed_signup_scroll">
+							<div class="mc-field-group">
+								<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="email adress">
+							</div>
+							<div id="mce-responses" class="clear">
+								<div class="response" id="mce-error-response" style="display:none"></div>
+								<div class="response" id="mce-success-response" style="display:none"></div>
+							</div>
+							<div style="position: absolute; left: -5000px;" aria-hidden="true">
+								<input type="text" name="b_526092f6456b91b0afdff2b1c_2ea9fdbe2b" tabindex="-1" value="">
+							</div>
+							<div class="clear">
+								<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 
-			<div class="secondaryimage window games" title="games">
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-				<a class="object" href="https://unplugred.itch.io/"></a>
+			<div class="winwrap" style="z-index: 1000;">
+				<div class="window" id="hhh" title="me_irl">
+					<div id="aboutclip">
+						<div id="aboutcontent">
+							<a id="rotato-cubo" href="javascript:void(0)" onclick="cubeexpand()"></a>
+							<div id="bio">
+	hey, im <div id="namething"></div> and this is my cool ass website<br/>
+	i sometimes make weird games. when im not making games im making other stuff.<br/>
+	you can find most of that stuff in this website.<br/>
+	i really dont have a lot to say other than that, i have no idea what im doing tbh<br/>
+	<br/>
+	you can reach me at <b>arihanan@pm.me</b><br/>
+	also i have a <a href="https://twitter.com/unplugred/">twitter</a>
+								<div class="separator"></div>
+							</div>
+						</div>
+					</div>
+					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+				</div>
 			</div>
 
-			<div id="clock" class="window" title="any second you spend on this site is a second wasted from your life">
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-				<canvas id="clockcanvas"></canvas>
+			<div class="winwrap">
+				<div class="secondaryimage window art" title="art blog">
+					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+					<a class="object" href="https://tumblr.unplug.red/"></a>
+				</div>
 			</div>
 
-			<div id="grid" class="window" title="//...*/">
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+			<div class="winwrap">
+				<div class="secondaryimage window games" title="games">
+					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+					<a class="object" href="https://unplugred.itch.io/"></a>
+				</div>
 			</div>
 
-			<div id="utah" class="window" title="tea is a human right">
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+			<div class="winwrap">
+				<div id="clock" class="window" title="any second you spend on this site is a second wasted from your life">
+					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+					<canvas id="clockcanvas"></canvas>
+				</div>
+			</div>
+
+			<div class="winwrap">
+				<div id="grid" class="window" title="//...*/">
+					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+				</div>
+			</div>
+
+			<div class="winwrap">
+				<div id="utah" class="window" title="tea is a human right">
+					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+				</div>
 			</div>
 
 			<div id="copyrightstuff">© May2018-2020, v<%= version %> | <a href="https://rss.unplug.red/">RSS</a> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>
@@ -426,15 +444,16 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 			}, false);
 		</script>
 		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r78/three.min.js"></script>
 		<script type="text/javascript">
 			var closedwindows = 0;
 			var biowindow = document.getElementById("hhh");
 			var biocontent = document.getElementById("aboutcontent");
-			var biox = -1, bioy = -1;
+			var biox = -1, bioy = -1, bioe = 0;
 
 			var x = document.getElementsByClassName("window");
 			for (var i = 0; i < x.length; i++) {
-				dragElement(x[i]);
+				dragElement(x[i].parentNode, x[i]);
 			}
 			function closee(win) {
 				win.style.display = "none";
@@ -442,24 +461,31 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 					window.location = "/bye";
 				}
 			}
+
 			function cubeexpand() {
+				biowindow.parentNode.style.transitionDuration = "1s";
 				biowindow.style.transitionDuration = "1s";
+
+				bioe++;
 				setTimeout(function() {
+					if(--bioe > 0) return;
+					biowindow.parentNode.style.transitionDuration = null;
 					biowindow.style.transitionDuration = null;
 					if(biox === -1) {
-						dragElement(biowindow);
+						dragElement(biowindow.parentNode, biowindow);
 					}
 				}, 1000);
 
 				if(biox === -1) {
-					biox = biowindow.style.left;
-					bioy = biowindow.style.top;
+					biox = biowindow.parentNode.style.left;
+					bioy = biowindow.parentNode.style.top;
 
 					biowindow.style.width = "calc(100vw + 8px)";
 					biowindow.style.height = "calc(100vh + 27px)";
 					biowindow.style.left = "-4px";
 					biowindow.style.top = "-23px";
-					biowindow.style.zIndex = "1000";
+					biowindow.parentNode.style.left = "0";
+					biowindow.parentNode.style.top = "0";
 					biocontent.style.left = "calc(50% - 275px)";
 
 					setTimeout(setname, 500);
@@ -470,10 +496,16 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 					biowindow.onmousedown = null;
 				}
 				else {
-					biowindow.style.left = biox;
-					biowindow.style.top = bioy;
-					biocontent.style.left = biowindow.style.zIndex = biowindow.style.width = biowindow.style.height = null;
-					biox = bioy = bioz = -1;
+					biowindow.parentNode.style.left = biox;
+					biowindow.parentNode.style.top = bioy;
+
+					biocontent.style.left = 
+					biowindow.style.top = 
+					biowindow.style.left = 
+					biowindow.style.width = 
+					biowindow.style.height = null;
+
+					biox = bioy = -1;
 					document.getElementById("namething").innerHTML = " ";
 				}
 			};
@@ -514,9 +546,7 @@ also i have a <a href="https://twitter.com/unplugred/">twitter</a>
 					imageData.data[i] = (imageData.data[i] >> 7) * 0xFF;
 				ctx.putImageData(imageData, 0, 0);
 			}
-		</script>
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r78/three.min.js"></script>
-		<script type="text/javascript">
+
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera(22.619865, 233 / 180, 0.1, 1000);
 			var renderer = new THREE.WebGLRenderer({antialias: false});

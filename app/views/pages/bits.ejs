@@ -4,6 +4,12 @@
 				background-image: url("<%= assets %>/bits/bg.png");
 			}
 
+			.windowwrap {
+				position: fixed;
+				top: 0;
+				left: 0;
+			}
+
 			.window {
 				background-repeat: no-repeat;
 				background-position: center;
@@ -11,6 +17,7 @@
 				width: 126px;
 				height: 145px;
 				background-image: url("<%= assets %>/unplug/object.png");
+				position: relative;
 			}
 
 			.close {
@@ -43,31 +50,34 @@
 				left: 13px;
 			}
 
-			.window:first-child {
+			.windowwrap:first-child {
 				display: none;
 			}
 		</style>
 		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 	</head>
 	<body id="body">
-		<div class="window" style="">
-			<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-			<div class="bg" style=""></div>
-			<div class="object" style=""></div>
+		<div class="windowwrap">
+			<div class="window" style="">
+				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+				<div class="bg" style=""></div>
+				<div class="object" style=""></div>
+			</div>
 		</div>
 		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
 		<script type="text/javascript">
 			var anim = 0;
 			var wins = 1;
-			var windowsss = document.getElementsByClassName("window")[0];
+			var windowsss = document.getElementsByClassName("windowwrap")[0];
 
 			var cloneshit = setInterval(function()
 			{
 				if(wins++ >= 20) clearInterval(cloneshit);
 				var clone = windowsss.cloneNode(true);
+				var child = clone.getElementsByClassName("window")[0];
 				document.body.appendChild(clone);
-				dothing(clone);
-				dragElement(clone, true);
+				dothing(child);
+				dragElement(clone, child, true);
 			}, 50);
 
 			function closee(obj)
@@ -78,8 +88,8 @@
 
 			function dothing(obj)
 			{
-				obj.style.top = "calc(" + Math.random()*100 + "% - 72px)";
-				obj.style.left = "calc(" + Math.random()*100 + "% - 63px)";
+				obj.style.top = "calc(" + Math.random()*100 + "vh - 72px)";
+				obj.style.left = "calc(" + Math.random()*100 + "vw - 63px)";
 
 				var bg = obj.querySelectorAll(".bg")[0];
 				var ob = obj.querySelectorAll(".object")[0];

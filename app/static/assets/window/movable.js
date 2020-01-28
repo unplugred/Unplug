@@ -1,10 +1,10 @@
 var z = 0;
-function dragElement(elmnt, istop=false) {
+function dragElement(elmnt, header=null, istop=false) {
 	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-	if (document.getElementById(elmnt.id + "header")) {
-		document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-	} else {
+	if (header === null) {
 		elmnt.onmousedown = dragMouseDown;
+	} else {
+		header.onmousedown = dragMouseDown;
 	}
 
 	function dragMouseDown(e) {
