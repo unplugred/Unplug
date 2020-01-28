@@ -89,7 +89,7 @@
 			#copyrightstuff {
 				opacity: .4;
 				font-size: 19px;
-				position: absolute;
+				position: fixed;
 				bottom: 5px;
 				left: 10px;
 				font-weight: bold;
@@ -116,7 +116,7 @@
 			</div>
 		</div>
 		<div id="copyrightstuff">© May2018-2020, v<%= version %>&emsp;&lt;3</div>
-		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
+		<script type="text/javascript" src="<%= assets %>/window/movable.js?v=2"></script>
 		<script>
 			dragElement(document.getElementById("mainwin"), document.getElementById("mainwinheader"));
 

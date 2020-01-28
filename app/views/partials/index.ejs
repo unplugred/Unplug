@@ -264,7 +264,7 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 			#copyrightstuff {
 				opacity: .4;
 				font-size: 19px;
-				position: absolute;
+				position: fixed;
 				bottom: 5px;
 				left: 10px;
 				font-weight: bold;
@@ -443,7 +443,7 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				window.removeEventListener('touchstart', onFirstTouch, false);
 			}, false);
 		</script>
-		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
+		<script type="text/javascript" src="<%= assets %>/window/movable.js?v=2"></script>
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r78/three.min.js"></script>
 		<script type="text/javascript">
 			var closedwindows = 0;
