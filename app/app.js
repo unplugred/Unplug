@@ -12,8 +12,8 @@ app.use((req, res, next) => {
 		res.redirect(301, req.url.slice(0, -1));
 	else
 	{
-		req.headers.host = req.headers.host.toLowerCase();
 		req.url = req.url.toLowerCase();
+		req.path = req.path.toLowerCase();
 		next();
 	}
 });
