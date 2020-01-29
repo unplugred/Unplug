@@ -4,8 +4,8 @@
   "description": "unplug your mind for best experience.",
   "main": "app.js",
   "scripts": {
-    "start": "pm2 start production.js --no-daemon",
-    "test": "pm2 start debug.js --no-daemon",
+    "start": "pm2 start production.js --time --no-daemon",
+    "test": "pm2 start debug.js --time --no-daemon",
     "stop": "pm2 stop all"
   },
   "author": "Ari Hanan",
