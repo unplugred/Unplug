@@ -1,2 +1,2 @@
 cd app
-pm2 restart debug.js --no-daemon
+pm2 restart debug.js --time --no-daemon
