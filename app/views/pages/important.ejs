@@ -4,27 +4,24 @@
 				background-image: url("<%= assets %>/important.png");
 				background-repeat: no-repeat;
 				background-position: bottom right;
-				text-align: center;
-			}
-
-			.mainimage {
-				margin: calc(50vh - 14px) auto;
-				display: table;
+				display: flex;
 			}
 
 			#corner {
 				display: block;
-				position: absolute;
+				position: fixed;
 				width: 250px;
 				height: 250px;
 				bottom: 0;
 				right: 0;
 			}
+
+			#txt {
+				margin: auto auto;
+			}
 		</style>
 	</head>
 	<body>
-		<div class="mainimage">
-			<a href="/important.txt" download="important.txt">important.txt</a>
-			<a href="/hyperaction" id="corner" title="hyperaction"></a>
-		</div>
+		<a href="/important.txt" id="txt" download="important.txt">important.txt</a>
+		<a href="/hyperaction" id="corner" title="hyperaction"></a>
 <%- include('../partials/footer') %>
