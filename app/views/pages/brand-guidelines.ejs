@@ -195,7 +195,7 @@ use this if:
 <li>the site/program supports transparency</li>
 <li>there will be no visible border around the image</li>
 				</ul>
-this can be created by downloading the opaque gif below, and then running the following command on <a href="https://imagemagick.org">ImageMagick</a>:
+this can be created by downloading the opaque gif below, and then running the following command on <a href="https://imagemagick.org" target="_blank">ImageMagick</a>:
 <code>magick convert -dispose background 'opaque gif.gif' -scale 100x100 -fuzz 1% -fill '#4B707100' -opaque '#4B7071FF' 'antialiased transparent gif.gif'</code>
 be sure to replace 100x100 with the desired resolution<br/>
 the antialiased transparent gif must be resized before using, as its entire point is to save bandwidth.<br/>
@@ -212,7 +212,7 @@ use this if:
 <li>there will be no visible border around the image</li>
 				</ul>
 be sure to resize the gif to the appropriate size before using it to save bandwidth.<br/>
-gifs can be easily resized by running the following command on <a href="https://imagemagick.org">ImageMagick</a>:
+gifs can be easily resized by running the following command on <a href="https://imagemagick.org" target="_blank">ImageMagick</a>:
 <code>magick convert 'aliased transparent gif.gif' -scale 100x100 'aliased transparent gif resized.gif'</code>
 be sure to replace 100x100 with the desired resolution
 			</div>
@@ -225,7 +225,7 @@ use this if:
 <li>the site/program supports animated gifs</li>
 				</ul>
 be sure to resize the gif to the appropriate size before using it to save bandwidth.<br/>
-gifs can be easily resized by running the following command on <a href="https://imagemagick.org">ImageMagick</a>:
+gifs can be easily resized by running the following command on <a href="https://imagemagick.org" target="_blank">ImageMagick</a>:
 <code>magick convert 'opaque gif.gif' -scale 100x100 'opaque gif resized.gif'</code>
 be sure to replace 100x100 with the desired resolution
 			</div>
