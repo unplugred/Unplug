@@ -5,10 +5,10 @@
 		<style>
 			#bg {
 				background-image: url("<%= assets %>/discord.png");
-				width: calc(100vw + 520px);
-				height: calc(100vh + 520px);
-				position: absolute;
-				opacity: 0.1;
+				width: 100vw;
+				height: 100vh;
+				position: fixed;
+				opacity: .1;
 				animation: background 16s 0s linear infinite;
 			}
 
@@ -66,10 +66,10 @@
 			}
 			@keyframes background {
 				0% {
-					margin: 0;
+					background-position: 520px 0;
 				}
 				100% {
-					margin: -520px;
+					background-position: 0 0;
 				}
 			}
 		</style>
