@@ -332,6 +332,30 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 			.expandedabout #aboutcontent {
 				left: calc(50% - 275px);
 			}
+
+			@media only screen and (max-width: 700px) {
+				.expandedabout #aboutcontent {
+					left: 50%;
+					top: 60px;
+				}
+
+				#bio {
+					top: 60px;
+					left: calc(-50vw + 30px);
+					width: calc(100vw - 50px);
+				}
+
+				.expandedabout #aboutclip {
+					overflow-y: overlay;
+				}
+
+				#aboutclip::-webkit-scrollbar-thumb {
+					background-color: #d8e0e0;
+					border: 3px #4b7071 solid;
+					border-radius: 6px;
+					outline: none;
+				}
+			}
 		</style>
 		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 		<link rel="StyleSheet" id="quicksand" type="text/css" href="">
