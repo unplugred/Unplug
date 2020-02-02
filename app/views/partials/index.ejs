@@ -143,6 +143,23 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				overflow: hidden;
 			}
 
+			.expandedabout #hhh {
+
+				width: calc(100vw + 8px);
+				height: calc(100vh + 27px);
+				left: -4px;
+				top: -23px;
+			}
+
+			.expandedabout {
+				left: 0 !important;
+				top: 0 !important;
+			}
+
+			.expandedabout .aboutcontent {
+				left: calc(50% - 275px);
+			}
+
 			.main-thingy{
 				margin: 22px 3px 3px 3px;
 				width: calc(100% - 6px);
@@ -311,6 +328,10 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				bottom: 3px;
 				overflow: hidden;
 			}
+
+			.expandedabout #aboutcontent {
+				left: calc(50% - 275px);
+			}
 		</style>
 		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 		<link rel="StyleSheet" id="quicksand" type="text/css" href="">
@@ -439,7 +460,7 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 			var closedwindows = 0;
 			var biowindow = document.getElementById("hhh");
 			var biocontent = document.getElementById("aboutcontent");
-			var biox = -1, bioy = -1, bioe = 0;
+			var biox = false, bioe = 0;
 
 			var x = document.getElementsByClassName("window");
 			for (var i = 0; i < x.length; i++) {
@@ -461,22 +482,14 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 					if(--bioe > 0) return;
 					biowindow.parentNode.style.transitionDuration = null;
 					biowindow.style.transitionDuration = null;
-					if(biox === -1) {
+					if(biox === false) {
 						dragElement(biowindow.parentNode, biowindow);
 					}
 				}, 1000);
 
-				if(biox === -1) {
-					biox = biowindow.parentNode.style.left;
-					bioy = biowindow.parentNode.style.top;
-
-					biowindow.style.width = "calc(100vw + 8px)";
-					biowindow.style.height = "calc(100vh + 27px)";
-					biowindow.style.left = "-4px";
-					biowindow.style.top = "-23px";
-					biowindow.parentNode.style.left = "0";
-					biowindow.parentNode.style.top = "0";
-					biocontent.style.left = "calc(50% - 275px)";
+				if(biox === false) {
+					biox = true;
+					biowindow.parentNode.className = "window expandedabout";
 
 					setTimeout(setname, 500);
 					function setname() {
@@ -486,16 +499,8 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 					biowindow.onmousedown = null;
 				}
 				else {
-					biowindow.parentNode.style.left = biox;
-					biowindow.parentNode.style.top = bioy;
-
-					biocontent.style.left = 
-					biowindow.style.top = 
-					biowindow.style.left = 
-					biowindow.style.width = 
-					biowindow.style.height = null;
-
-					biox = bioy = -1;
+					biowindow.parentNode.className = "window";
+					biox = false;
 					document.getElementById("namething").innerHTML = " ";
 				}
 			};
