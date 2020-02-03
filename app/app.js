@@ -12,6 +12,7 @@ app.use((req, res, next) => {
 		res.redirect(301, req.url.slice(0, -1));
 	else
 	{
+		console.log(req.url);
 		req.url = req.url.toLowerCase();
 		req.path = req.path.toLowerCase();
 		next();
@@ -71,7 +72,6 @@ app.get('*', function(req, res, next){
 			req.url = '/dreambuster' + req.url;
 		}
 		else {
-			console.log(req.headers.host + req.url);
 			res.render('partials/wildcard',{assets:global.assets,host:req.headers.host,version:version});
 			return;
 		}
