@@ -151,16 +151,6 @@ button:active {
 	font-smooth: never;
 	color: #D6D6CE;
 }
-
-@font-face {
-	font-family: 'tahoma8';
-	font-style: normal;
-	font-weight: 500;
-	font-display: swap;
-	-webkit-font-smoothing : none;
-	font-smooth: never;
-	src: url("../window/tahoma8.ttf") format('ttf');
-}
 @font-face {
 	font-family: 'tahoma8bold';
 	font-style: normal;
@@ -168,5 +158,5 @@ button:active {
 	font-display: swap;
 	-webkit-font-smoothing : none;
 	font-smooth: never;
-	src: url("../window/tahoma8bold.ttf") format('ttf');
+	src: url("../window/tahoma8bold.woff2") format('woff2');
 }
