@@ -36,11 +36,11 @@ app.on('ready', function(){
 		x: res.width*.25 - vmin*.2,
 		y: res.height*.2 - vmin*.15,
 		darkTheme: true,
-		frame: false,
+		frame: global.debug,
 		webPreferences: { nodeIntegration: true }
 	});
 	global.mainWindow.hide();
-	global.mainWindow.removeMenu();
+	if(!global.debug) global.mainWindow.removeMenu();
 	global.mainWindow.loadURL("http://localhost:6660/browser?6660");
 
 	global.byeWindow = new BrowserWindow({
