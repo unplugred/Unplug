@@ -2,9 +2,10 @@
   "name": "unplug",
   "version": "0.9.3",
   "description": "unplug your mind for best experience.",
-  "main": "electricfeel.js",
+  "main": "production.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron production.js",
+    "test": "electron debug.js"
   },
   "author": "Ari Hanan",
   "license": "MIT",
