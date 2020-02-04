@@ -50,19 +50,19 @@ app.get('*', function(req, res, next){
 		req.path === "/privacy-policy" ||
 		req.path === "/brand-guidelines" ||
 		req.path === "/feed") {
-			res.status(404).render('pages/404',{assets:global.assets,host:req.hostname,version:version});
+			res.status(404).render('pages/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 			return;
 		}
 		if(req.url === "/browser?6660") {
-			res.render('electron/browser',{assets:global.assets,host:req.hostname,version:version});
+			res.render('electron/browser',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 			return;
 		}
 		if(req.url === "/bye?6660") {
-			res.render('electron/bye',{assets:global.assets,host:req.hostname,version:version});
+			res.render('electron/bye',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 			return;
 		}
 		if(req.url === "/unplug?6660") {
-			res.render('electron/unplug',{assets:global.assets,host:req.hostname,version:version});
+			res.render('electron/unplug',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 			return;
 		}
 	}
@@ -70,7 +70,7 @@ app.get('*', function(req, res, next){
 	else if(req.hostname === 'www.unplug.red' || req.hostname === 'unplug.red' || req.hostname === 'localhost') {
 		if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster"))
 		{
-			res.status(404).render('pages/404',{assets:global.assets,host:req.hostname,version:version});
+			res.status(404).render('pages/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 			return;
 		}
 	}
@@ -81,7 +81,7 @@ app.get('*', function(req, res, next){
 	//rss
 	else if(req.hostname.startsWith('rss.')) {
 		res.set('Content-Type', 'text/xml');
-		res.render('pages/feed',{assets:global.assets,host:req.hostname,version:version});
+		res.render('pages/feed',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 		return;
 	}
 	//dreambuster
@@ -100,13 +100,13 @@ app.get('*', function(req, res, next){
 
 //index
 app.get('/', function(req, res) {
-	res.render('partials/index',{assets:global.assets,host:req.hostname,version:version})
+	res.render('partials/index',{assets:global.assets,host:global.protocol + req.hostname,version:version})
 });
 
 //rss
 app.get('/feed', function(req, res) {
 	res.set('Content-Type', 'text/xml');
-	res.render('pages/feed',{assets:global.assets,host:req.hostname,version:version})
+	res.render('pages/feed',{assets:global.assets,host:global.protocol + req.hostname,version:version})
 });
 
 //important.txt
@@ -117,7 +117,7 @@ app.get('/important.txt', function(req, res) {
 //dreambuster hall of fame
 app.get('/dreambuster/halloffame', function(req, res) {
 	fs.readdir('./static/dreambuster/hof', (err, files) => {
-		res.render('partials/halloffame',{assets:req.protocol + "://" + req.hostname,host:req.hostname,version:version,files:files})
+		res.render('partials/halloffame',{assets:global.protocol + req.hostname,host:global.protocol + req.hostname,version:version,files:files})
 	});
 });
 
@@ -136,14 +136,14 @@ app.use(express.static(__dirname + '/static', {
 app.get('*', function(req, res) {
 	//dream buster home
 	if(req.hostname.startsWith('dreambuster.')) {
-		res.render('partials/dreambuster',{assets:req.protocol + "://" + req.hostname,host:req.hostname,version:version});
+		res.render('partials/dreambuster',{assets:global.protocol + req.hostname,host:global.protocol + req.hostname,version:version});
 		return;
 	}
 	//all other pages
-	res.render("pages" + req.path + ".ejs", {assets:global.assets,host:req.hostname,version:version}, function(err, html) {
+	res.render("pages" + req.path + ".ejs", {assets:global.assets,host:global.protocol + req.hostname,version:version}, function(err, html) {
 		if (err) {
 			if (err.message.indexOf('Failed to lookup view') !== -1) {
-				return res.status(404).render('pages/404',{assets:global.assets,host:req.hostname,version:version});
+				return res.status(404).render('pages/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 			}
 			throw err;
 		}
