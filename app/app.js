@@ -12,7 +12,14 @@ app.use((req, res, next) => {
 		res.redirect(301, req.url.slice(0, -1));
 	else
 	{
-		console.log(req.url);
+		if(req.headers.host === undefined)
+		{
+			if(req.hostname === undefined)
+				console.log("^" + req.protocol + "://????" + req.originalUrl);
+			else
+				console.log("^" + req.protocol + "://" + req.hostname + ":????" + req.originalUrl);
+		}
+		else console.log("^" + req.protocol + "://" + req.headers.host + req.originalUrl);
 		req.url = req.url.toLowerCase();
 		req.path = req.path.toLowerCase();
 		next();
@@ -30,14 +37,19 @@ app.get('/administrator/index.php', (req, res) => res.send('fuck off'));
 
 //subdomains
 app.get('*', function(req, res, next){
-	if(req.headers.host != "localhost") {
+	if(req.headers.host === undefined)
+	{
+		res.status(404).sendFile(__dirname + '/hidden/wildcard.html');
+		return;
+	}
+	else if(req.headers.host !== "localhost") {
 		if(req.headers.host.startsWith("localhost")) {
 			if(
 			req.url.startsWith("/dreambuster") ||
 			req.path === "/privacy-policy" ||
 			req.path === "/brand-guidelines" ||
 			req.path === "/feed") {
-				res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
+				res.status(404).render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
 				return;
 			}
 			if(req.url === "/browser?6660") {
@@ -53,31 +65,31 @@ app.get('*', function(req, res, next){
 				return;
 			}
 		}
-		else if(req.headers.host == 'www.unplug.red' || req.headers.host == 'unplug.red') {
+		else if(req.headers.host === 'www.unplug.red' || req.headers.host == 'unplug.red') {
 			if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster"))
 			{
-				res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
+				res.status(404).render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
 				return;
 			}
 		}
-		else if(req.headers.host == 'assets.unplug.red') {
+		else if(req.headers.host === 'assets.unplug.red') {
 			req.url = '/assets' + req.url;
 		}
-		else if(req.headers.host == 'rss.unplug.red') {
+		else if(req.headers.host === 'rss.unplug.red') {
 			res.set('Content-Type', 'text/xml');
 			res.render('pages/feed',{assets:global.assets,host:req.headers.host,version:version});
 			return;
 		}
-		else if(req.headers.host == 'dreambuster.unplug.red') {
+		else if(req.headers.host === 'dreambuster.unplug.red') {
 			req.url = '/dreambuster' + req.url;
 		}
 		else {
-			res.render('partials/wildcard',{assets:global.assets,host:req.headers.host,version:version});
+			res.status(404).sendFile(__dirname + '/hidden/wildcard.html');
 			return;
 		}
 	}
 	else if(req.path === "/wildcard") {
-		res.render('partials/wildcard',{assets:global.assets,host:req.headers.host,version:version});
+		res.status(404).sendFile(__dirname + '/hidden/wildcard.html');
 		return;
 	}
 	next();
@@ -98,7 +110,7 @@ app.get('/feed', function(req, res) {
 
 //important.txt
 app.get('/important.txt', function(req, res) {
-	res.download(__dirname + '/static/important.txt')
+	res.download(__dirname + '/hidden/important.txt')
 });
 
 //alone-in-class-again.mp3
@@ -135,13 +147,14 @@ app.get('*', function(req, res) {
 		res.render('partials/dreambuster',{assets:"/dreambuster",host:req.headers.host,version:version});
 		return;
 	}
-	fs.access(viewdir + req.path + ".ejs", fs.F_OK, (err) => {
+	res.render("pages" + req.path, {assets:global.assets,host:req.headers.host,version:version}, function(err, html) {
 		if (err) {
-			res.render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
-			return;
+			if (err.message.indexOf('Failed to lookup view') !== -1) {
+				return res.status(404).render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
+			}
+			throw err;
 		}
-
-		res.render('pages/' + req.path,{assets:global.assets,host:req.headers.host,version:version});
+		res.send(html);
 	});
 });
 
