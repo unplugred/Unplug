@@ -127,7 +127,10 @@ app.get('/dreambuster/halloffame', function(req, res) {
 app.use(express.static(__dirname + '/static', {
 	index: false,
 	redirect: false,
-	maxAge: 2592000000
+	maxAge: 2592000000,
+	setHeaders: function(res, path, stat) {
+		res.set('Access-Control-Allow-Origin','*');
+	}
 }));
 
 app.get('*', function(req, res) {
