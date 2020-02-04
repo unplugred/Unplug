@@ -83,7 +83,7 @@
 			function getRandomColor()
 			{
 				let color = (Math.floor((Math.random() * 150 + 50)*multiplier)).toString(16);
-				if(color.length == 1) color = "0" + color;
+				if(color.length === 1) color = "0" + color;
 				return '#' + color + color + color;
 			}
 

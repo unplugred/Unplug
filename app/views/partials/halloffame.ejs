@@ -88,7 +88,7 @@
 			var re = /(?:\.([^.]+))?$/
 			files.forEach(function(item, index, arr) {
 				extension = re.exec(item)[1];
-				if(extension == "mp3" || extension == "wav" || extension == "ogg")
+				if(extension === "mp3" || extension === "wav" || extension === "ogg")
 				{  %>
 		<audio src="<%= assets %>/hof/<%= item %>" controls></audio><%
 				} else { %>
