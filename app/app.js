@@ -147,7 +147,7 @@ app.get('*', function(req, res) {
 		res.render('partials/dreambuster',{assets:"/dreambuster",host:req.headers.host,version:version});
 		return;
 	}
-	res.render("pages" + req.path, {assets:global.assets,host:req.headers.host,version:version}, function(err, html) {
+	res.render("pages" + req.path.replace(/./g,''), {assets:global.assets,host:req.headers.host,version:version}, function(err, html) {
 		if (err) {
 			if (err.message.indexOf('Failed to lookup view') !== -1) {
 				return res.status(404).render('pages/404',{assets:global.assets,host:req.headers.host,version:version});
