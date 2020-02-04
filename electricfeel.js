@@ -1,6 +1,6 @@
 global.portt = 6660;
-global.assets = "/assets";
 global.protocol = "http://";
+global.domain = "localhost:6660";
 require('./app/app.js');
 const electron = require('electron');
 var {app, BrowserWindow} = electron;

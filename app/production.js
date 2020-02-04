@@ -1,4 +1,4 @@
 global.portt = 80;
-global.assets = "https://assets.unplug.red";
 global.protocol = "https://";
+global.domain = "unplug.red";
 require('./app.js');

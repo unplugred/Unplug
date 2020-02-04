@@ -1,4 +1,4 @@
 global.portt = 80;
-global.assets = "http://assets.localhost";
 global.protocol = "http://";
+global.domain = "localhost";
 require('./app.js');
