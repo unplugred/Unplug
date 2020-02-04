@@ -63,7 +63,7 @@
 			.button:hover, .button:focus {
 				opacity: 1!important;
 			}
-			
+
 			.button {
 				width: 356px;
 				height: 74px;
@@ -145,7 +145,7 @@
 			function dechoose()
 			{
 				screen1.style.pointerEvents = "none";
-				if(screen == 666) screen = 1;
+				if(screen === 666) screen = 1;
 				else
 				{
 					clearInterval(interval);
@@ -157,7 +157,7 @@
 
 			function animate()
 			{
-				if(screen == 4)
+				if(screen === 4)
 				{
 					ball.style.opacity = "0";
 					ball.style.backgroundImage = "url('<%= assets %>/8ball/" + Math.floor(Math.random()*5 + 4) + ".png')";
@@ -165,7 +165,7 @@
 				else if(screen > 4)
 				{
 					ball.style.opacity = ((screen - 4)/3);
-					if(screen == 7)
+					if(screen === 7)
 					{
 						screen1.style.display = null;
 						screen2.style.display = "none";
@@ -187,8 +187,8 @@
 				else
 				{
 					ball.style.backgroundImage = "url('<%= assets %>/8ball/" + Math.abs(screen) + ".png')";
-					if(screen == 3) ball.style.opacity = null;
-					if(screen == 0)
+					if(screen === 3) ball.style.opacity = null;
+					if(screen === 0)
 					{
 						clearInterval(interval);
 						screen = 2;

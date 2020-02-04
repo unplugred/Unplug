@@ -128,7 +128,7 @@
 			function clickleft()
 			{
 				if(!clickable) return;
-				if(stage == 2)
+				if(stage === 2)
 				{
 					document.getElementById("fade").style.display = "block";
 					setTimeout(function(){
@@ -164,7 +164,7 @@
 			function clickright()
 			{
 				if(!clickable) return;
-				if(stage == 2) return;
+				if(stage === 2) return;
 				if(isleft) return;
 				if(istaken)
 				{
@@ -176,7 +176,7 @@
 						right.classList.remove("empty");
 						document.body.classList.remove("cursorthing");
 						paper.style.display = "none";
-						if(stage == 1) replace(left, "icon folder empty", false);
+						if(stage === 1) replace(left, "icon folder empty", false);
 						else
 						{
 							replace(right, "icon trash", false);

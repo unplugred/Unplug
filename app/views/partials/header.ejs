@@ -1,10 +1,10 @@
 <%
-if(typeof ogimage == 'undefined') var ogimage = assets + "/objects/c" + (Math.floor(Math.random()*10)) + ".gif";
-if(typeof description == 'undefined') var description = "unplug your mind for best experience.";
-if(typeof icontype == 'undefined') var icontype = "png";
-if(typeof icon == 'undefined') var icon = assets + "/shortcut-icon.png";
-if(typeof color == 'undefined') var color = "#000000";
-if(typeof card == 'undefined') var card = "summary";
+if(typeof ogimage === 'undefined') var ogimage = assets + "/objects/c" + (Math.floor(Math.random()*10)) + ".gif";
+if(typeof description === 'undefined') var description = "unplug your mind for best experience.";
+if(typeof icontype === 'undefined') var icontype = "png";
+if(typeof icon === 'undefined') var icon = assets + "/shortcut-icon.png";
+if(typeof color === 'undefined') var color = "#000000";
+if(typeof card === 'undefined') var card = "summary";
 %><!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -29,5 +29,5 @@ if(typeof card == 'undefined') var card = "summary";
 		<meta property="og:image" content="<%= ogimage %>">
 		<meta name="twitter:image" content="<%= ogimage %>">
 		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="https://rss.unplug.red/" />
-<% if(typeof css == 'undefined') { %>		<link rel=StyleSheet href="<%= assets %>/unplug.css?v=3" type="text/css" media=screen>
+<% if(typeof css === 'undefined') { %>		<link rel=StyleSheet href="<%= assets %>/unplug.css?v=3" type="text/css" media=screen>
 <% } %>

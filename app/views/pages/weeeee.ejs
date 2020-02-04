@@ -87,7 +87,7 @@
 				this.height = Math.max(1 - w, w) * s;
 
 				var y;
-				if(diff == 0) y = Math.random();
+				if(diff === 0) y = Math.random();
 				else if(diff < 0) y = 1 + (this.height*.5)/window.innerHeight;
 				else if(diff > 0) y = -(this.height*.5 + 5)/window.innerHeight;
 

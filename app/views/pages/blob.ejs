@@ -138,7 +138,7 @@
 			function timer()
 			{
 				var pos = 0;
-				while(qr[pos] == 0)
+				while(qr[pos] === 0)
 					pos = Math.floor(Math.random()*qr.length);
 				pos *= 8;
 				ctx.putImageData(shapesdata[Math.max(0,Math.floor((Math.random()*2-1)*shapesdata.length))],pos%216,Math.floor(pos/216)*8);
