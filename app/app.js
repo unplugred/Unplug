@@ -42,6 +42,11 @@ app.get('*', function(req, res, next){
 		res.status(404).sendFile(__dirname + '/hidden/wildcard.html');
 		return;
 	}
+	if(req.path === "/favicon.ico" && req.hostname !== "dreambuster.unplug.red")
+	{
+		res.sendFile(__dirname + '/hidden/favicon.ico');
+		return;
+	}
 	else if(req.headers.host !== "localhost") {
 		if(req.headers.host.startsWith("localhost")) {
 			if(
