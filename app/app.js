@@ -38,7 +38,7 @@ app.get('*', function(req, res, next){
 		return;
 	}
 	//global favicon
-	if(req.path === "/favicon.ico" && req.hostname !== "dreambuster.unplug.red")
+	if(req.path === "/favicon.ico" && !req.hostname.startsWith("dreambuster."))
 	{
 		res.sendFile(__dirname + '/hidden/favicon.ico');
 		return;
@@ -137,7 +137,7 @@ app.get('*', function(req, res) {
 		return;
 	}
 	//all other pages
-	res.render("pages" + req.url + ".ejs", {assets:global.assets,host:req.hostname,version:version}, function(err, html) {
+	res.render("pages" + req.path + ".ejs", {assets:global.assets,host:req.hostname,version:version}, function(err, html) {
 		if (err) {
 			if (err.message.indexOf('Failed to lookup view') !== -1) {
 				return res.status(404).render('pages/404',{assets:global.assets,host:req.hostname,version:version});
