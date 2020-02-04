@@ -1,6 +1,7 @@
 const fs = require('fs');
 const express = require('express');
 const app = express();
+global.assets = global.protocol + "assets." + global.domain;
 var version = 0
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views/')
@@ -143,7 +144,7 @@ app.get('*', function(req, res) {
 	res.render("pages" + req.path + ".ejs", {assets:global.assets,host:global.protocol + req.hostname,version:version}, function(err, html) {
 		if (err) {
 			if (err.message.indexOf('Failed to lookup view') !== -1) {
-				return res.status(404).render('pages/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+				return res.status(404).render('pages/404',{assets:global.assets,host:global.protocol + global.domain,version:version});
 			}
 			throw err;
 		}
