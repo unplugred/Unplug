@@ -1,3 +1,32 @@
+<%- include('../partials/header',{title:"message"}) %>
+		<style>
+			body {
+				overflow-y: auto;
+			}
+
+			.comment{
+				font-style: italic;
+				font-weight: bold;
+				font-size: 30px;
+				padding: 42px;
+				border-top: 3px solid #aaa;
+				width: 50vw;
+				text-align: center;
+				margin: auto;
+				overflow-wrap: break-word;
+			}
+
+			#closed {
+				width: 100vw;
+				height: calc(100vh - 64px);
+				background-image: url("<%= assets %>/message.png");
+				background-repeat: no-repeat;
+				background-position: center center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="closed"></div>
 <div class="comment">cant wait for WW3</div>
 <div class="comment">As always, you fail to disappoint me. Your next target is a financier named Jeff</div>
 <div class="comment">Well, time to get some breakfast. Actually a...a little Coom first wouldn't hurt</div>
@@ -309,3 +338,4 @@ Help!</div>
 <div class="comment">hi</div>
 <div class="comment">ꗗꗭꗈꖳꗫꎺ㈵ⵅ꓎ꖪꗪꖸꗊꗫꓲ놣꒷꒿䍄꓏ꆢꖵꖤꗈ██꓋꓆ꆢꗭꗃꖫー꓋꒵ꓬ꓆꒤ꓞ꒹ꆣഊ</div>
 <div class="comment">welcome to the comment section</div>
+<%- include('../partials/footer') %>
