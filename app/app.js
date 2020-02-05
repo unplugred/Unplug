@@ -68,7 +68,7 @@ app.get('*', function(req, res, next){
 		}
 	}
 	//normal website
-	else if(req.hostname === 'www.unplug.red' || req.hostname === 'unplug.red' || req.hostname === 'localhost') {
+	else if(req.hostname === 'www.' + global.domain || req.hostname === global.domain) {
 		if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster"))
 		{
 			res.status(404).render('pages/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});

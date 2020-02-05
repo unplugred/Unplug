@@ -1,6 +1,6 @@
 global.portt = 6660;
 global.protocol = "http://";
-global.domain = "localhost:6660";
+global.domain = "localhost:" + global.portt;
 require('./app/app.js');
 const electron = require('electron');
 var {app, BrowserWindow} = electron;
@@ -25,7 +25,7 @@ app.on('ready', function(){
 		webPreferences: { nodeIntegration: true }
 	});
 	global.unplugWindow.removeMenu();
-	global.unplugWindow.loadURL("http://localhost:6660/unplug?6660");
+	global.unplugWindow.loadURL(global.protocol + global.domain + "/unplug?6660");
 
 
 	global.mainWindow = new BrowserWindow({
@@ -42,7 +42,7 @@ app.on('ready', function(){
 	});
 	global.mainWindow.hide();
 	if(!global.debug) global.mainWindow.removeMenu();
-	global.mainWindow.loadURL("http://localhost:6660/browser?6660");
+	global.mainWindow.loadURL(global.protocol + global.domain + "/browser?6660");
 
 	global.byeWindow = new BrowserWindow({
 		title: "bye",
