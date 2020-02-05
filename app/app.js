@@ -51,7 +51,7 @@ app.get('*', function(req, res, next){
 		req.path === "/privacy-policy" ||
 		req.path === "/brand-guidelines" ||
 		req.path === "/feed") {
-			res.status(404).render('pages/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+			res.status(404).render('partials/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 			return;
 		}
 		if(req.url === "/browser?6660") {
@@ -71,7 +71,7 @@ app.get('*', function(req, res, next){
 	else if(req.hostname === 'www.' + global.domain || req.hostname === global.domain) {
 		if(req.url.startsWith("/assets") || req.url.startsWith("/dreambuster"))
 		{
-			res.status(404).render('pages/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+			res.status(404).render('partials/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 			return;
 		}
 	}
@@ -144,7 +144,7 @@ app.get('*', function(req, res) {
 	res.render("pages" + req.path + ".ejs", {assets:global.assets,host:global.protocol + req.hostname,version:version}, function(err, html) {
 		if (err) {
 			if (err.message.indexOf('Failed to lookup view') !== -1) {
-				return res.status(404).render('pages/404',{assets:global.assets,host:global.protocol + global.domain,version:version});
+				return res.status(404).render('partials/404',{assets:global.assets,host:global.protocol + global.domain,version:version});
 			}
 			throw err;
 		}
@@ -153,7 +153,7 @@ app.get('*', function(req, res) {
 });
 
 fs.readdir(app.get('views') + '/pages', (err, files) => {
-	version = ((files.length + 1)*.01).toFixed(2);
+	version = ((files.length + 2)*.01).toFixed(2);
 
 	//startup sequence
 	const startseq = ([
