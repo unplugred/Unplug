@@ -28,6 +28,6 @@ if(typeof card === 'undefined') var card = "summary";
 		<meta name="description" content="<%= description %>">
 		<meta property="og:image" content="<%= ogimage %>">
 		<meta name="twitter:image" content="<%= ogimage %>">
-		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="https://rss.unplug.red/" />
+		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="<%= global.protocol %>rss.<%= global.domain %>/" />
 <% if(typeof css === 'undefined') { %>		<link rel=StyleSheet href="<%= assets %>/unplug.css?v=3" type="text/css" media=screen>
 <% } %>

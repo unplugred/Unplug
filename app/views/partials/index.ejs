@@ -424,7 +424,7 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 			<div class="winwrap">
 				<div class="secondaryimage window art" title="art blog">
 					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-					<a class="object" href="https://tumblr.unplug.red/" target="_blank"></a>
+					<a class="object" href="<%= global.protocol %>tumblr.<%= global.domain %>/" target="_blank"></a>
 				</div>
 			</div>
 
@@ -454,7 +454,7 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				</div>
 			</div>
 
-			<div id="copyrightstuff">© May2018-2020, v<%= version %> | <a href="https://rss.unplug.red/" target="_blank">RSS</a> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>
+			<div id="copyrightstuff">© May2018-2020, v<%= version %> | <a href="<%= global.protocol %>rss.<%= global.domain %>/" target="_blank">RSS</a> | <a href="/privacy-policy">privacy policy</a> | &lt;3</div>
 		</div>
 		<script type="text/javascript">
 			var isdesktop = -1;
