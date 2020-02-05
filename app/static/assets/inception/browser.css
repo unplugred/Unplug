@@ -77,6 +77,10 @@ input {
 	background-image: url("go.png");
 }
 
+.off#go .icon {
+	opacity: .5;
+}
+
 #go {
 	width: 42px;
 	margin-right: 0;
