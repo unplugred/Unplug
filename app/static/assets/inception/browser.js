@@ -70,14 +70,14 @@ function singlevalid(v)
 	while(v.startsWith("/")) v = v.substr(1);
 	if(v.startsWith("unplug")) v = "";
 	if(v.startsWith("?")) v = "";
-	if(v.startsWith("inception?")) v = "inception";
+	if(v.startsWith("inception?ppp=")) v = "inception";
 	return v;
 }
 
 function tourll(v)
 {
 	if(v === "") return "/unplug";
-	if(v.startsWith("inception")) return "/inception?" + Math.floor(Math.random()*10000);
+	if(v.replace(/\/+$/, "") === "inception") return "/inception?ppp=" + Math.floor(Math.random()*10000);
 	return "/" + v;
 }
 
