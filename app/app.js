@@ -43,7 +43,7 @@ app.use((req, res, next) => {
 	if(req.hostname !== 'dreambuster.' + global.domain) return next();
 
 	if(req.path === "/halloffame") fs.readdir('./static/dreambuster/hof', (err, files) => {
-		return res.render('dreambuster/halloffame', {assets:global.protocol + req.hostname,host:global.protocol + req.hostname,version:version,files:files})});
+		return res.render('dreambuster/halloffame.ejs', {assets:global.protocol + req.hostname,host:global.protocol + req.hostname,version:version,files:files})});
 
 	return next();
 });
@@ -57,15 +57,15 @@ app.use((req, res, next) => {
 	req.path === "/privacy-policy" ||
 	req.path === "/brand-guidelines" ||
 	req.path === "/feed")
-		return res.status(404).render('partials/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+		return res.status(404).render('partials/404.ejs',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 
 	if(req.url.endsWith("?6660")) {
 		if(req.path === "/browser")
-			return res.render('electron/browser',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+			return res.render('electron/browser.ejs',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 		if(req.path === "/bye")
-			return res.render('electron/bye',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+			return res.render('electron/bye.ejs',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 		if(req.path === "/unplug")
-			return res.render('electron/unplug',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+			return res.render('electron/unplug.ejs',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 	}
 
 	return next();
@@ -75,7 +75,7 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
 	if(req.hostname !== 'rss.' + global.domain) return next();
 	res.set('Content-Type', 'text/xml');
-	return res.render('partials/feed', {assets:global.protocol + req.hostname,host:global.protocol + req.hostname,version:version});
+	return res.render('partials/feed.ejs', {assets:global.protocol + req.hostname,host:global.protocol + req.hostname,version:version});
 });
 
 /*	UNPLUG--------------------------*/
@@ -84,12 +84,12 @@ app.use((req, res, next) => {
 
 	//index
 	if(req.path === '/')
-		return res.render('partials/index',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+		return res.render('partials/index.ejs',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 
 	//rss
 	if(req.path === '/feed') {
 		res.set('Content-Type', 'text/xml');
-		return res.render('partials/feed',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+		return res.render('partials/feed.ejs',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 	}
 
 	//important.txt
@@ -126,9 +126,9 @@ app.get('*', function(req, res) {
 	if(	req.hostname === global.domain ||
 		req.hostname === 'assets.' + global.domain ||
 		req.hostname === 'www.' + global.domain)
-		return res.status(404).render('partials/404',{assets:global.assets,host:global.protocol + req.hostname,version:version});
+		return res.status(404).render('partials/404.ejs',{assets:global.assets,host:global.protocol + req.hostname,version:version});
 	else if(req.hostname === 'dreambuster.' + global.domain)
-		return res.render('dreambuster/index', {assets:global.protocol + req.hostname,host:global.protocol + req.hostname,version:version});
+		return res.render('dreambuster/index.ejs', {assets:global.protocol + req.hostname,host:global.protocol + req.hostname,version:version});
 	return res.status(404).sendFile(__dirname + '/hidden/wildcard.html');
 });
 
