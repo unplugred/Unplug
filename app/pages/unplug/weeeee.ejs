@@ -68,7 +68,7 @@
 				redraw();
 				setInterval(update, 33);
 			};
-			window.onresize = function(){ redraw(); };
+			window.onresize = redraw;
 
 			function redraw()
 			{

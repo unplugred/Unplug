@@ -41,7 +41,7 @@
 				document.getElementById("fade").style.display = null;
 				redraw();
 			};
-			window.onresize = function(){ redraw(); };
+			window.onresize = redraw;
 
 			function redraw()
 			{
