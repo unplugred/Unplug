@@ -2,14 +2,7 @@
   "name": "unplug",
   "version": "0.9.3",
   "description": "unplug your mind for best experience.",
-  "main": "app.js",
-  "scripts": {
-    "start": "pm2 start production.js --time --no-daemon",
-    "test": "pm2 start debug.js --time --no-daemon",
-    "stop": "pm2 stop all"
-  },
   "author": "Ari Hanan",
-  "license": "MIT",
   "dependencies": {
     "ejs": "^3.0.1",
     "express": "^4.17.1"

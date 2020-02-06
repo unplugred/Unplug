@@ -1,7 +1,7 @@
 global.portt = 6660;
 global.protocol = "http://";
 global.domain = "localhost:" + global.portt;
-require('./app/app.js');
+require('./server.js');
 const electron = require('electron');
 var {app, BrowserWindow} = electron;
 
