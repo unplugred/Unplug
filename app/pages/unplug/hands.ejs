@@ -129,31 +129,40 @@
 			<a class="innerhand" href="/snow" onmouseover="hoverstat(4, true)" onmouseout="hoverstat(4, false)"></a>
 		</div>
 		<script>
-			var cursorX, cursorY;
+			var pivots = document.getElementsByClassName("hand");
+			var cursorX = -6666, cursorY;
 			document.onmousemove = function(e) {
+				if(cursorX === -6666) setInterval(timer, 20);
 				cursorX = e.pageX;
 				cursorY = e.pageY;
 			}
-
-			var hovers = [false, false, false, false, false];
+			var hovers = [false,false,false,false,false];
 			function hoverstat(index, value) {
 				hovers[index] = value;
 			}
-
-			setInterval(timer, 20);
-			function timer() {
-				var pivots = document.getElementsByClassName("hand");
-				for(var i = 0; i < pivots.length; i++) {
-					let offset = pivots[i].getBoundingClientRect();
+			var positions = [0,0,0,0,0];
+			function recalc() {
+				for(var i = 0; i < pivots.length; i++)
+					positions[i] = pivots[i].getBoundingClientRect();
+			}
+			var rotations = [0,0,0,0,0];
+			window.onload = function() {
+				for(var i = 0; i < pivots.length; i++)
+				{
 					let values = window.getComputedStyle(pivots[i]).getPropertyValue('transform').split('(')[1].split(')')[0].split(',');
-					let currentrot = Math.atan2(values[1], values[0])*(180/Math.PI);
-					let targetrot = 0;
-					if(hovers[i])
-						targetrot = currentrot + 4;
-					else
-						targetrot = 180*Math.atan2(cursorY - (offset.top + offset.height*.5), cursorX - (offset.left + offset.width*.5))/Math.PI;
-					console.log(cursorX + "  " + cursorY + "  " + offset);
-					pivots[i].style.transform = "rotate(" + lerp360(currentrot, targetrot, .8) + "deg)";
+					rotations[i] = Math.atan2(values[1], values[0])*(180/Math.PI);
+				}
+				recalc();
+			}
+			window.onresize = recalc;
+
+			function timer() {
+				let targetrot = 0;
+				for(var i = 0; i < pivots.length; i++) {
+					if(hovers[i]) targetrot = rotations[i] + 4;
+					else targetrot = 180*Math.atan2(cursorY - (positions[i].top + positions[i].height*.5), cursorX - (positions[i].left + positions[i].width*.5))/Math.PI;
+					rotations[i] = lerp360(rotations[i], targetrot, .8)%360;
+					pivots[i].style.transform = "rotate(" + rotations[i] + "deg)";
 				}
 			}
 			function lerp360(a,b,c) {

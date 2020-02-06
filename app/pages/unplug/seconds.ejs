@@ -40,7 +40,7 @@
 				redraw();
 				setInterval(update, 1000);
 			};
-			window.onresize = function(){ redraw(); };
+			window.onresize = redraw;
 
 			function redraw()
 			{
