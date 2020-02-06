@@ -77,7 +77,9 @@ function singlevalid(v)
 function tourll(v)
 {
 	if(v === "") return "/unplug";
-	if(v.replace(/\/+$/, "") === "inception") return "/inception?ppp=" + Math.floor(Math.random()*10000);
+	let h = v.replace(/\/+$/, "");
+	if(h === "inception") return "/inception?ppp=" + Math.floor(Math.random()*10000);
+	if(h.startsWith("inception?")) return "/inception?ppp=" + Math.floor(Math.random()*10000);
 	return "/" + v;
 }
 
