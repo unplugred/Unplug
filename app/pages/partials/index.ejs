@@ -615,8 +615,9 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 			window.onmousemove = function(e) {
 				if(scene.children.length === 1) {
 					if(isdesktop !== -1) {
-						rotx = (e.pageY - utahcontainer.offsetTop - 104.5)*.001;
-						roty = (e.pageX - utahcontainer.offsetLeft - 121.5)*.001;
+						let offset = utahcontainer.getBoundingClientRect();
+						rotx = (e.pageY - offset.top - 104.5)*.001;
+						roty = (e.pageX - offset.left - 121.5)*.001;
 						if(isdesktop === 1) {
 							teapot.rotation.x = rotx;
 							teapot.rotation.y = roty;
