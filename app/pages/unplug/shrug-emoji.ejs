@@ -1,0 +1,29 @@
+<%- include('../partials/header',{title:"",color:"#FFFFFF"}) %>
+		<style>
+			body {
+				background: url("<%= assets %>/shrug.png") 66px 82px, white;
+				display: flex;
+			}
+			#emoji {
+				font-size: 90vmin;
+				margin: auto auto;
+				line-height: 0;
+			}
+			#text {
+				margin: auto auto;
+				font-weight: bold;
+				font-style: italic;
+				color: #e2e2e2;
+				font-size: 8vw;
+				background-color: white;
+				line-height: 80%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="text">nothing happened.</div>
+		<script>
+			emojis = ['🤷‍♀️', '🤷‍♂️', '🤷🏻‍♀️', '🤷🏻‍♂️', '🤷🏼‍♀️', '🤷🏼‍♂️', '🤷🏽‍♀️', '🤷🏽‍♂️', '🤷🏾‍♀️', '🤷🏾‍♂️', '🤷🏿‍♀️', '🤷🏿‍♂️'];
+			document.title = emojis[Math.floor(Math.random()*emojis.length)];
+		</script>
+<%- include('../partials/footer') %>
