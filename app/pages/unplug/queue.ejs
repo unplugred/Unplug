@@ -1,0 +1,54 @@
+<%- include('../partials/header',{title:"queue"}) %>
+		<style>
+			body {
+				display: flex;
+			}
+			#bg {
+				background: url("<%= assets %>/queue.gif");
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				z-index: -100;
+				opacity: .6;
+			}
+			#txt {
+				display: inline-block;
+				margin: auto auto;
+				background-color: black;
+				padding: 20px;
+			}
+			#nmbr {
+				color: black;
+				background-color: #999;
+				font-weight: bold;
+				display: inline-block;
+				min-width: .7em;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bg"></div>
+<div id="txt">This webpage will be available as soon as a slot clears up.<br/>
+You are currently the <div id="nmbr">12</div>th person in queue.<br/>
+Thank you for your patience.</div>
+		<script>
+			var nmbr = document.getElementById("nmbr");
+			var count = 12;
+			function update() {
+					 if(count > 0)
+					nmbr.innerHTML = count;
+				else if(count === 0)
+					nmbr.innerHTML = "0.5";
+				else if(count === -1)
+					nmbr.innerHTML = "0.3";
+				else if(count === -2)
+					nmbr.innerHTML = "0.2";
+				else
+					nmbr.innerHTML = Math.floor(Math.random()*29 + 1)*.01;
+				setTimeout(update, (24 - count)*200*(Math.random()+.5));
+				if(count > -3) count--;
+			}
+			update()
+		</script>
+<%- include('../partials/footer') %>
