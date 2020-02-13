@@ -1,0 +1,35 @@
+<%- include('../partials/header',{title:"still exists"}) %>
+		<style>
+			body {
+				display: flex;
+			}
+			#bg {
+				background: url("<%= assets %>/queue.gif");
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				z-index: -100;
+				opacity: .6;
+			}
+			#txt {
+				display: inline-block;
+				margin: auto auto;
+				background-color: black;
+				padding: 20px;
+			}
+			.highlight {
+				color: black;
+				background-color: #999;
+				font-weight: bold;
+				display: inline-block;
+				min-width: .7em;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bg"></div>
+<div id="txt">The date is <div class="highlight" id="date">5th of January 2019</div><br/>
+As of today, the internet <div class="highlight">still exists</div>.</div>
+		<script>document.getElementById("date").innerHTML = new Date().toDateString();</script>
+<%- include('../partials/footer') %>
