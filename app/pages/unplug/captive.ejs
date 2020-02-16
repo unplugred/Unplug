@@ -1,0 +1,34 @@
+<%- include('../partials/header',{title:"captive"}) %>
+		<style>
+			body {
+				display: flex;
+			}
+			#bg {
+				background: url("<%= assets %>/queue.gif");
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				z-index: -100;
+				opacity: .6;
+			}
+			#txt {
+				display: inline-block;
+				margin: auto auto;
+				background-color: black;
+				padding: 20px;
+			}
+			#nmbr {
+				color: black;
+				background-color: #999;
+				font-weight: bold;
+				display: inline-block;
+				min-width: .7em;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bg"></div>
+<div id="txt">According to reports as many as <div id="nmbr">4</div> people<br/>have been held captive so far.</div>
+		<!-- C,L,D,J. -->
+<%- include('../partials/footer') %>
