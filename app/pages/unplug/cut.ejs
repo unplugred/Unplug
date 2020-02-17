@@ -1,0 +1,70 @@
+<%- include('../partials/header',{title:"cut"}) %>
+		<style>
+			* {
+				cursor: none;
+			}
+
+			.moji {
+				position: absolute;
+				line-height: 3vmin;
+				margin-left: -3vmin;
+				font-size: 6vmin;
+			}
+
+			.prsn:first-child {
+				display: none;
+			}
+
+			#scissors {
+				top: 50vh;
+				left: 50vw;
+				z-index: 100;
+				pointer-events: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="scissors" class="moji">✂</div>
+		<div class="prsn moji" onClick="thing(this)"></div>
+		<script>
+			var prsn = document.getElementsByClassName("prsn")[0];
+			var ppl = 0;
+			var emojis = ["👩","👨","🧑","👧","👦","🧒","👩‍🦰","👨‍🦰","👩‍🦱","👨‍🦱","👩‍🦲","👨‍🦲","👩‍🦳","👨‍🦳","👱‍♀","️👱‍♂️","🧔"];
+			var cloneshit = setInterval(function() {
+				if(ppl++ >= 10) clearInterval(cloneshit);
+				var clone = prsn.cloneNode(true);
+				document.body.appendChild(clone);
+				clone.innerHTML = emojis[Math.floor(emojis.length*Math.random())];
+				clone.style.top = Math.floor(Math.random()*94 + 3) + "vh";
+				clone.style.left = Math.floor(Math.random()*94 + 3) + "vw";
+				clone.style.filter = "hue-rotate(" + Math.floor(Math.random()*360) + "deg)";
+			}, 100);
+
+			function thing(obj) {
+				if(mobile) setTimeout(function(){cutprsn(obj)}, 300);
+				else cutprsn(obj);
+				if(--ppl <= 0) setTimeout(function() { window.location = "/nobody-here"; }, 1000);
+			}
+
+			function cutprsn(obj) {
+				obj.style.display = "none";
+				document.body.style.backgroundColor = "hsl(" + Math.floor(Math.random()*360) + ", 100%, 5%)";
+			}
+
+			var scissors = document.getElementById("scissors");
+			var mobile = false;
+			var lerp = .3;
+			var currentpos = [0,0];
+			var desiredpos = currentpos;
+			window.addEventListener('touchstart', function onFirstTouch() {
+				mobile = true;
+				scissors.style.transition = ".3s";
+				window.removeEventListener('touchstart', onFirstTouch, false);
+			}, false);
+
+			document.onmousemove = function(e){
+				scissors.style.top  = e.pageY + "px";
+				scissors.style.left = e.pageX + "px";
+			}
+		</script>
+<%- include('../partials/footer') %>
