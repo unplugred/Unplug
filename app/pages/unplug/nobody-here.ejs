@@ -1,0 +1,40 @@
+<%- include('../partials/header',{title:"nobody here"}) %>
+		<style>
+			#bg {
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				left: 0;
+				position: absolute;
+				background-image: url("<%= assets %>/nobody-here/bg.png");
+				animation: anim 10s linear infinite;
+				background-size: cover;
+				background-position: center center;
+			}
+
+			body {
+				display: flex;
+			}
+
+			#chair {
+				margin: auto auto;
+				width: 337px;
+				height: 517px;
+				z-index: 1;
+				background-image: url("<%= assets %>/nobody-here/chair.gif");
+			}
+
+			@keyframes anim{
+				0%{
+					filter: hue-rotate(0deg);
+				}
+				100%{
+					filter: hue-rotate(360deg);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bg"></div>
+		<div id="chair"></div>
+<%- include('../partials/footer') %>
