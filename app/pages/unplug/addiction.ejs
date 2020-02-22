@@ -1,0 +1,29 @@
+<%- include('../partials/header',{title:"addiction",color:"#FFFFFF"}) %>
+		<style>
+			body {
+				background: url("<%= assets %>/addiction/tweezer.png"), white;
+			}
+
+			.sticker {
+				background: url("<%= assets %>/addiction/there_existed_an_addiction.png");
+				width: 271px;
+				height: 139px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="sticker"></div>
+		<script>
+			document.body.style.backgroundPosition = Math.floor(Math.random()*754) + "px " + Math.floor(Math.random()*383) + "px";
+			var sticker = document.getElementsByClassName("sticker")[0];
+			sticker.style.top = Math.floor(Math.random()*100) + "vh";
+			sticker.style.left = Math.floor(Math.random()*100) + "vw";
+			for(var i = 0; i <= 15; i++) {
+				var bleh = sticker.cloneNode(true);
+				bleh.style.top = (Math.random()*100) + "vh";
+				bleh.style.left = (Math.random()*100) + "vw";
+				document.body.appendChild(bleh);
+			}
+		</script>
+<%- include('../partials/footer') %>
