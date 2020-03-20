@@ -1,0 +1,36 @@
+<%- include('../partials/header',{title:"M  E  A  T",color:"#92325b"}) %>
+		<style>
+			.vid {
+				position: absolute;
+				width: 130vmin;
+				height: 130vmin;
+				z-index: -10000;
+				object-fit: cover;
+				top: calc(50vh - 65vmin);
+				left: calc(50vw - 65vmin);
+			}
+
+			.gradient {
+				background: linear-gradient(90deg, black 0%, transparent 15%, rgba(0,0,0,0) 85%, black 100%);
+			}
+
+			@media screen and (orientation:portrait) {
+				.gradient {
+					background: linear-gradient(0deg, black 0%, transparent 15%, transparent 85%, black 100%);
+				}
+			}
+
+			body {
+				background-size: 130vmin;
+				background-position: center center;
+				background-image: url('<%= assets%>/meat/meat.png');
+				background-repeat: no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<video class="vid" autoplay muted loop>
+			<source src="<%= assets %>/meat/meat.webm" type="video/webm">
+		</video>
+		<div class="gradient vid"></div>
+<%- include('../partials/footer') %>
