@@ -4,7 +4,8 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 pm2 flush
-pm2 install pm2@latest -g
+npm install -g npm
+npm install pm2@latest -g
 pm2 update
 apt-get update
 apt-get upgrade
