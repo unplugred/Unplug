@@ -1,0 +1,138 @@
+#player {
+	width: calc(100vw - 18px);
+	height: 23px;
+	position: fixed;
+	bottom: 5px;
+	left: 5px;
+	font-size: 0;
+	font-family: tahoma8, Tahoma, sans-serif;
+}
+.player-border {
+	background:
+url("../window/wintopright.png") top right no-repeat,
+url("../window/wintopleft.png") top left no-repeat,
+url("../window/wintop.png") top left repeat-x,
+url("../window/winbottomright.png") bottom right no-repeat,
+url("../window/winbottomleft.png") bottom left no-repeat,
+url("../window/winbottom.png") bottom left repeat-x,
+url("../window/winleft.png") top left repeat-y,
+url("../window/winright.png") top right repeat-y, #C0C0C0;
+	padding: 4px;
+}
+.player-button {
+	width: 23px;
+	height: 23px;
+	margin-left: -1px;
+	display: inline-block;
+}
+.player-button:hover {
+	background-image: url("hover.png");
+}
+.player-button-pressed {
+	background-image: url("pressed.png") !important;
+}
+.player-icon {
+	width: 23px;
+	height: 23px;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+#player-play {
+	margin-left: 0 !important;
+}
+#player-play .player-icon {
+	background-image: url("play.png");
+}
+.player-button-pressed#player-play .player-icon {
+	background-image: url("pause.png");
+}
+#player-download .player-icon {
+	background-image: url("download.png");
+}
+#player-downloadmenu {
+	position: absolute;
+	bottom: 27px;
+	left: 27px;
+	width: 95px;
+	height: 40px;
+}
+.player-downloadmenuitem {
+	width: calc(100% - 1px);
+	height: 20px;
+	font-size: 16px;
+	color: black;
+	line-height: 20px;
+	padding-left: 1px;
+	display: block;
+}
+.player-downloadmenuitem:hover {
+	background-color: #08246b;
+	color: white;
+}
+#player-divider {
+	background-image: url("divider.png");
+	height: 23px;
+	width: 7px;
+	display: inline-block;
+}
+#player-timecode {
+	display: inline-block;
+	font-size: 16px;
+	color: black;
+	vertical-align: bottom;
+	line-height: 23px;
+	width: 52px;
+	text-align: center;
+}
+#player-bar {
+	background:
+url("progress-left.png") left no-repeat,
+url("progress-right.png") right no-repeat,
+url("progress-middle.png") repeat-x;
+	width: calc(100% - 185px);
+	height: 23px;
+	display: inline-block;
+}
+#player-bardrag {
+	position: relative;
+	display: block;
+	width: calc(100% - 9px);
+	left: 1px;
+	padding-right: 7px;
+}
+#player-barknob {
+	position: relative;
+	background-image: url("progress.png");
+	width: 15px;
+	height: 23px;
+	margin-left: -4px;
+}
+#player-volume {
+	background-image: url("volume.png");
+	width: 81px;
+	height: 23px;
+	display: inline-block;
+}
+#player-volumedrag {
+	position: relative;
+	display: block;
+	width: calc(100% - 42px);
+	left: 31px;
+	padding-right: 10px;
+}
+#player-volumeknob {
+	position: relative;
+	background-image: url("volumeknob.png");
+	width: 12px;
+	height: 23px;
+	margin-left: -1px;
+}
+@font-face {
+	font-family: 'tahoma8';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	-webkit-font-smoothing : none;
+	font-smooth: never;
+	src: url("../window/tahoma8.woff2") format('woff2');
+}

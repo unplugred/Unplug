@@ -9,7 +9,7 @@
 <url>
 <loc>https://unplug.red/mail</loc>
 <lastmod>2019-09-28T03:53:33+00:00</lastmod>
-<priority>0.60</priority>
+<priority>0.80</priority>
 </url>
 
 <url>
@@ -99,7 +99,7 @@
 <url>
 <loc>https://unplug.red/worse-for-the-better</loc>
 <lastmod>2019-08-07T03:53:33+00:00</lastmod>
-<priority>0.80</priority>
+<priority>0.60</priority>
 </url>
 
 <url>
@@ -165,7 +165,7 @@
 <url>
 <loc>https://unplug.red/hyperaction</loc>
 <lastmod>2019-08-07T03:53:33+00:00</lastmod>
-<priority>0.80</priority>
+<priority>0.60</priority>
 </url>
 
 <url>
@@ -177,7 +177,7 @@
 <url>
 <loc>https://unplug.red/useless-flower</loc>
 <lastmod>2019-08-07T03:53:33+00:00</lastmod>
-<priority>0.80</priority>
+<priority>0.60</priority>
 </url>
 
 <url>
@@ -345,7 +345,7 @@
 <url>
 <loc>https://unplug.red/planet</loc>
 <lastmod>2019-08-07T03:53:33+00:00</lastmod>
-<priority>0.80</priority>
+<priority>0.60</priority>
 </url>
 
 <url>
@@ -435,13 +435,13 @@
 <url>
 <loc>https://unplug.red/rediger</loc>
 <lastmod>2019-11-21T03:53:33+00:00</lastmod>
-<priority>0.80</priority>
+<priority>0.60</priority>
 </url>
 
 <url>
 <loc>https://unplug.red/waterweek</loc>
 <lastmod>2019-12-13T03:53:33+00:00</lastmod>
-<priority>0.80</priority>
+<priority>0.60</priority>
 </url>
 
 <url>
@@ -453,7 +453,7 @@
 <url>
 <loc>https://unplug.red/headspace</loc>
 <lastmod>2019-11-23T03:53:33+00:00</lastmod>
-<priority>0.80</priority>
+<priority>0.60</priority>
 </url>
 
 <url>
@@ -586,6 +586,12 @@
 <loc>https://unplug.red/job</loc>
 <lastmod>2020-3-20T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
+</url>
+
+<url>
+<loc>https://unplug.red/music</loc>
+<lastmod>2020-4-01T03:53:33+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 
 </urlset>
