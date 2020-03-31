@@ -2,15 +2,42 @@
 		<style>
 			body {
 				display: flex;
+				background-image: url("<%= assets %>/im-alone-in-class-again/im-alone-in-class-again.png");
 			}
 
-			audio {
+			#player {
 				margin: auto auto;
+				width: 500px;
+				max-width: 80vw;
 			}
 		</style>
+		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=2">
 	</head>
 	<body>
-		<audio controls>
-			<source src="<%= assets %>/im-alone-in-class-again.mp3" type="audio/mpeg">
-		</audio>
+		<div id="player" class="player-border">
+			<a href="javascript:void(0);" class="player-button" id="player-play" onclick="p_play()">
+				<div class="player-icon"></div>
+			</a>
+			<a href="javascript:void(0);" class="player-button" id="player-download" onclick="p_download()">
+				<div class="player-icon"></div>
+			</a>
+			<div id="player-downloadmenu" class="player-border" style="display: none">
+				<a id="player-flac" class="player-downloadmenuitem" onclick="p_download()" target="_blank">Download .flac</a>
+				<a id="player-mp3" class="player-downloadmenuitem" onclick="p_download()" target="_blank">Download .mp3</a>
+			</div>
+			<div id="player-divider"></div>
+			<div id="player-timecode">0:00/1:11</div>
+			<div id="player-bar">
+				<a href="javascript:void(0);" id="player-bardrag" onmousedown="p_seekclick(event)" onmousemove="p_seek(event)" onmouseup="p_seekrelease(event)" onmouseleave="p_seekrelease(event)" ondragstart="return false;" ondrop="return false;">
+					<div id="player-barknob" style="left: 0%"></div>
+				</a>
+			</div>
+			<div id="player-volume">
+				<a href="javascript:void(0);" id="player-volumedrag" onmousedown="p_volume(event)" onmousemove="p_volume(event)" ondragstart="return false;" ondrop="return false;">
+					<div id="player-volumeknob" style="left: 50%"></div>
+				</a>
+			</div>
+		</div>
+		<script type="text/javascript" src="<%= assets %>/player/player.js?v=2"></script>
+		<script>window.onload=function(){p_putsong(-1,"<%= assets %>/im-alone-in-class-again/im-alone-in-class-again.mp3",-1)}</script>
 <%- include('../partials/footer') %>

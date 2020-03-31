@@ -1,11 +1,10 @@
 #player {
-	width: calc(100vw - 18px);
 	height: 23px;
-	position: fixed;
-	bottom: 5px;
-	left: 5px;
 	font-size: 0;
 	font-family: tahoma8, Tahoma, sans-serif;
+	white-space: nowrap;
+	overflow: hidden;
+	min-width: 215px;
 }
 .player-border {
 	background:
@@ -92,6 +91,7 @@ url("progress-middle.png") repeat-x;
 	width: calc(100% - 185px);
 	height: 23px;
 	display: inline-block;
+	min-width: 30px;
 }
 #player-bardrag {
 	position: relative;
