@@ -14,6 +14,7 @@ var p_playing = false;
 var p_downloading = false;
 var p_updateinterval = null;
 var p_isseeking = false;
+var p_flac = false;
 
 var p_audio = new Audio();
 p_audio.loop = false;
@@ -36,30 +37,46 @@ function p_resize() {
 }
 window.onresize = p_resize;
 function p_calctime(secs) {
+	if(isNaN(secs)) return "0:00";
 	return Math.floor(secs/60)+":"+Math.floor(secs%60).toString().padStart(2,'0');
 }
-function p_playsong(div,mp3,flac) {
+function p_putsong(div,mp3,flac) {
 	if(p_current == mp3) return;
 	p_current = mp3;
 	p_currentflac = flac;
 
-	div.className = "playing";
-	p_currentdiv.className = "";
-	p_currentdiv = div;
+	if(div !== -1) {
+		div.className = "playing";
+		p_currentdiv.className = "";
+		p_currentdiv = div;
+	}
 	p_divplayer.style.display = "block";
 
 	p_audio.src = mp3;
-	p_divmp3.href = mp3;
-	p_divmp3.download = mp3.replace(/^.*[\\\/]/, '');
-	p_divflac.href = flac;
-	p_divflac.download = flac.replace(/^.*[\\\/]/, '');
+	if(flac !== -1) {
+		p_divmp3.href = mp3;
+		p_divmp3.download = mp3.replace(/^.*[\\\/]/, '');
+		p_divflac.href = flac;
+		p_divflac.download = flac.replace(/^.*[\\\/]/, '');
+		p_divdownload.href = "javascript:void(0);";
+		p_divdownload.download = "";
+		p_divdownload.target = "";
+	} else {
+		p_divdownload.href = mp3;
+		p_divdownload.download = mp3.replace(/^.*[\\\/]/, '');
+		p_divdownload.target = "_blank";
+	}
+	p_flac = flac !== -1;
 	p_audio.currentTime = 0;
+	setTimeout(p_update,200);
+	setTimeout(p_resize,200);
+}
+function p_playsong(div,mp3,flac) {
+	p_putsong(div,mp3,flac)
 	p_audio.play();
 	p_divplay.className = "player-button player-button-pressed";
 	p_playing = true;
 	if(p_updateinterval === null) p_updateinterval = setInterval(p_update, 500);
-	setTimeout(p_update,200);
-	setTimeout(p_resize,200);
 }
 function p_play() {
 	if(p_playing) {
@@ -77,6 +94,7 @@ function p_play() {
 	if(p_downloading) p_download();
 }
 function p_download() {
+	if(!p_flac) return;
 	if(p_downloading) {
 		p_divdownload.className = "player-button";
 		p_divdownloadmenu.style.display = "none";

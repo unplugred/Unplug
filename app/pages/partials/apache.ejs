@@ -55,8 +55,14 @@ function randomnum() {
 				top: 3px;
 				display: inline-block;
 			}
+			#player {
+				width: calc(100% - 18px);
+				position: fixed;
+				bottom: 5px;
+				left: 5px;
+			}
 		</style>
-		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css">
+		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=2">
 	</head>
 	<body>
 		<h1>Index of <%= properties.dir %></h1>
@@ -97,15 +103,15 @@ function randomnum() {
 		</table>
 		<address>Apache/6.6.6 Server at <div class="rainbow" style="width:75px;background-position-x:141px;"></div> Port <div class="rainbow" style="width:25px;background-position-x:30px;"></div>.</address>
 		<div id="player" class="player-border" style="display: none;">
-			<div class="player-button" id="player-play" onclick="p_play()">
+			<a href="javascript:void(0);" class="player-button" id="player-play" onclick="p_play()">
 				<div class="player-icon"></div>
-			</div>
-			<div class="player-button" id="player-download" onclick="p_download()">
+			</a>
+			<a href="javascript:void(0);" class="player-button" id="player-download" onclick="p_download()">
 				<div class="player-icon"></div>
-				<div id="player-downloadmenu" class="player-border" style="display: none">
-					<a id="player-flac" class="player-downloadmenuitem" onclick="p_download()" target="_blank">Download .flac</a>
-					<a id="player-mp3" class="player-downloadmenuitem" onclick="p_download()" target="_blank">Download .mp3</a>
-				</div>
+			</a>
+			<div id="player-downloadmenu" class="player-border" style="display: none">
+				<a id="player-flac" class="player-downloadmenuitem" onclick="p_download()" target="_blank">Download .flac</a>
+				<a id="player-mp3" class="player-downloadmenuitem" onclick="p_download()" target="_blank">Download .mp3</a>
 			</div>
 			<div id="player-divider"></div>
 			<div id="player-timecode">0:00/0:00</div>
@@ -152,5 +158,5 @@ function randomnum() {
 				sinification++;
 			}
 		</script>
-		<script type="text/javascript" src="<%= assets %>/player/player.js"></script>
+		<script type="text/javascript" src="<%= assets %>/player/player.js?v=2"></script>
 <%- include('../partials/footer') %>
