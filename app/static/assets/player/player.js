@@ -54,15 +54,15 @@ function p_putsong(div,mp3,flac) {
 
 	p_audio.src = mp3;
 	if(flac !== -1) {
-		p_divmp3.href = mp3;
+		p_divmp3.href = mp3+"?dnld";
 		p_divmp3.download = mp3.replace(/^.*[\\\/]/, '');
-		p_divflac.href = flac;
+		p_divflac.href = flac+"?dnld";
 		p_divflac.download = flac.replace(/^.*[\\\/]/, '');
 		p_divdownload.href = "javascript:void(0);";
 		p_divdownload.download = "";
 		p_divdownload.target = "";
 	} else {
-		p_divdownload.href = mp3;
+		p_divdownload.href = mp3+"?dnld";
 		p_divdownload.download = mp3.replace(/^.*[\\\/]/, '');
 		p_divdownload.target = "_blank";
 	}

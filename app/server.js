@@ -36,7 +36,18 @@ app.use((req, res, next) => {
 		return res.sendFile(__dirname + '/hidden/favicon.ico');
 
 /*	ASSETS--------------------------*/
-	if(req.headers.host === 'assets.' + global.domain) return next();
+	if(req.headers.host === 'assets.' + global.domain) {
+		if(req.url.endsWith("?dnld")) {
+			return res.download(__dirname + "/static/assets/" + decodeURIComponent(req.path), function(err) {
+				if(err) {
+					if(err.message.indexOf('no such file or directory') !== -1) return next();
+					if(err.message.indexOf('Request aborted') !== -1) return res.end();
+					throw err;
+				}
+			});
+		}
+		return next();
+	}
 
 /*	RSS-----------------------------*/
 	if(req.headers.host === 'rss.' + global.domain) {
