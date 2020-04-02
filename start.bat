@@ -7,7 +7,7 @@ If /I "%_mode%"=="e" goto e
 goto loop
 
 :p
-echo "PRODUCTION MODE"
+echo PRODUCTION MODE
 git pull
 cd app
 :pl
@@ -17,17 +17,17 @@ If /I "%_start%"=="r" goto pr
 goto pl
 
 :ps
-pm2 start servprod.js --time
+pm2 start servprod.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/error.log"
 pm2 log
 goto end
 
 :pr
-pm2 restart servprod.js --time
+pm2 restart servprod.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/error.log"
 pm2 log
 goto end
 
 :d
-echo "DEBUG MODE"
+echo DEBUG MODE
 cd app
 :dl
 SET /P _start= [S]tart/[R]estart?
@@ -36,17 +36,17 @@ If /I "%_start%"=="r" goto dr
 goto dl
 
 :ds
-pm2 start servdebug.js --time
+pm2 start servdebug.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/error.log"
 pm2 log
 goto end
 
 :dr
-pm2 restart servdebug.js --time
+pm2 restart servdebug.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/error.log"
 pm2 log
 goto end
 
 :e
-echo "ELECTRON MODE"
+echo ELECTRON MODE
 cd app
 :el
 SET /P _start= [P]roduction/[D]ebug?
