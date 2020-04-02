@@ -15,14 +15,14 @@ then
 	echo
 	if [[ $REPLY =~ ^[Ss]$ ]]
 	then
-		pm2 start servdebug.js --time
+		pm2 start servdebug.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/"
 		pm2 log
 		exit 1
 	fi
 
 	if [[ $REPLY =~ ^[Rr]$ ]]
 	then
-		pm2 restart servdebug.js --time
+		pm2 restart servdebug.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/"
 		pm2 log
 		exit 1
 	fi
@@ -46,14 +46,14 @@ then
 	echo
 	if [[ $REPLY =~ ^[Ss]$ ]]
 	then
-		pm2 start servprod.js --time
+		pm2 start servprod.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/"
 		pm2 log
 		exit 1
 	fi
 
 	if [[ $REPLY =~ ^[Rr]$ ]]
 	then
-		pm2 restart servprod.js --time
+		pm2 restart servprod.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/"
 		pm2 log
 		exit 1
 	fi
