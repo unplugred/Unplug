@@ -9,7 +9,6 @@ goto loop
 :p
 echo PRODUCTION MODE
 git pull
-cd app
 :pl
 SET /P _start= [s]tart/[r]estart?
 If /I "%_start%"=="s" goto ps
@@ -17,18 +16,17 @@ If /I "%_start%"=="r" goto pr
 goto pl
 
 :ps
-pm2 start servprod.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/error.log"
+pm2 start "./app/servprod.js" --time -l "./logs/combined.log" -o "./logs/out.log" -e "./logs/error.log"
 pm2 log
 goto end
 
 :pr
-pm2 restart servprod.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/error.log"
+pm2 restart "./app/servprod.js" --time -l "./logs/combined.log" -o "./logs/out.log" -e "./logs/error.log"
 pm2 log
 goto end
 
 :d
 echo DEBUG MODE
-cd app
 :dl
 SET /P _start= [S]tart/[R]estart?
 If /I "%_start%"=="s" goto ds
@@ -36,18 +34,17 @@ If /I "%_start%"=="r" goto dr
 goto dl
 
 :ds
-pm2 start servdebug.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/error.log"
+pm2 start "./app/servdebug.js" --time -l "./logs/combined.log" -o "./logs/out.log" -e "./logs/error.log"
 pm2 log
 goto end
 
 :dr
-pm2 restart servdebug.js --time -l "../logs/combined.log" -o "../logs/out.log" -e "../logs/error.log"
+pm2 restart "./app/servdebug.js" --time -l "./logs/combined.log" -o "./logs/out.log" -e "./logs/error.log"
 pm2 log
 goto end
 
 :e
 echo ELECTRON MODE
-cd app
 :el
 SET /P _start= [P]roduction/[D]ebug?
 If /I "%_start%"=="p" goto ep
@@ -55,11 +52,11 @@ If /I "%_start%"=="d" goto ed
 goto el
 
 :ep
-electron electprod.js
+electron "./app/electprod.js"
 goto end
 
 :ed
-electron electdebug.js
+electron "./app/electdebug.js"
 goto end
 
 :end
