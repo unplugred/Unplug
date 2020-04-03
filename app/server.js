@@ -1,3 +1,14 @@
+if(global.portt === undefined) {
+	if(process.env.NODE_ENV === 'production') {
+		global.portt = 80;
+		global.protocol = "https://";
+		global.domain = "unplug.red";
+	} else {
+		global.portt = 80;
+		global.protocol = "http://";
+		global.domain = "localhost";
+	}
+}
 const fs = require('fs');
 const express = require('express');
 const app = express();

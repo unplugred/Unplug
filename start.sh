@@ -14,14 +14,14 @@ then
 	echo
 	if [[ $REPLY =~ ^[Ss]$ ]]
 	then
-		pm2 start "./app/servdebug.js" --time -l "./logs/combined.log" -o "./logs/out.log" -e "./logs/error.log"
+		pm2 start ecosystem.config.js
 		pm2 log
 		exit 1
 	fi
 
 	if [[ $REPLY =~ ^[Rr]$ ]]
 	then
-		pm2 restart "./app/servdebug.js" --time -l "./logs/combined.log" -o "./logs/out.log" -e "./logs/error.log"
+		pm2 restart ecosystem.config.js
 		pm2 log
 		exit 1
 	fi
@@ -44,14 +44,14 @@ then
 	echo
 	if [[ $REPLY =~ ^[Ss]$ ]]
 	then
-		pm2 start "./app/servprod.js" --time -l "./logs/combined.log" -o "./logs/out.log" -e "./logs/error.log"
+		pm2 start ecosystem.config.js --env production
 		pm2 log
 		exit 1
 	fi
 
 	if [[ $REPLY =~ ^[Rr]$ ]]
 	then
-		pm2 restart "./app/servprod.js" --time -l "./logs/combined.log" -o "./logs/out.log" -e "./logs/error.log"
+		pm2 restart ecosystem.config.js --env production
 		pm2 log
 		exit 1
 	fi
