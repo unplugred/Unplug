@@ -99,8 +99,9 @@ app.use((req, res, next) => {
 /*	DREAMBUSTER---------------------*/
 	if(req.headers.host === 'dreambuster.' + global.domain) {
 		if(req.path === "/halloffame")
-			return fs.readdir('./static/dreambuster/hof', (err, files) => {
-				res.render('dreambuster/halloffame.ejs', {assets:global.protocol + req.headers.host,host:global.protocol + req.headers.host,version:version,files:files})});
+			return fs.readdir(__dirname + '/static/dreambuster/hof', (err, files) => {
+				if(err) throw err;
+				else return res.render('dreambuster/halloffame.ejs', {assets:global.protocol + req.headers.host,host:global.protocol + req.headers.host,version:version,files:files})});
 		else return next();
 	}
 
