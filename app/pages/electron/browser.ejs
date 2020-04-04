@@ -27,10 +27,13 @@
 			function closee()
 			{
 				let remota = require('electron').remote;
+				let browserwin = remota.getCurrentWindow();
 				let byewin = remota.getGlobal("byeWindow");
+				byewin.setBounds(remota.screen.getDisplayNearestPoint(browserwin.getBounds()).workArea);
+				byewin.setFullScreen(true);
 				byewin.loadURL("<%= global.protocol + global.domain %>/bye?6660");
 				byewin.show();
-				remota.getCurrentWindow().close();
+				browserwin.close();
 			}
 		</script>
 <%- include('../partials/footer') %>
