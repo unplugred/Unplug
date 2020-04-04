@@ -13,7 +13,7 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 global.assets = global.protocol + "assets." + global.domain;
-var version = 0
+var version = 0;
 app.set('view engine', 'ejs');
 app.set('views', __dirname + "/pages");
 

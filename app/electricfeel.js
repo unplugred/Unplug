@@ -1,3 +1,4 @@
+global.debug = process.argv[2] === "--debug";
 global.portt = 6660;
 global.protocol = "http://";
 global.domain = "localhost:" + global.portt;
