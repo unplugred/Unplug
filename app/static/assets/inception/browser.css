@@ -144,6 +144,10 @@ button:active {
 	left: 3px;
 }
 
+iframe {
+	background-color: white;
+}
+
 #titletext {
 	font-family: tahoma8bold, Tahoma, sans-serif;
 	font-weight: 500;
