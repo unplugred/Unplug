@@ -1,9 +1,7 @@
 <%- include('../partials/header',{title:"bye"}) %>
 		<style>
-			body, html {
-				background: none;
-			}
-
+			body,html{background:none;}
+			body{opacity:0;}
 			#canva {
 				position: absolute;
 				top: 0;
@@ -38,6 +36,7 @@
 
 			window.onload = function(){
 				win.setOpacity(.25);
+				document.body.style.opacity = .25;
 				setTimeout(brighten, 300);
 				redraw();
 			}
@@ -46,8 +45,7 @@
 				if(op < 4)
 				{
 					setTimeout(brighten, 300);
-					op++;
-					win.setOpacity(op*.25);
+					document.body.style.opacity = ((++op)*.25);
 				}
 				else setTimeout(darken, 1500);
 			}
@@ -56,8 +54,7 @@
 				if(op > 0)
 				{
 					setTimeout(darken, 300);
-					op--;
-					win.setOpacity(op*.25);
+					document.body.style.opacity = ((--op)*.25);
 				}
 				else win.close();
 			}

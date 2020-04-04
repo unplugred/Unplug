@@ -1,5 +1,7 @@
 <%- include('../partials/header',{title:"unplug"}) %>
 		<style>
+			body,html{background:none;}
+			body{opacity:0;}
 			#mainimage {
 				width: 522px;
 				height: 370px;
@@ -18,9 +20,9 @@
 			var remota = require('electron').remote;
 			var win = remota.getCurrentWindow();
 			var op = 1;
-			
+
 			window.onload = function(){
-				win.setOpacity(.25);
+				document.body.style.opacity = .25;
 				setTimeout(brighten, 300);
 			}
 			function brighten()
@@ -28,11 +30,8 @@
 				if(op < 4)
 				{
 					setTimeout(brighten, 300);
-					op++;
-					win.setOpacity(op*.25);
-				}
-				else
-				{
+					document.body.style.opacity = ((++op)*.25);
+				} else {
 					document.getElementById("mainimage").style.pointerEvents = null;
 				}
 			}
@@ -41,12 +40,9 @@
 				if(op > 0)
 				{
 					setTimeout(darken, 300);
-					op--;
-					win.setOpacity(op*.25);
+					document.body.style.opacity = ((--op)*.25);
 					document.getElementById("mainimage").style.pointerEvents = "none";
-				}
-				else
-				{
+				} else {
 					let mainwin = remota.getGlobal("mainWindow");
 					mainwin.show();
 					win.close();
