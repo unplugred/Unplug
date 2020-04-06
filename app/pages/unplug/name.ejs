@@ -1,0 +1,94 @@
+<%- include('../partials/header',{title:"name"}) %>
+		<style>
+			#img {
+				width: 600px;
+				height: 450px;
+				margin: calc(50vh - 225px) calc(50vw - 300px);
+				background-image: url("<%= assets %>/name/name.png");
+			}
+			canvas {
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			input {
+				position: relative;
+				top: 55%;
+				left: 27%;
+				font-size: 27px;
+				width: 51%;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canva"></canvas>
+		<div id="img">
+			<input id="inpt"></input>
+		</div>
+		<img id="stop" src="<%= assets %>/name/stop.png" style="display: none;"></div>
+		<img id="stpo" src="<%= assets %>/name/stpo.png" style="display: none;"></div>
+		<img id="sotp" src="<%= assets %>/name/sotp.png" style="display: none;"></div>
+		<script>
+			var input = document.getElementById("inpt");
+			var prevvalue = "";
+			var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			function randomchar() {
+				return chars[Math.floor(Math.random()*chars.length)];
+			}
+			function randomchars(length) {
+				if(length === 1) return randomchar();
+				var str = "";
+				for(i = 0; i < length; i++) str += randomchar();
+				return str;
+			}
+			input.addEventListener('keydown',function(event){setTimeout(function(){
+				if(input.value === prevvalue) return;
+				if(input.value.length > prevvalue.length)
+					input.value = prevvalue + randomchars(input.value.length - prevvalue.length);
+				else
+					input.value = prevvalue.substr(0,input.value.length);
+				prevvalue = input.value;
+				addone();
+			},1);});
+
+			var canvas = document.getElementById("canva");
+			var ctx = canvas.getContext("2d");
+			var stop = document.getElementById("stop");
+			var stpo = document.getElementById("stpo");
+			var sotp = document.getElementById("sotp");
+			var numba = 0;
+			var perline = 1;
+			var couldfit = 1;
+
+			window.onload = function(){
+				redraw();
+			};
+			window.onresize = redraw;
+
+			function redraw() {
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+				perline = Math.ceil(window.innerWidth/97);
+				couldfit = Math.ceil(window.innerHeight/41)*perline;
+				numba = Math.min(numba, Math.floor(couldfit*.8));
+				for(i = 0; i < numba; i++)
+					ctx.drawImage(
+						Math.random() > .2 ? stop
+						: (Math.random() > .5 ? stpo : sotp),
+						(i%perline)*97,Math.floor(i/perline)*41);
+			}
+
+			function addone() {
+				ctx.drawImage(
+					Math.random() > .2 ? stop
+					: (Math.random() > .5 ? stpo : sotp),
+					(numba%perline)*97,Math.floor(numba/perline)*41);
+				numba++;
+				if(numba > couldfit) {
+					canvas.style.cursor = "url('<%= assets %>/cursors/wait.png') 0 0, default";
+					input.style.cursor = "url('<%= assets %>/cursors/wait.png') 0 0, default";
+					setTimeout(function() { while(true) {} },100);
+				}
+			}
+		</script>
+<%- include('../partials/footer') %>
