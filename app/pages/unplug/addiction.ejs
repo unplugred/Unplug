@@ -10,20 +10,39 @@
 				height: 139px;
 				position: absolute;
 			}
+
+			#everything {
+				width: 100vw;
+				height: 100vh;
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: 100;
+				display: block;
 		</style>
 	</head>
 	<body>
+		<a id="everything" onclick="render()" href="javascript:void(0);"></a>
 		<div class="sticker"></div>
 		<script>
-			document.body.style.backgroundPosition = Math.floor(Math.random()*754) + "px " + Math.floor(Math.random()*383) + "px";
-			var sticker = document.getElementsByClassName("sticker")[0];
-			sticker.style.top = Math.floor(Math.random()*100) + "vh";
-			sticker.style.left = Math.floor(Math.random()*100) + "vw";
-			for(var i = 0; i <= 15; i++) {
-				var bleh = sticker.cloneNode(true);
-				bleh.style.top = (Math.random()*100) + "vh";
-				bleh.style.left = (Math.random()*100) + "vw";
-				document.body.appendChild(bleh);
+			var everything = document.getElementById("everything");
+			var stickers = [document.getElementsByClassName("sticker")[0]];
+			for(var i = 1; i <= 16; i++) {
+				stickers.push(stickers[0].cloneNode(true));
+				document.body.appendChild(stickers[stickers.length - 1]);
 			}
+			function render() {
+				everything.style.cssText = "background-color: white; cursor: url('<%= assets %>/cursors/wait.png') 0 0, default !important;";
+				setTimeout(function(){everything.style.cssText = null;},100);
+				rerender();
+			}
+			function rerender() {
+				document.body.style.backgroundPosition = Math.floor(Math.random()*754) + "px " + Math.floor(Math.random()*383) + "px";
+				for(var i = 0; i <= 16; i++) {
+					stickers[i].style.top = (Math.random()*100) + "vh";
+					stickers[i].style.left = (Math.random()*100) + "vw";
+				}
+			}
+			rerender();
 		</script>
 <%- include('../partials/footer') %>
