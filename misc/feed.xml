@@ -10,10 +10,10 @@ https://feedly.com does the job if youre looking for one.
 -->
 	<channel>
 		<title>unplugred</title>
-		<link><%= global.protocol %>rss.<%= global.domain %>/</link>
+		<link>https://rss.unplug.red/</link>
 		<language>en</language>
 		<description>heck yea</description>
-		<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="<%= global.protocol %>rss.<%= global.domain %>/" />
+		<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="https://rss.unplug.red/" />
 		<lastBuildDate>Sat, 11 Jan 2020 18:57:00 -0600</lastBuildDate>
 		<item>
 			<title>Sorry if i spammed your rss feed</title>
@@ -30,7 +30,7 @@ i screwed up some stuff but hopefully it will be fine now
 			<guid isPermaLink="false">0005</guid>
 			<description><![CDATA[
 AAAAAAAAA ive released a new game its called Water Week play it now thnx<br/>
-<center><img src="<%= assets %>/waterweek/cover.png"></center><br/>
+<center><img src="https://assets.unplug.red/waterweek/cover.png"></center><br/>
 exactly what the title says.<br/>
 sorry it took me long, unity decided i should not be able to publish this game so i waited patiently till some bugs will be fixed<br/>
 <a href="https://unplugred.itch.io/waterweek/">CLICK HERE TO PLAY IT WOOOOOOOOOOOOOO</a> <br/>
@@ -41,20 +41,20 @@ lov u
 		</item>
 		<item>
 			<title>procedural gifsss</title>
-			<link><%= host %>/bits</link>
+			<link>https://unplug.red/bits</link>
 			<guid isPermaLink="false">0004</guid>
 			<description><![CDATA[
-☢ ☢ <a href="<%= host %>/bits/"><%= host %>/bits</a>  ☢ ☢
+				☢ ☢ <a href="https://unplug.red/bits/">https://unplug.red/bits</a>  ☢ ☢
 			]]></description>
 			<pubDate>Sun, 27 Oct 2019 04:44:00 -0500</pubDate>
 			<dc:creator>red</dc:creator>
 		</item>
 		<item>
 			<title>👩‍⚕️</title>
-			<link><%= host %>/blob</link>
+			<link>https://unplug.red/blob</link>
 			<guid isPermaLink="false">0003</guid>
 			<description><![CDATA[
-<%= host %>/blob 👩‍⚕️<br/>
+				https://unplug.red/blob 👩‍⚕️<br/>
  👩‍⚕️&amp;emsp;&amp;emsp;&amp;emsp;👩‍⚕️&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;👩‍⚕️<br/>
  👩‍⚕️ 👩‍⚕️&amp;emsp;👩‍⚕️&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;&amp;emsp;👩‍⚕️
 	 		]]></description>
@@ -82,7 +82,7 @@ Just finished participating in the Ludum Dare game jam where you create a game u
 			<link>https://fermentum-tempus.itch.io/rediger</link>
 			<guid isPermaLink="false">0001</guid>
 			<description><![CDATA[
-<center><img src="<%= assets %>/rediger/cover.png"/></center><br/>
+				<center><img src="https://assets.unplug.red/rediger/cover.png"/></center><br/>
 i finally took the time to finish the damn thing so now you can play it in your browser today now this moment!<br/>
 do it by clicking <a href="https://fermentum-tempus.itch.io/rediger">this link.</a><br/>
 did you do it yet?<br/>
