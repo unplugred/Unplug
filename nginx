@@ -1,1 +1,64 @@
-/etc/nginx/sites-available/default
+server {
+	listen 80 default_server;
+	
+	location / {
+		try_files /misc/wildcard.html =404;
+	}
+}
+
+server {
+	listen 80;
+	server_name localhost unplug.red www.* assets.*;
+	rewrite ^/(.*)/$ /$1 permanent;
+
+	location ~ /feed {
+		try_files /misc/feed.xml =404;
+	}
+	location / {
+		proxy_pass http://localhost:6660;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+	}
+}
+
+server {
+	listen 80;
+	server_name dreambuster.*;
+	rewrite ^/(.*)/$ /$1 permanent;
+
+	location / {
+		proxy_pass http://localhost:6661;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+	}
+}
+
+server {
+	listen 80;
+	server_name rss.*;
+	
+	location ~ /favicon.ico {
+		try_files /unplug/static/assets/favicon.ico =404;
+	}
+	location / {
+		try_files /misc/feed.xml =404;
+	}
+}
+
+server {
+	listen 80;
+	server_name stream.*;
+	rewrite ^/(.*)/$ /$1 permanent;
+
+	location / {
+		proxy_pass http://localhost:6662;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+	}
+}
