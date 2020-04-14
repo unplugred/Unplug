@@ -1,0 +1,10 @@
+{
+  "name": "dreambuster",
+  "version": "1.0.0",
+  "description": "Porting games from alternative dimensions since 372X.",
+  "author": "Ari Hanan",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1"
+  }
+}

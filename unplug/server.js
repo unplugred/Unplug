@@ -1,10 +1,8 @@
-if(global.portt === undefined) {
+if(global.domain === undefined) {
 	if(process.env.NODE_ENV === 'production') {
-		global.portt = 80;
 		global.protocol = "https://";
 		global.domain = "unplug.red";
 	} else {
-		global.portt = 80;
 		global.protocol = "http://";
 		global.domain = "localhost";
 	}
@@ -18,12 +16,6 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + "/pages");
 
 app.use((req, res, next) => {
-
-//remove slashes
-	const test = /\?[^]*\//.test(req.url);
-	if (req.url.substr(-1) === '/' && req.url.length > 1 && !test)
-		return res.redirect(301, req.url.slice(0, -1));
-
 //log
 	if(req.headers.host === undefined)
 	{
@@ -39,12 +31,12 @@ app.use((req, res, next) => {
 	req.path = req.path.toLowerCase();
 
 //weird error
-	if(req.headers.host === undefined || req.hostname === undefined)
-		return res.status(404).sendFile(__dirname + '/hidden/wildcard.html');
+	if(req.headers.host === undefined) req.headers.host = "localhost";
+	if(req.hostname === undefined) req.hostname = "localhost";
 
 //favicon
-	if(req.headers.host !== 'dreambuster.' + global.domain && req.path === "/favicon.ico")
-		return res.sendFile(__dirname + '/hidden/favicon.ico');
+	if(req.path === "/favicon.ico")
+		return res.sendFile(__dirname + '/static/assets/favicon.ico');
 
 /*	ASSETS--------------------------*/
 	if(req.headers.host === 'assets.' + global.domain) {
@@ -60,17 +52,11 @@ app.use((req, res, next) => {
 		return next();
 	}
 
-/*	RSS-----------------------------*/
-	if(req.headers.host === 'rss.' + global.domain) {
-		return res.set('Content-Type', 'text/xml').render('partials/feed.ejs', {assets:global.protocol + req.headers.host,host:global.protocol + req.headers.host,version:version});
-	}
-
 /*	ELECTRON------------------------*/
 	if(global.domain === "localhost:6660") {
 		if(
 		req.path === "/privacy-policy" ||
-		req.path === "/brand-guidelines" ||
-		req.path === "/feed")
+		req.path === "/brand-guidelines")
 			return res.status(404).render('partials/404.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
 
 		if(req.url.endsWith("?6660")) {
@@ -83,40 +69,21 @@ app.use((req, res, next) => {
 		}
 	}
 
-/*	UNPLUG--------------------------*/
-	if(req.headers.host === 'www.' + global.domain || req.headers.host === global.domain) {
-		//index
-		if(req.path === '/')
-			return res.render('partials/index.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
+	//index
+	if(req.path === '/')
+		return res.render('partials/index.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
 
-		//rss
-		if(req.path === '/feed') {
-			return res.set('Content-Type', 'text/xml').render('partials/feed.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
+	//important.txt
+	if(req.path === '/important.txt')
+		return res.download(__dirname + '/static/unplug/important.txt');
+
+	return res.render("unplug" + req.path + ".ejs", {assets:global.assets,host:global.protocol + req.headers.host,version:version}, function(err, html) {
+		if(err) {
+			if(err.message.indexOf('Failed to lookup view') !== -1) return next();
+			throw err;
 		}
-
-		//important.txt
-		if(req.path === '/important.txt')
-			return res.download(__dirname + '/static/unplug/important.txt');
-
-		return res.render("unplug" + req.path + ".ejs", {assets:global.assets,host:global.protocol + req.headers.host,version:version}, function(err, html) {
-			if(err) {
-				if(err.message.indexOf('Failed to lookup view') !== -1) return next();
-				throw err;
-			}
-			return res.send(html);
-		});
-	}
-
-/*	DREAMBUSTER---------------------*/
-	if(req.headers.host === 'dreambuster.' + global.domain) {
-		if(req.path === "/halloffame")
-			return fs.readdir(__dirname + '/static/dreambuster/hof', (err, files) => {
-				if(err) throw err;
-				else return res.render('dreambuster/halloffame.ejs', {assets:global.protocol + req.headers.host,host:global.protocol + req.headers.host,version:version,files:files})});
-		else return next();
-	}
-
-	return res.status(404).sendFile(__dirname + '/hidden/wildcard.html');
+		return res.send(html);
+	});
 });
 
 //static
@@ -136,8 +103,6 @@ app.use(express.static(__dirname + '/static', {
 
 //404
 app.use((req, res, next) => {
-	if(req.headers.host === 'dreambuster.' + global.domain)
-		return res.render('dreambuster/index.ejs', {assets:global.protocol + req.headers.host,host:global.protocol + req.headers.host,version:version});
 	return res.status(404).render('partials/404.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
 });
 
@@ -189,5 +154,5 @@ fs.readdir(__dirname + '/pages/unplug', (err, files) => {
 		setTimeout(seq, startseq.pop());
 		console.log(startseq.pop());
 	}
-	app.listen(global.portt, seq);
+	app.listen(6660, seq);
 });
