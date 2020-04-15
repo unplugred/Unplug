@@ -53,7 +53,7 @@ app.use((req, res, next) => {
 	}
 
 /*	ELECTRON------------------------*/
-	if(global.domain === "localhost:6660") {
+	if(global.domain === "localhost:6663") {
 		if(
 		req.path === "/privacy-policy" ||
 		req.path === "/brand-guidelines")
@@ -154,5 +154,5 @@ fs.readdir(__dirname + '/pages/unplug', (err, files) => {
 		setTimeout(seq, startseq.pop());
 		console.log(startseq.pop());
 	}
-	app.listen(6660, seq);
+	app.listen(6663, seq);
 });
