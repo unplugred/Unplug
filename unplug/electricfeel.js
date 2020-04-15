@@ -1,6 +1,6 @@
 global.debug = process.argv[2] === "--debug";
 global.protocol = "http://";
-global.domain = "localhost:6660";
+global.domain = "localhost:6663";
 require('./server.js');
 const electron = require('electron');
 var {app, BrowserWindow} = electron;
