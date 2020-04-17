@@ -5,6 +5,8 @@
 				text-align: justify;
 				height: calc(100vh - 60vmin);
 				width: calc(100vw - 60vmin);
+				background-repeat: no-repeat;
+				background-position: center center;
 			}
 		</style>
 	</head>
@@ -17,5 +19,11 @@
 				str += String.fromCharCode(array[i]);
 			};
 			document.body.innerHTML = str;
+
+			function bg() {
+				document.body.style.backgroundImage = "url('<%= assets %>/h/" + Math.floor(Math.random()*5) + ".png')";
+				setTimeout(bg, Math.random()*200 + 10);
+			}
+			bg();
 		</script>
 <%- include('../partials/footer') %>
