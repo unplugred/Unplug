@@ -146,8 +146,9 @@
 				padding: 0;
 				box-shadow: 0px 0px 30px 35px rgba(0,0,0,1);
 				flex-direction: column;
-				display: flex !important;
 				justify-content: center;
+				display: flex !important;
+				display: none !important;
 			}
 
 			#counternumber {
@@ -165,6 +166,15 @@
 				padding: 0 50px;
 			}
 
+			#avtw {
+				margin-top: -70px;
+				background-image: url(http://dreambuster.localhost/avtw/topgrass.png), url(http://dreambuster.localhost/avtw/trees.png), url(http://dreambuster.localhost/avtw/clouds.png), url(http://dreambuster.localhost/avtw/sky.png);
+				background-repeat: repeat-x;
+				background-position: bottom left, bottom 26px left, bottom left, bottom left;
+				background-size: auto, auto, auto, contain;
+				padding: 50px 0 20px 0;
+			}
+
 			#bmcp {
 				background-image: url(<%= assets %>/bmcp/end.png);
 				background-repeat: repeat-x;
@@ -176,9 +186,9 @@
 			#bmcpbgbs {
 				height: 167px;
 				width: 100%;
-				background-image: url(<%= assets %>/bmcp/bg.png);
-				background-repeat: repeat;
-				background-position: bottom left;
+				background-image: url(http://dreambuster.localhost/avtw/connector.png), url(http://dreambuster.localhost/bmcp/bg.png);
+				background-repeat: repeat-x, repeat;
+				background-position: top left, bottom left;
 				padding-top: 70px;
 			}
 
@@ -262,6 +272,14 @@
 			<div id="counter" class="gaem">
 				<div id="counternumber"></div>
 				<div id="counterdate"></div>
+			</div>
+			<div id="avtw" class="gaem">
+				<div class="graphic">
+					<a href="https://dreambuster.itch.io/avtw" target="_blank" class="logo"><img src="<%= assets %>/avtw/logo.png"/></a>
+				</div>
+				<div class="sidebar">
+					<iframe src="https://www.youtube.com/embed/j5ru1vewBYQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
 			</div>
 			<div id="bmcpbgbs"></div>
 			<div id="bmcp" class="gaem">
