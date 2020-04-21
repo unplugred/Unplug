@@ -14,7 +14,19 @@ https://feedly.com does the job if youre looking for one.
 		<language>en</language>
 		<description>heck yea</description>
 		<atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="https://rss.unplug.red/" />
-		<lastBuildDate>Sat, 11 Jan 2020 18:57:00 -0600</lastBuildDate>
+		<lastBuildDate>Tue, 21 Apr 2020 08:27:00 -0600</lastBuildDate>
+		<item>
+			<title>a very talented worm</title>
+			<link>https://dreambuster.itch.io/avtw</link>
+			<guid isPermaLink="false">0007</guid>
+			<description><![CDATA[
+henlooo i worked on another ludum dare game with some friendss<br/>
+check it out <a href="https://dreambuster.itch.io/avtw/">here.</a><br/>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/j5ru1vewBYQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><br/>
+			]]></description>
+			<pubDate>Tue, 21 Apr 2020 08:27:00 -0600</pubDate>
+			<dc:creator>red</dc:creator>
+		</item>
 		<item>
 			<title>Sorry if i spammed your rss feed</title>
 			<guid isPermaLink="false">0006</guid>
