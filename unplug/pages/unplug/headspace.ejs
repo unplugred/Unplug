@@ -50,29 +50,36 @@
 			var button = document.getElementById("play");
 			var direction = false;
 			var angle = 0;
-			var interval;
+			var interval = false;
 
-			function updateplay()
-			{
-				angle += direction ? 5 : -5;
+			var dt = null;
+			function updateplay(timestamp) {
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+
+				angle += dtt*.25*(direction?1:-1);
 				button.style.transform = "rotate(" + angle + "deg)";
+
+				if(interval) requestAnimationFrame(updateplay);
 			}
 
 			button.onmouseover = function() {
 				direction = !direction;
-				interval = setInterval(updateplay, 20);
+				requestAnimationFrame(updateplay);
+				interval = true;
 			};
 			button.onmouseout = function() {
 				angle = Math.round(angle/120)*120 + (direction ? -240 : 240);
 				button.style.transform = "rotate(" + angle + "deg)";
-				clearInterval(interval);
+				interval = false;
 			};
 
 			function UnityProgress(unityInstance, progress){}
 			function play()
 			{
 				button.style.display = "none";
-				clearInterval(interval);
+				interval = false;
 				document.getElementById("gameContainer").className = "loading";
 				var unityInstance = UnityLoader.instantiate("gameContainer", "headspace/headspace.json", {onProgress: UnityProgress});
 			}

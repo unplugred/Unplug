@@ -65,20 +65,23 @@
 			if (window.top !== window.self)
 				document.getElementById("mainimage").href = "/inception?ppp=" + Math.floor(Math.random()*10000);
 
-			var sizex = 0, sizey = 0, spacing = 5, speed = 5,
+			var sizex = 0, sizey = 0, speed = 0.166,
 			x, y, directionX, directionY;
 			var thng = document.getElementById("mainimage");
 			resetPosition();
 			hit();
 
-			setInterval(timer, speed * spacing);
-			function timer()
-			{
+			var dt = null;
+			function timer(timestamp) {
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+
 				thng.style.top = y + "px";
 				thng.style.left = x + "px";
 
 				let attempt = 0;
-				while (x + directionX + sizex > window.innerWidth || x + directionX - sizex < 0 || y + directionY + sizey > window.innerHeight || y + directionY - sizey < 0)
+				while (x + directionX*dtt + sizex > window.innerWidth || x + directionX*dtt - sizex < 0 || y + directionY*dtt + sizey > window.innerHeight || y + directionY*dtt - sizey < 0)
 				{
 					hit();
 					if(++attempt > 100){
@@ -87,21 +90,24 @@
 					}
 				}
 
-				x += directionX;
-				y += directionY;
+				x += directionX*dtt;
+				y += directionY*dtt;
+
+				requestAnimationFrame(timer);
 			}
+			requestAnimationFrame(timer);
 
 			function hit()
 			{
-				let dir = Math.random() * Math.PI * 2;
-				directionX = Math.sin(dir) * spacing;
-				directionY = Math.cos(dir) * spacing;
+				let dir = Math.random()*Math.PI*2;
+				directionX = Math.sin(dir)*speed;
+				directionY = Math.cos(dir)*speed;
 			}
 
 			function resetPosition()
 			{
-				x = Math.floor(Math.random() * (window.innerWidth - sizex));
-				y = Math.floor(Math.random() * (window.innerHeight - sizey));
+				x = Math.floor(Math.random()*(window.innerWidth - sizex));
+				y = Math.floor(Math.random()*(window.innerHeight - sizey));
 			}
 		</script>
 <%- include('../partials/footer') %>

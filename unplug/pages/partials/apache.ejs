@@ -134,12 +134,10 @@ function randomnum() {
 					d.className = "disco";
 			}
 
-			sinification = 0;
 			dots = document.getElementsByClassName("dot");
 			function sineifydot() {
-				if(sinification > 0) return;
-				setInterval(calcsine, 50);
-				sinification++;
+				if(dt) return;
+				requestAnimationFrame(calcsine);
 				dots[0].style.width = "4px";
 				dots[0].style.height = "4px";
 				dots[1].style.width = "4px";
@@ -148,14 +146,19 @@ function randomnum() {
 				dots[2].style.height = "4px";
 				document.getElementById("dotlink").style.left = "-17px";
 			}
-			function calcsine() {
-				dots[0].style.top = ((Math.sin(sinification*.0543589+1.39484)*35+17)*Math.min(sinification*.005,1)) + "vh";
-				dots[0].style.left = ((Math.sin(sinification*.033898+0.93859384)*35+45)*Math.min(sinification*.005,1)) + "vw";
-				dots[1].style.top = ((Math.sin(sinification*.0448357+3.19348)*35+17)*Math.min(sinification*.005,1)) + "vh";
-				dots[1].style.left = ((Math.sin(sinification*.069859+2.432958)*35+45)*Math.min(sinification*.005,1)) + "vw";
-				dots[2].style.top = ((Math.sin(sinification*.024857+0.39489)*35+17)*Math.min(sinification*.005,1)) + "vh";
-				dots[2].style.left = ((Math.sin(sinification*.0434895+1.3948)*35+45)*Math.min(sinification*.005,1)) + "vw";
-				sinification++;
+			var dt = null;
+			function calcsine(timestamp) {
+				if(!dt) dt = timestamp;
+				let dtt = (timestamp - dt)*.02;
+
+				dots[0].style.top = ((Math.sin(dtt*.0543589+1.39484)*35+17)*Math.min(dtt*.005,1)) + "vh";
+				dots[0].style.left = ((Math.sin(dtt*.033898+0.93859384)*35+45)*Math.min(dtt*.005,1)) + "vw";
+				dots[1].style.top = ((Math.sin(dtt*.0448357+3.19348)*35+17)*Math.min(dtt*.005,1)) + "vh";
+				dots[1].style.left = ((Math.sin(dtt*.069859+2.432958)*35+45)*Math.min(dtt*.005,1)) + "vw";
+				dots[2].style.top = ((Math.sin(dtt*.024857+0.39489)*35+17)*Math.min(dtt*.005,1)) + "vh";
+				dots[2].style.left = ((Math.sin(dtt*.0434895+1.3948)*35+45)*Math.min(dtt*.005,1)) + "vw";
+
+				requestAnimationFrame(calcsine)
 			}
 		</script>
 		<script type="text/javascript" src="<%= assets %>/player/player.js?v=2"></script>

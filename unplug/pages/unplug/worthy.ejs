@@ -36,17 +36,24 @@
 					pos = [
 						heartbox.top - window.innerHeight*.5 + (Math.cos(angle)*(200 - dist)),
 						heartbox.left - window.innerWidth*.5 + (Math.sin(angle)*(200 - dist))];
-					if(touched == false) setInterval(lerpify, 20);
+					if(touched == false) window.requestAnimationFrame(lerpify);
 					touched = true;
 				}
 			}
 
-			function lerpify() {
+			var dt = null;
+			function lerpify(timestamp) {
+					if(!dt) dt = timestamp;
+					let dtt = timestamp - dt;
+					dt = timestamp;
+
 					lerpos = [
-						lerpos[0]*.9 + pos[0]*.1,
-						lerpos[1]*.9 + pos[1]*.1];
+						lerpos[0]*(1-(dtt*.003)) + pos[0]*.003*dtt,
+						lerpos[1]*(1-(dtt*.003)) + pos[1]*.003*dtt];
 					heart.style.top = "calc(50vh + " + lerpos[0] + "px)";
 					heart.style.left = "calc(50vw + " + lerpos[1] + "px)";
+
+					window.requestAnimationFrame(lerpify);
 			}
 		</script>
 <%- include('../partials/footer') %>
