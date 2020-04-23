@@ -100,22 +100,29 @@
 			var istaken = false;
 			var currentpos = [-12,-112];
 			var desiredpos = [-12,-112];
-			var lerp = .83;
+			var lerp = .055;
 			var clickable = true;
 
 			var mobile = false;
+			var dt = null;
 
 			window.addEventListener('touchstart', function onFirstTouch() {
 				if(mobile) return;
 				mobile = true;
-				function lerppaper()
+				function lerppaper(timecode)
 				{
-					currentpos[0] = currentpos[0] * lerp + desiredpos[0] * (1 - lerp);
-					currentpos[1] = currentpos[1] * lerp + desiredpos[1] * (1 - lerp);
+					if(!dt) dt = timecode;
+					let dtt = Math.min(timecode - dt,1/lerp);
+					dt = timecode;
+
+					currentpos[0] = currentpos[0]*lerp*dtt + desiredpos[0]*(1-lerp*dtt);
+					currentpos[1] = currentpos[1]*lerp*dtt + desiredpos[1]*(1-lerp*dtt);
 					paper.style.top  = "calc(50vh + " + currentpos[0] + "px)";
 					paper.style.left = "calc(50vw + " + currentpos[1] + "px)";
+
+					requestAnimationFrame(lerppaper);
 				}
-				setInterval(lerppaper, 33);
+				requestAnimationFrame(lerppaper);
 				window.removeEventListener('touchstart', onFirstTouch, false);
 			}, false);
 
