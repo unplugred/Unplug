@@ -146,11 +146,13 @@
 					positions[i] = pivots[i].getBoundingClientRect();
 			}
 			var rotations = [0,0,0,0,0];
+			var targetrot = [0,0,0,0,0];
 			window.onload = function() {
 				for(var i = 0; i < pivots.length; i++)
 				{
 					let values = window.getComputedStyle(pivots[i]).getPropertyValue('transform').split('(')[1].split(')')[0].split(',');
-					rotations[i] = Math.atan2(values[1], values[0])*(180/Math.PI);
+					targetrot[i] = Math.atan2(values[1], values[0])*(180/Math.PI);
+					rotations[i] = targetrot[i];
 				}
 				recalc();
 			}
@@ -160,20 +162,19 @@
 			function timer(timestamp) {
 				if(!dt) dt = timestamp;
 				let dtt = timestamp - dt;
-				let dttt = Math.min(dtt,25);
+				let dttt = Math.min(dtt,150);
 				dt = timestamp;
 
-				let targetrot = 0;
 				for(var i = 0; i < pivots.length; i++) {
-					if(hovers[i]) targetrot = rotations[i] + .2*dtt;
-					else targetrot = 180*Math.atan2(cursorY - (positions[i].top + positions[i].height*.5), cursorX - (positions[i].left + positions[i].width*.5))/Math.PI;
-					rotations[i] = lerp360(rotations[i], targetrot, .04*dttt)%360;
+					if(hovers[i]) targetrot[i] = targetrot[i] + .12*dtt;
+					else targetrot[i] = 180*Math.atan2(cursorY - (positions[i].top + positions[i].height*.5), cursorX - (positions[i].left + positions[i].width*.5))/Math.PI;
+					rotations[i] = lerp360(rotations[i], targetrot[i], .0075*dttt)%360;
 					pivots[i].style.transform = "rotate(" + rotations[i] + "deg)";
 				}
 
 				requestAnimationFrame(timer);
 			}
-			function lerp360(a,b,c) {
+			function lerp360(b,a,c) {
 				if(Math.abs(b - a) > Math.abs(b - (a - 360))) a -= 360;
 				if(Math.abs(a - b) > Math.abs(a - (b - 360))) b -= 360;
 				return (a * c) + (b * (1 - c));
