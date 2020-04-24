@@ -3,7 +3,7 @@
 
 		<style>
 			*::-webkit-scrollbar {
-			    width: 0!important;
+				width: 0!important;
 			}
 
 			html{
@@ -59,7 +59,7 @@
 				document.getElementById("7c"),
 				document.getElementById("7d")];
 
-			var scrollspeed = 0.004;
+			var scrollspeed = 0.002;
 			var scroll = 0;
 			var scrollprelerp = 0;
 			var diff = 0;
@@ -128,7 +128,7 @@
 				dt = timestamp;
 
 				diff = scroll;
-				scrollprelerp += (document.documentElement.scrollTop - window.innerHeight*5)*1;
+				scrollprelerp += (document.documentElement.scrollTop - window.innerHeight*5)*.35;
 				scroll = scrollprelerp*scrollspeed*dtt + scroll*(1 - scrollspeed*dtt);
 				diff -= scroll;
 				if(diff !== 0) draw();
