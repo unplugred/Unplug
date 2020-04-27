@@ -1,0 +1,232 @@
+<%- include('../partials/header',{title:"radio"}) %>
+		<style>
+			body {
+				background-image: url("<%= assets %>/im-alone-in-class-again/im-alone-in-class-again.png");
+			}
+
+			#player {
+				width: 140px;
+				min-width: 0!important;
+				position: fixed;
+				top: calc(50vh + 20px);
+				left: calc(50vw - 70px);
+			}
+
+			img {
+				position: fixed;
+			}
+
+			#txtbx {
+				left: calc(50vw - 124px);
+				top: calc(50vh + 5px);
+				position: fixed;
+				width: 249px;
+				height: 70px;
+				background-color: black;
+			}
+
+			#meta {
+				position: absolute;
+				top: calc(50vh + 52px);
+				left: calc(50vw - 70px);
+				font-size: 16px;
+				font-family: tahoma8, monospace;
+				color: #7d5870;
+		</style>
+		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=2">
+	</head>
+	<body>
+		<img id="enableonstart" src="<%= assets %>/radio/things/01.png" style="display: none; left: 50px; bottom: -48px;"/>
+		<img id="logoo" src="<%= assets %>/radio/logo.png" style="left: calc(50vw - 206px); top: calc(50vh - 80px);"/>
+		<div id="player" class="player-border">
+			<div id="player-timecode" style="text-align: left; margin-left: 6px">Loading...</div>
+			<div id="player-volume">
+				<a href="javascript:void(0);" id="player-volumedrag" onmousedown="p_volume(event)" onmousemove="p_volume(event)" ondragstart="return false;" ondrop="return false;">
+					<div id="player-volumeknob" style="left: 50%"></div>
+				</a>
+			</div>
+		</div>
+		<div id="meta"></div>
+		<div id="txtbx">
+			<div id="date" style="padding: 8px 0; display: none; font-size: 16px; text-align: center;">Join us in <div id="datedate" style="display: inline;"></div> (your timezone)</div>
+			<div id="timer" style="padding: 8px 0; display: none; font-size: 16px; text-align: center;">Stream starts in<br/><div id="timertimer" style="display: inline;"></div><br/>(<div id="timerhour" style="display: inline;"></div>)</div>
+			<a id="msg" onclick="closemsg()" href="javascript:void(0)">
+				<img src="<%= assets %>/radio/msg.png"/>
+			</a>
+		</div>
+		<script>
+			var start = Date.UTC(2019, 3, 25, 1, 0, 0, 0);
+			var interval;
+			var timerdiv;
+
+			function closemsg() {
+				document.getElementById("msg").style.display = "none";
+				document.getElementById("date").style.display = "block";
+				if(start < Date.now()) {
+					document.getElementById("txtbx").style.display = "none";
+					p_playsong();
+					document.getElementById("enableonstart").style.display = "block";
+				} else if(start - 86400000 < Date.now()) {
+					timertill();
+				} else {
+					let startdate = new Date(start);
+					let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+					let starttime;
+					if(startdate.getHours() < 12) starttime = startdate.getHours() + ":" + startdate.getMinutes().toString().padStart(2, '0') + "AM";
+					else starttime = (startdate.getHours() - 12) + ":" + startdate.getMinutes().toString().padStart(2, '0') + "PM";
+					document.getElementById("datedate").innerHTML = days[startdate.getDay()] + " " + startdate.getDate() + "/" + (startdate.getMonth() + 1) + "/" + startdate.getFullYear() + " " + starttime;
+					interval = setInterval(dateupdate, 60000);
+				}
+			}
+
+			function dateupdate() {
+				if(start - 86400000 < Date.now()) {
+					clearInterval(interval);
+					timertill();
+				}
+			}
+
+			function timertill() {
+				document.getElementById("date").style.display = "none";
+				document.getElementById("timer").style.display = "block";
+
+				timerdiv = document.getElementById("timertimer");
+				interval = setInterval(timerupdate, 1000);
+				timerupdate();
+
+				let startdate = new Date(start);
+				if(startdate.getHours() < 12) document.getElementById("timerhour").innerHTML = startdate.getHours() + ":" + startdate.getMinutes().toString().padStart(2, '0') + "AM";
+				else document.getElementById("timerhour").innerHTML = (startdate.getHours() - 12) + ":" + startdate.getMinutes().toString().padStart(2, '0') + "PM";
+			}
+
+			function timerupdate() {
+				let compdate = new Date(start - Date.now());
+				timerdiv.innerHTML = compdate.getUTCHours() + ":" + compdate.getUTCMinutes().toString().padStart(2, '0') + ":" + compdate.getUTCSeconds().toString().padStart(2, '0');
+				if(start < Date.now()) {
+					document.getElementById("txtbx").style.display = "none";
+					p_playsong();
+					clearInterval(interval);
+					document.getElementById("enableonstart").style.display = "block";
+				}
+			}
+
+
+			var p_divvolume = document.getElementById("player-volumeknob");
+			var p_divtimecode = document.getElementById("player-timecode");
+			var logoo = document.getElementById("logoo");
+
+			var p_updateinterval = null;
+			var p_audio = null;
+
+			var ctx;
+			var audioSrc;
+			var analyser;
+			var frequencyData;
+			var bands;
+			var amounts = [.002,.08,.08,.00002];
+			var maxbass = 0;
+			var cooldown = 0;
+			var dt = null;
+
+			var metadata = document.getElementById("meta");
+			var metainterval = null;
+
+			var p_volumepos = null;
+			var p_volumewidth = null;
+			function p_resize() {
+				p_volumepos = document.getElementById("player-volumedrag").getBoundingClientRect();
+				p_volumewidth = p_volumepos.width - 10;
+				p_volumepos = p_volumepos.left + 5;
+			}
+			window.onresize = p_resize;
+			function p_playsong() {
+				if(p_audio) {
+					p_audio.src = "https://stream.unplug.red/radio";
+					p_audio.play();
+					return;
+				}
+				p_audio = new Audio();
+				p_audio.loop = false;
+				p_audio.muted = false;
+				p_audio.volume = .5;
+				p_audio.type = "audio/mpeg";
+				p_audio.src = "https://stream.unplug.red/radio";
+				p_audio.crossOrigin = "anonymous";
+				p_audio.play();
+
+				p_audio.addEventListener('waiting', (event) => { p_divtimecode.innerHTML = "Loading..."; });
+				p_audio.addEventListener('playing', (event) => {
+					p_divtimecode.innerHTML = "Playing.";
+					if(!metainterval) {
+						metainterval = setInterval(updatemetadata, 5000);
+						updatemetadata();
+					}
+				});
+				p_audio.addEventListener('ended', (event) => {
+					p_divtimecode.innerHTML = "Offline.";
+					if(metainterval) clearInterval(metainterval);
+					metainterval = null;
+					metadata.innerHTML = "";
+					setTimeout(p_playsong,5000);
+					console.log("attempt0");
+				});
+				p_audio.addEventListener('error', (event) => {
+					p_divtimecode.innerHTML = "Offline.";
+					if(metainterval) clearInterval(metainterval);
+					metainterval = null;
+					metadata.innerHTML = "";
+					setTimeout(p_playsong,5000);
+					console.log("attempt1");
+				});
+
+				setTimeout(p_resize,200);
+
+				ctx = new (window.AudioContext || window.webkitAudioContext)();
+				analyser = ctx.createAnalyser();
+				audioSrc = ctx.createMediaElementSource(p_audio);
+				audioSrc.connect(analyser);
+				analyser.connect(ctx.destination);
+				analyser.fftSize = 32;
+				frequencyData = new Uint8Array(analyser.frequencyBinCount);
+				bands = [Math.floor(analyser.frequencyBinCount*.2),Math.floor(analyser.frequencyBinCount*.3),Math.floor(analyser.frequencyBinCount*.6)];
+
+				function renderFrame(timestamp) {
+					requestAnimationFrame(renderFrame);
+					let dtt = 0;
+					if(dt !== null) dtt = timestamp - dt;
+					dt = timestamp;
+
+					analyser.getByteFrequencyData(frequencyData);
+
+					if(isNaN(cooldown)) cooldown = 0;
+					if(isNaN(maxbass)) maxbass = 0;
+					if(frequencyData[bands[0]] > maxbass) {
+						if(cooldown < 0) {
+							logoo.style.filter = "hue-rotate(" + (Math.random()*360) + "deg)";
+							cooldown = 1;
+						}
+						maxbass = frequencyData[bands[0]];
+					}
+					cooldown = Math.max(cooldown - amounts[0]*dtt,-1);
+					maxbass = Math.max(maxbass*(1 - Math.min(amounts[3]*dtt,1)),100);
+
+					logoo.style.marginLeft = (frequencyData[bands[1]]*amounts[1]) + "px";
+					logoo.style.marginTop = (frequencyData[bands[2]]*amounts[2]) + "px";
+				}
+				renderFrame();
+			}
+			function p_volume(e) {
+				if(e.buttons !== 1) return;
+				p_audio.volume = Math.min(Math.max(e.clientX - p_volumepos,0)/p_volumewidth,1);
+				p_divvolume.style.left = (p_audio.volume*100) + "%";
+			}
+			function updatemetadata() {
+				fetch("https://stream.unplug.red/nowplaying.xsl")
+					.then(response => response.text())
+					.then(function(data){
+						metadata.innerHTML = data;
+						console.log("attempt2");
+					});
+			}
+		</script>
+<%- include('../partials/footer') %>
