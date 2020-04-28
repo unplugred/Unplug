@@ -1,6 +1,6 @@
 <%- include('../partials/header',{title:"worthy",color:"#FF0000"}) %>
 		<style>
-			#heart {
+			#fc {
 				font-size: 8vmin;
 				position: fixed;
 				display: inline-block;
@@ -8,34 +8,34 @@
 		</style>
 	</head>
 	<body>
-		<div id="heart">❤️</div>
+		<div id="fc">😒</div>
 		<script>
-			var heart = document.getElementById("heart");
+			var fc = document.getElementById("fc");
 			var touched = false;
-			let heartbox = heart.getBoundingClientRect();
+			let fcbox = fc.getBoundingClientRect();
 			var pos;
-			var lerpos = [heartbox.height*-.5,heartbox.width*-.5];
-			heart.style.top = "calc(50vh + " + lerpos[0] + "px)";
-			heart.style.left = "calc(50vw + " + lerpos[1] + "px)";
+			var lerpos = [fcbox.height*-.5,fcbox.width*-.5];
+			fc.style.top = "calc(50vh + " + lerpos[0] + "px)";
+			fc.style.left = "calc(50vw + " + lerpos[1] + "px)";
 
 			window.onresize = function() {
 				if(touched) return;
-				let heartbox = heart.getBoundingClientRect();
-				heart.style.top = "calc(50vh - " + (heartbox.height*.5) + "px)";
-				heart.style.left = "calc(50vw - " + (heartbox.width*.5) + "px)";
+				let fcbox = fc.getBoundingClientRect();
+				fc.style.top = "calc(50vh - " + (fcbox.height*.5) + "px)";
+				fc.style.left = "calc(50vw - " + (fcbox.width*.5) + "px)";
 			}
 
 			document.onmousemove = function(e) {
-				let heartbox = heart.getBoundingClientRect();
-				let heartpos = [heartbox.left + (heartbox.width*.5), heartbox.top + (heartbox.height*.5)];
-				let dist = Math.pow(heartpos[0] - e.pageX,2) + Math.pow(heartpos[1] - e.pageY,2);
+				let fcbox = fc.getBoundingClientRect();
+				let fcpos = [fcbox.left + (fcbox.width*.5), fcbox.top + (fcbox.height*.5)];
+				let dist = Math.pow(fcpos[0] - e.pageX,2) + Math.pow(fcpos[1] - e.pageY,2);
 				//8000
 				if(dist <= 40000) {
 					dist = Math.sqrt(dist);
-					let angle = Math.atan2(heartpos[0] - e.pageX,heartpos[1] - e.pageY);
+					let angle = Math.atan2(fcpos[0] - e.pageX,fcpos[1] - e.pageY);
 					pos = [
-						heartbox.top - window.innerHeight*.5 + (Math.cos(angle)*(200 - dist)),
-						heartbox.left - window.innerWidth*.5 + (Math.sin(angle)*(200 - dist))];
+						fcbox.top - window.innerHeight*.5 + (Math.cos(angle)*(200 - dist)),
+						fcbox.left - window.innerWidth*.5 + (Math.sin(angle)*(200 - dist))];
 					if(touched == false) window.requestAnimationFrame(lerpify);
 					touched = true;
 				}
@@ -50,8 +50,8 @@
 					lerpos = [
 						lerpos[0]*(1-(dtt*.003)) + pos[0]*.003*dtt,
 						lerpos[1]*(1-(dtt*.003)) + pos[1]*.003*dtt];
-					heart.style.top = "calc(50vh + " + lerpos[0] + "px)";
-					heart.style.left = "calc(50vw + " + lerpos[1] + "px)";
+					fc.style.top = "calc(50vh + " + lerpos[0] + "px)";
+					fc.style.left = "calc(50vw + " + lerpos[1] + "px)";
 
 					window.requestAnimationFrame(lerpify);
 			}
