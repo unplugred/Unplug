@@ -590,13 +590,13 @@
 
 <url>
 <loc>https://unplug.red/music</loc>
-<lastmod>2020-4-01T03:53:33+00:00</lastmod>
+<lastmod>2020-4-1T03:53:33+00:00</lastmod>
 <priority>0.80</priority>
 </url>
 
 <url>
 <loc>https://unplug.red/name</loc>
-<lastmod>2020-4-06T03:53:33+00:00</lastmod>
+<lastmod>2020-4-6T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
 </url>
 
@@ -604,6 +604,12 @@
 <loc>https://unplug.red/worthy</loc>
 <lastmod>2020-4-17T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
+</url>
+
+<url>
+<loc>https://unplug.red/donate</loc>
+<lastmod>2020-5-31T03:53:33+00:00</lastmod>
+<priority>0.80</priority>
 </url>
 
 </urlset>
