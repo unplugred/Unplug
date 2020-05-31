@@ -1,0 +1,27 @@
+<%- include('../partials/header',{title:"donate"}) %>
+		<style>
+			body {
+				display: flex;
+			}
+			a {
+				margin: auto auto;
+			}
+			.vid {
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				z-index: -10000;
+				object-fit: cover;
+			}
+			img{
+				width: 30vw;
+				min-width: 240px;
+			}
+		</style>
+	</head>
+	<body>
+		<video class="vid" autoplay muted loop>
+			<source src="<%= assets %>/donate/donate.webm" type="video/mp4">
+		</video>
+		<a href='https://ko-fi.com/unplugred' target='_blank'><img src='<%= assets %>/donate/donate.png' alt='Buy Me a Coffee at ko-fi.com' /></a>
+<%- include('../partials/footer') %>
