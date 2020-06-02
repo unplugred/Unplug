@@ -1,0 +1,67 @@
+<%- include('../../partials/header',{title:"virtual merch"}) %>
+		<link rel=stylesheet href="<%= assets %>/virtual-merch/style.css" type="text/css" media=screen>
+	</head>
+	<body>
+		<a href="/virtual-merch">
+			<img src="<%= assets %>/virtual-merch/header.png" id="header"/>
+		</a>
+		<br />
+		<img src="<%= assets %>/virtual-merch/big-hoodie.png" id="big"/>
+		<img src="<%= assets %>/virtual-merch/desc-hoodie.png" id="desc"/>
+		<br />
+		<img src="<%= assets %>/virtual-merch/available-sizes.png" id="sizes"/>
+		<br />
+		<a href="javascript:void(0);" id="sizebox">
+			<img src="<%= assets %>/virtual-merch/unchecked-xs.png" class="size" onclick="size(0)"/>
+			<img src="<%= assets %>/virtual-merch/unchecked-s.png" class="size" onclick="size(1)"/>
+			<img src="<%= assets %>/virtual-merch/checked-m.png" class="size checked" onclick="size(2)"/>
+			<img src="<%= assets %>/virtual-merch/unchecked-l.png" class="size" onclick="size(3)"/>
+			<img src="<%= assets %>/virtual-merch/unchecked-xl.png" class="size" onclick="size(4)"/>
+			<img src="<%= assets %>/virtual-merch/unchecked-xxl.png" class="size" onclick="size(5)"/>
+		</a>
+		<br />
+		<a href="/virtual-merch/size-chart">
+			<img src="<%= assets %>/virtual-merch/size-chart.png" id="chart"/>
+		</a>
+		<br />
+		<a id="dnld" href="<%= assets %>/virtual-merch/hoodie-m.gif?dnld">
+			<img src="<%= assets %>/virtual-merch/download.png" id="download"/>
+		</a>
+		<br />
+		<img src="<%= assets %>/virtual-merch/footer.png" id="footer"/>
+		<script>
+			var sizes = document.getElementsByClassName("size");
+			var dnld = document.getElementById("dnld");
+			function size(num){
+				for(var i = 0; i < 6; i++) {
+					if(i === num) {
+						sizes[i].src = sizes[i].src.replace("/virtual-merch/unchecked-","/virtual-merch/checked-");
+						sizes[i].className = "size checked";
+					} else {
+						sizes[i].src = sizes[i].src.replace("/virtual-merch/checked-","/virtual-merch/unchecked-");
+						sizes[i].className = "size";
+					}
+				}
+				switch(num) {
+					case 0:
+						dnld.href = "<%= assets %>/virtual-merch/hoodie-xs.gif?dnld";
+						break;
+					case 1:
+						dnld.href = "<%= assets %>/virtual-merch/hoodie-s.gif?dnld";
+						break;
+					case 2:
+						dnld.href = "<%= assets %>/virtual-merch/hoodie-m.gif?dnld";
+						break;
+					case 3:
+						dnld.href = "<%= assets %>/virtual-merch/hoodie-l.gif?dnld";
+						break;
+					case 4:
+						dnld.href = "<%= assets %>/virtual-merch/hoodie-xl.gif?dnld";
+						break;
+					case 5:
+						dnld.href = "<%= assets %>/virtual-merch/hoodie-xxl.gif?dnld";
+						break;
+				}
+			}
+		</script>
+<%- include('../../partials/footer') %>
