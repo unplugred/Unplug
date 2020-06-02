@@ -10,18 +10,11 @@ then
 		exit 1
 	fi
 
-	read -p "[S]tart/[R]estart? " -n 1 -r
+	read -p "Sure? [Y/N] " -n 1 -r
 	echo
-	if [[ $REPLY =~ ^[Ss]$ ]]
+	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
-		pm2 start ecosystem.config.js
-		pm2 log
-		exit 1
-	fi
-
-	if [[ $REPLY =~ ^[Rr]$ ]]
-	then
-		pm2 restart ecosystem.config.js
+		pm2 startOrRestart ecosystem.config.js
 		pm2 log
 		exit 1
 	fi
@@ -39,23 +32,8 @@ then
 	fi
 
 	git pull
-
-	read -p "[S]tart/[R]estart? " -n 1 -r
-	echo
-	if [[ $REPLY =~ ^[Ss]$ ]]
-	then
-		pm2 start ecosystem.config.js --env production
-		pm2 log
-		exit 1
-	fi
-
-	if [[ $REPLY =~ ^[Rr]$ ]]
-	then
-		pm2 restart ecosystem.config.js --env production
-		pm2 log
-		exit 1
-	fi
-
+	pm2 startOrRestart ecosystem.config.js --env production
+	pm2 log
 	exit 1
 fi
 

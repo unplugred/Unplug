@@ -9,37 +9,20 @@ goto loop
 :p
 echo PRODUCTION MODE
 git pull
-:pl
-SET /P _start=[s]tart/[r]estart? 
-If /I "%_start%"=="s" goto ps
-If /I "%_start%"=="r" goto pr
-goto pl
-
-:ps
-pm2 start ecosystem.config.js --env production
-pm2 log
-goto end
-
-:pr
-pm2 restart ecosystem.config.js --env production
+pm2 startOrRestart ecosystem.config.js --env production
 pm2 log
 goto end
 
 :d
 echo DEBUG MODE
 :dl
-SET /P _start=[s]tart/[r]estart? 
-If /I "%_start%"=="s" goto ds
-If /I "%_start%"=="r" goto dr
+SET /P _start=Sure? [y/n] 
+If /I "%_start%"=="y" goto ds
+If /I "%_start%"=="n" goto end
 goto dl
 
 :ds
-pm2 start ecosystem.config.js
-pm2 log
-goto end
-
-:dr
-pm2 restart ecosystem.config.js
+pm2 startOrRestart ecosystem.config.js
 pm2 log
 goto end
 
