@@ -1,0 +1,28 @@
+<%- include('../partials/header',{title:"virtual merch"}) %>
+		<link rel=stylesheet href="<%= assets %>/virtual-merch/style.css" type="text/css" media=screen>
+		<style>
+			.grid {
+				margin-left: 30px;
+				margin-bottom: 24px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="<%= assets %>/virtual-merch/header.png" id="header"/>
+		<br />
+		<a href="/virtual-merch/t-shirt">
+			<img src="<%= assets %>/virtual-merch/thumb-tshirt.png" class="grid" title="t-shirt"/>
+		</a>
+		<a href="/virtual-merch/hoodie">
+			<img src="<%= assets %>/virtual-merch/thumb-hoodie.png" class="grid" title="hoodie"/>
+		</a>
+		<br />
+		<a href="/virtual-merch/cap">
+			<img src="<%= assets %>/virtual-merch/thumb-cap.png" class="grid" title="cap"/>
+		</a>
+		<a href="/virtual-merch/mug">
+			<img src="<%= assets %>/virtual-merch/thumb-mug.png" class="grid" title="mug"/>
+		</a>
+		<br />
+		<img src="<%= assets %>/virtual-merch/footer.png" id="footer"/>
+<%- include('../partials/footer') %>

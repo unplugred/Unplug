@@ -1,0 +1,56 @@
+::-webkit-scrollbar {
+	width: 5px;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #6b562e;
+	border: none;
+	border-radius: 0;
+}
+body {
+	width: 805px;
+	height: 852px;
+	position: absolute;
+	left: calc(50vw - 400px);
+	font-size: 0;
+	overflow-y: scroll;
+}
+img {
+	margin: 0;
+}
+#header {
+	margin-bottom: 24px;
+}
+#footer {
+	position: absolute;
+	bottom: 19px;
+	left: 2px;
+}
+#big {
+	position: absolute;
+	right: 27px;
+	bottom: 95px;
+	z-index: -1;
+}
+#desc {
+	margin-top: 30px;
+	margin-left: 39px;
+}
+#sizes {
+	margin-left: 127px;
+	margin-top: 37px;
+}
+#sizebox {
+	margin-left: 124px;
+	margin-top: 4px;
+}
+#chart {
+	margin-left: 233px;
+	margin-top: 2px;
+}
+#download {
+	margin-left: 145px;
+	margin-top: 25px;
+}
+.checked {
+	pointer-events: none;
+}
