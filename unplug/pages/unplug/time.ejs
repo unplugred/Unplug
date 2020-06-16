@@ -5,9 +5,31 @@
 				align-items: center;
 				justify-content: center;
 				flex-direction: column;
+				font-size: 0;
+			}
+
+			#count {
+				margin-bottom: 50px;
 			}
 		</style>
 	</head>
 	<body>
-		<a href="/message" title="message"><img src="http://hitwebcounter.com/counter/counter.php?page=7068559&style=0015&nbdigits=5&type=page&initCount=0"/ id="counter"></a><br/><img src="<%= assets %>/time.gif"/>
+		<a id="count" href="/message" title="message">
+			<img src="<%= assets %>/time/<%=
+				Math.floor(viscount*.0001)%10
+			%>.png"/ class="counter">
+			<img src="<%= assets %>/time/<%=
+				Math.floor(viscount*.001)%10
+			%>.png"/ class="counter">
+			<img src="<%= assets %>/time/<%=
+				Math.floor(viscount*.01)%10
+			%>.png"/ class="counter">
+			<img src="<%= assets %>/time/<%=
+				Math.floor(viscount*.1)%10
+			%>.png"/ class="counter">
+			<img src="<%= assets %>/time/<%=
+				viscount%10
+			%>.png"/ class="counter">
+		</a>
+		<img src="<%= assets %>/time/time.gif"/>
 <%- include('../partials/footer') %>

@@ -15,6 +15,46 @@ var version = 0;
 app.set('view engine', 'ejs');
 app.set('views', __dirname + "/pages");
 
+
+var savefile = {
+	viscount: 152
+}
+fs.readFile(__dirname + "/savefile.json", 'utf8', (err, jsonString) => {
+	if(err) {
+		console.log("ERROR READING SAVEFILE: ", err);
+	} else try {
+		savefile = JSON.parse(jsonString);
+		console.log("visitor count according to main: " + savefile.viscount);
+	} catch {
+		console.log("ERROR PARSING SAVEFILE: ", err);
+	}
+
+	fs.readFile(__dirname + "/savefilebackup.json", 'utf8', (err, jsonString) => {
+		if(err){
+			console.log("ERROR READING BACKUP SAVEFILE: ", err);
+		} else try {
+			let savefilebackup = JSON.parse(jsonString);
+			console.log("visitor count according to backup: " + savefile.viscount);
+			if(savefilebackup.viscount > savefile.viscount) {
+				savefile = savefilebackup;
+			}
+		} catch {
+			console.log("ERROR PARSING BACKUP SAVEFILE: ", err);
+		}
+	});
+});
+
+function save() {
+	let jsonString = JSON.stringify(savefile);
+	fs.writeFile(__dirname + "/savefile.json", jsonString, err => {
+		if(err) console.log("ERROR WRITING SAVEFILE: ", err);
+	});
+	fs.writeFile(__dirname + "/savefilebackup.json", jsonString, err => {
+		if(err) console.log("ERROR WRITING BACKUP SAVEFILE: ", err);
+	});
+}
+
+
 app.use((req, res, next) => {
 //log
 	if(req.headers.host === undefined)
@@ -76,6 +116,13 @@ app.use((req, res, next) => {
 	//important.txt
 	if(req.path === '/important.txt')
 		return res.download(__dirname + '/static/unplug/important.txt');
+
+	//time
+	if(req.path === '/time') {
+		savefile.viscount++;
+		save();
+		return res.render('unplug/time.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version,viscount:savefile.viscount});
+	}
 
 	return res.render("unplug" + req.path + ".ejs", {assets:global.assets,host:global.protocol + req.headers.host,version:version}, function(err, html) {
 		if(err) {
