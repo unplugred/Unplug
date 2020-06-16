@@ -9,6 +9,8 @@ depricated/
 Thumbs.db
 *.sublime-project
 *.sublime-workspace
+savefile.json
+savefilebackup.json
 
 # User-specific files
 *.suo
