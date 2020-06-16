@@ -25,8 +25,8 @@ fs.readFile(__dirname + "/savefile.json", 'utf8', (err, jsonString) => {
 	} else try {
 		savefile = JSON.parse(jsonString);
 		console.log("visitor count according to main: " + savefile.viscount);
-	} catch {
-		console.log("ERROR PARSING SAVEFILE: ", err);
+	} catch(error) {
+		console.log("ERROR PARSING SAVEFILE: ", error);
 	}
 
 	fs.readFile(__dirname + "/savefilebackup.json", 'utf8', (err, jsonString) => {
@@ -38,8 +38,8 @@ fs.readFile(__dirname + "/savefile.json", 'utf8', (err, jsonString) => {
 			if(savefilebackup.viscount > savefile.viscount) {
 				savefile = savefilebackup;
 			}
-		} catch {
-			console.log("ERROR PARSING BACKUP SAVEFILE: ", err);
+		} catch(error) {
+			console.log("ERROR PARSING BACKUP SAVEFILE: ", error);
 		}
 	});
 });
