@@ -1,0 +1,13 @@
+<%- include('../partials/header',{title:"unplug"}) %>
+		<style>
+			#browser {
+				width: calc(100vw - 10px);
+				height: calc(100vh - 29px);
+			}
+		</style>
+		<link rel=StyleSheet href="<%= assets %>/inception/browser.css?v=2" type="text/css" media=screen />
+	</head>
+	<body>
+		<div id="browser"><div id="titletext">unplug</div><div id="browserheader"></div><div id="rainbow"></div><div id="topbar"><button id="back" onclick="backk()" class="off"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div><div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe></div></div>
+		<script type="text/javascript" src="<%= assets %>/inception/browser.js"></script>
+<%- include('../partials/footer') %>

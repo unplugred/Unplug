@@ -1,0 +1,25 @@
+{
+	"short_name": "Unplug",
+	"name": "unplug.red",
+	"description": "unplug your mind for best experience.",
+	"icons": [
+		{
+			"src": "/images/icons-192.png",
+			"type": "image/png",
+			"sizes": "192x192",
+			"purpose": "any maskable"
+		},
+		{
+			"src": "/images/icons-512.png",
+			"type": "image/png",
+			"sizes": "512x512"
+			"purpose": "any maskable"
+		}
+	],
+	"start_url": "/browser",
+	"background_color": "#000000",
+	"display": "fullscreen",
+	"scope": "/",
+	"theme_color": "#000000",
+	"shortcuts": []
+}
