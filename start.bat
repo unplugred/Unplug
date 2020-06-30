@@ -35,11 +35,11 @@ If /I "%_start%"=="d" goto ed
 goto el
 
 :ep
-electron "./app/electricfeel.js"
+electron "./unplug/electricfeel.js"
 goto end
 
 :ed
-electron "./app/electricfeel.js" --debug
+electron "./unplug/electricfeel.js" --debug
 goto end
 
 :end

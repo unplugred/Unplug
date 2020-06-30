@@ -45,13 +45,13 @@ then
 	echo
 	if [[ $REPLY =~ ^[Pp]$ ]]
 	then
-		electron "./app/electricfeel.js"
+		electron "./unplug/electricfeel.js"
 		exit 1
 	fi
 
 	if [[ $REPLY =~ ^[Dd]$ ]]
 	then
-		electron "./app/electricfeel.js" --debug
+		electron "./unplug/electricfeel.js" --debug
 		exit 1
 	fi
 
