@@ -11,11 +11,21 @@
 				top: 0;
 				left: 0;
 			}
-			input {
+			#inpt {
+				border-width: 1px;
+				border-color: black #C0C0C0 #C0C0C0 black;
+				border-style: solid;
+				font-size: 27px;
+				width: calc(100% - 2px);
+			}
+
+			#inpt-wrap {
+				border-width: 1px;
+				border-color: #808080 white white #808080;
+				border-style: solid;
 				position: relative;
 				top: 55%;
 				left: 27%;
-				font-size: 27px;
 				width: 51%;
 			}
 		</style>
@@ -23,7 +33,9 @@
 	<body>
 		<canvas id="canva"></canvas>
 		<div id="img">
-			<input id="inpt"></input>
+			<div id="inpt-wrap">
+				<input id="inpt"></input>
+			</div>
 		</div>
 		<img id="stop" src="<%= assets %>/name/stop.png" style="display: none;"></div>
 		<img id="stpo" src="<%= assets %>/name/stpo.png" style="display: none;"></div>
