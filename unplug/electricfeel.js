@@ -1,17 +1,17 @@
 global.debug = process.argv[2] === "--debug";
 global.protocol = "http://";
 global.domain = "localhost:6663";
-require('./server.js');
+require(__dirname + '/server.js');
 const electron = require('electron');
 var {app, BrowserWindow} = electron;
-var icon = "./unplug/static/assets/favicon.ico";
+var icon = __dirname + "/static/assets/favicon.ico";
 
 app.on('ready', function() {
 	if(process.platform === "win32" || process.platform === "darwin") {
 		openwin();
 	} else {
 		setTimeout(openwin, 500);
-		icon = "./unplug/static/assets/shortcut-icon.png";
+		icon = __dirname + "/static/assets/shortcut-icon.png";
 	}
 });
 function openwin() {
