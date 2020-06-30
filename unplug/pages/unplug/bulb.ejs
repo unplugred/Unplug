@@ -1,5 +1,16 @@
 <%- include('../partials/header',{title:"bulb"}) %>
 		<style>
+			body {
+				background-image: url("<%= assets %>/bulb/bg.png");
+				background-size: cover;
+				background-position: center;
+				image-rendering: pixelated;
+			}
+
+			#symbolo {
+				mix-blend-mode: screen;
+			}
+
 			.mainimage {
 				margin-top: calc(50vh - 270px);
 				margin-left: calc(50vw - 200px);
