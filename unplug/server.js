@@ -156,7 +156,7 @@ app.use((req, res, next) => {
 
 
 fs.readdir(__dirname + '/pages/unplug', (err, files) => {
-	version = ((files.length+2)*.01).toFixed(2);
+	version = ((files.length+1)*.01).toFixed(2);
 
 	//startup sequence
 	const startseq = ([
