@@ -2,7 +2,6 @@
 if(typeof ogimage === 'undefined') var ogimage = assets + "/objects/c" + (Math.floor(Math.random()*10)) + ".gif";
 if(typeof description === 'undefined') var description = "unplug your mind for best experience.";
 if(typeof icontype === 'undefined') var icontype = "png";
-if(typeof icon === 'undefined') var icon = assets + "/shortcut-icon.png";
 if(typeof color === 'undefined') var color = "#000000";
 if(typeof card === 'undefined') var card = "summary";
 %><!DOCTYPE html>
@@ -10,10 +9,19 @@ if(typeof card === 'undefined') var card = "summary";
 	<head>
 		<meta charset="utf-8">
 		<title><%= title %></title>
-		<meta name="theme-color" content="<%= color %>">
-		<link rel="icon" type="image/<%= icontype %>" href="<%= icon %>">
+
+		<link rel="apple-touch-icon" href="/icons/red152.png" sizes="152x152">
+		<link rel="apple-touch-icon" href="/icons/red180.png" sizes="180x180"><%
+if(typeof icon === 'undefined') { %>
+		<link rel="shortcut icon" href="/icons/red196.png" sizes="196x196">
+		<link rel="icon" type="image/png" href="/icons/red192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/icons/red32.png" sizes="32x32">
+<% } else { %>
 		<link rel="shortcut icon" href="<%= icon %>">
-		<link rel="apple-touch-icon-precomposed" href="<%= assets %>/apple-touch-icon.png">
+		<link rel="icon" type="image/<%= icontype %>" href="<%= icon %>">
+<% } %>
+
+		<meta name="theme-color" content="<%= color %>">
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
 		<meta property="og:site_name" content="red">
 		<meta name="twitter:site" content="red">
