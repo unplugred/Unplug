@@ -1,0 +1,111 @@
+<%- include('../partials/header',{title:"pens"}) %>
+		<style>
+			#titlewrap {
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				left: 0;
+				display: flex;
+			}
+
+			#title {
+				margin: auto;
+				text-decoration: none;
+			}
+
+			#title:hover {
+				text-decoration: underline;
+			}
+
+			#title2 {
+				margin: auto;
+				color: #bb2222;
+				display: none;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<img style="display: none" id="penimage" src="<%= assets %>/pens.png">
+		<canvas id="canva"></canvas>
+		<div id="titlewrap">
+			<a id="title" href="javascript:void(0)" onclick="stagetwo()">So very disposable plastic pens</a>
+			<div id="title2">Did you just call me a pen</div>
+		</div>
+		<script>
+			var canvas = document.getElementById("canva");
+			var ctx = canvas.getContext("2d");
+			var penimage = document.getElementById("penimage");
+			var margin = 0;
+			var stage = 1;
+
+			window.onresize = redraw;
+			function redraw() {
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+				margin = (penimage.height/canvas.height)*.5;
+			}
+			redraw();
+
+			var pendata = [];
+			for(var i = 0; i < 20; i++) {
+				pendata[i] = newone();
+				pendata[i].y = Math.random()*(1 + margin*2) - margin;
+			}
+
+			var dt = null;
+			function update(timestamp) {
+				if(timestamp === undefined) timestamp = 0;
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+
+				ctx.clearRect(0,0,canvas.width,canvas.height);
+
+				if(stage === 1) {
+					for(var i = 0; i < pendata.length; i++) {
+						ctx.save();
+						ctx.translate(canvas.width*pendata[i].x,canvas.height*pendata[i].y);
+						ctx.rotate(pendata[i].rotation + Math.sin(timestamp*pendata[i].angular + pendata[i].offset)*Math.PI*.5);
+						ctx.scale(pendata[i].scale, pendata[i].scale);
+						ctx.globalAlpha = pendata[i].opacity;
+						ctx.drawImage(penimage,-penimage.width*.5,-penimage.height*.5);
+						ctx.restore();
+
+						pendata[i].y += pendata[i].speed*dtt;
+						if(pendata[i].y > (1+margin) || isNaN(pendata[i].y)) pendata[i] = newone();
+					}
+				} else {
+					ctx.save();
+					ctx.translate(canvas.width*.5,canvas.height*.5);
+					ctx.rotate((Math.random()-.5)*.5+Math.PI*.5);
+					ctx.globalAlpha = .2;
+					ctx.drawImage(penimage,-penimage.width*.5,-penimage.height*.5);
+					ctx.restore();
+				}
+
+				requestAnimationFrame(update);
+			}
+			update();
+
+			function newone() {
+				return pendata[i] = {
+					rotation: Math.random()*Math.PI*2,
+					x: Math.random(),
+					y: -margin,
+					scale: 1 - (Math.random()*.3),
+					speed: Math.random()*.0005 + .0001,
+					angular: (Math.random()*.0001 + .0001)*Math.PI,
+					offset: Math.random()*Math.PI*2,
+					opacity: 1 - Math.random()*.9
+				}
+			}
+
+			function stagetwo() {
+				stage = 2;
+				document.getElementById("title").style.display = "none";
+				document.getElementById("title2").style.display = "block";
+			}
+		</script>
+<%- include('../partials/footer') %>

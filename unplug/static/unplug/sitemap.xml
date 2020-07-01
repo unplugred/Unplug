@@ -621,30 +621,36 @@
 <url>
 <loc>https://unplug.red/virtual-merch/cap</loc>
 <lastmod>2020-6-2T03:53:33+00:00</lastmod>
-<priority>0.20</priority>
+<priority>0.10</priority>
 </url>
 
 <url>
 <loc>https://unplug.red/virtual-merch/hoodie</loc>
 <lastmod>2020-6-2T03:53:33+00:00</lastmod>
-<priority>0.20</priority>
+<priority>0.10</priority>
 </url>
 
 <url>
 <loc>https://unplug.red/virtual-merch/mug</loc>
 <lastmod>2020-6-2T03:53:33+00:00</lastmod>
-<priority>0.20</priority>
+<priority>0.10</priority>
 </url>
 
 <url>
 <loc>https://unplug.red/virtual-merch/t-shirt</loc>
 <lastmod>2020-6-2T03:53:33+00:00</lastmod>
-<priority>0.20</priority>
+<priority>0.10</priority>
 </url>
 
 <url>
 <loc>https://unplug.red/virtual-merch/size-chart</loc>
 <lastmod>2020-6-2T03:53:33+00:00</lastmod>
+<priority>0.10</priority>
+</url>
+
+<url>
+<loc>https://unplug.red/virtual-merch/pens</loc>
+<lastmod>2020-7-1T03:53:33+00:00</lastmod>
 <priority>0.20</priority>
 </url>
 
