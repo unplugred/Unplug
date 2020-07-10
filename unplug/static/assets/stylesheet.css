@@ -63,7 +63,7 @@ a{
 
 #symbolo{
 	opacity: 0.13;
-	position: absolute;
+	position: fixed;
 	left: 10px;
 	bottom: 10px;
 	font-size: 0;
