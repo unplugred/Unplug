@@ -11,7 +11,7 @@ app.on('ready', function() {
 		openwin();
 	} else {
 		setTimeout(openwin, 500);
-		icon = __dirname + "/static/assets/shortcut-icon.png";
+		icon = __dirname + "/static/unplug/icons/red64.png";
 	}
 });
 function openwin() {
