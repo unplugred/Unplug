@@ -82,6 +82,10 @@ url("../window/winright.png") top right repeat-y, #C0C0C0;
 	width: 52px;
 	text-align: center;
 }
+.player-digit {
+	display: inline-block;
+	width: 6px;
+}
 #player-bar {
 	background:
 url("progress-left.png") left no-repeat,
