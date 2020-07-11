@@ -62,7 +62,7 @@ function randomnum() {
 				left: 5px;
 			}
 		</style>
-		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=2">
+		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=3">
 	</head>
 	<body>
 		<h1>Index of <%= properties.dir %></h1>
@@ -114,7 +114,7 @@ function randomnum() {
 				<a id="player-mp3" class="player-downloadmenuitem" onclick="p_download()" target="_blank">Download .mp3</a>
 			</div>
 			<div id="player-divider"></div>
-			<div id="player-timecode">0:00/0:00</div>
+			<div id="player-timecode"><div class="player-digit" style="display: none;"></div><div class="player-digit">-</div>:<div class="player-digit">-</div><div class="player-digit">-</div>/<div class="player-digit" style="display: none;"></div><div class="player-digit">-</div>:<div class="player-digit">-</div><div class="player-digit">-</div></div>
 			<div id="player-bar">
 				<a href="javascript:void(0);" id="player-bardrag" onmousedown="p_seekclick(event)" onmousemove="p_seek(event)" onmouseup="p_seekrelease(event)" onmouseleave="p_seekrelease(event)" ondragstart="return false;" ondrop="return false;">
 					<div id="player-barknob" style="left: 0%"></div>
@@ -161,5 +161,5 @@ function randomnum() {
 				requestAnimationFrame(calcsine)
 			}
 		</script>
-		<script type="text/javascript" src="<%= assets %>/player/player.js?v=2"></script>
+		<script type="text/javascript" src="<%= assets %>/player/player.js?v=3"></script>
 <%- include('../partials/footer') %>

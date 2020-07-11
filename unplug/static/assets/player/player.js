@@ -6,7 +6,7 @@ var p_divmp3 = document.getElementById("player-mp3");
 var p_divflac = document.getElementById("player-flac");
 var p_divbar = document.getElementById("player-barknob");
 var p_divvolume = document.getElementById("player-volumeknob");
-var p_divtimecode = document.getElementById("player-timecode");
+var p_divtimecode = document.getElementsByClassName("player-digit");
 
 var p_currentdiv = "";
 var p_current = "";
@@ -14,6 +14,8 @@ var p_playing = false;
 var p_downloading = false;
 var p_isseeking = false;
 var p_flac = false;
+var p_ismorethanten = false;
+var p_isloading = true;
 
 var p_audio = new Audio();
 p_audio.loop = false;
@@ -39,8 +41,21 @@ window.onresize = p_resize;
 
 //format time
 function p_calctime(secs) {
-	if(isNaN(secs)) return "-:--";
-	return Math.floor(secs/60)+":"+Math.floor(secs%60).toString().padStart(2,'0');
+	if(isNaN(secs)) return p_ismorethanten ? "----" : "---";
+	if(p_ismorethanten)
+		return Math.floor(secs/60).toString().padStart(2,'0')+Math.floor(secs%60).toString().padStart(2,'0');
+	else
+		return Math.floor(secs/60)+Math.floor(secs%60).toString().padStart(2,'0');
+}
+
+//divify timecode
+function p_divifytimecode(timecode,duration) {
+	if(p_ismorethanten)
+		for(let i = 0; i < 4; i++)
+			p_divtimecode[i+(duration?4:0)].innerHTML = timecode.charAt(i);
+	else
+		for(let i = 0; i < 3; i++)
+			p_divtimecode[i+(duration?5:1)].innerHTML = timecode.charAt(i);
 }
 
 //place a song
@@ -109,11 +124,25 @@ function p_download() {
 	p_downloading = !p_downloading;
 }
 
+//update duration
+p_audio.addEventListener('durationchange', (event) => {
+	p_ismorethanten = p_audio.duration >= 600;
+	if(p_ismorethanten) {
+		p_divtimecode[0].style.display = null;
+		p_divtimecode[4].style.display = null;
+	} else {
+		p_divtimecode[0].style.display = "none";
+		p_divtimecode[4].style.display = "none";
+	}
+	p_divifytimecode(p_calctime(p_audio.duration),true);
+	p_divifytimecode(p_calctime(p_audio.currentTime),false);
+});
+
 //update progress
 p_audio.addEventListener('timeupdate', (event) => {
 	if(p_isseeking) return;
 	p_divbar.style.left = ((p_audio.currentTime/p_audio.duration)*100) + "%";
-	p_divtimecode.innerHTML = p_calctime(p_audio.currentTime)+"/"+p_calctime(p_audio.duration);
+	p_divifytimecode(p_calctime(p_audio.currentTime),false);
 	if(p_audio.currentTime >= p_audio.duration)
 	{
 		p_playing = false;
@@ -123,14 +152,19 @@ p_audio.addEventListener('timeupdate', (event) => {
 
 //loading
 p_audio.addEventListener('loadstart', (event) => {
-	p_divtimecode.innerHTML = "-:--/-:--";
+	p_ismorethanten = false;
+	p_divifytimecode("---",false);
+	p_divifytimecode("---",true);
+	p_divtimecode[0].style.display = "none";
+	p_divtimecode[4].style.display = "none";
+	p_isloading = true;
 });
 
 //on seek
 function p_seek(e) {
 	if(!p_isseeking) return;
 	p_divbar.style.left = Math.min(Math.max((e.clientX - p_barpos)*100,0)/p_barwidth,100) + "%";
-	p_divtimecode.innerHTML = p_calctime(Math.min(Math.max((e.clientX - p_barpos)*p_audio.duration,0)/p_barwidth,p_audio.duration))+"/"+p_calctime(p_audio.duration);
+	p_divifytimecode(p_calctime(Math.min(Math.max((e.clientX - p_barpos)*p_audio.duration,0)/p_barwidth,p_audio.duration)),false);
 }
 
 //finish seek
