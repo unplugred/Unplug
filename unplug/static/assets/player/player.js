@@ -12,7 +12,6 @@ var p_currentdiv = "";
 var p_current = "";
 var p_playing = false;
 var p_downloading = false;
-var p_updateinterval = null;
 var p_isseeking = false;
 var p_flac = false;
 
@@ -23,6 +22,7 @@ p_audio.volume = .5;
 if(false && p_audio.canPlayType('audio/mpeg;')) p_audio.type = "audio/mpeg";
 else p_audio.type = "audio/wav";
 
+//recalculate positions
 var p_barpos = null;
 var p_volumepos = null;
 var p_barwidth = null;
@@ -36,10 +36,14 @@ function p_resize() {
 	p_volumepos = p_volumepos.left + 5;
 }
 window.onresize = p_resize;
+
+//format time
 function p_calctime(secs) {
-	if(isNaN(secs)) return "0:00";
+	if(isNaN(secs)) return "-:--";
 	return Math.floor(secs/60)+":"+Math.floor(secs%60).toString().padStart(2,'0');
 }
+
+//place a song
 function p_putsong(div,mp3,flac) {
 	if(p_current == mp3) return;
 	p_current = mp3;
@@ -68,31 +72,31 @@ function p_putsong(div,mp3,flac) {
 	}
 	p_flac = flac !== -1;
 	p_audio.currentTime = 0;
-	setTimeout(p_update,200);
 	setTimeout(p_resize,200);
 }
+
+//play a song
 function p_playsong(div,mp3,flac) {
 	p_putsong(div,mp3,flac)
 	p_audio.play();
 	p_divplay.className = "player-button player-button-pressed";
 	p_playing = true;
-	if(p_updateinterval === null) p_updateinterval = setInterval(p_update, 500);
 }
+
+//play
 function p_play() {
 	if(p_playing) {
 		p_audio.pause();
 		p_divplay.className = "player-button";
-		p_update();
-		if(p_updateinterval!==null){clearInterval(p_updateinterval);p_updateinterval=null;}
 	} else {
 		p_audio.play();
 		p_divplay.className = "player-button player-button-pressed";
-		if(p_audio.currentTime >= p_audio.duration) p_update();
-		if(p_updateinterval===null)p_updateinterval=setInterval(p_update,500);
 	}
 	p_playing = !p_playing;
 	if(p_downloading) p_download();
 }
+
+//download menu/download
 function p_download() {
 	if(!p_flac) return;
 	if(p_downloading) {
@@ -104,7 +108,9 @@ function p_download() {
 	}
 	p_downloading = !p_downloading;
 }
-function p_update() {
+
+//update progress
+p_audio.addEventListener('timeupdate', (event) => {
 	if(p_isseeking) return;
 	p_divbar.style.left = ((p_audio.currentTime/p_audio.duration)*100) + "%";
 	p_divtimecode.innerHTML = p_calctime(p_audio.currentTime)+"/"+p_calctime(p_audio.duration);
@@ -112,26 +118,37 @@ function p_update() {
 	{
 		p_playing = false;
 		p_divplay.className = "player-button";
-		if(p_updateinterval !== null) { clearInterval(p_updateinterval); p_updateinterval = null; }
 	}
-}
+});
+
+//loading
+p_audio.addEventListener('loadstart', (event) => {
+	p_divtimecode.innerHTML = "-:--/-:--";
+});
+
+//on seek
 function p_seek(e) {
 	if(!p_isseeking) return;
 	p_divbar.style.left = Math.min(Math.max((e.clientX - p_barpos)*100,0)/p_barwidth,100) + "%";
 	p_divtimecode.innerHTML = p_calctime(Math.min(Math.max((e.clientX - p_barpos)*p_audio.duration,0)/p_barwidth,p_audio.duration))+"/"+p_calctime(p_audio.duration);
 }
+
+//finish seek
 function p_seekrelease(e) {
 	if(!p_isseeking) return;
 	p_isseeking = false;
 	p_audio.currentTime = ((e.clientX - p_barpos)*p_audio.duration)/p_barwidth;
-	p_update();
 }
+
+//start seek
 function p_seekclick(e) {
 	if(e.buttons !== 1) return;
 	p_isseeking = true;
 	if(p_downloading) p_download();
 	p_seek(e);
 }
+
+//update volume
 function p_volume(e) {
 	if(e.buttons !== 1) return;
 	p_audio.volume = Math.min(Math.max(e.clientX - p_volumepos,0)/p_volumewidth,1);
