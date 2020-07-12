@@ -1,8 +1,11 @@
 <%- include('../partials/header',{title:"joke"}) %>
 		<style>
+			body {
+				display: flex;
+			}
+
 			#bg {
 				background-image: url("<%= assets %>/static.gif");
-				width: 100vw;
 				width: 100vw;
 				height: 100vh;
 				position: absolute;
@@ -10,11 +13,8 @@
 			}
 
 			.mainimage {
-				text-align: center;
-				text-anchor: middle;
-				margin: calc(50vh - 14px) 0;
-				position: absolute;
-				width: 100vw;
+				margin: auto;
+				z-index: 100;
 			}
 		</style>
 	</head>
