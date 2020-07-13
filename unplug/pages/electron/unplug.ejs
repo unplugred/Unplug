@@ -1,7 +1,6 @@
 <%- include('../partials/header',{title:"unplug"}) %>
 		<style>
-			body,html{background:none;}
-			body{opacity:0;}
+			body{background:none;}
 			#mainimage {
 				width: 522px;
 				height: 370px;
@@ -17,10 +16,7 @@
 	<body>
 		<a id="mainimage" href="javascript:void(0)" title="begin" onClick="darken()" style="pointer-events: none"></a>
 		<script>
-			var remota = require('electron').remote;
-			var win = remota.getCurrentWindow();
 			var op = 1;
-
 			window.onload = function(){
 				document.body.style.opacity = .25;
 				setTimeout(brighten, 300);
@@ -43,9 +39,9 @@
 					document.body.style.opacity = ((--op)*.25);
 					document.getElementById("mainimage").style.pointerEvents = "none";
 				} else {
-					let mainwin = remota.getGlobal("mainWindow");
-					mainwin.show();
-					win.close();
+					let remota = require('electron').remote;
+					remota.getGlobal("mainWindow").show();
+					remota.getCurrentWindow().close();
 				}
 			}
 		</script>
