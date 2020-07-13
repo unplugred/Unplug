@@ -1,7 +1,6 @@
 <%- include('../partials/header',{title:"bye"}) %>
 		<style>
-			body,html{background:none;}
-			body{opacity:0;}
+			body{background:none;}
 			#canva {
 				position: absolute;
 				top: 0;
@@ -30,12 +29,8 @@
 					ctx.drawImage(bye, x + hw, x + hh + 3);
 			}
 
-			var remota = require('electron').remote;
-			var win = remota.getCurrentWindow();
 			var op = 1;
-
 			window.onload = function(){
-				win.setOpacity(.25);
 				document.body.style.opacity = .25;
 				setTimeout(brighten, 300);
 				redraw();
@@ -56,7 +51,7 @@
 					setTimeout(darken, 300);
 					document.body.style.opacity = ((--op)*.25);
 				}
-				else win.close();
+				else require('electron').remote.getCurrentWindow().close();
 			}
 		</script>
 <%- include('../partials/footer') %>
