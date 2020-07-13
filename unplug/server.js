@@ -6,6 +6,7 @@ if(global.domain === undefined) {
 		global.protocol = "http://";
 		global.domain = "localhost";
 	}
+	global.port = 6663;
 }
 const fs = require('fs');
 const express = require('express');
@@ -93,7 +94,7 @@ app.use((req, res, next) => {
 	}
 
 /*	ELECTRON------------------------*/
-	if(global.domain === "localhost:6663") {
+	if(global.port === 6664) {
 		if(
 		req.path === "/privacy-policy" ||
 		req.path === "/brand-guidelines")
@@ -201,5 +202,5 @@ fs.readdir(__dirname + '/pages/unplug', (err, files) => {
 		setTimeout(seq, startseq.pop());
 		console.log(startseq.pop());
 	}
-	app.listen(6663, seq);
+	app.listen(global.port, seq);
 });
