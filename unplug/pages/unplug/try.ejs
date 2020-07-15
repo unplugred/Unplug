@@ -1,0 +1,102 @@
+<%- include('../partials/header',{title:"try"}) %>
+		<style>
+			body {
+				display: flex;
+			}
+
+			#board {
+				width: 360px;
+				height: 360px;
+				margin: auto;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				align-items: center;
+				align-content: center;
+				background: url("<%= assets %>/try/bg.png");
+			}
+
+			.piece {
+				width: 128px;
+				height: 128px;
+				display: block;
+				margin: 2px;
+			}
+
+			.blank{ background: url("<%= assets %>/try/blank.png"); }
+			.exclamation{ background: url("<%= assets %>/try/exclamation.png"); }
+			.question{ background: url("<%= assets %>/try/question.png"); }
+
+			#title {
+				background: url("<%= assets %>/try/title.png");
+				width: 636px;
+				height: 64px;
+				position: fixed;
+				top: calc(50vh + 200px);
+				left: calc(50vw - 236px);
+			}
+		</style>
+		<link rel="prefetch" href="<%= assets %>/try/question.png" />
+		<link rel="prefetch" href="<%= assets %>/try/exclamation.png" />
+	</head>
+	<body>
+		<div id="board">
+			<a class="piece blank" onmouseover="hoverify(0)" onmouseout="unhoverify(0)" onclick="clickify(0)" href="javascript:void(0)"></a>
+			<a class="piece blank" onmouseover="hoverify(1)" onmouseout="unhoverify(1)" onclick="clickify(1)" href="javascript:void(0)"></a>
+			<a class="piece blank" onmouseover="hoverify(2)" onmouseout="unhoverify(2)" onclick="clickify(2)" href="javascript:void(0)"></a>
+			<a class="piece blank" onmouseover="hoverify(3)" onmouseout="unhoverify(3)" onclick="clickify(3)" href="javascript:void(0)"></a>
+		</div>
+		<div id="title"></div>
+		<script>
+			var pieces = document.getElementsByClassName("piece");
+			var currentone = [];
+			var intervall = null;
+			var mobile = false;
+
+			window.addEventListener('touchstart', function onFirstTouch() {
+				if(mobile) return;
+				mobile = true;
+				intervall = setInterval(update,80);
+			});
+
+			function update() {
+				for(var i = 0; i < currentone.length; i++)
+					pieces[currentone[i]].className = (Math.random() > .5) ? "piece question" : "piece exclamation";
+			}
+			
+			function hoverify(num) {
+				if(mobile) return;
+				currentone = [num];
+				if(intervall === null) intervall = setInterval(update,80);
+			}
+			function unhoverify(num) {
+				if(mobile) return;
+				if(currentone[0] === num) {
+					clearInterval(intervall);
+					intervall = null;
+				}
+			}
+			function clickify(num) {
+				if(!mobile || (!currentone.includes(num) && pieces[num].className !== "piece blank")) {
+					switch(num) {
+						case 0:
+							window.location = "/queue";
+							break;
+						case 1:
+							window.location = "/the-internet";
+							break;
+						case 2:
+							window.location = "/captive";
+							break;
+						case 3:
+							window.location = "/100th";
+							break;
+					}
+				} else if(currentone.includes(num)) {
+					currentone.splice(currentone.indexOf(num),1);
+				} else {
+					currentone.push(num);
+				}
+			}
+		</script>
+<%- include('../partials/footer') %>
