@@ -1,26 +1,52 @@
 <%- include('../partials/header',{title:"unplug"}) %>
 		<style>
-			#browser {
-				width: calc(100vw - 10px);
-				height: calc(100vh - 29px);
+			#win-browser {
+				width: 100vw;
+				height: 100vh;
 			}
 
-			.close {
+			.win-close {
 				-webkit-app-region: no-drag;
 			}
 
-			#browserheader {
+			#win-dragbar {
 				-webkit-app-region: drag;
 				-webkit-user-select: none;
 				cursor: url("<%= assets %>/cursors/default.png") 0 0, default !important;
 			}
 		</style>
-		<link rel=StyleSheet href="<%= assets %>/inception/browser.css?v=2" type="text/css" media=screen />
+		<link rel=StyleSheet href="<%= assets %>/inception/browser.css?v=3" type="text/css" media=screen />
 		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 	</head>
 	<body>
-		<div id="browser"><div id="titletext">bulb</div><div id="browserheader"></div><div id="rainbow"></div><div id="topbar"><button id="back" onclick="backk()"><div class="icon"></div></button><button id="front" onclick="frontt()" class="off"><div class="icon"></div></button><div class="insetborder1 input"><input class="insetborder2" id="input" spellcheck="false"></input></div><button id="go" onclick="changeurl()"><div class="icon"></div></button></div><div class="insetborder1 innerbrowser"><iframe class="insetborder2" id="iframe" src="/bulb" onLoad="updateurl(this.contentWindow.location);"></iframe></div><a class="close" href="javascript:void(0)" onclick="closee()"></a></div>
-		<script type="text/javascript" src="<%= assets %>/inception/browser.js"></script>
+		<div id="win-browser" class="win-pos">
+			<div class="win-frame">
+				<div id="win-header">unplug</div>
+				<div id="win-dragbar"></div>
+				<a class="win-close" href="javascript:void(0)" onclick="closee()"></a>
+			</div>
+			<div class="win-inner">
+				<div id="win-rainbow"></div>
+				<div id="win-topbar">
+					<button class="win-button" id="win-back" onclick="backk()">
+						<div class="win-icon"></div>
+					</button>
+					<button class="win-button win-off" id="win-front" onclick="frontt()">
+						<div class="win-icon"></div>
+					</button>
+					<div class="win-insetborder1" id="win-adress">
+						<input class="win-insetborder2" id="win-adress-inner" spellcheck="false"></input>
+					</div>
+					<button class="win-button" id="win-go" onclick="changeurl()">
+						<div class="win-icon"></div>
+					</button>
+				</div>
+				<div class="win-insetborder1" id="win-innerbrowser">
+					<iframe class="win-insetborder2" id="win-iframe" src="/bulb" onLoad="updateurl(this.contentWindow.location);"></iframe>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="<%= assets %>/inception/browser.js?v=2"></script>
 		<script>
 			historyy = [""];
 

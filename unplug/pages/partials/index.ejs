@@ -14,174 +14,10 @@
 
 <%- include('../partials/header',{title:"red"}) %>
 		<style>
-			.window{
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: center;
-				position: relative;
-			}
-			.winwrap {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 0;
-				height: 0;
-			}
-
-			#mc_embed_signup {
-				width: 332px;
-				height: 72px;
-				background-image: url("<%= assets %>/unplug/mail.png");
-				top: calc(61vh + 100px);
-				left: calc(44vw + -175px);
-			}
-
-			#mc-embedded-subscribe {
-				font-family: Courier New, monospace;
-				background-color: #A8A8A8;
-				border: 0;
-				font-weight: bold;
-				font-size: 16px;
-				position: relative;
-				top: 0px;
-				left: 220px;
-				height: 26px;
-				width: 98px;
-				color: #333;
-			}
-
-			#mce-EMAIL {
-				font-family: Courier New, monospace;
-				background-color: transparent;
-				border: 2px solid #A8A8A8;
-				border-right: 0;
-				font-size: 16px;
-				color: #c1c1c1;
-				height: 22px;
-				width: 205px;
-				padding: 0;
-				position: relative;
-				top: 29px;
-				left: 13px;
-				text-align: center;
-			}
-
-			#clock {
-				width: 106px;
-				height: 125px;
-				background-image: url("<%= assets %>/unplug/clock.png");
-				top: calc(24vh - 115px);
-				left: calc(87vw + 6px);
-			}
-
-			#clockcanvas {
-				position: absolute;
-				left: 9px;
-				top: 28px;
-				width: 100px;
-				height: 100px;
-				opacity: .5;
-			}
-
-			#grid {
-				width: 76px;
-				height: 225px;
-				background-image: url("<%= assets %>/unplug/grid.png");
-				top: calc(50vh - 15px);
-				left: calc(63vw + 210px);
-			}
-
-			#utah {
-				width: 243px;
-				height: 209px;
-				background-image: url("<%= assets %>/unplug/teapot.png");
-				top: calc(58vh + 5px);
-				left: calc(62vw + 10px);
-			}
-
-			#utah>canvas {
-				margin-top: 24px;
-				margin-left: 5px;
-			}
-
-			.twitterwindow {
-				width: 528px;
-				height: 395px;
-				background-image: url("<%= assets %>/unplug/twitter.png");
-				top: calc(50vh - 185px);
-				left: calc(50vw - 224px);
+			/* mobile message */
+			#desktop{
 				display: none;
 			}
-
-			.mainimage {
-				width: 528px;
-				height: 395px;
-				background-image: url("<%= assets %>/unplug/unplug.png");
-				top: calc(50vh - 185px);
-				left: calc(50vw - 224px);
-			}
-
-			.secondaryimage {
-				width: 126px;
-				height: 145px;
-			}
-
-			#hhh {
-				width: 126px;
-				height: 145px;
-				background:
-url("<%= assets %>/window/wintoprightbar.png") top right no-repeat,
-url("<%= assets %>/unplug/about.png") top left no-repeat,
-url("<%= assets %>/window/wintopbar.png") top left repeat-x,
-url("<%= assets %>/window/winbottomright.png") bottom right no-repeat,
-url("<%= assets %>/window/winbottomleft.png") bottom left no-repeat,
-url("<%= assets %>/window/winbottom.png") bottom left repeat-x,
-url("<%= assets %>/window/winleft.png") top left repeat-y,
-url("<%= assets %>/window/winright.png") top right repeat-y;
-				background-color: #4B7071;
-				background-size: initial;
-				left: calc(30vw - 240px);
-				top: calc(63vh + 20px);
-				overflow: hidden;
-			}
-
-			.expandedabout #hhh {
-
-				width: calc(100vw + 8px);
-				height: calc(100vh + 27px);
-				left: -4px;
-				top: -23px;
-			}
-
-			.expandedabout {
-				left: 0 !important;
-				top: 0 !important;
-			}
-
-			.expandedabout .aboutcontent {
-				left: calc(50% - 275px);
-			}
-
-			.main-thingy{
-				margin: 22px 3px 3px 3px;
-				width: calc(100% - 6px);
-				height: calc(100% - 25px);
-				position: absolute;
-			}
-
-			.close{
-				width: 16px;
-				height: 14px;
-				position: absolute;
-				background-image: url("<%= assets %>/window/close.png");
-				top: 5px;
-				right: 5px;
-			}
-
-			.close:active{
-				background-image: url("<%= assets %>/window/closed.png");
-			}
-
 			.mobile-thing {
 				background-image: url("<%= assets %>/unplug/best-on-a-computer.png");
 				background-repeat: no-repeat;
@@ -191,9 +27,7 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				max-width: 100vh;
 				max-height: 100vw;
 				margin: auto;
-
 			}
-
 			.anyway-wrap {
 				margin-left: 48%;
 				margin-top: 48%;
@@ -204,15 +38,12 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				background-size: contain;
 				background-repeat: no-repeat;
 			}
-
 			.anyway {
 				width: 100%;
 			}
-
 			.anyway:hover {
 				opacity: 0;
 			}
-
 			.mobile-wrapper{
 				position: absolute;
 				width:100vw;
@@ -220,14 +51,131 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				display: none;
 			}
 
-			#desktop{
-				display: none;
+			/* window stuff */
+			.win-wrap {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 0;
+				height: 0;
+			}
+			.win-pos {
+				position: relative;
+			}
+			.win-frame {
+				background:
+url("<%= assets %>/window/wintoprightbar.png") top right no-repeat,
+url("<%= assets %>/window/wintopleftbar.png") top left no-repeat,
+url("<%= assets %>/window/wintopbar.png") top left repeat-x,
+url("<%= assets %>/window/winbottomright.png") bottom right no-repeat,
+url("<%= assets %>/window/winbottomleft.png") bottom left no-repeat,
+url("<%= assets %>/window/winbottom.png") bottom left repeat-x,
+url("<%= assets %>/window/winleft.png") top left repeat-y,
+url("<%= assets %>/window/winright.png") top right repeat-y;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			.win-header {
+				top: 6px;
+				left: 5px;
+				height: 13px;
+				width: calc(100% - 20px);
+				position: relative;
+				background-repeat: no-repeat;
+			}
+			.win-close{
+				width: 16px;
+				height: 14px;
+				position: absolute;
+				background-image: url("<%= assets %>/window/close.png");
+				top: 5px;
+				right: 5px;
+			}
+			.win-close:active{
+				background-image: url("<%= assets %>/window/closed.png");
+			}
+			.win-inner {
+				margin: 22px 3px 3px 3px;
+				width: calc(100% - 6px);
+				height: calc(100% - 25px);
+				position: absolute;
 			}
 
-			#rotato-cubo{
+			/* main window */
+			#win-main {
+				width: 528px;
+				height: 395px;
+				top: calc(50vh - 185px);
+				left: calc(50vw - 224px);
+			}
+			#win-main .win-inner {
+				background-image: url("<%= assets %>/unplug/inner-main.png");
+			}
+
+			/* mail window */
+			#win-mail {
+				width: 332px;
+				height: 72px;
+				top: calc(61vh + 100px);
+				left: calc(44vw + -175px);
+			}
+			#win-mail .win-inner {
+				background-image: url("<%= assets %>/unplug/inner-mail.png");
+			}
+			#mc-embedded-subscribe {
+				font-family: "FreeMono", "Courier New", monospace;
+				background-color: #A8A8A8;
+				border: 0;
+				font-weight: bold;
+				font-size: 16px;
+				position: absolute;
+				top: 10px;
+				left: 220px;
+				height: 26px;
+				width: 98px;
+				color: #333;
+			}
+			#mce-EMAIL {
+				font-family: "FreeMono", "Courier New", monospace;
+				background-color: transparent;
+				border: 2px solid #A8A8A8;
+				border-right: 0;
+				font-size: 16px;
+				color: #c1c1c1;
+				height: 22px;
+				width: 205px;
+				padding: 0;
+				position: absolute;
+				top: 10px;
+				left: 13px;
+				text-align: center;
+			}
+
+			/* bio window */
+			#win-bio {
+				width: 126px;
+				height: 145px;
+				left: calc(30vw - 240px);
+				top: calc(63vh + 20px);
+			}
+			.win-bio-expand #win-bio {
+				width: calc(100vw + 8px);
+				height: calc(100vh + 27px);
+				left: -4px;
+				top: -23px;
+			}
+			.win-bio-expand {
+				left: 0 !important;
+				top: 0 !important;
+			}
+			.win-bio-expand #win-bio-contents {
+				left: calc(50% - 275px);
+			}
+			#win-bio-cube {
 				height: 100px;
 				width: 100px;
-				background-image: url("<%= assets %>/unplug/a.gif");
+				background-image: url("<%= assets %>/unplug/inner-bio.gif");
 				background-size: contain;
 				background-repeat: no-repeat;
 				background-position: center;
@@ -237,8 +185,7 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				left: -60px;
 				border: 10px solid transparent;
 			}
-
-			#bio{
+			#win-bio-text {
 				font-size: 20px;
 				color: #D8E0E0;
 				font-family: 'Quicksand', sans-serif;
@@ -250,17 +197,15 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				top: -107px;
 				left: 110px;
 			}
-
-			#bio a {
+			#win-bio-text a {
 				color: inherit;
 				font-weight: 700;
 			}
-
-			#namething {
+			#win-bio-name {
 				font-weight: 700;
+				display: inline;
 			}
-
-			.separator {
+			#win-bio-separator {
 				height: 100%;
 				width: 6px;
 				border-radius: 3px;
@@ -271,7 +216,118 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				left: -20px;
 				box-shadow: 0 1.2px 5px 0px rgba(0,0,0,0.15);
 			}
+			#win-bio-contents {
+				top: 50%;
+				left: 50%;
+				position: absolute;
+				transition: 1s;
+			}
+			#win-bio .win-inner {
+				background-color: #4B7071;
+				overflow: hidden;
+			}
+			@media only screen and (max-width: 700px) {
+				.win-bio-expand #win-bio-contents {
+					left: 50%;
+					top: 60px;
+				}
+				#win-bio-text {
+					top: 60px;
+					left: calc(-50vw + 30px);
+					width: calc(100vw - 50px);
+					margin-bottom: 10px;
+				}
+				.win-bio-expand .win-inner {
+					overflow-y: overlay!important;
+				}
+				#win-bio .win-inner::-webkit-scrollbar-thumb {
+					background-color: #d8e0e0;
+					border: 3px #4b7071 solid;
+					border-radius: 6px;
+					outline: none;
+				}
+			}
 
+			/* object shared */
+			.win-obj {
+				width: 126px;
+				height: 145px;
+			}
+			.win-obj-bg {
+				width: 120px;
+				height: 120px;
+				position: absolute;
+			}
+			.win-obj-inner {
+				display: block;
+				width: 100px;
+				height: 100px;
+				margin: 10px;
+				position: absolute;
+			}
+
+			/* art window */
+			#win-art {
+				top: calc(38vh - 170px);
+				left: calc(41vw - 250px);
+			}
+			#win-art .win-obj-bg {
+				background-image: url("<%= assets %>/objects/b1.png");
+			}
+			#win-art .win-obj-inner {
+				background-image: url("<%= assets %>/objects/a0.gif");
+				filter: saturate(0);
+			}
+
+			/* games window */
+			#win-games {
+				top: calc(46vh - 127px);
+				left: calc(43vw - 191px);
+			}
+			#win-games .win-obj-bg {
+				background-image: url("<%= assets %>/objects/b2.png");
+				filter: saturate(0);
+			}
+			#win-games .win-obj-inner {
+				background-image: url("<%= assets %>/objects/a1.gif");
+			}
+
+			/* clock window */
+			#win-clock {
+				width: 106px;
+				height: 125px;
+				top: calc(24vh - 115px);
+				left: calc(87vw + 6px);
+			}
+			#win-clock-canvas {
+				position: absolute;
+				opacity: .5;
+				margin: 6px;
+			}
+
+			/* grid window */
+			#win-grid {
+				width: 76px;
+				height: 225px;
+				top: calc(50vh - 15px);
+				left: calc(63vw + 210px);
+			}
+			#win-grid .win-inner {
+				background-image: url("<%= assets %>/unplug/inner-grid.png");
+			}
+
+			/* teapot window */
+			#win-teapot {
+				width: 243px;
+				height: 209px;
+				top: calc(58vh + 5px);
+				left: calc(62vw + 10px);
+			}
+			#win-teapot canvas {
+				border: solid black 2px;
+			}
+
+			/* copyright */
 			#copyrightstuff {
 				opacity: .4;
 				font-size: 19px;
@@ -279,84 +335,6 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 				bottom: 5px;
 				left: 10px;
 				font-weight: bold;
-			}
-
-			#namething {
-				display: inline;
-			}
-
-			.object {
-				position: absolute;
-				display: block;
-				margin: 22px 3px 3px 3px;
-				width: 100px;
-				height: 100px;
-				border: 10px solid transparent;
-				background-repeat: no-repeat;
-			}
-
-			.art .object {
-				background-image: url("<%= assets %>/objects/0.gif");
-			}
-
-			.games .object {
-				background-image: url("<%= assets %>/objects/a1.gif");
-			}
-
-			.art.secondaryimage {
-				background-image: url("<%= assets %>/unplug/object1.png");
-				top: calc(38vh - 170px);
-				left: calc(41vw - 250px);
-			}
-
-			.games.secondaryimage {
-				background-image: url("<%= assets %>/unplug/object2.png");
-				top: calc(46vh - 127px);
-				left: calc(43vw - 191px);
-			}
-
-			#aboutcontent {
-				top: 50%;
-				left: 50%;
-				position: absolute;
-				transition: 1s;
-			}
-
-			#aboutclip {
-				position: absolute;
-				top: 22px;
-				left: 3px;
-				right: 3px;
-				bottom: 3px;
-				overflow: hidden;
-			}
-
-			.expandedabout #aboutcontent {
-				left: calc(50% - 275px);
-			}
-
-			@media only screen and (max-width: 700px) {
-				.expandedabout #aboutcontent {
-					left: 50%;
-					top: 60px;
-				}
-
-				#bio {
-					top: 60px;
-					left: calc(-50vw + 30px);
-					width: calc(100vw - 50px);
-				}
-
-				.expandedabout #aboutclip {
-					overflow-y: overlay;
-				}
-
-				#aboutclip::-webkit-scrollbar-thumb {
-					background-color: #d8e0e0;
-					border: 3px #4b7071 solid;
-					border-radius: 6px;
-					outline: none;
-				}
 			}
 		</style>
 		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
@@ -371,88 +349,120 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 			</div>
 		</div>
 		<div id="desktop">
-			<div class="winwrap">
-				<div class="mainimage window" title="begin">
-					<a class="main-thingy" href="/bulb" target="_blank"></a>
-					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+
+			<div class="win-wrap">
+				<div id="win-main" class="win-pos" title="begin">
+					<div class="win-frame">
+						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+					</div>
+					<a class="win-inner" href="/bulb" target="_blank"></a>
 				</div>
 			</div>
 
-			<div class="winwrap">
-				<div class="window" id="mc_embed_signup" title="join my death cult (cool people only)">
-					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-					<form action="https://pm.us20.list-manage.com/subscribe/post?u=526092f6456b91b0afdff2b1c&amp;id=2ea9fdbe2b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+			<div class="win-wrap">
+				<div id="win-mail" class="win-pos" title="join my death cult (cool people only)">
+					<div class="win-frame">
+						<div class="win-header" style="background-image:url('<%= assets %>/unplug/header-mail.png')"></div>
+						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+					</div>
+					<div class="win-inner" id="mc_embed_signup">
+						<form action="https://pm.us20.list-manage.com/subscribe/post?u=526092f6456b91b0afdff2b1c&amp;id=2ea9fdbe2b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 
-						<div id="mc_embed_signup_scroll">
-							<div class="mc-field-group">
-								<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="email adress">
+							<div id="mc_embed_signup_scroll">
+								<div class="mc-field-group">
+									<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="email adress">
+								</div>
+								<div id="mce-responses" class="clear">
+									<div class="response" id="mce-error-response" style="display:none"></div>
+									<div class="response" id="mce-success-response" style="display:none"></div>
+								</div>
+								<div style="position: absolute; left: -5000px;" aria-hidden="true">
+									<input type="text" name="b_526092f6456b91b0afdff2b1c_2ea9fdbe2b" tabindex="-1" value="">
+								</div>
+								<div class="clear">
+									<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+								</div>
 							</div>
-							<div id="mce-responses" class="clear">
-								<div class="response" id="mce-error-response" style="display:none"></div>
-								<div class="response" id="mce-success-response" style="display:none"></div>
-							</div>
-							<div style="position: absolute; left: -5000px;" aria-hidden="true">
-								<input type="text" name="b_526092f6456b91b0afdff2b1c_2ea9fdbe2b" tabindex="-1" value="">
-							</div>
-							<div class="clear">
-								<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
-							</div>
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
 			</div>
 
-			<div class="winwrap" style="z-index: 1000;">
-				<div class="window" id="hhh" title="me_irl">
-					<div id="aboutclip">
-						<div id="aboutcontent">
-							<a id="rotato-cubo" href="javascript:void(0)" onclick="cubeexpand()"></a>
-							<div id="bio">
-	hey, im <div id="namething"></div> and this is my cool ass website<br/>
-	i sometimes make weird games. when im not making games im making other stuff.<br/>
-	you can find most of that stuff in this website.<br/>
-	i really dont have a lot to say other than that, i have no idea what im doing tbh<br/>
-	<br/>
-	you can reach me at <b>arihanan@pm.me</b><br/>
-	also i have a <a href="https://twitter.com/unplugred/" target="_blank">twitter</a>
-								<div class="separator"></div>
+			<div class="win-wrap" style="z-index: 1000;">
+				<div id="win-bio" class="win-pos" title="me_irl">
+					<div class="win-frame">
+						<div class="win-header" style="background-image:url('<%= assets %>/unplug/header-bio.png')"></div>
+						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+					</div>
+					<div class="win-inner">
+						<div id="win-bio-contents">
+							<a id="win-bio-cube" href="javascript:void(0)" onclick="cubeexpand()"></a>
+							<div id="win-bio-text">
+hey, im <div id="win-bio-name"></div> and this is my cool ass website<br/>
+i sometimes make weird games. when im not making games im making other stuff.<br/>
+you can find most of that stuff in this website.<br/>
+i really dont have a lot to say other than that, i have no idea what im doing tbh<br/>
+<br/>
+you can reach me at <b>arihanan@pm.me</b><br/>
+also i have a <a href="https://twitter.com/unplugred/" target="_blank">twitter</a>
+								<div id="win-bio-separator"></div>
 							</div>
 						</div>
 					</div>
-					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
 				</div>
 			</div>
 
-			<div class="winwrap">
-				<div class="secondaryimage window art" title="art blog">
-					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-					<a class="object" href="<%= global.protocol %>tumblr.<%= global.domain %>/" target="_blank"></a>
+			<div class="win-wrap">
+				<div id="win-art" class="win-pos win-obj" title="art blog">
+					<div class="win-frame">
+						<div class="win-header" style="background-image:url('<%= assets %>/unplug/header-art.png')"></div>
+						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+					</div>
+					<div class="win-inner">
+						<div class="win-obj-bg"></div>
+						<a class="win-obj-inner" href="<%= global.protocol %>tumblr.<%= global.domain %>/" target="_blank"></a>
+					</div>
 				</div>
 			</div>
 
-			<div class="winwrap">
-				<div class="secondaryimage window games" title="games">
-					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-					<a class="object" href="https://unplugred.itch.io/" target="_blank"></a>
+			<div class="win-wrap">
+				<div id="win-games" class="win-pos win-obj" title="games">
+					<div class="win-frame">
+						<div class="win-header" style="background-image:url('<%= assets %>/unplug/header-games.png')"></div>
+						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+					</div>
+					<div class="win-inner">
+						<div class="win-obj-bg"></div>
+						<a class="win-obj-inner" href="https://unplugred.itch.io/" target="_blank"></a>
+					</div>
 				</div>
 			</div>
 
-			<div class="winwrap">
-				<div id="clock" class="window" title="any second you spend on this site is a second wasted from your life">
-					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-					<canvas id="clockcanvas"></canvas>
+			<div class="win-wrap">
+				<div id="win-clock" class="win-pos" title="any second you spend on this site is a second wasted from your life">
+					<div class="win-frame">
+						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+					</div>
+					<div class="win-inner">
+						<canvas id="win-clock-canvas"></canvas>
+					</div>
+			</div>
+
+			<div class="win-wrap">
+				<div id="win-grid" class="win-pos" title="//...*/">
+					<div class="win-frame">
+						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+					</div>
+					<div class="win-inner"></div>
 				</div>
 			</div>
 
-			<div class="winwrap">
-				<div id="grid" class="window" title="//...*/">
-					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-				</div>
-			</div>
-
-			<div class="winwrap">
-				<div id="utah" class="window" title="tea is a human right">
-					<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+			<div class="win-wrap">
+				<div id="win-teapot" class="win-pos" title="tea is a human right">
+					<div class="win-frame">
+						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+					</div>
+					<div class="win-inner" id="win-teapot-canvas"></div>
 				</div>
 			</div>
 
@@ -484,11 +494,11 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r78/three.min.js"></script>
 		<script type="text/javascript">
 			var closedwindows = 0;
-			var biowindow = document.getElementById("hhh");
-			var biocontent = document.getElementById("aboutcontent");
+			var biowindow = document.getElementById("win-bio");
+			var biocontent = document.getElementById("win-bio-contents");
 			var biox = false, bioe = 0;
 
-			var x = document.getElementsByClassName("window");
+			var x = document.getElementsByClassName("win-pos");
 			for (var i = 0; i < x.length; i++) {
 				dragElement(x[i].parentNode, x[i]);
 			}
@@ -515,27 +525,27 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 
 				if(biox === false) {
 					biox = true;
-					biowindow.parentNode.className = "window expandedabout";
+					biowindow.parentNode.className = "win-pos win-bio-expand";
 
 					setTimeout(setname, 500);
 					function setname() {
-						document.getElementById("namething").innerHTML = Math.random() > .2 ? "red" : "8708198";
+						document.getElementById("win-bio-name").innerHTML = Math.random() > .2 ? "red" : "8708198";
 					}
 
 					biowindow.onmousedown = null;
 				}
 				else {
-					biowindow.parentNode.className = "window";
+					biowindow.parentNode.className = "win-pos";
 					biox = false;
-					document.getElementById("namething").innerHTML = " ";
+					document.getElementById("win-bio-name").innerHTML = " ";
 				}
 			};
 
-			var clock = document.getElementById("clockcanvas");
+			var clock = document.getElementById("win-clock-canvas");
 			var ctx = clock.getContext("2d");
 			var imageData;
-			clock.width = 100;
-			clock.height = 100;
+			clock.width = 88;
+			clock.height = 88;
 			setInterval(updateclock, 1000);
 			updateclock();
 			function updateclock() {
@@ -609,7 +619,7 @@ url("<%= assets %>/window/winright.png") top right repeat-y;
 			}
 			animate();
 
-			var utahcontainer = document.getElementById("utah");
+			var utahcontainer = document.getElementById("win-teapot-canvas");
 			utahcontainer.appendChild(renderer.domElement);
 
 			window.onmousemove = function(e) {

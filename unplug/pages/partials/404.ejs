@@ -1,61 +1,31 @@
 <%- include('../partials/header',{title:"404",description:"you got lost."}) %>
 		<style>
-			#vid {
-				height: 100vh;
-			}
-
-			.window{
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: center;
-				position: relative;
-			}
-			.winwrap {
+			/* window stuff */
+			.win-wrap {
 				position: fixed;
 				top: 0;
 				left: 0;
 				width: 0;
 				height: 0;
 			}
-
-			#numberwin {
-				width: 405px;
-				height: 275px;
-				background-image: url("<%= assets %>/404/404.png");
-				top: calc(45vh - 230px);
-				left: calc(34vw - 194px);
+			.win-pos {
+				position: relative;
 			}
-
-			#lostwin {
-				width: 102px;
-				height: 382px;
-				background-image: url("<%= assets %>/404/clickhere.png");
-				top: calc(45vh - 110px);
-				left: calc(34vw + 137px);
-			}
-
-			#clickhere {
-				left: 7px;
-				top: 25px;
-				width: 89px;
-				height: 190px;
-				display: block;
+			.win-frame {
+				background:
+url("<%= assets %>/window/wintoprightbar.png") top right no-repeat,
+url("<%= assets %>/window/wintopleftbar.png") top left no-repeat,
+url("<%= assets %>/window/wintopbar.png") top left repeat-x,
+url("<%= assets %>/window/winbottomright.png") bottom right no-repeat,
+url("<%= assets %>/window/winbottomleft.png") bottom left no-repeat,
+url("<%= assets %>/window/winbottom.png") bottom left repeat-x,
+url("<%= assets %>/window/winleft.png") top left repeat-y,
+url("<%= assets %>/window/winright.png") top right repeat-y;
+				width: 100%;
+				height: 100%;
 				position: absolute;
 			}
-
-			#clickhere:hover {
-				background-image: url("<%= assets %>/404/togoback.png");
-			}
-
-			#h {
-				width: 385px;
-				height: 130px;
-				background-image: url("<%= assets %>/404/yougotlost.png");
-				top: calc(45vh - 100px);
-				left: calc(34vw - 177px);
-			}
-
-			.close{
+			.win-close{
 				width: 16px;
 				height: 14px;
 				position: absolute;
@@ -63,9 +33,62 @@
 				top: 5px;
 				right: 5px;
 			}
-
-			.close:active{
+			.win-close:active{
 				background-image: url("<%= assets %>/window/closed.png");
+			}
+			.win-inner {
+				margin: 22px 3px 3px 3px;
+				width: calc(100% - 6px);
+				height: calc(100% - 25px);
+				position: absolute;
+			}
+
+			/* 404 window */
+			#win-404 {
+				width: 405px;
+				height: 275px;
+				top: calc(45vh - 230px);
+				left: calc(34vw - 194px);
+			}
+			#win-404 .win-inner {
+				background-image: url("<%= assets %>/404/404.png");
+			}
+
+			/* lost window */
+			#win-lost {
+				width: 102px;
+				height: 382px;
+				top: calc(45vh - 110px);
+				left: calc(34vw + 137px);
+			}
+			#win-lost .win-inner {
+				background-image: url("<%= assets %>/404/lost.png");
+			}
+			#win-lost-back {
+				left: 4px;
+				top: 3px;
+				width: 89px;
+				height: 190px;
+				display: block;
+				position: absolute;
+			}
+			#win-lost-back:hover {
+				background-image: url("<%= assets %>/404/back.png");
+			}
+
+			/* elian window */
+			#win-elian {
+				width: 385px;
+				height: 130px;
+				top: calc(45vh - 100px);
+				left: calc(34vw - 177px);
+			}
+			#win-elian .win-inner {
+				background-image: url("<%= assets %>/404/elian.png");
+			}
+
+			#vid {
+				height: 100vh;
 			}
 
 			.santa{
@@ -84,29 +107,43 @@
 		<video id="vid" autoplay muted loop>
 			<source src="<%= assets %>/404/bg.webm" type="video/webm">
 		</video>
-		<div class="winwrap">
-			<div id="h" class="window">
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+
+		<div class="win-wrap">
+			<div id="win-elian" class="win-pos">
+				<div class="win-frame">
+					<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+				</div>
+				<div class="win-inner"></div>
 			</div>
 		</div>
-		<div class="winwrap">
-			<div id="numberwin" class="window">
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+
+		<div class="win-wrap">
+			<div id="win-404" class="win-pos">
+				<div class="win-frame">
+					<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+				</div>
+				<div class="win-inner"></div>
 			</div>
 		</div>
-		<div class="winwrap">
-			<div id="lostwin" class="window">
-				<a id="clickhere" href="<%= global.protocol + global.domain %>/"></a>
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
+
+		<div class="win-wrap">
+			<div id="win-lost" class="win-pos">
+				<div class="win-frame">
+					<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+				</div>
+				<div class="win-inner">
+					<a id="win-lost-back" href="<%= global.protocol + global.domain %>/"></a>
+				</div>
 			</div>
 		</div>
+
 		<a href="<%= global.protocol + global.domain %>/santa" class="santa" title="santa"></a>
 		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
 		<script>
 			if (window.top !== window.self)
-				document.getElementById("clickhere").href = "/unplug";
+				document.getElementById("win-lost-back").href = "/unplug";
 
-			var x = document.getElementsByClassName("window");
+			var x = document.getElementsByClassName("win-pos");
 			for (var i = 0; i < x.length; i++) {
 				dragElement(x[i].parentNode, x[i]);
 			}

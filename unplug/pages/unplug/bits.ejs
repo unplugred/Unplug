@@ -4,79 +4,93 @@
 				background-image: url("<%= assets %>/bits/bg.png");
 			}
 
-			.windowwrap {
+			/* window stuff */
+			.win-wrap {
 				position: fixed;
 				top: 0;
 				left: 0;
 				width: 0;
 				height: 0;
 			}
-
-			.window {
-				background-repeat: no-repeat;
-				background-position: center;
-				position: fixed;
+			.win-pos {
+				position: relative;
 				width: 126px;
 				height: 145px;
-				background-image: url("<%= assets %>/unplug/object.png");
-				position: relative;
 			}
-
-			.close {
-				margin: 5px 5px 0 calc(100% - 21px);
+			.win-frame {
+				background:
+url("<%= assets %>/window/wintoprightbar.png") top right no-repeat,
+url("<%= assets %>/window/wintopleftbar.png") top left no-repeat,
+url("<%= assets %>/window/wintopbar.png") top left repeat-x,
+url("<%= assets %>/window/winbottomright.png") bottom right no-repeat,
+url("<%= assets %>/window/winbottomleft.png") bottom left no-repeat,
+url("<%= assets %>/window/winbottom.png") bottom left repeat-x,
+url("<%= assets %>/window/winleft.png") top left repeat-y,
+url("<%= assets %>/window/winright.png") top right repeat-y;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			.win-close{
 				width: 16px;
 				height: 14px;
 				position: absolute;
 				background-image: url("<%= assets %>/window/close.png");
+				top: 5px;
+				right: 5px;
 			}
-
-			.close:active {
+			.win-close:active{
 				background-image: url("<%= assets %>/window/closed.png");
 			}
+			.win-inner {
+				margin: 22px 3px 3px 3px;
+				width: calc(100% - 6px);
+				height: calc(100% - 25px);
+				position: absolute;
+			}
 
-			.bg {
+			/* object shared */
+			.win-obj-bg {
 				width: 120px;
 				height: 120px;
-				position: relative;
-				top: 0;
-				left: 0;
-				top: 22px;
-				left: 3px;
+				position: absolute;
 			}
-
-			.object {
+			.win-obj-inner {
+				display: block;
 				width: 100px;
 				height: 100px;
-				position: relative;
-				bottom: 88px;
-				left: 13px;
+				margin: 10px;
+				position: absolute;
 			}
-
-			.windowwrap:first-child {
+			.win-wrap:first-child {
 				display: none;
 			}
 		</style>
 		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 	</head>
 	<body id="body">
-		<div class="windowwrap">
-			<div class="window" style="">
-				<a class="close" href="javascript:void(0)" onclick="closee(this.parentNode)"></a>
-				<div class="bg" style=""></div>
-				<div class="object" style=""></div>
+		<div class="win-wrap">
+			<div class="win-pos">
+				<div class="win-frame">
+					<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+				</div>
+				<div class="win-inner">
+					<div class="win-obj-bg"></div>
+					<div class="win-obj-inner"></div>
+				</div>
 			</div>
 		</div>
 		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
 		<script type="text/javascript">
 			var anim = 0;
 			var wins = 1;
-			var windowsss = document.getElementsByClassName("windowwrap")[0];
+			var windowsss = document.getElementsByClassName("win-wrap")[0];
 
 			var cloneshit = setInterval(function()
 			{
 				if(wins++ >= 20) clearInterval(cloneshit);
 				var clone = windowsss.cloneNode(true);
-				var child = clone.getElementsByClassName("window")[0];
+				var child = clone.getElementsByClassName("win-pos")[0];
 				document.body.appendChild(clone);
 				dothing(child);
 				dragElement(clone, child, true);
@@ -93,8 +107,8 @@
 				obj.style.top = "calc(" + Math.random()*100 + "vh - 72px)";
 				obj.style.left = "calc(" + Math.random()*100 + "vw - 63px)";
 
-				var bg = obj.querySelectorAll(".bg")[0];
-				var ob = obj.querySelectorAll(".object")[0];
+				var bg = obj.querySelectorAll(".win-obj-bg")[0];
+				var ob = obj.querySelectorAll(".win-obj-inner")[0];
 
 				var bgn = Math.floor(Math.random()*10);
 				var obn = Math.floor(Math.random()*10);

@@ -1,20 +1,42 @@
 <%- include('../partials/header',{title:"8ball"}) %>
 		<style>
+			/* window stuff */
+			.win-frame {
+				background:
+url("<%= assets %>/window/wintoprightbar.png") top right no-repeat,
+url("<%= assets %>/window/wintopleftbar.png") top left no-repeat,
+url("<%= assets %>/window/wintopbar.png") top left repeat-x,
+url("<%= assets %>/window/winbottomright.png") bottom right no-repeat,
+url("<%= assets %>/window/winbottomleft.png") bottom left no-repeat,
+url("<%= assets %>/window/winbottom.png") bottom left repeat-x,
+url("<%= assets %>/window/winleft.png") top left repeat-y,
+url("<%= assets %>/window/winright.png") top right repeat-y;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+			}
+			.win-inner {
+				margin: 22px 3px 3px 3px;
+				width: calc(100% - 6px);
+				height: calc(100% - 25px);
+				position: absolute;
+				background-image: url("<%= assets %>/8ball/bg.png");
+				background-repeat: repeat-y;
+				background-position: right;
+			}
+
 			body {
 				display: flex;
 				justify-content: space-around;
 				align-items: center;
 			}
 
-			#selection {
-				background-image: url("<%= assets %>/8ball/windowtop.png"), url("<%= assets %>/8ball/windowbottom.png"), url("<%= assets %>/8ball/windowmiddle.png");
-				background-repeat: no-repeat, no-repeat, repeat-y;
-				background-position: top center, bottom center, center center;
-				width: 398px;
-				max-height: 660px;
+			#win-selection {
+				width: 404px;
+				max-height: 685px;
 				height: 80%;
-				padding: 22px 3px 3px 3px;
 				margin: 10px 0;
+				position: relative;
 			}
 
 			#ball {
@@ -106,18 +128,23 @@
 		<link rel="prefetch" href="<%= assets %>/8ball/8.png" />
 	</head>
 	<body>
-		<div id="selection">
-			<div id="screen1" class="screen" style="background-image: url('<%= assets %>/8ball/start.png')">
-				<a href="javascript:void(0)" class="button" id="start" onclick="dechoose()"></a>
-			</div>
-			<div id="screen2" class="screen" style="display: none">
-				<div id="scroll">
-					<a href="javascript:void(0)" class="button" id="o1" onclick="choose(1)"></a>
-					<a href="javascript:void(0)" class="button" id="o2" onclick="choose(2)"></a>
-					<a href="javascript:void(0)" class="button" id="o3" onclick="choose(3)"></a>
-					<a href="javascript:void(0)" class="button" id="o4" onclick="choose(4)"></a>
-					<a href="javascript:void(0)" class="button" id="o5" onclick="choose(5)"></a>
-					<a href="javascript:void(0)" class="button" id="o6" onclick="choose(6)"></a>
+		<div id="win-selection">
+			<div class="win-frame"></div>
+			<div class="win-inner">
+				<div class="win-obj-bg"></div>
+				<a class="win-obj-inner" href="<%= global.protocol %>tumblr.<%= global.domain %>/" target="_blank"></a>
+				<div id="screen1" class="screen" style="background-image: url('<%= assets %>/8ball/start.png')">
+					<a href="javascript:void(0)" class="button" id="start" onclick="dechoose()"></a>
+				</div>
+				<div id="screen2" class="screen" style="display: none">
+					<div id="scroll">
+						<a href="javascript:void(0)" class="button" id="o1" onclick="choose(1)"></a>
+						<a href="javascript:void(0)" class="button" id="o2" onclick="choose(2)"></a>
+						<a href="javascript:void(0)" class="button" id="o3" onclick="choose(3)"></a>
+						<a href="javascript:void(0)" class="button" id="o4" onclick="choose(4)"></a>
+						<a href="javascript:void(0)" class="button" id="o5" onclick="choose(5)"></a>
+						<a href="javascript:void(0)" class="button" id="o6" onclick="choose(6)"></a>
+					</div>
 				</div>
 			</div>
 		</div>
