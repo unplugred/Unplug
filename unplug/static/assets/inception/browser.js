@@ -1,10 +1,10 @@
-var iframe = document.getElementById("iframe");
-var input = document.getElementById("input");
-var back = document.getElementById("back");
-var front = document.getElementById("front");
-var go = document.getElementById("go");
-var rainbow = document.getElementById("rainbow");
-var titletext = document.getElementById("titletext");
+var iframe = document.getElementById("win-iframe");
+var input = document.getElementById("win-adress-inner");
+var back = document.getElementById("win-back");
+var front = document.getElementById("win-front");
+var go = document.getElementById("win-go");
+var rainbow = document.getElementById("win-rainbow");
+var titletext = document.getElementById("win-header");
 var hostt = "https://         /";
 
 var historyy = [];
@@ -25,8 +25,8 @@ function changeurl()
 		historyy.push(current);
 		current = v;
 		unhistory = [];
-		back.className = null;
-		front.className = "off";
+		back.className = "win-button";
+		front.className = "win-button win-off";
 	}
 	iframe.src = tourll(current);
 }
@@ -40,8 +40,8 @@ function updateurl(urll)
 		historyy.push(current);
 		current = urll;
 		unhistory = [];
-		back.className = null;
-		front.className = "off";
+		back.className = "win-button";
+		front.className = "win-button win-off";
 	}
 	input.value = hostt + current;
 	updatego();
@@ -90,8 +90,8 @@ function backk()
 	input.value = hostt + current;
 	iframe.src = tourll(current);
 	if(historyy.length === 0)
-		back.className = "off";
-	front.className = null;
+		back.className = "win-button win-off";
+	front.className = "win-button";
 }
 
 function frontt()
@@ -101,8 +101,8 @@ function frontt()
 	input.value = hostt + current;
 	iframe.src = tourll(current);
 	if(unhistory.length === 0)
-		front.className = "off";
-	back.className = null;
+		front.className = "win-button win-off";
+	back.className = "win-button";
 }
 
 function updatego() {
@@ -113,13 +113,13 @@ function updatego() {
 		if(input.value.length < hostt.length)
 		{
 			valid = false;
-			go.className = "off";
+			go.className = "win-button win-off";
 		}
 	} else {
 		if(input.value.length >= hostt.length)
 		{
 			valid = true;
-			go.className = null;
+			go.className = "win-button";
 		}
 	}
 }
