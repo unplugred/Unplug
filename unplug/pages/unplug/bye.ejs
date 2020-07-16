@@ -53,7 +53,7 @@
 				canvas.height = window.innerHeight;
 				var hw = Math.round(canvas.width*.5);
 				var hh = Math.round(canvas.height*.5);
-				ctx.filter = "hue-rotate(<%= Math.random()*360 %>deg)";
+				ctx.filter = "hue-rotate(<%=Math.random()%>turn)";
 				ctx.drawImage(bg, hw - 153, hh - 163);
 				ctx.filter = "none";
 				ctx.drawImage(bye, 15, 20, 67, 16, hw - 150, hh - 141, 67, 16);
