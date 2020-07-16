@@ -1,10 +1,15 @@
 <%- include('../partials/header',{title:"head"}) %>
 		<style>
+			body {
+				display: flex;
+				background-image: url("<%= assets %>/window/light-stars.png");
+			}
+
 			.head{
 				display: block;
 				width: 569px;
 				height: 517px;
-				margin: calc(50vh - 268px) calc(50vw - 295px);
+				margin: auto;
 				background-image: url("<%= assets %>/head.gif");
 				background-size: cover;
 				background-position: top right;
