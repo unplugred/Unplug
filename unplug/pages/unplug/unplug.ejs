@@ -1,6 +1,8 @@
 <%- include('../partials/header',{title:"unplug"}) %>
 		<link rel=StyleSheet href="<%= assets %>/window/window.css" type="text/css" media=screen>
 		<style>
+			.win-frame{filter:hue-rotate(<%=Math.random()*360%>deg);}
+
 			/* mobile message */
 			#desktop {
 				display: none;
