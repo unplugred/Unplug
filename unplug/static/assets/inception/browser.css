@@ -1,49 +1,6 @@
-/* window stuff */
-.win-wrap {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 0;
-	height: 0;
-}
-.win-pos {
-	position: relative;
-}
-.win-frame {
-	background:
-url("../window/wintoprightbar.png") top right no-repeat,
-url("../window/wintopleftbar.png") top left no-repeat,
-url("../window/wintopbar.png") top left repeat-x,
-url("../window/winbottomright.png") bottom right no-repeat,
-url("../window/winbottomleft.png") bottom left no-repeat,
-url("../window/winbottom.png") bottom left repeat-x,
-url("../window/winleft.png") top left repeat-y,
-url("../window/winright.png") top right repeat-y, #C0C0C0;
-	width: 100%;
-	height: 100%;
-	position: absolute;
-}
-.win-close{
-	width: 16px;
-	height: 14px;
-	position: absolute;
-	background-image: url("../window/close.png");
-	top: 5px;
-	right: 5px;
-}
-.win-close:active{
-	background-image: url("../window/closed.png");
-}
-.win-inner {
-	margin: 22px 3px 3px 3px;
-	width: calc(100% - 8px);
-	height: calc(100% - 27px);
-	position: absolute;
-}
-
-/* browser window */
 #win-browser {
 	font-size: 0;
+	background-color: #C0C0C0;
 }
 #win-dragbar {
 	position: absolute;
@@ -64,6 +21,8 @@ url("../window/winright.png") top right repeat-y, #C0C0C0;
 	color: #D6D6CE;
 }
 #win-browser .win-inner {
+	width: calc(100% - 8px);
+	height: calc(100% - 27px);
 	padding: 2px;
 }
 #win-topbar {
