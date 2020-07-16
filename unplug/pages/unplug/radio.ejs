@@ -202,7 +202,7 @@
 					if(isNaN(maxbass)) maxbass = 0;
 					if(frequencyData[bands[0]] > maxbass) {
 						if(cooldown < 0) {
-							logoo.style.filter = "hue-rotate(" + (Math.random()*360) + "deg)";
+							logoo.style.filter = "hue-rotate(" + Math.random() + "turn)";
 							cooldown = 1;
 						}
 						maxbass = frequencyData[bands[0]];
