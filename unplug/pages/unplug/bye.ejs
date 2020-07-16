@@ -1,5 +1,9 @@
 <%- include('../partials/header',{title:"bye"}) %>
 		<style>
+			body {
+				background-image: url("<%= assets %>/window/heavy-stars.png");
+			}
+
 			#fade{
 				position: absolute;
 				width: 100vw;
@@ -27,7 +31,7 @@
 		</style>
 	</head>
 	<body>
-		<img id="bg" src="<%= assets %>/bye/fakery.png" style="display: none;"></div>
+		<img id="bg" src="<%= assets %>/bye/fakery.png?v=2" style="display: none;"></div>
 		<img id="bye" src="<%= assets %>/bye/bye.png" style="display: none;"></div>
 		<canvas id="canva"></canvas>
 		<div id="fade" style="display: none;"></div>
@@ -49,9 +53,12 @@
 				canvas.height = window.innerHeight;
 				var hw = Math.round(canvas.width*.5);
 				var hh = Math.round(canvas.height*.5);
+				ctx.filter = "hue-rotate(<%= Math.random()*360 %>deg)";
 				ctx.drawImage(bg, hw - 153, hh - 163);
-				for (x = -125; x < Math.min(hw, hh + 3); x += 40)
-					ctx.drawImage(bye, x + hw, x + hh + 3);
+				ctx.filter = "none";
+				ctx.drawImage(bye, 15, 20, 67, 16, hw - 150, hh - 141, 67, 16);
+				for (x = -125; x < Math.min(hw, hh + 4); x += 40)
+					ctx.drawImage(bye, x + hw, x + hh + 4);
 			}
 		</script>
 <%- include('../partials/footer') %>
