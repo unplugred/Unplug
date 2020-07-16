@@ -1,5 +1,7 @@
 <%- include('../partials/header',{title:"cookies"}) %>
 		<style>
+			body {
+			}
 			#nocookies{
 				font-size: 150px;
 				text-align: center;
@@ -25,9 +27,9 @@
 				text-decoration: none;
 			}
 			body{
-				background-image: url("<%= assets %>/cookies.png");
-				background-repeat: no-repeat;
-				background-position: bottom center;
+				background-image: url("<%= assets %>/cookies.png"), url("<%= assets %>/window/heavy-stars.png");
+				background-repeat: no-repeat, repeat;
+				background-position: bottom center, top left;
 				display: flex;
 				align-items: center;
 				justify-content: center;

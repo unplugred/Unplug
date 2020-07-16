@@ -1,10 +1,14 @@
 <%- include('../partials/header',{title:"lion"}) %>
 		<style>
+			body {
+				display: flex;
+				background-image: url("<%= assets %>/window/light-stars.png");
+			}
 			#lion {
 				display: block;
 				width: 300px;
 				height: 300px;
-				margin: calc(50vh - 150px) calc(50vw - 150px);
+				margin: auto;
 				background-image: url("<%= assets %>/lion.png");
 				background-size: cover;
 				background-position: top right;
