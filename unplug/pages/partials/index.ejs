@@ -148,8 +148,10 @@
 				position: absolute;
 				display: inline-block;
 				width: 500px;
-				top: -107px;
+				top: -117px;
 				left: 110px;
+				transition: 1s;
+				margin: 10px 0;
 			}
 			#win-bio-text a {
 				color: inherit;
@@ -180,25 +182,21 @@
 				background-color: #4B7071;
 				overflow: hidden;
 			}
+			#win-bio .win-inner::-webkit-scrollbar-thumb {
+				background-color: #d8e0e0;
+				border: 3px #4b7071 solid;
+				border-radius: 6px;
+				outline: none;
+			}
 			@media only screen and (max-width: 700px) {
 				.win-bio-expand #win-bio-contents {
 					left: 50%;
-					top: 60px;
+					top: 70px;
 				}
 				#win-bio-text {
 					top: 60px;
 					left: calc(-50vw + 30px);
 					width: calc(100vw - 50px);
-					margin-bottom: 10px;
-				}
-				.win-bio-expand .win-inner {
-					overflow-y: overlay!important;
-				}
-				#win-bio .win-inner::-webkit-scrollbar-thumb {
-					background-color: #d8e0e0;
-					border: 3px #4b7071 solid;
-					border-radius: 6px;
-					outline: none;
 				}
 			}
 
@@ -348,7 +346,7 @@
 						<div class="win-header" style="background-image:url('<%= assets %>/unplug/header-bio.png')"></div>
 						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
 					</div>
-					<div class="win-inner">
+					<div class="win-inner" id="win-bio-inner">
 						<div id="win-bio-contents">
 							<a id="win-bio-cube" href="javascript:void(0)" onclick="cubeexpand()"></a>
 							<div id="win-bio-text">
@@ -450,6 +448,7 @@ also i have a <a href="https://twitter.com/unplugred/" target="_blank">twitter</
 			var closedwindows = 0;
 			var biowindow = document.getElementById("win-bio");
 			var biocontent = document.getElementById("win-bio-contents");
+			var bioinner = document.getElementById("win-bio-inner");
 			var biox = false, bioe = 0;
 
 			var x = document.getElementsByClassName("win-pos");
@@ -484,6 +483,7 @@ also i have a <a href="https://twitter.com/unplugred/" target="_blank">twitter</
 					setTimeout(setname, 500);
 					function setname() {
 						document.getElementById("win-bio-name").innerHTML = Math.random() > .2 ? "red" : "8708198";
+						bioinner.style.overflowY = "overlay";
 					}
 
 					biowindow.onmousedown = null;
@@ -492,6 +492,7 @@ also i have a <a href="https://twitter.com/unplugred/" target="_blank">twitter</
 					biowindow.parentNode.className = "win-pos";
 					biox = false;
 					document.getElementById("win-bio-name").innerHTML = " ";
+					bioinner.style.overflowY = null;
 				}
 			};
 
