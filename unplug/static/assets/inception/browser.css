@@ -31,13 +31,14 @@ url("../window/winright.png") top right repeat-y, #C0C0C0;
 	color: #D6D6CE;
 }
 #win-browser .win-inner {
-	width: calc(100% - 8px);
-	height: calc(100% - 27px);
+	width: calc(100% - 10px);
+	height: calc(100% - 29px);
 	padding: 2px;
 }
 #win-topbar {
 	height: 22px;
 	margin-bottom: 2px;
+	image-rendering: pixelated;
 }
 .win-button {
 	width: 22px;
@@ -97,7 +98,7 @@ url("../window/winright.png") top right repeat-y, #C0C0C0;
 	display: inline-block;
 	padding: 0;
 	height: 20px;
-	width: calc(100% - 96px);
+	width: calc(100% - 94px);
 }
 #win-adress-inner {
 	height: calc(100% - 4px)!important;
@@ -126,8 +127,8 @@ url("../window/winright.png") top right repeat-y, #C0C0C0;
 	margin-left: 2px;
 }
 #win-innerbrowser {
-	width: calc(100% - 4px);
-	height: calc(100% - 28px);
+	width: calc(100% - 2px);
+	height: calc(100% - 26px);
 }
 #win-iframe {
 	background-color: white;
