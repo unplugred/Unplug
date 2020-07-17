@@ -251,6 +251,9 @@
 				top: calc(24vh - 115px);
 				left: calc(87vw + 6px);
 			}
+			#win-clock .win-inner {
+				background-color: black;
+			}
 			#win-clock-canvas {
 				position: absolute;
 				opacity: .5;
@@ -289,6 +292,7 @@
 				font-weight: bold;
 			}
 		</style>
+		<link rel="prefetch" href="<%= assets %>/window/loading.png" />
 		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 		<link rel="StyleSheet" id="quicksand" type="text/css" href="">
 	</head>
@@ -414,7 +418,7 @@ also i have a <a href="https://twitter.com/unplugred/" target="_blank">twitter</
 					<div class="win-frame">
 						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
 					</div>
-					<div class="win-inner" id="win-teapot-canvas"></div>
+					<div class="win-inner" id="win-teapot-canvas" style="display:none"></div>
 				</div>
 			</div>
 
@@ -533,10 +537,10 @@ also i have a <a href="https://twitter.com/unplugred/" target="_blank">twitter</
 				ctx.putImageData(imageData, 0, 0);
 			}
 
+			var utahcontainer = document.getElementById("win-teapot-canvas");
 			var scene = new THREE.Scene();
 			var camera = new THREE.PerspectiveCamera(22.619865, 233 / 180, 0.1, 1000);
 			var renderer = new THREE.WebGLRenderer({antialias: false});
-			renderer.setClearColor(0x000000, 0);
 			renderer.setSize(233, 180);
 			renderer.stencil = false;
 			renderer.depth = false;
@@ -544,11 +548,13 @@ also i have a <a href="https://twitter.com/unplugred/" target="_blank">twitter</
 			renderer.precision = "lowp";
 
 			var loader = new THREE.TextureLoader();
-			var bg = loader.load("/checkers.png");
-			bg.wrapS = THREE.RepeatWrapping;
-			bg.wrapT = THREE.RepeatWrapping;
-			bg.repeat.set(14.5625, 11.25);
-			scene.background = bg;
+			loader.load("/checkers.png", (texture) => {
+				texture.wrapS = THREE.RepeatWrapping;
+				texture.wrapT = THREE.RepeatWrapping;
+				texture.repeat.set(14.5625, 11.25);
+				scene.background = texture;
+				utahcontainer.style.display = "block";
+			});
 
 			camera.position.set(6.24413, 5.60956, 10.5715);
 			camera.rotation.set(-0.4784, 0.45708, 0.2294);
@@ -574,7 +580,6 @@ also i have a <a href="https://twitter.com/unplugred/" target="_blank">twitter</
 			}
 			animate();
 
-			var utahcontainer = document.getElementById("win-teapot-canvas");
 			utahcontainer.appendChild(renderer.domElement);
 
 			window.onmousemove = function(e) {

@@ -4,9 +4,7 @@
 			.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}
 
 			.win-inner {
-				background-image: url("<%= assets %>/8ball/bg.png");
-				background-repeat: repeat-y;
-				background-position: right;
+				background: url("<%= assets %>/8ball/bg.png") repeat-y right, black;
 			}
 			body {
 				display: flex;
@@ -89,6 +87,7 @@
 				}
 			}
 		</style>
+		<link rel="prefetch" href="<%= assets %>/window/loading.png" />
 		<link rel="prefetch" href="<%= assets %>/8ball/0.png" />
 		<link rel="prefetch" href="<%= assets %>/8ball/1.png" />
 		<link rel="prefetch" href="<%= assets %>/8ball/2.png" />

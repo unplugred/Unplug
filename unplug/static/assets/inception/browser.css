@@ -1,6 +1,16 @@
 #win-browser {
 	font-size: 0;
-	background-color: #C0C0C0;
+}
+.win-frame {
+	background:
+url("../window/wintoprightbar.png") top right no-repeat,
+url("../window/wintopleftbar.png") top left no-repeat,
+url("../window/wintopbar.png") top left repeat-x,
+url("../window/winbottomright.png") bottom right no-repeat,
+url("../window/winbottomleft.png") bottom left no-repeat,
+url("../window/winbottom.png") bottom left repeat-x,
+url("../window/winleft.png") top left repeat-y,
+url("../window/winright.png") top right repeat-y, #C0C0C0;
 }
 #win-dragbar {
 	position: absolute;
@@ -102,6 +112,7 @@
 	top: 5px;
 	max-width: calc(100% - 148px);
 	pointer-events: none;
+	image-rendering: pixelated;
 }
 #win-go .win-icon {
 	background-image: url("go.png");
