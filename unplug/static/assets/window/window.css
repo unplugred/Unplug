@@ -17,10 +17,12 @@ url("../window/winbottomright.png") bottom right no-repeat,
 url("../window/winbottomleft.png") bottom left no-repeat,
 url("../window/winbottom.png") bottom left repeat-x,
 url("../window/winleft.png") top left repeat-y,
-url("../window/winright.png") top right repeat-y;
+url("../window/winright.png") top right repeat-y,
+url("../window/loading.png") top right repeat;
 	width: 100%;
 	height: 100%;
 	position: absolute;
+	image-rendering: pixelated;
 }
 .win-header {
 	top: 6px;
