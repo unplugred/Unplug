@@ -30,6 +30,6 @@
 	<body>
 		<div id="bg"></div>
 <div id="txt">This is the 100th page added to this site.<br/>
-The site currently has <div id="nmbr"><%= version*100 %></div> pages,<br/>
+The site currently has <div id="nmbr"><%= Math.round(version*100) %></div> pages,<br/>
 Although the line can get blurry.</div>
 <%- include('../partials/footer') %>
