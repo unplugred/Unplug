@@ -1,0 +1,44 @@
+<%- include('../partials/header',{title:"me"}) %>
+		<link rel=StyleSheet href="<%= assets %>/window/window.css" type="text/css" media=screen>
+		<style>
+			.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}
+
+			body {
+				background-image: url("<%= assets %>/window/heavy-stars.png");
+			}
+			.win-inner {
+				background-image: url("<%= assets %>/self-portrait.png");
+			}
+			#win-main {
+				width: 146px;
+				height: 165px;
+				top: 60vh;
+				left: 60vw;
+			}
+		</style>
+		<link rel="prefetch" href="<%= assets %>/window/loading.png" />
+		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
+	</head>
+	<body>
+		<div id="symbolo">
+			<img class="symbl" src="<%= assets %>/product/04-01.png" height="52px"/>
+			<img class="symbl" src="<%= assets %>/product/04-04.png" height="52px"/>
+		</div>
+		<div class="win-wrap">
+			<div id="win-main" class="win-pos" title="hi">
+				<div class="win-frame">
+					<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+				</div>
+				<div class="win-inner"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
+		<script type="text/javascript">
+			let dragwin = document.getElementById("win-main");
+			dragElement(dragwin.parentNode,dragwin);
+
+			function closee(win) {
+				win.style.display = "none";
+			}
+		</script>
+<%- include('../partials/footer') %>
