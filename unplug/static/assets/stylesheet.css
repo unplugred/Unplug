@@ -1,13 +1,13 @@
-*{
+*, .normalmouse{
 	cursor: url("cursors/default.png") 0 0, default;
 }
 
-a{
+a, .hovermouse, a *{
 	cursor: url("cursors/pointer.png") 6 0, pointer !important;
 }
 
-a *{
-	cursor: url("cursors/pointer.png") 6 0, pointer !important;
+.waitmouse {
+	cursor: url("<%= assets %>/cursors/wait.png") 6 0, wait;
 }
 
 ::selection{
