@@ -1,0 +1,94 @@
+		<style>
+			#slideshow {
+				top: calc(-50% - <%= (data.contents.length+2)*8 %>px);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="multi-image">
+				<img src="" id="content">
+				<div id="slideshow">
+					<a href="javascript:void(0);" class="slideshow-button slideshow-up" onclick="up();"></a><%
+				for(i = 0; i < data.contents.length; i++) { %>
+					<a href="javascript:void(0);" class="slideshow-button slideshow-off" onclick="jump(<%= i %>);"></a><%
+				} %>
+					<a href="javascript:void(0);" class="slideshow-button slideshow-down" onclick="down();"></a>
+				</div>
+			</div>
+<%-			include('description')
+%>		</div>
+		<script>
+			var images = [<%- data.contents.map(x => "\"" + assets + "/automatism/art/" + x + "\"") %>];
+			var len = images.length-1;
+			var currentimage = Number(location.hash.replace('#',""))-1;
+			if(isNaN(currentimage) || currentimage > len || currentimage < 1)
+				currentimage = 0;
+
+			var picwidth = [<%- data.width %>];
+			var picheight = [<%- data.height %>];
+			var div = document.getElementById("multi-image");
+			function recalc() {
+				let scale = Math.min(window.innerWidth*.9/picwidth[currentimage],window.innerHeight*.9/picheight[currentimage],1);
+				div.style.width = (picwidth[currentimage]*scale)+"px";
+				div.style.height = (picheight[currentimage]*scale)+"px";
+			}
+			window.addEventListener("resize",recalc);
+
+			var content = document.getElementById("content");
+			var buttons = document.getElementsByClassName("slideshow-button");
+
+			function jump(num) {
+				if(currentimage === 0)
+					buttons[0].className = "slideshow-button slideshow-up";
+				else if(currentimage === len)
+					buttons[len+2].className = "slideshow-button slideshow-down";
+				buttons[currentimage+1].className = "slideshow-button slideshow-off";
+
+				currentimage = num;
+				content.src = images[currentimage];
+				recalc();
+				if(location.hash !== "" || currentimage !== 0)
+					location.hash = currentimage+1;
+
+				buttons[currentimage+1].className = "slideshow-button slideshow-on";
+				if(currentimage === 0)
+					buttons[0].className = "slideshow-button slideshow-up-off";
+				else if(currentimage === len)
+					buttons[len+2].className = "slideshow-button slideshow-down-off";
+			}
+
+			function up() {
+				if(currentimage === len)
+					buttons[len+2].className = "slideshow-button slideshow-down";
+				buttons[currentimage+1].className = "slideshow-button slideshow-off";
+				buttons[currentimage].className = "slideshow-button slideshow-on";
+
+				content.src = images[--currentimage];
+				recalc();
+				location.hash = currentimage+1;
+
+				if(currentimage === 0)
+					buttons[0].className = "slideshow-button slideshow-up-off";
+				else if(currentimage === len)
+					buttons[len+2].className = "slideshow-button slideshow-down-off";
+			}
+
+			function down() {
+				if(currentimage === 0)
+					buttons[0].className = "slideshow-button slideshow-up";
+
+				content.src = images[++currentimage];
+				recalc();
+				location.hash = currentimage+1;
+
+				buttons[currentimage].className = "slideshow-button slideshow-off";
+				buttons[currentimage+1].className = "slideshow-button slideshow-on";
+				if(currentimage === 0)
+					buttons[0].className = "slideshow-button slideshow-up-off";
+				else if(currentimage === len)
+					buttons[len+2].className = "slideshow-button slideshow-down-off";
+			}
+
+			jump(currentimage);
+		</script>

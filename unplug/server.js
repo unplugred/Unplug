@@ -63,6 +63,17 @@ function save() {
 	});
 }
 
+var automatism = [];
+fs.readFile(__dirname + "/static/partials/automatism.json", 'utf8', (err, jsonString) => {
+	if(err) {
+		console.log("ERROR READING SAVEFILE: ", err);
+	} else try {
+		automatism = JSON.parse(jsonString);
+		console.log("automatist pieces: " + automatism.length);
+	} catch(error) {
+		console.log("ERROR PARSING SAVEFILE: ", error);
+	}
+});
 
 app.use((req, res, next) => {
 //log
@@ -126,6 +137,14 @@ app.use((req, res, next) => {
 	//important.txt
 	if(req.path === '/important.txt')
 		return res.download(__dirname + '/static/unplug/important.txt');
+
+	//automatism
+	if(req.path.startsWith('/automatism/0')) {
+		let autonum = Number(req.path.substring(12));
+		console.log(autonum);
+		if(!isNaN(autonum) && autonum <= automatism.length)
+			return res.render('partials/automatism/base.ejs',{assets:global.assets,host:global.protocol + req.headers.host,data:automatism[autonum-1],prevpage:autonum === 1 ? null : automatism[autonum-2].number,nextpage:autonum === automatism.length ? null : automatism[autonum].number});
+	}
 
 	//time
 	if(req.path === '/time') {
