@@ -1,0 +1,19 @@
+
+	</head>
+	<body>
+		<div id="wrap">
+			<iframe src="https://player.vimeo.com/video/<%= data.contents %>" frameborder="0" allow="autoplay; fullscreen" allowfullscreen id="vimeo"></iframe>
+<%-			include('description')
+%>		</div>
+		<script>
+			function recalc() {
+				let picwidth = <%= data.width %>;
+				let picheight = <%= data.height %>;
+				let scale = Math.min(window.innerWidth*.9/picwidth,window.innerHeight*.9/picheight,1);
+				let div = document.getElementById("vimeo");
+				div.style.width = (picwidth*scale)+"px";
+				div.style.height = (picheight*scale)+"px";
+			}
+			recalc();
+			window.addEventListener("resize",recalc);
+		</script>

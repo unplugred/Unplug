@@ -1,0 +1,17 @@
+			<div id="desc"><%
+
+if(prevpage === null) { %>
+				<div title="previous" id="prev-off" class="nav"></div><%
+} else { %>
+				<a title="previous" id="prev" class="nav" href="/automatism/<%= prevpage %>"></a><%
+}
+
+%>
+				<div id="numtitle"><div id="number" class="text"><%= data.number %></div><% if(data.title !== null){ %> - <div id="title" class="text"><%- data.title %></div><% } %><div id="date"><%= data.date %></div></div><%
+
+if(nextpage === null) { %>
+				<div title="next" id="next-off" class="nav" href="/automatism/<%= nextpage %>"></div><%
+} else { %>
+				<a title="next" id="next" class="nav" href="/automatism/<%= nextpage %>"></a><%
+} %>
+			</div>

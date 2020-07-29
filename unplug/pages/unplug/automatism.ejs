@@ -1,0 +1,263 @@
+<%- include('../partials/header',{title:"automatism",description:"you got lost."}) %>
+		<style>
+			body {
+				display: flex;
+				background: url("<%= assets %>/automatism/bg.png") repeat center center;
+			}
+			#canvases {
+				margin: calc(50vh - 300px) calc(50vw - 300px);
+				height: 600px;
+				width: 600px;
+				position: absolute;
+			}
+			canvas {
+				position: absolute;
+			}
+			#canva2 {
+				z-index: 200;
+				display: none;
+			}
+			#fadeout {
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+				background-image: url("<%= assets %>/automatism/fadeout.gif");
+				display: none;
+			}
+			#time {
+				height: 26px;
+				font-size: 0;
+				margin: calc(50vh + 300px) auto;
+			}
+			.time-digit {
+				width: 0;
+				height: 26px;
+				background-image: url("<%= assets %>/automatism/time.png");
+				display: inline-block;
+			}
+			#time-digit1 {
+				background-position: 390px 0;
+			}
+			#time-digit2 {
+				width: 30px;
+			}
+			#time-ampm {
+				width: 60px;
+			}
+			#time-suffix {
+				background-position: 210px -78px;
+			}
+		</style>
+	</head>
+	<body>
+		<img id="colordither" src="<%= assets %>/automatism/colordither.png" crossorigin="anonymous" style="display:none"></div>
+		<div id="canvases">
+			<canvas id="canva" onclick="clickthing()"></canvas>
+			<canvas id="canva2"></canvas>
+		</div>
+		<div id="time">
+			<div class="time-digit" id="time-prefix"></div>
+			<div class="time-digit" id="time-digit1"></div>
+			<div class="time-digit" id="time-digit2"></div>
+			<div class="time-digit" id="time-ampm"></div>
+			<div class="time-digit" id="time-suffix"></div>
+		</div>
+		<div id="fadeout"></div>
+		<script type="text/javascript" src="<%= assets %>/automatism/delaunay.js"></script>
+		<script type="text/javascript" src="<%= assets %>/automatism/simplex.js"></script>
+		<script>
+			let time = new Date();
+			let hours = time.getHours();
+
+			let seed =  Math.floor(time.getTime()/3600000);
+			seed  = (seed|0);
+			seed -= (seed<<6);
+			seed ^= (seed>>>17);
+			seed -= (seed<<9);
+			seed ^= (seed<<4);
+			seed -= (seed<<3);
+			seed ^= (seed<<10);
+			seed ^= (seed>>>15);
+			let scentence = Math.abs(seed)%10;
+
+			let prefix = document.getElementById("time-prefix");
+			let digit1 = document.getElementById("time-digit1");
+			let digit2 = document.getElementById("time-digit2");
+			let ampm = document.getElementById("time-ampm");
+			let suffix = document.getElementById("time-suffix");
+
+			if(hours === 0) {
+				prefix.style.backgroundPosition = "0 26px";
+				prefix.style.width = "420px";
+				ampm.style.width = "0";
+				digit2.style.width = "0";
+			} else {
+				ampm.style.backgroundPosition = hours > 11 ? "60px 0" : "120px 0";
+				hours = (hours-1)%12 + 1;
+				digit1.style.width = hours > 9 ? "30px" : "0";
+				digit2.style.backgroundPosition = (420 - ((hours%10)*30)) + "px 0";
+
+				switch(scentence) {
+					case 0:
+						prefix.style.backgroundPosition = "0 26px";
+						prefix.style.width = "180px";
+						break;
+					case 1:
+						prefix.style.backgroundPosition = "0 52px";
+						prefix.style.width = "360px";
+						break;
+					case 2:
+						prefix.style.backgroundPosition = "0 78px";
+						prefix.style.width = "180px";
+						suffix.style.backgroundPosition = "240px -78px";
+						break;
+					case 3:
+						prefix.style.backgroundPosition = "0 104px";
+						prefix.style.width = "360px";
+						break;
+					case 4:
+						prefix.style.backgroundPosition = "0 130px";
+						prefix.style.width = "390px";
+						break;
+					default:
+						break;
+				}
+			}
+			if(seed > 0 || scentence === 2)
+				suffix.style.width = "30px";
+
+
+			var canvas = document.getElementById("canva");
+			var canvas2;
+			var ctx = canvas.getContext('2d');
+			var ctx2;
+			var colordither = ctx.createPattern(document.getElementById("colordither"),"repeat");
+			var r = 300;
+			canvas.width = canvas.height = r*2;
+
+			var csr = [-6666,-6666];
+			document.onmousemove = function(e) {
+				csr = [e.pageX-window.innerWidth*.5,e.pageY-window.innerHeight*.5];
+			}
+
+			function area(pt1,pt2,pt3) {
+				return Math.abs(
+					pt1[0]*(pt2[1]-pt3[1])+
+					pt2[0]*(pt3[1]-pt1[1])+
+					pt3[0]*(pt1[1]-pt2[1]))*.5;
+			}
+			function isinside(pt1,pt2,pt3) {
+				return Math.ceil(area(pt1,pt2,pt3)) >= Math.floor(area(csr,pt2,pt3)+area(pt1,csr,pt3)+area(pt1,pt2,csr));
+			}
+
+			var pointdata = [];
+			for(let i = 0; i < 30; i++) {
+				pointdata.push([Math.random()*1000,Math.random()*1000]);
+			}
+
+			var speed = .00004;
+			var hover = false;
+			var transout = -1;
+			var points;
+			var thingies;
+			var inside;
+			var cpoints;
+			var prevtime;
+			function update(timestamp) {
+				if(timestamp === undefined) timestamp = 0;
+				let dt = timestamp - prevtime;
+				prevtime = timestamp;
+
+				if(transout <= 800) {
+					points = [];
+					for(let i = 0; i < pointdata.length; i++) {
+						let x = simplex(timestamp*speed,pointdata[i][0]);
+						let y = simplex(timestamp*speed,pointdata[i][1]);
+						points.push([Math.cos(y*Math.PI*1.5)*x*r,Math.cos(x*Math.PI*1.5)*y*r]);
+					}
+
+					thingies = Delaunay.triangulate(points);
+
+					if(transout < 0) {
+						inside = -1;
+						ctx.clearRect(0, 0, canvas.width, canvas.height);
+					}
+					ctx.strokeStyle = "#FFF";
+					ctx.lineWidth = 1.5;
+					ctx.beginPath();
+					for(let i = 0; i < thingies.length; i += 3) {
+						ctx.moveTo(points[thingies[i  ]][0]+r,points[thingies[i  ]][1]+r);
+						ctx.lineTo(points[thingies[i+1]][0]+r,points[thingies[i+1]][1]+r);
+						ctx.lineTo(points[thingies[i+2]][0]+r,points[thingies[i+2]][1]+r);
+						ctx.lineTo(points[thingies[i  ]][0]+r,points[thingies[i  ]][1]+r);
+						if(inside === -1 && transout < 0)
+							inside = isinside(points[thingies[i]],points[thingies[i+1]],points[thingies[i+2]]) ? i : -1;
+					}
+					ctx.stroke();
+				}
+
+				if(transout < 0) {
+					if(inside !== -1) {
+						ctx.fillStyle = "#FFF";
+						ctx.beginPath();
+						ctx.moveTo(points[thingies[inside  ]][0]+r,points[thingies[inside  ]][1]+r);
+						ctx.lineTo(points[thingies[inside+1]][0]+r,points[thingies[inside+1]][1]+r);
+						ctx.lineTo(points[thingies[inside+2]][0]+r,points[thingies[inside+2]][1]+r);
+						ctx.lineTo(points[thingies[inside  ]][0]+r,points[thingies[inside  ]][1]+r);
+						ctx.fill();
+
+						if(!hover) {
+							hover = true;
+							canvas.className = "hovermouse";
+						}
+					} else if(hover) {
+						hover = false;
+						canvas.className = null;
+					}
+				} else {
+					transout += dt;
+					ctx2.clearRect(0, 0, canvas.width, canvas.height);
+					ctx2.fillStyle = colordither;
+					ctx2.filter = "hue-rotate(" + (timestamp*.0005) + "turn)";
+					ctx2.beginPath();
+					ctx2.moveTo(cpoints[0][0]+r,cpoints[0][1]+r);
+					ctx2.lineTo(cpoints[1][0]+r,cpoints[1][1]+r);
+					ctx2.lineTo(cpoints[2][0]+r,cpoints[2][1]+r);
+					ctx2.lineTo(cpoints[0][0]+r,cpoints[0][1]+r);
+					ctx2.fill();
+					ctx2.filter = "none";
+					let imageData = ctx2.getImageData(0, 0, canvas.width, canvas.height);
+					for(i = 0; i !== imageData.data.length; i++)
+						imageData.data[i] = (imageData.data[i] >> 7) * 0xFF;
+					ctx2.putImageData(imageData, 0, 0);
+				}
+
+				if(transout - dt <= 800) {
+					let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+					for(i = 0; i !== imageData.data.length; i++)
+						imageData.data[i] = (imageData.data[i] >> 7)*0xD8;
+					ctx.putImageData(imageData, 0, 0);
+				}
+
+				requestAnimationFrame(update);
+			}
+			update();
+
+			function clickthing() {
+				if(!hover) return;
+				transout = 0;
+				document.getElementById("fadeout").style.display = "block";
+				canvas2 = document.getElementById("canva2");
+				ctx2 = canvas2.getContext('2d');
+				canvas2.width = canvas2.height = r*2;
+				canvas2.style.display = "block";
+				cpoints = [
+					points[thingies[inside]],
+					points[thingies[inside+1]],
+					points[thingies[inside+2]]];
+				setTimeout(function(){
+					window.location = "/automatism/" + Math.floor(Math.random()*135).toString().padStart(4,'0');
+				},3000);
+			}
+		</script>
+<%- include('../partials/footer') %>

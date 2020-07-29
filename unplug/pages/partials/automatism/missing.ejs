@@ -1,0 +1,19 @@
+	</head>
+	<body>
+		<div id="wrap"><%
+
+if(prevpage === null) { %>
+			<div title="previous" id="prev-off" class="nav"></div><%
+} else { %>
+			<a title="previous" id="prev" class="nav" href="/automatism/<%= prevpage %>"></a><%
+}
+
+%>
+			<div id="missing"></div><%
+
+if(nextpage === null) { %>
+			<div title="next" style="float:inherit" id="next-off" class="nav" href="/automatism/<%= nextpage %>"></div><%
+} else { %>
+			<a title="next" style="float:inherit" id="next" class="nav" href="/automatism/<%= nextpage %>"></a><%
+} %>
+		</div>

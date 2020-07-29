@@ -1,0 +1,20 @@
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="single-image">
+				<img src="<%= assets + "/automatism/art/" + data.contents %>" id="content">
+			</div>
+<%-			include('description')
+%>		</div>
+		<script>
+			function recalc() {
+				let picwidth = <%= data.width %>;
+				let picheight = <%= data.height %>;
+				let scale = Math.min(window.innerWidth*.9/picwidth,window.innerHeight*.9/picheight,1);
+				let div = document.getElementById("single-image");
+				div.style.width = (picwidth*scale)+"px";
+				div.style.height = (picheight*scale)+"px";
+			}
+			recalc();
+			window.addEventListener("resize",recalc);
+		</script>
