@@ -4,11 +4,14 @@
 				display: flex;
 				background: url("<%= assets %>/automatism/bg.png") repeat center center;
 			}
-			#canvases {
-				margin: calc(50vh - 300px) calc(50vw - 300px);
-				height: 600px;
-				width: 600px;
+			#canvases-wrap {
 				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+			}
+			#canvases {
+				margin: auto;
 			}
 			canvas {
 				position: absolute;
@@ -26,7 +29,6 @@
 			}
 			#time {
 				font-size: 0;
-				margin: calc(50vh + 300px) auto;
 			}
 			.time-digit {
 				width: 0;
@@ -70,9 +72,11 @@
 	</head>
 	<body>
 		<img id="colordither" src="<%= assets %>/automatism/colordither.png" crossorigin="anonymous" style="display:none"></div>
-		<div id="canvases">
-			<canvas id="canva" onclick="clickthing()"></canvas>
-			<canvas id="canva2"></canvas>
+		<div id="canvases-wrap">
+			<div id="canvases">
+				<canvas id="canva" onclick="clickthing()"></canvas>
+				<canvas id="canva2"></canvas>
+			</div>
 		</div>
 		<div id="time">
 			<div class="time-digit" id="time-prefix"></div>
@@ -150,13 +154,23 @@
 				suffix.style.width = "30px";
 
 
+			var timee = document.getElementById("time");
 			var canvas = document.getElementById("canva");
+			var parentt = canvas.parentNode;
 			var canvas2;
 			var ctx = canvas.getContext('2d');
 			var ctx2;
 			var colordither = ctx.createPattern(document.getElementById("colordither"),"repeat");
-			var r = 300;
-			canvas.width = canvas.height = r*2;
+			var r = 0;
+
+			window.onresize = redraw;
+			function redraw(){
+				r = Math.max(Math.min(300, window.innerHeight*.5-90, window.innerWidth*.5),50);
+				canvas.width = canvas.height = r*2;
+				parentt.style.width = parentt.style.height = canvas.width + "px";
+				timee.style.margin = (window.innerHeight*.5+r) + "px auto";
+			}
+			redraw();
 
 			var csr = [-6666,-6666];
 			document.onmousemove = function(e) {
