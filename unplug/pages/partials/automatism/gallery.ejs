@@ -1,0 +1,111 @@
+<%- include('../header',{title:data.number}) %>
+		<style>
+			body {
+				overflow-y: overlay;
+				background-image: url("<%= assets %>/automatism/piecebg.png");
+			}
+			.wrap {
+				padding: 30px;
+			}
+			.header {
+				margin: 30px 0 0px 0;
+				border-bottom: 4px double #999;
+				display: inline-block;
+				padding: 0 90px 0 8px;
+			}
+			.section {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			.item {
+				margin: 15px 10px;
+			}
+			.thumb {
+				width: 120px;
+				height: 120px;
+				display: block;
+				background-repeat: no-repeat;
+				background-position: center;
+				border: 1px solid #999;
+			}
+			.line .thumb, .text .thumb {
+				background-image: url("<%= assets %>/automatism/thumbnails/text.png");
+				border: none;
+			}
+			.audio .thumb, .soundcloud .thumb {
+				background-image: url("<%= assets %>/automatism/thumbnails/text.png");
+				border: none;
+			}
+			.missing .thumb {
+				background-image: url("<%= assets %>/window/popup-attention.png");
+				border: none;
+			}
+			.num {
+				font-size: .8em;
+				font-style: italic;
+				display: inline-block;
+				vertical-align: text-top;
+				margin-top: 1px;
+				color: #eee;
+			}
+			.icon {
+				width: 16px;
+				height: 16px;
+				display: inline-block;
+				float: right;
+				margin-top: 2px;
+			}
+			.multi-image .icon {
+				background-image: url("<%= assets %>/automatism/icon-multi-image.png");
+			}
+			.video .icon, .vimeo .icon, .youtube .icon {
+				background-image: url("<%= assets %>/automatism/icon-video.png");
+			}
+			.single-image .icon {
+				background-image: url("<%= assets %>/automatism/icon-single-image.png");
+			}
+			.text .icon, .line .icon {
+				background-image: url("<%= assets %>/automatism/icon-text.png");
+			}
+			.audio .icon, .soundcloud .icon {
+				background-image: url("<%= assets %>/automatism/icon-audio.png");
+			}
+			.missing .icon {
+				background-image: url("<%= assets %>/automatism/icon-missing.png");
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap"><%
+
+
+const monthname = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+let month = -1;
+for(let i = data.length-1; i >= 0; i--){
+	let subb = data[i].date.substring(3);
+	if(subb !== month) {
+		month = subb;
+		if(i !== data.length-1) { %>
+			</div><%
+		} %>
+			<div class="header"><%= monthname[Number(subb.substring(0,2))-1] + "//" + subb.substring(3) %></div>
+			<div class="section"><%
+	}
+
+
+ %>
+				<div class="item <%= data[i].type %>"><%
+	if(data[i].type === "missing" || data[i].type === "line" || data[i].type === "text" || data[i].type === "audio" || data[i].type === "soundcloud") { %>
+					<a class="thumb" href="/automatism/<%= data[i].number %>"></a><%
+	} else { %>
+					<a class="thumb" href="/automatism/<%= data[i].number %>" style="background-image:url('<%= assets %>/automatism/thumbnails/<%= data[i].thumbnail %>')"></a><%
+	} %>
+					<div class="icon"></div>
+					<div class="num">№<%= data[i].number %></div>
+				</div><%
+
+
+} %>
+			</div>
+		</div>
+<%- include('../footer') %>
