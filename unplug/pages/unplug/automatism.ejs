@@ -25,7 +25,6 @@
 				display: none;
 			}
 			#time {
-				height: 26px;
 				font-size: 0;
 				margin: calc(50vh + 300px) auto;
 			}
@@ -47,6 +46,26 @@
 			#time-suffix {
 				background-position: 210px -78px;
 			}
+			#clickery-wrap {
+				display: flex;
+				justify-content: center;
+			}
+			.clickery {
+				width: 32px;
+				height: 32px;
+				display: inline-block;
+				margin: 15px 8px;
+				opacity: .4;
+			}
+			.clickery:hover {
+				opacity: .7;
+			}
+			#gallery {
+				background-image: url("<%= assets %>/automatism/gallery.png");
+			}
+			#music {
+				background-image: url("<%= assets %>/automatism/music.png");
+			}
 		</style>
 	</head>
 	<body>
@@ -61,6 +80,10 @@
 			<div class="time-digit" id="time-digit2"></div>
 			<div class="time-digit" id="time-ampm"></div>
 			<div class="time-digit" id="time-suffix"></div>
+			<div id="clickery-wrap">
+				<a class="clickery" target="_blank" href="/automatism/gallery" id="gallery"></a>
+				<a class="clickery" target="_blank" href="/music" id="music"></a>
+			</div>
 		</div>
 		<div id="fadeout"></div>
 		<script type="text/javascript" src="<%= assets %>/automatism/delaunay.js"></script>
