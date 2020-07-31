@@ -139,9 +139,10 @@ app.use((req, res, next) => {
 		return res.download(__dirname + '/static/unplug/important.txt');
 
 	//automatism
-	if(req.path.startsWith('/automatism/0')) {
+	if(req.path === '/automatism/gallery') {
+		return res.render('partials/automatism/gallery.ejs',{assets:global.assets,host:global.protocol + req.headers.host,data:automatism});
+	} else if(req.path.startsWith('/automatism/0')) {
 		let autonum = Number(req.path.substring(12));
-		console.log(autonum);
 		if(!isNaN(autonum) && autonum <= automatism.length)
 			return res.render('partials/automatism/base.ejs',{assets:global.assets,host:global.protocol + req.headers.host,data:automatism[autonum-1],prevpage:autonum === 1 ? null : automatism[autonum-2].number,nextpage:autonum === automatism.length ? null : automatism[autonum].number});
 	}
