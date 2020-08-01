@@ -4,11 +4,14 @@
 				display: flex;
 				background: url("<%= assets %>/automatism/bg.png") repeat center center;
 			}
-			#canvases {
-				margin: calc(50vh - 300px) calc(50vw - 300px);
-				height: 600px;
-				width: 600px;
+			#canvases-wrap {
 				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+			}
+			#canvases {
+				margin: auto;
 			}
 			canvas {
 				position: absolute;
@@ -25,9 +28,7 @@
 				display: none;
 			}
 			#time {
-				height: 26px;
 				font-size: 0;
-				margin: calc(50vh + 300px) auto;
 			}
 			.time-digit {
 				width: 0;
@@ -47,13 +48,35 @@
 			#time-suffix {
 				background-position: 210px -78px;
 			}
+			#clickery-wrap {
+				display: flex;
+				justify-content: center;
+			}
+			.clickery {
+				width: 32px;
+				height: 32px;
+				display: inline-block;
+				margin: 15px 8px;
+				opacity: .4;
+			}
+			.clickery:hover {
+				opacity: .7;
+			}
+			#gallery {
+				background-image: url("<%= assets %>/automatism/gallery.png");
+			}
+			#music {
+				background-image: url("<%= assets %>/automatism/music.png");
+			}
 		</style>
 	</head>
 	<body>
 		<img id="colordither" src="<%= assets %>/automatism/colordither.png" crossorigin="anonymous" style="display:none"></div>
-		<div id="canvases">
-			<canvas id="canva" onclick="clickthing()"></canvas>
-			<canvas id="canva2"></canvas>
+		<div id="canvases-wrap">
+			<div id="canvases">
+				<canvas id="canva" onclick="clickthing()"></canvas>
+				<canvas id="canva2"></canvas>
+			</div>
 		</div>
 		<div id="time">
 			<div class="time-digit" id="time-prefix"></div>
@@ -61,6 +84,10 @@
 			<div class="time-digit" id="time-digit2"></div>
 			<div class="time-digit" id="time-ampm"></div>
 			<div class="time-digit" id="time-suffix"></div>
+			<div id="clickery-wrap">
+				<a class="clickery" target="_blank" href="/automatism/gallery" id="gallery"></a>
+				<a class="clickery" target="_blank" href="/music" id="music"></a>
+			</div>
 		</div>
 		<div id="fadeout"></div>
 		<script type="text/javascript" src="<%= assets %>/automatism/delaunay.js"></script>
@@ -127,13 +154,23 @@
 				suffix.style.width = "30px";
 
 
+			var timee = document.getElementById("time");
 			var canvas = document.getElementById("canva");
+			var parentt = canvas.parentNode;
 			var canvas2;
 			var ctx = canvas.getContext('2d');
 			var ctx2;
 			var colordither = ctx.createPattern(document.getElementById("colordither"),"repeat");
-			var r = 300;
-			canvas.width = canvas.height = r*2;
+			var r = 0;
+
+			window.onresize = redraw;
+			function redraw(){
+				r = Math.max(Math.min(300, window.innerHeight*.5-90, window.innerWidth*.5),50);
+				canvas.width = canvas.height = r*2;
+				parentt.style.width = parentt.style.height = canvas.width + "px";
+				timee.style.margin = (window.innerHeight*.5+r) + "px auto";
+			}
+			redraw();
 
 			var csr = [-6666,-6666];
 			document.onmousemove = function(e) {
