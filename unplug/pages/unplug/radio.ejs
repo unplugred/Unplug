@@ -33,7 +33,7 @@
 				font-family: tahoma8, monospace;
 				color: #7d5870;
 		</style>
-		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=2">
+		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=4">
 	</head>
 	<body>
 		<img id="enableonstart" src="<%= assets %>/radio/things/01.png" style="display: none; left: 50px; bottom: -48px;"/>
@@ -41,6 +41,7 @@
 		<div id="player" class="player-border">
 			<div id="player-timecode" style="text-align: left; margin-left: 6px">Loading...</div>
 			<div id="player-volume">
+				<div id="player-volumeicon" style="background-image:url('<%= assets %>/player/loudness-3.png');"></div>
 				<a href="javascript:void(0);" id="player-volumedrag" onmousedown="p_volume(event)" onmousemove="p_volume(event)" ondragstart="return false;" ondrop="return false;">
 					<div id="player-volumeknob" style="left: 50%"></div>
 				</a>
@@ -111,6 +112,7 @@
 			}
 
 
+			var p_divvolumeicon = document.getElementById("player-volumeicon");
 			var p_divvolume = document.getElementById("player-volumeknob");
 			var p_divtimecode = document.getElementById("player-timecode");
 			var logoo = document.getElementById("logoo");
@@ -215,10 +217,18 @@
 				}
 				renderFrame();
 			}
+			var volumestate = 2;
+			var volumeiconurl = p_divvolumeicon.style.backgroundImage.substring(0,p_divvolumeicon.style.backgroundImage.length-7);
 			function p_volume(e) {
 				if(e.buttons !== 1) return;
 				p_audio.volume = Math.min(Math.max(e.clientX - p_volumepos,0)/p_volumewidth,1);
 				p_divvolume.style.left = (p_audio.volume*100) + "%";
+
+				let v = Math.ceil(p_audio.volume*4);
+				if(volumestate !== v) {
+					volumestate = v;
+					p_divvolumeicon.style.backgroundImage = v === 1 ? "none" : (volumeiconurl+v+".png\")");
+				}
 			}
 			function updatemetadata() {
 				fetch("https://stream.unplug.red/nowplaying.xsl")
