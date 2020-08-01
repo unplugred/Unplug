@@ -1,3 +1,7 @@
-<%- include('../header',{title:data.number}) %>
+<% let embed = {title:data.number};
+if(data.thumbnail !== undefined)
+	embed.ogimage = assets + "/automatism/thumbnails/" + data.thumbnail;
+embed.description = data.title === null ? "" : data.title;
+%><%- include('../header',embed) %>
 		<link rel=StyleSheet href="<%= assets %>/automatism/page.css" type="text/css" media=screen>
 <%- include(data.type,{title:data.number}) %><%- include('../footer') %>
