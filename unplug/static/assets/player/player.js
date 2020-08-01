@@ -5,6 +5,7 @@ var p_divdownloadmenu = document.getElementById("player-downloadmenu");
 var p_divmp3 = document.getElementById("player-mp3");
 var p_divflac = document.getElementById("player-flac");
 var p_divbar = document.getElementById("player-barknob");
+var p_divvolumeicon = document.getElementById("player-volumeicon");
 var p_divvolume = document.getElementById("player-volumeknob");
 var p_divtimecode = document.getElementsByClassName("player-digit");
 
@@ -183,9 +184,18 @@ function p_seekclick(e) {
 }
 
 //update volume
+var volumestate = 2;
+var volumeiconurl = p_divvolumeicon.style.backgroundImage.substring(0,p_divvolumeicon.style.backgroundImage.length-7);
 function p_volume(e) {
 	if(e.buttons !== 1) return;
 	p_audio.volume = Math.min(Math.max(e.clientX - p_volumepos,0)/p_volumewidth,1);
 	p_divvolume.style.left = (p_audio.volume*100) + "%";
+
+	let v = Math.ceil(p_audio.volume*4);
+	if(volumestate !== v) {
+		volumestate = v;
+		p_divvolumeicon.style.backgroundImage = v === 1 ? "none" : (volumeiconurl+v+".png\")");
+	}
+
 	if(p_downloading) p_download();
 }

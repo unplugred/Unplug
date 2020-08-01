@@ -116,11 +116,19 @@ url("progress-middle.png") repeat-x;
 	height: 23px;
 	display: inline-block;
 }
+#player-volumeicon {
+	position: relative;
+	width: 16px;
+	height: 16px;
+	top: 3px;
+	left: 11px;
+}
 #player-volumedrag {
 	position: relative;
 	display: block;
 	width: calc(100% - 42px);
 	left: 31px;
+	top: -16px;
 	padding-right: 10px;
 }
 #player-volumeknob {

@@ -62,7 +62,7 @@ function randomnum() {
 				left: 5px;
 			}
 		</style>
-		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=3">
+		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=4">
 	</head>
 	<body>
 		<h1>Index of <%= properties.dir %></h1>
@@ -121,6 +121,7 @@ function randomnum() {
 				</a>
 			</div>
 			<div id="player-volume">
+				<div id="player-volumeicon" style="background-image:url('<%= assets %>/player/loudness-3.png');"></div>
 				<a href="javascript:void(0);" id="player-volumedrag" onmousedown="p_volume(event)" onmousemove="p_volume(event)" ondragstart="return false;" ondrop="return false;">
 					<div id="player-volumeknob" style="left: 50%"></div>
 				</a>
@@ -161,5 +162,5 @@ function randomnum() {
 				requestAnimationFrame(calcsine)
 			}
 		</script>
-		<script type="text/javascript" src="<%= assets %>/player/player.js?v=3"></script>
+		<script type="text/javascript" src="<%= assets %>/player/player.js?v=4"></script>
 <%- include('../partials/footer') %>
