@@ -7,16 +7,28 @@
 				background-color: #110000;
 			}
 
-			*{
-				cursor: url("<%= assets %>/cursors/wait.png") 6 0, wait;
+			.notfinished, .notfinished * {
+				cursor: none !important;
+			}
+
+			.notfinished #cursor {
+				pointer-events: none;
+				position: absolute;
+				background-image: url("<%= assets %>/cursors/waitanim.gif");
+				width: 26px;
+				height: 26px;
 			}
 
 			#final-form{
 				width: 150px;
 				height: 150px;
-				display: none;
+				display: block;
 				margin: calc(50vh - 75px) calc(50vw - 75px);
 				background-image: url("<%= assets %>/countdown/2.gif");
+			}
+
+			.notfinished #final-form {
+				display: none !important;
 			}
 
 			#timer {
@@ -46,11 +58,18 @@
 			}
 		</style>
 	</head>
-	<body>
+	<body class="notfinished">
 		<div id="seizure"></div>
 		<p id="timer">80:000:00:00:00</p>
 		<a href="/countdown/countdown/countdown/countdown" id="final-form"></a>
+		<div id="cursor"></a>
 		<script>
+			var cursor = document.getElementById("cursor");
+			document.onmousemove = function(e){
+				cursor.style.top  = (e.pageY - 2) + "px";
+				cursor.style.left = (e.pageX - 6) + "px";
+			}
+
 			var timer = document.getElementById("timer");
 			var interval = setInterval(myTimer, 500);
 			var years = 80;
@@ -66,7 +85,7 @@
 							if(--days < 0){
 								if(--years < 0){
 									timer.style.display = "none";
-									document.getElementById("final-form").style.display = "block";
+									document.body.className = "null";
 									clearInterval(interval);
 								}
 								else{
