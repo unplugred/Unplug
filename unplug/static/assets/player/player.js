@@ -9,7 +9,7 @@ var p_divvolumeicon = document.getElementById("player-volumeicon");
 var p_divvolume = document.getElementById("player-volumeknob");
 var p_divtimecode = document.getElementsByClassName("player-digit");
 
-var p_currentdiv = "";
+var p_currentdiv = -1;
 var p_current = "";
 var p_playing = false;
 var p_downloading = false;
@@ -67,7 +67,8 @@ function p_putsong(div,mp3,flac) {
 
 	if(div !== -1) {
 		div.className = "playing";
-		p_currentdiv.className = "";
+		if(p_currentdiv !== -1)
+			p_currentdiv.className = "";
 		p_currentdiv = div;
 	}
 	p_divplayer.style.display = "block";
