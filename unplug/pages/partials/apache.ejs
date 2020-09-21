@@ -1,9 +1,7 @@
-<%- include('../partials/header',{title:"music",css:false}) %>
-<%
-function randomnum() {
+<%- include('../partials/header',{title:properties.title,css:false}) %>
+<% function randomnum() {
 	return Math.floor(Math.random()*10);
-}
-%>
+} %>
 		<style>
 			.size {
 				text-align: right;
@@ -54,15 +52,52 @@ function randomnum() {
 				position: relative;
 				top: 3px;
 				display: inline-block;
-			}
+			}<%
+		if(properties.audio) {%>
 			#player {
 				width: calc(100% - 18px);
 				position: fixed;
 				bottom: 5px;
 				left: 5px;
+			}<% }
+		if(properties.text) {%>
+			#text-popup {
+				background-color: #fefbf0;
+				border: solid 1px #808080;
+				color: black;
+				font-family: tahoma8, Tahoma, sans-serif;
+				font-size: 16px;
+				padding: 5px 9px 6px 9px;
+				display: inline-block;
+				text-decoration: none;
 			}
-		</style>
-		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=4">
+			#text-wrap {
+				border: solid 1px black;
+				z-index: 100;
+				position: absolute;
+				left: 52px;
+				top: -1000px;
+			}
+			#text-shadow {
+				position: relative;
+				z-index: -1;
+				top: 7px;
+				left: 7px;
+				margin-left: -1px;
+				background-image: url("<%= assets %>/apache/textpopup.png");
+			}
+			@font-face {
+				font-family: 'tahoma8';
+				font-style: normal;
+				font-weight: 500;
+				font-display: swap;
+				-webkit-font-smoothing : none;
+				font-smooth: never;
+				src: url("<%= assets %>/window/tahoma8.woff2") format('woff2');
+			}<% } %>
+		</style><%
+	if(properties.audio) {%>
+		<link rel="StyleSheet" type="text/css" href="<%= assets %>/player/player.css?v=4"><% } %>
 	</head>
 	<body>
 		<h1>Index of <%= properties.dir %></h1>
@@ -86,13 +121,20 @@ function randomnum() {
 			</tr><%
 			files.forEach(function(item,index,arr){%>
 			<tr><%
-			if(item.type === "SND"){%>
+switch(item.type) {
+	case "SND": %>
 				<td class="icon"><img src="<%= assets %>/apache/sound.gif" alt="[SND]"></td>
 				<td class="name"><a href="javascript:void(0);" onclick="p_playsong(this,'<%= item.mp3 %>','<%= item.flac %>')"><%= item.name %></a></td><%
-			}else{%>
+		break;
+	case "TXT": %>
+				<td class="icon"><img src="<%= assets %>/apache/text.gif" alt="[TXT]"></td>
+				<td class="name"><a href="javascript:void(0);" onclick="t_puttext(this,&quot;<%= item.content %>&quot;)"><%= item.name %></a></td><%
+		break;
+	default: %>
 				<td class="icon"><img src="<%= assets %>/apache/unknown.gif" alt="[SND]"></td>
 				<td class="name"><a href="<%= item.path %>"><%= item.name %></a></td><%
-			}%>
+		break;
+}%>
 				<td class="date"><%= item.date+" "+randomnum()+randomnum()+":"+randomnum()+randomnum() %></td>
 				<td class="size"><%= item.size %></td>
 				<td class="desc"><%= item.desc %></td>
@@ -101,7 +143,8 @@ function randomnum() {
 				<th colspan="5"><hr></th>
 			</tr>
 		</table>
-		<address>Apache/6.6.6 Server at <div class="rainbow" style="width:75px;background-position-x:141px;"></div> Port <div class="rainbow" style="width:25px;background-position-x:30px;"></div>.</address>
+		<address>Apache/6.6.6 Server at <div class="rainbow" style="width:75px;background-position-x:141px;"></div> Port <div class="rainbow" style="width:25px;background-position-x:30px;"></div>.</address><%
+		if(properties.audio) {%>
 		<div id="player" class="player-border" style="display: none;">
 			<a href="javascript:void(0);" class="player-button" id="player-play" onclick="p_play()">
 				<div class="player-icon"></div>
@@ -127,6 +170,73 @@ function randomnum() {
 				</a>
 			</div>
 		</div>
+		<script type="text/javascript" src="<%= assets %>/player/player.js?v=5"></script><% }
+		if(properties.text) { %>
+		<div id="text-wrap">
+			<a href="javascript:void(0);" onclick="t_removetext()" id="text-popup">a</a>
+			<div id="text-shadow"></div>
+		</div>
+		<script>
+			var t_popup = document.getElementById("text-wrap");
+			var t_shadow = document.getElementById("text-shadow");
+			var t_inner = document.getElementById("text-popup");
+			var t_interval;
+			var t_unsaid;
+			if(typeof p_divplayer === 'undefined')
+				var p_currentdiv = -1;
+
+			function t_puttext(div, content) {
+				t_inner.innerHTML = "";
+				t_unsaid = content;
+				t_interval = setInterval(t_visify, 80);
+				t_updateshadow();
+
+				t_popup.style.display = "inline-block";
+				let recs = div.getClientRects()[0];
+				t_popup.style.top = Math.round(recs.y + recs.height - 4) + "px";
+
+				div.className = "playing";
+				if(p_currentdiv !== -1)
+					p_currentdiv.className = "";
+				p_currentdiv = div;
+
+				if(typeof p_divplayer !== 'undefined')
+					p_divplayer.style.display = "none";
+			}
+
+			function t_removetext() {
+				t_popup.style.display = "none";
+				if(p_currentdiv !== -1)
+					p_currentdiv.className = "";
+			}
+
+			function t_visify() {
+				if(t_unsaid.length === 0) {
+					clearInterval(t_interval);
+					return;
+				}
+				let chr = t_unsaid.charAt(0);
+				if(chr === "<") {
+					let ndx = t_unsaid.indexOf(">")+1;
+					if(ndx > 0 && ndx < 7) {
+						chr = t_unsaid.substr(0,ndx);
+						t_inner.innerHTML += chr;
+						t_unsaid = t_unsaid.slice(ndx);
+						t_updateshadow();
+						return;
+					}
+				}
+				t_inner.innerHTML += chr;
+				t_unsaid = t_unsaid.slice(1);
+				t_updateshadow();
+			}
+
+			function t_updateshadow() {
+				t_shadow.style.width = (t_inner.clientWidth+3)+"px";
+				t_shadow.style.height = (t_inner.clientHeight+3)+"px";
+				t_shadow.style.marginTop = ((t_inner.clientHeight+3)*-1)+"px";
+			}
+		</script><% } %>
 		<script>
 			function rainbofy(d) {
 				if(d.className == "disco")
@@ -135,7 +245,7 @@ function randomnum() {
 					d.className = "disco";
 			}
 
-			dots = document.getElementsByClassName("dot");
+			var dots = document.getElementsByClassName("dot");
 			function sineifydot() {
 				if(dt) return;
 				requestAnimationFrame(calcsine);
@@ -162,5 +272,4 @@ function randomnum() {
 				requestAnimationFrame(calcsine)
 			}
 		</script>
-		<script type="text/javascript" src="<%= assets %>/player/player.js?v=4"></script>
 <%- include('../partials/footer') %>
