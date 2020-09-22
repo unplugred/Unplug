@@ -186,18 +186,23 @@ switch(item.type) {
 				var p_currentdiv = -1;
 
 			function t_puttext(div, content) {
-				t_inner.innerHTML = "";
+				if(div === p_currentdiv) return;
+
+				t_inner.innerHTML = "&rlm;";
 				t_unsaid = content;
+
+				clearInterval(t_interval);
 				t_interval = setInterval(t_visify, 80);
+
 				t_updateshadow();
 
 				t_popup.style.display = "inline-block";
 				let recs = div.getClientRects()[0];
 				t_popup.style.top = Math.round(recs.y + recs.height - 4) + "px";
 
-				div.className = "playing";
 				if(p_currentdiv !== -1)
 					p_currentdiv.className = "";
+				div.className = "playing";
 				p_currentdiv = div;
 
 				if(typeof p_divplayer !== 'undefined')
@@ -206,8 +211,10 @@ switch(item.type) {
 
 			function t_removetext() {
 				t_popup.style.display = "none";
-				if(p_currentdiv !== -1)
+				if(p_currentdiv !== -1) {
 					p_currentdiv.className = "";
+					p_currentdiv = -1;
+				}
 			}
 
 			function t_visify() {
