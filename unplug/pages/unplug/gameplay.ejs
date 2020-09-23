@@ -1,0 +1,276 @@
+<%- include('../partials/header',{title:"gameplay"}) %>
+		<style>
+			body {
+				display: flex;
+			}
+			#centered {
+				margin: 10px auto;
+				min-width: 667px;
+			}
+			#title {
+				background-image: url("<%= assets %>/gameplay/title.png");
+				width: 315px;
+				height: 29px;
+				margin-bottom: 5px;
+			}
+			#points {
+				background-image: url("<%= assets %>/gameplay/points.png");
+				margin-top: 3px;
+				margin-left: 212px;
+				width: 75px;
+				height: 15px;
+			}
+			#canva {
+				width: 500px;
+				height: 500px;
+			}
+			#ad {
+				width: 160px;
+				height: 444px;
+				border: 1px solid #7f7f7f;
+				float: right;
+				margin-left: 5px;
+				margin-top: 5px;
+				display: block;
+			}
+			#game {
+				float: left;
+			}
+		</style>
+	</head>
+	<body>
+		<img id="gray" src="<%= assets %>/gameplay/gray.png" style="display: none;">
+		<img id="red" src="<%= assets %>/gameplay/red.png" style="display: none;">
+		<img id="arrows" src="<%= assets %>/gameplay/arrows.png" style="display: none;">
+		<img id="instructions" src="<%= assets %>/gameplay/instructions.png" style="display: none;">
+		<img id="loser" src="<%= assets %>/gameplay/loser.png" style="display: none;">
+		<img id="idiot" src="<%= assets %>/gameplay/idiot.png" style="display: none;">
+		<div id="centered">
+			<a id="ad" style="pointer-events:none"></a>
+			<div id="game">
+				<div id="title"></div>
+				<canvas id="canva"></canvas>
+				<div id="points"></div>
+			</div>
+		</div>
+		<script type="text/javascript" src="<%= assets %>/automatism/simplex.js"></script>
+		<script>
+			var adon = false;
+			var adnum = Math.floor(Math.random()*5);
+			var adplacement = document.getElementById("ad");
+			var adlinks = ["/daddy","/ppl","/meat","/bits","/donate"];
+			function switchad() {
+				if(adon) {
+					adon = false;
+					adplacement.style.backgroundImage = "none";
+					adplacement.style.pointerEvents = "none";
+					setTimeout(switchad, 2000 + Math.random()*2000);
+				} else {
+					adon = true;
+					adnum = (adnum + 1)%5;
+					adplacement.style.backgroundImage = "url('<%= assets %>/gameplay/ad" + adnum + ".gif')";
+					adplacement.href = adlinks[adnum];
+					adplacement.style.pointerEvents = null;
+					setTimeout(switchad, 20000 + Math.random()*20000);
+				}
+			}
+			setTimeout(switchad, 2000 + Math.random()*2000);
+
+
+			var canvas = document.getElementById("canva");
+			var ctx = canvas.getContext("2d");
+			canvas.width = 500;
+			canvas.height = 500;
+
+			var gray = document.getElementById("gray");
+			var red = document.getElementById("red");
+			var arrows = document.getElementById("arrows");
+			var instructions = document.getElementById("instructions");
+			var loser = document.getElementById("loser");
+			var idiot = document.getElementById("idiot");
+
+			var walk = new Audio("<%= assets %>/gameplay/walk.ogg");
+			walk.addEventListener('timeupdate', (event) => {
+				if(walk.currentTime >= walk.duration - .5) walk.currentTime = 0;
+			});
+			var turn = new Audio("<%= assets %>/gameplay/turn.ogg");
+			turn.volume = .3;
+			var explode = new Audio("<%= assets %>/gameplay/explode.ogg");
+			var roomtone = new Audio("<%= assets %>/gameplay/roomtone.ogg");
+			roomtone.volume = 0;
+			roomtone.addEventListener('timeupdate', (event) => {
+				if(roomtone.currentTime >= roomtone.duration - .5) roomtone.currentTime = 0;
+			});
+
+			var dir, snak, appl, state, updateinterval, audiointerval;
+			var deaths = [];
+			var deathcount = 0;
+			var prevturn = -1;
+
+			function init() {
+				state = 0;
+				dir = [];
+				while(true) {
+					appl = [Math.floor(Math.random()*14)+3, Math.floor(Math.random()*14)+3];
+					if(deathcount > 0 || appl[1] <= 7 || appl[1] >= 11) break;
+				}
+				while(true) {
+					let pos = [Math.floor(Math.random()*14)+3, Math.floor(Math.random()*14)+3];
+					if((deathcount > 0 || pos[1] <= 6 || pos[1] >= 12) &&
+					(Math.abs(pos[0] - appl[0]) >= 3 || Math.abs(pos[1] - appl[1]) >= 3)) {
+						snak = [pos];
+						break;
+					}
+				}
+			}
+			init();
+
+			var dt = null;
+			function draw(timestamp) {
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+
+				//clear
+				ctx.clearRect(0,0,500,500);
+
+				//apple and snake
+				if(state < 2) {
+					ctx.drawImage(red, appl[0]*25, appl[1]*25);
+					for(var i = 0; i < snak.length; i++)
+						ctx.drawImage(gray, snak[i][0]*25, snak[i][1]*25);
+				}
+
+				//tutorial
+				if(state === 0 && deathcount === 0) {
+					ctx.drawImage(arrows, snak[0][0]*25 - 25, snak[0][1]*25 - 25);
+					ctx.drawImage(instructions, 123, 205);
+				}
+
+				//death logic
+				for(var i = 0; i < deaths.length; i++) {
+					if(deaths[i] !== undefined) {
+						deaths[i].age = Math.min(deaths[i].age + dtt*.002, 3);
+						let dirr = deaths[i].dir + simplex(timestamp*.00015,deaths[i].seed)*deaths[i].age;
+						deaths[i].x += Math.sin(dirr)*dtt*deaths[i].speed;
+						deaths[i].y += Math.cos(dirr)*dtt*deaths[i].speed;
+						ctx.drawImage(deaths[i].idiot ? idiot : loser, Math.round(deaths[i].x), Math.round(deaths[i].y));
+						if(deaths[i].x > 750 || deaths[i].x < -250 || deaths[i].y > 750 || deaths[i].y < -250)
+							delete(deaths[i]);
+					}
+				}
+
+				//border
+				for(var i = 0; i < 19; i++) {
+					ctx.drawImage(gray, i*25, 0);
+					ctx.drawImage(gray, 475, i*25);
+					ctx.drawImage(gray, 475 - i*25, 475);
+					ctx.drawImage(gray, 0, 475 - i*25);
+				}
+
+				requestAnimationFrame(draw);
+			}
+			requestAnimationFrame(draw);
+
+			document.addEventListener('keydown', function(event) {
+				if((event.keyCode > 40) || (event.keyCode < 37) ||
+				((event.keyCode - 37) === dir[dir.length - 1]) ||
+				(dir.length > 0 && (event.keyCode - 37) === ((dir[dir.length - 1] + 2)%4))) return;
+
+				if(state == 1) {
+					turn.currentTime = 0;
+					turn.play();
+				}
+				dir.push(event.keyCode - 37);
+				if(state === 0) {
+					state = 1;
+					walk.play();
+					if(roomtone.paused)
+						roomtone.play();
+						audiointerval = setInterval(function(){
+							roomtone.volume += .01;
+							if(roomtone.volume >= .25)
+								clearInterval(audiointerval);
+						},200);
+					if(updateinterval === undefined) {
+						updateinterval = setInterval(update,100);
+						update();
+					}
+				}
+			}, true);
+
+			function update() {
+				let rslt = move(dir[0]);
+				if(rslt === -1) {
+					dir = [dir[0]];
+					let tempdir = (dir[0] + 1)%4;
+					rslt = move(tempdir);
+					if(rslt <= -1) {
+						tempdir = (dir[0] + 3)%4;
+						rslt = move(tempdir);
+					}
+					if(rslt <= -1) {
+						tempdir = (dir[0] + 2)%4;
+						rslt = move(tempdir);
+					}
+					if(tempdir !== prevturn) {
+						turn.currentTime = 0;
+						turn.play();
+						setTimeout(function(){
+							turn.currentTime = 0;
+							turn.play();
+						}, 70+Math.random()*30);
+					}
+				} else if(rslt === -2) {
+					die();
+					return;
+				}
+				prevturn = dir[0];
+				if(dir.length > 1) dir.shift();
+				if(snak.unshift(rslt) > 6) snak.pop();
+			}
+
+			function move(dirr) {
+				let pos = [snak[0][0],snak[0][1]];
+				switch(dirr) {
+					case 0: pos[0] -= 1; break;
+					case 1: pos[1] -= 1; break;
+					case 2: pos[0] += 1; break;
+					case 3: pos[1] += 1; break;
+				}
+				if(pos[0] === appl[0] && pos[1] === appl[1]) return -1;
+				if(pos[0] < 1 || pos[1] < 1 || pos[0] > 18 || pos[1] > 18) return -2;
+				for(var i = 0; i < snak.length; i++)
+					if(pos[0] === snak[i][0] && pos[1] === snak[i][1]) return -1;
+				return pos;
+			}
+
+			function die() {
+				state = 2;
+				clearInterval(updateinterval);
+				updateinterval = undefined;
+				setTimeout(init, 1000 + deathcount*.1);
+				setTimeout(function() { deaths.push(new death()); }, Math.random()*(1000 + deathcount*.1));
+				deathcount++;
+				walk.pause();
+				explode.play();
+			}
+
+			function death() {
+				this.idiot = deathcount >= 10;
+				this.speed = Math.random()*.1+.05;
+				this.age = 0;
+				this.dir = Math.random()*Math.PI*2;
+				this.x = Math.sin(this.dir)*-1;
+				this.y = Math.cos(this.dir)*-1;
+				this.seed = Math.random()*1000;
+				if(Math.abs(this.x) > Math.abs(this.y)) {
+					this.x = this.x > 0 ? 475 : (this.idiot ? -50 : -67);
+					this.y = this.y*250 + 250;
+				} else {
+					this.y = this.y > 0 ? 475 : -4;
+					this.x = this.x*250 + 250;
+				}
+			}
+		</script>
+<%- include('../partials/footer') %>

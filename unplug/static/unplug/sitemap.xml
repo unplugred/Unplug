@@ -1488,4 +1488,10 @@
 <priority>0.20</priority>
 </url>
 
+<url>
+<loc>https://unplug.red/gameplay</loc>
+<lastmod>2020-9-23T03:53:33+00:00</lastmod>
+<priority>0.60</priority>
+</url>
+
 </urlset>
