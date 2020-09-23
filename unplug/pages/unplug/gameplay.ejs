@@ -28,7 +28,7 @@
 				width: 500px;
 				height: 500px;
 			}
-			#ad {
+			#ded {
 				width: 160px;
 				height: 444px;
 				border: 1px solid #7f7f7f;
@@ -50,7 +50,7 @@
 		<img id="loser" src="<%= assets %>/gameplay/loser.png" style="display: none;">
 		<img id="idiot" src="<%= assets %>/gameplay/idiot.png" style="display: none;">
 		<div id="centered">
-			<a id="ad" style="pointer-events:none"></a>
+			<a id="ded" style="pointer-events:none"></a>
 			<div id="game">
 				<div id="title"></div>
 				<canvas id="canva"></canvas>
@@ -59,26 +59,26 @@
 		</div>
 		<script type="text/javascript" src="<%= assets %>/automatism/simplex.js"></script>
 		<script>
-			var adon = false;
-			var adnum = Math.floor(Math.random()*5);
-			var adplacement = document.getElementById("ad");
-			var adlinks = ["/daddy","/ppl","/meat","/bits","/donate"];
-			function switchad() {
-				if(adon) {
-					adon = false;
-					adplacement.style.backgroundImage = "none";
-					adplacement.style.pointerEvents = "none";
-					setTimeout(switchad, 2000 + Math.random()*2000);
+			var dedon = false;
+			var dednum = Math.floor(Math.random()*5);
+			var dedplacement = document.getElementById("ded");
+			var dedlinks = ["/daddy","/ppl","/meat","/bits","/donate"];
+			function switchded() {
+				if(dedon) {
+					dedon = false;
+					dedplacement.style.backgroundImage = "none";
+					dedplacement.style.pointerEvents = "none";
+					setTimeout(switchded, 2000 + Math.random()*2000);
 				} else {
-					adon = true;
-					adnum = (adnum + 1)%5;
-					adplacement.style.backgroundImage = "url('<%= assets %>/gameplay/ad" + adnum + ".gif')";
-					adplacement.href = adlinks[adnum];
-					adplacement.style.pointerEvents = null;
-					setTimeout(switchad, 20000 + Math.random()*20000);
+					dedon = true;
+					dednum = (dednum + 1)%5;
+					dedplacement.style.backgroundImage = "url('<%= assets %>/gameplay/ded" + dednum + ".gif')";
+					dedplacement.href = dedlinks[dednum];
+					dedplacement.style.pointerEvents = null;
+					setTimeout(switchded, 20000 + Math.random()*20000);
 				}
 			}
-			setTimeout(switchad, 2000 + Math.random()*2000);
+			setTimeout(switchded, 2000 + Math.random()*2000);
 
 
 			var canvas = document.getElementById("canva");
