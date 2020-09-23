@@ -17,6 +17,7 @@ a, .hovermouse, a *{
 
 ::-webkit-scrollbar{
 	width: 12px;
+	height: 12px;
 }
 
 ::-webkit-scrollbar-track{
@@ -28,6 +29,10 @@ a, .hovermouse, a *{
 	border: 3px black solid;
 	border-radius: 6px;
 	outline: none;
+}
+
+::-webkit-scrollbar-corner{
+	background-color: transparent;
 }
 
 html,body{
