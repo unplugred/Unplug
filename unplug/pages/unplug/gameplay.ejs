@@ -189,7 +189,7 @@
 				if(state === 0) {
 					state = 1;
 					walk.play();
-					if(roomtone.paused)
+					if(audiointerval === undefined)
 						roomtone.play();
 						audiointerval = setInterval(function(){
 							roomtone.volume += .01;
