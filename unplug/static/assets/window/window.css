@@ -9,20 +9,15 @@
 	position: relative;
 }
 .win-frame {
-	background:
-url("../window/wintoprightbar.png") top right no-repeat,
-url("../window/wintopleftbar.png") top left no-repeat,
-url("../window/wintopbar.png") top left repeat-x,
-url("../window/winbottomright.png") bottom right no-repeat,
-url("../window/winbottomleft.png") bottom left no-repeat,
-url("../window/winbottom.png") bottom left repeat-x,
-url("../window/winleft.png") top left repeat-y,
-url("../window/winright.png") top right repeat-y,
-url("../window/loading.png") top right repeat;
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	image-rendering: pixelated;
+	background:
+url("./wintitle.png") 3px 3px no-repeat,
+linear-gradient(to bottom,#ADC6F7 21px,#D6D6CE 21px,#D6D6CE 22px,transparent 22px),
+url("./loading.png") top right repeat fixed, #191919;
+	box-shadow: inset -1px -1px #424242, inset 1px 1px #D6D6CE, inset -2px -2px #848484, inset 2px 2px #FFF, inset -3px -3px #D6D6CE, inset 3px 3px #D6D6CE;
+	image-rendering:pixelated;
 }
 .win-header {
 	top: 6px;
