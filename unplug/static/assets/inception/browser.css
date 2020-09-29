@@ -3,14 +3,8 @@
 }
 .win-frame {
 	background:
-url("../window/wintoprightbar.png") top right no-repeat,
-url("../window/wintopleftbar.png") top left no-repeat,
-url("../window/wintopbar.png") top left repeat-x,
-url("../window/winbottomright.png") bottom right no-repeat,
-url("../window/winbottomleft.png") bottom left no-repeat,
-url("../window/winbottom.png") bottom left repeat-x,
-url("../window/winleft.png") top left repeat-y,
-url("../window/winright.png") top right repeat-y, #C0C0C0;
+url("../window/wintitle.png") 3px 3px no-repeat,
+linear-gradient(to bottom,#ADC6F7 21px,#D6D6CE 21px,#D6D6CE 22px,transparent 22px), #C0C0C0;
 }
 #win-dragbar {
 	position: absolute;

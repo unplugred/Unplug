@@ -6,15 +6,8 @@
 	min-width: 215px;
 }
 .player-border {
-	background:
-url("../window/wintopright.png") top right no-repeat,
-url("../window/wintopleft.png") top left no-repeat,
-url("../window/wintop.png") top left repeat-x,
-url("../window/winbottomright.png") bottom right no-repeat,
-url("../window/winbottomleft.png") bottom left no-repeat,
-url("../window/winbottom.png") bottom left repeat-x,
-url("../window/winleft.png") top left repeat-y,
-url("../window/winright.png") top right repeat-y, #C0C0C0;
+	box-shadow: inset -1px -1px #424242, inset 1px 1px #D6D6CE, inset -2px -2px #848484, inset 2px 2px #FFF, inset -3px -3px #D6D6CE, inset 3px 3px #D6D6CE;
+	background-color: #C0C0C0;
 	padding: 4px;
 }
 .player-button {
