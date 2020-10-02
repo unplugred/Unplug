@@ -1494,4 +1494,22 @@
 <priority>0.60</priority>
 </url>
 
+<url>
+<loc>https://unplug.red/delete</loc>
+<lastmod>2020-10-2T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
+<url>
+<loc>https://unplug.red/escape</loc>
+<lastmod>2020-10-2T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
+<url>
+<loc>https://unplug.red/altf4</loc>
+<lastmod>2020-10-2T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
 </urlset>
