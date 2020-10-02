@@ -1,0 +1,74 @@
+<%- include('../partials/header',{title:"delete"}) %>
+		<style>
+			body {
+				display: flex;
+				background-image: url("<%= assets %>/press/title1.png");
+				background-repeat: no-repeat;
+				background-position: 37% 37%;
+			}
+
+			#button{
+				width: 287px;
+				height: 209px;
+				margin: auto;
+				background-image: url("<%= assets %>/press/button-unpressed1.png");
+				position: relative;
+			}
+
+			.pressed {
+				background-image: url("<%= assets %>/press/button-pressed1.png")!important;
+			}
+
+			#link {
+				height: 28px;
+				width: 0;
+				background-image: url("<%= assets %>/press/link1.png");
+				display: block;
+				position: fixed;
+				top: calc(50vh + 130px);
+			}
+		</style>
+		<link rel="prefetch" href="<%= assets %>/press/button-pressed1.png" />
+	</head>
+	<body>
+		<div id="button">
+			<a id="link" href="/escape"></a>
+		</div>
+		<script>
+			var btn = document.getElementById("button");
+			var shake = 0;
+			var link = document.getElementById("link");
+			var count = 0;
+			document.body.addEventListener('keydown', function(event)
+			{
+				if(event.repeat) return;
+				if(event.which !== 46) return;
+				btn.className = "pressed";
+				shake += 30;
+				count++;
+				link.style.width = (count*15)+"px";
+				link.style.left = "calc(50vw - "+Math.round(count*7.5)+"px)";
+			});
+			document.body.addEventListener('keyup', function(event)
+			{
+				if(event.repeat) return;
+				if(event.which !== 46) return;
+				btn.className = "";
+			});
+
+			var dt = null;
+			function update(timestamp){
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+
+				btn.style.top = Math.round((Math.random() - .5)*shake)+"px";
+				btn.style.left = Math.round((Math.random() - .5)*shake)+"px";
+
+				shake *= Math.max(1 - dtt*.015,-.99);
+
+				window.requestAnimationFrame(update);
+			}
+			window.requestAnimationFrame(update);
+		</script>
+<%- include('../partials/footer') %>

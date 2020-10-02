@@ -1,0 +1,124 @@
+<%- include('../partials/header',{title:"alt+f4"}) %>
+		<style>
+			body {
+				display: flex;
+				background-image: url("<%= assets %>/press/title3.png");
+				background-repeat: no-repeat;
+				background-position: 46% 30%;
+			}
+
+			#wrap {
+				margin: auto;
+				font-size: 0px;
+			}
+
+			#plus {
+				background-image: url("<%= assets %>/press/plus.png");
+				width: 76px;
+				height: 76px;
+				display: inline-block;
+				margin: 0 20px 64px 20px;
+			}
+
+			.button {
+				width: 287px;
+				height: 209px;
+				position: relative;
+				display: inline-block;
+			}
+			#button1 {
+				background-image: url("<%= assets %>/press/button-unpressed3.png");
+			}
+			#button2 {
+				background-image: url("<%= assets %>/press/button-unpressed4.png");
+			}
+			#button1.pressed {
+				background-image: url("<%= assets %>/press/button-pressed3.png")!important;
+			}
+			#button2.pressed {
+				background-image: url("<%= assets %>/press/button-pressed4.png")!important;
+			}
+
+			#link {
+				height: 33px;
+				background-image: url("<%= assets %>/press/waiting.png");
+				background-repeat: no-repeat;
+				display: block;
+				position: fixed;
+				top: calc(50vh + 130px);
+				left: calc(50vw - 75px);
+			}
+			#dot {
+				background-image: url("<%= assets %>/press/link3.png");
+				height: 33px;
+				width: 8px;
+				margin-left:143px;
+			}
+		</style>
+		<link rel="prefetch" href="<%= assets %>/press/button-pressed3.png" />
+		<link rel="prefetch" href="<%= assets %>/press/button-pressed4.png" />
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="button1" class="button"></div>
+			<div id="plus">
+				<div id="link">
+					<div id="dot"></div>
+				</div>
+			</div>
+			<div id="button2" class="button"></div>
+		</div>
+		<script>
+			var btn = [document.getElementById("button1"),document.getElementById("button2")];
+			var shake = [0,0];
+			var link = document.getElementById("link");
+			var dot = document.getElementById("dot");
+			var count = 1;
+			document.body.addEventListener('keydown', function(event)
+			{
+				if(event.repeat) return;
+
+				let n = -1;
+				if(event.which === 18) n = 0;
+				else if(event.which === 115) n = 1;
+				else return;
+
+				btn[n].className = "button pressed";
+				shake[n] += 30;
+			});
+			document.body.addEventListener('keyup', function(event)
+			{
+				if(event.repeat) return;
+
+				if(event.which === 18) btn[0].className = "button";
+				else if(event.which === 115) btn[1].className = "button";
+				else return;
+			});
+
+			function adddot(){
+				count++;
+				dot.style.width = (count*8)+"px";
+				link.style.left = "calc(50vw - "+(count*4+71)+"px)";
+				
+				if(count*8+143 >= screen.width || count >= 120)
+					window.location = "/gameplay";
+			}
+			setInterval(adddot,200);
+
+			var dt = null;
+			function update(timestamp){
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+
+				for(let i = 0; i < btn.length; i++) {
+					btn[i].style.top = Math.round((Math.random() - .5)*shake[i])+"px";
+					btn[i].style.left = Math.round((Math.random() - .5)*shake[i])+"px";
+					shake[i] *= Math.max(1 - dtt*.015,-.99);
+				}
+
+				window.requestAnimationFrame(update);
+			}
+			window.requestAnimationFrame(update);
+		</script>
+<%- include('../partials/footer') %>
