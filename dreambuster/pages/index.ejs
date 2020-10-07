@@ -28,7 +28,7 @@
 
 		<!-----------MESSAGE TO ALL READERS-----------
 			I want to sincerely apologize for my awful use of flexboxes in this CSS code.
-			thank you for your time -->
+			thank you for your time !>-->
 		<style>
 			html, body {
 				margin: 0;
@@ -42,10 +42,6 @@
 				background-color: #000027;
 				interpolation-mode: nearest-neighbor;
 				-ms-interpolation-mode: nearest-neighbor;
-				image-rendering: -webkit-optimize-contrast;
-				image-rendering: -webkit-crisp-edges;
-				image-rendering: -moz-crisp-edges;
-				image-rendering: -o-crisp-edges;
 				image-rendering: pixelated;
 			}
 
@@ -168,13 +164,36 @@
 				padding: 0 50px;
 			}
 
+			#rr {
+				background: radial-gradient(circle, #587F918C 0%, #587F9161 100%), url(<%= assets %>/rr/bg.png) center 66%;
+				background-size: cover;
+				padding: 70px 0;
+				margin-top: -70px;
+				image-rendering: initial;
+			}
+
+			#rr .logo img {
+				max-height: 110%;
+			}
+
+			#rrbg {
+				background-image: url(<%= assets %>/rr/overlay.png);
+				background-position: bottom left;
+				width: 100%;
+				height: 100%;
+				display: inherit;
+				align-items: inherit;
+				padding-top: 70px;
+				margin-top: -70px;
+			}
+
 			#avtw {
 				margin-top: -70px;
-				background-image: url(<%= assets %>/avtw/topgrass.png), url(<%= assets %>/avtw/trees.png), url(<%= assets %>/avtw/clouds.png), url(<%= assets %>/avtw/sky.png);
+				background: url(<%= assets %>/rr/overlay-bottom.png) top left, url(<%= assets %>/avtw/topgrass.png) bottom left, url(<%= assets %>/avtw/trees.png) bottom 26px left, url(<%= assets %>/avtw/clouds.png) bottom left, url(<%= assets %>/avtw/sky.png) top left, linear-gradient(to bottom, #569CCD00 70px, #569CCD 70px);
 				background-repeat: repeat-x;
-				background-position: bottom left, bottom 26px left, bottom left, bottom left;
-				background-size: auto, auto, auto, contain;
+				background-size: auto;
 				padding: 50px 0 20px 0;
+				image-rendering: initial;
 			}
 
 			#bmcp {
@@ -274,6 +293,16 @@
 			<div id="counter" class="gaem">
 				<div id="counternumber"></div>
 				<div id="counterdate"></div>
+			</div>
+			<div id="rr" class="gaem">
+				<div id="rrbg">
+				<div class="graphic">
+					<a href="https://dreambuster.itch.io/record-runner" target="_blank" class="logo"><img src="<%= assets %>/rr/logo.png"/></a>
+				</div>
+				<div class="sidebar">
+					<iframe src="https://www.youtube.com/embed/i4Gu5uQCn6k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+				</div>
 			</div>
 			<div id="avtw" class="gaem">
 				<div class="graphic">
