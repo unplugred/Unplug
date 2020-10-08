@@ -174,6 +174,7 @@
 
 			#rr .logo img {
 				max-height: 110%;
+				filter: drop-shadow(0 0 15px #00000090);
 			}
 
 			#rrbg {
@@ -194,6 +195,10 @@
 				background-size: auto;
 				padding: 50px 0 20px 0;
 				image-rendering: initial;
+			}
+
+			#avtw .logo img {
+				filter: drop-shadow(0 0 3px black) drop-shadow(0 0 2px #00000070);
 			}
 
 			#bmcp {
@@ -225,6 +230,23 @@
 				background-image: url(<%= assets %>/cdrxiv/sun.png), url(<%= assets %>/cdrxiv/bg.png), linear-gradient(to bottom, #FF5C66 95%, #000027 95%);
 				background-repeat: no-repeat, repeat-x, no-repeat;
 				background-position: bottom left;
+			}
+
+			#cdrxiv img {
+				-webkit-mask-image: url(<%= assets %>/cdrxiv/mask.png);
+				-webkit-mask-size: contain;
+				background-image: url(<%= assets %>/cdrxiv/logoline.png), url(<%= assets %>/cdrxiv/logo.png);
+				background-size: contain;
+				background-repeat: no-repeat;
+				animation-name: cdrxivflash;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+				animation-duration: 6s;
+			}
+
+			@keyframes cdrxivflash {
+				from { background-position-x: -1000%; }
+				to { background-position-x: 1040%; }
 			}
 
 			#slogan {
@@ -297,7 +319,7 @@
 			<div id="rr" class="gaem">
 				<div id="rrbg">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/record-runner" target="_blank" class="logo"><img src="<%= assets %>/rr/logo.png"/></a>
+					<a href="https://dreambuster.itch.io/record-runner" target="_blank" class="logo"><img src="<%= assets %>/rr/logo.gif"/></a>
 				</div>
 				<div class="sidebar">
 					<iframe src="https://www.youtube.com/embed/i4Gu5uQCn6k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -306,7 +328,7 @@
 			</div>
 			<div id="avtw" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/avtw" target="_blank" class="logo"><img src="<%= assets %>/avtw/logo.png"/></a>
+					<a href="https://dreambuster.itch.io/avtw" target="_blank" class="logo"><img src="<%= assets %>/avtw/logo.gif"/></a>
 				</div>
 				<div class="sidebar">
 					<iframe src="https://www.youtube.com/embed/j5ru1vewBYQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -323,7 +345,7 @@
 			</div>
 			<div id="aoj" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/attack-on-jerry" target="_blank" class="logo"><img src="<%= assets %>/aoj/logo.png"/></a>
+					<a href="https://dreambuster.itch.io/attack-on-jerry" target="_blank" class="logo"><img src="<%= assets %>/aoj/logo.gif"/></a>
 				</div>
 				<div class="sidebar">
 					<iframe src="https://www.youtube.com/embed/TwTBj7tcUSc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -331,13 +353,13 @@
 			</div>
 			<div id="cdrxiv" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/car-destruction-racer-xiv" target="_blank" class="logo"><img src="<%= assets %>/cdrxiv/logo.png"/></a>
+					<a href="https://dreambuster.itch.io/car-destruction-racer-xiv" target="_blank" class="logo"><div id="cdrxivwrap"><img src="<%= assets %>/cdrxiv/blank.png"/></div></a>
 				</div>
 				<div class="sidebar">
 					<iframe src="https://www.youtube.com/embed/jazxOs4PkqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
-			<p id="footer">All rights reserved or smth idk. privacy policy: none we dont track anything<br/>Jerry loves you all</p>
+			<p id="footer">All rights reserved or smth idk.<br/>privacy policy: none we dont track anything<br/>Jerry loves you all</p>
 		</div>
 		<script>
 			function updateeverything()
