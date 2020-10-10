@@ -31,7 +31,10 @@ app.use((req, res, next) => {
 		return fs.readdir(__dirname + '/static/hof', (err, files) => {
 			if(err) throw err;
 			else return res.render('halloffame.ejs', {assets:global.protocol + req.headers.host,host:global.protocol + req.headers.host,files:files})});
-	else return res.render('index.ejs', {assets:global.protocol + req.headers.host,host:global.protocol + req.headers.host});
+	else if(req.path === "/stats")
+		return res.render('stats.ejs', {assets:global.protocol + req.headers.host,host:global.protocol + req.headers.host});
+	else
+		return res.render('index.ejs', {assets:global.protocol + req.headers.host,host:global.protocol + req.headers.host});
 });
 
 app.listen(6661, function(){

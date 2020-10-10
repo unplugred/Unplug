@@ -1,0 +1,197 @@
+<%
+var data = [
+	{
+		number: 43,
+		name: "Car Destruction Racer XIV",
+		rating: 4.111,
+		submissions: 1748,
+		place: 52,
+		amount: 38
+	},{
+		number: 44,
+		name: "Attack on Jerry",
+		rating: 3.808,
+		submissions: 1817,
+		place: 185,
+		amount: 41
+	},{
+		number: 45,
+		name: "Bruno's Mind Control Project",
+		rating: 3.643,
+		submissions: 1883,
+		place: 343,
+		amount: 37
+	},{
+		number: 46,
+		name: "a Very Talented Worm",
+		rating: 3.75,
+		submissions: 3576,
+		place: 614,
+		amount: 20
+	},{
+		number: 47,
+		name: "Record Runner",
+		rating: null,
+		submissions: 2404,
+		place: null,
+		amount: null
+	}
+];
+%><!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Hall of Fame</title>
+
+		<meta name="theme-color" content="#ffffff">
+		<link rel="apple-touch-icon" href="/icons/db152.png" sizes="152x152">
+		<link rel="apple-touch-icon" href="/icons/db180.png" sizes="180x180">
+		<link rel="shortcut icon" href="/icons/db196.png" sizes="196x196">
+		<link rel="icon" type="image/png" href="/icons/db192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/icons/db32.png" sizes="32x32">
+
+		<meta name="dcterms.rightsHolder" content="Dream Buster">
+		<meta property="og:site_name" content="Dream Buster">
+		<meta name="twitter:site" content="Dream Buster">
+		<meta property="og:url" content="<%= host %>/">
+		<meta name="twitter:url" content="<%= host %>/">
+		<meta property="og:type" content="article">
+		<meta name="twitter:card" content="summary">
+		<meta property="og:title" content="The Dream Buster Hall of Fame">
+		<meta name="twitter:title" content="The Dream Buster Hall of Fame">
+		<meta property="og:description" content="dumb shit mostly.">
+		<meta name="twitter:description" content="dumb shit mostly.">
+		<meta name="description" content="dumb shit mostly.">
+		<meta property="og:image" content="<%= assets %>/ogjerry.png">
+		<meta name="twitter:image" content="<%= assets %>/ogjerry.png">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style>
+			html, body{
+				margin: 0;
+				padding: 0;
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
+				line-height: 0;
+				background-color: #fff;
+				background-image: url("<%= assets %>/bgjerry.png");
+				background-position: center center;
+				display: flex;
+			}
+
+			::selection {
+				color: #333;
+				background: #999999fe;
+			}
+
+			::-moz-selection {
+				color: #333;
+				background: #999999fe;
+			}
+
+			*::-webkit-scrollbar {
+				width: 8px;
+			}
+
+			*::-webkit-scrollbar-track {
+				background-color: transparent;
+			}
+
+			*::-webkit-scrollbar-thumb {
+				background-color: #262626;
+				outline: none;
+				border-right: 3px solid #AFAFAF;
+			}
+
+			#title{
+				background-image: url(<%= assets %>/stats.png);
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: bottom center;
+				width: 94vmin;
+				height: 95vmin;
+				margin: auto;
+				margin-bottom: 0;
+			}
+
+			#content {
+				overflow-x: hidden;
+				overflow-y: auto;
+				width: 86%;
+				height: 71%;
+				margin-left: 7%;
+				margin-top: 29%;
+			}
+
+			table {
+				height: 20vmin;
+				width: 100%;
+				border-collapse: collapse;
+				font-family: "Futura", "Segoe UI", "Trebuchet MS", "Helvetica", sans-serif;
+				font-size: 3vmin;
+				text-align: center;
+			}
+
+			td,th {
+				line-height: 3vmin;
+				border: 1px solid #636363;
+				font-size: 2.3vmin;
+				font-weight: normal;
+				color: #262626;
+			}
+
+			tr>td:nth-child(2) {
+				text-align: left;
+			}
+
+			th {
+				background-color: #AFAFAF;
+				padding: 3px 1px;
+				font-style: italic;
+			}
+			td {
+				background-color: #CCC;
+				padding: 3px 3px;
+			}
+			canvas {
+				background-color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="title">
+			<div id="content">
+				<table id="tabl">
+				</table>
+				<script>
+					var dataa = <%- JSON.stringify(data) %>
+					let table = document.getElementById("tabl");
+					for(let i = 0; i < dataa.length; i++) {
+						let row = table.insertRow();
+						for(key in dataa[i]) {
+							if(key === "amount")
+								row.insertCell().appendChild(document.createTextNode(dataa[i].rating === null ? "???" : Math.round(dataa[i].place/dataa[i].submissions*100)));
+							else if(dataa[i][key] === null)
+								row.insertCell().appendChild(document.createTextNode("???"));
+							else
+								row.insertCell().appendChild(document.createTextNode(dataa[i][key]));
+						}
+					}
+					let thead = table.createTHead();
+					let row = thead.insertRow();
+					let head = ["#","Name","Rating","Submissions","Place","Percentile"];
+					for(let key of head) {
+						let th = document.createElement("th");
+						let text = document.createTextNode(key);
+						th.appendChild(text);
+						row.appendChild(th);
+					}
+				</script>
+			</div>
+		</div>
+		<script>
+		</script>
+	</body>
+</html>
