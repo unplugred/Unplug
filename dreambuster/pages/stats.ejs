@@ -1,43 +1,4 @@
-<%
-var data = [
-	{
-		number: 43,
-		name: "Car Destruction Racer XIV",
-		rating: 4.111,
-		submissions: 1748,
-		place: 52,
-		amount: 38
-	},{
-		number: 44,
-		name: "Attack on Jerry",
-		rating: 3.808,
-		submissions: 1817,
-		place: 185,
-		amount: 41
-	},{
-		number: 45,
-		name: "Bruno's Mind Control Project",
-		rating: 3.643,
-		submissions: 1883,
-		place: 343,
-		amount: 37
-	},{
-		number: 46,
-		name: "a Very Talented Worm",
-		rating: 3.75,
-		submissions: 3576,
-		place: 614,
-		amount: 20
-	},{
-		number: 47,
-		name: "Record Runner",
-		rating: null,
-		submissions: 2404,
-		place: null,
-		amount: null
-	}
-];
-%><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -166,7 +127,45 @@ var data = [
 				<table id="tabl">
 				</table>
 				<script>
-					var dataa = <%- JSON.stringify(data) %>
+					var dataa = [
+						{
+							number: 43,
+							name: "Car Destruction Racer XIV",
+							rating: 4.111,
+							submissions: 1748,
+							place: 52,
+							amount: 38
+						},{
+							number: 44,
+							name: "Attack on Jerry",
+							rating: 3.808,
+							submissions: 1817,
+							place: 185,
+							amount: 41
+						},{
+							number: 45,
+							name: "Bruno's Mind Control Project",
+							rating: 3.643,
+							submissions: 1883,
+							place: 343,
+							amount: 37
+						},{
+							number: 46,
+							name: "a Very Talented Worm",
+							rating: 3.75,
+							submissions: 3576,
+							place: 614,
+							amount: 20
+						},{
+							number: 47,
+							name: "Record Runner",
+							rating: null,
+							submissions: 2404,
+							place: null,
+							amount: null
+						}
+					];
+
 					let table = document.getElementById("tabl");
 					for(let i = 0; i < dataa.length; i++) {
 						let row = table.insertRow();
