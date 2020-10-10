@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Hall of Fame</title>
+		<title>Statistics</title>
 
 		<meta name="theme-color" content="#ffffff">
 		<link rel="apple-touch-icon" href="/icons/db152.png" sizes="152x152">
@@ -18,8 +18,8 @@
 		<meta name="twitter:url" content="<%= host %>/">
 		<meta property="og:type" content="article">
 		<meta name="twitter:card" content="summary">
-		<meta property="og:title" content="The Dream Buster Hall of Fame">
-		<meta name="twitter:title" content="The Dream Buster Hall of Fame">
+		<meta property="og:title" content="Statistics">
+		<meta name="twitter:title" content="Statistics">
 		<meta property="og:description" content="dumb shit mostly.">
 		<meta name="twitter:description" content="dumb shit mostly.">
 		<meta name="description" content="dumb shit mostly.">
@@ -132,55 +132,56 @@
 							number: 43,
 							name: "Car Destruction Racer XIV",
 							rating: 4.111,
+							amount: 38,
 							submissions: 1748,
-							place: 52,
-							amount: 38
+							place: 52
 						},{
 							number: 44,
 							name: "Attack on Jerry",
 							rating: 3.808,
+							amount: 41,
 							submissions: 1817,
-							place: 185,
-							amount: 41
+							place: 185
 						},{
 							number: 45,
 							name: "Bruno's Mind Control Project",
 							rating: 3.643,
+							amount: 37,
 							submissions: 1883,
-							place: 343,
-							amount: 37
+							place: 343
 						},{
 							number: 46,
 							name: "a Very Talented Worm",
 							rating: 3.75,
+							amount: 20,
 							submissions: 3576,
-							place: 614,
-							amount: 20
+							place: 614
 						},{
 							number: 47,
 							name: "Record Runner",
 							rating: null,
+							amount: null,
 							submissions: 2404,
-							place: null,
-							amount: null
+							place: null
 						}
 					];
 
+					let index = ["number","name","rating","amount","submissions","place","percentile"];
 					let table = document.getElementById("tabl");
-					for(let i = 0; i < dataa.length; i++) {
+					for(let y = 0; y < dataa.length; y++) {
 						let row = table.insertRow();
-						for(key in dataa[i]) {
-							if(key === "amount")
-								row.insertCell().appendChild(document.createTextNode(dataa[i].rating === null ? "???" : Math.round(dataa[i].place/dataa[i].submissions*100)));
-							else if(dataa[i][key] === null)
+						for(let x = 0; x < 7; x++) {
+							if(index[x] === "percentile")
+								row.insertCell().appendChild(document.createTextNode(dataa[y].rating === null ? "???" : Math.round(dataa[y].place/dataa[y].submissions*100)));
+							else if(dataa[y][index[x]] === null)
 								row.insertCell().appendChild(document.createTextNode("???"));
 							else
-								row.insertCell().appendChild(document.createTextNode(dataa[i][key]));
+								row.insertCell().appendChild(document.createTextNode(dataa[y][index[x]]));
 						}
 					}
 					let thead = table.createTHead();
 					let row = thead.insertRow();
-					let head = ["#","Name","Rating","Submissions","Place","Percentile"];
+					let head = ["#","Name","Rating","Raters","Submissions","Place","Percentile"];
 					for(let key of head) {
 						let th = document.createElement("th");
 						let text = document.createTextNode(key);
