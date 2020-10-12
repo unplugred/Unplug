@@ -1,0 +1,197 @@
+<%- include('../partials/header',{title:"chat"}) %>
+		<link rel=StyleSheet href="<%= assets %>/window/window.css?v=2" type="text/css" media=screen>
+		<style>
+			.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}
+
+			body {
+				display: flex;
+				font-size: 0;
+				background:
+					url("<%= assets %>/chat/presents.png") no-repeat 10% 27%,
+					url("<%= assets %>/window/heavy-stars.png") repeat;
+				background-size: 75vw, auto;
+			}
+
+			#win-contacts {
+				width: 193px;
+				height: 400px;
+				top: calc(40vh - 185px);
+				left: calc(45vw - 146px);
+			}
+			#win-contacts .win-inner {
+				background:
+url("<%= assets %>/chat/contacts-top.png") no-repeat left 1px top,
+url("<%= assets %>/chat/contacts-bottom.png") no-repeat left 1px bottom,
+url("<%= assets %>/chat/contacts-middle.png") repeat-y left 1px center;
+			}
+			#win-chat {
+				width: 380px;
+				height: 376px;
+				top: calc(55vh - 190px);
+				left: calc(48vw - 103px);
+			}
+			.win-frame {
+				background:
+url("<%= assets %>/window/wintitle.png") 3px 3px no-repeat,
+linear-gradient(to bottom,#ADC6F7 21px,#D6D6CE 21px,#D6D6CE 22px,transparent 22px), #C0C0C0;
+			}
+
+			#messages {
+				background: url("<%= assets %>/chat/noise.png") repeat fixed;
+				width: calc(100% - 4px);
+				height: calc(100% - 28px);
+				margin: 2px;
+			}
+
+			#texter {
+				background-image: url("<%= assets %>/chat/self.png");
+				position: absolute;
+				z-index: 1;
+				height: 18px;
+				left: 4px;
+				bottom: 4px;
+				max-width: calc(100% - 148px);
+				pointer-events: none;
+				background-position: -54px 0;
+			}
+
+			.win-insetborder {
+				box-shadow: inset -1px -1px white, inset 1px 1px #808080, inset -2px -2px #C0C0C0, inset 2px 2px black;
+			}
+
+			#inpt {
+				font-family: monospace;
+				border: 0;
+				padding: 0;
+				height: 22px;
+				width: calc(100% - 73px);
+				left: 2px;
+				bottom: 2px;
+				position: absolute;
+				cursor: text;
+				padding-left: 3px;
+			}
+
+			#send {
+				display: inline-block;
+				position: absolute;
+				width: 64px;
+				height: 22px;
+				bottom: 2px;
+				right: 2px;
+				box-shadow: inset -1px -1px black, inset 1px 1px white, inset -2px -2px #808080, inset 2px 2px #C0C0C0;
+			}
+			#send:active {
+				box-shadow: inset 1px 1px black, inset -1px -1px white, inset 2px 2px #808080, inset -2px -2px #c0c0c0;
+			}
+			#send .icon {
+				background: url("<%= assets %>/chat/send.png") center no-repeat;
+				width: 100%;
+				height: 100%;
+			}
+			#send.inactive {
+				pointer-events: none;
+			}
+			#send.inactive .icon {
+				opacity: .5;
+			}
+		</style>
+		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
+		<link rel="prefetch" href="<%= assets %>/chat/fadeout.gif" />
+	</head>
+	<body>
+		<div class="win-wrap">
+			<div id="win-contacts" class="win-pos" onmousedown="explode()">
+				<div class="win-frame">
+					<div class="win-header" style="background-image:url('<%= assets %>/chat/header-contacts.png')"></div>
+					<a class="win-close" href="javascript:void(0)"></a>
+				</div>
+				<div class="win-inner"></div>
+			</div>
+		</div>
+		<div class="win-wrap">
+			<div id="win-chat" class="win-pos">
+				<div class="win-frame">
+					<div class="win-header" style="background-image:url('<%= assets %>/chat/header-chat.png')"></div>
+					<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+				</div>
+				<div class="win-inner">
+					<div class="win-insetborder" id="messages"></div>
+					<div id="texter"></div>
+					<input class="win-insetborder" id="inpt" maxlength="26" spellcheck="false" onclick="this.focus()"></input>
+					<div class="inactive" id="send" onclick="message(true);"><div class="icon"></div></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
+		<script>
+			let win = document.getElementById("win-chat");
+			dragElement(win.parentNode, win);
+			function closee(winn) {
+				winn.style.display = "none";
+			}
+
+			var messages = [];
+			var windw = document.getElementById("messages");
+			var inpt = document.getElementById("inpt");
+			var texter = document.getElementById("texter");
+			var button = document.getElementById("send");
+			var queue = 0;
+			var timeout = 0;
+			var typing = false;
+
+			function message(slf) {
+				if(slf) {
+					if(inpt.value.length < 26) return;
+
+					queue = Math.floor(Math.random()*3 + 1);
+
+					clearTimeout(timeout);
+					timeout = setTimeout(function(){ message(false); }, Math.random()*4000 + 1000);
+					setTimeout(function(){ typing = true; updatevisuals(); }, Math.random()*800 + 400);
+
+					inpt.value = "";
+					texter.style.width = "0";
+					button.className = "inactive";
+				} else {
+					clearTimeout(timeout);
+					if(--queue > 0) {
+						timeout = setTimeout(function(){ message(false); }, Math.random()*2500 + 500);
+						setTimeout(function(){ typing = true; updatevisuals(); }, Math.random()*600 + 200);
+					}
+					typing = false;
+				}
+
+				if(messages.unshift(slf) > 15)
+					messages.pop();
+
+				updatevisuals();
+
+			}
+
+			inpt.addEventListener('keydown', function(event) {
+				if(event.which === 13) message(true);
+				else setTimeout(function() {
+					button.className = inpt.value.length >= 26 ? "" : "inactive";
+					texter.style.width = Math.ceil(Math.max(Math.min(inpt.value.length, 26), 0)*8) + "px";
+					inpt.value = " ".repeat(inpt.value.length);
+				}, 1);
+			});
+
+			function updatevisuals() {
+				let msgs = typing ? "url(\"<%= assets %>/chat/typing.png\") no-repeat left 7px bottom 3px" : "";
+				for(let i = 0; i < messages.length; i++) {
+					if(msgs) msgs += ", ";
+					msgs += "url(\"<%= assets %>/chat/" + (messages[i] ? "self" : "other") + ".png\") no-repeat left 7px bottom " + (i*22+(typing ? 13 : 3)) + "px";
+				}
+				msgs += ", url(\"<%= assets %>/chat/noise.png\") repeat fixed, white";
+				windw.style.background = msgs;
+			}
+			
+			var contacts = document.getElementById("win-contacts");
+			function explode() {
+				contacts.style.WebkitMaskImage = "url(\"<%= assets %>/chat/fadeout.gif\")";
+				contacts.style.pointerEvents = "none";
+			}
+		</script>
+<%- include('../partials/footer') %>
