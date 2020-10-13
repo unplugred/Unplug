@@ -1,11 +1,6 @@
 #win-browser {
 	font-size: 0;
 }
-.win-frame {
-	background:
-url("../window/wintitle.png") 3px 3px no-repeat,
-linear-gradient(to bottom,#ADC6F7 21px,#D6D6CE 21px,#D6D6CE 22px,transparent 22px), #C0C0C0;
-}
 #win-dragbar {
 	position: absolute;
 	height: 18px;
@@ -22,12 +17,15 @@ linear-gradient(to bottom,#ADC6F7 21px,#D6D6CE 21px,#D6D6CE 22px,transparent 22p
 	left: 6px;
 	-webkit-font-smoothing : none;
 	font-smooth: never;
-	color: #D6D6CE;
+	color: #C0C0C0;
 }
 #win-browser .win-inner {
 	width: calc(100% - 10px);
 	height: calc(100% - 29px);
 	padding: 2px;
+}
+.win-inner {
+	background: none;
 }
 #win-topbar {
 	height: 22px;
@@ -39,64 +37,33 @@ linear-gradient(to bottom,#ADC6F7 21px,#D6D6CE 21px,#D6D6CE 22px,transparent 22p
 	height: 22px;
 	padding: 0;
 	margin-right: 2px;
-	background: #C0C0C0;
-	border-width: 1px;
-	border-style: solid;
-	border-color: white black black white;
+	display: inline-block;
 }
-.win-button:active {
-	border-color: black white white black;
-}
-#win-back .win-icon {
+#win-back:after {
 	background-image: url("back.png");
 }
-.win-off#win-back .win-icon {
+.win-off#win-back:after {
 	background-image: url("backoff.png");
 }
-#win-front .win-icon {
+#win-front:after {
 	background-image: url("front.png");
 }
-.win-off#win-front .win-icon {
+.win-off#win-front:after {
 	background-image: url("frontoff.png");
 }
 .win-off {
 	pointer-events: none;
 }
-.win-icon {
-	width: calc(100% - 1px);
-	height: calc(100% - 1px);
-	background-position: center center;
-	background-repeat: no-repeat;
-	border-width: 0 1px 1px 0;
-	border-style: solid;
-	border-color: #808080;
-}
-.win-icon:active {
-	border-width: 1px 0 0 1px;
-}
-.win-insetborder1 {
-	border-width: 1px;
-	border-style: solid;
-	border-color: #808080 white white #808080;
-}
-.win-insetborder2 {
-	border-width: 1px 0 0 1px;
-	border-style: solid;
-	border-color: black;
-	width: calc(100% - 2px);
-	height: calc(100% - 2px);
-}
 #win-adress {
-	top: -5.5px;
+	top: -6.5px;
 	position: relative;
 	display: inline-block;
 	padding: 0;
-	height: 20px;
+	padding-left: 2px;
+	height: 22px;
 	width: calc(100% - 94px);
-}
-#win-adress-inner {
-	height: calc(100% - 4px)!important;
 	direction: ltr!important;
+	border: 0;
 }
 #win-rainbow {
 	background-image: url("glitch.png");
@@ -109,10 +76,10 @@ linear-gradient(to bottom,#ADC6F7 21px,#D6D6CE 21px,#D6D6CE 22px,transparent 22p
 	pointer-events: none;
 	image-rendering: pixelated;
 }
-#win-go .win-icon {
+#win-go:after {
 	background-image: url("go.png");
 }
-.win-off#win-go .win-icon {
+.win-off#win-go:after {
 	opacity: .5;
 }
 #win-go {
@@ -120,12 +87,12 @@ linear-gradient(to bottom,#ADC6F7 21px,#D6D6CE 21px,#D6D6CE 22px,transparent 22p
 	margin-right: 0;
 	margin-left: 2px;
 }
-#win-innerbrowser {
-	width: calc(100% - 2px);
-	height: calc(100% - 26px);
-}
 #win-iframe {
+	width: calc(100% - 4px);
+	height: calc(100% - 28px);
 	background-color: white;
+	border: 0;
+	padding: 2px;
 }
 
 @font-face {

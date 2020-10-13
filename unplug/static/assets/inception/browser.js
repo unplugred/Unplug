@@ -1,5 +1,5 @@
 var iframe = document.getElementById("win-iframe");
-var input = document.getElementById("win-adress-inner");
+var input = document.getElementById("win-adress");
 var back = document.getElementById("win-back");
 var front = document.getElementById("win-front");
 var go = document.getElementById("win-go");
