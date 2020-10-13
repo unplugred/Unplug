@@ -1,5 +1,6 @@
 <%- include('../partials/header',{title:"unplug"}) %>
-		<link rel=StyleSheet href="<%= assets %>/window/window.css?=2" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/window/window.css?v=3" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/inception/browser.css?v=5" type="text/css" media=screen />
 		<style>
 			.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}
 
@@ -18,8 +19,6 @@
 				cursor: url("<%= assets %>/cursors/default.png") 0 0, default !important;
 			}
 		</style>
-		<link rel=StyleSheet href="<%= assets %>/inception/browser.css?v=4" type="text/css" media=screen />
-		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 	</head>
 	<body>
 		<div id="win-browser" class="win-pos">
@@ -31,25 +30,15 @@
 			<div class="win-inner">
 				<div id="win-rainbow"></div>
 				<div id="win-topbar">
-					<button class="win-button" id="win-back" onclick="backk()">
-						<div class="win-icon"></div>
-					</button>
-					<button class="win-button win-off" id="win-front" onclick="frontt()">
-						<div class="win-icon"></div>
-					</button>
-					<div class="win-insetborder1" id="win-adress">
-						<input class="win-insetborder2" id="win-adress-inner" spellcheck="false"></input>
-					</div>
-					<button class="win-button" id="win-go" onclick="changeurl()">
-						<div class="win-icon"></div>
-					</button>
+					<div class="win-button" id="win-back" onclick="backk()"></div>
+					<div class="win-button win-off" id="win-front" onclick="frontt()"></div>
+					<input class="win-insetborder" id="win-adress" spellcheck="false"></input>
+					<div class="win-button" id="win-go" onclick="changeurl()"></div>
 				</div>
-				<div class="win-insetborder1" id="win-innerbrowser">
-					<iframe class="win-insetborder2" id="win-iframe" src="/bulb" onLoad="updateurl(this.contentWindow.location);"></iframe>
-				</div>
+				<iframe class="win-insetborder" id="win-iframe" src="/bulb" onLoad="updateurl(this.contentWindow.location);"></iframe>
 			</div>
 		</div>
-		<script type="text/javascript" src="<%= assets %>/inception/browser.js?v=2"></script>
+		<script type="text/javascript" src="<%= assets %>/inception/browser.js?v=3"></script>
 		<script>
 			historyy = [""];
 

@@ -1,5 +1,6 @@
 <%- include('../partials/header',{title:"this is dumb",color:"#3B6EA5"}) %>
-		<link rel=StyleSheet href="<%= assets %>/window/window.css?v=2" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/window/window.css?v=3" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/inception/browser.css?v=5" type="text/css" media=screen />
 		<style>
 			.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}
 
@@ -8,13 +9,21 @@
 			}
 
 			#taskbar {
-				background:
-url("<%= assets %>/inception/taskbaright.png") calc(100% - 2px) 3px no-repeat,
-url("<%= assets %>/inception/taskbarmiddle.png") left top repeat-x, #D4D0C8;
+				background: linear-gradient(to bottom, #C0C0C0 1px, #FFF 1px, #FFF 2px, #C0C0C0 2px);
 				bottom: -200px;
 				height: 228px;
 				width: 100%;
 				position: fixed;
+			}
+
+			#taskbar-right {
+				background: url("<%= assets %>/inception/taskbar-right.png") center no-repeat;
+				width: 130px;
+				height: 22px;
+				bottom: 2px;
+				right: 4px;
+				position: fixed;
+    box-shadow: inset -1px -1px #FFF, inset 1px 1px #808080;
 			}
 
 			#win-browser {
@@ -41,18 +50,26 @@ url("<%= assets %>/inception/taskbarmiddle.png") left top repeat-x, #D4D0C8;
 			}
 
 			#start {
-				background-image: url("<%= assets %>/inception/startoff.png");
+				background: url("<%= assets %>/inception/start.png") center no-repeat;
 				position: relative;
 				display: block;
-				top: 3px;
-				left: 1px;
-				width: 57px;
-				height: 24px;
+				top: 4px;
+				left: 2px;
+				width: 55px;
+				height: 22px;
+				box-shadow:
+inset -1px -1px #000,
+inset 1px 1px white,
+inset -2px -2px #808080,
+inset 2px 2px #C0C0C0;
 			}
 
 			.on#start {
-				background-image: url("<%= assets %>/inception/starton.png");
-				pointer-events: none;
+				box-shadow:
+inset 1px 1px #000,
+inset -1px -1px #FFF,
+inset 2px 2px #808080,
+inset -2px -2px #C0C0C0;
 			}
 
 			canvas {
@@ -64,14 +81,15 @@ url("<%= assets %>/inception/taskbarmiddle.png") left top repeat-x, #D4D0C8;
 				pointer-events: none;
 			}
 		</style>
-		<link rel=StyleSheet href="<%= assets %>/inception/browser.css?v=4" type="text/css" media=screen />
-		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
 	</head>
 	<body>
 		<a class="dicon" href="/trash" id="trash" title="trash"></a>
 		<a class="dicon" href="/computers" id="computer" title="computer"></a>
 
-		<div id="taskbar"><a href="javascript:void(0)" id="start" onclick="psychadelic()"></a></div>
+		<div id="taskbar">
+			<a href="javascript:void(0)" id="start" onclick="psychadelic()"></a>
+			<div id="taskbar-right"></div>
+		</div>
 
 		<div class="win-wrap">
 			<div id="win-browser" class="win-pos">
@@ -83,28 +101,18 @@ url("<%= assets %>/inception/taskbarmiddle.png") left top repeat-x, #D4D0C8;
 				<div class="win-inner">
 					<div id="win-rainbow"></div>
 					<div id="win-topbar">
-						<button class="win-button win-off" id="win-back" onclick="backk()">
-							<div class="win-icon"></div>
-						</button>
-						<button class="win-button win-off" id="win-front" onclick="frontt()">
-							<div class="win-icon"></div>
-						</button>
-						<div class="win-insetborder1" id="win-adress">
-							<input class="win-insetborder2" id="win-adress-inner" spellcheck="false"></input>
-						</div>
-						<button class="win-button" id="win-go" onclick="changeurl()">
-							<div class="win-icon"></div>
-						</button>
+						<div class="win-button win-off" id="win-back" onclick="backk()"></div>
+						<div class="win-button win-off" id="win-front" onclick="frontt()"></div>
+						<input class="win-insetborder" id="win-adress" spellcheck="false"></input>
+						<div class="win-button" id="win-go" onclick="changeurl()"></div>
 					</div>
-					<div class="win-insetborder1" id="win-innerbrowser">
-						<iframe class="win-insetborder2" id="win-iframe" src="/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe>
-					</div>
+					<iframe class="win-insetborder" id="win-iframe" src="/unplug" onLoad="updateurl(this.contentWindow.location);"></iframe>
 				</div>
 			</div>
 		</div>
 
 		<canvas id="canva" style="display: none"></canvas>
-		<script type="text/javascript" src="<%= assets %>/inception/browser.js?v=2"></script>
+		<script type="text/javascript" src="<%= assets %>/inception/browser.js?v=3"></script>
 		<script type="text/javascript" src="<%= assets %>/window/movable.js"></script>
 		<script>
 			dragElement(document.getElementById("win-browser").parentNode, document.getElementById("win-dragbar"));

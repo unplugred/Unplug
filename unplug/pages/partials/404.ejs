@@ -1,5 +1,5 @@
 <%- include('../partials/header',{title:"404",description:"you got lost."}) %>
-		<link rel=StyleSheet href="<%= assets %>/window/window.css?v=2" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/window/window.css?v=3" type="text/css" media=screen>
 		<style>
 			.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}
 
@@ -61,8 +61,7 @@
 			}
 		</style>
 		<link rel="prefetch" href="<%= assets %>/window/loading.png" />
-		<link rel="prefetch" href="<%= assets %>/404/togoback.png" />
-		<link rel="prefetch" href="<%= assets %>/window/closed.png" />
+		<link rel="prefetch" href="<%= assets %>/404/back.png" />
 	</head>
 	<body>
 		<video id="vid" autoplay muted loop>

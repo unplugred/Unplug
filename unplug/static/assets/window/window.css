@@ -12,12 +12,17 @@
 	width: 100%;
 	height: 100%;
 	position: absolute;
+	box-shadow:
+inset -1px -1px #404040,
+inset 1px 1px #C0C0C0,
+inset -2px -2px #808080,
+inset 2px 2px #FFF,
+inset -3px -3px #C0C0C0,
+inset 3px 3px #C0C0C0;
+	image-rendering:pixelated;
 	background:
 url("./wintitle.png") 3px 3px no-repeat,
-linear-gradient(to bottom,#ADC6F7 21px,#D6D6CE 21px,#D6D6CE 22px,transparent 22px),
-url("./loading.png") top right repeat fixed, #191919;
-	box-shadow: inset -1px -1px #424242, inset 1px 1px #D6D6CE, inset -2px -2px #848484, inset 2px 2px #FFF, inset -3px -3px #D6D6CE, inset 3px 3px #D6D6CE;
-	image-rendering:pixelated;
+linear-gradient(to bottom,#ADC6F7 21px,#C0C0C0 21px);
 }
 .win-header {
 	top: 6px;
@@ -27,20 +32,50 @@ url("./loading.png") top right repeat fixed, #191919;
 	position: relative;
 	background-repeat: no-repeat;
 }
-.win-close{
+.win-close {
 	width: 16px;
 	height: 14px;
 	position: absolute;
-	background-image: url("../window/close.png");
 	top: 5px;
 	right: 5px;
 }
-.win-close:active{
-	background-image: url("../window/closed.png");
+.win-close:after {
+	background-image: url("../window/close.png?v=2");
 }
 .win-inner {
 	margin: 22px 3px 3px 3px;
 	width: calc(100% - 6px);
 	height: calc(100% - 25px);
 	position: absolute;
+	background: local, url("./loading.png") top right repeat fixed, #191919;
+}
+.win-insetborder {
+	box-shadow:
+inset -1px -1px #FFF,
+inset 1px 1px #808080,
+inset -2px -2px #C0C0C0,
+inset 2px 2px #000;
+}
+.win-button, .win-close {
+	box-shadow:
+inset -1px -1px #000,
+inset 1px 1px white,
+inset -2px -2px #808080,
+inset 2px 2px #C0C0C0;
+	background: #C0C0C0;
+}
+.win-button:active, .win-close:active {
+	box-shadow:
+inset 1px 1px #000,
+inset -1px -1px #FFF,
+inset 2px 2px #808080,
+inset -2px -2px #C0C0C0;
+}
+.win-button:after, .win-close:after {
+	width: 100%;
+	height: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	content: '';
+	display: block;
 }
