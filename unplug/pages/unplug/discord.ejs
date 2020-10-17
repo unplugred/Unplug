@@ -1,67 +1,34 @@
 <%- include('../partials/header',{title:"discord"}) %>
-
-		<link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed" rel="stylesheet">
-
 		<style>
+			body {
+				display: flex;
+			}
 			#bg {
-				background-image: url("<%= assets %>/discord.png");
+				background-image: url("<%= assets %>/discord/bg.png");
 				width: 100vw;
 				height: 100vh;
 				position: fixed;
 				opacity: .1;
 				animation: background 16s 0s linear infinite;
 			}
-
-			.wrap {
-				display: inline-block;
-				line-height: 0;
-				position: absolute;
+			#text{
+				animation: vert 5s 0s ease-in-out infinite;
+				width: 257px;
+				height: 39px;
+				background-image: url("<%= assets %>/discord/text.png");
+				margin: auto;
+				position: relative;
+				z-index: 10;
 			}
-
-			#verticle{
-				animation: vert 3s 0s ease-in-out infinite;
-			}
-			#horizontal{
-				animation: horz 6s -0.75s ease-in-out infinite;
-			}
-			#rotation{
-				animation: rot 6s -1.5s ease-in-out infinite;
-				font-size: 10vw;
-				font-weight: bold;
-				font-family: 'Saira Extra Condensed', sans-serif;
-			}
-
 			@keyframes vert {
 				0% {
-					margin-top: calc(50vh + 5vw);
+					top: 2vw;
 				}
 				50% {
-					margin-top: calc(50vh - 5vw);
+					top: -2vw;
 				}
 				100% {
-					margin-top: calc(50vh + 5vw);
-				}
-			}
-			@keyframes horz {
-				0% {
-					margin-left: 65vw;
-				}
-				50% {
-					margin-left: 35vw;
-				}
-				100% {
-					margin-left: 65vw;
-				}
-			}
-			@keyframes rot {
-				0% {
-					transform: translate(-50%, 0) rotate(0.02turn);
-				}
-				50% {
-					transform: translate(-50%, 0) rotate(-0.02turn);
-				}
-				100% {
-					transform: translate(-50%, 0) rotate(0.02turn);
+					top: 2vw;
 				}
 			}
 			@keyframes background {
@@ -74,14 +41,7 @@
 			}
 		</style>
 	</head>
-
 	<body>
 		<div id="bg"></div>
-		<div id="verticle" class="wrap">
-			<div id="horizontal" class="wrap">
-				<div id="rotation" class="wrap">
-					red#3510
-				</div>
-			</div>
-		</div>
+		<div id="text"></div>
 <%- include('../partials/footer') %>
