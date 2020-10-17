@@ -1,0 +1,364 @@
+<%- include('../../partials/header',{title:"archive-v2",css:false}) %>
+		<style>
+			::selection, ::-moz-selection {
+				color: #4B7071;
+				background: #D8E0E0fe;
+			}
+
+			body, html{
+				margin: 0;
+				padding: 0;
+				border: none;
+				width: 100vw;
+				height: 100vh;
+				background-color: #4B7071;
+				font-size: 20px;
+				color: #D8E0E0;
+				font-family: Trebuchet MS, Trebuchet, "Helvetica Neue", HelveticaNeue, Helvetica, Arial, sans-serif;
+				overflow-x: hidden;
+			}
+
+			a {
+				color: #D8E0E0;
+			}
+
+			body::-webkit-scrollbar {
+				width: 12px;
+			}
+
+			body::-webkit-scrollbar-track {
+				background-color: transparent;
+			}
+
+			body::-webkit-scrollbar-thumb {
+				background-color: #d8e0e0;
+				border: 3px #4b7071 solid;
+				border-radius: 6px;
+				outline: none;
+			}
+
+			#headerwrapper{
+				display: flex;
+			}
+
+			#header{
+				height: 137px;
+				margin: 30px auto;
+				display: flex;
+				max-width: calc(100% - 20px);
+			}
+			
+			#headerlinebreakthing{
+				display: block;
+				height: 20px;
+			}
+
+			#rotato-cubo{
+				height: 137px;
+				width: 143px;
+				background-image: url("<%= assets %>/archive/red.gif");
+				display: inline-block;
+			}
+
+			#separator{
+				height: 100%;
+				width: 6px;
+				border-radius: 3px;
+				background-color: #D8E0E0;
+				display: inline-block;
+				margin: 0 30px;
+			}
+
+			#links{
+				height: 100%;
+				display: inline-flex;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: baseline;
+				width: calc(100% - 209px);
+			}
+
+			.link{
+				display: block;
+			}
+
+			.project{
+				width: 100%;
+				height: 250px;
+				border-top: solid black 10px;
+				background-attachment: fixed;
+				background-position: center center;
+				display: block;
+			}
+
+			.center{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			#aircompressor{
+				background-color: #808080;
+				background-image: url("<%= assets %>/archive/aircompressor_bg.png");
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+
+			#aircompressor-logo-wrapper{
+				background-color: #FFF;
+				border: 7px solid black;
+				margin: 0 10px;
+				max-width: calc(85% - 34px);
+			}
+
+			#aircompressor-logo{
+				margin: 10px;
+				display: block;
+				max-width: calc(100% - 20px);
+			}
+
+			#headspace{
+				background-color: #000;
+				background-image: url("<%= assets %>/archive/headspace_bg.gif");
+			}
+
+			#headspace-logo{
+				max-width: 80%;
+			}
+
+			#rooms-logo{
+				max-width: 80%;
+			}
+
+			#rooms{
+				background-color: #000;
+				background-image: url("<%= assets %>/archive/rooms_bg.png");
+			}
+
+			#rooms-gradient{
+				background: rgba(0,0,0,1);
+				background: -moz-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+				background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,0)));
+				background: -webkit-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+				background: -o-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+				background: -ms-linear-gradient(-45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+				background: linear-gradient(135deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.6) 100%);
+				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: baseline;
+			}
+
+			#rooms-mobile{
+				display: none;
+			}
+
+			#unplug{
+				background:
+url("<%= assets %>/window/wintitle.png") 3px 3px no-repeat,
+linear-gradient(to bottom,#ADC6F7 21px,#C0C0C0 21px,#C0C0C0 22px,#000 22px);
+				box-shadow:
+inset -1px -1px #404040,
+inset 1px 1px #C0C0C0,
+inset -2px -2px #808080,
+inset 2px 2px #FFF,
+inset -3px -3px #C0C0C0,
+inset 3px 3px #C0C0C0;
+				position: relative;
+			}
+			.win-close {
+				width: 16px;
+				height: 14px;
+				position: absolute;
+				top: 5px;
+				right: 5px;
+				box-shadow:
+inset -1px -1px #000,
+inset 1px 1px white,
+inset -2px -2px #808080,
+inset 2px 2px #C0C0C0;
+				background: #C0C0C0;
+			}
+			.win-close:after {
+				background-image: url("<%= assets %>/window/close.png?v=2");
+				width: 100%;
+				height: 100%;
+				background-position: center;
+				background-repeat: no-repeat;
+				content: '';
+				display: block;
+			}
+
+			#unplug-logo{
+				max-width: 80%;
+				margin: auto;
+			}
+
+			#unplug-bg{
+				background-image: url("<%= assets %>/archive/unplug_bg.png");
+				background-attachment: fixed;
+				border: 10px solid black;
+				margin: 22px 3px 3px 3px;
+				background-size: cover;
+				background-position: center center;
+				width: calc(100% - 26px);
+				height: calc(100% - 45px);
+				display: flex;
+			}
+
+			#worseforthebetter{
+				background-image: url("<%= assets %>/archive/worseforthebetter_bg.png");
+				background-color: #808080;
+			}
+
+			#worseforthebetter-logo{
+				background-image: url("<%= assets %>/archive/worseforthebetter_logo.png");
+				background-position: center center;
+				background-repeat: no-repeat;
+				width: 100%;
+				height: 100%;
+			}
+
+			#worseforthebetter-pill{
+				background-image: url("<%= assets %>/archive/worseforthebetter_pill.png");
+				background-position: left center;
+				background-repeat: no-repeat;
+				display: flex;
+				width: 100%;
+				height: 100%;
+			}
+
+			#uselessflower{
+				background-color: #FFF;
+				background-image: url("<%= assets %>/archive/uselessflower_bg.png");
+				background-position: left top;
+				background-attachment: inherit;
+				background-repeat: no-repeat;
+			}
+
+			#uselessflower-logo{
+				max-width: 80%;
+			}
+
+			#footer{
+				width: 100%;
+				height: 40px;
+				display: block;
+				border-top: solid black 10px;
+			}
+
+			#footer-text{
+				text-align: center;
+				margin: 0;
+				margin-top: 10px;
+			}
+
+			@media only screen and (max-width: 485px) {
+				body, html {
+					overflow-y: visible;
+				}
+
+				#header{
+					width: calc(100% - 20px);
+					height: auto;
+					flex-direction: column;
+					align-items: center;
+				}
+
+				#separator{
+					height: 6px;
+					width: 100%;
+					margin: 30px 0;
+					display: block;
+				}
+
+				.icon{
+					margin-left: 20px;
+					margin-right: 0;
+				}
+
+				#links{
+					height: auto;
+					width: 100%;
+				}
+			}
+
+			@media only screen and (max-width: 660px) {
+				#worseforthebetter-pill{
+					background-image: none;
+				}
+
+				#rooms-mobile{
+					display: flex;
+					width: 100%;
+					height: 100%;
+					background-image: url("<%= assets %>/archive/rooms_mobile.png");
+					background-repeat: no-repeat;
+					background-position: center top;
+				}
+
+				#rooms-text{
+					width: 100%;
+					height: 100%;
+					background-image: url("<%= assets %>/archive/rooms_text.png");
+					background-repeat: no-repeat;
+					background-position: center center;
+					background-size: contain;
+					max-width: 457px;
+				}
+
+				#rooms-logo{
+					display: none;
+				}
+			}
+		</style>
+	</head>
+	<body
+		><div id="headerwrapper"
+			><div id="header"
+				><a id="rotato-cubo" href="/unplug"></a
+				><div id="separator"></div
+				><div id="links"
+					>Hi. im red. this site is mostly dedicated to my works.<div id="headerlinebreakthing"></div>
+					<a class="link" href="https://www.twitter.com/unplugred">Twitter</a
+					><a class="link" href="https://tumblr.unplug.red/">Angst automatism art blog</a
+					><a class="link" href="https://soundcloud.com/unplugred">Music</a
+				></div
+			></div
+		></div
+		><a href="https://unplugred.itch.io/air-compressor" class="project" id="aircompressor"
+			><div id="aircompressor-logo-wrapper"
+				><img src="<%= assets %>/archive/aircompressor_logo.png" id="aircompressor-logo"></img
+			></div
+		></div
+		><a href="https://unplugred.itch.io/headspace" class="project center" id="headspace"
+			><img id="headspace-logo" src="<%= assets %>/archive/headspace_logo.png"></img
+		></a
+		><a href="https://unplugred.itch.io/rooms" class="project" id="rooms"
+			><div id="rooms-gradient"
+				><img id="rooms-logo" src="<%= assets %>/archive/rooms_logo.png"><<%= assets %>/archive
+				><div class="center" id="rooms-mobile"
+					><div id="rooms-text"></div
+				></div
+			></div
+		></a
+		><a href="/unplug" class="project" id="unplug"
+			><div class="win-close"></div
+			><div id="unplug-bg"
+				><img id="unplug-logo" src="<%= assets %>/archive/unplug_logo.png"></img
+			></div
+		></a
+		><a href="https://unplugred.itch.io/worse-for-the-better" class="project" id="worseforthebetter"
+			><div id="worseforthebetter-pill"
+				><div id="worseforthebetter-logo"></div
+			></div
+		></a
+		><a href="https://unplugred.itch.io/uselessflower" class="project center" id="uselessflower"
+			><img id="uselessflower-logo" src="<%= assets %>/archive/uselessflower_logo.png"></img
+		></a
+		><div id="footer"
+			><p id="footer-text">Copyright © Ari Hanan 2018-2019</p
+		></div>
+<%- include('../../partials/footer') %>

@@ -1,0 +1,131 @@
+<%- include('../../partials/header',{title:"archive-v1",css:false}) %>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body, html{
+				margin: 0;
+				padding: 0;
+				border: none;
+				width: 100vw;
+				height: 100vh;
+				background-color: #4B7071;
+				color: #D8E0E0;
+				overflow-x: hidden;
+				overflow-y: hidden;
+			}
+
+			body::-webkit-scrollbar {
+				width: 12px;
+			}
+
+			body::-webkit-scrollbar-track {
+				background-color: transparent;
+			}
+
+			body::-webkit-scrollbar-thumb {
+				background-color: #d8e0e0;
+				border: 3px #4b7071 solid;
+				border-radius: 6px;
+				outline: none;
+			}
+
+			body{
+				display: flex;
+			}
+			
+			#everything{
+				height: 137px;
+				width: max-content;
+				margin: auto;
+			}
+			
+			#rotato-cubo{
+				height: 137px;
+				width: 143px;
+				background-image: url("<%= assets %>/archive/red.gif");
+				display: inline-block;
+			}
+			
+			#separator{
+				height: 100%;
+				width: 6px;
+				border-radius: 3px;
+				background-color: #D8E0E0;
+				display: inline-block;
+				margin: 0 30px;
+			}
+			
+			.icon{
+				display: inline-block;
+				width: 40px;
+				height: 40px;
+				border-radius: 20px;
+				background-color: #D8E0E0;
+				margin-bottom: 20px;
+				margin-right: 20px;
+				background-size: cover;
+			}
+			
+			#icons{
+				display: inline-block;
+				line-height: 0;
+			}
+			
+			#tumblr{
+				background-image: url("<%= assets %>/archive/tumblr.svg");
+			}
+			
+			#instagram{
+				background-image: url("<%= assets %>/archive/instagram.svg");
+			}
+			
+			#deviantart{
+				background-image: url("<%= assets %>/archive/deviantart.svg");
+			}
+			
+			#itchio{
+				background-image: url("<%= assets %>/archive/itchio.svg");
+			}
+			
+			#gamejolt{
+				background-image: url("<%= assets %>/archive/gamejolt.svg");
+			}
+			
+			#soundcloud{
+				background-image: url("<%= assets %>/archive/soundcloud.svg");
+			}
+			
+			#youtube{
+				background-image: url("<%= assets %>/archive/youtube.svg");
+			}
+			
+			#vimeo{
+				background-image: url("<%= assets %>/archive/vimeo.svg");
+			}
+			
+			@media only screen and (max-width: 470px) {
+				body, html {
+					overflow-y: auto;
+				}
+				
+				#everything{
+					width: 143px;
+					height: max-content;
+					padding-top: 20px;
+				}
+				
+				#separator{
+					height: 6px;
+					width: 100%;
+					margin: 30px 0;
+				}
+			
+				.icon{
+					margin-left: 20px;
+					margin-right: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="everything"><a id="rotato-cubo" href="/unplug"></a><div id="separator"></div><div id="icons"><a href="https://tumblr.unplug.red/" class="icon" id="tumblr"></a><a href="https://www.instagram.com/unplugred/" class="icon" id="instagram"></a><a href="https://www.deviantart.com/arihanan" class="icon" id="deviantart"></a><a href="https://unplugred.itch.io/" class="icon" id="itchio"></a><br/><a href="https://gamejolt.com/@unplugred" class="icon" id="gamejolt"></a><a href="https://soundcloud.com/unplugred" class="icon" id="soundcloud"></a><a href="https://www.youtube.com/channel/UCRI5ZQjoee-Izu8yyV6ANwQ" class="icon" id="youtube"></a><a href="https://vimeo.com/unplugred" class="icon" id="vimeo"></a></div></div>
+<%- include('../../partials/footer') %>
