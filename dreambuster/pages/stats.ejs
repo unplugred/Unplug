@@ -53,7 +53,7 @@
 			}
 
 			*::-webkit-scrollbar {
-				width: 8px;
+				width: 7px;
 			}
 
 			*::-webkit-scrollbar-track {
@@ -61,12 +61,12 @@
 			}
 
 			*::-webkit-scrollbar-thumb {
-				background-color: #262626;
+				background-color: #00000080;
 				outline: none;
-				border-right: 3px solid #AFAFAF;
+				border-left: 3px solid #AFAFAF;
 			}
 
-			#title{
+			#board{
 				background-image: url(<%= assets %>/stats.png);
 				background-size: contain;
 				background-repeat: no-repeat;
@@ -83,7 +83,14 @@
 				width: 86%;
 				height: 71%;
 				margin-left: 7%;
-				margin-top: 29%;
+				margin-top: 27%;
+				padding-bottom: 3%;
+			}
+
+			h2 {
+				margin: 50px 0 9px 2px;
+				font-size: 10vmin;
+				opacity: .25;
 			}
 
 			table {
@@ -122,76 +129,44 @@
 		</style>
 	</head>
 	<body>
-		<div id="title">
-			<div id="content">
-				<table id="tabl">
-				</table>
-				<script>
-					var dataa = [
-						{
-							number: 43,
-							name: "Car Destruction Racer XIV",
-							rating: 4.111,
-							amount: 38,
-							submissions: 1748,
-							place: 52
-						},{
-							number: 44,
-							name: "Attack on Jerry",
-							rating: 3.808,
-							amount: 41,
-							submissions: 1817,
-							place: 185
-						},{
-							number: 45,
-							name: "Bruno's Mind Control Project",
-							rating: 3.643,
-							amount: 37,
-							submissions: 1883,
-							place: 343
-						},{
-							number: 46,
-							name: "a Very Talented Worm",
-							rating: 3.75,
-							amount: 20,
-							submissions: 3576,
-							place: 614
-						},{
-							number: 47,
-							name: "Record Runner",
-							rating: null,
-							amount: null,
-							submissions: 2404,
-							place: null
-						}
-					];
-
-					let index = ["number","name","rating","amount","submissions","place","percentile"];
-					let table = document.getElementById("tabl");
-					for(let y = 0; y < dataa.length; y++) {
-						let row = table.insertRow();
-						for(let x = 0; x < 7; x++) {
-							if(index[x] === "percentile")
-								row.insertCell().appendChild(document.createTextNode(dataa[y].rating === null ? "???" : Math.round(dataa[y].place/dataa[y].submissions*100)));
-							else if(dataa[y][index[x]] === null)
-								row.insertCell().appendChild(document.createTextNode("???"));
-							else
-								row.insertCell().appendChild(document.createTextNode(dataa[y][index[x]]));
-						}
-					}
-					let thead = table.createTHead();
-					let row = thead.insertRow();
-					let head = ["#","Name","Rating","Raters","Submissions","Place","Percentile"];
-					for(let key of head) {
-						let th = document.createElement("th");
-						let text = document.createTextNode(key);
-						th.appendChild(text);
-						row.appendChild(th);
-					}
-				</script>
-			</div>
-		</div>
+		<div id="board"><div id="content"></div></div>
+		<script src="<%= assets %>/score.js"></script>
 		<script>
+			let index = ["number","name",".rating",".amount","submissions",".place","percentile"]
+			let categories = ["overall","fun","innovation","theme","graphics","audio","humor","mood"]
+			let content = document.getElementById("content");
+			for(let n = 0; n < categories.length; n++) {
+				let title = document.createElement("H2");
+				title.innerHTML = categories[n][0].toUpperCase()+categories[n].substring(1);
+				content.appendChild(title);
+				let table = document.createElement("TABLE");
+				content.appendChild(table);
+				for(let y = 0; y < dataa.length; y++) {
+					let row = table.insertRow();
+					for(let x = 0; x < 7; x++) {
+						if(index[x] === "percentile")
+							row.insertCell().appendChild(document.createTextNode(dataa[y][categories[n]].rating === null ? "???" : (Math.round(dataa[y][categories[n]].place/dataa[y].submissions*1000)/10)));
+						else if(resolve(index[x].replace(".",categories[n]+"."),dataa[y]) === null)
+							row.insertCell().appendChild(document.createTextNode("???"));
+						else
+							row.insertCell().appendChild(document.createTextNode(resolve(index[x].replace(".",categories[n]+"."),dataa[y])));
+					}
+				}
+				let thead = table.createTHead();
+				let row = thead.insertRow();
+				let head = ["#","Name","Rating","Raters","Submissions","Place","Percentile"];
+				for(let key of head) {
+					let th = document.createElement("th");
+					let text = document.createTextNode(key);
+					th.appendChild(text);
+					row.appendChild(th);
+				}
+			}
+
+			function resolve(path, obj=self, separator='.') {
+				var properties = Array.isArray(path) ? path : path.split(separator)
+				return properties.reduce((prev, curr) => prev && prev[curr], obj)
+			}
 		</script>
 	</body>
 </html>
