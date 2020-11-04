@@ -1,0 +1,191 @@
+<%- include('../partials/header',{title:"keys"}) %>
+		<style>
+			#main {
+				display: block;
+				background-image: url("<%= assets %>/keys/keys.png");
+				background-size: 100vmax;
+				background-position: center;
+				background-repeat: no-repeat;
+				width: 100vmax;
+				height: 100vmin;
+			}
+
+			img {
+				max-height: 100vh;
+				max-width: 100vw;
+			}
+
+			.pctr {
+				background-image: url("<%= assets %>/keys/keys_on.png");
+				background-size: 62.1728787vmax;
+				background-repeat: no-repeat;
+				background-attachment: fixed;
+				display: block;
+				position: fixed;
+				transition: opacity .1s;
+				opacity: 0;
+				height: 16.0586836vmax;
+			}
+
+			.top {
+				background-position: 20.45vmax calc(50vmin - 18.5vmax);
+				top: calc(50vmin - 18.55vmax);
+			}
+			.bottom {
+				background-position: 20.2vmax calc(50vmin - 13.895vmax);
+				top: calc(50vmin + 2.24vmax);
+			}
+
+			.pctr:hover {
+				opacity: 1;
+			}
+
+			#n01 {
+				left: 20.2vmax;
+				width: 6vmax;
+			}
+
+			#n02 {
+				left: 26vmax;
+				width: 6vmax;
+			}
+
+			#n03 {
+				left: 31.9vmax;
+				width: 5.44vmax;
+			}
+
+			#n04 {
+				left: 37.3vmax;
+				width: 6.6vmax;
+			}
+
+			#n05 {
+				left: 43.9vmax;
+				width: 5.7vmax;
+			}
+
+			#n06 {
+				left: 49.6vmax;
+				width: 4.4vmax;
+			}
+
+			#n07 {
+				left: 53.96vmax;
+				width: 5.2vmax;
+			}
+
+			#n08 {
+				left: 59.1vmax;
+				width: 6vmax;
+			}
+
+			#n09 {
+				left: 65.1vmax;
+				width: 5.5vmax;
+			}
+
+			#n10 {
+				left: 70.6vmax;
+				width: 5.9vmax;
+			}
+
+			#n11 {
+				left: 76.4vmax;
+				width: 6.4vmax;
+			}
+
+			#n12 {
+				left: 20vmax;
+				width: 6.45vmax;
+			}
+
+			#n13 {
+				left: 26.45vmax;
+				width: 5.4vmax;
+			}
+
+			#n14 {
+				left: 31.8vmax;
+				width: 5.65vmax;
+			}
+
+			#n15 {
+				left: 37.47vmax;
+				width: 5.45vmax;
+			}
+
+			#n16 {
+				left: 42.9vmax;
+				width: 5.7vmax;
+			}
+
+			#n17 {
+				left: 48.65vmax;
+				width: 5.4vmax;
+			}
+
+			#n18 {
+				left: 54vmax;
+				width: 5.96vmax;
+			}
+
+			#n19 {
+				left: 60vmax;
+				width: 5.6vmax;
+			}
+
+			#n20 {
+				left: 65.6vmax;
+				width: 5.8vmax;
+			}
+
+			#n21 {
+				left: 71.4vmax;
+				width: 5.2vmax;
+			}
+
+			#n22 {
+				left: 76.6vmax;
+				width: 6vmax;
+			}
+
+			@media (orientation: portrait) {
+				#main {
+					transform: rotate(90deg);
+					transform-origin: 50vw 50vw;
+				}
+			}
+		</style>
+	</header>
+	<body>
+		<div id="main">
+			<a id="n01" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n02" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n03" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n04" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n05" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n06" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n07" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n08" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n09" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n10" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n11" class="pctr top" href="javascript:void(0)"></a>
+			<a id="n12" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n13" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n14" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n15" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n16" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n17" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n18" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n19" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n20" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n21" class="pctr bottom" href="javascript:void(0)"></a>
+			<a id="n22" class="pctr bottom" href="javascript:void(0)"></a>
+		</div>
+		<script>
+			var bleh = document.getElementsByClassName("pctr");
+			for(var i = 0; i < bleh.length; i++)
+				bleh[i].style.filter = (Math.random() > .5 ? "invert(1) hue-rotate(" : "hue-rotate(") + Math.random() + "turn)";
+		</script>
+<%- include('../partials/footer') %>
