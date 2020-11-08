@@ -15,6 +15,7 @@
 
 			body {
 				display: flex;
+				background-color: #FFCCDF;
 			}
 
 			canvas {
@@ -147,10 +148,12 @@
 			function clickk() {
 				disco = !disco;
 				if(disco) {
+					document.body.style.backgroundColor = "black";
 					text.classList.add("disco");
 					seizure.classList.add("dark");
 					renderer.domElement.classList.add("hide");
 				} else {
+					document.body.style.backgroundColor = null;
 					text.classList.remove("disco");
 					seizure.classList.remove("dark");
 					renderer.domElement.classList.remove("hide");
