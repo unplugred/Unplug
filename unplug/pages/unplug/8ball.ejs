@@ -1,15 +1,17 @@
 <%- include('../partials/header',{title:"8ball"}) %>
-		<link rel=StyleSheet href="<%= assets %>/window/window.css?v=3" type="text/css" media=screen>
 		<style>
-			.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}
-
-			.win-inner {
-				background: url("<%= assets %>/8ball/bg.png") repeat-y right, black;
-			}
 			body {
+				display: flex;
+			}
+			#bigwrap {
 				display: flex;
 				justify-content: space-around;
 				align-items: center;
+				margin: auto;
+				width: 100vw;
+				height: 100vh;
+				max-width: 1200px;
+				max-height: 1300px;
 			}
 			#win-selection {
 				width: 404px;
@@ -17,6 +19,9 @@
 				height: 80%;
 				margin: 10px 0;
 				position: relative;
+				background: url("<%= assets %>/8ball/bg.gif") no-repeat top center;
+				border: 4px double #2A2A2A;
+				image-rendering: pixelated;
 			}
 			#ball {
 				width: 500px;
@@ -48,7 +53,7 @@
 				height: 100%;
 			}
 			#scroll {
-				background-image: url("<%= assets %>/8ball/options.png");
+				background-image: url("<%= assets %>/8ball/options.png?v=2");
 				background-position: top left;
 				background-repeat: no-repeat;
 				width: 100%;
@@ -61,7 +66,7 @@
 			.button {
 				width: 356px;
 				height: 74px;
-				background-image: url("<%= assets %>/8ball/optionsselect.png");
+				background-image: url("<%= assets %>/8ball/optionsselect.png?v=2");
 				opacity: 0;
 				margin: 0 auto 13px auto;
 				display: block;
@@ -72,12 +77,15 @@
 			}
 
 			::-webkit-scrollbar-thumb {
-				border: 3px #1f1f1f solid;
-				background-color: white;
+				border: 3px black solid;
+				background-color: #E2DBD3;
 			}
 			@media only all and (max-width: 940px) {
-				body {
-					flex-direction: column-reverse;
+				#bigwrap {
+					flex-direction: column;
+				}
+				#win-selection {
+					height: calc(63vh - 150px);
 				}
 				#ball {
 					flex: none;
@@ -87,7 +95,6 @@
 				}
 			}
 		</style>
-		<link rel="prefetch" href="<%= assets %>/window/loading.png" />
 		<link rel="prefetch" href="<%= assets %>/8ball/0.png" />
 		<link rel="prefetch" href="<%= assets %>/8ball/1.png" />
 		<link rel="prefetch" href="<%= assets %>/8ball/2.png" />
@@ -99,12 +106,9 @@
 		<link rel="prefetch" href="<%= assets %>/8ball/8.png" />
 	</head>
 	<body>
-		<div id="win-selection">
-			<div class="win-frame"></div>
-			<div class="win-inner">
-				<div class="win-obj-bg"></div>
-				<a class="win-obj-inner" href="<%= global.protocol %>tumblr.<%= global.domain %>/" target="_blank"></a>
-				<div id="screen1" class="screen" style="background-image: url('<%= assets %>/8ball/start.png')">
+		<div id="bigwrap">
+			<div id="win-selection">
+				<div id="screen1" class="screen" style="background-image: url('<%= assets %>/8ball/start.png?v=2')">
 					<a href="javascript:void(0)" class="button" id="start" onclick="dechoose()"></a>
 				</div>
 				<div id="screen2" class="screen" style="display: none">
@@ -118,82 +122,91 @@
 					</div>
 				</div>
 			</div>
+			<div id="ball">
+				<div id="balltext" style="background-image: url('<%= assets %>/8ball/0.png');"></div>
+			</div>
 		</div>
-
-		<div id="ball">
-			<div id="balltext" style="background-image: url('<%= assets %>/8ball/0.png');"></div>
-		</div>
-
 		<script>
 			var screen1 = document.getElementById("screen1");
 			var screen2 = document.getElementById("screen2");
 			var ball = document.getElementById("balltext");
 			var screen = 666;
 			var interval;
+			var deinterval;
+			var op;
 
-			function choose(option)
-			{
+			function choose(option) {
 				screen2.style.pointerEvents = "none";
-				clearInterval(interval);
-				if(screen > 4)
-					ball.style.backgroundImage = "url('<%= assets %>/8ball/" + Math.floor(Math.random()*5 + 4) + ".png')";
+				
+				if(screen > 4) {
+					setTimeout(function(option){ choose(option); }, 200);
+					return;
+				}
+				if (screen <= 3) {
+					screen = 0;
+				}
+
 				interval = setInterval(animate, 200);
+				clearInterval(deinterval);
 			}
 
-			function dechoose()
-			{
+			function dechoose() {
 				screen1.style.pointerEvents = "none";
-				if(screen === 666) screen = 1;
-				else
-				{
-					clearInterval(interval);
-					interval = setInterval(deanimate,200);
-				}
 				screen1.style.display = "none";
 				screen2.style.display = null;
+
+				if(screen === 666) {
+					screen = 1;
+				} else {
+					deinterval = setInterval(deanimate,200);
+					clearInterval(interval);
+				}
 			}
 
-			function animate()
-			{
-				if(screen === 4)
-				{
-					ball.style.opacity = "0";
-					ball.style.backgroundImage = "url('<%= assets %>/8ball/" + Math.floor(Math.random()*5 + 4) + ".png')";
-				}
-				else if(screen > 4)
-				{
-					ball.style.opacity = ((screen - 4)/3);
-					if(screen === 7)
-					{
+			function animate() {
+				if(screen === 4) {
+					setOp(0);
+					setBg(Math.floor(Math.random()*5 + 4));
+				} else if(screen > 4) {
+					setOp((screen - 4)/3);
+					if(screen === 7) {
 						screen1.style.display = null;
 						screen2.style.display = "none";
 						screen1.style.pointerEvents = null;
 						screen2.style.pointerEvents = null;
-						screen1.style.backgroundImage = "url('<%= assets %>/8ball/end.png')";
+						screen1.style.backgroundImage = "url('<%= assets %>/8ball/end.png?v=2')";
 						clearInterval(interval);
 						screen = 5;
 					}
 				}
-				else ball.style.backgroundImage = "url('<%= assets %>/8ball/" + screen + ".png')";
+				else {
+					setBg(screen);
+					setOp(op+(1/3));
+				}
 
 				screen++;
 			}
 
-			function deanimate()
-			{
-				if(screen >= 4) ball.style.opacity = ((screen - 4)/3);
-				else
-				{
-					ball.style.backgroundImage = "url('<%= assets %>/8ball/" + Math.abs(screen) + ".png')";
-					if(screen === 3) ball.style.opacity = null;
-					if(screen === 0)
-					{
+			function deanimate() {
+				if(screen >= 5) setOp((screen - 5)/2);
+				else {
+					if(screen === 4) setBg(Math.abs(0));
+					setOp(1 - (screen - 1)/3);
+					if(screen === 1) {
 						clearInterval(interval);
 						screen = 2;
 					}
 				}
 
 				screen--;
+			}
+
+			function setOp(num) {
+				ball.style.opacity = num;
+				op = num;
+			}
+			function setBg(num) {
+				ball.style.backgroundImage = "url('<%= assets %>/8ball/" + num + ".png')";
 			}
 		</script>
 <%- include('../partials/footer') %>
