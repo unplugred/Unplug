@@ -1,13 +1,12 @@
 <%- include('../partials/header',{title:"cookies"}) %>
 		<style>
-			body {
-			}
 			#nocookies{
 				display: block;
 				margin-bottom: 15vh;
 				background-image: url("<%= assets %>/cookies/text.png");
 				width: 792px;
 				height: 246px;
+				position: relative;
 			}
 			#accept{
 				display: block;
@@ -40,14 +39,34 @@
 		</div>
 		<a id="cookieclick" href="/nqiregvfrzrag" title="nqiregvfrzrag"></a>
 		<script>
+			let text = document.getElementById("nocookies");
 			function riseitup(){
-				let text = document.getElementById("nocookies");
-				text.style.transition = "margin-bottom 6s linear";
-				text.style.marginBottom = "calc(100vh + 246px)";
-
 				let accept = document.getElementById("accept");
 				accept.style.backgroundImage = "url('<%= assets %>/cookies/button_on.png')";
 				accept.style.pointerEvents = "none";
+
+				text.style.transition = "margin-bottom 16s linear";
+				text.style.marginBottom = "calc(100vh + 246px)";
+				setTimeout(function(){
+					text.style.display = "none";
+				},16000);
+
+				window.requestAnimationFrame(update);
+			}
+
+			var shake = 25;
+			var dt = null;
+			function update(timestamp){
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+
+				text.style.top = Math.round((Math.random() - .5)*shake)+"px";
+				text.style.left = Math.round((Math.random() - .5)*shake)+"px";
+
+				shake = Math.max(Math.abs(shake*Math.max(1 - dtt*.0035,-.99)),1.5);
+
+				window.requestAnimationFrame(update);
 			}
 		</script>
 <%- include('../partials/footer') %>
