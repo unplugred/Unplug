@@ -3,31 +3,21 @@
 			body {
 			}
 			#nocookies{
-				font-size: 150px;
-				text-align: center;
 				display: block;
-				font-family: 'Times New Roman', serif;
-				line-height: 1;
-				margin-bottom: 20px;
-				font-weight: bold;
-			}
-			#form{
-				transition: margin-top 10s;
-				max-width: 900px;
+				margin-bottom: 15vh;
+				background-image: url("<%= assets %>/cookies/text.png");
+				width: 792px;
+				height: 246px;
 			}
 			#accept{
 				display: block;
-				background-color: gray;
-				color: black;
-				margin: 0 auto;
-				width: 159px;
-				text-align: center;
-				line-height: 40px;
-				margin-bottom: 161px;
-				text-decoration: none;
+				background-image: url("<%= assets %>/cookies/button.png");
+				width: 182px;
+				height: 56px;
+				margin: 170px 508px;
 			}
 			body{
-				background-image: url("<%= assets %>/window/heavy-stars.png");
+				background-image: url("<%= assets %>/cookies/bg.png");
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -39,19 +29,25 @@
 				position: fixed;
 				bottom: 0;
 				left: calc(50vw - 104px);
-				background-image: url("<%= assets %>/cookies.png");
+				background-image: url("<%= assets %>/cookies/monster.png");
 			}
 		</style>
+		<link rel="prefetch" href="<%= assets %>/cookies/button_on.png" />
 	</head>
 	<body>
-		<div id="form">
-			<div id="nocookies">NO COOKIES</div>
-			<a id="accept" href="javascript:void(0)" onclick="riseitup()">i accept.</a>
+		<div id="nocookies">
+			<a id="accept" href="javascript:void(0)" onclick="riseitup()"></a>
 		</div>
 		<a id="cookieclick" href="/nqiregvfrzrag" title="nqiregvfrzrag"></a>
 		<script>
 			function riseitup(){
-				document.getElementById("form").style.marginTop = "calc(-100vh - 100%)";
+				let text = document.getElementById("nocookies");
+				text.style.transition = "margin-bottom 6s linear";
+				text.style.marginBottom = "calc(100vh + 246px)";
+
+				let accept = document.getElementById("accept");
+				accept.style.backgroundImage = "url('<%= assets %>/cookies/button_on.png')";
+				accept.style.pointerEvents = "none";
 			}
 		</script>
 <%- include('../partials/footer') %>
