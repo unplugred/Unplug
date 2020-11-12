@@ -12,7 +12,7 @@ const fs = require('fs');
 const express = require('express');
 const app = express();
 global.assets = global.protocol + "assets." + global.domain;
-var version = 0;
+global.version = 0;
 app.set('view engine', 'ejs');
 app.set('views', __dirname + "/pages");
 
@@ -117,22 +117,22 @@ app.use((req, res, next) => {
 		if(
 		req.path === "/privacy-policy" ||
 		req.path === "/brand-guidelines")
-			return res.status(404).render('partials/404.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
+			return res.status(404).render('partials/404.ejs',{assets:global.assets,host:global.protocol + req.headers.host});
 
 		if(req.url.endsWith("?6660")) {
 			if(req.path === "/browser")
-				return res.render('electron/browser.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
+				return res.render('electron/browser.ejs',{assets:global.assets,host:global.protocol + req.headers.host});
 			if(req.path === "/bye")
-				return res.render('electron/bye.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
+				return res.render('electron/bye.ejs',{assets:global.assets,host:global.protocol + req.headers.host});
 			if(req.path === "/unplug")
-				return res.render('electron/unplug.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
+				return res.render('electron/unplug.ejs',{assets:global.assets,host:global.protocol + req.headers.host});
 		}
 	}
 
 /*	UNPLUG--------------------------*/
 	//index
 	if(req.path === '/')
-		return res.render('partials/index.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
+		return res.render('partials/index.ejs',{assets:global.assets,host:global.protocol + req.headers.host});
 
 	//important.txt
 	if(req.path === '/important.txt')
@@ -151,10 +151,10 @@ app.use((req, res, next) => {
 	if(req.path === '/time') {
 		savefile.viscount++;
 		if(savefile.loaded) save();
-		return res.render('unplug/time.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version,viscount:savefile.viscount});
+		return res.render('unplug/time.ejs',{assets:global.assets,host:global.protocol + req.headers.host,viscount:savefile.viscount});
 	}
 
-	return res.render("unplug" + req.path + ".ejs", {assets:global.assets,host:global.protocol + req.headers.host,version:version}, function(err, html) {
+	return res.render("unplug" + req.path + ".ejs", {assets:global.assets,host:global.protocol + req.headers.host}, function(err, html) {
 		if(err) {
 			if(err.message.indexOf('Failed to lookup view') !== -1) return next();
 			throw err;
@@ -180,13 +180,13 @@ app.use(express.static(__dirname + '/static', {
 
 //404
 app.use((req, res, next) => {
-	return res.status(404).render('partials/404.ejs',{assets:global.assets,host:global.protocol + req.headers.host,version:version});
+	return res.status(404).render('partials/404.ejs',{assets:global.assets,host:global.protocol + req.headers.host});
 });
 
 
 
 fs.readdir(__dirname + '/pages/unplug', (err, files) => {
-	version = ((files.length-2)*.01).toFixed(2);
+	global.version = ((files.length-2)*.01).toFixed(2);
 
 	//startup sequence
 	const startseq = ([
@@ -204,7 +204,7 @@ fs.readdir(__dirname + '/pages/unplug', (err, files) => {
 , 100,'    \\|                 |'
 ,  90,'     \\-----------------+'
 ,  80,' '
-,  80,'Unplug, v' + version
+,  80,'Unplug, v' + global.version
 ,  90,'CUBE Tech Ltd.'
 , 110,'All rights reserved.'
 , 100,' '
