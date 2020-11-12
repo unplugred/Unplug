@@ -39,7 +39,8 @@
 				top: 12.4%;
 				left: 23.4%;
 				position: relative;
-				background-size: cover;
+				background-image: url("<%= assets %>/8ball/ball.png");
+				background-size: calc(100% + 0px);
 			}
 			#screen1 {
 				background-position: center center;
@@ -95,15 +96,6 @@
 				}
 			}
 		</style>
-		<link rel="prefetch" href="<%= assets %>/8ball/0.png" />
-		<link rel="prefetch" href="<%= assets %>/8ball/1.png" />
-		<link rel="prefetch" href="<%= assets %>/8ball/2.png" />
-		<link rel="prefetch" href="<%= assets %>/8ball/3.png" />
-		<link rel="prefetch" href="<%= assets %>/8ball/4.png" />
-		<link rel="prefetch" href="<%= assets %>/8ball/5.png" />
-		<link rel="prefetch" href="<%= assets %>/8ball/6.png" />
-		<link rel="prefetch" href="<%= assets %>/8ball/7.png" />
-		<link rel="prefetch" href="<%= assets %>/8ball/8.png" />
 	</head>
 	<body>
 		<div id="bigwrap">
@@ -123,7 +115,7 @@
 				</div>
 			</div>
 			<div id="ball">
-				<div id="balltext" style="background-image: url('<%= assets %>/8ball/0.png');"></div>
+				<div id="balltext" style="background-position-y: 0.0486381%;"></div>
 			</div>
 		</div>
 		<script>
@@ -206,7 +198,7 @@
 				op = num;
 			}
 			function setBg(num) {
-				ball.style.backgroundImage = "url('<%= assets %>/8ball/" + num + ".png')";
+				ball.style.backgroundPositionY = (((num*256.75)+1)/20.56) + "%";
 			}
 		</script>
 <%- include('../partials/footer') %>
