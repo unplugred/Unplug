@@ -2,6 +2,7 @@ global.debug = process.argv[2] === "--debug";
 global.protocol = "http://";
 global.domain = "localhost:6664";
 global.port = 6664;
+global.audio = 2;
 require(__dirname + '/server.js');
 const electron = require('electron');
 var {app, BrowserWindow} = electron;
