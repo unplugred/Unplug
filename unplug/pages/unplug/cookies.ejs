@@ -38,12 +38,18 @@
 			<a id="accept" href="javascript:void(0)" onclick="riseitup()"></a>
 		</div>
 		<a id="cookieclick" href="/nqiregvfrzrag" title="nqiregvfrzrag"></a>
+		<script type="text/javascript" src="<%= assets %>/audio.js"></script>
 		<script>
+			initaudio(<%= global.audio %>);
+			playroomtone("<%= assets %>/window/computer1.ogg");
+
 			let text = document.getElementById("nocookies");
 			function riseitup(){
 				let accept = document.getElementById("accept");
 				accept.style.backgroundImage = "url('<%= assets %>/cookies/button_on.png')";
 				accept.style.pointerEvents = "none";
+
+				playaudio("<%= assets %>/cookies/hit.ogg",.8,false);
 
 				text.style.transition = "margin-bottom 16s linear";
 				text.style.marginBottom = "calc(100vh + 246px)";
