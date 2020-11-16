@@ -31,7 +31,10 @@ function openwin() {
 		resizable: false,
 		movable: false,
 		alwaysOnTop: true,
-		webPreferences: { nodeIntegration: true }
+		webPreferences: {
+			nodeIntegration: true,
+			enableRemoteModule: true
+		}
 	});
 	global.unplugWindow.removeMenu();
 	global.unplugWindow.loadURL(global.protocol + global.domain + "/unplug?6660");
@@ -46,7 +49,10 @@ function openwin() {
 		y: res.height*.2 - vmin*.15,
 		darkTheme: true,
 		frame: global.debug,
-		webPreferences: { nodeIntegration: true },
+		webPreferences: {
+			nodeIntegration: true,
+			enableRemoteModule: true
+		},
 		show: false
 	});
 	if(!global.debug) global.mainWindow.removeMenu();
@@ -61,7 +67,10 @@ function openwin() {
 		resizable: false,
 		movable: false,
 		alwaysOnTop: true,
-		webPreferences: { nodeIntegration: true },
+		webPreferences: {
+			nodeIntegration: true,
+			enableRemoteModule: true
+		},
 		show: false
 	});
 	global.byeWindow.removeMenu();
