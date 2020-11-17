@@ -11,7 +11,7 @@ function initaudio(defaultvalue) {
 	}
 }
 var audioSources = [];
-function playaudio(path, volume = 1, loop = true) {
+function playaudio(path, volume = 1, loop = true, play = true) {
 	if(!isAudio) return;
 	let id = audioSources.length;
 	audioSources[id] = new Audio(path);
@@ -23,7 +23,7 @@ function playaudio(path, volume = 1, loop = true) {
 				event.path[0].currentTime = 0;
 		});
 	}
-	audioSources[id].play();
+	if(play) audioSources[id].play();
 	return id;
 }
 var roomtones = [];
