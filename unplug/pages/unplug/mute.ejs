@@ -70,11 +70,13 @@ url("<%= assets %>/mute/off.png");
 			initaudio(<%= global.audio %>);
 			var audiosauce;
 			var audiofadeinterval;
+			var onsauce;
+			var offsauce;
 			function updatedoc() {
 				document.body.className = isAudio ? "on" : "off";
 				if(audiosauce === undefined) {
 					if(isAudio) {
-						audiosauce = playaudio("<%= assets %>/mute/on.ogg", 0);
+						audiosauce = playaudio("<%= assets %>/mute/bg.ogg", 0);
 						clearInterval(audiofadeinterval);
 						audiofadeinterval = setInterval(audiofade, 100);
 					}
@@ -87,12 +89,21 @@ url("<%= assets %>/mute/off.png");
 				}
 			}
 			function audiofade() {
-				audioSources[audiosauce].volume = Math.max(Math.min(audioSources[audiosauce].volume + .05*(isAudio ? 1 : -1),1),0);
+				audioSources[audiosauce].volume = Math.max(Math.min(audioSources[audiosauce].volume + (isAudio ? .2 : -.08),1),0);
 				if(audioSources[audiosauce].volume <= 0 || audioSources[audiosauce].volume >= 1)
 					clearInterval(audiofadeinterval);
 			}
 			function buttonclick() {
+				if(onsauce === undefined && isAudio) {
+					onsauce = playaudio("<%= assets %>/mute/on.ogg", .08, false, false);
+					offsauce = playaudio("<%= assets %>/mute/off.ogg", .08, false, false);
+				}
 				isAudio = !isAudio;
+				if(onsauce === undefined && isAudio) {
+					onsauce = playaudio("<%= assets %>/mute/on.ogg", .08, false, false);
+					offsauce = playaudio("<%= assets %>/mute/off.ogg", .08, false, false);
+				}
+				audioSources[isAudio ? onsauce : offsauce].play();
 				updatedoc();
 				document.body.className = isAudio ? "on" : "off";
 				let nextyear = new Date();
