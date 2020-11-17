@@ -1530,4 +1530,10 @@
 <priority>0.20</priority>
 </url>
 
+<url>
+<loc>https://unplug.red/mute</loc>
+<lastmod>2020-11-17T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
 </urlset>
