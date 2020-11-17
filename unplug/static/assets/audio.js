@@ -1,22 +1,13 @@
 var isAudio = null;
 function initaudio(defaultvalue) {
 	switch(defaultvalue) {
-		case 0:
-			isAudio = false;
-			break;
-		case 3:
-			isAudio = true;
-			break;
+		case 0: isAudio = false; break;
+		case 3: isAudio = true; break;
 		default:
-			let ca = decodeURIComponent(document.cookie).split(';');
-			for(var i = 0; i < ca.length; i++) {
-				var c = ca[i];
-				while(c.charAt(0) == ' ') c = c.substring(1);
-				if(c.indexOf("audio=") == 0) {
-					return isAudio = c.substring(6, c.length);
-				}
-			}
-			if(!isAudio) isAudio = defaultvalue === 2;
+			let ca = decodeURIComponent(document.cookie);
+			if(ca.indexOf("audio=true") >= 0) isAudio = true;
+			else if(ca.indexOf("audio=false") >= 0) isAudio = false;
+			else isAudio = defaultvalue === 2;
 	}
 }
 var audioSources = [];
@@ -28,7 +19,8 @@ function playaudio(path, volume = 1, loop = true) {
 	audioSources[id].loop = loop;
 	if(loop) {
 		audioSources[id].addEventListener('timeupdate',(event) => {
-			if(event.path[0].currentTime >= event.path[0].duration - .5) event.path[0].currentTime = 0;
+			if(event.path[0].currentTime >= event.path[0].duration - .2)
+				event.path[0].currentTime = 0;
 		});
 	}
 	audioSources[id].play();
@@ -42,7 +34,7 @@ function playroomtone(path, volume = 1) {
 		if(roomtones.length === 1)
 			updateroomtone();
 		else
-			event.path[0].currentTime = Math.floor(Math.random()*(event.path[0].duration - .5));
+			event.path[0].currentTime = Math.floor(Math.random()*(event.path[0].duration - .1));
 	});
 }
 function updateroomtone() {

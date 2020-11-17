@@ -1,0 +1,104 @@
+<%- include('../partials/header',{title:"mute"}) %>
+		<style>
+			body {
+				background-image: url("<%= assets %>/mute/sheet.png");
+				animation: bganim 200s linear infinite;
+				image-rendering: pixelated;
+			}
+			@keyframes bganim {
+				from { background-position: 0px 0px; }
+				to { background-position: -6848px -2559px; }
+			}
+			#darken {
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+				background: black;
+				transition: opacity .7s;
+			}
+			.on #darken {
+				opacity: .85;
+			}
+			#icon {
+				width: 636px;
+				height: 636px;
+				margin: calc(50vh - 318px) calc(50vw - 318px);
+				opacity: .35;
+				display: flex;
+				z-index: 50;
+				position: fixed;
+			}
+			#icon a {
+				margin: auto;
+				width: 481px;
+				height: 481px;
+			}
+			.on #icon {
+				background:
+url("<%= assets %>/mute/speaker.png") 88px center no-repeat,
+url("<%= assets %>/mute/on.png") 479px center no-repeat;
+			}
+			.off #icon {
+				background:
+url("<%= assets %>/mute/speaker.png") 88px center no-repeat,
+url("<%= assets %>/mute/off.png");
+			}
+			#text {
+				margin: calc(50vh - 26px) calc(50vw - 339px);
+				width: 678px;
+				height: 53px;
+				position: fixed;
+				pointer-events: none;
+				z-index: 100;
+			}
+			.on #text {
+				background: url("<%= assets %>/mute/textunmuted.gif");
+			}
+			.off #text {
+				background: url("<%= assets %>/mute/textmuted.png") center no-repeat;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="text"></div>
+		<div id="icon">
+			<a href="javascript:void(0);" onclick="buttonclick()"></a>
+		</div>
+		<div id="darken"></div>
+		<script type="text/javascript" src="<%= assets %>/audio.js"></script>
+		<script>
+			initaudio(<%= global.audio %>);
+			var audiosauce;
+			var audiofadeinterval;
+			function updatedoc() {
+				document.body.className = isAudio ? "on" : "off";
+				if(audiosauce === undefined) {
+					if(isAudio) {
+						audiosauce = playaudio("<%= assets %>/mute/on.ogg", 0);
+						clearInterval(audiofadeinterval);
+						audiofadeinterval = setInterval(audiofade, 100);
+					}
+				} else if(audioSources[audiosauce].paused) {
+					audioSources[audiosauce].volume = 0;
+					audioSources[audiosauce].play();
+				} else {
+					clearInterval(audiofadeinterval);
+					audiofadeinterval = setInterval(audiofade, 100);
+				}
+			}
+			function audiofade() {
+				audioSources[audiosauce].volume = Math.max(Math.min(audioSources[audiosauce].volume + .05*(isAudio ? 1 : -1),1),0);
+				if(audioSources[audiosauce].volume <= 0 || audioSources[audiosauce].volume >= 1)
+					clearInterval(audiofadeinterval);
+			}
+			function buttonclick() {
+				isAudio = !isAudio;
+				updatedoc();
+				document.body.className = isAudio ? "on" : "off";
+				let nextyear = new Date();
+				nextyear.setTime(nextyear.getTime() + 31104000000);
+				document.cookie = "audio=" + isAudio + ";expires=" + nextyear.toUTCString() + ";path=/";
+			}
+			updatedoc();
+		</script>
+<%- include('../partials/footer') %>
