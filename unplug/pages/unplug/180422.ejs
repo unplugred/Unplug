@@ -1,27 +1,34 @@
 <%- include('../partials/header',{title:"horrors"}) %>
 		<style>
 			#bg {
-				position: absolute;
+				background: url("<%= assets %>/180422/bg.png") center fixed;
+				z-index: -100;
+				opacity: .6;
+			}
+
+			#bgoff {
+				background: url("<%= assets %>/180422/bgoff.png") center fixed;
+				z-index: -200;
+				width: 100vw;
+			}
+
+			#bg, #bgoff {
 				top: 0;
 				left: 0;
 				height: 100vh;
-				background-image: url("<%= assets %>/180422.png");
+				position: fixed;
 				background-size: cover;
-				background-position: center center;
-				opacity: 0.8;
-				z-index: -100;
 			}
 
 			body {
-				font-size: 22vw;
-				text-align: center;
-				font-weight: bold;
+				display: flex;
 			}
 
 			#text {
-				margin: calc(50vh - 17vw) auto;
-				color: #fffcf3;
-				display: inline-block;
+				width: 497px;
+				height: 80px;
+				margin: auto;
+				background: url("<%= assets %>/180422/text.png");
 			}
 
 			#scanlines {
@@ -34,21 +41,12 @@
 				opacity: 0.4;
 				pointer-events: none;
 			}
-
-			@media screen and (orientation:landscape) {
-				body{
-					font-size: 22vh;
-				}
-
-				#text {
-					margin-top: 33vh;
-				}
-			}
 		</style>
 	</head>
 	<body>
+		<div id="bgoff"></div>
 		<div id="bg"></div>
-		<a href="/waterweek" title="water week" id="text">180422</a>
+		<a href="/waterweek" title="water week" id="text"></a>
 		<div id="scanlines"></div>
 		<script>
 			var starting = new Date(2019, 7, 18, 7, 30, 0, 0);
