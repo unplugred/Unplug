@@ -1,16 +1,16 @@
 <%- include('../partials/header',{title:"countdown",icontype:"x-icon",icon:"/countdown/favicon.ico"}) %>
 		<style>
-			body{
-				font-size: 33vw;
-				text-align: center;
-				font-weight: bold;
-				background-color: #110000;
+			.notfinished {
+				font-size: 0;
+				display: flex;
+				background-image: url("<%= assets %>/countdown/bg1.png");
+				background-position: center;
+				background-repeat: no-repeat;
 			}
 
 			.notfinished, .notfinished * {
 				cursor: none !important;
 			}
-
 			.notfinished #cursor {
 				pointer-events: none;
 				position: absolute;
@@ -26,25 +26,8 @@
 				margin: calc(50vh - 25px) calc(50vw - 25px);
 				background-image: url("<%= assets %>/countdown/0.gif");
 			}
-
 			.notfinished #final-form {
 				display: none !important;
-			}
-
-			#timer {
-				height: 100vh;
-				margin-top: calc(50vh - 17vw);
-			}
-
-			@media screen and (orientation:landscape) {
-				body{
-					font-size: 33vh;
-				}
-
-				#timer {
-					height: 100vh;
-					margin-top: 33vh;
-				}
 			}
 
 			#seizure {
@@ -56,11 +39,37 @@
 				bottom: 20px;
 				z-index: 10;
 			}
+
+			#wrapper {
+				display: none;
+			}
+			.notfinished #wrapper {
+				margin: auto;
+				display: block;
+			}
+			.digit, .divider {
+				height: 95px;
+				background: url("<%= assets %>/countdown/numbers.png");
+				display: inline-block;
+			}
+			.digit {
+				width: 75px;
+			}
+			.divider {
+				width: 29px;
+				background-position-x: right;
+			}
 		</style>
 	</head>
 	<body class="notfinished">
 		<div id="seizure"></div>
-		<p id="timer">08:00</p>
+		<div id="wrapper">
+			<div class="digit"></div>
+			<div class="digit"></div>
+			<div class="divider"></div>
+			<div class="digit"></div>
+			<div class="digit"></div>
+		</div>
 		<a href="/countdown/countdown" id="final-form"></a>
 		<div id="cursor"></a>
 		<script>
@@ -70,25 +79,29 @@
 				cursor.style.left = (e.pageX - 6) + "px";
 			}
 
-			var timer = document.getElementById("timer");
+			var digits = document.getElementsByClassName("digit");
 			var interval = setInterval(myTimer, 500);
 			var minutes = 8;
-			var seconds = 0;
+			var seconds = 2;
 
 			function myTimer() {
 				if(--seconds < 0){
 					if(--minutes < 0){
-						timer.style.display = "none";
 						document.body.className = "null";
 						clearInterval(interval);
 					}
-					else{
-						seconds = 119;
-					}
+					else{ seconds = 119; }
 				}
-				if(seconds % 2 === 0) timer.innerHTML = `${minutes < 10 ? `0${minutes}` : minutes}:${seconds < 20 ? `0${(seconds * .5)}` : (seconds * .5)}`;
+				setDigit(0,minutes*.1);
+				setDigit(1,minutes%10);
+				setDigit(2,seconds*.05);
+				setDigit(3,(seconds*.5)%10);
 
-				document.body.style.backgroundColor = seconds % 2 === 0 ? "#110000" : "#000000";
+				document.body.style.backgroundColor = seconds % 2 === 1 ? "#110000" : "#000000";
 			}
+			function setDigit(digitid, num) {
+				digits[digitid].style.backgroundPositionX = ((Math.floor(num)*75)/7.04) + "%";
+			}
+			myTimer();
 		</script>
 <%- include('../partials/footer') %>
