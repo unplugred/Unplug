@@ -1,0 +1,103 @@
+<%- include('../partials/header',{title:"no entry"}) %>
+		<style>
+			body {
+				background: white;
+			}
+			#icon {
+				background: url("<%= assets %>/no-entry/icon.svg") no-repeat;
+				background-size: contain;
+				position: fixed;
+				width: 100vmin;
+				height: 100vmin;
+				left: -12vmin;
+				bottom: -13vmin;
+				opacity: .4;
+			}
+			#text-wrap {
+				position: fixed;
+				right: calc(30vw - 151px);
+				bottom: calc(50vh - 2px);
+			}
+			#text {
+				background: url("<%= assets %>/no-entry/text.png");
+				position: relative;
+				width: 303px;
+				height: 44px;
+				opacity: 0;
+				animation-duration: .4s;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards;
+				animation-timing-function: ease-out;
+			}
+			.inn {
+				animation-name: animout;
+			}
+			.outt {
+				animation-name: animin;
+			}
+			@keyframes animin {
+				from {
+					margin-bottom: -50px;
+					opacity: 0;
+				}
+				to {
+					margin-bottom: 0px;
+					opacity: 1;
+				}
+			}
+			@keyframes animout {
+				from {
+					margin-bottom: 0px;
+					opacity: 1;
+				}
+				to {
+					margin-bottom: 50px;
+					opacity: 0;
+				}
+			}
+			@media (orientation: portrait) {
+				#text {
+					background: url("<%= assets %>/no-entry/text.png");
+					right: 5vw;
+					top: calc(25vh - 22px);
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="icon"></div>
+		<div id="text-wrap" onmouseover="inn()" onmouseout="outt()">
+			<div id="text"></div>
+		</div>
+		<script>
+			var textdiv = document.getElementById("text");
+			var isinanim = false;
+			var oldstat = true;
+			var newstat = true;
+			function inn() {
+				newstat = true;
+				if(isinanim) return;
+				text.classList = "inn";
+				isinanim = true;
+				setTimeout(fin, 400);
+			}
+			function outt() {
+				newstat = false;
+				if(isinanim) return;
+				text.classList = "outt";
+				isinanim = true;
+				setTimeout(fin, 400);
+			}
+			function fin() {
+				isinanim = false;
+				if(newstat === oldstat) {
+					oldstat = !oldstat;
+					if(newstat) inn();
+					else outt();
+				} else {
+					oldstat = newstat;
+				}
+			}
+			outt();
+		</script>
+<%- include('../partials/footer') %>
