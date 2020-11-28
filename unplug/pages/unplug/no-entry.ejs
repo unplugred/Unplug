@@ -29,6 +29,8 @@
 				position: fixed;
 				right: calc(30vw - 151px);
 				bottom: calc(50vh - 2px);
+				width: 303px;
+				height: 44px;
 			}
 			#text {
 				background: url("<%= assets %>/no-entry/text.png");
@@ -49,29 +51,28 @@
 			}
 			@keyframes animin {
 				from {
-					margin-bottom: -50px;
+					top: 50px;
 					opacity: 0;
 				}
 				to {
-					margin-bottom: 0px;
+					top: 0px;
 					opacity: 1;
 				}
 			}
 			@keyframes animout {
 				from {
-					margin-bottom: 0px;
+					top: 0px;
 					opacity: 1;
 				}
 				to {
-					margin-bottom: 50px;
+					top: -50px;
 					opacity: 0;
 				}
 			}
 			@media (orientation: portrait) {
-				#text {
-					background: url("<%= assets %>/no-entry/text.png");
+				#text-wrap {
 					right: 5vw;
-					top: calc(25vh - 22px);
+					bottom: calc(75vh + 22px);
 				}
 			}
 		</style>
