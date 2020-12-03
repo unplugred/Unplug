@@ -1,0 +1,193 @@
+<%- include('../partials/header',{title:"selection"}) %>
+		<style>
+			body {
+				display: flex;
+			}
+			.bgs {
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				left: 0;
+				z-index: -100;
+				background: url("<%= assets %>/selection.png");
+				image-rendering: pixelated;
+				mix-blend-mode: difference;
+			}
+			#gbg {
+				filter: hue-rotate(120deg);
+			}
+			#bbg {
+				filter: hue-rotate(240deg);
+			}
+			#form {
+				background: black;
+				margin: auto;
+				padding: 19px 39px;
+			}
+			#title {
+				font-size: 25px;
+				margin-bottom: 11px;
+				color: #aaa;
+			}
+			#contents {
+				text-align: center;
+				position: relative;
+				animation-duration: .3s;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards;
+			}
+			#label {
+				display: inline-block;
+				font-size: 20px;
+				font-weight: bold;
+				color: #888;
+			}
+			#combobox {
+				display: inline-block;
+				border: none;
+				border-radius: 5px;
+				background-color: gray;
+				color: black;
+				padding: 1px;
+				width: 90px;
+				font-family: "FreeMono", "Courier New", monospace;
+				font-weight: bold;
+				font-size: 15px;
+			}
+			option {
+				background: black;
+				color: #999;
+			}
+			.in {
+				animation-name: animin;
+				animation-timing-function: ease-out;
+			}
+			.out {
+				animation-name: animout;
+				animation-timing-function: ease-in;
+			}
+			@keyframes animin {
+				from {
+					left: -50px;
+					opacity: 0;
+				}
+				to {
+					left: 0px;
+					opacity: 1;
+				}
+			}
+			@keyframes animout {
+				from {
+					left: 0px;
+					opacity: 1;
+				}
+				to {
+					left: 50px;
+					opacity: 0;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="bgs" id="rbg"></div>
+		<div class="bgs" id="gbg"></div>
+		<div class="bgs" id="bbg"></div>
+		<div id="form">
+			<div id="title">Please fill the form accurately.</div>
+			<div id="contents">
+				<div id="label"></div>
+				<select id="combobox" onchange="nextquestion()">
+					<option hidden value="empty"></option>
+					<option class="optn" value="1"></option>
+					<option class="optn" value="2"></option>
+					<option class="optn" value="3"></option>
+					<option class="optn" value="4"></option>
+					<option class="optn" value="5"></option>
+				</select>
+			</div>
+		</div>
+		<script>
+			var bgs = document.getElementsByClassName("bgs");
+			function update(timestamp) {
+				bgs[0].style.backgroundPosition =
+					((timestamp*.0743+823)%1024)+"px "+
+					((timestamp*.0172+924)%1024)+"px";
+				bgs[1].style.backgroundPosition =
+					((timestamp*.0429+193)%1024)+"px "+
+					((timestamp*-.018+491)%1024)+"px";
+				bgs[2].style.backgroundPosition =
+					((timestamp*-.067+734)%1024)+"px "+
+					((timestamp*-.011+273)%1024)+"px";
+				document.body.style.backgroundColor = "hsl("+(timestamp*.01+170)+" 100% 90%)";
+
+				requestAnimationFrame(update);
+			}
+			update();
+
+			var questions = [
+			{
+				label: "First name:",
+				options: ["John","Michael","Emma","Lauren","Brian"]
+			},{
+				label: "Last name:",
+				options: ["Smith","Williams","Brown","Davis"]
+			},{
+				label: "Gender:",
+				options: ["Male","Female"]
+			},{
+				label: "Country:",
+				options: ["Britain","Florida","Mexico","Argentina","Australia"]
+			},{
+				label: "Phone number:",
+				options: ["05632935","03263174","09326362","08734165","07733416"]
+			},{
+				label: "Favorite color:",
+				options: ["Blue","Green","Yellow","Purple","Orange"]
+			},{
+				label: "Age:",
+				options: ["14","21","52","37"]
+			},{
+				label: "Favorite Food:",
+				options: ["Salad","Sandwich","Apple"]
+			},{
+				label: "Pet name:",
+				options: ["Oscar","Roxy","Buddy"]
+			},{
+				label: "Preferred pasta shape:",
+				options: ["Penne","Ravioli","Fusilli","Farfalle","Rigatoni"]
+			}];
+
+			var q = 0;
+			var contents = document.getElementById("contents");
+			var label = document.getElementById("label");
+			var combobox = document.getElementById("combobox");
+			var optn = document.getElementsByClassName("optn");
+
+			function nextquestion() {
+				if(combobox.value === "empty") return;
+				contents.className = "out";
+				contents.style.pointerEvents = "none";
+				setTimeout(switcharoo,300);
+			}
+			function switcharoo() {
+				contents.className = "in";
+				setTimeout(finish,300);
+				q = (q+1)%questions.length;
+				setq();
+			}
+			function finish() {
+				contents.style.pointerEvents = null;
+			}
+			function setq() {
+				combobox.value = "empty";
+				label.innerText = questions[q].label;
+				for(var i = 0; i < optn.length; i++) {
+					optn[i].hidden = i >= questions[q].options.length
+					if(!optn[i].hidden)
+						optn[i].innerText = questions[q].options[i];
+				}
+			}
+			setq();
+		</script>
+<%- include('../partials/footer') %>
