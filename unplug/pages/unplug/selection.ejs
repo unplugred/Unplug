@@ -2,6 +2,16 @@
 		<style>
 			body {
 				display: flex;
+				animation: bgc 100s linear -47s infinite normal;
+			}
+			@keyframes bgc {
+				0% { background-color: #ffcccc; }
+				17% { background-color: #ffffcc; }
+				33% { background-color: #ccffcc; }
+				50% { background-color: #ccffff; }
+				67% { background-color: #ccccff; }
+				83% { background-color: #ffccff; }
+				100% { background-color: #ffcccc; }
 			}
 			.bgs {
 				position: fixed;
@@ -14,12 +24,32 @@
 				image-rendering: pixelated;
 				mix-blend-mode: difference;
 			}
+			#rbg {
+				animation:
+					bgx 13.459s linear -10.962s infinite normal,
+					bgy 58.14s linear -52.462s infinite normal;
+			}
 			#gbg {
 				filter: hue-rotate(120deg);
+				animation:
+					bgx 23.31s linear -4.393s infinite normal,
+					bgy 55.556s linear -28.917s infinite reverse;
 			}
 			#bbg {
 				filter: hue-rotate(240deg);
+				animation:
+					bgx 14.925s linear -4.227s infinite reverse,
+					bgy 90.909s linear -66.673s infinite reverse;
 			}
+			@keyframes bgx {
+				from { background-position-x: 0; }
+				to { background-position-x: 1024px; }
+			}
+			@keyframes bgy {
+				from { background-position-y: 0; }
+				to { background-position-y: 1024px; }
+			}
+
 			#form {
 				background: black;
 				margin: auto;
@@ -30,34 +60,13 @@
 				margin-bottom: 11px;
 				color: #aaa;
 			}
+
 			#contents {
 				text-align: center;
 				position: relative;
 				animation-duration: .3s;
 				animation-iteration-count: 1;
 				animation-fill-mode: forwards;
-			}
-			#label {
-				display: inline-block;
-				font-size: 20px;
-				font-weight: bold;
-				color: #888;
-			}
-			#combobox {
-				display: inline-block;
-				border: none;
-				border-radius: 5px;
-				background-color: gray;
-				color: black;
-				padding: 1px;
-				width: 90px;
-				font-family: "FreeMono", "Courier New", monospace;
-				font-weight: bold;
-				font-size: 15px;
-			}
-			option {
-				background: black;
-				color: #999;
 			}
 			.in {
 				animation-name: animin;
@@ -87,6 +96,29 @@
 					opacity: 0;
 				}
 			}
+
+			#label {
+				display: inline-block;
+				font-size: 20px;
+				font-weight: bold;
+				color: #888;
+			}
+			#combobox {
+				display: inline-block;
+				border: none;
+				border-radius: 5px;
+				background-color: gray;
+				color: black;
+				padding: 1px;
+				width: 90px;
+				font-family: "FreeMono", "Courier New", monospace;
+				font-weight: bold;
+				font-size: 15px;
+			}
+			option {
+				background: black;
+				color: #999;
+			}
 		</style>
 	</head>
 	<body>
@@ -108,23 +140,6 @@
 			</div>
 		</div>
 		<script>
-			var bgs = document.getElementsByClassName("bgs");
-			function update(timestamp) {
-				bgs[0].style.backgroundPosition =
-					((timestamp*.0743+823)%1024)+"px "+
-					((timestamp*.0172+924)%1024)+"px";
-				bgs[1].style.backgroundPosition =
-					((timestamp*.0429+193)%1024)+"px "+
-					((timestamp*-.018+491)%1024)+"px";
-				bgs[2].style.backgroundPosition =
-					((timestamp*-.067+734)%1024)+"px "+
-					((timestamp*-.011+273)%1024)+"px";
-				document.body.style.backgroundColor = "hsl("+(timestamp*.01+170)+" 100% 90%)";
-
-				requestAnimationFrame(update);
-			}
-			update();
-
 			var questions = [{
 				label: "First name:",
 				options: ["John","Michael","Emma","Lauren","Brian"]
