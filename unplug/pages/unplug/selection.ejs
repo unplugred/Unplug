@@ -95,7 +95,7 @@
 		<div class="bgs" id="bbg"></div>
 		<div id="form">
 			<div id="title">Please fill the form accurately.</div>
-			<div id="contents">
+			<div id="contents" onanimationend="switcharoo()">
 				<div id="label"></div>
 				<select id="combobox" onchange="nextquestion()">
 					<option hidden value="empty"></option>
@@ -125,8 +125,7 @@
 			}
 			update();
 
-			var questions = [
-			{
+			var questions = [{
 				label: "First name:",
 				options: ["John","Michael","Emma","Lauren","Brian"]
 			},{
@@ -165,19 +164,17 @@
 			var optn = document.getElementsByClassName("optn");
 
 			function nextquestion() {
-				if(combobox.value === "empty") return;
 				contents.className = "out";
 				contents.style.pointerEvents = "none";
-				setTimeout(switcharoo,300);
 			}
 			function switcharoo() {
-				contents.className = "in";
-				setTimeout(finish,300);
-				q = (q+1)%questions.length;
-				setq();
-			}
-			function finish() {
-				contents.style.pointerEvents = null;
+				if(contents.className === "in") {
+					contents.style.pointerEvents = null;
+				} else {
+					contents.className = "in";
+					q = (q+1)%questions.length;
+					setq();
+				}
 			}
 			function setq() {
 				combobox.value = "empty";
