@@ -2,16 +2,16 @@
 		<style>
 			body {
 				display: flex;
-				animation: bgc 100s linear -47s infinite normal;
+				animation: bgc 60s linear -30s infinite normal;
 			}
 			@keyframes bgc {
-				0% { background-color: #ffcccc; }
-				17% { background-color: #ffffcc; }
-				33% { background-color: #ccffcc; }
-				50% { background-color: #ccffff; }
-				67% { background-color: #ccccff; }
-				83% { background-color: #ffccff; }
-				100% { background-color: #ffcccc; }
+				0% { background-color: #bd6080; }
+				17% { background-color: #e09080; }
+				33% { background-color: #909585; }
+				50% { background-color: #80a0c0; }
+				67% { background-color: #8060bd; }
+				83% { background-color: #bd70bd; }
+				100% { background-color: #bd6080; }
 			}
 			.bgs {
 				position: fixed;
@@ -21,7 +21,7 @@
 				left: 0;
 				z-index: -100;
 				background: url("<%= assets %>/selection.png");
-				image-rendering: pixelated;
+				background-size: 2048px;
 				mix-blend-mode: difference;
 			}
 			#rbg {
@@ -43,11 +43,20 @@
 			}
 			@keyframes bgx {
 				from { background-position-x: 0; }
-				to { background-position-x: 1024px; }
+				to { background-position-x: 2048px; }
 			}
 			@keyframes bgy {
 				from { background-position-y: 0; }
-				to { background-position-y: 1024px; }
+				to { background-position-y: 2048px; }
+			}
+			#vbg {
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				left: 0;
+				z-index: -50;
+				background: radial-gradient(circle,#00000000 0%,#00000085 100%);
 			}
 
 			#form {
@@ -125,6 +134,7 @@
 		<div class="bgs" id="rbg"></div>
 		<div class="bgs" id="gbg"></div>
 		<div class="bgs" id="bbg"></div>
+		<div id="vbg"></div>
 		<div id="form">
 			<div id="title">Please fill the form accurately.</div>
 			<div id="contents" onanimationend="switcharoo()">
