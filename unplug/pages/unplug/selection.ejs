@@ -13,56 +13,57 @@
 				83% { background-color: #bd70bd; }
 				100% { background-color: #bd6080; }
 			}
-			.bgs {
+			.bgs, #vbg, #shape {
 				position: fixed;
 				width: 100vw;
 				height: 100vh;
 				top: 0;
 				left: 0;
+			}
+			.bgs {
 				z-index: -100;
-				background: url("<%= assets %>/selection.png");
-				background-size: 2048px;
+				background: url("<%= assets %>/selection/bg.png");
+				background-size: 2458px;
 				mix-blend-mode: difference;
 			}
 			#rbg {
 				animation:
-					bgx 13.459s linear -10.962s infinite normal,
-					bgy 58.14s linear -52.462s infinite normal;
+					bgx 26.918s linear -21.924s infinite normal,
+					bgy 116.28s linear -104.92s infinite normal;
 			}
 			#gbg {
 				filter: hue-rotate(120deg);
 				animation:
-					bgx 23.31s linear -4.393s infinite normal,
-					bgy 55.556s linear -28.917s infinite reverse;
+					bgx 46.621s linear -8.7861s infinite normal,
+					bgy 111.11s linear -57.834s infinite reverse;
 			}
 			#bbg {
 				filter: hue-rotate(240deg);
 				animation:
-					bgx 14.925s linear -4.227s infinite reverse,
-					bgy 90.909s linear -66.673s infinite reverse;
+					bgx 29.851s linear -8.4541s infinite reverse,
+					bgy 181.82s linear -133.35s infinite reverse;
 			}
 			@keyframes bgx {
 				from { background-position-x: 0; }
-				to { background-position-x: 2048px; }
+				to { background-position-x: 2458px; }
 			}
 			@keyframes bgy {
 				from { background-position-y: 0; }
-				to { background-position-y: 2048px; }
+				to { background-position-y: 2458px; }
 			}
 			#vbg {
-				position: fixed;
-				width: 100vw;
-				height: 100vh;
-				top: 0;
-				left: 0;
 				z-index: -50;
-				background: radial-gradient(circle,#00000000 0%,#00000085 100%);
+				background: radial-gradient(circle,#999 0%,#666 100%);
+				mix-blend-mode: soft-light;
 			}
 
+			#shape {
+				background: url("<%= assets %>/selection/shape.png") center no-repeat;
+				z-index: -25;
+			}
 			#form {
-				background: black;
 				margin: auto;
-				padding: 19px 39px;
+				text-align: center;
 			}
 			#title {
 				font-size: 25px;
@@ -71,7 +72,6 @@
 			}
 
 			#contents {
-				text-align: center;
 				position: relative;
 				animation-duration: .3s;
 				animation-iteration-count: 1;
@@ -135,6 +135,7 @@
 		<div class="bgs" id="gbg"></div>
 		<div class="bgs" id="bbg"></div>
 		<div id="vbg"></div>
+		<div id="shape"></div>
 		<div id="form">
 			<div id="title">Please fill the form accurately.</div>
 			<div id="contents" onanimationend="switcharoo()">
@@ -164,7 +165,7 @@
 				options: ["Britain","Florida","Mexico","Argentina","Australia"]
 			},{
 				label: "Phone number:",
-				options: ["05632935","03263174","09326362","08734165","07733416"]
+				options: ["05-632935","03-263174","09-326362","09-734165","07-733416"]
 			},{
 				label: "Favorite color:",
 				options: ["Blue","Green","Yellow","Purple","Orange"]
