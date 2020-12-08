@@ -89,6 +89,9 @@
 
 				btn[n].className = "button pressed";
 				shake[n] += 30;
+
+				if(btn[1 - n].className === "button pressed")
+					window.location = "/chat";
 			});
 			document.body.addEventListener('keyup', function(event)
 			{
