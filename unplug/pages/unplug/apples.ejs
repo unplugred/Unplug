@@ -1,0 +1,560 @@
+<%- include('../partials/header',{title:"apples"}) %>
+		<style>
+			.hide {
+				display: none;
+			}
+			#clickable {
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				left: 0;
+			}
+			@font-face {
+				font-family: 'tragic2';
+				font-style: normal;
+				font-weight: 500;
+				font-display: swap;
+				-webkit-font-smoothing : none;
+				font-smooth: never;
+				src: url("<%= assets %>/apples/tragic2.woff2") format('woff2');
+			}
+		</style>
+	</head>
+	<body>
+		<img class="hide" id="imgstand" src="<%= assets %>/apples/stand.svg"/>
+		<img class="hide" id="imgshopper" src="<%= assets %>/apples/shopper.svg"/>
+		<img class="hide" id="imgapple" src="<%= assets %>/apples/apple.svg"/>
+		<canvas class="hide" id="imgredapple"></canvas>
+		<canvas class="hide" id="imgyellowapple"></canvas>
+		<canvas class="hide" id="imgactiveapple"></canvas>
+		<img class="hide" id="imgdialog" src="<%= assets %>/apples/dialog.svg"/>
+		<img class="hide" id="imgtriangol" src="<%= assets %>/apples/triangol.svg"/>
+		<a id="clickable" href="javascript:void(0);" style="display:none;"></a>
+		<canvas id="canva"></canvas>
+		<script>
+			var clickable = document.getElementById("clickable");
+			var canvas = document.getElementById("canva");
+			var ctx = canvas.getContext("2d");
+			var scale = 1;
+			var state = 0;
+			window.onload = function() {
+				redraw();
+				window.requestAnimationFrame(update);
+				setTimeout(function(){showshopper=true;},500);
+				setTimeout(function(){showdialog=true;},1000);
+			};
+
+//------SCALING-------
+			window.onresize = redraw;
+			var standpos = [0,0,1,1];
+			var applecolors = [343,70,74,63.5,243,63];
+			function redraw() {
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+				scale = Math.min(canvas.width,canvas.height)*.01;
+				if(canvas.width/canvas.height < 0.72){
+					standpos = [
+						canvas.width*.5-45*scale,
+						canvas.height*.05,
+						90*scale,
+						90*scale*(imgstand.height/imgstand.width)];
+					shopperpos = [
+						canvas.width*.5-37*scale,
+						canvas.height*.5+4*scale,
+						35*scale,
+						35*scale*(imgshopper.height/imgshopper.width)];
+				} else if(canvas.width/canvas.height < 1.35){
+					standpos = [
+						canvas.width*.5-45*scale,
+						5*scale,
+						90*scale,
+						90*scale*(imgstand.height/imgstand.width)];
+					shopperpos = [
+						5*scale,
+						canvas.height-50*scale,
+						35*scale,
+						35*scale*(imgshopper.height/imgshopper.width)];
+				} else if(canvas.width/canvas.height < 1.9){
+					standpos = [
+						canvas.width-100*scale,
+						10*scale,
+						90*scale,
+						90*scale*(imgstand.height/imgstand.width)];
+					shopperpos = [
+						5*scale,
+						canvas.height-88*scale,
+						35*scale,
+						35*scale*(imgshopper.height/imgshopper.width)];
+				} else {
+					standpos = [
+						canvas.width*.5-10*scale,
+						10*scale,
+						90*scale,
+						90*scale*(imgstand.height/imgstand.width)];
+					shopperpos = [
+						canvas.width*.5-80*scale,
+						canvas.height-88*scale,
+						35*scale,
+						35*scale*(imgshopper.height/imgshopper.width)];
+				}
+				let interpolate2 = .5-Math.cos(applefade*Math.PI)*.5;
+				renderapple(0,applecolors[0]-30*interpolate2,applecolors[1]*(1-(interpolate2)*.7),applecolors[2]);
+				renderapple(1,applecolors[3]-30*interpolate2,applecolors[4]*(1-(interpolate2)*.7),applecolors[5]);
+				if(state === 2)
+					renderapple(2,applecolors[apples[applehover].color*3],applecolors[apples[applehover].color*3+1],applecolors[apples[applehover].color*3+2]);
+			}
+
+//------MOUSE-------
+			var csr = [-6666,-6666];
+			document.onmousemove = function(e) {
+				csr = [e.pageX,e.pageY];
+			}
+			var hover = false;
+
+//------STATE MGMT-------
+			var wrongapples = [
+				"This one looks a bit%dull, Doesnt it?",
+				"It has a dark patch%right there",
+				"Looks a bit wonky%though...",
+				"It's a bit small to%my tastes",
+				"That one is massive,%I can't eat that!",
+				"Will you try a little%harder please?",
+				"Maybe something a%little fresher...",
+				"This one looks a bit%rotten",
+				"I would not call%that edible.",
+				"A bit dusty...",
+				"No, No, I want a%farm fresh apple.",
+				"It has mold all%over it!"
+			];
+			var crntansr = Math.floor(Math.random()*wrongapples.length);
+			var clickedapplecount = 0;
+			document.onclick = function(e) {
+				if(!hover) return;
+				hover = false;
+				clickable.style.display = "none";
+
+				switch(state) {
+					case 0:
+						state = 1;
+						showdialog = false;
+						break;
+					case 1:
+						state = 2;
+						if(!apples[applehover].clicked) {
+							apples[applehover].clicked = true;
+							clickedapplecount++;
+						}
+						clicked = 0;
+						renderapple(2,applecolors[apples[applehover].color*3],applecolors[apples[applehover].color*3+1],applecolors[apples[applehover].color*3+2]);
+						showdialog = true;
+						dialogtextprogress = 0;
+						answer = false;
+						answery = Math.random()*-2-.25;
+						if(clickedapplecount > 1) {
+							dialogtext = "I guess it's good%enough...";
+							answertext = "Thank you for shopping%at Apples Stand [tm]";applefade=0;
+						} else {
+							crntansr = (crntansr+1+Math.floor(Math.random()*(wrongapples.length-3)))%wrongapples.length;
+							dialogtext = wrongapples[crntansr];
+							answertext = "I'll try looking for%another one...";
+						}
+						break;
+					case 2:
+						showdialog = false;
+						if(clickedapplecount > 1) {
+							state = 3;
+							setTimeout(function(){eaten=applehover;apples[applehover].eaten=0;},400);
+							setTimeout(function(){showshopper=false;},1000);
+							setTimeout(function(){showend=true;},1400);
+						} else {
+							state = 1;
+						}
+						break;
+					case 3:
+						state = 4;
+						showend = false;
+						break;
+					case 4:
+						state = 5;
+						eaten=applehover;
+						apples[applehover].eaten = 0;
+						applefade = 0;
+						break;
+				}
+			}
+
+//------VAR SETUP-------
+			var bgbox = [];
+			for(var i = 0; i < 14; i++) {
+				bgbox[i] = {
+					pn_offset: Math.random(),
+					pn_speed: (Math.random()*.001+.001)*(Math.random() > .5 ? 1 : -1),
+					ps_offset: Math.random()*Math.PI*2,
+					ps_speed: Math.random()*.0001+.0001,
+					ps_amount: Math.random()*.008+.002,
+					ss_offset: Math.random()*Math.PI*2,
+					ss_speed: Math.random()*.0001+.0001,
+					ss_amount: Math.random()*80+20*(Math.random() > .5 ? 1 : -1)
+				};
+			}
+
+			var imgstand = document.getElementById("imgstand");
+
+			var imgorgapp = document.getElementById("imgapple");
+			var imgapple = [
+				document.getElementById("imgredapple"),
+				document.getElementById("imgyellowapple"),
+				document.getElementById("imgactiveapple")];
+			var imgapplectx = [
+				imgapple[0].getContext('2d'),
+				imgapple[1].getContext('2d'),
+				imgapple[2].getContext('2d')];
+			var apples = [];
+			let applecount = [8, Math.random() > .5 ? 9 : 8, 9, Math.random() > .5 ? 10 : 9, 10];
+			let currentapple = 0;
+			for(let y = 0; y < 5; y++) {
+				row = [applecount[y]*.5+(Math.random()-.5)*.5,8.7+Math.random()];
+				for(let x = 0; x < applecount[y]; x++) {
+					apples[currentapple] = {
+						x: 50 + (x - row[0])*row[1],
+						y: 1.6 + y*14.7,
+						xran: (Math.random()-.5),
+						yran: (Math.random()-.5),
+						wobbles: wobble(-9),
+						wobblex: 0,
+						wobbley: 0,
+						color: Math.random() > .5 ? 1 : 0,
+						clicked: false,
+						eaten: -1
+					}
+					apples[currentapple].wobblex = wobble(apples[currentapple].wobbles);
+					apples[currentapple].wobbley = wobble(apples[currentapple].wobbles);
+
+					currentapple++;
+				}
+			}
+			let currentIndex = apples.length, temporaryValue, randomIndex;
+			while (0 !== currentIndex) {
+				randomIndex = Math.floor(Math.random() * currentIndex);
+				currentIndex -= 1;
+				temporaryValue = apples[currentIndex];
+				apples[currentIndex] = apples[randomIndex];
+				apples[randomIndex] = temporaryValue;
+			}
+			var applefade = 0;
+			var eaten = -1;
+			var boxrand = [Math.random(),Math.random()];
+
+			var imgshopper = document.getElementById("imgshopper");
+			var showshopper = false;
+			var shopperprogress = 0;
+
+			var imgdialog = document.getElementById("imgdialog");
+			var showdialog = false;
+			var dialogprogress = 0;
+			var dialogtext = "Do you work here?%I need an apple.";
+			var dialogtextprogress = 0;
+			var dialoginterval = false;
+			var dialogy = 0;
+			var imgtriangol = document.getElementById("imgtriangol");
+			var answer = false;
+			var answertext = "let me see...";
+			var answery = 0;
+
+			var showend = false;
+			var endprogress = 0;
+
+//------UPDATE-------
+			var applehover = -1;
+			clicked = -1;
+			var dt = null;
+			function update(timestamp) {
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+				ctx.imageSmoothingEnabled = false;
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+				let interpolate = 1.5;
+
+//----------BACKGROUND-------
+				ctx.fillStyle = "#070707";
+				ctx.globalCompositeOperation = "difference";
+				let p, s;
+				for(var i = 0; i < bgbox.length*.5; i++) {
+					p = (
+						Math.sin(timestamp*bgbox[i].ps_speed+bgbox[i].ps_offset)*bgbox[i].ps_amount*scale+
+						timestamp*bgbox[i].pn_speed*scale+
+						bgbox[i].pn_offset*canvas.width)%canvas.width;
+					s =
+						(Math.sin(timestamp*bgbox[i].ss_speed+bgbox[i].ss_offset)+1.2)*bgbox[i].ss_amount*scale;
+
+					ctx.fillRect(p,0,s,canvas.height);
+					if(p+s>canvas.width)
+						ctx.fillRect(p-canvas.width,0,s,canvas.height);
+					else if(p+s<0)
+						ctx.fillRect(p+canvas.width,0,s,canvas.height);
+				}
+				for(var i = bgbox.length*.5; i < bgbox.length; i++) {
+					p = (
+						Math.sin(timestamp*bgbox[i].ps_speed+bgbox[i].ps_offset)*bgbox[i].ps_amount*scale+
+						timestamp*bgbox[i].pn_speed*scale+
+						bgbox[i].pn_offset*canvas.height)%canvas.height;
+					s =
+						Math.sin(timestamp*bgbox[i].ss_speed+bgbox[i].ss_offset)*bgbox[i].ss_amount*scale;
+
+					ctx.fillRect(0,p,canvas.width,s);
+					if(p+s>canvas.height)
+						ctx.fillRect(0,p-canvas.height,canvas.width,s);
+					else if(p+s<0)
+						ctx.fillRect(0,p+canvas.height,canvas.width,s);
+				}
+				ctx.globalCompositeOperation = "normal";
+
+//----------STAND-------
+				ctx.drawImage(imgstand,standpos[0],standpos[1],standpos[2],standpos[3]);
+
+//----------APPLES-------
+			//--2-- interpolate
+				if(state === 2) {
+					clicked = Math.min(clicked+dtt*.002,1);
+					interpolate = Math.sin(clicked*5)*(Math.cos(clicked*Math.PI)+1)*2+1.5;
+				}
+
+			//01234 color fades
+				if(applefade !== (state === 2 ? 1 : 0)) {
+					applefade = Math.max(Math.min(applefade+dtt*.004*(state === 2 ? 1 : -1),1),0);
+					let interpolate2 = .5-Math.cos(applefade*Math.PI)*.5;
+					renderapple(0,applecolors[0]-30*interpolate2,applecolors[1]*(1-(interpolate2)*.7),applecolors[2]);
+					renderapple(1,applecolors[3]-30*interpolate2,applecolors[4]*(1-(interpolate2)*.7),applecolors[5]);
+				}
+				if(eaten >= 0) {
+					apples[eaten].eaten = Math.min(apples[eaten].eaten+dtt*.003,1);
+					let interpolate2 = .5-Math.cos(apples[eaten].eaten*Math.PI)*.5;
+					renderapple(2,applecolors[apples[eaten].color*3]-50*interpolate2,applecolors[1+apples[eaten].color*3]*(1-interpolate2),applecolors[2+apples[eaten].color*3]);
+				}
+
+			//01234 dimensions
+				let dim;
+				let boxx = -1;
+				for(let i = 0; i < apples.length; i++) {
+					if((state !== 2 || applehover !== i) && apples[i].eaten < 1) {
+						dim = [
+							standpos[2]*.01*(apples[i].x + apples[i].xran*interpolate)+standpos[0],
+							standpos[3]*.01*(apples[i].y + apples[i].yran*interpolate)+standpos[1],
+							standpos[2]*.08,
+							standpos[2]*.08*(imgapple[0].height/imgapple[0].width)];
+
+						if(state === 1 || state === 4) {
+			//-1--4 check mouse
+							if(
+							csr[0] > dim[0] &&
+							csr[1] > dim[1] &&
+							csr[0] < dim[0]+dim[2] &&
+							csr[1] < dim[1]+dim[3]) {
+								clickable.style.display = "block";
+								hover = true;
+								applehover = i;
+								boxx = dim;
+							} else if(applehover === i) {
+								clickable.style.display = "none";
+								hover = false;
+								applehover = -1;
+								boxrand = [(Math.random()-.5)*20,(Math.random()-.5)*20];
+							}
+
+			//-1--4 wobble
+							if(Math.random() < .2) {
+								apples[i].wobbles = wobble(-9);
+								apples[i].wobblex = wobble(apples[i].wobbles);
+								apples[i].wobbley = wobble(apples[i].wobbles);
+							}
+						}
+
+			//01234 draw apple
+						ctx.drawImage(apples[i].eaten > 0 ? imgapple[2] : imgapple[apples[i].color],
+							dim[0]+apples[i].wobblex,
+							dim[1]+apples[i].wobbley,
+							dim[2]+apples[i].wobbles,
+							dim[3]+apples[i].wobbles);
+					}
+				}
+
+				if(state === 2) {
+			//--2-- dimensions
+					dim = [
+						standpos[2]*.01*(apples[applehover].x+apples[applehover].xran*interpolate*6)+standpos[0],
+						standpos[3]*.01*(apples[applehover].y+apples[applehover].yran*interpolate*6)+standpos[1],
+						standpos[2]*.08,
+						standpos[2]*.08*(imgapple[0].height/imgapple[0].width)];
+
+			//--2-- wobble
+					if(Math.random() < .2) {
+						apples[applehover].wobbles = 2*wobble(-9);
+						apples[applehover].wobblex = 2*wobble(apples[applehover].wobbles);
+						apples[applehover].wobbley = 2*wobble(apples[applehover].wobbles);
+					}
+
+			//--2-- draw apple
+					ctx.drawImage(imgapple[2],
+						dim[0]+apples[applehover].wobblex,
+						dim[1]+apples[applehover].wobbley,
+						dim[2]+apples[applehover].wobbles,
+						dim[3]+apples[applehover].wobbles);
+				}
+
+				if(boxx !== -1) {
+					ctx.strokeStyle = "#1190AD";
+					ctx.lineWidth = 4;
+					ctx.strokeRect(
+						Math.round(boxx[0]+boxrand[0]),
+						Math.round(boxx[1]+boxrand[1]),
+						Math.round(boxx[2]),
+						Math.round(boxx[3]));
+				}
+
+//----------SHOPPER-------
+				shopperprogress = Math.max(Math.min(shopperprogress + .0015*dtt*(showshopper?1:-1),1),0);
+				if(shopperprogress > 0) {
+					if(shopperprogress < 1) {
+						interpolate = .5 - Math.cos(shopperprogress*Math.PI)*.5;
+						ctx.filter = "hue-rotate(" + ((1 - interpolate)*.25) + "turn) brightness(" + Math.min(interpolate*1.1,1) + ") opacity(" + Math.min(shopperprogress*6,1) + ")";
+						ctx.drawImage(imgshopper,shopperpos[0] + (1 - interpolate)*50*(showshopper?-1:1),shopperpos[1],shopperpos[2],shopperpos[3]);
+					} else {
+						ctx.drawImage(imgshopper,shopperpos[0],shopperpos[1],shopperpos[2],shopperpos[3]);
+					}
+				}
+
+//----------DIALOG-------
+				dialogprogress = Math.max(Math.min(dialogprogress + .0015*dtt*(showdialog?1:-1),1),0);
+				if(dialogprogress > 0) {
+					if(dialogprogress < 1) {
+						interpolate = .5 - Math.cos(dialogprogress*Math.PI)*.5;
+						ctx.filter = "hue-rotate(" + ((1 - interpolate)*.25) + "turn) brightness(" + Math.min(interpolate*1.1,1) + ") opacity(" + Math.min(dialogprogress*6,1) + ")";
+					} else if(!dialoginterval && dialogtextprogress === 0)
+						dialogupdate();
+					ctx.drawImage(imgdialog,Math.round(shopperpos[0]+scale*33),Math.round(shopperpos[1]-scale*8),Math.round(scale*35),Math.round(scale*35*(imgdialog.height/imgdialog.width)));
+
+					if(dialogtextprogress > 0 && dialogprogress >= 1) {
+						ctx.textBaseline = "hanging";
+						ctx.font = (2.2*scale)+"px tragic2";
+						ctx.fillStyle = "#000000";
+						let txt = dialogtext.substring(0,dialogtextprogress).split("%");
+						for(let i = 0; i < txt.length; i++)
+							ctx.fillText(txt[i],Math.floor(shopperpos[0]+scale*35),Math.floor(shopperpos[1]-scale*6+i*3*scale+dialogy));
+
+						if(answer) {
+							ctx.textBaseline = "middle";
+							ctx.font = (1.8*scale)+"px tragic2";
+							let txt = answertext.split("%");
+							for(let i = 0; i < txt.length; i++)
+								ctx.fillText(txt[i],shopperpos[0]+scale*40.8,shopperpos[1]+scale*4.1+i*2.3*scale+answery);
+							ctx.fillStyle = "#1190AD";
+							for(let i = 0; i < txt.length; i++)
+								ctx.fillText(txt[i],shopperpos[0]+scale*40.5,shopperpos[1]+scale*4.3+i*2.3*scale+answery);
+
+							if((state === 2 || state === 0) &&
+							csr[0] > shopperpos[0]+scale*39 &&
+							csr[1] > shopperpos[1]+scale*3 &&
+							csr[0] < shopperpos[0]+scale*64 &&
+							csr[1] < shopperpos[1]+scale*4+txt.length*scale*2.3) {
+								ctx.drawImage(imgtriangol,shopperpos[0]+scale*38.3,shopperpos[1]+scale*3+answery,scale*1.8,scale*1.8*(imgtriangol.height/imgtriangol.width));
+
+								if(!hover) {
+									clickable.style.display = "block";
+									hover = true;
+									answery = Math.random()*2+.25;
+								}
+							} else if(hover) {
+								clickable.style.display = "none";
+								hover = false;
+								answery = Math.random()*-2-.25;
+							}
+						}
+					}
+				}
+
+//----------END SCREEN-------
+				endprogress = Math.max(Math.min(endprogress+.0015*dtt*(showend?1:-1),1),0);
+				if(endprogress > 0) {
+					ctx.lineWidth = 2;
+					if(endprogress < 1) {
+						interpolate = .5 - Math.cos(endprogress*Math.PI)*.5;
+						ctx.filter = "hue-rotate(" + ((1 - interpolate)*.25) + "turn) brightness(" + Math.min(interpolate*1.1,1) + ") opacity(" + Math.min(endprogress*6,1) + ")";
+					} else ctx.filter = "none";
+					ctx.fillStyle = "#1190AD";
+					ctx.strokeStyle = "#000000";
+					ctx.fillRect(Math.round(canvas.width*.5-15.5*scale),Math.round(canvas.height*.5-4.5*scale),Math.round(31*scale),Math.round(9*scale));
+					ctx.strokeRect(Math.round(canvas.width*.5-15*scale),Math.round(canvas.height*.5-4*scale),Math.round(30*scale),Math.round(8*scale));
+
+					if(endprogress >= 1) {
+						if(
+						csr[0] > canvas.width*.5-scale*15.5 &&
+						csr[1] > canvas.height*.5+scale*4.5 &&
+						csr[0] < canvas.width*.5+scale*15.5 &&
+						csr[1] < canvas.height*.5+scale*7.8) {
+							ctx.drawImage(imgtriangol,canvas.width*.5-scale*15.5,canvas.height*.5+scale*5+answery,scale*1.8,scale*1.8*(imgtriangol.height/imgtriangol.width));
+							if(!hover) {
+								clickable.style.display = "block";
+								hover = true;
+								answery = Math.random()*2+.25;
+							}
+						} else if(hover) {
+							clickable.style.display = "none";
+							hover = false;
+							answery = Math.random()*-2-.25;
+						}
+
+						ctx.fillStyle = "#000000";
+						ctx.font = (2.2*scale)+"px tragic2";
+						ctx.textAlign = "center";
+						ctx.textBaseline = "middle";
+						ctx.fillText("You've earned 3$!",canvas.width*.5,canvas.height*.5+.18*scale);
+
+						ctx.font = (1.8*scale)+"px tragic2";
+						ctx.textAlign = "start";
+						ctx.fillText("Use it to buy an apple.",canvas.width*.5-scale*13,canvas.height*.5+scale*6.6+answery);
+						ctx.fillStyle = "#1190AD";
+						ctx.fillText("Use it to buy an apple.",canvas.width*.5-scale*13.3,canvas.height*.5+scale*6.4+answery);
+					}
+				}
+				ctx.filter = "none";
+
+				requestAnimationFrame(update);
+			}
+
+//------DIALOG UPDATE-------
+			function dialogupdate() {
+				if(++dialogtextprogress > dialogtext.length) {
+					dialoginterval = false;
+					setTimeout(function(){answer=true;},400);
+					return;
+				}
+				dialogy = (Math.random()-.5)*3;
+				let currentchar = dialogtext.substring(dialogtextprogress-1,dialogtextprogress);
+				if(
+					currentchar === "?"||
+					currentchar === "!"||
+					currentchar === "."||
+					currentchar === ",")
+						setTimeout(dialogupdate,400);
+				else	setTimeout(dialogupdate,50);
+			}
+
+			function wobble(s) {
+				if(s === -9)
+					return (Math.random()-.5)*scale*.1;
+				else
+					return ((Math.random()-.5)*scale*.2)-(s*.5);
+			}
+
+			function renderapple(num,hue,brightness,saturation) {
+				imgapple[num].width = standpos[2]*.16;
+				imgapple[num].height = standpos[2]*.16*(imgorgapp.height/imgorgapp.width);
+				imgapplectx[num].clearRect(0, 0, imgapple[num].width, imgapple[num].height);
+				imgapplectx[num].filter = "hue-rotate("+hue+"deg) brightness("+brightness+"%) saturate("+saturation+"%)";
+				imgapplectx[num].drawImage(imgorgapp,0,0,imgapple[num].width,imgapple[num].height);
+				imgapplectx[num].filter = "none";
+			}
+		</script>
+<%- include('../partials/footer') %>
