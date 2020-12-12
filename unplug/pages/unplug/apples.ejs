@@ -32,6 +32,7 @@
 		<img class="hide" id="imgtriangol" src="<%= assets %>/apples/triangol.svg"/>
 		<a id="clickable" href="javascript:void(0);" style="display:none;"></a>
 		<canvas id="canva"></canvas>
+		<script type="text/javascript" src="<%= assets %>/automatism/simplex.js"></script>
 		<script>
 			var clickable = document.getElementById("clickable");
 			var canvas = document.getElementById("canva");
@@ -98,6 +99,9 @@
 						35*scale,
 						35*scale*(imgshopper.height/imgshopper.width)];
 				}
+				bg_densityx = canvas.width/Math.round(canvas.width/(20*scale));
+				bg_densityy = canvas.height/Math.round(canvas.height/(20*scale));
+				bg_wobamount = bg_densityx*.3;
 				let interpolate2 = .5-Math.cos(applefade*Math.PI)*.5;
 				renderapple(0,applecolors[0]-30*interpolate2,applecolors[1]*(1-(interpolate2)*.7),applecolors[2]);
 				renderapple(1,applecolors[3]-30*interpolate2,applecolors[4]*(1-(interpolate2)*.7),applecolors[5]);
@@ -151,7 +155,7 @@
 						dialogtextprogress = 0;
 						answer = false;
 						answery = Math.random()*-2-.25;
-						if(clickedapplecount > 1) {
+						if(clickedapplecount >= apples.length-1) {
 							dialogtext = "I guess it's good%enough...";
 							answertext = "Thank you for shopping%at Apples Stand [tm]";applefade=0;
 						} else {
@@ -162,7 +166,7 @@
 						break;
 					case 2:
 						showdialog = false;
-						if(clickedapplecount > 1) {
+						if(clickedapplecount >= apples.length-1) {
 							state = 3;
 							setTimeout(function(){eaten=applehover;apples[applehover].eaten=0;},400);
 							setTimeout(function(){showshopper=false;},1000);
@@ -185,19 +189,13 @@
 			}
 
 //------VAR SETUP-------
-			var bgbox = [];
-			for(var i = 0; i < 14; i++) {
-				bgbox[i] = {
-					pn_offset: Math.random(),
-					pn_speed: (Math.random()*.001+.001)*(Math.random() > .5 ? 1 : -1),
-					ps_offset: Math.random()*Math.PI*2,
-					ps_speed: Math.random()*.0001+.0001,
-					ps_amount: Math.random()*.008+.002,
-					ss_offset: Math.random()*Math.PI*2,
-					ss_speed: Math.random()*.0001+.0001,
-					ss_amount: Math.random()*80+20*(Math.random() > .5 ? 1 : -1)
-				};
-			}
+			var bg_speed = .02;
+			var bg_densityx = canvas.width/Math.round(canvas.width/(20*scale));
+			var bg_densityy = canvas.height/Math.round(canvas.height/(20*scale));
+			var bg_wobamount = bg_densityx*.3;
+			var bg_wobdensity = .003;
+			var bg_wobspeed = .0001;
+			var bg_seed = [Math.random()*1000,Math.random()*1000];
 
 			var imgstand = document.getElementById("imgstand");
 
@@ -279,35 +277,34 @@
 
 //----------BACKGROUND-------
 				ctx.fillStyle = "#070707";
-				ctx.globalCompositeOperation = "difference";
-				let p, s;
-				for(var i = 0; i < bgbox.length*.5; i++) {
-					p = (
-						Math.sin(timestamp*bgbox[i].ps_speed+bgbox[i].ps_offset)*bgbox[i].ps_amount*scale+
-						timestamp*bgbox[i].pn_speed*scale+
-						bgbox[i].pn_offset*canvas.width)%canvas.width;
-					s =
-						(Math.sin(timestamp*bgbox[i].ss_speed+bgbox[i].ss_offset)+1.2)*bgbox[i].ss_amount*scale;
-
-					ctx.fillRect(p,0,s,canvas.height);
-					if(p+s>canvas.width)
-						ctx.fillRect(p-canvas.width,0,s,canvas.height);
-					else if(p+s<0)
-						ctx.fillRect(p+canvas.width,0,s,canvas.height);
+				let p = (timestamp*bg_speed)%(canvas.width+bg_densityx)-bg_densityx;
+				let x = p+simplex(p*bg_wobdensity+bg_seed[0],timestamp*bg_wobspeed+bg_seed[1])*bg_wobamount;
+				let nx;
+				let nt;
+				for(var i = 1; i < canvas.width+bg_densityx*2; i += bg_densityx) {
+					p = (timestamp*bg_speed+i)%(canvas.width+bg_densityx)-bg_densityx;
+					nx = p+simplex(p*bg_wobdensity+bg_seed[0],timestamp*bg_wobspeed+bg_seed[1])*bg_wobamount;
+					if(nx < x) {
+						nt = p+canvas.width+bg_densityx+simplex((p+canvas.width+bg_densityx)*bg_wobdensity+bg_seed[0],timestamp*bg_wobspeed+bg_seed[1])*bg_wobamount;
+						ctx.fillRect(x,0,(nt-x)*.5,canvas.height);
+					} else {
+						ctx.fillRect(x,0,(nx-x)*.5,canvas.height);
+					}
+					x = nx;
 				}
-				for(var i = bgbox.length*.5; i < bgbox.length; i++) {
-					p = (
-						Math.sin(timestamp*bgbox[i].ps_speed+bgbox[i].ps_offset)*bgbox[i].ps_amount*scale+
-						timestamp*bgbox[i].pn_speed*scale+
-						bgbox[i].pn_offset*canvas.height)%canvas.height;
-					s =
-						Math.sin(timestamp*bgbox[i].ss_speed+bgbox[i].ss_offset)*bgbox[i].ss_amount*scale;
-
-					ctx.fillRect(0,p,canvas.width,s);
-					if(p+s>canvas.height)
-						ctx.fillRect(0,p-canvas.height,canvas.width,s);
-					else if(p+s<0)
-						ctx.fillRect(0,p+canvas.height,canvas.width,s);
+				ctx.globalCompositeOperation = "difference";
+				p = (timestamp*bg_speed)%(canvas.height+bg_densityy)-bg_densityy;
+				x = p+simplex(timestamp*bg_wobspeed+bg_seed[0],p*bg_wobdensity+bg_seed[1])*bg_wobamount;
+				for(var i = 1; i < canvas.height+bg_densityy*2; i += bg_densityy) {
+					p = (timestamp*bg_speed+i)%(canvas.height+bg_densityy)-bg_densityy;
+					nx = p+simplex(timestamp*bg_wobspeed+bg_seed[0],p*bg_wobdensity+bg_seed[1])*bg_wobamount;
+					if(nx < x) {
+						nt = p+canvas.height+bg_densityy+simplex(timestamp*bg_wobspeed+bg_seed[0],(p+canvas.height+bg_densityy)*bg_wobdensity+bg_seed[1])*bg_wobamount;
+						ctx.fillRect(0,x,canvas.width,(nt-x)*.5);
+					} else {
+						ctx.fillRect(0,x,canvas.width,(nx-x)*.5);
+					}
+					x = nx;
 				}
 				ctx.globalCompositeOperation = "normal";
 
@@ -363,8 +360,8 @@
 								boxrand = [(Math.random()-.5)*20,(Math.random()-.5)*20];
 							}
 
-			//-1--4 wobble
-							if(Math.random() < .2) {
+			//-1--- wobble
+							if(state === 1 && Math.random() < .2) {
 								apples[i].wobbles = wobble(-9);
 								apples[i].wobblex = wobble(apples[i].wobbles);
 								apples[i].wobbley = wobble(apples[i].wobbles);
