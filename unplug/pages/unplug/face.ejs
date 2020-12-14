@@ -1,0 +1,212 @@
+<%- include('../partials/header',{title:"face"}) %>
+		<style>
+			body {
+				background: url("<%= assets %>/face/bg.png") no-repeat center, black;
+				display: flex;
+			}
+			#pix {
+				width: 100vw;
+				height: 100vh;
+				max-width: 1200px;
+				max-height: 900px;
+				margin: auto;
+				display: flex;
+			}
+
+			#left {
+				flex: 1 0 581px;
+				display: flex;
+			}
+			#qa {
+				display: inline-flex;
+				flex-direction: column;
+				align-items: center;
+				margin: auto;
+				font-size: 25px;
+			}
+			#question {
+				background-image: url("<%= assets %>/face/shadow.png");
+				width: 581px;
+				height: 185px;
+				margin-bottom: 20px;
+				display: flex;
+			}
+			#qtxt {
+				text-align: center;
+				font-weight: bold;
+				margin: auto;
+				position: relative;
+			}
+			.answer {
+				font-style: italic;
+				text-decoration: none;
+				font-weight: normal;
+				display: block;
+				margin: 10px 0;
+				padding: 0 5px;
+				filter: drop-shadow(5px 5px 0 black);
+				position: relative;
+			}
+			.answer:hover {
+				border: 2px solid;
+				margin: 8px;
+			}
+
+			#right {
+				flex: 1 0 504px;
+				display: flex;
+			}
+			#face {
+				display: inline-flex;
+				flex-direction: column;
+				align-items: center;
+				margin: auto;
+			}
+			#brow {
+				background-image: url("<%= assets %>/face/brow.png");
+				width: 281px;
+				height: 51px;
+				margin-bottom: 15px;
+				animation-delay: -400ms;
+			}
+			#eye {
+				background-image: url("<%= assets %>/face/eye.png");
+				width: 249px;
+				height: 120px;
+				animation-delay: -800ms;
+			}
+			#mouth {
+				background-image: url("<%= assets %>/face/mouth.png");
+				width: 504px;
+				height: 289px;
+				margin-top: -36px;
+				animation-delay: -1600ms;
+			}
+			.facial {
+				animation-name: sineface;
+				animation-duration: 10s;
+				animation-timing-function: ease-in-out;
+				animation-iteration-count: infinite;
+				animation-direction: normal;
+				position: relative;
+			}
+			@keyframes sineface {
+				0% { top: 30px; }
+				50% { top: -30px; }
+				100% { top: 30px; }
+			}
+		</style>
+	</head>
+	<body>
+		<div id="pix">
+			<div id="left">
+				<div id="qa">
+					<div id="question">
+						<div class="txt" id="qtxt"></div>
+					</div>
+					<a href="javascript:void(0);" style="visibility:hidden;" onclick="n(0)" class="txt answer" id="answer1">Hi.</a>
+					<a href="javascript:void(0);" style="visibility:hidden;" onclick="n(1)" class="txt answer" id="answer2">Eye.</a>
+				</div>
+			</div>
+			<div id="right">
+				<div id="face">
+					<div class="facial" id="brow"></div>
+					<div class="facial" id="eye"></div>
+					<div class="facial" id="mouth"></div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var d = [{
+				q:"I'm face",
+				a: "Hi.",
+				b: "Eye."
+			},{
+				q:"Did you catch the new episode%of runPlug Dead?",
+				a: "It's on TV",
+				b: "No time"
+			},{
+				q:"I disagree with your views%on the octogram phallacy",
+				a: "Ok",
+				b: "Hate"
+			},{
+				q:"I have feelings for you",
+				a: "Why",
+				b: "Ok"
+			},{
+				q:"If you read the book from end%to start you'll find his%ideology radically changes",
+				a: "Interesting",
+				b: "Propaganda"
+			},{
+				q:"That last page was horrible",
+				a: "Agree",
+				b: "Agree"
+			},{
+				q:"I love eating pizza",
+				a: "Greasy",
+				b: "Meanace to society"
+			},{
+				q:"Is this an AI?",
+				a: "Yes",
+				b: "No"
+			},{
+				q:"A two answer format cannot%foster a healthy debate",
+				a: "You're wrong",
+				b: "Bye bye"
+			},{
+				q:"I need new gear",
+				a: "$$$",
+				b: "Soul and meaning"
+
+
+			},{
+				q:"The bread expires in 3 days",
+				a: "Eat more bread",
+				b: "Eat less bread"
+			}];
+
+			var q = document.getElementById("qtxt");
+			var a = document.getElementById("answer1");
+			var b = document.getElementById("answer2");
+			var e = 0;
+			var l = -5;
+			function n(c) {
+				e = (e+2*Math.floor(Math.random()*d.length*.5))%(d.length-1)+1;
+				q.innerText = "";
+				a.innerText = d[e].a;
+				b.innerText = d[e].b;
+				a.style.visibility = "hidden";
+				b.style.visibility = "hidden";
+				l = -5;
+			}
+			setInterval(function(){
+				if(++l < 0) return;
+				q.style.top = w(1.1);
+				q.style.left = w(1.1);
+				a.style.top = w(1.05);
+				a.style.left = w(1.05);
+				b.style.top = w(1.05);
+				b.style.left = w(1.05);
+
+				if(l === d[e].q.length+10) {
+					a.style.visibility = null;
+					b.style.visibility = null;
+				}
+
+				if(l <= d[e].q.length)
+					q.innerText = d[e].q.substring(0,l).replace(/%/g,"\n");
+			},70);
+			function w(t) {
+				return Math.round((Math.random()-.5)*t)+"px";
+			}
+
+			var m = document.getElementById("eye");
+			var g = true;
+			function f() {
+				g = !g;
+				m.style.backgroundPositionY = (g?0:100)+"%";
+				setTimeout(f,g?(Math.random()*8000+50):(Math.random()*200+200));
+			}
+			setTimeout(f,Math.random()*4000+2000);
+		</script>
+<%- include('../partials/footer') %>
