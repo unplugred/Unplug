@@ -171,7 +171,10 @@
 			var e = 0;
 			var l = -5;
 			function n(c) {
-				e = (e+2*Math.floor(Math.random()*d.length*.5))%(d.length-1)+1;
+				if(e === 0)
+					e = Math.floor(Math.random()*(d.length-1))+1;
+				else
+					e = e%(d.length-1)+1;
 				q.innerText = "";
 				a.innerText = d[e].a;
 				b.innerText = d[e].b;
