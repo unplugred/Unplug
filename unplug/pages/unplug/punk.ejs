@@ -1,0 +1,77 @@
+<%- include('../partials/header',{title:"punk"}) %>
+		<style>
+			body {
+				display: flex;
+				background-image: url("<%= assets %>/punk/bg.png");
+			}
+			img {
+				margin: auto;
+				max-width: 80vw;
+				max-height: 90vh;
+			}
+			.sin {
+				width: 100vw;
+				position: fixed;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+				animation-direction: normal;
+				z-index: -1;
+				mix-blend-mode: screen;
+			}
+			.smol {
+				background: url("<%= assets %>/punk/sinesmol.png");
+				height: 54px;
+				margin-top: calc(50vh - 27px);
+				animation-name: smol;
+			}
+			.medium {
+				background: url("<%= assets %>/punk/sinemedium.png");
+				height: 120px;
+				margin-top: calc(50vh - 60px);
+				animation-name: medium;
+			}
+			.big {
+				background: url("<%= assets %>/punk/sinebig.png");
+				height: 269px;
+				margin-top: calc(50vh - 135px);
+				animation-name: big;
+			}
+			@keyframes smol {
+				from { background-position-x: 0; }
+				to { background-position-x: 1100px; }
+			}
+			@keyframes medium {
+				from { background-position-x: 0; }
+				to { background-position-x: 836px; }
+			}
+			@keyframes big {
+				from { background-position-x: 0; }
+				to { background-position-x: 876px; }
+			}
+		</style>
+	</head>
+	<body>
+		<div class="sin big"></div>
+		<div class="sin medium"></div>
+		<div class="sin medium"></div>
+		<div class="sin medium"></div>
+		<div class="sin medium"></div>
+		<div class="sin medium"></div>
+		<div class="sin smol"></div>
+		<div class="sin smol"></div>
+		<div class="sin smol"></div>
+		<div class="sin smol"></div>
+		<div class="sin smol"></div>
+		<img src="<%= assets %>/punk/punk.jpg">
+		<script>
+			let sins = document.getElementsByClassName("sin");
+			for(var i = 0; i < sins.length; i++) {
+				let d = 1/(Math.random()*.15+.02);
+				sins[i].style.animationDuration = d+"s";
+				sins[i].style.animationDelay = (Math.random()*d*-1)+"s";
+				sins[i].style.top = ((Math.random()-.5)*400)+"px";
+				sins[i].style.animationDirection = Math.random()>.5?"reverse":"normal";
+				sins[i].style.opacity = (Math.random()*.5+.5);
+			}
+		</script>
+<%- include('../partials/footer') %>
