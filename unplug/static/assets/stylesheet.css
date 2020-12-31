@@ -7,7 +7,7 @@ a, .hovermouse, a *{
 }
 
 .waitmouse {
-	cursor: url("<%= assets %>/cursors/wait.png") 6 0, wait;
+	cursor: url("/cursors/wait.png") 6 0, wait;
 }
 
 ::selection, ::-moz-selection{
