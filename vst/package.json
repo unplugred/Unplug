@@ -1,0 +1,10 @@
+{
+  "name": "unplugvst",
+  "version": "1.0.0",
+  "description": "vsts created by unplugred",
+  "author": "Ari Hanan",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  }
+}

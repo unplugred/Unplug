@@ -1,0 +1,271 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Unplugred's VST Trove</title>
+
+		<meta name="theme-color" content="#ffffff">
+		<link rel="apple-touch-icon" href="/icons/db152.png" sizes="152x152">
+		<link rel="apple-touch-icon" href="/icons/db180.png" sizes="180x180">
+		<link rel="shortcut icon" href="/icons/db196.png" sizes="196x196">
+		<link rel="icon" type="image/png" href="/icons/db192.png" sizes="192x192">
+		<link rel="icon" type="image/png" href="/icons/db32.png" sizes="32x32">
+
+		<meta name="dcterms.rightsHolder" content="Ari Hanan">
+		<meta property="og:url" content="<%= host %>/">
+		<meta name="twitter:url" content="<%= host %>/">
+		<meta property="og:type" content="article">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="og:title" content="Unplugred's VST Trove">
+		<meta name="twitter:title" content="Unplugred's VST Trove">
+		<meta property="og:description" content="wow wow wow">
+		<meta name="twitter:description" content="wow wow wow">
+		<meta name="description" content="wow wow wow">
+		<meta property="og:image" content="<%= assets %>/og.png">
+		<meta name="twitter:image" content="<%= assets %>/og.png">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel=StyleSheet href="<%= unplugassets %>/window/window.css?v=3" type="text/css" media=screen>
+		<style>
+			.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}
+			*, .normalmouse{
+				cursor: url("<%= unplugassets %>/cursors/default.png") 0 0, default;
+			}
+			a, .hovermouse, a *{
+				cursor: url("<%= unplugassets %>/cursors/pointer.png") 6 0, pointer !important;
+			}
+			.waitmouse {
+				cursor: url("<%= unplugassets %>/cursors/wait.png") 6 0, wait;
+			}
+			::selection, ::-moz-selection{
+				color: #333;
+				background: #999999fe;
+			}
+			::-webkit-scrollbar{
+				width: 9px;
+				height: 9px;
+			}
+			::-webkit-scrollbar-track{
+				background-color: transparent;
+			}
+			::-webkit-scrollbar-thumb{
+				background-color: #999;
+				border: 1px black solid;
+				border-radius: 6px;
+				outline: none;
+			}
+			::-webkit-scrollbar-corner{
+				background-color: transparent;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				background-color: black;
+				font-family: 'Darker Grotesque', sans-serif;
+				color: white;
+			}
+			.section {
+				min-height: 80vh;
+				font-size: 30px;
+				background-blend-mode: difference;
+				padding: 10px;
+				animation: bgt 60s linear 0s infinite normal;
+				position: relative;
+				z-index: 20;
+				image-rendering: pixelated;
+				display: flex;
+			}
+			@keyframes bgt {
+				from { background-position: 10px calc(100% - 10px), 0 0; }
+				to { background-position: 10px calc(100% - 10px), 1024px 1024px; }
+			}
+			@keyframes bgc {
+				from { background-position: center center, 0 0; }
+				to { background-position: center center, 1024px 1024px; }
+			}
+			.tint {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				mix-blend-mode: multiply;
+				z-index: -10;
+			}
+			.desc {
+				position: relative;
+				display: inline-block;
+				padding: 14px 85px 20px 20px;
+				margin: auto;
+				width: 600px;
+				max-width: calc(100vw - 550px);
+				line-height: .85;
+			}
+			.invert {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				mix-blend-mode: difference;
+				z-index: -12;
+				background-color: white;
+			}
+			.title {
+				font-size: 60px;
+				font-weight: bold;
+				font-variant: petite-caps;
+				line-height: .5;
+				margin-bottom: 10px;
+			}
+			.subtitle {
+				font-size: 30px;
+				opacity: .7;
+				font-style: italic;
+				font-family: serif;
+			}
+			.description {
+				margin-top: 10px;
+			}
+			.demo {
+				opacity: .5;
+				font-size: 20px;
+				font-style: italic;
+			}
+			.download {
+				width: 202px;
+				height: 36px;
+				background: url("<%= assets %>/download.png");
+				display: block;
+				margin: 20px auto 0 auto;
+			}
+			.download:hover {
+				background-position-y: 100%;
+			}
+			.rainbow {
+				height: 6px;
+				background: url("<%= assets %>/rainbow.png");
+				border: 1px solid black;
+				border-width: 1px 0;
+			}
+			.center {
+				margin: auto;
+			}
+			a {
+				color: inherit;
+			}
+
+			#about {
+				background: url("<%= assets %>/about_text.png") no-repeat, url("<%= assets %>/about_bg.png") fixed, #175843;
+				color: #123629;
+				text-shadow: 3px 3px #B76673;
+				min-height: 0;
+			}
+			#about .desc {
+				border: solid 2px #123629;
+				margin: 5px 7vw 220px auto;
+				padding-bottom: 50px;
+			}
+			#note {
+				position: absolute;
+				right: -4px;
+				height: 100px;
+				width: 100px;
+				background: url("<%= unplugassets %>/objects/a10.gif");
+				bottom: 3px;
+			}
+
+			#plastic-funeral {
+				background: url("<%= assets %>/plastic_text.png") no-repeat, url("<%= assets %>/plastic_bg.png") fixed, #fff;
+				text-shadow: 3px 3px #1d1d1d;
+			}
+			#plastic-funeral .win-pos {
+				width: 248px;
+				height: 487px;
+				position: absolute;
+				top: calc(50% - 248px);
+				left: -124px;
+			}
+			#plastic-funeral .win-inner {
+				background-image: url("<%= assets %>/plastic_ui.png");
+			}
+			#plastic-funeral .desc {
+				border: solid 2px #000;
+				padding-left: 132px;
+				margin-bottom: 31vh;
+			}
+			#rose {
+				position: absolute;
+				width: 90px;
+				height: calc(100% + 20px);
+				max-height: 380px;
+				bottom: 0;
+				right: 10px;
+				background: url("<%= assets %>/rose.gif") no-repeat top center;
+			}
+
+			#comingsoon {
+				min-height: 150px;
+				display: flex;
+				background: url("<%= assets %>/more_text.png") no-repeat center center, url("<%= assets %>/about_bg.png") fixed, #175843;
+				animation: bgc 60s linear 0s infinite normal;
+			}
+		</style>
+		<link rel="preconnect" href="https://fonts.gstatic.com"> 
+<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+
+		<div class="section" id="about">
+			<div class="tint" style="background-color: #c99c9c"></div>
+			<div class="desc">
+				<div class="invert"></div>
+				<div id="note"></div>
+				<div class="title">Welcome to my personal vst hell</div>
+				<div class="description">
+i was bored so i made these, and now
+you too can enjoy them!<br/>
+and by them i mean that, cause theres only one of them for now.<br/>
+do visit later though since i have some neat ideas
+				</div>
+			</div>
+		</div>
+		<div class="rainbow"></div>
+
+		<div class="section" id="plastic-funeral">
+			<div class="tint" style="background-color: #1d1d1d"></div>
+			<div class="desc">
+				<div class="win-pos">
+					<div class="win-frame">
+						<a class="win-close" href="javascript:void(0)" onclick="closee(this.parentNode.parentNode)"></a>
+					</div>
+					<div class="win-inner"></div>
+				</div>
+				<div class="invert"></div>
+				<div class="title">Plastic Funeral</div>
+				<div class="subtitle">Distortion/saturation that sounds like a laser beam</div>
+				<div class="description">
+forget about warmth.<br/>
+this distortion gives off a harsh and metalic sound<br/>
+which will put SOPHIE to shame.<br/>
+<a class="demo" href="javascript:void(0);">Demo 1</a>
+<a class="demo" href="javascript:void(0);">Demo 2</a>
+<a class="demo" href="javascript:void(0);">Demo 3</a>
+<br/>
+<br/>
+Cost: +0$;
+				</div>
+				<a class="download" href="javascript:void(0);"></a>
+				<div id="rose"></div>
+			</div>
+		</div>
+		<div class="rainbow"></div>
+
+		<div class="section" id="comingsoon">
+			<div class="tint" style="background-color: #c99c9c"></div>
+		</div>
+
+		<script>
+		</script>
+	</body>
+</html>
