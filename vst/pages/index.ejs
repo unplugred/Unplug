@@ -1,7 +1,18 @@
-<html lang="en">
+<%
+var single = false;
+var title = "Unplugred's VST Trove";
+var desc = "wow truly amazing";
+switch(pagename) {
+	case '/plastic-funeral':
+		single = true;
+		title = "Plastic Funeral VST";
+		desc = "Distortion/saturation that sounds like a laser beam";
+		break;
+}
+%><html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Unplugred's VST Trove</title>
+		<title><%= title %></title>
 
 		<link rel="apple-touch-icon" href="/icons/vst152.png" sizes="152x152">
 		<link rel="apple-touch-icon" href="/icons/vst180.png" sizes="180x180">
@@ -11,16 +22,17 @@
 
 		<meta name="theme-color" content="#B76673">
 		<meta name="dcterms.rightsHolder" content="Ari Hanan">
+		<meta name="og:site" content="Unplugred's VST Trove">
 		<meta name="twitter:site" content="@unplugred">
 		<meta property="og:url" content="<%= host %>/">
 		<meta name="twitter:url" content="<%= host %>/">
 		<meta property="og:type" content="article">
 		<meta name="twitter:card" content="summary">
-		<meta property="og:title" content="Unplugred's VST Trove">
-		<meta name="twitter:title" content="Unplugred's VST Trove">
-		<meta property="og:description" content="wow truly amazing">
-		<meta name="twitter:description" content="wow truly amazing">
-		<meta name="description" content="wow truly amazing">
+		<meta property="og:title" content="<%= title %>">
+		<meta name="twitter:title" content="<%= title %>">
+		<meta property="og:description" content="<%= desc %>">
+		<meta name="twitter:description" content="<%= desc %>">
+		<meta name="description" content="<%= desc %>">
 		<meta property="og:image" content="<%= unplugassets %>/objects/c10.gif">
 		<meta name="twitter:image" content="<%= unplugassets %>/objects/c10.gif">
 
@@ -32,7 +44,7 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap" rel="stylesheet">
 	</head>
-<% if(pagename == "/plastic-funeral") { %>	<body class="single" id="single-<%= pagename.substring(1) %>">
+<% if(single) { %>	<body class="single" id="single-<%= pagename.substring(1) %>">
 		<a href="/" id="homepage"></a>
 
 <%- include(pagename.substring(1)) %>
