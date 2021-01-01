@@ -64,10 +64,15 @@
 				background-color: black;
 				font-family: 'Darker Grotesque', sans-serif;
 				color: white;
+				font-size: 20px;
+				overflow-x: hidden;
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
+				width: 100vw;
 			}
 			.section {
 				min-height: 80vh;
-				font-size: 30px;
 				background-blend-mode: difference;
 				padding: 10px;
 				animation: bgt 60s linear 0s infinite normal;
@@ -81,8 +86,8 @@
 				to { background-position: 10px calc(100% - 10px), 1024px 1024px; }
 			}
 			@keyframes bgc {
-				from { background-position: center center, 0 0; }
-				to { background-position: center center, 1024px 1024px; }
+				from { background-position: center calc(100% - 60px), 0 0; }
+				to { background-position: center calc(100% - 60px), 1024px 1024px; }
 			}
 			.tint {
 				position: absolute;
@@ -98,8 +103,10 @@
 				display: inline-block;
 				padding: 14px 85px 20px 20px;
 				margin: auto;
+				margin-bottom: 31vh;
 				width: 600px;
 				max-width: calc(100vw - 550px);
+				min-width: 400px;
 				line-height: .85;
 			}
 			.invert {
@@ -113,24 +120,25 @@
 				background-color: white;
 			}
 			.title {
-				font-size: 60px;
+				font-size: 3em;
 				font-weight: bold;
 				font-variant: petite-caps;
 				line-height: .5;
 				margin-bottom: 10px;
 			}
 			.subtitle {
-				font-size: 30px;
+				font-size: 1.5em;
 				opacity: .7;
 				font-style: italic;
 				font-family: serif;
 			}
 			.description {
+				font-size: 1.5em;
 				margin-top: 10px;
 			}
 			.demo {
 				opacity: .5;
-				font-size: 20px;
+				font-size: 1em;
 				font-style: italic;
 			}
 			.download {
@@ -139,9 +147,13 @@
 				background: url("<%= assets %>/download.png");
 				display: block;
 				margin: 20px auto 0 auto;
+				max-width: 100%;
 			}
 			.download:hover {
 				background-position-y: 100%;
+			}
+			.decoration {
+				position: absolute;
 			}
 			.rainbow {
 				height: 6px;
@@ -168,12 +180,11 @@
 				padding-bottom: 50px;
 			}
 			#note {
-				position: absolute;
+				background: url("<%= unplugassets %>/objects/a10.gif");
+				bottom: 3px;
 				right: -4px;
 				height: 100px;
 				width: 100px;
-				background: url("<%= unplugassets %>/objects/a10.gif");
-				bottom: 3px;
 			}
 
 			#plastic-funeral {
@@ -193,27 +204,82 @@
 			#plastic-funeral .desc {
 				border: solid 2px #000;
 				padding-left: 132px;
-				margin-bottom: 31vh;
 			}
 			#rose {
-				position: absolute;
-				width: 90px;
-				height: calc(100% + 20px);
-				max-height: 380px;
+				background: url("<%= assets %>/rose.gif") no-repeat top center;
 				bottom: 0;
 				right: 10px;
-				background: url("<%= assets %>/rose.gif") no-repeat top center;
+				height: calc(100% + 20px);
+				width: 90px;
+				max-height: 380px;
 			}
 
 			#comingsoon {
 				min-height: 150px;
-				display: flex;
 				background: url("<%= assets %>/more_text.png") no-repeat center center, url("<%= assets %>/about_bg.png") fixed, #175843;
+				background-size: auto!important;
 				animation: bgc 60s linear 0s infinite normal;
+				flex-grow: 1;
+			}
+			@media only screen and (max-width: 1000px) {
+				.section {
+					background-size: 90%,auto!important;
+				}
+				#about .desc {
+					margin-bottom: 19vw;
+				}
+				.desc {
+					margin-bottom: auto;
+				}
+			}
+			@media only screen and (max-width: 650px) {
+				#plastic-funeral .desc {
+					padding-left: 20px;
+					padding-top: 400px;
+					margin-top: 110px;
+				}
+				#plastic-funeral .win-pos {
+					margin-left: calc(50% - 124px);
+					left: 0;
+					top: -100;
+				}
+				#about .desc {
+					margin-left: auto;
+					margin-right: auto;
+				}
+				.desc {
+					min-width: 0;
+					width: calc(100vw - 20px);
+					max-width: 400px;
+					margin-bottom: 19vw;
+				}
+				.section {
+					min-height: 0;
+				}
+			}
+			@media only screen and (max-width: 400px) {
+				body {
+					font-size: 5vw;
+				}
+				.decoration {
+					display: none;
+				}
+				.desc {
+					padding-right: 20px;
+				}
+			}
+			@media only screen and (max-width: 270px) {
+				.win-pos {
+					display: none;
+				}
+				#plastic-funeral .desc {
+					padding-top: 20px;
+					margin-top: 0;
+				}
 			}
 		</style>
-		<link rel="preconnect" href="https://fonts.gstatic.com"> 
-<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap" rel="stylesheet">
 	</head>
 	<body>
 
@@ -221,7 +287,7 @@
 			<div class="tint" style="background-color: #c99c9c"></div>
 			<div class="desc">
 				<div class="invert"></div>
-				<div id="note"></div>
+				<div class="decoration" id="note"></div>
 				<div class="title">Welcome to my personal vst hell</div>
 				<div class="description">
 i was bored so i made these, and now
@@ -247,8 +313,7 @@ do visit later though since i have some neat ideas
 				<div class="subtitle">Distortion/saturation that sounds like a laser beam</div>
 				<div class="description">
 forget about warmth.<br/>
-this distortion gives off a harsh and metalic sound<br/>
-which will put SOPHIE to shame.<br/>
+this distortion gives off a harsh and metalic sound which will put SOPHIE to shame.<br/>
 <a class="demo" href="javascript:void(0);">Demo 1</a>
 <a class="demo" href="javascript:void(0);">Demo 2</a>
 <a class="demo" href="javascript:void(0);">Demo 3</a>
@@ -257,7 +322,7 @@ which will put SOPHIE to shame.<br/>
 Cost: +0$;
 				</div>
 				<a class="download" href="javascript:void(0);"></a>
-				<div id="rose"></div>
+				<div class="decoration" id="rose"></div>
 			</div>
 		</div>
 		<div class="rainbow"></div>
