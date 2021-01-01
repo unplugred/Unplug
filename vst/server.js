@@ -29,7 +29,13 @@ app.use(express.static(__dirname + '/static', {
 
 app.use((req, res, next) => {
 /*	VST---------------------*/
-	return res.render('index.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host});
+	if(req.path == "/stylesheet.css")
+		return res.type('text/css').set({
+			'Cache-Control':'public, max-age=2592000',
+			'Access-Control-Allow-Origin':'*'
+		}).render('stylesheet.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets});
+	else
+		return res.render('index.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path});
 });
 
 app.listen(6665, function(){
