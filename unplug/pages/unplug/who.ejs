@@ -1,36 +1,43 @@
-<%- include('../partials/header',{title:"who"}) %>
+<%- include('../partials/header',{title:"who",color:"#006700"}) %>
 		<style>
 			body {
 				display: flex;
+				background: #006700;
 			}
 
 			.mainimage {
 				margin: auto;
-				width:48px;
+				padding: 0 31px;
+				border: 1px white solid;
+				background: black;
 			}
 
 			.who {
-				width: 35px;
-				height: 15px;
+				width: 95px;
+				height: 148px;
 				background-image: url("<%= assets %>/who/who.png");
 				display: block;
 				margin: 10px auto;
+				position: relative;
+				left: -105px;
 			}
 
 			.phone {
-				width: 48px;
-				height: 14px;
+				width: 263px;
+				height: 39px;
 				background-image: url("<%= assets %>/who/phone.png");
 				display: block;
 				margin: 10px auto;
 			}
 
 			.question {
-				width: 6px;
-				height: 13px;
+				width: 22px;
+				height: 58px;
 				background-image: url("<%= assets %>/who/question.png");
 				display: block;
 				margin: 10px auto;
+				position: relative;
+				left: 130px;
 			}
 		</style>
 	</head>
