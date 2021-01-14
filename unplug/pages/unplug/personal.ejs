@@ -1,4 +1,4 @@
-<%- include('../partials/header',{title:"books",color:"#aa0000"}) %>
+<%- include('../partials/header',{title:"personal",color:"#aa0000"}) %>
 		<style>
 			body {
 				background-image: url("<%= assets %>/window/light-stars.png");
@@ -9,26 +9,17 @@
 				margin: auto;
 				width: 450px;
 				height: 200px;
-				background: url("<%= assets %>/books/text.png") no-repeat 5px 8px, black;
+				background: url("<%= assets %>/personal.png") no-repeat 5px 8px, black;
 				border: 4px #aa0000 solid;
 			}
-
-			.option {
+			#option {
 				position: absolute;
 				display: block;
-				height: 27px;
 				bottom: 7px;
-			}
-
-			#option1 {
-				background: url("<%= assets %>/books/option1.png");
-				width: 159px;
-				right: 197px;
-			}
-			#option2 {
-				background: url("<%= assets %>/books/option2.png");
-				width: 181px;
 				right: 7px;
+				height: 27px;
+				width: 348px;
+				background-color: #262626;
 			}
 		</style>
 	</head>
@@ -39,7 +30,6 @@
 			<img class="symbl" src="<%= assets %>/product/06-00.png" width="30px"/>
 		</div>
 		<div id="mainimage">
-			<a class="option" id="option1" href="/personal" title="personal"></a>
-			<a class="option" id="option2" href="/joke" title="joke"></a>
+			<a id="option" href="/joke" title="joke"></a>
 		</div>
 <%- include('../partials/footer') %>
