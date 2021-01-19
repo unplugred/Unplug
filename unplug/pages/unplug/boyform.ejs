@@ -1,0 +1,103 @@
+<%- include('../partials/header',{title:"boy form"}) %>
+		<style>
+			#text {
+				width: 334px;
+				height: 63px;
+				background: url("<%= assets %>/boyform.png") no-repeat;
+				z-index: 1;
+				margin: auto;
+			}
+			body {
+				display: flex;
+				opacity: .8;
+			}
+			canvas {
+				position: absolute;
+				margin: calc(50vh - 350px) calc(50vw - 350px);
+				width: 700px!important;
+				height: 700px!important;
+				filter: hue-rotate(0.67turn);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="text"></div>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r70/three.min.js"></script>
+		<script id="vert" type="x-shader/x-vertex">varying vec2 fragCoord;void main(){gl_Position=projectionMatrix*(modelViewMatrix*vec4(position,1));fragCoord=position.xy;}</script>
+		<script id="frag" type="x-shader/x-fragment">
+			uniform float iGlobalTime;
+			uniform vec2 iResolution;
+			varying vec2 fragCoord;
+
+			vec2 hash(vec2 x)
+			{
+				const vec2 k = vec2(0.3183099, 0.3678794);
+				x = x*k + k.yx;
+				return -1.0 + 2.0*fract(16.0*k*fract(x.x*x.y*(x.x+x.y)));
+			}
+
+			float noise(in vec2 p)
+			{
+				vec2 i = floor(p);
+				vec2 f = fract(p);
+
+				vec2 u = f*f*(3.0 - 2.0*f);
+
+				return mix(mix(dot(hash(i + vec2(0.0,0.0)), f - vec2(0.0,0.0)),
+				               dot(hash(i + vec2(1.0,0.0)), f - vec2(1.0,0.0)), u.x),
+				           mix(dot(hash(i + vec2(0.0,1.0)), f - vec2(0.0,1.0)),
+				               dot(hash(i + vec2(1.0,1.0)), f - vec2(1.0,1.0)), u.x), u.y);
+			}
+
+			float crcl(vec2 res,vec2 mult) {
+				mult = res + vec2(
+					noise(.1*res + vec2(iGlobalTime*mult.x, 0.)),
+					noise(.1*res + vec2(0., iGlobalTime*mult.y)))*.5;
+				mult.x = mult.x*mult.x+mult.y*mult.y;
+				return min(floor(mult.x+.49),1.) - floor(mult.x+.4);
+			}
+
+			void main()
+			{
+				vec2 res = fragCoord.xy*1.05;
+				gl_FragColor = vec4(
+					crcl(res,vec2(.144,.072)),
+					crcl(res,vec2(.083,.107)),
+					crcl(res,vec2(.039,.063)),1.);
+			}
+		</script>
+		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.5, 1.5);
+			camera.position.set(0, 0, 1);
+			camera.aspect = 1;
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(280, 84);
+			renderer.stencil = false;
+			renderer.depth = false;
+			renderer.premultipliedAlpha = false;
+			renderer.precision = "lowp";
+			camera.updateProjectionMatrix();
+
+			uniforms = {
+				iGlobalTime: { type: "f", value: 1.0 },
+				iResolution: { type: "v2", value: new THREE.Vector2() },};
+			material = new THREE.ShaderMaterial({
+				uniforms: uniforms,
+				vertexShader: document.getElementById('vert').textContent,
+				fragmentShader: document.getElementById('frag').textContent
+			});
+			var plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(2, 2), material);
+			scene.add(plane);
+
+			startTime = Date.now();
+			function animate() {
+				uniforms.iGlobalTime.value = (Date.now() - startTime)*.001;
+				requestAnimationFrame(animate);
+				renderer.render(scene, camera);
+			}
+			animate();
+
+			document.body.appendChild(renderer.domElement);
+		</script>
+<%- include('../partials/footer') %>
