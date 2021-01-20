@@ -9,6 +9,10 @@
 				height: 100vh;
 				top: 0;
 				left: 0;
+				z-index: 100;
+			}
+			canvas {
+				position: fixed;
 			}
 			@font-face {
 				font-family: 'tragic2';
@@ -31,11 +35,14 @@
 		<img class="hide" id="imgdialog" src="<%= assets %>/apples/dialog.svg"/>
 		<img class="hide" id="imgtriangol" src="<%= assets %>/apples/triangol.svg"/>
 		<a id="clickable" href="javascript:void(0);" style="display:none;"></a>
+		<canvas id="bgcanva"></canvas>
 		<canvas id="canva"></canvas>
 		<script type="text/javascript" src="<%= assets %>/automatism/simplex.js"></script>
 		<script>
 			var clickable = document.getElementById("clickable");
+			var bgcanvas = document.getElementById("bgcanva");
 			var canvas = document.getElementById("canva");
+			var bgctx = bgcanvas.getContext("2d");
 			var ctx = canvas.getContext("2d");
 			var scale = 1;
 			var state = 0;
@@ -51,6 +58,8 @@
 			var standpos = [0,0,1,1];
 			var applecolors = [343,70,74,63.5,243,63];
 			function redraw() {
+				bgcanvas.width = window.innerWidth;
+				bgcanvas.height = window.innerHeight;
 				canvas.width = window.innerWidth;
 				canvas.height = window.innerHeight;
 				scale = Math.min(canvas.width,canvas.height)*.01;
@@ -189,6 +198,7 @@
 			}
 
 //------VAR SETUP-------
+			var bgupdate = -10;
 			var bg_speed = .02;
 			var bg_densityx = canvas.width/Math.round(canvas.width/(20*scale));
 			var bg_densityy = canvas.height/Math.round(canvas.height/(20*scale));
@@ -276,37 +286,44 @@
 				let interpolate = 1.5;
 
 //----------BACKGROUND-------
-				ctx.fillStyle = "#070707";
-				let p = (timestamp*bg_speed)%(canvas.width+bg_densityx)-bg_densityx;
-				let x = p+simplex(p*bg_wobdensity+bg_seed[0],timestamp*bg_wobspeed+bg_seed[1])*bg_wobamount;
-				let nx;
-				let nt;
-				for(var i = 1; i < canvas.width+bg_densityx*2; i += bg_densityx) {
-					p = (timestamp*bg_speed+i)%(canvas.width+bg_densityx)-bg_densityx;
-					nx = p+simplex(p*bg_wobdensity+bg_seed[0],timestamp*bg_wobspeed+bg_seed[1])*bg_wobamount;
-					if(nx < x) {
-						nt = p+canvas.width+bg_densityx+simplex((p+canvas.width+bg_densityx)*bg_wobdensity+bg_seed[0],timestamp*bg_wobspeed+bg_seed[1])*bg_wobamount;
-						ctx.fillRect(x,0,(nt-x)*.5,canvas.height);
-					} else {
-						ctx.fillRect(x,0,(nx-x)*.5,canvas.height);
+				bgupdate -= dtt;
+				if(bgupdate <= 0) {
+					bgctx.imageSmoothingEnabled = false;
+					bgctx.clearRect(0, 0, canvas.width, canvas.height);
+					bgctx.fillStyle = "#070707";
+					let p = (timestamp*bg_speed)%(bgcanvas.width+bg_densityx)-bg_densityx;
+					let x = p+simplex(p*bg_wobdensity+bg_seed[0],timestamp*bg_wobspeed+bg_seed[1])*bg_wobamount;
+					let nx;
+					let nt;
+					for(var i = 1; i < bgcanvas.width+bg_densityx*2; i += bg_densityx) {
+						p = (timestamp*bg_speed+i)%(bgcanvas.width+bg_densityx)-bg_densityx;
+						nx = p+simplex(p*bg_wobdensity+bg_seed[0],timestamp*bg_wobspeed+bg_seed[1])*bg_wobamount;
+						if(nx < x) {
+							nt = p+bgcanvas.width+bg_densityx+simplex((p+bgcanvas.width+bg_densityx)*bg_wobdensity+bg_seed[0],timestamp*bg_wobspeed+bg_seed[1])*bg_wobamount;
+							bgctx.fillRect(x,0,(nt-x)*.5,bgcanvas.height);
+						} else {
+							bgctx.fillRect(x,0,(nx-x)*.5,bgcanvas.height);
+						}
+						x = nx;
 					}
-					x = nx;
-				}
-				ctx.globalCompositeOperation = "difference";
-				p = (timestamp*bg_speed)%(canvas.height+bg_densityy)-bg_densityy;
-				x = p+simplex(timestamp*bg_wobspeed+bg_seed[0],p*bg_wobdensity+bg_seed[1])*bg_wobamount;
-				for(var i = 1; i < canvas.height+bg_densityy*2; i += bg_densityy) {
-					p = (timestamp*bg_speed+i)%(canvas.height+bg_densityy)-bg_densityy;
-					nx = p+simplex(timestamp*bg_wobspeed+bg_seed[0],p*bg_wobdensity+bg_seed[1])*bg_wobamount;
-					if(nx < x) {
-						nt = p+canvas.height+bg_densityy+simplex(timestamp*bg_wobspeed+bg_seed[0],(p+canvas.height+bg_densityy)*bg_wobdensity+bg_seed[1])*bg_wobamount;
-						ctx.fillRect(0,x,canvas.width,(nt-x)*.5);
-					} else {
-						ctx.fillRect(0,x,canvas.width,(nx-x)*.5);
+					bgctx.globalCompositeOperation = "difference";
+					p = (timestamp*bg_speed)%(bgcanvas.height+bg_densityy)-bg_densityy;
+					x = p+simplex(timestamp*bg_wobspeed+bg_seed[0],p*bg_wobdensity+bg_seed[1])*bg_wobamount;
+					for(var i = 1; i < bgcanvas.height+bg_densityy*2; i += bg_densityy) {
+						p = (timestamp*bg_speed+i)%(bgcanvas.height+bg_densityy)-bg_densityy;
+						nx = p+simplex(timestamp*bg_wobspeed+bg_seed[0],p*bg_wobdensity+bg_seed[1])*bg_wobamount;
+						if(nx < x) {
+							nt = p+bgcanvas.height+bg_densityy+simplex(timestamp*bg_wobspeed+bg_seed[0],(p+bgcanvas.height+bg_densityy)*bg_wobdensity+bg_seed[1])*bg_wobamount;
+							bgctx.fillRect(0,x,bgcanvas.width,(nt-x)*.5);
+						} else {
+							bgctx.fillRect(0,x,bgcanvas.width,(nx-x)*.5);
+						}
+						x = nx;
 					}
-					x = nx;
+					bgupdate = 50;
+					console.log("helo");
 				}
-				ctx.globalCompositeOperation = "normal";
+				else console.log(timestamp);
 
 //----------STAND-------
 				ctx.drawImage(imgstand,standpos[0],standpos[1],standpos[2],standpos[3]);
