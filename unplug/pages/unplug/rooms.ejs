@@ -1,0 +1,57 @@
+<%- include('../partials/header',{title:"rooms"}) %>
+		<style>
+			body {
+				display: flex;
+				background: black;
+			}
+			#main {
+				margin: auto;
+				text-align: center;
+			}
+			#logo {
+				background: url("<%= assets %>/downloadable/rooms.png") no-repeat center;
+				background-size: contain;
+				width: 349px;
+				height: 360px;
+				max-width: 60vmin;
+				max-height: 60vmin;
+				margin-bottom: 9vmin;
+				display: inline-block;
+			}
+			#stem {
+				width: 10.029%;
+				position: relative;
+				left: 44.413%;
+				background: linear-gradient(to top, #090909 0%, black 100%);
+				height: 40vh;
+				bottom: 40vh;
+			}
+			.picon {
+				display: inline-block;
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+				margin: 0 20px;
+				height: 9vmin;
+				width: 9vmin;
+				filter: saturate(0);
+				transition: filter .4s;
+			}
+			.picon:hover {
+				filter: saturate(0) brightness(1.8);
+			}
+			#win {
+				background-image: url("<%= assets %>/downloadable/win.svg");
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="logo">
+				<div id="stem"></div>
+			</div>
+			<div id="platform">
+				<a class="picon" id="win" href="https://mega.nz/file/ighRHY5D#P7qoFTMGgslnvZqRCxKHTvKFHZz-1JjzswA0ZRP0tM8"></a>
+			</div>
+		</div>
+<%- include('../partials/footer') %>
