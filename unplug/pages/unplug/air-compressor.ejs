@@ -1,0 +1,55 @@
+<%- include('../partials/header',{title:"air compressor"}) %>
+		<style>
+			body {
+				display: flex;
+				background: #808080;
+			}
+			#main {
+				margin: auto;
+				text-align: center;
+			}
+			#logo {
+				background: url("<%= assets %>/downloadable/aircompressor.gif") no-repeat center;
+				background-size: contain;
+				width: 392px;
+				height: 360px;
+				max-width: 60vmin;
+				max-height: 60vmin;
+				margin-bottom: 9vmin;
+				display: inline-block;
+			}
+			.picon {
+				display: inline-block;
+				background-position: center;
+				background-size: contain;
+				background-repeat: no-repeat;
+				margin: 0 20px;
+				height: 9vmin;
+				width: 9vmin;
+				filter: brightness(0);
+				transition: filter .4s;
+			}
+			.picon:hover {
+				filter: brightness(0.6);
+			}
+			#win {
+				background-image: url("<%= assets %>/downloadable/win.svg");
+			}
+			#lnx {
+				background-image: url("<%= assets %>/downloadable/lnx.svg");
+			}
+			#mac {
+				background-image: url("<%= assets %>/downloadable/mac.svg");
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<div id="logo"></div>
+			<div id="platform">
+				<a class="picon" id="win" href="https://mega.nz/file/qoohWIiI#3BfJ0GWvRG93sH-zDO64PrgyUUUz9FipH5TlTG9k9yA"></a>
+				<a class="picon" id="lnx" href="https://mega.nz/file/DxgxmCjK#Acoq6-3fs5mXJhYSPjCNm5XjiibcSjEGVY2bDC1jdSY"></a>
+				<a class="picon" id="mac" href="https://mega.nz/file/GwhxkYSY#ZoIhT3lhwJHjrbnk_uhQEkPRdZ0FYCM8grVcPUb9UEk"></a>
+			</div>
+		</div>
+<%- include('../partials/footer') %>
