@@ -41,7 +41,7 @@ body {
 	width: 100vw;
 }
 #homepage {
-	background: url("<%= assets %>/note.gif");
+	background: url("<%= assets %>/about/note.gif");
 	display: block;
 	position: fixed;
 	width: 100px;
@@ -158,82 +158,89 @@ a {
 	color: inherit;
 }
 
-#about {
-	background: url("<%= assets %>/about_text.png") no-repeat, url("<%= assets %>/about_bg.png") fixed, #175843;
-	color: #123629;
-	text-shadow: 3px 3px #B76673;
-	min-height: 0;
+#popups {
+	position: fixed;
+	left: 20px;
+	bottom: 23px;
+	z-index: 1000;
+	pointer-events: none;
 }
-#about .desc {
-	border: solid 2px #123629;
-	margin: 5px 7vw 220px auto;
-	padding-bottom: 50px;
+.popupwrap {
+	width: 0;
+	overflow: hidden;
+	margin-right: 10px;
+	margin-top: 10px;
+	box-shadow: black 5px 5px 0;
+	display: inline-block;
+	pointer-events: all;
 }
-#note {
-	background: url("<%= assets %>/note.gif");
-	bottom: 3px;
-	right: -4px;
-	height: 100px;
-	width: 100px;
+.popupon {
+	animation: popup .5s ease-out 0s normal forwards;
 }
-
-#plastic-funeral {
-	background: url("<%= assets %>/plastic_text.png") no-repeat, url("<%= assets %>/plastic_bg.png") fixed, #fff;
-	text-shadow: 3px 3px #1d1d1d;
+.popupoff {
+	animation: popup .5s ease-out 0s reverse forwards;
 }
-#plastic-funeral .win-pos {
-	width: 248px;
-	height: 487px;
+.popup {
+	width: 400px;
+	background-color: white;
+	color: black;
+	float: right;
+	position: relative;
+}
+@keyframes popup {
+	from { width: 0px; }
+	to { width: 400px; }
+}
+.popupclosewrap {
 	position: absolute;
-	top: calc(50% - 248px);
-	left: -124px;
+	width: 13px;
+	height: 13px;
+	right: 6px;
+	top: 6px;
+	padding: 4px;
 }
-#plastic-funeral .win-inner {
-	background-image: url("<%= assets %>/plastic_ui.png");
+.popupclose {
+	background: black;
+	height: 3px;
+	width: 13px;
+	margin: 5px 0;
+	transform: rotate(45deg);
+	transition: transform .2s;
 }
-#plastic-funeral .desc {
-	border: solid 2px #000;
-	padding-left: 132px;
+.popupclose::after {
+	content: '';
+	height: 13px;
+	width: 3px;
+	background: black;
+	display: block;
+	position: relative;
+	top: -5px;
+	left: 5px;
 }
-#rose {
-	background: url("<%= assets %>/rose.gif") no-repeat top center;
+.popupclosewrap:hover .popupclose {
+	transform: none;
+}
+#popupaudiodesc {
+	padding-bottom: 35px;
+}
+.popupdesc {
+	padding-bottom: 5px;
+	padding-left: 5px;
+}
+#popupplayer {
+	width: 100%;
+	height: 30px;
+	position: absolute;
 	bottom: 0;
-	right: 10px;
-	height: calc(100% + 20px);
-	width: 90px;
-	max-height: 380px;
+	filter: invert(1);
 }
 
-#comingsoon {
-	min-height: 150px;
-	background: url("<%= assets %>/more_text.png") no-repeat center center, url("<%= assets %>/about_bg.png") fixed, #175843;
-	background-size: auto!important;
-	animation: bgc 60s linear 0s infinite normal;
-	flex-grow: 1;
-}
 @media only screen and (max-width: 1000px) {
 	.section {
 		background-size: 90%,auto!important;
 	}
-	#about .desc {
-		margin-bottom: 19vw;
-	}
 }
 @media only screen and (max-width: 650px) {
-	#plastic-funeral .desc {
-		padding-left: 20px;
-		padding-top: 400px;
-		margin-top: 110px;
-	}
-	#plastic-funeral .win-pos {
-		margin-left: calc(50% - 124px);
-		left: 0;
-		top: -100;
-	}
-	#about .desc {
-		margin-left: auto;
-		margin-right: auto;
-	}
 	.desc {
 		min-width: 0;
 		width: calc(100vw - 140px);
@@ -259,9 +266,5 @@ a {
 @media only screen and (max-width: 270px) {
 	.win-pos {
 		display: none;
-	}
-	#plastic-funeral .desc {
-		padding-top: 20px;
-		margin-top: 0;
 	}
 }
