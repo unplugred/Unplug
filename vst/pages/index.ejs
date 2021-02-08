@@ -2,11 +2,13 @@
 var single = false;
 var title = "Unplugred's VST Trove";
 var desc = "wow truly amazing";
+var css;
 switch(pagename) {
 	case '/plastic-funeral':
 		single = true;
 		title = "Plastic Funeral VST";
 		desc = "Distortion/saturation that sounds like a laser beam";
+		css = assets + "/pf/stylesheet.css";
 		break;
 }
 %><html lang="en">
@@ -38,17 +40,18 @@ switch(pagename) {
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel=StyleSheet href="/stylesheet.css?v=4" type="text/css" media=screen>
 		<link rel=StyleSheet href="<%= unplugassets %>/window/window.css?v=3" type="text/css" media=screen>
+		<link rel=StyleSheet href="/stylesheet.css?v=5" type="text/css" media=screen>
+<% if(single) { %>		<link rel=StyleSheet href="<%= css %>" type="text/css" media=screen><%
+} else { %>		<link rel=StyleSheet href="<%= assets %>/pf/stylesheet.css" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/about/stylesheet.css" type="text/css" media=screen><% } %>
 		<style>.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}</style>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap" rel="stylesheet">
 	</head>
 <% if(single) { %>	<body class="single" id="single-<%= pagename.substring(1) %>">
 		<a href="/" id="homepage"></a>
-
-<%- include(pagename.substring(1)) %>
-	</body><% } else { %>	<body id="multi">
+<%- include(pagename.substring(1)) %><% } else { %>	<body id="multi">
 
 		<div class="section" id="about">
 			<div class="tint" style="background-color: #c99c9c"></div>
@@ -71,6 +74,27 @@ do visit later though since i have some neat ideas
 		<div class="section" id="comingsoon">
 			<div class="tint" style="background-color: #c99c9c"></div>
 		</div>
+<% } %>
+		<div id="popups">
+			<div class="popupwrap" id="popuptext">
+				<div class="popup">
+					<a class="popupclosewrap" href="javascript:void(0)" onclick="closetext()">
+						<div class="popupclose"></div>
+					</a>
+					<div class="popupdesc" id="popuptextdesc"></div>
+				</div>
+			</div>
+			<div class="popupwrap" id="popupaudio">
+				<div class="popup">
+					<a class="popupclosewrap" onclick="closeaudio()">
+						<div class="popupclose"></div>
+					</a>
+					<div class="popupdesc" id="popupaudiodesc"></div>
+					<audio controls controlslist="nodownload" id="popupplayer"></audio>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="<%= assets %>/popups.js"></script>
 
-	</body><% } %>
+	</body>
 </html>
