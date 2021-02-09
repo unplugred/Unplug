@@ -3,12 +3,14 @@ var single = false;
 var title = "Unplugred's VST Trove";
 var desc = "wow truly amazing";
 var css;
+var og = null;
 switch(pagename) {
 	case '/plastic-funeral':
 		single = true;
 		title = "Plastic Funeral VST";
 		desc = "Distortion/saturation that sounds like a laser beam";
 		css = assets + "/pf/stylesheet.css";
+		og = assets + "/pf/og.png";
 		break;
 }
 %><html lang="en">
@@ -28,30 +30,43 @@ switch(pagename) {
 		<meta name="twitter:site" content="@unplugred">
 		<meta property="og:url" content="<%= host %>/">
 		<meta name="twitter:url" content="<%= host %>/">
-		<meta property="og:type" content="article">
-		<meta name="twitter:card" content="summary">
 		<meta property="og:title" content="<%= title %>">
 		<meta name="twitter:title" content="<%= title %>">
 		<meta property="og:description" content="<%= desc %>">
 		<meta name="twitter:description" content="<%= desc %>">
 		<meta name="description" content="<%= desc %>">
+		<meta property="og:type" content="article"><%
+if(!single || og === null) { %>
+		<meta name="twitter:card" content="summary">
 		<meta property="og:image" content="<%= unplugassets %>/objects/c10.gif">
-		<meta name="twitter:image" content="<%= unplugassets %>/objects/c10.gif">
+		<meta name="twitter:image" content="<%= unplugassets %>/objects/c10.gif"><%
+} else { %>
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="og:image" content="<%= og %>">
+		<meta name="twitter:image" content="<%= og %>"><%
+} %>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel=StyleSheet href="<%= unplugassets %>/window/window.css?v=3" type="text/css" media=screen>
-		<link rel=StyleSheet href="/stylesheet.css?v=5" type="text/css" media=screen>
-<% if(single) { %>		<link rel=StyleSheet href="<%= css %>" type="text/css" media=screen><%
-} else { %>		<link rel=StyleSheet href="<%= assets %>/pf/stylesheet.css" type="text/css" media=screen>
-		<link rel=StyleSheet href="<%= assets %>/about/stylesheet.css" type="text/css" media=screen><% } %>
+		<link rel=StyleSheet href="/stylesheet.css?v=5" type="text/css" media=screen><%
+if(single) { %>
+		<link rel=StyleSheet href="<%= css %>" type="text/css" media=screen><%
+} else { %>
+		<link rel=StyleSheet href="<%= assets %>/pf/stylesheet.css" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/about/stylesheet.css" type="text/css" media=screen><%
+} %>
 		<style>.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}</style>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap" rel="stylesheet">
-	</head>
-<% if(single) { %>	<body class="single" id="single-<%= pagename.substring(1) %>">
+	</head><%
+if(single) { %>
+	<body class="single" id="single-<%= pagename.substring(1) %>">
 		<a href="/" id="homepage"></a>
-<%- include(pagename.substring(1)) %><% } else { %>	<body id="multi">
+
+<%- include(pagename.substring(1)) %><%
+} else { %>
+	<body id="multi">
 
 		<div class="section" id="about">
 			<div class="tint" style="background-color: #c99c9c"></div>
