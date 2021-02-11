@@ -168,7 +168,7 @@ app.use((req, res, next) => {
 //static
 app.use((req, res, next) => {
 	if(req.headers.host === 'www.' + global.domain || req.headers.host.startsWith("localhost")) req.url = "unplug" + req.path;
-	req.url = req.hostname.substring(0,req.hostname.indexOf(".")) + req.path;
+	else req.url = req.hostname.substring(0,req.hostname.indexOf(".")) + req.path;
 	return next();
 });
 app.use(express.static(__dirname + '/static', {
