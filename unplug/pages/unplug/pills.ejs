@@ -1,15 +1,97 @@
-<%- include('../partials/header',{title:"automatism"}) %>
-		<style>
-			body {
-				display: flex;
-			}
-		</style>
+<%- include('../partials/header',{title:"pills"}) %>
 	</head>
 	<body>
-		<div id="canvases-wrap">
-I have to take this pill every morning. i dont remember why but i know there'll be something bad if i dont
-		</div>
 		<script type="text/javascript" src="<%= assets %>/automatism/simplex.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/threejs/r70/three.min.js"></script>
+		<script id="vert" type="x-shader/x-vertex">varying vec2 fragCoord;void main(){gl_Position=projectionMatrix*(modelViewMatrix*vec4(position,1));fragCoord=position.xy;}</script>
+		<script id="frag" type="x-shader/x-fragment">
+			uniform float iGlobalTime;
+			uniform vec2 iResolution;
+			uniform sampler2D tex;
+			uniform vec2 offset1;
+			uniform vec2 offset2;
+			varying vec2 fragCoord;
+
+			float crclcalc(vec2 offset) {
+				return min(pow(pow((fragCoord.x+offset.x)*iResolution.x,2.0)+pow((fragCoord.y+offset.y)*iResolution.y,2.0),2.0)*.00001-100000.,0.0)*.000005+1.0;
+			}
+
+			void main()
+			{
+				float crcl1 = crclcalc(offset1);
+				float crcl2 = crclcalc(offset2);
+				vec2 res;
+				if(crcl1 < crcl2)
+					res = vec2((fragCoord.x+offset1.x)*crcl1,(fragCoord.y+offset1.y)*crcl1)-offset1;
+				else if(crcl1 > crcl2)
+					res = vec2((fragCoord.x+offset2.x)*crcl2,(fragCoord.y+offset2.y)*crcl2)-offset2;
+				else res = fragCoord.xy;
+				vec2 cords = floor(mod(res*iResolution.xy*.008 + vec2(iGlobalTime, iGlobalTime)*.18,1.1));
+				float bw = texture2D(tex, vec2((res.x*iResolution.x+761.0)/1522.0,(res.y*iResolution.y+143.0)/286.0)).r+min(cords.x+cords.y,1.0);
+				if(crcl1 + crcl2 < 2.0) bw = 2.0 - bw;
+				gl_FragColor = vec4(0.095+bw*0.905,0.151+bw*0.304,0.218+bw*0.041,1.0);
+			}
+		</script>
 		<script>
+			var scene = new THREE.Scene();
+			var camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.5, 1.5);
+			camera.position.set(0, 0, 1);
+			var renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
+			renderer.stencil = false;
+			renderer.depth = false;
+			renderer.premultipliedAlpha = false;
+			renderer.precision = "lowp";
+
+			uniforms = {
+				iGlobalTime: { type: "f", value: 1.0 },
+				iResolution: { type: "v2", value: new THREE.Vector2() },
+				offset1: { type: "v2", value: new THREE.Vector2() },
+				offset2: { type: "v2", value: new THREE.Vector2() },
+				size: { type: "v3", value: new THREE.Vector2() },
+				tex: { type: "t", value: null }
+			};
+			var loader = new THREE.TextureLoader();
+			loader.crossOrigin = 'anonymous';
+			loader.load("<%= assets %>/pills.png", function(obj) {
+				obj.magFilter = THREE.NearestFilter;
+				obj.minFilter = THREE.NearestFilter;
+				uniforms.tex.value = obj;
+			});
+			
+			uniforms.iResolution.value.x = window.innerWidth;
+			uniforms.iResolution.value.y = window.innerHeight;
+			material = new THREE.ShaderMaterial({
+				uniforms: uniforms,
+				vertexShader: document.getElementById('vert').textContent,
+				fragmentShader: document.getElementById('frag').textContent
+			});
+			var plane = new THREE.Mesh(new THREE.PlaneBufferGeometry(2, 2), material);
+			scene.add(plane);
+
+			startTime = Date.now();
+			function animate() {
+				let time = (Date.now() - startTime)*.001;
+				uniforms.iGlobalTime.value = time;
+				time *= .1;
+				uniforms.offset1.value.x = simplex(time,0)*.9;
+				uniforms.offset1.value.y = simplex(0,time)*.9;
+				uniforms.offset2.value.x = simplex(time,100)*.9;
+				uniforms.offset2.value.y = simplex(100,time)*.9;
+				requestAnimationFrame(animate);
+				renderer.render(scene, camera);
+			}
+			animate();
+
+			function onWindowResize() {
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+				uniforms.iResolution.value.x = window.innerWidth;
+				uniforms.iResolution.value.y = window.innerHeight;
+				renderer.setSize(window.innerWidth, window.innerHeight);
+			}
+			window.addEventListener('resize', onWindowResize, false);
+
+			document.body.appendChild(renderer.domElement);
 		</script>
 <%- include('../partials/footer') %>
