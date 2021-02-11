@@ -538,7 +538,8 @@ also add me on <a href="https://myspace.windows93.net/?id=15368"_blank">myspace<
 			renderer.precision = "lowp";
 
 			var loader = new THREE.TextureLoader();
-			loader.load("/checkers.png", (texture) => {
+			loader.crossOrigin = 'anonymous';
+			loader.load("<%= assets %>/unplug/checkers.png", (texture) => {
 				texture.wrapS = THREE.RepeatWrapping;
 				texture.wrapT = THREE.RepeatWrapping;
 				texture.repeat.set(14.5625, 11.25);
@@ -552,7 +553,7 @@ also add me on <a href="https://myspace.windows93.net/?id=15368"_blank">myspace<
 			var material = new THREE.MeshNormalMaterial();
 			var teapot;
 			loader = new THREE.ObjectLoader();
-			loader.load("/pot.json", function(obj) {
+			loader.load("<%= assets %>/unplug/pot.json", function(obj) {
 				obj.material = material;
 				scene.add(obj);
 				teapot = obj;
