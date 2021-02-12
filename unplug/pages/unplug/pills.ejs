@@ -13,7 +13,7 @@
 			varying vec2 fragCoord;
 
 			float crclcalc(vec2 offset) {
-				return min(pow(pow((fragCoord.x+offset.x)*iResolution.x,2.0)+pow((fragCoord.y+offset.y)*iResolution.y,2.0),2.0)*.00001-100000.,0.0)*.000005+1.0;
+				return min(pow(pow((fragCoord.x+offset.x)*iResolution.x,2.0)+pow((fragCoord.y+offset.y)*iResolution.y,2.0),2.0)*.00001-100000.,0.0)*.000005;
 			}
 
 			void main()
@@ -21,14 +21,15 @@
 				float crcl1 = crclcalc(offset1);
 				float crcl2 = crclcalc(offset2);
 				vec2 res;
-				if(crcl1 < crcl2)
-					res = vec2((fragCoord.x+offset1.x)*crcl1,(fragCoord.y+offset1.y)*crcl1)-offset1;
-				else if(crcl1 > crcl2)
-					res = vec2((fragCoord.x+offset2.x)*crcl2,(fragCoord.y+offset2.y)*crcl2)-offset2;
-				else res = fragCoord.xy;
-				vec2 cords = floor(mod(res*iResolution.xy*.008 + vec2(iGlobalTime, iGlobalTime)*.18,1.1));
-				float bw = texture2D(tex, vec2((res.x*iResolution.x+761.0)/1522.0,(res.y*iResolution.y+143.0)/286.0)).r+min(cords.x+cords.y,1.0);
-				if(crcl1 + crcl2 < 2.0) bw = 2.0 - bw;
+				if(crcl1 + crcl2 >= 0.0) res = fragCoord.xy*iResolution.xy;
+				else {
+					float lerp = 1.0/(crcl1+crcl2);
+					vec2 offset = offset1*crcl1*lerp + offset2*crcl2*lerp;
+					res = (vec2((fragCoord.x+offset.x)*(crcl1+crcl2+1.0),(fragCoord.y+offset.y)*(crcl1+crcl2+1.0))-offset)*iResolution.xy;
+				}
+				vec2 cords = floor(mod(res*.008 + vec2(iGlobalTime, iGlobalTime)*.18,1.1));
+				float bw = texture2D(tex, vec2((res.x+761.0)/1522.0,(res.y+143.0)/286.0)).r+min(cords.x+cords.y,1.0);
+				if(crcl1 + crcl2 < 0.0) bw = 2.0 - bw;
 				gl_FragColor = vec4(0.095+bw*0.905,0.151+bw*0.304,0.218+bw*0.041,1.0);
 			}
 		</script>
