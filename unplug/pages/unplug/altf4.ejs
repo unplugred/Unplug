@@ -77,7 +77,8 @@
 			var shake = [0,0];
 			var link = document.getElementById("link");
 			var dot = document.getElementById("dot");
-			var count = 1;
+			//var count = Math.min(screen.width*8+143,60);
+			var count = 60;
 			document.body.addEventListener('keydown', function(event)
 			{
 				if(event.repeat) return;
@@ -103,14 +104,15 @@
 			});
 
 			function adddot(){
-				count++;
+				count--;
 				dot.style.width = (count*8)+"px";
 				link.style.left = "calc(50vw - "+(count*4+71)+"px)";
 				
-				if(count*8+143 >= screen.width || count >= 60)
+				if(count <= 0)
 					window.location = "/chat";
 			}
 			setInterval(adddot,200);
+			adddot();
 
 			var dt = null;
 			function update(timestamp){
