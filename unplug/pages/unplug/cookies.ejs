@@ -38,10 +38,17 @@
 			<a id="accept" href="javascript:void(0)" onclick="riseitup()"></a>
 		</div>
 		<a id="cookieclick" href="/nqiregvfrzrag" title="nqiregvfrzrag"></a>
-		<script type="text/javascript" src="<%= assets %>/audio.js"></script>
+		<script type="text/javascript" src="<%= assets %>/audio.js?v=<%= global.aev %>"></script>
 		<script>
-			initaudio(<%= global.audio %>);
-			playroomtone("<%= assets %>/window/computer1.ogg");
+			a_init(<%= global.audio %>);
+			a_source({
+				path: "<%= assets %>/window/computer1.ogg",
+				granulate_max: 5,
+				granulate_min: .5,
+				loop: true,
+				fade: 1,
+				level: 1
+			});
 
 			let text = document.getElementById("nocookies");
 			function riseitup(){
@@ -49,7 +56,10 @@
 				accept.style.backgroundImage = "url('<%= assets %>/cookies/button_on.png')";
 				accept.style.pointerEvents = "none";
 
-				playaudio("<%= assets %>/cookies/hit.ogg",.8,false);
+				a_source({
+					path: "<%= assets %>/cookies/hit.ogg",
+					level: .8
+				});
 
 				text.style.transition = "margin-bottom 16s linear";
 				text.style.marginBottom = "calc(100vh + 246px)";
