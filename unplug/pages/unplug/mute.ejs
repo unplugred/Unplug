@@ -65,51 +65,62 @@ url("<%= assets %>/mute/off.png");
 			<a href="javascript:void(0);" onclick="buttonclick()"></a>
 		</div>
 		<div id="darken"></div>
-		<script type="text/javascript" src="<%= assets %>/audio.js"></script>
+		<script type="text/javascript" src="<%= assets %>/audio.js?v=<%= global.aev %>"></script>
 		<script>
-			initaudio(<%= global.audio %>);
-			var audiosauce;
-			var audiofadeinterval;
+			a_init(<%= global.audio %>);
+
+			var bgloop;
 			var onsauce;
 			var offsauce;
 			function updatedoc() {
-				document.body.className = isAudio ? "on" : "off";
-				if(audiosauce === undefined) {
-					if(isAudio) {
-						audiosauce = playaudio("<%= assets %>/mute/bg.ogg", 0);
-						clearInterval(audiofadeinterval);
-						audiofadeinterval = setInterval(audiofade, 100);
+				document.body.className = a_canplay ? "on" : "off";
+				if(a_canplay) {
+					if(bgloop === undefined) {
+						bgloop = a_source({
+							path: "<%= assets %>/mute/bg.ogg",
+							loop: true,
+							level: 5,
+							fade: 5
+						}, true);
+					} else {
+						a_resume(bgloop, true);
+						a_setlevel(bgloop, 5, 1);
 					}
-				} else if(audioSources[audiosauce].paused) {
-					audioSources[audiosauce].volume = 0;
-					audioSources[audiosauce].play();
 				} else {
-					clearInterval(audiofadeinterval);
-					audiofadeinterval = setInterval(audiofade, 100);
+					if(bgloop !== undefined)
+						a_setlevel(bgloop, 0, 1.25);
 				}
-			}
-			function audiofade() {
-				audioSources[audiosauce].volume = Math.max(Math.min(audioSources[audiosauce].volume + (isAudio ? .2 : -.08),1),0);
-				if(audioSources[audiosauce].volume <= 0 || audioSources[audiosauce].volume >= 1)
-					clearInterval(audiofadeinterval);
-			}
-			function buttonclick() {
-				if(onsauce === undefined && isAudio) {
-					onsauce = playaudio("<%= assets %>/mute/on.ogg", .08, false, false);
-					offsauce = playaudio("<%= assets %>/mute/off.ogg", .08, false, false);
-				}
-				isAudio = !isAudio;
-				if(onsauce === undefined && isAudio) {
-					onsauce = playaudio("<%= assets %>/mute/on.ogg", .08, false, false);
-					offsauce = playaudio("<%= assets %>/mute/off.ogg", .08, false, false);
-				}
-				audioSources[isAudio ? onsauce : offsauce].play();
-				updatedoc();
-				document.body.className = isAudio ? "on" : "off";
-				let nextyear = new Date();
-				nextyear.setTime(nextyear.getTime() + 31104000000);
-				document.cookie = "audio=" + isAudio + ";expires=" + nextyear.toUTCString() + ";path=/";
 			}
 			updatedoc();
+
+			function buttonclick() {
+				a_canplay = !a_canplay;
+
+				a_resumectx(true);
+				if(onsauce === undefined) {
+					onsauce = a_source({
+						path: "<%= assets %>/mute/on.ogg",
+						medialevel: .4,
+						play: a_canplay,
+						detune: .03
+					}, true);
+					offsauce = a_source({
+						path: "<%= assets %>/mute/off.ogg",
+						medialevel: .4,
+						buss: onsauce,
+						play: !a_canplay,
+						detune: .03
+					}, true);
+				} else {
+					a_play(a_canplay ? onsauce : offsauce, 0, true);
+				}
+				updatedoc();
+
+				document.body.className = a_canplay ? "on" : "off";
+
+				let nextmonth = new Date();
+				nextmonth.setTime(nextmonth.getTime() + 2592000000);
+				document.cookie = "audio=" + a_canplay + ";expires=" + nextmonth.toUTCString() + ";path=/";
+			}
 		</script>
 <%- include('../partials/footer') %>

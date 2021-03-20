@@ -10,6 +10,7 @@ if(global.domain === undefined) {
 	}
 	global.port = 6663;
 }
+global.aev = 2;
 const fs = require('fs');
 const express = require('express');
 const app = express();
