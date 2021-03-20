@@ -63,7 +63,10 @@
 			</div>
 		</div>
 		<script type="text/javascript" src="<%= assets %>/automatism/simplex.js"></script>
+		<script type="text/javascript" src="<%= assets %>/audio.js?v=<%= global.aev %>"></script>
 		<script>
+			a_init(<%= global.audio %>);
+
 			var dedon = false;
 			var dednum = Math.floor(Math.random()*5);
 			var dedplacement = document.getElementById("ded");
@@ -98,20 +101,38 @@
 			var loser = document.getElementById("loser");
 			var idiot = document.getElementById("idiot");
 
-			var walk = new Audio("<%= assets %>/gameplay/walk.ogg");
-			walk.addEventListener('timeupdate', (event) => {
-				if(walk.currentTime >= walk.duration - .5) walk.currentTime = 0;
+			var walk = a_source({
+				path: "<%= assets %>/gameplay/walk.ogg",
+				loop: true,
+				play: false,
+				granulate_time: false,
+				granulatepitch_max: 1.05,
+				granulatelevel_max: 1.4,
+				granulate_smooth: true,
 			});
-			var turn = new Audio("<%= assets %>/gameplay/turn.ogg");
-			turn.volume = .3;
-			var explode = new Audio("<%= assets %>/gameplay/explode.ogg");
-			var roomtone = new Audio("<%= assets %>/gameplay/roomtone.ogg");
-			roomtone.volume = 0;
-			roomtone.addEventListener('timeupdate', (event) => {
-				if(roomtone.currentTime >= roomtone.duration - .5) roomtone.currentTime = 0;
+			var turn = a_source({
+				path: "<%= assets %>/gameplay/turn.ogg",
+				level: .1,
+				play: false,
+				detune: .2,
+				levelrandomize: 0.05
+			});
+			var explode = a_source({
+				path: "<%= assets %>/gameplay/explode.ogg",
+				level: .3,
+				play: false,
+				detune: .05,
+				levelrandomize: 0.1
+			});
+			var roomtone = a_source({
+				path: "<%= assets %>/gameplay/roomtone.ogg",
+				level: 0.25,
+				loop: true,
+				play: true,
+				fade: 5
 			});
 
-			var dir, snak, appl, state, updateinterval, audiointerval;
+			var dir, snak, appl, state, updateinterval;
 			var deaths = [];
 			var deathcount = 0;
 			var prevturn = -1;
@@ -186,21 +207,12 @@
 				((event.keyCode - 37) === dir[dir.length - 1]) ||
 				(dir.length > 0 && (event.keyCode - 37) === ((dir[dir.length - 1] + 2)%4))) return;
 
-				if(state == 1) {
-					turn.currentTime = 0;
-					turn.play();
-				}
+				if(state == 1) a_play(turn, 0);
 				dir.push(event.keyCode - 37);
 				if(state === 0) {
 					state = 1;
-					walk.play();
-					if(audiointerval === undefined)
-						roomtone.play();
-						audiointerval = setInterval(function(){
-							roomtone.volume += .01;
-							if(roomtone.volume >= .25)
-								clearInterval(audiointerval);
-						},200);
+					a_resumectx();
+					a_play(walk);
 					if(updateinterval === undefined) {
 						updateinterval = setInterval(update,100);
 						update();
@@ -223,11 +235,9 @@
 						rslt = move(tempdir);
 					}
 					if(tempdir !== prevturn) {
-						turn.currentTime = 0;
-						turn.play();
+						a_play(turn, 0);
 						setTimeout(function(){
-							turn.currentTime = 0;
-							turn.play();
+							a_play(turn, 0);
 						}, 70+Math.random()*30);
 					}
 				} else if(rslt === -2) {
@@ -261,8 +271,8 @@
 				setTimeout(init, 1000 + deathcount*.1);
 				setTimeout(function() { deaths.push(new death()); }, Math.random()*(1000 + deathcount*.1));
 				deathcount++;
-				walk.pause();
-				explode.play();
+				a_pause(walk);
+				a_play(explode, 0);
 			}
 
 			function death() {
