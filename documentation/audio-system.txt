@@ -1,0 +1,198 @@
+--PROPERTIES--
+
+string path:
+	the path of the audio file
+
+bool play:
+	whether to play when initiated
+	defaults to true
+
+bool loop:
+	whether to loop the sound source
+	stutters in media
+	defaults to false
+
+float time:
+	the position in time from which to play the sound source
+	defaults to 0
+
+float pitch:
+	the pitch of the audio, 1 being neutral
+	as of 2021 this does not work in media
+	defaults to 1
+
+float detune:
+	randomized detuning of the pitch per play
+	does not work with granulizepitch
+	as of 2021 this does not work in media
+	defaults to 0
+
+float level:
+	the level of the audio, 1 being neutral
+	defaults to 1
+
+float medialevel:
+	the level of the mediaElement, 1 being neutral
+	has a maximum of 1 and a minimum of 0
+	only works in media mode
+	defaults to 1
+
+float levelrandomize:
+	randomized offset of the level per play
+	if not in media, does not work with granulizelevel
+	defaults to 0
+
+float fade:
+	the fade in of the sound in seconds
+	defaults to 0
+
+int buss:
+	the buss of the sound source
+	defaults to the next available buss
+	will be defaulted to unset if level is left at default value
+
+float granulate_max:
+	the maximum amount of seconds in a grain
+	stutters in media
+	defaults to granulate_min
+
+float granulate_min:
+	the minimum amount of seconds in a grain
+	stutters in media
+	defaults to granulate_max
+
+bool granulate_time:
+	whether to granulate the time of the source along with the pitch
+	defaults to true
+
+float granulatepitch_max:
+	the highest randomized pitch of a grain
+	as of 2021 this does not work in media
+	defaults to 2-granulatepitch_min
+
+float granulatepitch_min:
+	the lowest randomized pitch of a grain
+	as of 2021 this does not work in media
+	defaults to 2-granulatepitch_max
+
+float granulatelevel_max:
+	the highest randomized level of a grain
+	defaults to 2-granulatepitch_min
+
+float granulatelevel_min:
+	the lowest randomized level of a grain
+	defaults to 2-granulatepitch_max
+
+bool granulate_smooth:
+	whether to lerp between the levels and pitches
+	defaults to false
+
+filter prefader_send:
+	the sound source will be connected directly to this
+	ideally would also be passed down to prefader_return
+
+filter prefader_return:
+	this will be connected to the gain control
+	ideally would also be passed down to prefader_send
+
+filter postfader_send:
+	the gain control will be connected to this
+	ideally would also be passed down to postfader_return
+
+filter postfader_return:
+	this will be connected to the master output
+	ideally would also be passed down to postfader_send
+
+bool usemedia:
+	whether to use a mediaElement instead of a buffer
+	defaults to false
+
+bool ignoremute:
+	whether to ignore the global mute
+	defaults to false
+
+
+--METHODS--
+
+void a_init(int defaultvalue)
+	defaultvalue:
+		0: audio is muted
+		1: audio is muted by default
+		2: audio is unmuted by default
+		3: audio is unmuted
+
+
+int a_source(object prop)
+	prop:
+		properties object
+	returns the source id
+
+
+void a_play(int id, float time = undefined)
+	id:
+		the source id
+	time:
+		the timecode from which to play, in seconds
+		will try to continue from where left of if undefined (media only)
+
+
+void a_seek(int id, float time)
+	id:
+		the source id
+	time:
+		the timecode from which to play, in seconds
+
+
+void a_setlevel(int id, float level, float time = 0, bool cancelotherfades = true)
+	id:
+		the source id
+	level:
+		the level of the audio, 1 being neutral
+	time:
+		the time it takes to reach the desired level in seconds
+	cancelotherfades:
+		whether to cancel other scheduled fades.
+
+
+void a_setpitch(int id, float pitch, float time = 0, bool cancelotherfades = true)
+	id:
+		the source id
+	pitch:
+		the pitch of the audio, 1 being neutral
+	time:
+		the time it takes to reach the desired pitch in seconds
+	cancelotherfades:
+		whether to cancel other scheduled fades.
+
+
+void a_pause(id)
+	id:
+		the source id
+
+
+void a_resume(id)
+	id:
+		the source id
+
+
+void a_resumectx(ignoremute = false)
+	ignoremute:
+		whether to ignore the global mute
+
+
+--VARIABLES--
+
+bool a_canplay:
+	whether or not the sound is muted site-wide
+
+context a_context:
+	the audio context
+
+object[] a_sources:
+	the audio source properties
+
+gain[] a_busses:
+	list of the busses
+
+int a_currentid:
+	the next soundsource's id

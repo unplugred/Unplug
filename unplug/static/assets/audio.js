@@ -1,50 +1,4 @@
-/*/
-
-{
-path: "<%= assets %>/bleh.mp3",
-play: true,
-loop: true,
-time: 4,
-	pitch: 1.5,
-	detune: 0.01,
-level: 0.5,
-fade: 2,
-buss: 0,
-granulate_max: 4,
-granulate_min: 0.5,
-granulate_time: true,
-	granulatepitch_max: 4,
-	granulatepitch_min: 0.5,
-	granulatepitch_smooth: true,
-prefader_send: filter,
-prefader_return: filter,
-postfader_send: filter,
-postfader_return: filter
-usemedia: false
-}
-
-
-media:
-{
-path: "<%= assets %>/bleh.mp3",
-play: true,
-loop: true,
-time: 4,
-level: 0.5,
-	medialevel: 0.5,
-fade: 2,
-buss: 0,
-granulate_max: 4,
-granulate_min: 0.5,
-granulate_time: true,
-prefader_send: filter,
-prefader_return: filter,
-postfader_send: filter,
-postfader_return: filter
-usemedia: true
-}
-//*/
-
+//unplugred's hypercapable textural and granular audio system (c)
 
 var a_canplay = null;
 function a_init(defaultvalue) {
@@ -64,10 +18,12 @@ var a_context;
 var a_sources = [];
 var a_busses = [];
 var a_currentid = 0;
-function a_source(prop, ignoremute = false) {
-	if(!a_canplay && !ignoremute) return;
+function a_source(prop) {
 	let id = a_currentid++;
 	a_sources[id] = prop;
+	if(a_sources[id].ignoremute === undefined) a_sources[id].ignoremute = false;
+	if(!a_canplay && !a_sources[id].ignoremute) return;
+
 	a_sources[id].running = false;
 
 	if(a_sources[id].buss !== undefined) {
@@ -110,7 +66,7 @@ function a_source(prop, ignoremute = false) {
 
 	if(a_sources[id].granulate_max !== undefined) {
 		if(a_sources[id].granulate_min === undefined)
-			a_sources[id].granulate_min = Math.min(0.1,a_sources[id].granulate_max);
+			a_sources[id].granulate_min = a_sources[id].granulate_max;
 	} else if(a_sources[id].granulate_min !== undefined) {
 		a_sources[id].granulate_max = a_sources[id].granulate_min;
 	}
@@ -120,9 +76,15 @@ function a_source(prop, ignoremute = false) {
 	} else if(a_sources[id].granulatepitch_min !== undefined) {
 		a_sources[id].granulatepitch_max = 2 - a_sources[id].granulatepitch_min;
 	}
-	if(a_sources[id].granulatepitch_max !== undefined) {
-		if(a_sources[id].granulatepitch_smooth === undefined)
-			a_sources[id].granulatepitch_smooth = false;
+	if(a_sources[id].granulatelevel_max !== undefined) {
+		if(a_sources[id].granulatelevel_min === undefined)
+			a_sources[id].granulatelevel_min = 2 - a_sources[id].granulatelevel_max;
+	} else if(a_sources[id].granulatelevel_min !== undefined) {
+		a_sources[id].granulatelevel_max = 2 - a_sources[id].granulatelevel_min;
+	}
+	if(a_sources[id].granulatepitch_max !== undefined || a_sources[id].granulatelevel_max !== undefined) {
+		if(a_sources[id].granulate_smooth === undefined)
+			a_sources[id].granulate_smooth = false;
 		if(a_sources[id].granulate_min === undefined) {
 			a_sources[id].granulate_min = .1;
 			a_sources[id].granulate_max = 4;
@@ -149,21 +111,21 @@ function a_source(prop, ignoremute = false) {
 		a_sources[id].media.mediaElement.volume = a_sources[id].medialevel === undefined ? 1 : a_sources[id].medialevel;
 		a_sources[id].media.mediaElement.playbackRate = a_sources[id].pitch === undefined ? 1 : a_sources[id].pitch;
 
-		if(a_sources[id].play === undefined || a_sources[id].play) a_play(id,  a_sources[id].time === undefined ? 0 : a_sources[id].time, ignoremute);
+		if(a_sources[id].play === undefined || a_sources[id].play) a_play(id,  a_sources[id].time === undefined ? 0 : a_sources[id].time);
 	} else {
 		fetch(a_sources[id].path, {mode: "cors"})
 			.then(function(resp) {return resp.arrayBuffer()})
 			.then(function(buffer) {a_context.decodeAudioData(buffer, function(abuffer) {
 				a_sources[id].audiodata = abuffer;
-				if(a_sources[id].play === undefined || a_sources[id].play) a_play(id,  a_sources[id].time === undefined ? 0 : a_sources[id].time, ignoremute);
+				if(a_sources[id].play === undefined || a_sources[id].play) a_play(id,  a_sources[id].time === undefined ? 0 : a_sources[id].time);
 		})});
 	}
 
 	return id;
 }
 
-function a_play(id, time = undefined, ignoremute = false) {
-	if(!a_canplay && !ignoremute) return;
+function a_play(id, time = undefined) {
+	if(!a_canplay && !a_sources[id].ignoremute) return;
 
 	if(!a_sources[id].running) {
 		if(a_sources[id].fade !== undefined) {
@@ -175,11 +137,18 @@ function a_play(id, time = undefined, ignoremute = false) {
 	}
 
 	if(a_sources[id].usemedia) {
+
 		if(a_sources[id].granulatepitch_max === undefined && a_sources[id].detune !== undefined)
 			a_sources[id].media.mediaElement.playbackRate = (a_sources[id].pitch === undefined ? 1 : a_sources[id].pitch) + (Math.random()-.5)*a_sources[id].detune;
+
+		if(a_sources[id].levelrandomize !== undefined)
+			a_sources[id].media.mediaElement.volume = Math.min(Math.max((a_sources[id].medialevel === undefined ? 1 : a_sources[id].medialevel) + (Math.random()-.5)*a_sources[id].levelrandomize,0),1);
+
 		if(a_context.state !== 'suspended') a_sources[id].media.mediaElement.play();
 		if(time !== undefined) a_sources[id].media.mediaElement.currentTime = time;
+
 	} else {
+
 		if(time === undefined) time = 0;
 
 		let pitch = a_sources[id].pitch === undefined ? 1 : a_sources[id].pitch;
@@ -203,6 +172,9 @@ function a_play(id, time = undefined, ignoremute = false) {
 		a_sources[id].buffer.loop = a_sources[id].loop === undefined ? false : a_sources[id].loop;
 		a_sources[id].buffer.playbackRate.value = pitch;
 
+		if(a_sources[id].granulatelevel_max === undefined && a_sources[id].levelrandomize !== undefined)
+			a_setlevel(id, (a_sources[id].level === undefined ? 1 : a_sources[id].level) + (Math.random()-.5)*a_sources[id].levelrandomize);
+
 		a_sources[id].buffer.start(0, time);
 	}
 
@@ -214,13 +186,15 @@ function a_play(id, time = undefined, ignoremute = false) {
 	a_sources[id].running = true;
 }
 
-function a_seek(id, position, ignoremute = false) {
-	if(a_sources[id].usemedia) a_sources[id].media.mediaElement.currentTime = position;
-	else a_play(id, position, ignoremute);
+function a_seek(id, time) {
+	if(!a_canplay && !a_sources[id].ignoremute) return;
+	
+	if(a_sources[id].usemedia) a_sources[id].media.mediaElement.currentTime = time;
+	else a_play(id, time);
 }
 
 function a_setlevel(id, level, time = 0, cancelotherfades = true) {
-	if(a_busses[a_sources[id].buss] === undefined) return;
+	if((!a_canplay && !a_sources[id].ignoremute) || a_busses[a_sources[id].buss] === undefined) return;
 
 	if(cancelotherfades)
 		a_busses[a_sources[id].buss].gain.cancelScheduledValues(a_context.currentTime);
@@ -230,10 +204,12 @@ function a_setlevel(id, level, time = 0, cancelotherfades = true) {
 			a_busses[a_sources[id].buss].gain.linearRampToValueAtTime(level, a_context.currentTime + time);
 		else
 			a_busses[a_sources[id].buss].gain.setValueAtTime(level, a_context.currentTime);
-	}, 10);
+	}, 100);
 }
 
 function a_setpitch(id, pitch, time = 0, cancelotherfades = true) {
+	if(!a_canplay && !a_sources[id].ignoremute) return;
+
 	if(a_sources[id].usemedia) {
 		a_sources[id].media.mediaElement.playbackRate = pitch;
 	} else {
@@ -246,6 +222,8 @@ function a_setpitch(id, pitch, time = 0, cancelotherfades = true) {
 }
 
 function a_pause(id) {
+	if(!a_canplay && !a_sources[id].ignoremute) return;
+
 	if(a_sources[id].usemedia) a_sources[id].media.mediaElement.pause();
 	else a_sources[id].buffer.stop();
 
@@ -257,14 +235,14 @@ function a_pause(id) {
 	a_sources[id].running = false;
 }
 
-function a_resume(id, ignoremute = false) {
-	if(!a_canplay && !ignoremute) return;
+function a_resume(id) {
+	if(!a_canplay && !a_sources[id].ignoremute) return;
 
 	if(a_sources[id].usemedia) {
 		if(a_sources[id].media.mediaElement.paused)
 			a_sources[id].media.mediaElement.play();
 	} else if(!a_sources[id].running) {
-		a_play(id,  a_sources[id].time === undefined ? 0 : a_sources[id].time, ignoremute);
+		a_play(id,  a_sources[id].time === undefined ? 0 : a_sources[id].time);
 	}
 	a_sources[id].running = true;
 
@@ -278,27 +256,22 @@ function a_resumectx(ignoremute = false) {
 }
 
 function a_granulate(id) {
+	if(!a_canplay && !a_sources[id].ignoremute) return;
+
 	let next = Math.random()*(a_sources[id].granulate_max - a_sources[id].granulate_min) + a_sources[id].granulate_min;
 
-	if(a_sources[id].usemedia) {
-		if(a_sources[id].granulate_time && !isNaN(a_sources[id].media.mediaElement.duration))
-			a_sources[id].media.mediaElement.currentTime = a_sources[id].media.mediaElement.duration*Math.random()*.98;
-
-		if(a_sources[id].granulatepitch_max !== undefined) {
-			a_sources[id].media.mediaElement.playbackRate = Math.random()*(a_sources[id].granulatepitch_max - a_sources[id].granulatepitch_min) + a_sources[id].granulatepitch_min;
-		}
-	} else {
-		if(a_sources[id].granulate_time)
-			a_play(id, a_sources[id].buffer.buffer.duration*Math.random()*.98);
-
-		if(a_sources[id].granulatepitch_max !== undefined) {
-			let pitch = Math.random()*(a_sources[id].granulatepitch_max - a_sources[id].granulatepitch_min) + a_sources[id].granulatepitch_min;
-			if(a_sources[id].granulatepitch_smooth)
-				a_sources[id].buffer.playbackRate.linearRampToValueAtTime(pitch, a_context.currentTime + next);
-			else
-				a_sources[id].buffer.playbackRate.value = pitch;
-		}
+	if(a_sources[id].granulate_time) {
+		if(!a_sources[id].usemedia)
+			a_seek(id, a_sources[id].buffer.buffer.duration*Math.random()*.98);
+		else if(!isNaN(a_sources[id].media.mediaElement.duration))
+			a_seek(id, a_sources[id].media.mediaElement.duration*Math.random()*.98);
 	}
+
+	if(a_sources[id].granulatepitch_max !== undefined)
+		a_setpitch(id, Math.random()*(a_sources[id].granulatepitch_max - a_sources[id].granulatepitch_min) + a_sources[id].granulatepitch_min, a_sources[id].granulate_smooth ? next : 0, false);
+
+	if(a_sources[id].granulatelevel_max !== undefined)
+		a_setlevel(id, Math.random()*(a_sources[id].granulatelevel_max - a_sources[id].granulatelevel_min) + a_sources[id].granulatelevel_min, a_sources[id].granulate_smooth ? next : 0, false);
 
 	a_sources[id].granulate_interval = setTimeout(function() { a_granulate(id); }, next*1000);
 }

@@ -80,11 +80,12 @@ url("<%= assets %>/mute/off.png");
 							path: "<%= assets %>/mute/bg.ogg",
 							loop: true,
 							level: 5,
-							fade: 5
-						}, true);
+							fade: 5,
+							ignoremute: true
+						});
 					} else {
-						a_resume(bgloop, true);
-						a_setlevel(bgloop, 5, 1);
+						a_resume(bgloop);
+						a_setlevel(bgloop, 5, .5);
 					}
 				} else {
 					if(bgloop !== undefined)
@@ -100,19 +101,21 @@ url("<%= assets %>/mute/off.png");
 				if(onsauce === undefined) {
 					onsauce = a_source({
 						path: "<%= assets %>/mute/on.ogg",
-						medialevel: .4,
+						level: .4,
 						play: a_canplay,
-						detune: .03
-					}, true);
+						detune: .03,
+						ignoremute: true
+					});
 					offsauce = a_source({
 						path: "<%= assets %>/mute/off.ogg",
-						medialevel: .4,
+						level: .4,
 						buss: onsauce,
 						play: !a_canplay,
-						detune: .03
-					}, true);
+						detune: .03,
+						ignoremute: true
+					});
 				} else {
-					a_play(a_canplay ? onsauce : offsauce, 0, true);
+					a_play(a_canplay ? onsauce : offsauce, 0);
 				}
 				updatedoc();
 
@@ -120,7 +123,7 @@ url("<%= assets %>/mute/off.png");
 
 				let nextmonth = new Date();
 				nextmonth.setTime(nextmonth.getTime() + 2592000000);
-				document.cookie = "audio=" + a_canplay + ";expires=" + nextmonth.toUTCString() + ";path=/";
+				document.cookie = "audio=" + a_canplay + ";expires=" + nextmonth.toUTCString() + ";path=/;SameSite=Lax";
 			}
 		</script>
 <%- include('../partials/footer') %>
