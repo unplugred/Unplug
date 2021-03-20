@@ -152,10 +152,7 @@ function a_play(id, time = undefined) {
 		if(time === undefined) time = 0;
 
 		let pitch = a_sources[id].pitch === undefined ? 1 : a_sources[id].pitch;
-		if(a_sources[id].buffer !== undefined) {
-			pitch = a_sources[id].buffer.playbackRate.value;
-			a_sources[id].buffer.stop();
-		}
+		if(a_sources[id].buffer !== undefined) a_sources[id].buffer.stop();
 		if(a_sources[id].granulatepitch_max === undefined && a_sources[id].detune !== undefined)
 			pitch += (Math.random()-.5)*a_sources[id].detune;
 
@@ -204,7 +201,7 @@ function a_setlevel(id, level, time = 0, cancelotherfades = true) {
 			a_busses[a_sources[id].buss].gain.linearRampToValueAtTime(level, a_context.currentTime + time);
 		else
 			a_busses[a_sources[id].buss].gain.setValueAtTime(level, a_context.currentTime);
-	}, 100);
+	}, 1);
 }
 
 function a_setpitch(id, pitch, time = 0, cancelotherfades = true) {

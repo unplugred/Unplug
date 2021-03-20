@@ -111,6 +111,9 @@ bool ignoremute:
 	whether to ignore the global mute
 	defaults to false
 
+bool running:
+	whether the audio source is currently running
+
 
 --METHODS--
 
