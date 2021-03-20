@@ -2,11 +2,11 @@ if(global.domain === undefined) {
 	if(process.env.NODE_ENV === 'production') {
 		global.protocol = "https://";
 		global.domain = "unplug.red";
-		global.audio = 1; //0: no, 1: toggle (no default), 2: toggle (yes default), 3: yes;
+		global.audio = 1;
 	} else {
 		global.protocol = "http://";
 		global.domain = "localhost";
-		global.audio = 2; //0: no, 1: toggle (no default), 2: toggle (yes default), 3: yes;
+		global.audio = 2;
 	}
 	global.port = 6663;
 }
