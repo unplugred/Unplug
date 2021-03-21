@@ -22,7 +22,7 @@ function a_source(prop) {
 	let id = a_currentid++;
 	a_sources[id] = prop;
 	if(a_sources[id].ignoremute === undefined) a_sources[id].ignoremute = false;
-	if(!a_canplay && !a_sources[id].ignoremute) return;
+	if(!a_canplay && !a_sources[id].ignoremute) return id;
 
 	a_sources[id].running = false;
 
