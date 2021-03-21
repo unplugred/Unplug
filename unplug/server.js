@@ -6,7 +6,7 @@ if(global.domain === undefined) {
 	} else {
 		global.protocol = "http://";
 		global.domain = "localhost";
-		global.audio = 2;
+		global.audio = 3;
 	}
 	global.port = 6663;
 }
