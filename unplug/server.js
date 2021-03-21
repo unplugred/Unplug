@@ -6,11 +6,11 @@ if(global.domain === undefined) {
 	} else {
 		global.protocol = "http://";
 		global.domain = "localhost";
-		global.audio = 3;
+		global.audio = 2;
 	}
 	global.port = 6663;
 }
-global.aev = 2;
+global.aev = 3;
 const fs = require('fs');
 const express = require('express');
 const app = express();
