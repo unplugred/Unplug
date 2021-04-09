@@ -146,7 +146,6 @@
 				flex-direction: column;
 				justify-content: center;
 				display: flex !important;
-				display: none !important;
 			}
 
 			#counternumber {
@@ -364,12 +363,11 @@
 		<script>
 			function updateeverything()
 			{
-				var start = Date.UTC(2020, 3, 18, 1, 0, 0, 0);
+				var start = Date.UTC(2021, 3, 24, 1, 0, 0, 0);
 				if(start < Date.now()) {
-					start = Date.UTC(2020, 3, 21, 1, 0, 0, 0);
+					start = Date.UTC(2021, 3, 27, 1, 0, 0, 0);
 					document.getElementById("counterdate").style.display = "none";
-				}
-				else {
+				} else {
 					let startdate = new Date(start);
 					let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 					let starttime;
