@@ -137,6 +137,7 @@
 				height: 171px;
 				box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
 				background-color: black;
+				border-radius: 8px;
 			}
 
 			#counter {
@@ -312,7 +313,8 @@
 			<p>you are also invited to check out the <a href="<%= assets %>/halloffame">Dream Buster Hall of Fame</a> for random stuff we send on discord</p>
 			<img src="<%= assets %>/jerry.png" id="jerry"/>
 		</div>
-		<div id="games">
+		<canvas id="canva"></canvas>
+		<div id="games" style="display: none">
 			<div id="counter" class="gaem">
 				<div id="counternumber"></div>
 				<div id="counterdate"></div>
@@ -405,6 +407,11 @@
 				}
 			}
 			updateeverything();
+
+			var canvas = document.getElementById("canva");
+			var ctx = canvas.getContext("2d");
+
+			var rr_bg = document.getElementById("rr_bg");
 		</script>
 	</body>
 </html>
