@@ -272,7 +272,7 @@
 					<a href="https://dreambuster.itch.io/record-runner" target="_blank" class="logo"><img src="<%= assets %>/rr/logo.gif"/></a>
 				</div>
 				<div class="sidebar">
-					<iframe src="https://www.youtube.com/embed/i4Gu5uQCn6k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="https://www.youtube.com/embed/i4Gu5uQCn6k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div id="avtw" class="gaem">
@@ -280,7 +280,7 @@
 					<a href="https://dreambuster.itch.io/avtw" target="_blank" class="logo"><img src="<%= assets %>/avtw/logo.gif"/></a>
 				</div>
 				<div class="sidebar">
-					<iframe src="https://www.youtube.com/embed/j5ru1vewBYQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="https://www.youtube.com/embed/j5ru1vewBYQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div id="bmcp" class="gaem">
@@ -288,7 +288,7 @@
 					<a href="https://dreambuster.itch.io/bmcp" target="_blank" class="logo"><img src="<%= assets %>/bmcp/logo.png"/></a>
 				</div>
 				<div class="sidebar">
-					<iframe src="https://www.youtube.com/embed/ypznQaU9SH8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="https://www.youtube.com/embed/ypznQaU9SH8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div id="aoj" class="gaem">
@@ -296,7 +296,7 @@
 					<a href="https://dreambuster.itch.io/attack-on-jerry" target="_blank" class="logo"><img src="<%= assets %>/aoj/logo.gif"/></a>
 				</div>
 				<div class="sidebar">
-					<iframe src="https://www.youtube.com/embed/TwTBj7tcUSc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="https://www.youtube.com/embed/TwTBj7tcUSc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div id="cdrxiv" class="gaem">
@@ -304,7 +304,7 @@
 					<a href="https://dreambuster.itch.io/car-destruction-racer-xiv" target="_blank" class="logo"><div id="cdrxivwrap"><img src="<%= assets %>/cdrxiv/blank.png"/></div></a>
 				</div>
 				<div class="sidebar">
-					<iframe src="https://www.youtube.com/embed/jazxOs4PkqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="https://www.youtube.com/embed/jazxOs4PkqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<p id="footer">All rights reserved or smth idk.<br/>privacy policy: none we dont track anything<br/>Jerry loves you all</p>
@@ -514,10 +514,15 @@
 			var gamesize = 345;
 			var gamesdiv = document.getElementById("games");
 
-			setTimeout(function(){
+			window.onload = function(){
 				resizee();
 				window.requestAnimationFrame(update);
-			}, 1000);
+				let trailers = document.getElementsByClassName("trailer");
+				for(let t = 0; t < trailers.length; t++) {
+					trailers[t].src = trailers[t].title;
+					trailers[t].title = null;
+				}
+			};
 			window.onresize = resizee;
 
 			function resizee()
