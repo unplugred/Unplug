@@ -26,9 +26,6 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<!-----------MESSAGE TO ALL READERS-----------
-			I want to sincerely apologize for my awful use of flexboxes in this CSS code.
-			thank you for your time !>-->
 		<style>
 			html, body {
 				margin: 0;
@@ -88,8 +85,18 @@
 				margin: 10px auto 0 calc(50% - 29px);
 			}
 
+			#canva {
+				position: fixed;
+				pointer-events: none;
+				right: 0;
+				top: 0;
+			}
+
 			#games {
-				margin-left: 350px;
+				width: calc(99vw - 350px);
+				position: fixed;
+				z-index: 1;
+				right: 1vw;
 			}
 
 			a {
@@ -141,14 +148,9 @@
 			}
 
 			#counter {
-				background: black;
-				opacity: 0.99999;
-				padding: 0;
-				box-shadow: 0px 0px 30px 35px rgba(0,0,0,1);
 				flex-direction: column;
 				justify-content: center;
 				display: flex !important;
-				margin-bottom: 70px;
 			}
 
 			#counternumber {
@@ -166,72 +168,17 @@
 				padding: 0 50px;
 			}
 
-			#rr {
-				background: radial-gradient(circle, #587F918C 0%, #587F9161 100%), url(<%= assets %>/rr/bg.png) center 66%;
-				background-size: cover;
-				padding: 70px 0;
-				margin-top: -70px;
-				image-rendering: initial;
+			#bmcp img {
+				width: 942px;
 			}
 
-			#rr .logo img {
+			#rr img {
 				max-height: 110%;
 				filter: drop-shadow(0 0 15px #00000090);
 			}
 
-			#rrbg {
-				background-image: url(<%= assets %>/rr/overlay.png);
-				background-position: bottom left;
-				width: 100%;
-				height: 100%;
-				display: inherit;
-				align-items: inherit;
-				padding-top: 70px;
-				margin-top: -70px;
-			}
-
-			#avtw {
-				margin-top: -70px;
-				background: url(<%= assets %>/rr/overlay-bottom.png) top left, url(<%= assets %>/avtw/topgrass.png) bottom left, url(<%= assets %>/avtw/trees.png) bottom 26px left, url(<%= assets %>/avtw/clouds.png) bottom left, url(<%= assets %>/avtw/sky.png) top left, linear-gradient(to bottom, #569CCD00 70px, #569CCD 70px);
-				background-repeat: repeat-x;
-				background-size: auto;
-				padding: 50px 0 20px 0;
-				image-rendering: initial;
-			}
-
-			#avtw .logo img {
+			#avtw img {
 				filter: drop-shadow(0 0 3px black) drop-shadow(0 0 2px #00000070);
-			}
-
-			#bmcp {
-				background-image: url(<%= assets %>/bmcp/end.png);
-				background-repeat: repeat-x;
-				background-position: bottom left;
-				position: relative;
-				margin-top: -167px;
-			}
-
-			#bmcpbgbs {
-				height: 167px;
-				width: 100%;
-				background-image: url(<%= assets %>/avtw/connector.png), url(<%= assets %>/bmcp/bg.png);
-				background-repeat: repeat-x, repeat;
-				background-position: top left, bottom left;
-				padding-top: 70px;
-			}
-
-			#aoj {
-				background-image: url(<%= assets %>/aoj/bg.png), linear-gradient(to top, #FF5C66 70px, #710032 70px);
-				background-repeat: repeat, no-repeat;
-				background-position: bottom center;
-				margin-top: -100px;
-				padding-top: 100px;
-			}
-
-			#cdrxiv {
-				background-image: url(<%= assets %>/cdrxiv/sun.png), url(<%= assets %>/cdrxiv/bg.png), linear-gradient(to bottom, #FF5C66 95%, #000027 95%);
-				background-repeat: no-repeat, repeat-x, no-repeat;
-				background-position: bottom left;
 			}
 
 			#cdrxiv img {
@@ -265,7 +212,16 @@
 				}
 
 				#games {
-					margin-left: 0;
+					width: 100vw;
+					right: 0;
+				}
+
+				#counternumber {
+					font-size: 3.5vw;
+				}
+
+				#counterdate {
+					font-size: 2.2vw;
 				}
 
 				@media only screen and (max-width: 750px) {
@@ -277,14 +233,6 @@
 
 					.logo {
 						height: 185px;
-					}
-
-					#bmcp {
-						margin-top: -367px;
-					}
-
-					#bmcpbgbs {
-						height: 367px;
 					}
 
 					iframe {
@@ -314,19 +262,17 @@
 			<img src="<%= assets %>/jerry.png" id="jerry"/>
 		</div>
 		<canvas id="canva"></canvas>
-		<div id="games" style="display: none">
+		<div id="games">
 			<div id="counter" class="gaem">
 				<div id="counternumber"></div>
 				<div id="counterdate"></div>
 			</div>
 			<div id="rr" class="gaem">
-				<div id="rrbg">
 				<div class="graphic">
 					<a href="https://dreambuster.itch.io/record-runner" target="_blank" class="logo"><img src="<%= assets %>/rr/logo.gif"/></a>
 				</div>
 				<div class="sidebar">
 					<iframe src="https://www.youtube.com/embed/i4Gu5uQCn6k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
 				</div>
 			</div>
 			<div id="avtw" class="gaem">
@@ -337,7 +283,6 @@
 					<iframe src="https://www.youtube.com/embed/j5ru1vewBYQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
-			<div id="bmcpbgbs"></div>
 			<div id="bmcp" class="gaem">
 				<div class="graphic">
 					<a href="https://dreambuster.itch.io/bmcp" target="_blank" class="logo"><img src="<%= assets %>/bmcp/logo.png"/></a>
@@ -363,8 +308,22 @@
 				</div>
 			</div>
 			<p id="footer">All rights reserved or smth idk.<br/>privacy policy: none we dont track anything<br/>Jerry loves you all</p>
+			<img style="display: none" id="avtw_rr" src="<%= assets %>/rr/bg.png">
+			<img style="display: none" id="rr_overlay" src="<%= assets %>/rr/overlay.png">
+			<img style="display: none" id="rr_overlay-bottom" src="<%= assets %>/rr/overlay-bottom.png">
+			<img style="display: none" id="avtw_sky" src="<%= assets %>/avtw/sky.png">
+			<img style="display: none" id="avtw_trees" src="<%= assets %>/avtw/trees.png">
+			<img style="display: none" id="avtw_clouds" src="<%= assets %>/avtw/clouds.png">
+			<img style="display: none" id="avtw_topgrass" src="<%= assets %>/avtw/topgrass.png">
+			<img style="display: none" id="avtw_connector" src="<%= assets %>/avtw/connector.png">
+			<img style="display: none" id="bmcp_bg" src="<%= assets %>/bmcp/bg.png">
+			<img style="display: none" id="bmcp_end" src="<%= assets %>/bmcp/end.png">
+			<img style="display: none" id="aoj_bg" src="<%= assets %>/aoj/bg.png">
+			<img style="display: none" id="cdrxiv_buildings" src="<%= assets %>/cdrxiv/buildings.png">
+			<img style="display: none" id="cdrxiv_sun" src="<%= assets %>/cdrxiv/sun.png">
 		</div>
 		<script>
+			var istimer = undefined;
 			function updateeverything()
 			{
 				var start = Date.UTC(2021, 3, 24, 1, 0, 0, 0);
@@ -385,13 +344,17 @@
 				if(start < Date.now()) {
 					document.getElementById("counter").style.height = "0";
 					document.getElementById("counter").style.marginTop = "-70px";
+					if(istimer !== undefined && istimer) redraw();
+					istimer = false;
 				}
 				else {
 					document.getElementById("counter").style.height = null;
 					document.getElementById("counter").style.marginTop = null;
+					if(istimer !== undefined && !istimer) redraw();
+					istimer = true;
 					var counternumber = document.getElementById("counternumber");
-					var interval = setInterval(update, 1000);
-					function update()
+					var interval = setInterval(updatetimer, 1000);
+					function updatetimer()
 					{
 						var compare = start - Date.now();
 						if(compare < 0) {
@@ -403,15 +366,274 @@
 							counternumber.innerHTML = Math.floor(compare/86400000.0) + " days, " + compdate.getUTCHours() + " hours, " + compdate.getUTCMinutes() + " minutes, " + compdate.getUTCSeconds() + " seconds";
 						}
 					}
-					update()
+					updatetimer()
 				}
 			}
 			updateeverything();
 
+			var bigtitle = document.getElementById("bigtitle");
 			var canvas = document.getElementById("canva");
 			var ctx = canvas.getContext("2d");
 
-			var rr_bg = document.getElementById("rr_bg");
+			var games = [{
+					name: "cdrxiv",
+					objects: [{
+						name: "sun",
+						wpercent: 0,
+						xoffset: 53,
+						scale: 3,
+						tilex: false,
+						ytscroll: 3,
+						ytpercent: .9,
+						crop: true,
+						tdontcrop: 1,
+						tfixed: false
+					},{
+						name: "buildings",
+						scale: 3
+					}]
+				},{
+					name: "aoj",
+					objects: [{
+						name: "bg",
+						hpercent: 1,
+						xtscroll: .4,
+						xtspeed: -.006,
+						hoffset: 227,
+						tiley: true,
+						pixelated: false
+					}]
+				},{
+					name: "bmcp",
+					objects: [{
+						name: "bg",
+						scale: 3,
+						hpercent: 1,
+						tiley: true,
+						yoffset: -102,
+						yscroll: 125,
+						hoffset: 93
+					},{
+						name: "end",
+						yscroll: 125,
+						scale: 3
+					}]
+				},{
+					name: "avtw",
+					objects: [{
+						name: "rr",
+						hoffset: 70,
+						hpercent: 1,
+						tilex: false,
+						pixelated: false
+					},{
+						name: "sky",
+						yoffset: -70,
+						pixelated: false
+					},{
+						name: "clouds",
+						yoffset: -60,
+						ypercent: .8,
+						xtspeed: .015,
+						yscroll: -80,
+						ytpercent: 1,
+						tdontcrop: 3,
+						pixelated: false
+					},{
+						name: "trees",
+						yoffset: -70,
+						ytscroll: -.7,
+						ytpercent: 1,
+						pixelated: false,
+						tdontcrop: 1,
+						tfixed: false
+					},{
+						name: "topgrass",
+						yoffset: -70,
+						pixelated: false
+					},{
+						name: "connector",
+						pixelated: false
+					}]
+				},{
+					name: "rr",
+					objects: [{
+						name: "overlay",
+						hpercent: 1,
+						yoffset: -70,
+						xtscroll: -.3,
+						xtspeed: .004,
+						xtpercent: 0,
+						tiley: true,
+						pixelated: false
+					},{
+						name: "overlay-bottom",
+						yoffset: -13,
+						xtscroll: -.3,
+						xtpercent: 1,
+						xtspeed: .004,
+						pixelated: false
+					}]
+				}
+			]
+
+			for(let x = 0; x < games.length; x++) {
+				for(let y = 0; y < games[x].objects.length; y++) {
+					if(games[x].objects[y].div === undefined) games[x].objects[y].div = document.getElementById(games[x].name+"_"+games[x].objects[y].name);
+					if(games[x].objects[y].xpercent === undefined) games[x].objects[y].xpercent = 0;
+					if(games[x].objects[y].ypercent === undefined) games[x].objects[y].ypercent = 1;
+					if(games[x].objects[y].wpercent === undefined) games[x].objects[y].wpercent = 1;
+					if(games[x].objects[y].hpercent === undefined) games[x].objects[y].hpercent = 0;
+					if(games[x].objects[y].xoffset === undefined) games[x].objects[y].xoffset = 0;
+					if(games[x].objects[y].yoffset === undefined) games[x].objects[y].yoffset = 0;
+					if(games[x].objects[y].woffset === undefined) games[x].objects[y].woffset = 0;
+					if(games[x].objects[y].hoffset === undefined) games[x].objects[y].hoffset = 0;
+					if(games[x].objects[y].xscroll === undefined) games[x].objects[y].xscroll = 0;
+					if(games[x].objects[y].yscroll === undefined) games[x].objects[y].yscroll = 0;
+					if(games[x].objects[y].xtspeed === undefined) games[x].objects[y].xtspeed = 0;
+					if(games[x].objects[y].ytspeed === undefined) games[x].objects[y].ytspeed = 0;
+					if(games[x].objects[y].xtscroll === undefined) games[x].objects[y].xtscroll = 0;
+					if(games[x].objects[y].ytscroll === undefined) games[x].objects[y].ytscroll = 0;
+					if(games[x].objects[y].xtpercent === undefined) games[x].objects[y].xtpercent = 0;
+					if(games[x].objects[y].ytpercent === undefined) games[x].objects[y].ytpercent = 0;
+					if(games[x].objects[y].tdontcrop === undefined) games[x].objects[y].tdontcrop = -1;
+					if(games[x].objects[y].tfixed === undefined) games[x].objects[y].tfixed = true;
+					if(games[x].objects[y].scale === undefined) games[x].objects[y].scale = 1;
+					if(games[x].objects[y].tilex === undefined) games[x].objects[y].tilex = true;
+					if(games[x].objects[y].tiley === undefined) games[x].objects[y].tiley = false;
+					if(games[x].objects[y].crop === undefined) games[x].objects[y].crop = false;
+					if(games[x].objects[y].pixelated === undefined) games[x].objects[y].pixelated = true;
+				}
+			}
+
+			var scrollspeed = 0.003;
+			var gamesscrollspeed = 0.005;
+			var scroll = 0;
+			var gamesscroll = 0;
+			var fscroll = 0;
+			var gamesize = 345;
+			var gamesdiv = document.getElementById("games");
+
+			window.onload = function(){
+				resizee();
+				window.requestAnimationFrame(update);
+			};
+			window.onresize = resizee;
+
+			function resizee()
+			{
+				setTimeout(function(){
+					canvas.width = document.body.clientWidth - (window.innerWidth > 1000 ? 350 : 0);
+					canvas.style.right = (window.innerWidth-document.body.clientWidth)+"px";
+					canvas.height = window.innerHeight;
+					document.body.style.height = ((window.innerWidth<=1000?bigtitle.scrollHeight:0)+gamesdiv.scrollHeight)+"px";
+					gamesize = window.innerWidth > 750 ? 345 : 545;
+				},100);
+			}
+
+			var dt = null;
+			function update(timestamp) {
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+
+				fscroll = -document.documentElement.scrollTop*scrollspeed*dtt + fscroll*(1 - scrollspeed*dtt);
+				gamesscroll = -document.documentElement.scrollTop*gamesscrollspeed*dtt + gamesscroll*(1 - gamesscrollspeed*dtt);
+				scroll = Math.round(fscroll);
+
+				ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+				let offset = games.length*gamesize;
+				if(window.innerWidth <= 1000) offset += bigtitle.scrollHeight;
+				if(istimer) offset += gamesize;
+				for(let g = 0; g < games.length; g++) {
+					offset -= gamesize;
+					switch(g) {
+						case 0:
+							let grd = ctx.createLinearGradient(0,scroll+offset+gamesize-212,0,scroll+offset+gamesize)
+							grd.addColorStop(0, "#FF5C66");
+							grd.addColorStop(1, "#be17a7");
+							ctx.fillStyle=grd;
+							ctx.fillRect(0,scroll+offset-80,canvas.width,gamesize+70);
+							break;
+						case 1:
+							ctx.fillStyle="#710032";
+							ctx.fillRect(0,scroll+offset-265,canvas.width,gamesize+195);
+							break;
+					}
+					for(let o = 0; o < games[g].objects.length; o++) {
+						let obj = games[g].objects[o];
+						let w,h;
+						if(obj.hpercent === 0) h = obj.div.height*obj.scale+obj.hoffset;
+						else h = gamesize*obj.hpercent+obj.hoffset;
+						let y = (gamesize-h)*obj.ypercent+obj.yoffset+offset+scroll;
+						if(obj.yscroll !== 0) y += (offset+scroll+(gamesize-70)*.5-canvas.height*.5)/canvas.height*obj.yscroll;
+						if(y+h > 0 && y < canvas.height) {
+							if(obj.wpercent === 0) w = obj.div.width*obj.scale+obj.woffset;
+							else w = canvas.width*obj.wpercent+obj.woffset;
+							let x = (canvas.width-w)*obj.xpercent+obj.xoffset;
+							if(obj.xscroll !== 0) x += (offset+scroll+(gamesize-70)*.5-canvas.height*.5)/canvas.height*obj.xscroll;
+
+							ctx.imageSmoothingEnabled = !obj.pixelated;
+							if(g === 3 && o === 1) obj.scale = Math.round((gamesize/362)*obj.div.width)/obj.div.width;
+							if(g === 3 && o === 0) {
+								y-=gamesize;
+								if(w/obj.div.width > h/obj.div.height) {
+									let s = (w/obj.div.width);
+									ctx.drawImage(obj.div,0,(obj.div.height-h/s)*(1-(y+h)/(canvas.height+h)),obj.div.width,h/s,x,y,w,h);
+								} else {
+									let s = (h/obj.div.height);
+									ctx.drawImage(obj.div,(obj.div.width-w/s)*.5,0,w/s,obj.div.height,x,y,w,h);
+								}
+								let grd = ctx.createRadialGradient(w*.5,h*.5,0,w*.5,h*.5,Math.max(w,h));
+								grd.addColorStop(0, "#587F918C");
+								grd.addColorStop(1, "#587F9161");
+								ctx.fillStyle = grd;
+								ctx.fillRect(x,y,w,h);
+							} else if(obj.tilex || obj.tiley || obj.crop) {
+								if(obj.tfixed) {
+									bgx = scroll*obj.xtscroll+dt*obj.xtspeed;
+									bgy = scroll*obj.ytscroll+dt*obj.ytspeed-(obj.div.height*obj.scale-h%(obj.div.height*obj.scale));
+								} else {
+									bgx = ((y+obj.div.height*obj.scale)/(canvas.height+obj.div.height*obj.scale)-obj.xtpercent)*obj.div.width*obj.scale*obj.xtscroll+dt*obj.xtspeed;
+									bgy = ((y+h*(1+obj.ytpercent))/(canvas.height+h)-obj.ytpercent)*h*obj.ytscroll+dt*obj.ytspeed-(obj.div.height*obj.scale-h%(obj.div.height*obj.scale));
+								}
+								if(obj.tilex) {
+									if(bgx > 0) bgx = bgx%(obj.div.width*obj.scale)-obj.div.width*obj.scale;
+									else if (bgx < 0) bgx = -((-bgx)%(obj.div.width*obj.scale));
+								}
+								if(obj.tiley) {
+									if(bgy > 0) bgy = bgy%(obj.div.height*obj.scale)-obj.div.height*obj.scale;
+									else if (bgy < 0) bgy = -((-bgy)%(obj.div.height*obj.scale));
+								} else bgy+=obj.div.height*obj.scale;
+								for(var px = bgx; px < w; px += obj.tilex ? (obj.div.width*obj.scale) : (w*2-bgx))
+								for(var py = bgy; py < h; py += obj.tiley ? (obj.div.height*obj.scale) : (h*2-bgy))
+								{
+									let ax = obj.tdontcrop === 0 ? 0 : Math.max(-px,0);
+									let ay = obj.tdontcrop === 1 ? 0 : Math.max(-py,0);
+									let bx = obj.tdontcrop === 2 ? obj.div.width*obj.scale : Math.min(obj.div.width*obj.scale , w - px - ax);
+									let by = obj.tdontcrop === 3 ? obj.div.height*obj.scale : Math.min(obj.div.height*obj.scale, h - py - ay);
+									ctx.drawImage(obj.div, ax/obj.scale, ay/obj.scale, bx/obj.scale, by/obj.scale, x+Math.max(px,0), y+Math.max(py,0), bx, by);
+								}
+							} else {
+								ctx.drawImage(obj.div,x,y,w,h);
+							}
+						}
+					}
+				}
+				if(istimer) {
+					if(window.innerWidth <= 1000) offset = bigtitle.scrollHeight;
+					else offset = 0;
+					let grd = ctx.createLinearGradient(0,gamesize-70+scroll+offset,0,gamesize+scroll+offset);
+					grd.addColorStop(0,"black");
+					grd.addColorStop(1,"transparent");
+					ctx.fillStyle = grd;
+					ctx.fillRect(0,scroll,canvas.width,gamesize+offset);
+				}
+				gamesdiv.style.top = (gamesscroll+offset)+"px";
+
+				requestAnimationFrame(update);
+			}
 		</script>
 	</body>
 </html>
