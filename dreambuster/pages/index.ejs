@@ -203,7 +203,7 @@
 				text-align: center;
 			}
 
-			@media only screen and (max-width: 1000px) {
+			@media(max-width: 1000px) {
 				#bigtitle {
 					width: auto;
 					height: auto;
@@ -224,7 +224,7 @@
 					font-size: 2.2vw;
 				}
 
-				@media only screen and (max-width: 750px) {
+				@media(max-width: 750px) {
 					.gaem {
 						display: block;
 						padding: 0 20px 70px 20px;
@@ -568,6 +568,7 @@
 						else h = gamesize*obj.hpercent+obj.hoffset;
 						let y = (gamesize-h)*obj.ypercent+obj.yoffset+offset+scroll;
 						if(obj.yscroll !== 0) y += (offset+scroll+(gamesize-70)*.5-canvas.height*.5)/canvas.height*obj.yscroll;
+						if(g === 3 && o === 0) y-=gamesize;
 						if(y+h > 0 && y < canvas.height) {
 							if(obj.wpercent === 0) w = obj.div.width*obj.scale+obj.woffset;
 							else w = canvas.width*obj.wpercent+obj.woffset;
@@ -577,7 +578,6 @@
 							ctx.imageSmoothingEnabled = !obj.pixelated;
 							if(g === 3 && o === 1) obj.scale = Math.round((gamesize/362)*obj.div.width)/obj.div.width;
 							if(g === 3 && o === 0) {
-								y-=gamesize;
 								if(w/obj.div.width > h/obj.div.height) {
 									let s = (w/obj.div.width);
 									ctx.drawImage(obj.div,0,(obj.div.height-h/s)*(1-(y+h)/(canvas.height+h)),obj.div.width,h/s,x,y,w,h);
