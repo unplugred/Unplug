@@ -514,10 +514,10 @@
 			var gamesize = 345;
 			var gamesdiv = document.getElementById("games");
 
-			window.onload = function(){
+			setTimeout(function(){
 				resizee();
 				window.requestAnimationFrame(update);
-			};
+			}, 500);
 			window.onresize = resizee;
 
 			function resizee()
