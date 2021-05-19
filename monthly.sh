@@ -6,9 +6,9 @@ fi
 echo "--FLUSHING LOGS"
 pm2 flush
 echo "--UPDATING NPM"
-npm install -g npm
+npm install -g npm@latest
 echo "--UPDATING PM2"
-npm install pm2@latest -g
+npm install -g pm2@latest
 pm2 update
 echo "--UPDATING UBUNTU PACKAGES"
 apt-get update
