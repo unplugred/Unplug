@@ -152,6 +152,7 @@
 				flex-direction: column;
 				justify-content: center;
 				display: flex !important;
+				height: 275px!important;
 			}
 
 			#counternumber {
@@ -661,7 +662,7 @@
 
 				let offset = games.length*gamesize;
 				if(window.innerWidth <= 1000) offset += bigtitle.scrollHeight;
-				if(istimer) offset += gamesize;
+				if(istimer) offset += 345;
 				for(let g = 0; g < games.length; g++) {
 					offset -= gamesize;
 					switch(g) {
@@ -742,11 +743,11 @@
 				if(istimer) {
 					if(window.innerWidth <= 1000) offset = bigtitle.scrollHeight;
 					else offset = 0;
-					let grd = ctx.createLinearGradient(0,gamesize-70+scroll+offset,0,gamesize+scroll+offset);
+					let grd = ctx.createLinearGradient(0,275+scroll+offset,0,345+scroll+offset);
 					grd.addColorStop(0,"black");
 					grd.addColorStop(1,"transparent");
 					ctx.fillStyle = grd;
-					ctx.fillRect(0,scroll,canvas.width,gamesize+offset);
+					ctx.fillRect(0,scroll,canvas.width,345+offset);
 				}
 				gamesdiv.style.top = (gamesscroll+offset)+"px";
 
