@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<% var embed = false || (process.env.NODE_ENV === 'production');
+%><!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -175,10 +176,12 @@
 			#rr img {
 				max-height: 110%;
 				filter: drop-shadow(0 0 15px #00000090);
+				image-rendering: optimizequality;
 			}
 
 			#avtw img {
 				filter: drop-shadow(0 0 3px black) drop-shadow(0 0 2px #00000070);
+				image-rendering: optimizequality;
 			}
 
 			#cdrxiv img {
@@ -196,6 +199,36 @@
 			@keyframes cdrxivflash {
 				from { background-position-x: -1000%, center; }
 				to { background-position-x: 1040%, center; }
+			}
+
+			#ps img {
+				image-rendering: optimizequality;
+			}
+			#ps-wrap {
+				margin: auto;
+				position: relative;
+			}
+			.ps-text {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				background-repeat: no-repeat;
+				top: 0;
+				left: 0;
+				transition: transform .001s;
+				image-rendering: optimizequality;
+			}
+			#ps-stellar {
+				background-image: url("<%= assets %>/ps/stellar.png");
+				background-position: 97% 60%;
+				background-size: 43.781094527%;
+			}
+			#ps-stellarfog {
+				background-image: url("<%= assets %>/ps/stellarfog.png");
+				background-position: bottom right;
+				background-size: 46.019900498%;
 			}
 
 			#slogan {
@@ -267,47 +300,74 @@
 				<div id="counternumber"></div>
 				<div id="counterdate"></div>
 			</div>
-			<div id="rr" class="gaem">
+			<div id="ps" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/record-runner" target="_blank" class="logo"><img src="<%= assets %>/rr/logo.gif"/></a>
+					<a href="https://dreambuster.itch.io/psycho-stellar" target="_blank" class="logo">
+						<div id="ps-wrap">
+							<img src="<%= assets %>/ps/psycho.png"/>
+							<div class="ps-text" id="ps-stellarfog"></div>
+							<div class="ps-text" id="ps-stellar"></div>
+						</div>
+					</a>
 				</div>
 				<div class="sidebar">
-					<iframe class="trailer" title="https://www.youtube.com/embed/i4Gu5uQCn6k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="<%= embed ? "https://www.youtube.com/embed/VTx7ASrDRX4" : "" %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			</div>
+			<div id="rr" class="gaem">
+				<div class="graphic">
+					<a href="https://dreambuster.itch.io/record-runner" target="_blank" class="logo">
+						<img src="<%= assets %>/rr/logo.gif"/>
+					</a>
+				</div>
+				<div class="sidebar">
+					<iframe class="trailer" title="<%= embed ? "https://www.youtube.com/embed/i4Gu5uQCn6k" : "" %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div id="avtw" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/avtw" target="_blank" class="logo"><img src="<%= assets %>/avtw/logo.gif"/></a>
+					<a href="https://dreambuster.itch.io/avtw" target="_blank" class="logo">
+						<img src="<%= assets %>/avtw/logo.gif"/>
+					</a>
 				</div>
 				<div class="sidebar">
-					<iframe class="trailer" title="https://www.youtube.com/embed/j5ru1vewBYQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="<%= embed ? "https://www.youtube.com/embed/j5ru1vewBYQ" : "" %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div id="bmcp" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/bmcp" target="_blank" class="logo"><img src="<%= assets %>/bmcp/logo.png"/></a>
+					<a href="https://dreambuster.itch.io/bmcp" target="_blank" class="logo">
+						<img src="<%= assets %>/bmcp/logo.png"/>
+					</a>
 				</div>
 				<div class="sidebar">
-					<iframe class="trailer" title="https://www.youtube.com/embed/ypznQaU9SH8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="<%= embed ? "https://www.youtube.com/embed/ypznQaU9SH8" : "" %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div id="aoj" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/attack-on-jerry" target="_blank" class="logo"><img src="<%= assets %>/aoj/logo.gif"/></a>
+					<a href="https://dreambuster.itch.io/attack-on-jerry" target="_blank" class="logo">
+						<img src="<%= assets %>/aoj/logo.gif"/>
+					</a>
 				</div>
 				<div class="sidebar">
-					<iframe class="trailer" title="https://www.youtube.com/embed/TwTBj7tcUSc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="<%= embed ? "https://www.youtube.com/embed/TwTBj7tcUSc" : "" %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<div id="cdrxiv" class="gaem">
 				<div class="graphic">
-					<a href="https://dreambuster.itch.io/car-destruction-racer-xiv" target="_blank" class="logo"><div id="cdrxivwrap"><img src="<%= assets %>/cdrxiv/blank.png"/></div></a>
+					<a href="https://dreambuster.itch.io/car-destruction-racer-xiv" target="_blank" class="logo">
+						<div id="cdrxivwrap"><img src="<%= assets %>/cdrxiv/blank.png"/></div>
+					</a>
 				</div>
 				<div class="sidebar">
-					<iframe class="trailer" title="https://www.youtube.com/embed/jazxOs4PkqY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="trailer" title="<%= embed ? "https://www.youtube.com/embed/jazxOs4PkqY" : "" %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 				</div>
 			</div>
 			<p id="footer">All rights reserved or smth idk.<br/>privacy policy: none we dont track anything<br/>Jerry loves you all</p>
+			<img style="display: none" id="ps_bg" src="<%= assets %>/ps/bg.png">
+			<img style="display: none" id="ps_bg-bottom" src="<%= assets %>/ps/bg-bottom.png">
+			<img style="display: none" id="ps_butterfly" src="<%= assets %>/ps/butterfly.png">
 			<img style="display: none" id="avtw_rr" src="<%= assets %>/rr/bg.png">
 			<img style="display: none" id="rr_overlay" src="<%= assets %>/rr/overlay.png">
 			<img style="display: none" id="rr_overlay-bottom" src="<%= assets %>/rr/overlay-bottom.png">
@@ -326,9 +386,9 @@
 			var istimer = undefined;
 			function updateeverything()
 			{
-				var start = Date.UTC(2021, 3, 24, 1, 0, 0, 0);
+				var start = Date.UTC(2021, 9, 1, 22, 0, 0, 0);
 				if(start < Date.now()) {
-					start = Date.UTC(2021, 3, 27, 1, 0, 0, 0);
+					start = Date.UTC(2021, 9, 4, 22, 0, 0, 0);
 					document.getElementById("counterdate").style.display = "none";
 				} else {
 					let startdate = new Date(start);
@@ -474,6 +534,37 @@
 						xtspeed: .004,
 						pixelated: false
 					}]
+				},{
+					name: "ps",
+					objects: [{
+						name: "bg",
+						hpercent: 1,
+						yoffset: -70,
+						xtscroll: .3,
+						xtspeed: -.004,
+						xtpercent: 0,
+						tiley: true,
+						pixelated: false
+					},{
+						name: "bg-bottom",
+						yoffset: 0,
+						xtscroll: .3,
+						xtspeed: -.004,
+						xtpercent: 1,
+						pixelated: false
+					},{
+						name: "butterfly",
+						yoffset: -70,
+						ypercent: 0.4,
+						xpercent: .05,
+						xoffset: -70,
+						yscroll: 120,
+						xscroll: -10,
+						pixelated: false,
+						tilex: false,
+						wpercent: 0,
+						blend: "lighter"
+					}]
 				}
 			]
 
@@ -503,6 +594,7 @@
 					if(games[x].objects[y].tiley === undefined) games[x].objects[y].tiley = false;
 					if(games[x].objects[y].crop === undefined) games[x].objects[y].crop = false;
 					if(games[x].objects[y].pixelated === undefined) games[x].objects[y].pixelated = true;
+					if(games[x].objects[y].blend === undefined) games[x].objects[y].blend = "source-over";
 				}
 			}
 
@@ -536,11 +628,30 @@
 				},100);
 			}
 
+			var ps_text = document.getElementsByClassName("ps-text");
+			var ps_sines = [];
+			for(let i = 0; i < 16; i += 2) {
+				ps_sines[i] = Math.random()*2*Math.PI;
+				ps_sines[i+1] = Math.random()*.001+.0005;
+			}
+
 			var dt = null;
 			function update(timestamp) {
 				if(!dt) dt = timestamp;
 				let dtt = timestamp - dt;
 				dt = timestamp;
+
+				for(let i = 0; i < 16; i += 8) {
+					ps_text[i>4?0:1].style.transform = "translate("+((
+						Math.sin(ps_sines[i  ]+timestamp*ps_sines[i+1])+
+						Math.sin(ps_sines[i+2]+timestamp*ps_sines[i+3]))*.3)+"%,"+((
+						Math.sin(ps_sines[i+4]+timestamp*ps_sines[i+5])+
+						Math.sin(ps_sines[i+6]+timestamp*ps_sines[i+7]))*1.5) + "%)";
+				}
+
+				fscroll = -document.documentElement.scrollTop*scrollspeed*dtt + fscroll*(1 - scrollspeed*dtt);
+				gamesscroll = -document.documentElement.scrollTop*gamesscrollspeed*dtt + gamesscroll*(1 - gamesscrollspeed*dtt);
+				scroll = Math.round(fscroll);
 
 				fscroll = -document.documentElement.scrollTop*scrollspeed*dtt + fscroll*(1 - scrollspeed*dtt);
 				gamesscroll = -document.documentElement.scrollTop*gamesscrollspeed*dtt + gamesscroll*(1 - gamesscrollspeed*dtt);
@@ -581,6 +692,7 @@
 							if(obj.xscroll !== 0) x += (offset+scroll+(gamesize-70)*.5-canvas.height*.5)/canvas.height*obj.xscroll;
 
 							ctx.imageSmoothingEnabled = !obj.pixelated;
+							if(obj.blend !== "source-over") ctx.globalCompositeOperation = obj.blend;
 							if(g === 3 && o === 1) obj.scale = Math.round((gamesize/362)*obj.div.width)/obj.div.width;
 							if(g === 3 && o === 0) {
 								if(w/obj.div.width > h/obj.div.height) {
@@ -623,6 +735,7 @@
 							} else {
 								ctx.drawImage(obj.div,x,y,w,h);
 							}
+							if(obj.blend !== "source-over") ctx.globalCompositeOperation = "source-over";
 						}
 					}
 				}
