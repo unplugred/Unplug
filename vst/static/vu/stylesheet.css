@@ -1,0 +1,38 @@
+#vu {
+	background: url("text.png") no-repeat, url("bg.png") fixed, #bbb558;
+	text-shadow: 3px 3px #19121d;
+	color: #c4af98;
+}
+#vu .win-pos {
+	width: 444px;
+	height: 285px;
+	position: relative;
+	top: -90px;
+	margin-bottom: -70px;
+	margin-left: calc(50% - 190px);
+}
+#vu .win-inner {
+	background-image: url("ui.png");
+}
+#vu .desc {
+	border: solid 2px #19121d;
+	width: 700px!important;
+	max-width: calc(100vw - 130px)!important;
+}
+#circuit {
+	background: url("circuit.gif") no-repeat top center;
+	bottom: -70px;
+	right: -50px;
+	height: 300px;
+	width: 288px;
+}
+@media only screen and (max-width: 450px) {
+	#vu .win-pos {
+		display: none;
+	}
+}
+@media only screen and (max-width: 400px) {
+	#vu .desc {
+		max-width: calc(100vw - 70px)!important;
+	}
+}
