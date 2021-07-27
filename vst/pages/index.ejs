@@ -12,6 +12,13 @@ switch(pagename) {
 		css = assets + "/pf/stylesheet.css";
 		og = assets + "/pf/og.png";
 		break;
+	case '/vu':
+		single = true;
+		title = "VU Meter VST";
+		desc = "Distortion/saturation that sounds like a laser beam";
+		css = assets + "/vu/stylesheet.css";
+		og = assets + "/vu/og.png";
+		break;
 }
 %><html lang="en">
 	<head>
@@ -53,8 +60,9 @@ if(!single || og === null) { %>
 if(single) { %>
 		<link rel=StyleSheet href="<%= css %>" type="text/css" media=screen><%
 } else { %>
-		<link rel=StyleSheet href="<%= assets %>/pf/stylesheet.css" type="text/css" media=screen>
-		<link rel=StyleSheet href="<%= assets %>/about/stylesheet.css" type="text/css" media=screen><%
+		<link rel=StyleSheet href="<%= assets %>/about/stylesheet.css" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/vu/stylesheet.css" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/pf/stylesheet.css" type="text/css" media=screen><%
 } %>
 		<style>.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}</style>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -75,15 +83,15 @@ if(single) { %>
 				<div class="decoration" id="note"></div>
 				<div class="title">Welcome to my personal vst hell</div>
 				<div class="description">
-i was bored so i made these, and now
+i was bored so i made these, and now<br/>
 you too can enjoy them!<br/>
-and by them i mean that, cause theres only one of them for now.<br/>
-do visit later though since i have some neat ideas
+theres only two of them for now, but do visit later though since i have some neat ideas
 				</div>
 			</div>
 		</div>
 		<div class="rainbow"></div>
 
+<%- include('vu') %>		<div class="rainbow"></div>
 <%- include('plastic-funeral') %>		<div class="rainbow"></div>
 
 		<div class="section" id="comingsoon">
