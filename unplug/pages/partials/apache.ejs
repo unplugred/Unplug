@@ -198,7 +198,7 @@ switch(item.type) {
 
 				t_popup.style.display = "inline-block";
 				let recs = div.getClientRects()[0];
-				t_popup.style.top = Math.round(recs.y + recs.height - 4) + "px";
+				t_popup.style.top = Math.round(recs.y + recs.height + document.documentElement.scrollTop - 4) + "px";
 
 				if(p_currentdiv !== -1)
 					p_currentdiv.className = "";
