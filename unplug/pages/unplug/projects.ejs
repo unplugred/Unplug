@@ -1,0 +1,104 @@
+<%- include('../partials/header',{title:"projects",color:"#dfdfdf"}) %>
+		<style>
+			body {
+				display: flex;
+				font-family: monospace;
+				font-size: 13px;
+				color: #353535;
+				overflow-y: auto;
+			}
+			#projectslist {
+				margin: auto;
+				display: inline-block;
+				padding-top: 5px;
+				padding-bottom: 30px;
+				padding-left: 14px;
+			}
+			#title {
+				background: white;
+				display: inline-block;
+				padding: 3px 4px;
+				margin: 6px -10px;
+				font-size: 20px;
+			}
+			.project {
+				display: inline;
+				background: white;
+				padding: 0 4px;
+			}
+			.projectlink, .projecttime, .projectdesc {
+				display: inline;
+			}
+			a {
+				color: #2f2f2f;
+			}
+			a:hover {
+				color: #df1b1b;
+			}
+			.projecttime {
+				font-style: italic;
+				color: #9b9b9b;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="projectslist">
+			<h3 id="title">projects</h3><br/>
+
+			<div class="project"><a class="projectlink" href="https://vst.unplug.red/clickbox">clickbox</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">a compact click generating vst</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://vst.unplug.red/vu">vu</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">a vu meter vst</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/psycho-stellar">psycho stellar</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">a dreambuster game for ludum dare 48</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://vst.unplug.red/plastic-funeral">plastic funeral</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">distortion/saturation vst that sounds like a lazer beam</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/record-runner">record runner</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">a dreambuster game for ludum dare 47</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://github.com/unplugred/borderless">borderless</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">a lightweight ui-less image viewer</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/gameplay">gameplay</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">anxiety inducing snake game</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/avtw">a very talented worm</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">a dreambuster game for ludum dare 46</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://fermentum-tempus.itch.io/chessers">chessers</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">a weekly-game-jam game i made with friends</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.github.io/calque-desktop/">calque desktop</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">a desktop electron fork of calque, a reactive calculator</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/waterweek">waterweek</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a game i made after an awful experience</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/bmcp">bruno's mind control project</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a dreambuster game for ludum dare 45</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://fermentum-tempus.itch.io/rediger">rediger</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a text based experiment in mood creation and story telling through abstract visuals</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/planet">planet</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a procedural planet with procedural music</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/attack-on-jerry">attack on jerry</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a dreambuster game for ludum dare 44</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/hyperaction">hyperaction</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">speaks for itself i think</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/air-compressor">air compressor</a> <div class="projecttime">(2018)</div> - <div class="projectdesc">a game im especially proud of</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/car-destruction-racer-xiv">car destruction racer xiv</a> <div class="projecttime">(2018)</div> - <div class="projectdesc">a dreambuster game for ludum dare 43</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/headspace">headspace</a> <div class="projecttime">(2018)</div> - <div class="projectdesc">a random sentence generator with a procedural background</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplug.red">unplug</a> <div class="projecttime">(2018-present)</div> - <div class="projectdesc">a collection of webpages arranged in a maze like fashion, inspired by the merzbau project by jurt schwitters</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/rooms">rooms</a> <div class="projecttime">(2018)</div> - <div class="projectdesc">a collection of ideas arranged into a game</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/worse-for-the-better">worse for the better</a> <div class="projecttime">(2017)</div> - <div class="projectdesc">stuff</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/uselessflower">useless flower</a> <div class="projecttime">(2017)</div> - <div class="projectdesc">a game i made initially in gamemaker which was then remade in unity. based on an art piece from the art blog</div></div><br/>
+
+			<div class="project"><a class="projectlink" href="https://tumblr.unplug.red">art</a> <div class="projecttime">(2016-present)</div> - <div class="projectdesc">a blog of automatist art i made as a form of catharsis. now migrated to <a href="/automatism">/automatism</a></div></div>
+
+		</div>
+		<script>
+			function update() {
+				document.body.style.background = "url(<%= assets %>/projects.gif) no-repeat "+(Math.random()*100)+"% "+(Math.random()*100)+"% #dfdfdf";
+			}
+			update();
+			setInterval(update,5000);
+		</script>
+<%- include('../partials/footer') %>
