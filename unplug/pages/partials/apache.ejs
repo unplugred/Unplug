@@ -124,7 +124,7 @@
 switch(item.type) {
 	case "SND": %>
 				<td class="icon"><img src="<%= assets %>/apache/sound.gif" alt="[SND]"></td>
-				<td class="name"><a href="javascript:void(0);" onclick="p_playsong(this,'<%= item.mp3 %>','<%= item.flac %>')"><%= item.name %></a></td><%
+				<td class="name"><a href="javascript:void(0);" onclick="p_playsong(this,'<%= item.mp3 %>',<%= item.flac==""?-1:("'"+item.flac+"'") %>)"><%= item.name %></a></td><%
 		break;
 	case "TXT": %>
 				<td class="icon"><img src="<%= assets %>/apache/text.gif" alt="[TXT]"></td>
