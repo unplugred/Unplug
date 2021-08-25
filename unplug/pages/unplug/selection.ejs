@@ -3,6 +3,7 @@
 			body {
 				display: flex;
 				animation: bgc 60s linear -30s infinite normal;
+				will-change: auto;
 			}
 			@keyframes bgc {
 				0% { background-color: #bd6080; }
@@ -30,18 +31,21 @@
 				animation:
 					bgx 26.918s linear -21.924s infinite normal,
 					bgy 116.28s linear -104.92s infinite normal;
+				will-change: auto;
 			}
 			#gbg {
 				filter: hue-rotate(120deg);
 				animation:
 					bgx 46.621s linear -8.7861s infinite normal,
 					bgy 111.11s linear -57.834s infinite reverse;
+				will-change: auto;
 			}
 			#bbg {
 				filter: hue-rotate(240deg);
 				animation:
 					bgx 29.851s linear -8.4541s infinite reverse,
 					bgy 181.82s linear -133.35s infinite reverse;
+				will-change: auto;
 			}
 			@keyframes bgx {
 				from { background-position-x: 0; }
