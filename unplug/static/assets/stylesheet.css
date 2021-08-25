@@ -74,4 +74,5 @@ a{
 .symbl{
 	margin-right: 5px;
 	image-rendering: pixelated;
+	image-rendering: crisp-edges;
 }
