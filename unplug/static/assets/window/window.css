@@ -19,7 +19,8 @@ inset -2px -2px #808080,
 inset 2px 2px #FFF,
 inset -3px -3px #C0C0C0,
 inset 3px 3px #C0C0C0;
-	image-rendering:pixelated;
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
 	background:
 url("./wintitle.png") 3px 3px no-repeat,
 linear-gradient(to bottom,#ADC6F7 21px,#C0C0C0 21px);
