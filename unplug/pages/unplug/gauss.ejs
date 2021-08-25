@@ -1,0 +1,34 @@
+<%- include('../partials/header',{title:"gauss"}) %>
+		<style>
+			body {
+				display: flex;
+			}
+			#content {
+				margin: auto;
+				font-size: 30px;
+				padding-bottom: 200px;
+			}
+			#title {
+				color: white;
+			}
+			#shame {
+				font-weight: bold;
+				color: red;
+				display: inline-block;
+			}
+			#gauss {
+				background: url("<%= assets %>/gauss.png");
+				width: 276px;
+				height: 310px;
+				display: inline-block;
+				margin: 11px 15px -200px 25px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<div id="title">Friedrich Gauss hates his children</div>
+			<div id="gauss"></div>
+			<div id="shame">SHAME.</div>
+		</div>
+<%- include('../partials/footer') %>
