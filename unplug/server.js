@@ -66,6 +66,15 @@ function save() {
 	});
 }
 
+var survey = ["0,ERROR,"];
+fs.readFile(__dirname + "/static/partials/surveyresults.csv", 'utf8', (err, csvString) => {
+	if(err) {
+		console.log("ERROR READING SURVEY: ", err);
+	} else {
+		survey = csvString.split("\n");
+	}
+});
+
 var automatism = [];
 fs.readFile(__dirname + "/static/partials/automatism.json", 'utf8', (err, jsonString) => {
 	if(err) {
@@ -155,6 +164,14 @@ app.use((req, res, next) => {
 		savefile.viscount++;
 		if(savefile.loaded) save();
 		return res.render('unplug/time.ejs',{assets:global.assets,host:global.protocol + req.headers.host,viscount:savefile.viscount});
+	}
+
+	//survey
+	if(req.originalUrl === '/survey?get') {
+		savefile.viscount++;
+		if(savefile.loaded) save();
+		let num = Math.floor(Math.random()*survey.length);
+		return res.send((num+1).toString().padStart(3,"0")+","+survey[num]);
 	}
 
 	return res.render("unplug" + req.path + ".ejs", {assets:global.assets,host:global.protocol + req.headers.host}, function(err, html) {
