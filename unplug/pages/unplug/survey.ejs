@@ -79,7 +79,7 @@
 					document.getElementById("response").innerHTML = rslts.substring(7);
 				} else {
 					document.getElementById("question").innerText = "Favorite emoji:";
-					document.getElementById("response").innerHTML = rslts.substring(6,rslts.length-1);
+					document.getElementById("response").innerHTML = rslts.substring(6,rslts.lastIndexOf(","));
 				}
 				document.getElementById("num").classList = rslts.substring(4,5) == "0" ? "regular" : "special";
 			}
