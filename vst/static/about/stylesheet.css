@@ -23,6 +23,7 @@
 	background-size: auto!important;
 	animation: bgc 60s linear 0s infinite normal;
 	flex-grow: 1;
+	will-change: auto;
 }
 
 @media only screen and (max-width: 1000px) {

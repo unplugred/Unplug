@@ -4,7 +4,7 @@
 				display: flex;
 				background-image: url("<%= assets %>/survey/bg.png");
 				animation: background 32s 0s linear infinite;
-				transform: rotateZ(360deg);
+				will-change: auto;
 			}
 			#content {
 				margin: auto;
@@ -14,7 +14,7 @@
 			}
 			#title {
 				animation: vert 5s 0s ease-in-out infinite;
-				transform: rotateZ(360deg);
+				will-change: auto;
 				width: 266px;
 				height: 96px;
 				background-image: url("<%= assets %>/survey/title.png");
@@ -31,7 +31,7 @@
 			}
 			.special {
 				animation: anim .9s linear infinite;
-				transform: rotateZ(360deg);
+				will-change: auto;
 			}
 			a {
 				position: fixed;
