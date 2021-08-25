@@ -1,0 +1,88 @@
+<%- include('../partials/header',{title:"survey"}) %>
+		<style>
+			body {
+				display: flex;
+				background-image: url("<%= assets %>/survey/bg.png");
+				animation: background 32s 0s linear infinite;
+			}
+			#content {
+				margin: auto;
+				padding-bottom: 105px;
+				display: block;
+				color: black;
+			}
+			#title {
+				animation: vert 5s 0s ease-in-out infinite;
+				width: 266px;
+				height: 96px;
+				background-image: url("<%= assets %>/survey/title.png");
+				position: relative;
+				margin: 0 auto;
+				margin-bottom: 20px;
+			}
+			#question,#id {
+				display: inline-block;
+			}
+			#response,#num {
+				display: inline-block;
+				font-weight: bold;
+			}
+			.special {
+				animation: anim .9s linear infinite;
+			}
+			a {
+				position: fixed;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				left: 0;
+			}
+			@keyframes vert {
+				0% { top: 15px; }
+				50% { top: -15px; }
+				100% { top: 15px; }
+			}
+			@keyframes background {
+				0% { background-position: 1024px 0; }
+				100% { background-position: 0 0; }
+			}
+			@keyframes anim{
+				0%  { color: #FF0000; }
+				17% { color: #FFFF00; }
+				33% { color: #00FF00; }
+				50% { color: #00FFFF; }
+				67% { color: #0000FF; }
+				83% { color: #FF00FF; }
+				100%{ color: #FF0000; }
+			}
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<div id="title"></div>
+			<div id="id">Customer no. </div>
+			<div id="num"></div>
+			<br/>
+			<div id="question"></div>
+			<div id="response"></div>
+		</div>
+		<a href="javascript:void(0)" onclick="update()"></a>
+		<script>
+			function update() {
+				let xmlHttp = new XMLHttpRequest();
+				xmlHttp.open("GET","/survey?get",false);
+				xmlHttp.send(null);
+				let rslts = xmlHttp.responseText;
+				document.getElementById("num").innerText = rslts.substring(0,3);
+				if(rslts.includes(",,")) {
+					document.getElementById("question").innerText = "First thing that comes to mind:";
+					document.getElementById("response").innerHTML = rslts.substring(7);
+				} else {
+					document.getElementById("question").innerText = "Favorite emoji:";
+					document.getElementById("response").innerHTML = rslts.substring(6,rslts.length-1);
+				}
+				document.getElementById("num").classList = rslts.substring(4,5) == "0" ? "regular" : "special";
+			}
+			update();
+		</script>
+<%- include('../partials/footer') %>
