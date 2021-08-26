@@ -71,10 +71,9 @@
 		</div>
 		<a href="javascript:void(0)" onclick="update()"></a>
 		<script>
-			function update() {
-				let xmlHttp = new XMLHttpRequest();
-				xmlHttp.open("GET","/survey?get",false);
-				xmlHttp.send(null);
+			var xmlHttp = new XMLHttpRequest();
+			xmlHttp.addEventListener("load",response);
+			function response() {
 				let rslts = xmlHttp.responseText;
 				document.getElementById("num").innerText = rslts.substring(0,3);
 				if(rslts.includes(",,")) {
@@ -85,6 +84,10 @@
 					document.getElementById("response").innerHTML = rslts.substring(6,rslts.lastIndexOf(","));
 				}
 				document.getElementById("num").classList = rslts.substring(4,5) == "0" ? "regular" : "special";
+			}
+			function update() {
+				xmlHttp.open("GET","/survey?get");
+				xmlHttp.send();
 			}
 			update();
 		</script>
