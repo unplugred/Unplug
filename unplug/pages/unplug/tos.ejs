@@ -127,6 +127,7 @@
 						if(numerator >= 0) txt += "("+romans[numerator]+") ";
 						numerator++;
 						let s = generate(sentences);
+						if(Math.random()<.02) s = "help im stuck in a terms of service machine";
 						if(Math.random()>.5) s += " "+generate(endings);
 						let oldconnector = connector;
 						if(t >= (scount-1) || numerator > 0) connector = false;
