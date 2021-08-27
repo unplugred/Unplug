@@ -1,0 +1,175 @@
+<%- include('../partials/header',{title:"Terms of Service"}) %>
+		<style>
+			body {
+				display: flex;
+				background: url("<%= assets %>/tos/down.png") bottom center no-repeat, black;
+			}
+			#tos{
+				margin: auto;
+				max-width: 800px;
+				height: calc(100vh - 30px);
+				overflow-y: scroll;
+				margin-top: 0;
+				background: url("<%= assets %>/tos/shashlik.png") bottom right no-repeat, url("<%= assets %>/tos/net.png") bottom right repeat;
+				padding-left: 12px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="tos" onscroll="update()">
+			<h3>TERMS OF AGREEMENT</h3>
+		</div>
+		<script>
+			var titles = [
+"ACCEPTANCE OF [THE USE OF] THE [UNPLUGRED] TERMS AND CONDITIONS",
+"LEGAL ADVICE",
+"CHANGE OF USE",
+"LINKS TO [AND FROM] THIRD PARTY APPS [AND WEBSITES]",
+"COPYRIGHT AND TRADEMARK NOTICE",
+"LINKS TO [AND FROM] OTHER APPS [AND WEBSITES]",
+"INDEMNITY",
+"SEVERANCE",
+"WAIVER",
+"GOVERNING LAW",
+"{someones} AGREEMENT",
+"PRIVACY",
+"FORWARD LOOKING STATEMENTS",
+"DISCLAIMER [OF WARRANTIE]S [AND LIMITATION OF LIABILITY]",
+"EXCLUSIONS [AND LIMITATIONS]",
+"OUR [PROPRIETARY] RIGHTS",
+"{someones} RIGHTS",
+"INTELLECTUAL PROPERTY [INFRINGEMENT CLAIMS]",
+"PLACE OF PERFORMANCE",
+"GENERAL"];
+			var someones = [
+"our",
+"your",
+"the first party's",
+"the second party's",
+"the third party's",
+"the site [owner]'s",
+"the state's",
+"the governing body's",
+"these [Terms and] Conditions'"];
+			var letters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+			var romans = ["i","ii","iii","iv","v","vi","vii","viii","ix","x","xi","xii","xiii","xiv","xv","xvi","xvii","xviii","xix","xx","xxi","xxii","xxiii","xxiv","xxv","xxvi"];
+			var sentences = [
+"{someones} access to [and use of] Unplugred [(the website)] is subject [exclusively] to {someone}",
+"{someone} will not use the app for any purpose that is [unlawful or] prohibited",
+"by using this app {someone is} [fully] accepting the [terms, conditions, and] disclaimers contained",
+"the contents of {someones} app do not constitute advice [and should not be relied upon] in making [or refraining from making,] any decision",
+"all material contained on {someone} is provided",
+"{someone is} using the material on {someone}",
+"{someone is} reserving the right to [change or] remove [(temporarily or permanently)] the app [or any part of it]",
+"{someone is} confirming that {someone} shall not be liable to {someone}",
+"{someones} continued use of the app following any changes shall be deemed [to be] {someones} acceptance of such change",
+"all copyright, [trade marks] and all other intellectual propety rights in the app [and its content] [(including whout limitation the app design, text, graphics and all software and source codes connected with the app)] are owned by [or licensed to] {someone} or [otherwise] used by {someone}",
+"{someone is} agreeing that {someone} will access the content solely for {someones} personal, non-commercial use",
+"none of the content may be downloaded, [copied,] [reproduced,] [transmitted,] [stored,] [sold,] or distributed without the [prior] written consent of {someone}",
+"the app is provided on an AS IS [and AS AVAILABLE] basis without any representation [or endorsement] [made and without any warranty] [of any kind] [whether express or implied]"];
+			var endings = [
+"without any or warranty [of any kind]",
+"at {someones} [own] discretion",
+"in this notice",
+"by {someone}",
+"subject [exclusively] to {someone}",
+"of any kind",
+"without notice",
+"for any [such] change or removal",
+"as permitted by {someone}",
+"at {someones} [own] risk"];
+			var connectors = [
+" and",
+" while",
+". In addition,",
+". In accessing the app",
+". To the extent permitted by {someone}"];
+			var someone = [
+"you",
+"the first party",
+"the second party",
+"the third party",
+"the site [owner]",
+"the state [law]",
+"these [Terms and] Conditions",
+"the governing body",
+"the law"];
+			var someoneis = [
+"we are",
+"you are",
+"the first party is",
+"the second party is",
+"the third party is",
+"the site [owner] is",
+"the state [law] is",
+"these [Terms and] Conditions are",
+"the governing body is",
+"the law is"];
+
+			var tosbody = document.getElementById("tos");
+			var anum = 1;
+			function generateparagraph() {
+				let title = document.createElement("h4");
+				title.innerHTML = (anum++)+". "+replacethings(generate(titles)).toUpperCase();
+				tosbody.appendChild(title);
+			
+				let pnum = Math.floor(Math.random()*2.5)+1;
+				let ab = pnum==1?false:Math.random()>.5;
+				let capitalized = Math.random()>.8;
+				for(let m = 0; m < pnum; m++) {
+					let scount = Math.floor(Math.random()*6)+1;
+					let txt = ab?(letters[m]+". "):"";
+					let numerator = Math.random()>.7?-(Math.floor(Math.random()*3)+1):-1000;
+					if((numerator*-1) > (scount-2)) numerator = -1000;
+					let ncount = 0;
+					let connector = false;
+					for(let t = 0; t < scount; t++) {
+						if(numerator >= 0) txt += "("+romans[numerator]+") ";
+						numerator++;
+						let s = generate(sentences);
+						if(Math.random()>.5) s += " "+generate(endings);
+						let oldconnector = connector;
+						if(t >= (scount-1) || numerator > 0) connector = false;
+						else connector = Math.random()>.7;
+						if(connector) s += generate(connectors)+" ";
+						else s += ". ";
+						s = replacethings(s);
+						if(!oldconnector) s = s.charAt(0).toUpperCase()+s.slice(1);
+						txt += s;
+					}
+
+					if(capitalized) txt = txt.toUpperCase();
+					if(m<(pnum-1)) txt+="<br/>";
+					let p = document.createElement("p");
+					p.innerHTML = txt;
+					tosbody.appendChild(p);
+				}
+			}
+
+			function generate(arr) {
+				return arr[Math.floor(Math.random()*arr.length)];
+			}
+			function replacethings(txt) {
+				let i = 0;
+				while(txt.includes("{")&&(i++)<100) {
+					if(txt.includes("{someones}"))
+						txt = txt.replace("{someones}",generate(someones));
+					if(txt.includes("{someone}"))
+						txt = txt.replace("{someone}",generate(someone));
+					if(txt.includes("{someone is}"))
+						txt = txt.replace("{someone is}",generate(someoneis));
+				}
+				while(txt.includes("[")&&(i++)<100) {
+					if(Math.random()>.5)
+						txt = txt.replace(/ \[[\s\S]*?\]/,'');
+					else
+						txt = txt.replace("[",'').replace("]",'');
+				}
+				return txt;
+			}
+			for(let i = 0; i < Math.max(Math.round(window.innerHeight/133.5),3); i++) generateparagraph();
+			function update() {
+				if(tosbody.scrollHeight-(tosbody.scrollTop+window.innerHeight) < 5000 && (tosbody.scrollTop+window.innerHeight)/tosbody.scrollHeight > .5) generateparagraph();
+			}
+		</script>
+<%- include('../partials/footer') %>
