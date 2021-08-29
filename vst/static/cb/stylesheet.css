@@ -1,0 +1,38 @@
+#clickbox {
+	background: url("text.png") no-repeat, url("bg.png") fixed, #ff009b;
+	text-shadow: 3px 3px #9b0035;
+	color: #fdab91;
+}
+#clickbox .win-pos {
+	width: 262px;
+	height: 281px;
+	position: relative;
+	top: -90px;
+	margin-bottom: -70px;
+	margin-left: calc(50% - 99px);
+}
+#clickbox .win-inner {
+	background-image: url("ui.png");
+}
+#clickbox .desc {
+	border: solid 2px #002;
+	width: 700px!important;
+	max-width: calc(100vw - 130px)!important;
+}
+#bear {
+	background: url("bear.gif") no-repeat top center;
+	bottom: -40px;
+	right: -50px;
+	height: 300px;
+	width: 288px;
+}
+@media only screen and (max-width: 450px) {
+	#clickbox .win-pos {
+		display: none;
+	}
+}
+@media only screen and (max-width: 400px) {
+	#clickbox .desc {
+		max-width: calc(100vw - 70px)!important;
+	}
+}

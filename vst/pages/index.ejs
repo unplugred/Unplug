@@ -19,6 +19,13 @@ switch(pagename) {
 		css = assets + "/vu/stylesheet.css";
 		og = assets + "/vu/og.png";
 		break;
+	case '/clickbox':
+		single = true;
+		title = "ClickBox VST";
+		desc = "a VST that generates clicks";
+		css = assets + "/cb/stylesheet.css";
+		og = assets + "/cb/og.png";
+		break;
 }
 %><html lang="en">
 	<head>
@@ -55,12 +62,13 @@ if(!single || og === null) { %>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link rel=StyleSheet href="<%= unplugassets %>/window/window.css?v=3" type="text/css" media=screen>
-		<link rel=StyleSheet href="/stylesheet.css?v=6" type="text/css" media=screen><%
+		<link rel=StyleSheet href="<%= unplugassets %>/window/window.css?v=4" type="text/css" media=screen>
+		<link rel=StyleSheet href="/stylesheet.css?v=7" type="text/css" media=screen><%
 if(single) { %>
 		<link rel=StyleSheet href="<%= css %>" type="text/css" media=screen><%
 } else { %>
 		<link rel=StyleSheet href="<%= assets %>/about/stylesheet.css" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/cb/stylesheet.css" type="text/css" media=screen>
 		<link rel=StyleSheet href="<%= assets %>/vu/stylesheet.css" type="text/css" media=screen>
 		<link rel=StyleSheet href="<%= assets %>/pf/stylesheet.css" type="text/css" media=screen><%
 } %>
@@ -91,6 +99,7 @@ also <a href="https://laulaulau.bandcamp.com/album/time-is-not-an-issue">check o
 		</div>
 		<div class="rainbow"></div>
 
+<%- include('clickbox') %>		<div class="rainbow"></div>
 <%- include('vu') %>		<div class="rainbow"></div>
 <%- include('plastic-funeral') %>		<div class="rainbow"></div>
 
