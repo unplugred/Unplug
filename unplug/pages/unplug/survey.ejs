@@ -73,22 +73,28 @@
 		<script>
 			var xmlHttp = new XMLHttpRequest();
 			xmlHttp.addEventListener("load",response);
-			function response() {
-				let rslts = xmlHttp.responseText;
-				document.getElementById("num").innerText = rslts.substring(0,3);
-				if(rslts.includes(",,")) {
-					document.getElementById("question").innerText = "First thing that comes to mind:";
-					document.getElementById("response").innerHTML = rslts.substring(7);
-				} else {
-					document.getElementById("question").innerText = "Favorite emoji:";
-					document.getElementById("response").innerHTML = rslts.substring(6,rslts.lastIndexOf(","));
-				}
-				document.getElementById("num").classList = rslts.substring(4,5) == "0" ? "regular" : "special";
-			}
 			function update() {
 				xmlHttp.open("GET","/survey?get");
 				xmlHttp.send();
 			}
+
+			var questions = ["Favorite emoji:","First thing that comes to mind:","Favorite band/artist:"];
+
+			function response() {
+				let rslts = xmlHttp.responseText;
+				document.getElementById("num").innerText = rslts.substring(0,3);
+				document.getElementById("num").classList = rslts.substring(4,5) == "0" ? "regular" : "special";
+				
+				let commamount = rslts.length-1;
+				while(rslts.charAt(commamount) == ",") commamount -= 1;
+				commamount = questions.length-(rslts.length-commamount);
+
+				document.getElementById("question").innerText = questions[commamount];
+				rslts = rslts.substring(6+commamount);
+				if(commamount !== (questions.length-1)) rslts = rslts.substring(0,rslts.indexOf(","));
+				document.getElementById("response").innerHTML = rslts;
+			}
+
 			update();
 		</script>
 <%- include('../partials/footer') %>
