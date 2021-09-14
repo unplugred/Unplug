@@ -71,7 +71,7 @@ fs.readFile(__dirname + "/static/partials/surveyresults.csv", 'utf8', (err, csvS
 	if(err) {
 		console.log("ERROR READING SURVEY: ", err);
 	} else {
-		survey = csvString.split("\n");
+		survey = csvString.split(/\r?\n/);
 	}
 });
 
