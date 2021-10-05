@@ -71,5 +71,17 @@ var dataa = [
 		audio: { rating: 3.857, amount: 23, place: 295 },
 		humor: { rating: 3.158, amount: 21, place: 544 },
 		mood: { rating: 4.19, amount: 23, place: 148 }
+	},{
+		number: 49,
+		name: "Duck Optimizer Pro 2021",
+		submissions: 2204,
+		overall: { rating: null, amount: null, place: null },
+		fun: { rating: null, amount: null, place: null },
+		innovation: { rating: null, amount: null, place: null },
+		theme: { rating: null, amount: null, place: null },
+		graphics: { rating: null, amount: null, place: null },
+		audio: { rating: null, amount: null, place: null },
+		humor: { rating: null, amount: null, place: null },
+		mood: { rating: null, amount: null, place: null }
 	}
 ];
