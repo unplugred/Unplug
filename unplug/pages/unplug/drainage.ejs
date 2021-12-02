@@ -1,10 +1,18 @@
 <%- include('../partials/header',{title:"drainage",color:"#00881D"}) %>
 		<style>
 			body {
-				background: url("<%= assets %>/drainage/drainage.svg") no-repeat center 70%, #181818;
-				background-size: 50vh;
+				background: #181818;
 				image-rendering: crisp-edges;
 				image-rendering: pixelated;
+			}
+			#drain {
+				background: url("<%= assets %>/drainage/drainage.svg") no-repeat center 70%, #181818;
+				background-size: 50vh;
+				height: 100vh;
+				width: calc(60vmin + 40vw);
+				position: fixed;
+				left: 0;
+				top: 0;
 			}
 			.plant {
 				mask-position: bottom center;
@@ -26,7 +34,7 @@
 				mask-size: 14.5vh;
 				-webkit-mask-size: 14.5vh;
 				width: 14.5vh;
-				left: calc(50vw - 21.3vh);
+				left: calc(30vmin + 20vw - 21.3vh);
 				bottom: 34.95vh;
 			}
 			#plant1 .stem {
@@ -41,7 +49,7 @@
 				mask-size: 17.77vh;
 				-webkit-mask-size: 17.77vh;
 				width: 17.77vh;
-				left: calc(50vw + 3.05vh);
+				left: calc(30vmin + 20vw + 3.05vh);
 				bottom: 33.35vh;
 			}
 			#plant2 .stem {
@@ -56,7 +64,7 @@
 				mask-size: 10vh;
 				-webkit-mask-size: 10vh;
 				width: 10vh;
-				left: calc(50vw - 10.85vh);
+				left: calc(30vmin + 20vw - 10.85vh);
 				bottom: 26.85vh;
 			}
 			#plant3 .stem {
@@ -76,6 +84,7 @@
 		</style>
 	</head>
 	<body>
+		<div id="drain"></div>
 		<div id="plant1" class="plant"><div class="stem"></div></div>
 		<div id="plant2" class="plant"><div class="stem"></div></div>
 		<div id="plant3" class="plant"><div class="stem"></div></div>
