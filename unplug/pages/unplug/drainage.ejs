@@ -1,0 +1,118 @@
+<%- include('../partials/header',{title:"drainage",color:"#00881D"}) %>
+		<style>
+			body {
+				background: url("<%= assets %>/drainage/drainage.svg") no-repeat center 70%, #181818;
+				background-size: 50vh;
+				image-rendering: crisp-edges;
+				image-rendering: pixelated;
+			}
+			.plant {
+				mask-position: bottom center;
+				-webkit-mask-position: bottom center;
+				position: fixed;
+				height: 0;
+			}
+			.stem {
+				background-color: #00881D;
+				width: 0.86vh;
+				bottom: 0;
+				position: absolute;
+			}
+			#plant1 {
+				background: url("<%= assets %>/drainage/plant1.svg") no-repeat top center;
+				mask-image: url("<%= assets %>/drainage/plant1mask.svg");
+				-webkit-mask-image: url("<%= assets %>/drainage/plant1mask.svg");
+				background-size: 14.5vh;
+				mask-size: 14.5vh;
+				-webkit-mask-size: 14.5vh;
+				width: 14.5vh;
+				left: calc(50vw - 21.3vh);
+				bottom: 34.95vh;
+			}
+			#plant1 .stem {
+				height: calc(100% - 4vh);
+				margin-left: 7.16vh;
+			}
+			#plant2 {
+				background: url("<%= assets %>/drainage/plant2.svg") no-repeat top center;
+				mask-image: url("<%= assets %>/drainage/plant2mask.svg");
+				-webkit-mask-image: url("<%= assets %>/drainage/plant2mask.svg");
+				background-size: 17.77vh;
+				mask-size: 17.77vh;
+				-webkit-mask-size: 17.77vh;
+				width: 17.77vh;
+				left: calc(50vw + 3.05vh);
+				bottom: 33.35vh;
+			}
+			#plant2 .stem {
+				height: calc(100% - 5vh);
+				margin-left: 7.2vh;
+			}
+			#plant3 {
+				background: url("<%= assets %>/drainage/plant3.svg") no-repeat top center;
+				mask-image: url("<%= assets %>/drainage/plant3mask.svg");
+				-webkit-mask-image: url("<%= assets %>/drainage/plant3mask.svg");
+				background-size: 10vh;
+				mask-size: 10vh;
+				-webkit-mask-size: 10vh;
+				width: 10vh;
+				left: calc(50vw - 10.85vh);
+				bottom: 26.85vh;
+			}
+			#plant3 .stem {
+				height: calc(100% - 6.6vh);
+				margin-left: 5.87vh;
+			}
+			#scanlines {
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				left: 0;
+				background-image: url("<%= assets %>/scanlines.png");
+				opacity: 0.15;
+				pointer-events: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="plant1" class="plant"><div class="stem"></div></div>
+		<div id="plant2" class="plant"><div class="stem"></div></div>
+		<div id="plant3" class="plant"><div class="stem"></div></div>
+		<div id="scanlines"></div>
+		<script>
+			var plants = [{
+				div: document.getElementById("plant2"),
+				height: -.2
+			},{
+				div: document.getElementById("plant3"),
+				height: -6
+			},{
+				div: document.getElementById("plant1"),
+				height: -4
+			}];
+
+			var dt = null;
+			function update(timestamp) {
+				if(!timestamp) {
+					requestAnimationFrame(update);
+					return;
+				}
+				if(!dt) dt = timestamp;
+				let dtt = timestamp - dt;
+				dt = timestamp;
+
+				var finished = true;
+				for(let i = 0; i < plants.length; i++) {
+					if(plants[i].height < 100) {
+						plants[i].height = Math.min(100,plants[i].height+(.00015+(Math.sin(plants[i].height)+1)*.00015+Math.pow(Math.max(0,plants[i].height),1.5)*.000002)*dtt);
+						plants[i].div.style.height = plants[i].height+"vh";
+						finished = false;
+					}
+				}
+
+				if(!finished) requestAnimationFrame(update);
+			}
+			update();
+		</script>
+<%- include('../partials/footer') %>
