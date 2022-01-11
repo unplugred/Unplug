@@ -1,0 +1,49 @@
+<%- include('../partials/header',{title:"button"}) %>
+		<style>
+			body {
+				display: flex;
+				background: url("<%= assets %>/button/bg.png");
+				background-position: center;
+			}
+			#box {
+				width: 250px;
+				margin: auto;
+				position: relative;
+				border-radius: 3px;
+				background: #382244cf;
+				border: 1px solid #a893b3cf;
+				color: #f7e8ffcf;
+				overflow: hidden;
+			}
+			#bg {
+				background: url("<%= assets %>/no-entry/scanlines.png");
+				opacity: .08;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+			}
+			#code {
+				font-size: 14px;
+				margin: 5px;
+				margin-right: 0;
+			}
+			#button {
+				display: flex;
+			}
+			#button a {
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<div id="bg"></div>
+			<div id="code"></div>
+			<div id="button"><a href="<%= host %>/"><img style="filter:hue-rotate(<%= Math.random().toString().substr(0,4); %>turn)" src="<%= assets %>/button/button.gif"/></a></div>
+		</div>
+		<script>
+			var bleh = document.getElementById("button");
+			document.getElementById("code").innerText = bleh.innerHTML;
+			bleh.getElementsByTagName("a")[0].href = "javascript:void(0);";
+		</script>
+<%- include('../partials/footer') %>
