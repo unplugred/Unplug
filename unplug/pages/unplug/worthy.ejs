@@ -27,12 +27,23 @@
 			var lerpos = [fcbox.height*-.5,fcbox.width*-.5];
 			fc.style.top = "calc(50vh + " + lerpos[0] + "px)";
 			fc.style.left = "calc(50vw + " + lerpos[1] + "px)";
+			var bounds = [
+				(document.body.clientHeight*-.5)-fcbox.height,
+				(document.body.clientWidth*-.5)-fcbox.width,
+				document.body.clientHeight*.5,
+				document.body.clientWidth*.5];
+			var redirect = 1000;
 
 			window.onresize = function() {
 				if(touched) return;
 				let fcbox = fc.getBoundingClientRect();
 				fc.style.top = "calc(50vh - " + (fcbox.height*.5) + "px)";
 				fc.style.left = "calc(50vw - " + (fcbox.width*.5) + "px)";
+				bounds = [
+					(document.body.clientHeight*-.5)-fcbox.height,
+					(document.body.clientWidth*-.5)-fcbox.width,
+					document.body.clientHeight*.5,
+					document.body.clientWidth*.5];
 			}
 
 			document.onmousemove = function(e) {
@@ -62,6 +73,16 @@
 						lerpos[1]*(1-(dtt*.003)) + pos[1]*.003*dtt];
 					fc.style.top = "calc(50vh + " + lerpos[0] + "px)";
 					fc.style.left = "calc(50vw + " + lerpos[1] + "px)";
+
+					if(
+						lerpos[0] < bounds[0] ||
+						lerpos[1] < bounds[1] ||
+						lerpos[0] > bounds[2] ||
+						lerpos[1] > bounds[3]) {
+						if(redirect > 0 && redirect-dtt < 0)
+							window.location = "/button";
+						redirect -= dtt;
+					}
 
 					window.requestAnimationFrame(lerpify);
 			}
