@@ -75,13 +75,13 @@ var dataa = [
 		number: 49,
 		name: "Duck Optimizer Pro 2021",
 		submissions: 2204,
-		overall: { rating: null, amount: null, place: null },
-		fun: { rating: null, amount: null, place: null },
-		innovation: { rating: null, amount: null, place: null },
-		theme: { rating: null, amount: null, place: null },
-		graphics: { rating: null, amount: null, place: null },
-		audio: { rating: null, amount: null, place: null },
-		humor: { rating: null, amount: null, place: null },
-		mood: { rating: null, amount: null, place: null }
+		overall: { rating: 3.553, amount: 21, place: 708 },
+		fun: { rating: 3.579, amount: 21, place: 575 },
+		innovation: { rating: 3.921, amount: 21, place: 156 },
+		theme: { rating: 2.789, amount: 21, place: 1326 },
+		graphics: { rating: 4.225, amount: 21, place: 238 },
+		audio: { rating: 4.026, amount: 21, place: 126 },
+		humor: { rating: 4.395, amount: 21, place: 26 },
+		mood: { rating: 3.75, amount: 20, place: 374 }
 	}
 ];
