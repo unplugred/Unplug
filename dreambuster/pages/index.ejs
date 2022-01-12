@@ -140,7 +140,7 @@
 				flex: 0 0 331px;
 			}
 
-			iframe {
+			.trailer {
 				width: calc(100% - 10px);
 				height: 171px;
 				box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.25);
@@ -205,7 +205,7 @@
 			#ps img {
 				image-rendering: optimizequality;
 			}
-			#ps-wrap {
+			#ps-wrap, #dop-wrap {
 				margin: auto;
 				position: relative;
 			}
@@ -230,6 +230,39 @@
 				background-image: url("<%= assets %>/ps/stellarfog.png");
 				background-position: bottom right;
 				background-size: 46.019900498%;
+			}
+
+			.dop-text {
+				content: "";
+				display: block;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				background-size: cover;
+				background-image: url("<%= assets %>/dop/logoshade.png");
+				top: 0;
+				left: 0;
+			}
+
+			#dop-one {
+				background-position: 0% 0%;
+				animation: dop-anim 6s ease-in-out -1s infinite alternate;
+			}
+			#dop-two {
+				background-position: 0% 33.33%;
+				animation: dop-anim 7s ease-in-out -11s infinite alternate;
+			}
+			#dop-three {
+				background-position: 0% 66.66%;
+				animation: dop-anim 5s ease-in-out -21s infinite alternate;
+			}
+			#dop-four {
+				background-position: 0% 100%;
+				animation: dop-anim 9s ease-in-out -31s infinite alternate;
+			}
+			@keyframes dop-anim {
+				from { opacity: 0.3; }
+				to { opacity: 0; }
 			}
 
 			#slogan {
@@ -269,7 +302,7 @@
 						height: 185px;
 					}
 
-					iframe {
+					.trailer {
 						height: 200px;
 						width: 360px;
 						margin-left: calc(50% - 180px);
@@ -300,6 +333,22 @@
 			<div id="counter" class="gaem">
 				<div id="counternumber"></div>
 				<div id="counterdate"></div>
+			</div>
+			<div id="dop" class="gaem">
+				<div class="graphic">
+					<a href="https://dreambuster.itch.io/psycho-stellar" target="_blank" class="logo">
+						<div id="dop-wrap">
+							<img src="<%= assets %>/dop/logo.png"/>
+							<div class="dop-text" id="dop-one"></div>
+							<div class="dop-text" id="dop-two"></div>
+							<div class="dop-text" id="dop-three"></div>
+							<div class="dop-text" id="dop-four"></div>
+						</div>
+					</a>
+				</div>
+				<div class="sidebar">
+					<div class="trailer" style="background: url(<%= assets %>/hof/022.png) no-repeat center,black;background-size: contain;"></div>
+				</div>
 			</div>
 			<div id="ps" class="gaem">
 				<div class="graphic">
@@ -366,6 +415,8 @@
 				</div>
 			</div>
 			<p id="footer">All rights reserved or smth idk.<br/>privacy policy: none we dont track anything<br/>Jerry loves you all</p>
+			<img style="display: none" id="dop_tres" src="<%= assets %>/dop/tres.png">
+			<img style="display: none" id="dop_sun" src="<%= assets %>/dop/sun.png">
 			<img style="display: none" id="ps_bg" src="<%= assets %>/ps/bg.png">
 			<img style="display: none" id="ps_bg-bottom" src="<%= assets %>/ps/bg-bottom.png">
 			<img style="display: none" id="ps_butterfly" src="<%= assets %>/ps/butterfly.png">
@@ -387,9 +438,9 @@
 			var istimer = undefined;
 			function updateeverything()
 			{
-				var start = Date.UTC(2021, 9, 1, 22, 0, 0, 0);
+				var start = Date.UTC(2022, 3, 2, 01, 0, 0, 0);
 				if(start < Date.now()) {
-					start = Date.UTC(2021, 9, 4, 22, 0, 0, 0);
+					start = Date.UTC(2022, 3, 5, 01, 0, 0, 0);
 					document.getElementById("counterdate").style.display = "none";
 				} else {
 					let startdate = new Date(start);
@@ -548,7 +599,6 @@
 						pixelated: false
 					},{
 						name: "bg-bottom",
-						yoffset: 0,
 						xtscroll: .3,
 						xtspeed: -.004,
 						xtpercent: 1,
@@ -565,6 +615,19 @@
 						tilex: false,
 						wpercent: 0,
 						blend: "lighter"
+					}]
+				},{
+					name: "dop",
+					objects: [{
+						name: "sun",
+						wpercent: 0,
+						xoffset: 53,
+						scale: 3,
+						yscroll: 200,
+						ypercent: .15
+					},{
+						name: "tres",
+						scale: 2
 					}]
 				}
 			]
@@ -610,7 +673,7 @@
 			window.onload = function(){
 				resizee();
 				window.requestAnimationFrame(update);
-				let trailers = document.getElementsByClassName("trailer");
+				let trailers = document.getElementsByTagName("iframe");
 				for(let t = 0; t < trailers.length; t++) {
 					trailers[t].src = trailers[t].title;
 					trailers[t].title = null;
@@ -675,6 +738,10 @@
 							break;
 						case 1:
 							ctx.fillStyle="#710032";
+							ctx.fillRect(0,scroll+offset-265,canvas.width,gamesize+195);
+							break;
+						case 6:
+							ctx.fillStyle="#74a7b2";
 							ctx.fillRect(0,scroll+offset-265,canvas.width,gamesize+195);
 							break;
 					}
