@@ -17,6 +17,14 @@
 				white-space: pre-wrap;
 				tab-size: 4;
 			}
+			#title {
+				font-weight: bold;
+				color: #0000aa;
+				background-color: white;
+			}
+			.inner {
+				display: inline;
+			}
 			::-webkit-scrollbar-thumb {
 				background-color: #fff;
 				border: none;
@@ -29,26 +37,33 @@
 		</style>
 	</head>
 	<body>
-		<div id="text"></div>
+		<div id="text"><div class="inner"></div><div class="inner" id="title"></div><div class="inner"></div></div>
 		<script>
-			var txt = "<!DOCTYPE html>\n"+document.documentElement.outerHTML;
-			txt = txt.replace("<head>","\n\t<head>").replace("<\/body>","\n\t<\/body>\n");
-			var div = document.getElementById("text");
+			//hello there.
+			var txt = "<!DOCTYPE html>\n"+document.documentElement.outerHTML.replace("<head>","\n\t<head>").replace("<\/body>","\n\t<\/body>\n");
+			var index = txt.indexOf("autobiography");
+			var txtdiv = document.getElementById("text");
+			var divs = txtdiv.children;
 			var reader = 0;
 			var onbottom = true;
 			var selected = "█";
-			div.innerText = selected;
-			var prevscrolltop = div.scrollTopMax;
+			divs[0].innerText = selected;
+			var prevscrolltop = txtdiv.scrollTopMax;
 			function update(){
-				if(prevscrolltop != div.scrollHeight) {
-					if(onbottom) div.scrollTop = div.scrollHeight;
-					prevscrolltop = div.scrollHeight;
-				} else onbottom = (div.scrollTop+div.clientHeight) == div.scrollHeight;
+				if(prevscrolltop != txtdiv.scrollHeight) {
+					if(onbottom) txtdiv.scrollTop = txtdiv.scrollHeight;
+					prevscrolltop = txtdiv.scrollHeight;
+				} else onbottom = (txtdiv.scrollTop+txtdiv.clientHeight) == txtdiv.scrollHeight;
 
 				if(reader < txt.length) {
-					div.innerText = txt.substring(0,++reader) + selected;
+					if(reader < index) divs[0].innerText = txt.substring(0,++reader) + selected;
+					else if(reader < index+13) {
+						divs[0].innerText = txt.substring(0,index);
+						divs[1].innerText = txt.substring(index,++reader);
+						divs[2].innerText = selected;
+					} else divs[2].innerText = txt.substring(index+13,++reader) + selected;
 					setTimeout(update,txt.charAt(reader) == "\n" ? 100 : 10);
-				} else div.innerText = txt;
+				} else divs[2].innerText = txt.substring(index+13);
 			};
 			setTimeout(update,400);
 		</script>
