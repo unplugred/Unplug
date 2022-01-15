@@ -1,8 +1,22 @@
-<%- include('../partials/header',{title:"autobiography",color:"#0000aa"}) %>
+<%- include('../partials/header',{title:"autobiography",css:false,color:"#0000aa"}) %>
 		<style>
+			body, html {
+				width: 100vw;
+				height: 100vh;
+				margin: 0;
+				padding: 0;
+				overflow: hidden;
+			}
 			body {
 				display: flex;
-				background-image: url("<%= assets %>/window/heavy-stars.png");
+				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAMAAADDpiTIAAABuVBMVEUAAAAAOQAADAA9DgkWDAARAgAhNwAADBUxQmkdJhsPAAAhAAAsAAAZAAYFAAAAMwAoMAYDACkABjMACQAAAAocHQAIQgAgACoAAC0AEAAwEwEAEgAAEzEVKgAAMyAAPwAABx0WABkdABcYADgAHgAADRgAAAwHKQAAAAsvAAgAUlYAAAZMGwAYAE8ABgAABiMAFwAAIwAAAAkACRkAADYoAAoABQ0dACAAHAAZDwABADA0BAAARgAcJwABKAAAQUMAHRwAADcAHjA/AB0ABAAADxMNKwAACw8bAAQKJyZBDgAcAAsKAAEZAAA6BAAeSwAJLQAOGwAAADgACxAAPh8AOSAgAwABGQIiHQAADggGAAwLCQAEAC4AACQAAggAGAAANQBSBwAAVwAAABZGGQIAABIAABQADBMeAAMABg4IAwBTDQA9DgAAAB4AAFAAHTIAAAEaAANhAA0ALSAUAAAUAwAVAA8AABUAIi4iABwAOAYACCAANwAAAx4IAAAAHjQDJwAJEgAAFTQAJxkAKhEAACYVCCsSHwABAAIpAAAAAEkjAAc/HwAWACEAJjERDV0AABsACwA8GwCFu0p1AAADMElEQVR42u3dgwIcVwAF0NvGtmvGdqXUTW3bbiqltvvFsb07u/tm3jnfcRGadl4AAOAkzg89GRMAAKBBY9OfcQEASjU+QHkmBPoyMQzQpAAAAJRkcs7VlAAAjZmarpqWwZie/s0IAAAAAMBQzQwAdMKs0JjZAQDKNSdVmRtaal6oyvzQiwUBAEZlYejbogAAQK8WpyuWBNjvgjACFwYAmnNRAKo0JeHiUL7pKdQloUyXBgCG7rIAAAAAQGUuD+x3RTgXV6ZBVwUAgKZdHQAA6JClAei+ZQEAANhHgg8AlgfaYUUAoFErAwAAFGFyCrYqACdaHeBcrAlwxNpQlnUBYLjWBwAAgMZtSAAAAAAANgYAgJbYlIJtDsApTc+ZbAkAABy2KAAAAAOxNQCUY1sAAAAAAIAmbQ8A0AnXBIB+LQ0AwH7XBgCAXlwXTnB9AAAAgArdEE7qxgAAAADU6KZ0yc2BQbglAD3YkYG4NdACtwUAAAAA6M/tgQLdEQAA6jM9ANRtcjitOwMAQFOmBgDa567QVncHGnVP2Bko0r0ZvfsCQO3uDyfxQACgkx4MQO0eCpTh4VCEpQGAEXgk0JBH0wGPBQAYtscDADV7IgCn9mQATmpO+vVUaL+nAwAAAGfyTBiEZwMn9VwAAACA1ng+nOsXFgAAwAtp3osBavNSgNN4OZzBK6nWq+nPa6nb6wEAoCZvBAAAAOAM3gwAwACsDwDwVgAAAAAAAACowdsBAACG5Z0AQKneDQAAAP2bExiZnQHgHL0XAGAk3g+j90EAAACgpT4MzfkobbIrdN7HAQAA4IhPAgAAbbE9AADAsH0aevRZKMKSAAd9HuioLwIAANAiXwYAyvNV2uTrAEMyNxRsdwCgjVaEllofAIBefBM4yo4AAAAA7TA5AB3xbUbnu7TU9ynKDwEAKNCPAYBB+CkA9OjnAE1aHQCoxdIAQFV+CXDWfg0AHOW3ABz2ewAAWuSPAMf6MwAAAEBFdqVbxgYAAOjXX4Gh+TsAAJ22KOdoZ2it6em+fwIAQLfYHN0dgFJszdH+DQBtNDdU7b8AVLf8DfwfAAAAAAAAoECrQ832AGnjL33xoVixAAAAAElFTkSuQmCC) top left repeat, black;
+			}
+			::selection {
+				color: #0000aa;
+				background: #FFFFFFFE;
+			}
+			* {
+				cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAATCAQAAADsID9bAAAAPklEQVR42p3QMQrAMAwEwf3/pydlwL40UbkjEChawwTCygtoAS2gBbSAFtAFR34nEuskdQDUyN9v2Pn/PlUPcRSXac4QlqQAAAAASUVORK5CYII=) 0 0, default;
 			}
 			#text {
 				overflow-y: auto;
@@ -10,7 +24,9 @@
 				width: calc(40vw + 40vmin);
 				margin: auto;
 				color: white;
-				background: url("<%= assets %>/autobiography.png") top left no-repeat, #0000aa;
+				font-family: "FreeMono", "Courier New", monospace;
+				font-weight: normal;
+				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAADqCAMAAACcJDUsAAAABlBMVEX///8AAKpjwZmIAAABqElEQVR42pySCW4EMQzD5P9/urgGLJMIRu92NxQtp5MkmehjUj6mHzZPt4/eq45l7sAoPb1HP8dkmHPgWmPassOvpdW4CKvJFyZOuQB6D3+8CAA34/scj5TBcDUEThtAE74zQuqJR4tekoEaOmHinC/5YYwBkLLT0Vt4Pn4G3u/EY/APBHynzu1TKFdWxqhZ55XwOyKfHZVQRLH6eZ/1QIvsxB8jk/nX2FNRiVbscPjwIzKcPXdL2+SY8vscjjG8Ik1CwL0dUwwwGddRHQTJ0FVjv4iZY2fOcYqh0WRe1SeZAXNWDkRBSS1dYryU0vYium1f+nOoNyAK7cA7UmRmVFYK/lEnYYcIhuA4ieDgB/okHECIDYfCuA+uw4upJFVYhjs7CW0WiSAwUNSEFDynJsojdRGZd4+gEKcbU+W8njMV95Nswm1uR/TtEEWdNtHV2uz+FTMcmbU27uHaoOkGd9x7OB0tn1nuo0rPyHvXZ8RiE6Vpaj7V4QM51HR1eDQhS3tEQ/Yp9zMmaGmaXUqPbFL93Xtkd7heJfKMZC1Wxv6McofhESAcLwAYmgkIMPQbsQAAAABJRU5ErkJggg==) top left no-repeat, #0000aa;
 				padding-left: 16px;
 				word-break: break-all;
 				font-size: 16px;
