@@ -20,7 +20,6 @@ if(typeof icon === 'undefined') { %>
 		<link rel="shortcut icon" href="<%= icon %>">
 		<link rel="icon" type="image/<%= icontype %>" href="<%= icon %>">
 <% } %>
-
 		<meta name="theme-color" content="<%= color %>">
 		<meta name="dcterms.rightsHolder" content="ari">
 		<meta property="og:site_name" content="red">
@@ -37,6 +36,7 @@ if(typeof icon === 'undefined') { %>
 		<meta property="og:image" content="<%= ogimage %>">
 		<meta name="twitter:image" content="<%= ogimage %>">
 		<link rel="alternate" type="application/rss+xml" title="unplugred rss" href="<%= global.protocol %>rss.<%= global.domain %>/" />
-		<link rel="manifest" href="/manifest.webmanifest">
-<% if(typeof css === 'undefined') { %>		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=6" type="text/css" media=screen>
-<% } %>
+		<link rel="manifest" href="/manifest.webmanifest"><%
+if(typeof css === 'undefined') { %>
+		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=6" type="text/css" media=screen><%
+} %>
