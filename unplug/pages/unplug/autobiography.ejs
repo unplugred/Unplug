@@ -1,0 +1,55 @@
+<%- include('../partials/header',{title:"autobiography",color:"#0000aa"}) %>
+		<style>
+			body {
+				display: flex;
+				background-image: url("<%= assets %>/window/heavy-stars.png");
+			}
+			#text {
+				overflow-y: auto;
+				height: calc(40vh + 40vmin);
+				width: calc(40vw + 40vmin);
+				margin: auto;
+				color: white;
+				background: url("<%= assets %>/autobiography.png") top left no-repeat, #0000aa;
+				padding-left: 16px;
+				word-break: break-all;
+				font-size: 16px;
+				white-space: pre-wrap;
+				tab-size: 4;
+			}
+			::-webkit-scrollbar-thumb {
+				background-color: #fff;
+				border: none;
+				border-radius: 0px;
+			}
+			::-webkit-scrollbar {
+				width: 3px;
+				height: 3px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="text"></div>
+		<script>
+			var txt = "<!DOCTYPE html>\n"+document.documentElement.outerHTML;
+			txt = txt.replace("<head>","\n\t<head>").replace("<\/body>","\n\t<\/body>\n");
+			var div = document.getElementById("text");
+			var reader = 0;
+			var onbottom = true;
+			var selected = "█";
+			div.innerText = selected;
+			var prevscrolltop = div.scrollTopMax;
+			function update(){
+				if(prevscrolltop != div.scrollHeight) {
+					if(onbottom) div.scrollTop = div.scrollHeight;
+					prevscrolltop = div.scrollHeight;
+				} else onbottom = (div.scrollTop+div.clientHeight) == div.scrollHeight;
+
+				if(reader < txt.length) {
+					div.innerText = txt.substring(0,++reader) + selected;
+					setTimeout(update,txt.charAt(reader) == "\n" ? 100 : 10);
+				} else div.innerText = txt;
+			};
+			setTimeout(update,400);
+		</script>
+<%- include('../partials/footer') %>
