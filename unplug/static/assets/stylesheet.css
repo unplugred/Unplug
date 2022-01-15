@@ -10,7 +10,7 @@ a, .hovermouse, a *{
 	cursor: url("/cursors/wait.png") 6 0, wait;
 }
 
-::selection, ::-moz-selection{
+::selection {
 	color: #333;
 	background: #999999fe;
 }
