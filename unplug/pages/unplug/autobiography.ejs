@@ -13,38 +13,56 @@
 			}
 			::selection {
 				color: #0000aa;
-				background: #FFFFFFFE;
+				background: #F4F4F4FE;
 			}
 			* {
 				cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAATCAQAAADsID9bAAAAPklEQVR42p3QMQrAMAwEwf3/pydlwL40UbkjEChawwTCygtoAS2gBbSAFtAFR34nEuskdQDUyN9v2Pn/PlUPcRSXac4QlqQAAAAASUVORK5CYII=) 0 0, default;
 			}
-			#text {
-				overflow-y: auto;
+			#wrap {
 				height: calc(40vh + 40vmin);
 				width: calc(40vw + 40vmin);
+				position: relative;
+				z-index: 20;
 				margin: auto;
-				color: white;
+			}
+			#text {
+				overflow-y: auto;
+				color: #F4F4F4;
 				font-family: "FreeMono", "Courier New", monospace;
 				font-weight: normal;
-				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAADqCAMAAACcJDUsAAAABlBMVEX///8AAKpjwZmIAAABqElEQVR42pySCW4EMQzD5P9/urgGLJMIRu92NxQtp5MkmehjUj6mHzZPt4/eq45l7sAoPb1HP8dkmHPgWmPassOvpdW4CKvJFyZOuQB6D3+8CAA34/scj5TBcDUEThtAE74zQuqJR4tekoEaOmHinC/5YYwBkLLT0Vt4Pn4G3u/EY/APBHynzu1TKFdWxqhZ55XwOyKfHZVQRLH6eZ/1QIvsxB8jk/nX2FNRiVbscPjwIzKcPXdL2+SY8vscjjG8Ik1CwL0dUwwwGddRHQTJ0FVjv4iZY2fOcYqh0WRe1SeZAXNWDkRBSS1dYryU0vYium1f+nOoNyAK7cA7UmRmVFYK/lEnYYcIhuA4ieDgB/okHECIDYfCuA+uw4upJFVYhjs7CW0WiSAwUNSEFDynJsojdRGZd4+gEKcbU+W8njMV95Nswm1uR/TtEEWdNtHV2uz+FTMcmbU27uHaoOkGd9x7OB0tn1nuo0rPyHvXZ8RiE6Vpaj7V4QM51HR1eDQhS3tEQ/Yp9zMmaGmaXUqPbFL93Xtkd7heJfKMZC1Wxv6McofhESAcLwAYmgkIMPQbsQAAAABJRU5ErkJggg==) top left no-repeat, #0000aa;
+				background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAFWCAMAAABXW+2WAAAABlBMVEX09PQAAKqp199bAAACNElEQVR42mKgNgB0UwYqscRAEOz+/58WkDvqyiETPRSQtw93M5Xunkm0+rzCe8Z73mjLw5ai1CU2/s+xVKoLqgs81bvUU70pSGPSdVqAYL2KC2XNuAvAhjplB4lwjkBCgFdL49QEDDFAE2iJnwRSA4kA9A+aHiNRPSxrJd5QQvDUovgyln31jj0KB8Zz0ufcbMVzRCxW6b1pDOB/bn8mgbpkfCZE6WNTqPEAgcJua2JzWQhXy2Q/syXhIA/RNjCY5lHFwnTgWjyHHCKIpELCAjUZpUQSI4EHNApvCsxJDOTxVuagm7ZTHL3jQXS0j+mXIdAbog7dhR5Dizo6DB2EJDzkT42CJAA7qDH7ZgtkPo8HwoFxhCmNnngJhATPNlR9epGO9jJ6cftgQkFcXLsQeO2D7bKeV4JxUZNEEI0Ep4EmQgULBLkKyH8vWK4vDAPQhRElwXOkRoiEanxTL/jJMEFFt9m9II2HoQvMZjQxPmlMGJEROuFkZhdPy2cq0UYR/CWMRkPMhJSul3OA0xbpOlC+Ts9x3aRmwtN3UinTNi4COURXWUmlmrSenIPLJpqMqnJUFIi6fS8cL+l6+ectXoo2zi7xlqUXCmm4yiYibs73Z5mYXQRSwy5mPfV42YXDgukw5Y1GdJnvbYNahN7eQm4koRwet6ksLr2caXxx16NcgomA+HtJ47E4/31S6+6296K5z3E/Dw/4PRctfksjb/eyR/+7hbil37W1d2riXy7k6jfqA9MgDqy0Dp6nAAAAAElFTkSuQmCC) top left no-repeat, #0000aa;
 				padding-left: 16px;
 				word-break: break-all;
 				font-size: 16px;
-				white-space: pre-wrap;
-				tab-size: 4;
+				position: relative;
+				width: 100%;
+				height: 100%;
+				top: -100%;
+				left: 0;
 			}
-			#title {
-				font-weight: bold;
+			#shadow {
+				padding-left: 16px;
+				position: relative;
+				top: 16px;
+				left: 16px;
+				z-index: -20;
+				width: 100%;
+				height: 100%;
+				background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQAAAAA3iMLMAAAAEElEQVR4AWNYtYohNJR4EgCGtw/xaZlxDQAAAABJRU5ErkJggg==);
+				background-attachment: fixed;
+				opacity: .05;
+			}
+			b {
 				color: #0000aa;
-				background-color: white;
+				background-color: #F4F4F4;
 			}
 			.inner {
 				font-style: normal;
+				white-space: pre-wrap;
+				tab-size: 4;
 			}
 			::-webkit-scrollbar-thumb {
-				background-color: #fff;
-				border: none;
-				border-radius: 0px;
+				background-color: #F4F4F4;
 			}
 			::-webkit-scrollbar {
 				width: 3px;
@@ -53,13 +71,20 @@
 		</style>
 	</head>
 	<body>
-		<div id="text"><i class="inner"></i><b class="inner" id="title"></b><i class="inner"></i></div>
+		<div id="wrap">
+			<div id="shadow"></div>
+			<div id="text">
+				<i class="inner"></i><b class="inner"></b><i class="inner"></i>
+			</div>
+		</div>
 		<script>
 			//hello there.
-			var txt = "<!DOCTYPE html>\n"+document.documentElement.outerHTML.replace("<head>","\n\t<head>").replace("<\/body>","\n\t<\/body>\n");
+			var txt = "<!DOCTYPE html>\n"+document.documentElement.outerHTML
+				.replace("<head>","\n\t<head>")
+				.replace("<\/body>","\n\t<\/body>\n");
 			var index = txt.indexOf("autobiography");
 			var txtdiv = document.getElementById("text");
-			var divs = txtdiv.children;
+			var divs = document.getElementsByClassName("inner");
 			var reader = 0;
 			var onbottom = true;
 			var selected = "█";
@@ -69,15 +94,20 @@
 				if(prevscrolltop != txtdiv.scrollHeight) {
 					if(onbottom) txtdiv.scrollTop = txtdiv.scrollHeight;
 					prevscrolltop = txtdiv.scrollHeight;
-				} else onbottom = (txtdiv.scrollTop+txtdiv.clientHeight) == txtdiv.scrollHeight;
+				} else {
+					onbottom = (txtdiv.scrollTop+txtdiv.clientHeight) == txtdiv.scrollHeight;
+				}
 
 				if(reader < txt.length) {
-					if(reader < index) divs[0].innerText = txt.substring(0,++reader) + selected;
-					else if(reader < index+13) {
+					if(reader < index) {
+						divs[0].innerText = txt.substring(0,++reader) + selected;
+					} else if(reader < index+13) {
 						divs[0].innerText = txt.substring(0,index);
 						divs[1].innerText = txt.substring(index,++reader);
 						divs[2].innerText = selected;
-					} else divs[2].innerText = txt.substring(index+13,++reader) + selected;
+					} else {
+						divs[2].innerText = txt.substring(index+13,++reader) + selected;
+					}
 					setTimeout(update,txt.charAt(reader) == "\n" ? 100 : 10);
 				} else divs[2].innerText = txt.substring(index+13);
 			};
