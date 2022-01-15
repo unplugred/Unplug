@@ -39,7 +39,7 @@
 				background-color: white;
 			}
 			.inner {
-				display: inline;
+				font-style: normal;
 			}
 			::-webkit-scrollbar-thumb {
 				background-color: #fff;
@@ -53,7 +53,7 @@
 		</style>
 	</head>
 	<body>
-		<div id="text"><div class="inner"></div><div class="inner" id="title"></div><div class="inner"></div></div>
+		<div id="text"><i class="inner"></i><b class="inner" id="title"></b><i class="inner"></i></div>
 		<script>
 			//hello there.
 			var txt = "<!DOCTYPE html>\n"+document.documentElement.outerHTML.replace("<head>","\n\t<head>").replace("<\/body>","\n\t<\/body>\n");
