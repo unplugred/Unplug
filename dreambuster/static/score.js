@@ -83,5 +83,17 @@ var dataa = [
 		audio: { rating: 4.026, amount: 21, place: 126 },
 		humor: { rating: 4.395, amount: 21, place: 26 },
 		mood: { rating: 3.75, amount: 20, place: 374 }
+	},{
+		number: 50,
+		name: "Paper Boy Flyin' High",
+		submissions: 1927,
+		overall: { rating: 3.69, amount: 23, place: 471 },
+		fun: { rating: 3.667, amount: 23, place: 377 },
+		innovation: { rating: 3.548, amount: 23, place: 442 },
+		theme: { rating: 4, amount: 23, place: 279 },
+		graphics: { rating: 4.381, amount: 23, place: 145 },
+		audio: { rating: 3.786, amount: 23, place: 271 },
+		humor: { rating: 2.735, amount: 19, place: 818 },
+		mood: { rating: 3.675, amount: 22, place: 488 }
 	}
 ];
