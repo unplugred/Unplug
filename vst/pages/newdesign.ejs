@@ -10,7 +10,7 @@
 				height: 100vh;
 				background: url(/test.png) no-repeat no-repeat right top, url(/bg.png) 5px 0;
 				background-attachment: fixed;
-				font-family: sans-serif;
+				font-family: 'Helvetica Neue', Arial, sans-serif;
 				font-size: 20px;
 				line-height: .95;
 				overflow: hidden;
@@ -185,11 +185,27 @@
 			}
 			#note {
 				position: fixed;
-				background-image: url(/about/note.gif);
-				width: 100px;
-				height: 100px;
-				right: 10px;
-				bottom: 10px;
+				background: url(/about/note.gif) center no-repeat;
+				width: 200px;
+				height: 200px;
+				right: 0;
+				bottom: 0;
+			}
+			#note text {
+				font-size: 16px;
+				font-weight: bold;
+			}
+			#note svg {
+				position: absolute;
+				left: calc(50% - 160px);
+				top: calc(50% - 160px);
+				width: 320px;
+				height: 320px;
+				animation: rotate 15s infinite linear;
+			}
+			@keyframes rotate {
+				from { transform: rotate(360deg); }
+				to { transform: rotate(0); }
 			}
 		</style>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -247,7 +263,20 @@ Available for both windows and linux
 		<div class="plug" id="mp" style="width: 468px; height: 40px;"></div>
 		<div class="plug" id="crmbl" style="width: 507px; height: 465px;"></div>
 		<div class="plug" id="prsm" style="width: 478px; height: 561px;"></div>
-		<div id="note"></div>
+		<div id="note">
+			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+				<defs>
+					<path id="rotatingtextpath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
+				</defs>
+				<circle cx="150" cy="100" r="75" fill="none"/>
+				<g>
+					<use xlink:href="#rotatingtextpath" fill="none"/>
+					<text fill="#000">
+						<textPath xlink:href="#rotatingtextpath">UnplugRed's VST Trove  UnplugRed's VST Trove</textPath>
+					</text>
+				</g>
+			</svg>
+		</div>
 		<script type="text/javascript" src="<%= unplugassets %>/window/movable.js"></script>
 		<script>
 			var x = document.getElementsByClassName("win-pos");
