@@ -34,6 +34,8 @@ app.use((req, res, next) => {
 			'Cache-Control':'public, max-age=2592000',
 			'Access-Control-Allow-Origin':'*'
 		}).render('stylesheet.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets});
+	else if(req.path.startsWith("/newdesign"))
+		return res.render('newdesign.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path});
 	else
 		return res.render('index.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path});
 });

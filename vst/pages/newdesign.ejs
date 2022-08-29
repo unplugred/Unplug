@@ -1,0 +1,338 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			html, body {
+				padding: 0;
+				margin: 0;
+				width: 100vw;
+				height: 100vh;
+				background: url(/test.png) no-repeat no-repeat right top, url(/bg.png) 5px 0;
+				background-attachment: fixed;
+				font-family: sans-serif;
+				font-size: 20px;
+				line-height: .95;
+				overflow: hidden;
+			}
+			a {
+				color: #FF00FF;
+			}
+			#diagonal {
+				position: fixed;
+				stroke: #ccc;
+				stroke-width: 1px;
+				width: 100vw;
+				height: 100vh;
+			}
+			#circle {
+				border-radius: 100%;
+				position: fixed;
+				border: 1px solid #ccc;
+				width: 125vmin;
+				height: 125vmin;
+				left: calc(50vw - 62.5vmin);
+				top: calc(50vh - 62.5vmin);
+			}
+			#testpattern {
+				background: url(/test.png);
+				width: 16px;
+				height: 96px;
+				position: fixed;
+				top: 0;
+				right: 0;
+			}
+			#blurredtext {
+				position: fixed;
+				right: 0;
+				transform: rotate(-90deg) scaleY(1.8);
+				top: -16vh;
+				transform-origin: right bottom;
+				font-size: 20vh;
+				filter: blur(7px);
+				opacity: .15;
+				letter-spacing: -20;
+				font-weight: bold;
+				pointer-events: none;
+			}
+			#whitegradient {
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 30vw;
+				height: 100vh;
+				background: linear-gradient(to right, #ffffff55, transparent);
+				z-index: 50;
+				pointer-events: none;
+			}
+			#rainbow {
+				background: url(/rainbow.png);
+				height: 100vh;
+				width: 4px;
+				border-right: 1px solid black;
+				position: fixed;
+				z-index: 1000;
+			}
+			#dots {
+				position: fixed;
+				bottom: 5px;
+				left: 10px;
+				z-index: 1000;
+			}
+			.dot {
+				width: 20px;
+				height: 20px;
+				border-radius: 100%;
+				margin-right: 5px;
+				display: inline-block;
+				border: 1px solid black;
+			}
+			#dotc { background-color: #00FFFF; }
+			#doty { background-color: #FFFF00; }
+			#dotm { background-color: #FF00FF; }
+			#dotk { background-color: #000000; }
+			.win-wrap {
+				position: fixed;
+			}
+			.win-pos {
+				position: relative;
+				border: 1px solid black;
+			}
+			#info {
+				left: 20px;
+				top: 35px;
+				width: 25vw;
+				padding: 5px;
+				padding-left: 100px;
+				min-height: 370px;
+				box-shadow: 0 0 50px 0 #acffff69, 5px 5px 0px 0px #00000026;
+			}
+			.tab {
+				position: absolute;
+				top: -21px;
+				left: -1px;
+				height: 20.4px;
+				width: 100px;
+				border: 1px solid black;
+				border-bottom: none;
+				border-right: none;
+				clip-path: polygon(0% 100%, 0% 0%, 80% 0%, 100% 100%);
+			}
+			.line {
+				position: absolute;
+				top: -21px;
+				left: -.5px;
+				stroke: black;
+				stroke-width: 1px;
+			}
+			.infobg {
+				background: url(/scanlines.png), url(/clouds.png);
+				background-size: auto, cover;
+				background-attachment: fixed;
+			}
+			#title {
+				font-size: 1.7em;
+				font-weight: bold;
+				font-variant: petite-caps;
+				text-shadow: 3px 3px #00000026;
+				transform: scaleX(3) skewX(-10deg);
+				transform-origin: 0;
+				width: 33.3%;
+				margin-left: 8px;
+				line-height: .8;
+			}
+			#desc {
+				font-size: 1.9em;
+				transform: scaleX(.5);
+				transform-origin: 0;
+				width: 200%;
+			}
+			#gif {
+				position: absolute;
+				margin-left: -95px;
+			}
+			.plug {
+				position: absolute;
+				box-shadow: 5px 5px 0px 0px #00000026;
+				border: 1px solid black;
+			}
+			.plug:hover {
+				animation: rainbowborder 2s linear 0s infinite normal;
+				box-shadow: 0 0 0 4px #f00, 0 0 0 5px black, 5px 5px 0 5px #00000026;
+			}
+			@keyframes rainbowborder {
+				0% {
+					box-shadow: 0 0 0 4px #f0f, 0 0 0 5px black, 5px 5px 0 5px #00000026;
+				}
+				16.66% {
+					box-shadow: 0 0 0 4px #f00, 0 0 0 5px black, 5px 5px 0 5px #00000026;
+				}
+				33.33% {
+					box-shadow: 0 0 0 4px #ff0, 0 0 0 5px black, 5px 5px 0 5px #00000026;
+				}
+				50% {
+					box-shadow: 0 0 0 4px #0f0, 0 0 0 5px black, 5px 5px 0 5px #00000026;
+				}
+				66.66% {
+					box-shadow: 0 0 0 4px #0ff, 0 0 0 5px black, 5px 5px 0 5px #00000026;
+				}
+				83.33% {
+					box-shadow: 0 0 0 4px #00f, 0 0 0 5px black, 5px 5px 0 5px #00000026;
+				}
+				100% {
+					box-shadow: 0 0 0 4px #f0f, 0 0 0 5px black, 5px 5px 0 5px #00000026;
+				}
+			}
+			#note {
+				position: fixed;
+				background-image: url(/about/note.gif);
+				width: 100px;
+				height: 100px;
+				right: 10px;
+				bottom: 10px;
+			}
+		</style>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap" rel="stylesheet">
+	</head>
+	<body>
+		<div id="side">
+			<svg id="diagonal">
+				<line x1='0' y1='100%' x2='100%' y2='0'/>
+				<line x1='0' y1='0' x2='100%' y2='100%'/>
+			</svg>
+			<div id="circle"></div>
+			<div id="testpattern"></div>
+			<div id="blurredtext">UnplugRed</div>
+			<div id="whitegradient"></div>
+			<div id="rainbow"></div>
+			<div id="dots">
+				<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
+			</div>
+
+			<div class="win-wrap" style="z-index: 100;">
+				<div id="info" class="infobg win-pos">
+					<div class="infobg tab"></div>
+					<svg class="line"><line x1='80px' y1='0' x2='100px' y2='20.4px'/></svg>
+					<img id="gif" src="/pf/rose.gif"/>
+						<div id="title">Plastic Funeral</div>
+						<div id="desc">
+forget about warmth.<br/>
+this distortion gives off a harsh and metallic sound with an FM vibe that is guaranteed to destroy any mix.<br/>
+(sounds real phat and juicy on bass)<br/>
+<a class="demo" href="javascript:void(0);" onclick='popup_audio(1, "<%= assets %>/pf/demo1.mp3", "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.")'>Demo 1</a>
+<a class="demo" href="javascript:void(0);" onclick='popup(3, "Plastic Funeral credits:@brMade by Ari Hanan (@a1https://unplug.red/@a2unplugred@a3)@brThanks to @a1https://laulaulau.bandcamp.com/@a2lau@a3 for creating the factory presets as well as providing quite a bit of help.@brThanks to @a1https://marina-magnolia.tumblr.com/@a2Marina Magnolia Venegas@a3 for doing testing and QA.")'>Credits</a>
+<br/>
+<br/>
+Cost: +0$<br/>
+Available for both windows and linux
+						</div>
+						<a class="download" href="https://shop.unplug.red/b/wGlzc"></a>
+						<div class="decoration" id="rose"></div>
+				</div>
+			</div>
+			<div class="win-wrap" style="z-index: 100;">
+				<div id="donate" class="infobg win-pos">
+					<div class="tab infobg"></div>
+					<svg class="line"><line x1='80px' y1='0' x2='100px' y2='20.4px'/></svg>
+				</div>
+			</div>
+		</div>
+		<div class="plug" id="pf" style="width: 242px; height: 462px;"></div>
+		<div class="plug" id="vu" style="width: 438px; height: 260px;"></div>
+		<div class="plug" id="cb" style="width: 256px; height: 256px;"></div>
+		<div class="plug" id="piss" style="width: 242px; height: 462px;"></div>
+		<div class="plug" id="pnch" style="width: 128px; height: 148px;"></div>
+		<div class="plug" id="rb" style="width: 322px; height: 408px;"></div>
+		<div class="plug" id="mp" style="width: 468px; height: 40px;"></div>
+		<div class="plug" id="crmbl" style="width: 507px; height: 465px;"></div>
+		<div class="plug" id="prsm" style="width: 478px; height: 561px;"></div>
+		<div id="note"></div>
+		<script type="text/javascript" src="<%= unplugassets %>/window/movable.js"></script>
+		<script>
+			var x = document.getElementsByClassName("win-pos");
+			for (var i = 0; i < x.length; i++) {
+				dragElement(x[i].parentNode, x[i]);
+			}
+
+			function shuffleArray(array) {
+				let curId = array.length;
+				while (0 !== curId) {
+					let randId = Math.floor(Math.random() * curId);
+					curId -= 1;
+					let tmp = array[curId];
+					array[curId] = array[randId];
+					array[randId] = tmp;
+				}
+				return array;
+			}
+			var hi = document.getElementsByClassName("plug");
+			var plugs = [];
+			for(var i = 0; i < hi.length; i++) {
+				plugs[i] = {};
+				plugs[i].div = hi[i];
+				plugs[i].id = plugs[i].div.id;
+				plugs[i].width = plugs[i].div.offsetWidth+7;
+				plugs[i].height = plugs[i].div.offsetHeight+7;
+				plugs[i].div.style.backgroundImage = "url(/"+plugs[i].id+"/ui.png)";
+			}
+			plugs = shuffleArray(plugs);
+
+			//APPROACH 2 ball
+			var d = 0;
+			var r = 40;
+			var x = screen.width*.5;
+			var y = 0;
+			var left = 0;
+			var right = 0;
+			var topp = 0;
+			var bottom = 0;
+			var topmost = 10000;
+			var found = false;
+			for(var i = 0; i < plugs.length; i++) {
+				attempts = 0;
+				while(attempts++ < 10000) {
+					d = Math.random()*Math.PI;
+					r += 1;
+					x = Math.cos(d)*r+screen.width*.5;
+					y = Math.sin(d)*r*.5;
+					left = x-(plugs[i].width*.5);
+					right = x+(plugs[i].width*.5);
+					topp = y-(plugs[i].height*.5);
+					bottom = y+(plugs[i].height*.5);
+					found = true;
+					for(var n = 0; n < i; n++) {
+						if(
+							left < 0 || right >= screen.width ||
+							(((left < plugs[n].right && left > plugs[n].left) ||
+							(right < plugs[n].right && right > plugs[n].left) ||
+							(left < plugs[n].x && right > plugs[n].x)) &&
+							((topp < plugs[n].bottom && topp > plugs[n].top) ||
+							(bottom < plugs[n].bottom && bottom > plugs[n].top) ||
+							(topp < plugs[n].y && bottom > plugs[n].y)))
+							) {
+							found = false;
+							break;
+						}
+					}
+					if(found) {
+						plugs[i].x = x;
+						plugs[i].y = y;
+						plugs[i].left = left;
+						plugs[i].right = right;
+						plugs[i].top = topp;
+						plugs[i].bottom = bottom;
+						if(topp < topmost) topmost = topp;
+						break;
+					}
+				}
+				r = 0;
+			}
+
+			for(var i = 0; i < plugs.length; i++) {
+				plugs[i].div.style.top = (plugs[i].top-topmost)+"px";
+				plugs[i].div.style.left = plugs[i].left+"px";
+			}
+		</script>
+	</body>
+</html>
