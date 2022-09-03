@@ -1,5 +1,5 @@
 #about {
-	background: url("text.png") no-repeat, url("bg.png") fixed, #175843;
+	background: url("textold.png") no-repeat, url("bg.png") fixed, #175843;
 	color: #123629;
 	text-shadow: 3px 3px #B76673;
 	min-height: 0;
@@ -10,7 +10,7 @@
 	padding-bottom: 50px;
 }
 #note {
-	background: url("note.gif");
+	background: url("gif.gif");
 	bottom: 3px;
 	right: -4px;
 	height: 100px;

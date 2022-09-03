@@ -1,5 +1,5 @@
 #plastic-funeral {
-	background: url("text.png") no-repeat, url("bg.png") fixed, #fff;
+	background: url("textold.png") no-repeat, url("bg.png") fixed, #fff;
 	text-shadow: 3px 3px #1d1d1d;
 }
 #plastic-funeral .win-pos {
@@ -17,7 +17,7 @@
 	padding-left: 132px;
 }
 #rose {
-	background: url("rose.gif") no-repeat top center;
+	background: url("gif.gif") no-repeat top center;
 	bottom: 0;
 	right: 10px;
 	height: calc(100% + 20px);

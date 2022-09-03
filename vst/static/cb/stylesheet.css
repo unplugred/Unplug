@@ -1,5 +1,5 @@
 #clickbox {
-	background: url("text.png") no-repeat, url("bg.png") fixed, #ff009b;
+	background: url("textold.png") no-repeat, url("bg.png") fixed, #ff009b;
 	text-shadow: 3px 3px #9b0035;
 	color: #fdab91;
 }
@@ -20,7 +20,7 @@
 	max-width: calc(100vw - 130px)!important;
 }
 #bear {
-	background: url("bear.gif") no-repeat top center;
+	background: url("gif.gif") no-repeat top center;
 	bottom: -40px;
 	right: -50px;
 	height: 300px;
