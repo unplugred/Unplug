@@ -3,20 +3,36 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
+			/* bg */
 			html, body {
 				padding: 0;
 				margin: 0;
 				width: 100vw;
 				height: 100vh;
-				background: url(/test.png) no-repeat no-repeat right top, url(/bg.png) 5px 0;
+				background: url(/bg.png) 5px 0;
 				background-attachment: fixed;
 				font-family: 'Helvetica Neue', Arial, sans-serif;
 				font-size: 20px;
 				line-height: .95;
 				overflow: hidden;
 			}
-			a {
-				color: #FF00FF;
+			::-webkit-scrollbar{
+				width: 4px;
+				height: 12px;
+			}
+			::-webkit-scrollbar-track{
+				background-color: transparent;
+			}
+			::-webkit-scrollbar-thumb{
+				background-color: black;
+				outline: none;
+			}
+			::-webkit-scrollbar-corner{
+				background-color: transparent;
+			}
+			::selection {
+				color: #FFF;
+				background: #FF00FFFE;
 			}
 			#diagonal {
 				position: fixed;
@@ -42,26 +58,13 @@
 				top: 0;
 				right: 0;
 			}
-			#blurredtext {
-				position: fixed;
-				right: 0;
-				transform: rotate(-90deg) scaleY(1.8);
-				top: -16vh;
-				transform-origin: right bottom;
-				font-size: 20vh;
-				filter: blur(7px);
-				opacity: .15;
-				letter-spacing: -20;
-				font-weight: bold;
-				pointer-events: none;
-			}
 			#whitegradient {
 				position: fixed;
 				left: 0;
 				top: 0;
 				width: 30vw;
 				height: 100vh;
-				background: linear-gradient(to right, #ffffff55, transparent);
+				background: linear-gradient(to right, #ffffff, transparent);
 				z-index: 50;
 				pointer-events: none;
 			}
@@ -72,6 +75,7 @@
 				border-right: 1px solid black;
 				position: fixed;
 				z-index: 1000;
+				transition: 1s background-position-y;
 			}
 			#dots {
 				position: fixed;
@@ -91,21 +95,160 @@
 			#doty { background-color: #FFFF00; }
 			#dotm { background-color: #FF00FF; }
 			#dotk { background-color: #000000; }
-			.win-wrap {
+
+			/* layout */
+			#content {
+				display: flex;
+				justify-content: space-between;
 				position: fixed;
+				width: calc(100vw - 5px);
+				height: 100vh;
+				top: 0;
+				left: 5px;
+				z-index: 10000;
+			}
+			.section {
+				width: 100vw;
+				position: relative;
+			}
+
+			/* left */
+			#left {
+				position: relative;
+				font-size: 1.8vh;
+				max-width: 23em;
+				width: 70vw;
+				padding: 4px 0 4px 8px;
+				overflow: clip auto;
+				direction: rtl;
+			}
+			#leftclip {
+				position: absolute;
+				right: -100px;
+				top: 0;
+				width: calc(100% - 17em + 100px);
+				height: 100vh;
+			}
+			#leftwrap {
+				position: relative;
+				transform-origin: top right;
+				transform: scaleX(1.4);
+				width: 71.4%;
+				padding-bottom: 35px;
+				direction: ltr;
+				padding-bottom: 35px;
+			}
+			.leftitem {
+				padding-top: .25em;
+				padding-bottom: .25em;
+				color: black;
+				font-weight: normal;
+				display: block;
+				text-decoration: none;
+			}
+			.leftselected .lefttitle {
+				font-weight: bold !important;
+			}
+			.lefthover {
+				animation: windowopen .2s ease-out;
+			}
+			.lefthover .teal {
+				color: #24A6B3 !important;
+			}
+			.lefthover .orange {
+				color: #FF8400 !important;
+			}
+			.leftiteminner {
+				display: flex;
+				align-items: center;
+			}
+			.lefticonitem {
+				margin-bottom: .5em;
+			}
+			.lefticon {
+				width: 2.5em;
+				height: 2.5em;
+				background-size: contain;
+				flex-grow: 0;
+				flex-shrink: 0;
+				filter: brightness(0);
+			}
+			.lefthover .lefticon {
+				filter: none;
+			}
+			.lefttitle {
+				font-size: 2em;
+				letter-spacing: -.11em;
+				display: inline;
+			}
+			.rating {
+				display: inline-block;
+				font-size: 1em;
+				letter-spacing: .09em;
+				transform: skewY(-16deg);
+				color: #FF00FF;
+				position: relative;
+				left: -.3em;
+				top: -.3em;
+			}
+			.tagline {
+				display: inline-block;
+				font-size: 1.1em;
+				letter-spacing: .02em;
+				line-height: .75em;
+				margin-top: -.25em;
+				padding-left: .07em;
+			}
+			.leftseparator {
+				margin-bottom: 1.5em;
+			}
+
+			/* center */
+			#infowrap {
+				position: relative;
+				z-index: 100;
 			}
 			.win-pos {
 				position: relative;
 				border: 1px solid black;
+				animation: windowopen .4s ease-out;
+				min-width: 200px;
+			}
+			@keyframes windowopen {
+				0% { filter: brightness(.6) hue-rotate(-.2turn) contrast(1.5); }
+				100% { filter: brightness(1) hue-rotate(0turn) contrast(1); }
+			}
+			.win-pos.teal a {
+				color: #FF00FF;
+			}
+			.win-pos.orange a {
+				color: #008800;
+			}
+			.win-pos.green a {
+				color: #0000FF;
 			}
 			#info {
-				left: 20px;
+				left: 0;
 				top: 35px;
-				width: 25vw;
-				padding: 5px;
-				padding-left: 100px;
-				min-height: 370px;
-				box-shadow: 0 0 50px 0 #acffff69, 5px 5px 0px 0px #00000026;
+				width: calc(100% - 2px);
+			}
+			.windowbgwrap {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.orange .windowbgwrap {
+				filter: hue-rotate(.53turn) saturate(1.3);
+			}
+			.green .windowbgwrap {
+				filter: hue-rotate(.73turn) saturate(1.3);
+			}
+			.windowbox {
+				width: 100%;
+				height: 100%;
+				box-shadow: 0 0 50px 0 #acffff69, 5px 5px 0 0 #00000026;
 			}
 			.tab {
 				position: absolute;
@@ -121,24 +264,46 @@
 			.line {
 				position: absolute;
 				top: -21px;
-				left: -.5px;
+				left: 79.5px;
+				width: 21px;
+				height: 21px;
 				stroke: black;
 				stroke-width: 1px;
 			}
-			.infobg {
+			.windowbg {
 				background: url(/scanlines.png), url(/clouds.png);
 				background-size: auto, cover;
 				background-attachment: fixed;
 			}
+			.windowcontent {
+				width: calc(100% - 10px);
+				max-height: calc(100vh - 70px);
+				padding: 5px;
+				overflow-x: clip;
+				overflow-y: auto;
+				position: relative;
+			}
+			#winicon {
+				display: none;
+				width: 70px;
+				height: 70px;
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+				background-size: contain;
+			}
+			.winhasicon #winicon {
+				display: block !important;
+				filter: brightness(0);
+			}
 			#title {
-				font-size: 1.7em;
+				font-size: 2vw;
 				font-weight: bold;
 				font-variant: petite-caps;
 				text-shadow: 3px 3px #00000026;
 				transform: scaleX(3) skewX(-10deg);
 				transform-origin: 0;
 				width: 33.3%;
-				margin-left: 8px;
 				line-height: .8;
 			}
 			#desc {
@@ -146,50 +311,119 @@
 				transform: scaleX(.5);
 				transform-origin: 0;
 				width: 200%;
+				min-height: 300px;
+				padding-bottom: 20px;
 			}
 			#gif {
 				position: absolute;
-				margin-left: -95px;
+				right: 4px;
+				bottom: 4px;
 			}
-			.plug {
-				position: absolute;
-				box-shadow: 5px 5px 0px 0px #00000026;
+			.download {
+				display: inline-block;
+				font-size: 22px;
+				color: white!important;
+				background-color: black;
+				font-variant: petite-caps;
+				text-decoration: none;
+				transform: skewX(-24deg);
+				margin-top: 4px;
+			}
+			.download:hover {
+				background-color: #FF00FF;
+				animation: windowopen .2s ease-out;
+			}
+
+			/* right */
+			#right {
+				display: flex;
+			}
+			#uiwrap {
+				margin: auto;
+				perspective: 300px;
+				position: relative;
+				width: 0;
+				height: 0;
+			}
+			#ui {
 				border: 1px solid black;
+				background: black;
+				animation: windowopen 1s ease-out;
+				transform-origin: top left;
 			}
-			.plug:hover {
-				animation: rainbowborder 2s linear 0s infinite normal;
-				box-shadow: 0 0 0 4px #f00, 0 0 0 5px black, 5px 5px 0 5px #00000026;
+			#uishadow {
+				width: 100%;
+				position: absolute;
+				background-color: #00000026;
+				transform-origin: top left;
 			}
-			@keyframes rainbowborder {
-				0% {
-					box-shadow: 0 0 0 4px #f0f, 0 0 0 5px black, 5px 5px 0 5px #00000026;
-				}
-				16.66% {
-					box-shadow: 0 0 0 4px #f00, 0 0 0 5px black, 5px 5px 0 5px #00000026;
-				}
-				33.33% {
-					box-shadow: 0 0 0 4px #ff0, 0 0 0 5px black, 5px 5px 0 5px #00000026;
-				}
-				50% {
-					box-shadow: 0 0 0 4px #0f0, 0 0 0 5px black, 5px 5px 0 5px #00000026;
-				}
-				66.66% {
-					box-shadow: 0 0 0 4px #0ff, 0 0 0 5px black, 5px 5px 0 5px #00000026;
-				}
-				83.33% {
-					box-shadow: 0 0 0 4px #00f, 0 0 0 5px black, 5px 5px 0 5px #00000026;
-				}
-				100% {
-					box-shadow: 0 0 0 4px #f0f, 0 0 0 5px black, 5px 5px 0 5px #00000026;
-				}
+			#blurredtext {
+				position: absolute;
+				right: 0;
+				transform: rotate(-90deg) scaleY(1.8);
+				transform-origin: right bottom;
+				font-size: 20vh;
+				filter: blur(.6vh);
+				opacity: .12;
+				letter-spacing: -2.3vh;
+				font-weight: bold;
+				pointer-events: none;
+				animation: scrollup 30s infinite linear;
+				z-index: -100;
+			}
+			@keyframes scrollup {
+				from { top: -10vh; }
+				to { top: -110vh; }
+			}
+			#blurredtext1 {
+				position: absolute;
+			}
+			#blurredtext2 {
+				position: relative;
+				left: -100vh;
+			}
+			#pluginlogo {
+				position: absolute;
+				top: 25vh;
+				width: 100%;
+				height: 50vh;
+				image-rendering: crisp-edges;
+				animation: scrollright 60s infinite linear;
+				opacity: .12;
+				z-index: -50;
+			}
+			@keyframes scrollright {
+				from { left: -205%; }
+				to { left: -5%; }
+			}
+			#logoclip {
+				width: 100%;
+				position: absolute;
+				height: 100vh;
+				overflow: clip;
+			}
+			#pluginlogo * {
+				background-repeat: no-repeat;
+				background-position: top left;
+				background-size: contain;
+				height: 50vh;
+				width: 195%;
+			}
+			#pluginlogo1 {
+				position: absolute;
+			}
+			#pluginlogo2 {
+				position: relative;
+				left: 200%;
 			}
 			#note {
-				position: fixed;
-				background: url(/about/note.gif) center no-repeat;
+				position: absolute;
+				background: url(/about/gif.gif) center no-repeat;
 				width: 200px;
 				height: 200px;
 				right: 0;
 				bottom: 0;
+				pointer-events: none;
 			}
 			#note text {
 				font-size: 16px;
@@ -207,160 +441,475 @@
 				from { transform: rotate(360deg); }
 				to { transform: rotate(0); }
 			}
+
+			/* popup */
+			#popups .win-wrap {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 0;
+				height: 0;
+			}
+			.popupdesc {
+				font-size: 2.8vh;
+				transform: scaleX(1.15);
+				transform-origin: top left;
+				width: 87%;
+			}
+			.popup {
+				width: 30vw;
+			}
+			@keyframes popupopen {
+				0% {
+					filter: brightness(.6) hue-rotate(-.2turn) contrast(1.5);
+					transform: scaleX(0) scaleY(2);
+				}
+				50% {
+					transform: scaleX(.6) scaleY(.3);
+				}
+				100% {
+					filter: none;
+					transform: none;
+				}
+			}
+			.popupclose {
+				position: absolute;
+				right: 4px;
+				top: 4px;
+				display: block;
+			}
+			.popupclosewrap {
+				width: 16px;
+				height: 16px;
+				transform: rotate(-45deg);
+				transition: transform .5s;
+			}
+			.popupclosewrap:hover {
+				transform: rotate(45deg);
+			}
+			.popupline {
+				background-color: black;
+				position: absolute;
+			}
+			.popupline1 {
+				width: 100%;
+				height: 2px;
+				top: 7px;
+				left: 0;
+			}
+			.popupline2 {
+				width: 2px;
+				height: 100%;
+				top: 0;
+				left: 7px;
+			}
+			#popupplayer {
+				position: relative;
+				border-radius: 15px;
+				height: 30px;
+				margin-top: 4px;
+				width: 100%;
+				filter: hue-rotate(.73turn) saturate(.7);
+			}
+
+			/* custom */
+			.pf #info .windowcontent {
+				padding-left: 100px;
+				width: calc(100% - 105px);
+			}
+			.pf #info #gif {
+				top: 0;
+				left: 6px;
+			}
+			.pf #info #title {
+				margin-left: .15em;
+			}
+			.ps #info #title {
+				letter-spacing: -.06em;
+			}
 		</style>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap" rel="stylesheet">
 	</head>
 	<body>
-		<div id="side">
+		<div id="bg">
 			<svg id="diagonal">
 				<line x1='0' y1='100%' x2='100%' y2='0'/>
 				<line x1='0' y1='0' x2='100%' y2='100%'/>
 			</svg>
 			<div id="circle"></div>
 			<div id="testpattern"></div>
-			<div id="blurredtext">UnplugRed</div>
 			<div id="whitegradient"></div>
 			<div id="rainbow"></div>
 			<div id="dots">
 				<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
 			</div>
+		</div>
 
-			<div class="win-wrap" style="z-index: 100;">
-				<div id="info" class="infobg win-pos">
-					<div class="infobg tab"></div>
-					<svg class="line"><line x1='80px' y1='0' x2='100px' y2='20.4px'/></svg>
-					<img id="gif" src="/pf/rose.gif"/>
-						<div id="title">Plastic Funeral</div>
-						<div id="desc">
-forget about warmth.<br/>
-this distortion gives off a harsh and metallic sound with an FM vibe that is guaranteed to destroy any mix.<br/>
-(sounds real phat and juicy on bass)<br/>
-<a class="demo" href="javascript:void(0);" onclick='popup_audio(1, "<%= assets %>/pf/demo1.mp3", "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.")'>Demo 1</a>
-<a class="demo" href="javascript:void(0);" onclick='popup(3, "Plastic Funeral credits:@brMade by Ari Hanan (@a1https://unplug.red/@a2unplugred@a3)@brThanks to @a1https://laulaulau.bandcamp.com/@a2lau@a3 for creating the factory presets as well as providing quite a bit of help.@brThanks to @a1https://marina-magnolia.tumblr.com/@a2Marina Magnolia Venegas@a3 for doing testing and QA.")'>Credits</a>
-<br/>
-<br/>
-Cost: +0$<br/>
-Available for both windows and linux
+		<div id="content">
+			<div id="left" class="section">
+				<div id="leftwrap"></div>
+				<div id="leftclip"></div>
+			</div>
+			<div id="center" class="section">
+				<div id="infowrap" class="win-wrap">
+					<div id="info" class="win-pos">
+						<div class="windowbgwrap">
+							<div class="windowbg windowbox"></div>
+							<div class="windowbg tab"></div>
+							<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
 						</div>
-						<a class="download" href="https://shop.unplug.red/b/wGlzc"></a>
-						<div class="decoration" id="rose"></div>
+						<div class="windowcontent">
+							<img id="gif"/>
+							<div id="winicon"></div>
+							<div id="title"></div>
+							<div id="desc"></div>
+							<center>
+								<a id="paiddownload" class="download" href="javascript:void(0)"></a><br/>
+								<a id="freedownload" class="download" href="javascript:void(0)">Download Free Version</a>
+							</center>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="win-wrap" style="z-index: 100;">
-				<div id="donate" class="infobg win-pos">
-					<div class="tab infobg"></div>
-					<svg class="line"><line x1='80px' y1='0' x2='100px' y2='20.4px'/></svg>
+			<div id="right" class="section">
+				<div id="uiwrap">
+					<div id="uishadow"></div>
+					<div id="ui"></div>
+				</div>
+				<div id="logoclip"><div id="pluginlogo"><div id="pluginlogo1"></div><div id="pluginlogo2"></div></div></div>
+				<div id="blurredtext"><div id="blurredtext1">UnplugRed</div><div id="blurredtext2">UnplugRed</div></div>
+				<div id="note">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+						<defs>
+							<path id="rotatingtextpath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
+						</defs>
+						<circle cx="150" cy="100" r="75" fill="none"/>
+						<g>
+							<use xlink:href="#rotatingtextpath" fill="none"/>
+							<text fill="#000">
+								<textPath xlink:href="#rotatingtextpath">UnplugRed's VST Trove  UnplugRed's VST Trove</textPath>
+							</text>
+						</g>
+					</svg>
 				</div>
 			</div>
 		</div>
-		<div class="plug" id="pf" style="width: 242px; height: 462px;"></div>
-		<div class="plug" id="vu" style="width: 438px; height: 260px;"></div>
-		<div class="plug" id="cb" style="width: 256px; height: 256px;"></div>
-		<div class="plug" id="piss" style="width: 242px; height: 462px;"></div>
-		<div class="plug" id="pnch" style="width: 128px; height: 148px;"></div>
-		<div class="plug" id="rb" style="width: 322px; height: 408px;"></div>
-		<div class="plug" id="mp" style="width: 468px; height: 40px;"></div>
-		<div class="plug" id="crmbl" style="width: 507px; height: 465px;"></div>
-		<div class="plug" id="prsm" style="width: 478px; height: 561px;"></div>
-		<div id="note">
-			<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-				<defs>
-					<path id="rotatingtextpath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
-				</defs>
-				<circle cx="150" cy="100" r="75" fill="none"/>
-				<g>
-					<use xlink:href="#rotatingtextpath" fill="none"/>
-					<text fill="#000">
-						<textPath xlink:href="#rotatingtextpath">UnplugRed's VST Trove  UnplugRed's VST Trove</textPath>
-					</text>
-				</g>
-			</svg>
+
+		<div id="popups">
+			<div id="popuptext" class="win-wrap" style="z-index: 20000; display: none">
+				<div class="popup win-pos green">
+					<div class="windowbgwrap">
+						<div class="windowbg windowbox"></div>
+						<div class="windowbg tab"></div>
+						<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
+					</div>
+					<div class="windowcontent">
+						<div class="popupdesc" id="popuptextdesc"></div>
+					</div>
+					<a class="popupclose" href="javascript:void(0)" onclick="closetext()">
+						<div class="popupclosewrap">
+							<div class="popupline1 popupline"></div>
+							<div class="popupline2 popupline"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div id="popupaudio" class="win-wrap" style="z-index: 30000; display: none;">
+				<div class="popup win-pos green">
+					<div class="windowbgwrap">
+						<div class="windowbg windowbox"></div>
+						<div class="windowbg tab"></div>
+						<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
+					</div>
+					<div class="windowcontent">
+						<div class="popupdesc" id="popupaudiodesc"></div>
+						<audio controls controlslist="nodownload" id="popupplayer"></audio>
+					</div>
+					<a class="popupclose" onclick="closeaudio()">
+						<div class="popupclosewrap">
+							<div class="popupline1 popupline"></div>
+							<div class="popupline2 popupline"></div>
+						</div>
+					</a>
+				</div>
+			</div>
 		</div>
+
 		<script type="text/javascript" src="<%= unplugassets %>/window/movable.js"></script>
+		<script type="text/javascript" src="<%= unplugassets %>/automatism/simplex.js"></script>
+		<script type="text/javascript" src="/vsts.js"></script>
 		<script>
-			var x = document.getElementsByClassName("win-pos");
+			var x = document.getElementById("popups").getElementsByClassName("win-pos");
 			for (var i = 0; i < x.length; i++) {
 				dragElement(x[i].parentNode, x[i]);
 			}
 
-			function shuffleArray(array) {
-				let curId = array.length;
-				while (0 !== curId) {
-					let randId = Math.floor(Math.random() * curId);
-					curId -= 1;
-					let tmp = array[curId];
-					array[curId] = array[randId];
-					array[randId] = tmp;
-				}
-				return array;
-			}
-			var hi = document.getElementsByClassName("plug");
-			var plugs = [];
-			for(var i = 0; i < hi.length; i++) {
-				plugs[i] = {};
-				plugs[i].div = hi[i];
-				plugs[i].id = plugs[i].div.id;
-				plugs[i].width = plugs[i].div.offsetWidth+7;
-				plugs[i].height = plugs[i].div.offsetHeight+7;
-				plugs[i].div.style.backgroundImage = "url(/"+plugs[i].id+"/ui.png)";
-			}
-			plugs = shuffleArray(plugs);
+			var uielement = document.getElementById("ui");
+			var uishadow = document.getElementById("uishadow");
+			var prevtime = 0;
+			var open = 0;
+			function update(timestamp) {
+				if(timestamp === undefined) timestamp = 0;
+				let dt = timestamp - prevtime;
+				prevtime = timestamp;
 
-			//APPROACH 2 ball
-			var d = 0;
-			var r = 40;
-			var x = screen.width*.5;
-			var y = 0;
-			var left = 0;
-			var right = 0;
-			var topp = 0;
-			var bottom = 0;
-			var topmost = 10000;
-			var found = false;
-			for(var i = 0; i < plugs.length; i++) {
-				attempts = 0;
-				while(attempts++ < 10000) {
-					d = Math.random()*Math.PI;
-					r += 1;
-					x = Math.cos(d)*r+screen.width*.5;
-					y = Math.sin(d)*r*.5;
-					left = x-(plugs[i].width*.5);
-					right = x+(plugs[i].width*.5);
-					topp = y-(plugs[i].height*.5);
-					bottom = y+(plugs[i].height*.5);
-					found = true;
-					for(var n = 0; n < i; n++) {
-						if(
-							left < 0 || right >= screen.width ||
-							(((left < plugs[n].right && left > plugs[n].left) ||
-							(right < plugs[n].right && right > plugs[n].left) ||
-							(left < plugs[n].x && right > plugs[n].x)) &&
-							((topp < plugs[n].bottom && topp > plugs[n].top) ||
-							(bottom < plugs[n].bottom && bottom > plugs[n].top) ||
-							(topp < plugs[n].y && bottom > plugs[n].y)))
-							) {
-							found = false;
-							break;
-						}
+				if((currenthover != temporalhover && temporalhover != -1) || (temporalhover == -1 && currenthover != currentselected)) {
+					if(currenthover >= 0) vsts[currenthover].div.className = "leftitem";
+					if(temporalhover == -1) {
+						vsts[currentselected].div.className = "leftitem lefthover leftselected";
+						currenthover = currentselected;
+						temporalhover = currentselected;
+					} else {
+						if(currentselected == currenthover && currenthover >= 0) vsts[currenthover].div.className += " leftselected";
+						vsts[temporalhover].div.className = "leftitem lefthover";
+						if(currentselected == temporalhover) vsts[temporalhover].div.className += " leftselected";
+						currenthover = temporalhover;
 					}
-					if(found) {
-						plugs[i].x = x;
-						plugs[i].y = y;
-						plugs[i].left = left;
-						plugs[i].right = right;
-						plugs[i].top = topp;
-						plugs[i].bottom = bottom;
-						if(topp < topmost) topmost = topp;
-						break;
-					}
+					updateui();
 				}
-				r = 0;
+
+				if(vsts[currenthover].ui !== undefined) {
+					open = Math.min(open+dt*.0005,1);
+					let openease = 1-Math.pow(1-open,5);
+					uielement.style.transform = "rotateX("+(String)(simplex(timestamp*.0003,0)*vsts[currenthover].ui.deg)+"deg) rotateY("+(String)(simplex(-30,timestamp*.0003)*vsts[currenthover].ui.deg*openease-90*(1-openease))+"deg) translateX(-50%) translateY(-50%)";
+					uishadow.style.transform = "translateX(7px) translateY(12px) " + uielement.style.transform;
+				}
+
+				requestAnimationFrame(update);
 			}
 
-			for(var i = 0; i < plugs.length; i++) {
-				plugs[i].div.style.top = (plugs[i].top-topmost)+"px";
-				plugs[i].div.style.left = plugs[i].left+"px";
+			var currentselected = 0;
+			var currenthover = -3;
+			var temporalhover = -1;
+			function switchselected(id) {
+				if(currentselected == id) return;
+
+				vsts[currentselected].div.className = "leftitem";
+				vsts[id].div.className = "leftitem lefthover leftselected";
+				currentselected = id;
+				window.history.replaceState(null,vsts[id].title,"/newdesign/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
+				//CHANGE THIS
+				document.title = vsts[id].title;
+			}
+
+			var leftside = document.getElementById("leftwrap");
+			for(let i = 0; i < vsts.length; i++) {
+				if(location.pathname.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase())) currentselected = i;
+
+				vsts[i].div = document.createElement('a');
+				vsts[i].div.onmousemove = function(){temporalhover = i};
+				vsts[i].div.onmouseout = function(){temporalhover = -1};
+				vsts[i].div.onclick = function(){switchselected(i)};
+				vsts[i].div.className = "leftitem";
+				vsts[i].div.href = "javascript:void(0)";
+
+				let iteminnerdiv = document.createElement('div');
+				iteminnerdiv.className = "leftiteminner " + vsts[i].color;
+
+				let iteminnerinnerdiv = document.createElement('div');
+				iteminnerinnerdiv.className = "leftiteminnerinner";
+
+				if(vsts[i].hideicon === undefined || vsts[i].hideicon === false) {
+					let icondiv = document.createElement('div');
+					icondiv.className = "lefticon";
+					icondiv.style.backgroundImage = "url(/"+vsts[i].id+"/icon.svg)";
+					iteminnerdiv.className += " lefticonitem";
+					iteminnerdiv.appendChild(icondiv);
+				}
+
+				let titlediv = document.createElement('div');
+				titlediv.className = "lefttitle";
+				if(i == 0) titlediv.className += " lefthover leftselected";
+				titlediv.innerText = vsts[i].title;
+				iteminnerinnerdiv.appendChild(titlediv);
+
+				if(vsts[i].rating !== undefined) {
+					let ratingdiv = document.createElement("div");
+					ratingdiv.className = "rating";
+					ratingdiv.innerText = vsts[i].rating;
+					iteminnerinnerdiv.appendChild(ratingdiv);
+				}
+
+				if(vsts[i].tagline !== undefined) {
+					let taglinediv = document.createElement("div");
+					taglinediv.className = "tagline";
+					taglinediv.innerText = vsts[i].tagline;
+					iteminnerinnerdiv.appendChild(document.createElement("br"));
+					iteminnerinnerdiv.appendChild(taglinediv);
+				}
+
+				iteminnerdiv.appendChild(iteminnerinnerdiv);
+				vsts[i].div.appendChild(iteminnerdiv);
+				leftside.appendChild(vsts[i].div);
+
+				if(vsts[i].separator !== undefined && vsts[i].separator == true) {
+					let separatordiv = document.createElement("div");
+					separatordiv.className = "leftseparator";
+					leftside.appendChild(separatordiv);
+				}
+			}
+			let separatordiv = document.createElement("div");
+			separatordiv.className = "leftseparator";
+			leftside.appendChild(separatordiv);
+
+			let smilediv = document.createElement("center");
+			smilediv.className = "leftitem lefttitle";
+			smilediv.innerText = ":)";
+			leftside.appendChild(smilediv);
+
+			var ui = {
+				title: document.getElementById("title"),
+				body: document.body,
+				window: document.getElementById("info"),
+				description: document.getElementById("desc"),
+				freedownload: document.getElementById("freedownload"),
+				paiddownload: document.getElementById("paiddownload"),
+				decoration: document.getElementById("gif"),
+				ui: document.getElementById("ui"),
+				uishadow: document.getElementById("uishadow"),
+				logo1: document.getElementById("pluginlogo1"),
+				logo2: document.getElementById("pluginlogo2"),
+				rainbow: document.getElementById("rainbow"),
+				winicon: document.getElementById("winicon")
+			}
+			function updateui() {
+				open = 0;
+				ui.window.style.animation = "none";
+				ui.ui.style.animation = "none";
+				ui.window.offsetHeight;
+				ui.ui.offsetHeight;
+				ui.window.style.animation = null;
+				ui.ui.style.animation = null;
+
+				ui.rainbow.style.backgroundPositionY = (String)((currenthover*-50)/vsts.length)+"vh";
+
+				ui.title.innerText = vsts[currenthover].title;
+				ui.body.className = vsts[currenthover].id;
+				ui.window.className = "win-pos " + vsts[currenthover].color;
+				ui.description.innerHTML = vsts[currenthover].description;
+				if(vsts[currenthover].price === undefined) {
+					ui.paiddownload.style.display = "none";
+				} else {
+					ui.paiddownload.style.display = null;
+					ui.paiddownload.innerText = "Download " + vsts[currenthover].price + "$ Version";
+					ui.paiddownload.href = vsts[currenthover].paiddownload;
+				}
+				if(vsts[currenthover].freedownload === undefined) {
+					ui.freedownload.style.display = "none";
+				} else {
+					ui.freedownload.style.display = null;
+					ui.freedownload.href = vsts[currenthover].freedownload;
+				}
+				if(vsts[currenthover].decoration === undefined) {
+					ui.window.className += " winhasicon";
+					ui.winicon.style.backgroundImage = "url(/"+vsts[currenthover].id+"/icon.svg)";
+					ui.decoration.style.display = "none";
+				} else {
+					ui.decoration.style.display = null;
+					ui.decoration.src = "/"+vsts[currenthover].id+"/gif.gif";
+				}
+				if(vsts[currenthover].ui === undefined) {
+					ui.ui.style.display = "none";
+					ui.uishadow.style.display = "none";
+				} else {
+					ui.ui.style.display = null;
+					ui.uishadow.style.display = null;
+					ui.ui.style.background = "url(/"+vsts[currenthover].id+"/ui.png), black";
+					ui.ui.style.width = vsts[currenthover].ui.width+"px";
+					ui.uishadow.style.width = vsts[currenthover].ui.width+"px";
+					ui.ui.style.height = vsts[currenthover].ui.height+"px";
+					ui.uishadow.style.height = vsts[currenthover].ui.height+"px";
+					ui.ui.style.marginBottom = "calc(20vh - " + (String)(vsts[currenthover].ui.height*.2)+"px)";
+				}
+				ui.logo1.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.png)";
+				ui.logo2.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.png)";
+			}
+			update();
+			document.title = vsts[currentselected].title;
+
+			var popup_audio_id = -1;
+			var popup_audio_div = document.getElementById("popupaudio");
+			var popup_audio_text = document.getElementById("popupaudiodesc");
+			var popup_audio_player = document.getElementById("popupplayer");
+			function popup_audio(id, path, desc) {
+				if(id === popup_audio_id || id === -1) {
+					closeaudio();
+				} else {
+					setpopup(popup_audio_div, popup_audio_text, desc, popup_audio_player, path);
+					let animationdiv = popup_audio_div.getElementsByClassName("popup")[0];
+					animationdiv.style.animation = "none";
+					animationdiv.offsetWidth;
+					if(popup_audio_id == -1) {
+						animationdiv.style.animation = "popupopen .4s ease-in";
+						animationdiv.style.top = "calc((100vh - 100px) * "+(String)(.2+.6*Math.random())+")";
+						animationdiv.style.left = (String)(20+30*Math.random())+"vw";
+						popup_audio_div.style.top = "0";
+						popup_audio_div.style.left = "0";
+					} else {
+						animationdiv.style.animation = "windowopen .4s ease-out";
+					}
+					popup_audio_id = id;
+				}
+			}
+
+			var popup_id = -1;
+			var popup_div = document.getElementById("popuptext");
+			var popup_text = document.getElementById("popuptextdesc");
+			function popup(id, desc) {
+				if(id === popup_id || id === -1) {
+					closetext();
+				} else {
+					setpopup(popup_div, popup_text, desc);
+					let animationdiv = popup_div.getElementsByClassName("popup")[0];
+					animationdiv.style.animation = "none";
+					animationdiv.offsetWidth;
+					if(popup_id == -1) {
+						animationdiv.style.animation = "popupopen .4s ease-in";
+						animationdiv.style.top = "calc((100vh - 100px) * "+(String)(.2+.6*Math.random())+")";
+						animationdiv.style.left = (String)(20+30*Math.random())+"vw";
+						popup_div.style.top = "0";
+						popup_div.style.left = "0";
+					} else {
+						animationdiv.style.animation = "windowopen .4s ease-out";
+					}
+					popup_id = id;
+				}
+			}
+			function setpopup(div, divtext, text, divplayer = null, path = null) {
+				div.style.display = null;
+				divtext.innerHTML = text
+					.replace(/@br/g,"<br/>")
+					.replace(/@a1/g,"<a href=\"")
+					.replace(/@a2/g,"\">")
+					.replace(/@a3/g,"</a>");
+				if(divplayer !== null) {
+					divplayer.src = path;
+					divplayer.play();
+				}
+			}
+			function closetext() {
+				let animationdiv = popup_div.getElementsByClassName("popup")[0];
+				animationdiv.style.animation = "none";
+				animationdiv.offsetWidth;
+				animationdiv.style.animation = "popupopen .4s reverse ease-in forwards";
+				popup_id = -1;
+				setTimeout(function() {
+					if(popup_id == -1)
+						popup_div.style.display = "none";
+				},5000);
+			}
+			function closeaudio() {
+				let animationdiv = popup_audio_div.getElementsByClassName("popup")[0];
+				animationdiv.style.animation = "none";
+				animationdiv.offsetWidth;
+				animationdiv.style.animation = "popupopen .4s reverse ease-in forwards";
+				popup_audio_player.pause();
+				popup_audio_id = -1;
+				setTimeout(function() {
+					if(popup_audio_id == -1)
+						popup_audio_div.style.display = "none";
+				},400);
 			}
 		</script>
 	</body>
