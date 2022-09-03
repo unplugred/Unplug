@@ -9,7 +9,7 @@ function dragElement(elmnt, header=null, istop=false) {
 
 	function dragMouseDown(e) {
 		e = e || window.event;
-		if(e.target.tagName === "A" || e.target.tagName === "INPUT" || e.target.className.search("win-button") >= 0) return;
+		if(e.target.tagName === "A" || e.target.tagName === "INPUT" || (e.target.className.baseVal || e.target.className).search("win-button") >= 0) return;
 		e.preventDefault();
 		pos3 = e.clientX;
 		pos4 = e.clientY;
