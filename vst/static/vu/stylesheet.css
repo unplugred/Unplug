@@ -1,5 +1,5 @@
 #vu {
-	background: url("text.png") no-repeat, url("bg.png") fixed, #bbb558;
+	background: url("textold.png") no-repeat, url("bg.png") fixed, #bbb558;
 	text-shadow: 3px 3px #19121d;
 	color: #c4af98;
 }
@@ -20,7 +20,7 @@
 	max-width: calc(100vw - 130px)!important;
 }
 #circuit {
-	background: url("circuit.gif") no-repeat top center;
+	background: url("gif.gif") no-repeat top center;
 	bottom: -70px;
 	right: -50px;
 	height: 300px;
