@@ -1,0 +1,703 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<style>
+			/* bg */
+			html, body {
+				padding: 0;
+				margin: 0;
+				width: 100vw;
+				height: 100vh;
+				background: url(/bg.png) 5px 0;
+				background-attachment: fixed;
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				font-size: 20px;
+				line-height: .95;
+				overflow: hidden;
+			}
+			::-webkit-scrollbar{
+				width: 4px;
+				height: 12px;
+			}
+			::-webkit-scrollbar-track{
+				background-color: transparent;
+			}
+			::-webkit-scrollbar-thumb{
+				background-color: black;
+				outline: none;
+			}
+			::-webkit-scrollbar-corner{
+				background-color: transparent;
+			}
+			::selection {
+				color: #FFF;
+				background: #FF00FFFE;
+			}
+			#diagonal {
+				position: fixed;
+				stroke: #ccc;
+				stroke-width: 1px;
+				width: 100vw;
+				height: 100vh;
+			}
+			#circle {
+				border-radius: 100%;
+				position: fixed;
+				border: 1px solid #ccc;
+				width: 125vmin;
+				height: 125vmin;
+				left: calc(50vw - 62.5vmin);
+				top: calc(50vh - 62.5vmin);
+			}
+			#testpattern {
+				background: url(/test.png);
+				width: 16px;
+				height: 96px;
+				position: fixed;
+				top: 0;
+				right: 0;
+			}
+			#whitegradient {
+				position: fixed;
+				left: 0;
+				top: 0;
+				width: 30vw;
+				height: 100vh;
+				background: linear-gradient(to right, #ffffff, transparent);
+				z-index: 50;
+				pointer-events: none;
+			}
+			#rainbow {
+				background: url(/rainbow.png);
+				height: 100vh;
+				width: 4px;
+				border-right: 1px solid black;
+				position: fixed;
+				z-index: 1000;
+				transition: 1s background-position-y;
+			}
+			#dots {
+				position: fixed;
+				bottom: 5px;
+				left: 10px;
+				z-index: 1000;
+			}
+			.dot {
+				width: 20px;
+				height: 20px;
+				border-radius: 100%;
+				margin-right: 5px;
+				display: inline-block;
+				border: 1px solid black;
+			}
+			#dotc { background-color: #00FFFF; }
+			#doty { background-color: #FFFF00; }
+			#dotm { background-color: #FF00FF; }
+			#dotk { background-color: #000000; }
+
+			/* layout */
+			#content {
+				display: flex;
+				justify-content: space-between;
+				position: fixed;
+				width: calc(100vw - 5px);
+				height: 100vh;
+				top: 0;
+				left: 5px;
+				z-index: 10000;
+			}
+			.section {
+				width: 100vw;
+				position: relative;
+			}
+
+			/* left */
+			#left {
+				position: relative;
+				font-size: 1.8vh;
+				max-width: 23em;
+				width: 70vw;
+				padding: 4px 0 4px 8px;
+				overflow: clip auto;
+				direction: rtl;
+			}
+			#leftclip {
+				position: absolute;
+				right: -100px;
+				top: 0;
+				width: calc(100% - 17em + 100px);
+				height: 100vh;
+			}
+			#leftwrap {
+				position: relative;
+				transform-origin: top right;
+				transform: scaleX(1.4);
+				width: 71.4%;
+				padding-bottom: 35px;
+				direction: ltr;
+				padding-bottom: 35px;
+			}
+			.leftitem {
+				padding-top: .25em;
+				padding-bottom: .25em;
+				color: black;
+				font-weight: normal;
+				display: block;
+				text-decoration: none;
+			}
+			.leftselected .lefttitle {
+				font-weight: bold !important;
+			}
+			.lefthover {
+				animation: windowopen .2s ease-out;
+			}
+			.lefthover .teal {
+				color: #24A6B3 !important;
+			}
+			.lefthover .orange {
+				color: #FF8400 !important;
+			}
+			.leftiteminner {
+				display: flex;
+				align-items: center;
+			}
+			.lefticonitem {
+				margin-bottom: .5em;
+			}
+			.lefticon {
+				width: 2.5em;
+				height: 2.5em;
+				background-size: contain;
+				flex-grow: 0;
+				flex-shrink: 0;
+				filter: brightness(0);
+			}
+			.lefthover .lefticon {
+				filter: none;
+			}
+			.lefttitle {
+				font-size: 2em;
+				letter-spacing: -.11em;
+				display: inline;
+			}
+			.rating {
+				display: inline-block;
+				font-size: 1em;
+				letter-spacing: .09em;
+				transform: skewY(-16deg);
+				color: #FF00FF;
+				position: relative;
+				left: -.3em;
+				top: -.3em;
+			}
+			.tagline {
+				display: inline-block;
+				font-size: 1.1em;
+				letter-spacing: .02em;
+				line-height: .75em;
+				margin-top: -.25em;
+				padding-left: .07em;
+			}
+			.leftseparator {
+				margin-bottom: 1.5em;
+			}
+
+			/* center */
+			#infowrap {
+				position: relative;
+				z-index: 100;
+			}
+			.win-pos {
+				position: relative;
+				border: 1px solid black;
+				animation: windowopen .4s ease-out;
+				min-width: 200px;
+			}
+			@keyframes windowopen {
+				0% { filter: brightness(.6) hue-rotate(-.2turn) contrast(1.5); }
+				100% { filter: brightness(1) hue-rotate(0turn) contrast(1); }
+			}
+			.win-pos.teal a {
+				color: #FF00FF;
+			}
+			.win-pos.orange a {
+				color: #008800;
+			}
+			.win-pos.green a {
+				color: #0000FF;
+			}
+			#info {
+				left: 0;
+				top: 35px;
+				width: calc(100% - 2px);
+			}
+			.windowbgwrap {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+			.orange .windowbgwrap {
+				filter: hue-rotate(.53turn) saturate(1.3);
+			}
+			.green .windowbgwrap {
+				filter: hue-rotate(.73turn) saturate(1.3);
+			}
+			.windowbox {
+				width: 100%;
+				height: 100%;
+				box-shadow: 0 0 50px 0 #acffff69, 5px 5px 0 0 #00000026;
+			}
+			.tab {
+				position: absolute;
+				top: -21px;
+				left: -1px;
+				height: 20.4px;
+				width: 100px;
+				border: 1px solid black;
+				border-bottom: none;
+				border-right: none;
+				clip-path: polygon(0% 100%, 0% 0%, 80% 0%, 100% 100%);
+			}
+			.line {
+				position: absolute;
+				top: -21px;
+				left: 79.5px;
+				width: 21px;
+				height: 21px;
+				stroke: black;
+				stroke-width: 1px;
+			}
+			.windowbg {
+				background: url(/scanlines.png), url(/clouds.png);
+				background-size: auto, cover;
+				background-attachment: fixed;
+			}
+			.windowcontent {
+				width: calc(100% - 10px);
+				max-height: calc(100vh - 70px);
+				padding: 5px;
+				overflow-x: clip;
+				overflow-y: auto;
+				position: relative;
+			}
+			#winicon {
+				display: none;
+				width: 70px;
+				height: 70px;
+				position: absolute;
+				bottom: 10px;
+				right: 10px;
+				background-size: contain;
+			}
+			.winhasicon #winicon {
+				display: block !important;
+				filter: brightness(0);
+			}
+			#title {
+				font-size: 2vw;
+				font-weight: bold;
+				font-variant: petite-caps;
+				text-shadow: 3px 3px #00000026;
+				transform: scaleX(3) skewX(-10deg);
+				transform-origin: 0;
+				width: 33.3%;
+				line-height: .8;
+			}
+			#desc {
+				font-size: 1.9em;
+				transform: scaleX(.5);
+				transform-origin: 0;
+				width: 200%;
+				min-height: 300px;
+				padding-bottom: 20px;
+			}
+			#gif {
+				position: absolute;
+				right: 4px;
+				bottom: 4px;
+			}
+			.download {
+				display: inline-block;
+				font-size: 22px;
+				color: white!important;
+				background-color: black;
+				font-variant: petite-caps;
+				text-decoration: none;
+				transform: skewX(-24deg);
+				margin-top: 4px;
+			}
+			.download:hover {
+				background-color: #FF00FF;
+				animation: windowopen .2s ease-out;
+			}
+
+			/* right */
+			#right {
+				display: flex;
+			}
+			#uiwrap {
+				margin: auto;
+				perspective: 300px;
+				position: relative;
+				width: 0;
+				height: 0;
+			}
+			#ui {
+				border: 1px solid black;
+				background: black;
+				animation: windowopen 1s ease-out;
+				transform-origin: top left;
+			}
+			#uishadow {
+				width: 100%;
+				position: absolute;
+				background-color: #00000026;
+				transform-origin: top left;
+			}
+			#blurredtext {
+				position: absolute;
+				right: 0;
+				transform: rotate(-90deg) scaleY(1.8);
+				transform-origin: right bottom;
+				font-size: 20vh;
+				filter: blur(.6vh);
+				opacity: .12;
+				letter-spacing: -2.3vh;
+				font-weight: bold;
+				pointer-events: none;
+				animation: scrollup 30s infinite linear;
+				z-index: -100;
+			}
+			@keyframes scrollup {
+				from { top: -10vh; }
+				to { top: -110vh; }
+			}
+			#blurredtext1 {
+				position: absolute;
+			}
+			#blurredtext2 {
+				position: relative;
+				left: -100vh;
+			}
+			#pluginlogo {
+				position: absolute;
+				top: 25vh;
+				width: 100%;
+				height: 50vh;
+				image-rendering: crisp-edges;
+				animation: scrollright 60s infinite linear;
+				opacity: .12;
+				z-index: -50;
+			}
+			@keyframes scrollright {
+				from { left: -205%; }
+				to { left: -5%; }
+			}
+			#logoclip {
+				width: 100%;
+				position: absolute;
+				height: 100vh;
+				overflow: clip;
+			}
+			#pluginlogo * {
+				background-repeat: no-repeat;
+				background-position: top left;
+				background-size: contain;
+				height: 50vh;
+				width: 195%;
+			}
+			#pluginlogo1 {
+				position: absolute;
+			}
+			#pluginlogo2 {
+				position: relative;
+				left: 200%;
+			}
+			#note {
+				position: absolute;
+				background: url(/about/gif.gif) center no-repeat;
+				width: 200px;
+				height: 200px;
+				right: 0;
+				bottom: 0;
+				pointer-events: none;
+			}
+			#note text {
+				font-size: 16px;
+				font-weight: bold;
+			}
+			#note svg {
+				position: absolute;
+				left: calc(50% - 160px);
+				top: calc(50% - 160px);
+				width: 320px;
+				height: 320px;
+				animation: rotate 15s infinite linear;
+			}
+			@keyframes rotate {
+				from { transform: rotate(360deg); }
+				to { transform: rotate(0); }
+			}
+
+			/* popup */
+			#popups .win-wrap {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 0;
+				height: 0;
+			}
+			.popupdesc {
+				font-size: 2.8vh;
+				transform: scaleX(1.15);
+				transform-origin: top left;
+				width: 87%;
+			}
+			.popup {
+				width: 30vw;
+			}
+			@keyframes popupopen {
+				0% {
+					filter: brightness(.6) hue-rotate(-.2turn) contrast(1.5);
+					transform: scaleX(0) scaleY(2);
+				}
+				50% {
+					transform: scaleX(.6) scaleY(.3);
+				}
+				100% {
+					filter: none;
+					transform: none;
+				}
+			}
+			.popupclose {
+				position: absolute;
+				right: 4px;
+				top: 4px;
+				display: block;
+			}
+			.popupclosewrap {
+				width: 16px;
+				height: 16px;
+				transform: rotate(-45deg);
+				transition: transform .5s;
+			}
+			.popupclosewrap:hover {
+				transform: rotate(45deg);
+			}
+			.popupline {
+				background-color: black;
+				position: absolute;
+			}
+			.popupline1 {
+				width: 100%;
+				height: 2px;
+				top: 7px;
+				left: 0;
+			}
+			.popupline2 {
+				width: 2px;
+				height: 100%;
+				top: 0;
+				left: 7px;
+			}
+			#popupplayer {
+				position: relative;
+				border-radius: 15px;
+				height: 30px;
+				margin-top: 4px;
+				width: 100%;
+				filter: hue-rotate(.73turn) saturate(.7);
+			}
+
+			/* custom */
+			.pf #info .windowcontent {
+				padding-left: 100px;
+				width: calc(100% - 105px);
+			}
+			.pf #info #gif {
+				top: 0;
+				left: 6px;
+			}
+			.pf #info #title {
+				margin-left: .15em;
+			}
+			.ps #info #title {
+				letter-spacing: -.06em;
+			}
+		</style>
+		<style>
+			html, body {
+				background: url(/bgsmol.png) 5px 0;
+			}
+			#whitegradient {
+				width: 100vw;
+				background: linear-gradient(to left, #fff, transparent);
+			}
+			#left {
+				font-size: 12vw;
+				padding: 0;
+				overflow: visible;
+				line-height: .7;
+				direction: ltr;
+				transform: rotatez(-90deg) scaleX(1.4);
+				transform-origin: top left;
+				position: fixed;
+				bottom: -55px;
+				left: 12px;
+				width: calc(100vh - 107px);
+			}
+			#dots {
+				right: 0;
+				left: auto;
+			}
+			#pluginlogo {
+				animation: none;
+				top: 2vh;
+			}
+			#pluginlogo * {
+				background-position: 9% top;
+				background-size: 350%;
+				width: 100%;
+			}
+			.pf #left {
+				left: 10px;
+			}
+			.pf .lefticon {
+				margin-right: -3px;
+			}
+			.vu #left {
+				left: 3px;
+			}
+			.vu #pluginlogo * {
+				background-position: 43% top;
+				background-size: 89%;
+			}
+			.cb .lefticon{
+				margin-right: -9px;
+			}
+			.cb #left {
+				left: 10px;
+			}
+			.cb #pluginlogo * {
+				background-position: 38% top;
+				background-size: 250%;
+			}
+			.ps #left {
+				left: 3px;
+			}
+			.ps #pluginlogo * {
+				background-position: 4% top;
+				background-size: 250%;
+			}
+			.pnch #left {
+				left: 7px;
+				bottom: -50px;
+			}
+			.pnch #pluginlogo * {
+				background-position: 69% top;
+				background-size: 130%;
+			}
+			.mp #left {
+				left: 7px;
+				bottom: -50px;
+			}
+			.mp #pluginlogo * {
+				background-position: 15% top;
+				background-size: 160%;
+			}
+			.rb #left {
+				left: 3px;
+			}
+			.rb #pluginlogo * {
+				background-position: 92% top;
+				background-size: 250%;
+			}
+			.crmbl #left {
+				left: 8px;
+			}
+			.crmbl #pluginlogo * {
+				background-position: 82% top;
+				background-size: 150%;
+			}
+			.prsm #left {
+				left: 5px;
+			}
+			.prsm .lefticon{
+				margin-right: 2px;
+			}
+			.prsm #pluginlogo * {
+				background-position: 29% top;
+				background-size: 350%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bg">
+			<svg id="diagonal">
+				<line x1='0' y1='100%' x2='100%' y2='0'/>
+				<line x1='0' y1='0' x2='100%' y2='100%'/>
+			</svg>
+			<div id="circle"></div>
+			<!--<div id="testpattern"></div>-->
+			<div id="whitegradient"></div>
+			<div id="rainbow"></div>
+			<div id="dots">
+				<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
+			</div>
+		</div>
+
+		<div id="content">
+			<div id="right" class="section">
+						<a id="left" class="leftitem lefthover leftselected" href="javascript:void(0)">
+							<div class="leftiteminner teal lefticonitem">
+								<div class="lefticon"></div>
+								<div class="leftiteminnerinner">
+									<div class="lefttitle"></div>
+								</div>
+							</div>
+						</a>
+				<div id="uiwrap">
+					<div id="uishadow"></div>
+					<div id="ui"></div>
+				</div>
+				<div id="pluginlogo"><div id="pluginlogo1"></div></div>
+				<!--<div id="blurredtext"><div id="blurredtext1">UnplugRed</div><div id="blurredtext2">UnplugRed</div></div>
+				<div id="note">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+						<defs>
+							<path id="rotatingtextpath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
+						</defs>
+						<circle cx="150" cy="100" r="75" fill="none"/>
+						<g>
+							<use xlink:href="#rotatingtextpath" fill="none"/>
+							<text fill="#000">
+								<textPath xlink:href="#rotatingtextpath">UnplugRed's VST Trove  UnplugRed's VST Trove</textPath>
+							</text>
+						</g>
+					</svg>
+				</div>
+			</div>-->
+		</div>
+
+		<script type="text/javascript" src="/vsts.js"></script>
+		<script>
+			var currentselected = 0;
+			for(let i = 0; i < vsts.length; i++) {
+				if(location.pathname.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase())) {
+					currentselected = i;
+
+					if(vsts[i].hideicon === undefined)
+						document.getElementsByClassName("lefticon")[0].style.backgroundImage = "url(/"+vsts[i].id+"/icon.svg)";
+					document.getElementsByClassName("lefttitle")[0].innerText = vsts[i].title;
+					document.body.className = vsts[currentselected].id;
+					document.getElementById("pluginlogo1").style.backgroundImage = "url(/"+vsts[currentselected].id+"/text.png)";
+					document.getElementById("rainbow").style.backgroundPositionY = (String)((currentselected*-300)/vsts.length)+"vh";
+					document.title = vsts[currentselected].title;
+				}
+			}
+		</script>
+	</body>
+</html>

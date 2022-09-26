@@ -1,6 +1,48 @@
-<html lang="en">
+<%
+var currentselected = 0;
+for(let i = 0; i < vsts.length; i++) {
+	if(pagename.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase()))
+		currentselected = i;
+}
+var title = "Unplugred's Plugin Trove";
+var ogtitle = vsts[currentselected].title;
+if(vsts[currentselected].ui === undefined) ogtitle += " - Unplugred's Plugin Trove";
+else title = vsts[currentselected].title;
+%><html lang="en">
 	<head>
 		<meta charset="utf-8">
+		<title><%- title %></title>
+
+		<link rel="apple-touch-icon" href="/icons/vst152.png" sizes="152x152">
+		<link rel="apple-touch-icon" href="/icons/vst180.png" sizes="180x180">
+		<link rel="shortcut icon" href="/icons/vst196.png" sizes="196x196">
+		<link rel="icon" type="image/png" href="/icons/vst32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/icons/vst192.png" sizes="192x192">
+
+		<meta name="theme-color" content="#B76673">
+		<meta name="dcterms.rightsHolder" content="Ari Hanan">
+		<meta name="og:site" content="Unplugred's VST Trove">
+		<meta name="twitter:site" content="@unplugred">
+		<meta property="og:url" content="<%= host %>/">
+		<meta name="twitter:url" content="<%= host %>/">
+		<meta property="og:title" content="<%- ogtitle %>">
+		<meta name="twitter:title" content="<%- ogtitle %>"><%
+	if(vsts[currentselected].tagline !== undefined) { %>
+		<meta property="og:description" content="<%- vsts[currentselected].tagline %>">
+		<meta name="twitter:description" content="<%- vsts[currentselected].tagline %>">
+		<meta name="description" content="<%= vsts[currentselected].tagline %>"><%
+	} %>
+		<meta property="og:type" content="article"><%
+	if(vsts[currentselected].ui === undefined) { %>
+		<meta name="twitter:card" content="summary">
+		<meta property="og:image" content="<%= unplugassets %>/objects/c10.gif">
+		<meta name="twitter:image" content="<%= unplugassets %>/objects/c10.gif"><%
+	} else { %>
+		<meta name="twitter:card" content="summary_large_image">
+		<meta property="og:image" content="<%= assets %>/<%= vsts[currentselected].id %>/ui.png">
+		<meta name="twitter:image" content="<%= assets %>/<%= vsts[currentselected].id %>/ui.png"><%
+	} %>
+
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<style>
 			/* bg */
@@ -12,7 +54,6 @@
 				background: url(/bg.png) 5px 0;
 				background-attachment: fixed;
 				font-family: 'Helvetica Neue', Arial, sans-serif;
-				font-size: 20px;
 				line-height: .95;
 				overflow: hidden;
 			}
@@ -204,6 +245,9 @@
 			}
 
 			/* center */
+			#center, .popup {
+				font-size: 1.5vw;
+			}
 			#infowrap {
 				position: relative;
 				z-index: 100;
@@ -285,11 +329,12 @@
 			}
 			#winicon {
 				display: none;
-				width: 70px;
-				height: 70px;
+				width: 80px;
+				height: 80px;
 				position: absolute;
 				bottom: 10px;
 				right: 10px;
+				opacity: .15;
 				background-size: contain;
 			}
 			.winhasicon #winicon {
@@ -297,7 +342,7 @@
 				filter: brightness(0);
 			}
 			#title {
-				font-size: 2vw;
+				font-size: 1.33em;
 				font-weight: bold;
 				font-variant: petite-caps;
 				text-shadow: 3px 3px #00000026;
@@ -307,21 +352,19 @@
 				line-height: .8;
 			}
 			#desc {
-				font-size: 1.9em;
-				transform: scaleX(.5);
-				transform-origin: 0;
-				width: 200%;
 				min-height: 300px;
 				padding-bottom: 20px;
+				z-index: 1000;
+				position: relative;
 			}
 			#gif {
-				position: absolute;
-				right: 4px;
-				bottom: 4px;
+				float: right;
+				margin-left: -20px;
+				margin-bottom: -20px;
 			}
 			.download {
 				display: inline-block;
-				font-size: 22px;
+				font-size: .9em;
 				color: white!important;
 				background-color: black;
 				font-variant: petite-caps;
@@ -332,6 +375,15 @@
 			.download:hover {
 				background-color: #FF00FF;
 				animation: windowopen .2s ease-out;
+			}
+			iframe {
+				width: 20vw;
+				height: 15vw;
+				max-width: calc(100% - 5px);
+				background: black;
+				min-width: 200px;
+				min-height: 150px;
+				border: 1px solid black;
 			}
 
 			/* right */
@@ -450,12 +502,6 @@
 				width: 0;
 				height: 0;
 			}
-			.popupdesc {
-				font-size: 2.8vh;
-				transform: scaleX(1.15);
-				transform-origin: top left;
-				width: 87%;
-			}
 			.popup {
 				width: 30vw;
 			}
@@ -503,33 +549,24 @@
 				top: 0;
 				left: 7px;
 			}
-			#popupplayer {
+			audio {
 				position: relative;
-				border-radius: 15px;
-				height: 30px;
-				margin-top: 4px;
-				width: 100%;
-				filter: hue-rotate(.73turn) saturate(.7);
+				height: 25px;
+				margin-top: 2px;
+				max-width: calc(100% - 3px);
+				filter: saturate(0);
+				border: solid 1px black;
+				background: #f3f3f3;
 			}
 
 			/* custom */
-			.pf #info .windowcontent {
-				padding-left: 100px;
-				width: calc(100% - 105px);
+			.pf audio {
+				max-width: calc(100% - 75px);
 			}
-			.pf #info #gif {
-				top: 0;
-				left: 6px;
-			}
-			.pf #info #title {
-				margin-left: .15em;
-			}
-			.ps #info #title {
-				letter-spacing: -.06em;
-			}
-		</style>
-		<link rel="preconnect" href="https://fonts.gstatic.com">
-		<link href="https://fonts.googleapis.com/css2?family=Darker+Grotesque:wght@700&display=swap" rel="stylesheet">
+		</style><%
+	for(let i = 0; i < vsts.length; i++) if(vsts[i].decoration !== undefined) { %>
+		<link rel="prefetch" href="<%= assets %>/<%= vsts[i].id %>/gif.gif" /><%
+	} %>
 	</head>
 	<body>
 		<div id="bg">
@@ -559,14 +596,14 @@
 							<div class="windowbg tab"></div>
 							<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
 						</div>
+						<div id="winicon"></div>
 						<div class="windowcontent">
 							<img id="gif"/>
-							<div id="winicon"></div>
 							<div id="title"></div>
 							<div id="desc"></div>
 							<center>
-								<a id="paiddownload" class="download" href="javascript:void(0)"></a><br/>
-								<a id="freedownload" class="download" href="javascript:void(0)">Download Free Version</a>
+								<a id="paiddownload" class="download" href="javascript:void(0)" target="_blank"></a><br/>
+								<a id="freedownload" class="download" href="javascript:void(0)" target="_blank">Download Free Version</a>
 							</center>
 						</div>
 					</div>
@@ -626,7 +663,25 @@
 						<div class="popupdesc" id="popupaudiodesc"></div>
 						<audio controls controlslist="nodownload" id="popupplayer"></audio>
 					</div>
-					<a class="popupclose" onclick="closeaudio()">
+					<a class="popupclose" href="javascript:void(0)" onclick="closeaudio()">
+						<div class="popupclosewrap">
+							<div class="popupline1 popupline"></div>
+							<div class="popupline2 popupline"></div>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="win-wrap" style="z-index: 30000;">
+				<div id="everyweek" style="top: calc(-88px + 88vh); left: 50vw;" class="popup win-pos green">
+					<div class="windowbgwrap">
+						<div class="windowbg windowbox"></div>
+						<div class="windowbg tab"></div>
+						<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
+					</div>
+					<div class="windowcontent">
+						<div class="popupdesc" id="popuptextdesc"><b>EMPTYING THE VAULTS!</b><br/>Releasing a new plugin every Sunday until I run out of unreleased plugins.</div>
+					</div>
+					<a class="popupclose" href="javascript:void(0)" onclick="closepopup(this.parentElement)">
 						<div class="popupclosewrap">
 							<div class="popupline1 popupline"></div>
 							<div class="popupline2 popupline"></div>
@@ -682,25 +737,27 @@
 			var currentselected = 0;
 			var currenthover = -3;
 			var temporalhover = -1;
-			function switchselected(id) {
+			function switchselected(id,addtohistory) {
 				if(currentselected == id) return;
 
 				vsts[currentselected].div.className = "leftitem";
 				vsts[id].div.className = "leftitem lefthover leftselected";
 				currentselected = id;
-				window.history.replaceState(null,vsts[id].title,"/newdesign/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
+				if(addtohistory)
+					window.history.replaceState(null,vsts[id].title,"/newdesign/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
 				//CHANGE THIS
-				document.title = vsts[id].title;
+				if(vsts[currentselected].ui === undefined)
+					document.title = "Unplugred's Plugin Trove";
+				else
+					document.title = vsts[id].title;
 			}
 
 			var leftside = document.getElementById("leftwrap");
 			for(let i = 0; i < vsts.length; i++) {
-				if(location.pathname.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase())) currentselected = i;
-
 				vsts[i].div = document.createElement('a');
 				vsts[i].div.onmousemove = function(){temporalhover = i};
 				vsts[i].div.onmouseout = function(){temporalhover = -1};
-				vsts[i].div.onclick = function(){switchselected(i)};
+				vsts[i].div.onclick = function(){switchselected(i,true)};
 				vsts[i].div.className = "leftitem";
 				vsts[i].div.href = "javascript:void(0)";
 
@@ -748,6 +805,9 @@
 					separatordiv.className = "leftseparator";
 					leftside.appendChild(separatordiv);
 				}
+
+				if(location.pathname.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase()))
+					switchselected(i,false);
 			}
 			let separatordiv = document.createElement("div");
 			separatordiv.className = "leftseparator";
@@ -797,7 +857,12 @@
 				}
 				if(vsts[currenthover].freedownload === undefined) {
 					ui.freedownload.style.display = "none";
+					if(vsts[currenthover].price === undefined)
+						ui.freedownload.parentNode.style.display = "none";
+					else
+						ui.freedownload.parentNode.style.display = null;
 				} else {
+					ui.freedownload.parentNode.style.display = null;
 					ui.freedownload.style.display = null;
 					ui.freedownload.href = vsts[currenthover].freedownload;
 				}
@@ -826,7 +891,6 @@
 				ui.logo2.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.png)";
 			}
 			update();
-			document.title = vsts[currentselected].title;
 
 			var popup_audio_id = -1;
 			var popup_audio_div = document.getElementById("popupaudio");
@@ -880,7 +944,7 @@
 				div.style.display = null;
 				divtext.innerHTML = text
 					.replace(/@br/g,"<br/>")
-					.replace(/@a1/g,"<a href=\"")
+					.replace(/@a1/g,"<a target=\"_blank\" href=\"")
 					.replace(/@a2/g,"\">")
 					.replace(/@a3/g,"</a>");
 				if(divplayer !== null) {
@@ -909,6 +973,14 @@
 				setTimeout(function() {
 					if(popup_audio_id == -1)
 						popup_audio_div.style.display = "none";
+				},400);
+			}
+			function closepopup(element) {
+				element.style.animation = "none";
+				element.offsetWidth;
+				element.style.animation = "popupopen .4s reverse ease-in forwards";
+				setTimeout(function() {
+					element.parentElement.style.display = "none";
 				},400);
 			}
 		</script>

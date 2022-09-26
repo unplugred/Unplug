@@ -3,40 +3,77 @@ var vsts = [
 		title: "About",
 		id: "about",
 		color: "orange",
-		description: `Welcome to my personal vst hell.<br/>
-i was bored so i made these, and now you too can enjoy them!<br/>
-also <a href="https://laulaulau.bandcamp.com/album/time-is-not-an-issue">check out this up and coming artist</a><br/>
-INQUIRIES:<br/>
-discord (red#3510), email (unplugred@gmail.com)`,
+		description: `hi! ✌<br/>
+im ari (they them). on the internet i release stuff under the name unplugred.<br/>
+after studying audio engineering i decided to make my own vst plugins for me and my friends because i was frustrated with the current offerrings.<br/>
+eventually i decided to release them onto the internet as open source because why not.<br/>
+i would like to make my own daw in the future.<br/>
+i hope these bring you joy and would love to hear what u make with them.<br/>
+u can reach me on discord (red#3510) and email (unplugred@gmail.com).<br/>
+shout out to my friend lau she makes rly good music <a href="https://laulaulau.bandcamp.com/" target="_blank">check her out</a>.`,
 		hideicon: true
 	},{
 		title: "FAQ",
 		id: "faq",
 		color: "orange",
-		description: "hi",
+		description: `
+<b>Q: I found a bug!<br/>
+A:</b> THANK YOU for your effort to report bugs<br/>
+bug reports are always always appreciated.<br/>
+it would mean a lot for me if you could include:<br/>
+- graphics card model<br/>
+- cpu model<br/>
+- operating system<br/>
+- daw<br/>
+- vst2 or vst3?<br/>
+- detailed steps to reproduce the bug<br/>
+- a screenshot if applicable<br/>
+send the bug reports to either my mail (unplugred@gmail.com) or my discord (red#3510).<br/>
+thanks again, greatly appreciated.<br/>
+<b>Q: I found a bug in the Linux version!<br/>
+A:</b> i sadly do not accept bug reports for the linux version.<br/>
+since these plugins are open source, you are welcome to <a href="https://github.com/unplugred/vsts" target="_blank">make a pull request</a>.<br/>
+<b>Q: Can I get 64bit support?<br/>
+A:</b> 32bit support is buggy currently but i do intend on getting it working in the future.<br/>
+<b>Q: Can I get AAX suppoprt?<br/>
+A:</b> unfortunately i do not have the money to buy a pro tools license, nor do i intend on supporting their guidelines to get a developer license, which require anti piracy measures to be installed.<br/>
+i think these kind of measures make the end product worse, annoy the customer, and ultimately do not achieve their goal.<br/>
+<b>Q: Can I get CLAP support?<br/>
+A:</b> i intend on supporting clap once reaper supports it so i could begin testing.<br/>
+<b>Q: Can I get Mac support<br/>
+A:</b> i do not have the money to buy a mac to properly develop for it.<br/>
+<b>Q: Can I have ___ feature?<br/>
+A:</b> you are more than welcome to shoot me an email at unplugred@gmail.com, but do know that i am just one person, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
+custom versions of the plugins are an option with appropriate compensation.<br/>
+<b>Q: I have a cat video to send you!! (its rly cute)<br/>
+A:</b> what are you waiting for??<br/>
+all cat videos are welcome at mail (unplugred@gmail.com) or discord (red#3510).`,
 		hideicon: true
 	},{
 		title: "Donate",
 		id: "donate",
 		color: "orange",
-		description: "hi",
+		description: `
+if you appreciate my work and would like to support it (as most cool and handsome people do), you can donate either a one time donation or a monthly donation <a href="https://www.paypal.com/donate/?hosted_button_id=6MRYFTBHNU7V2" target="_blank">on my paypal</a>.<br/>
+i research, develop, and maintain these plugins on my free time, so these funds allow me to dedicate more of my time to making these.<br/>
+any amount will be greatly appreciated!<br/>
+<br/>
+<center><a href="https://www.paypal.com/donate/?hosted_button_id=6MRYFTBHNU7V2" target="_blank"><img src="/donate.png"/></a></center>`,
 		hideicon: true,
 		separator: true
 	},{
 		title: "Plastic Funeral",
 		id: "pf",
 		color: "teal",
-		tagline: "Distortion/saturation that sounds like a laser beam.",
+		tagline: "Distortion that sounds like a laser beam.",
 		description: `
 forget about warmth.<br/>
-this distortion gives off a harsh and metallic sound with an FM vibe that is guaranteed to destroy any mix.<br/>
-(sounds real phat and juicy on bass)<br/>
-<a class="demo" href="javascript:void(0);" onclick='popup_audio(0, "/pf/demo1.mp3", "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.")'>Demo 1</a>
-<a class="demo" href="javascript:void(0);" onclick='popup(1, "Plastic Funeral credits:@brMade by Ari Hanan (@a1https://unplug.red/@a2unplugred@a3)@brThanks to @a1https://laulaulau.bandcamp.com/@a2lau@a3 for creating the factory presets as well as providing quite a bit of help.@brThanks to @a1https://marina-magnolia.tumblr.com/@a2Marina Magnolia Venegas@a3 for doing testing and QA.")'>Credits</a>
+this refreshing take on fold distortion gives off a harsh and metallic sound that is guaranteed to destroy any mix.<br/>
 <br/>
+demo by <a href="https://soundcloud.com/the_real_astrodex" target="_blank">Astrodex</a>:<br/>
+<audio src="/pf/demo1.mp3" controls controlslist="nodownload"></audio><br/>
 <br/>
-Cost: +0$<br/>
-Available for both windows and linux`,
+Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
 		paiddownload: "https://shop.unplug.red/b/wGlzc",
 		price: 5,
@@ -49,27 +86,18 @@ Available for both windows and linux`,
 		rating: "(Good)",
 		tagline: "VU meter for your VU metering needs.",
 		description: `
-its got:<br/>
-- very sexy user interface<br/>
-- stereo (dual) and mono (singular) modes<br/>
-- scalable ui (just drag from the corner :)<br/>
-- Unplug Industries cutting edge meter ballistic simulation<br/>
-- true RMS metering<br/>
+very simple and to the point vu meter. has:<br/>
+- stereo and mono modes<br/>
+- scalable ui<br/>
 - adjustable reaction speed<br/>
 - adjustable nominal operation level (NoL)<br/>
-- cute lil peak led<br/>
-- almost tricks u into thinking u own analog gear<br/>
+- peak led<br/>
 <br/>
-i must say, that is a pretty good deal! wowza<br/>
-<a class="demo" href="javascript:void(0);" onclick='popup(2, "VU credits:@brMade by Ari Hanan (@a1https://unplug.red/@a2unplugred@a3)")'>Credits</a>
-<br/>
-<br/>
-Cost: +0$<br/>
-Available for both windows and linux`,
+Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/kiV10",
 		paiddownload: "https://shop.unplug.red/b/wGlzc",
 		price: 10,
-		decoration: {file:"circuit.gif",width:288,height:300},
+		decoration: {width:288,height:300},
 		ui: {width:438,height:260,deg:40}
 	},{
 		title: "ClickBox",
@@ -79,16 +107,11 @@ Available for both windows and linux`,
 		description: `
 generates randomized digital clicks<br/>
 made after people complained i fixed the annoying clicking issue in my first vst, plastic funeral (why??)<br/>
+not useful for much but i made it so might as well put it out there.<br/>
 <br/>
-great for creative sound design, and useful as a vca controller for other parameters and side-chaining (fruity peak controller for fl users)<br/>
-otherwise, not that useful<br/>
-<a class="demo" href="javascript:void(0);" onclick='popup(3, "ClickBox credits:@brMade by Ari Hanan (@a1https://unplug.red/@a2unplugred@a3)")'>Credits</a>
-<br/>
-<br/>
-Cost: +0$<br/>
-Available for both windows and linux`,
+Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/GI9s7",
-		decoration: {file:"bear.gif",width:150,height:300},
+		decoration: {width:150,height:300},
 		ui: {width:256,height:256,deg:40}
 	},{
 		title: "Pisstortion",
@@ -96,15 +119,10 @@ Available for both windows and linux`,
 		color: "teal",
 		tagline: "Advanced sinefold distortion plugin.",
 		description: `
-forget about warmth.<br/>
-this distortion gives off a harsh and metallic sound with an FM vibe that is guaranteed to destroy any mix.<br/>
-(sounds real phat and juicy on bass)<br/>
-<a class="demo" href="javascript:void(0);" onclick='popup_audio(4, "/pf/demo1.mp3", "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.")'>Demo 1</a>
-<a class="demo" href="javascript:void(0);" onclick='popup(5, "Plastic Funeral credits:@brMade by Ari Hanan (@a1https://unplug.red/@a2unplugred@a3)@brThanks to @a1https://laulaulau.bandcamp.com/@a2lau@a3 for creating the factory presets as well as providing quite a bit of help.@brThanks to @a1https://marina-magnolia.tumblr.com/@a2Marina Magnolia Venegas@a3 for doing testing and QA.")'>Credits</a>
+my take on sine fold distortion.<br/>
+sounds similar to plastic funeral but a bit softer.<br/>
 <br/>
-<br/>
-Cost: +0$<br/>
-Available for both windows and linux`,
+Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
 		paiddownload: "https://shop.unplug.red/b/wGlzc",
 		price: 5,
@@ -113,22 +131,22 @@ Available for both windows and linux`,
 	},{
 		title: "PNCH",
 		id: "pnch",
+		rating: "(Good)",
 		color: "teal",
 		tagline: "Weird knob that makes ur stuff tight.",
 		description: `
-forget about warmth.<br/>
-this distortion gives off a harsh and metallic sound with an FM vibe that is guaranteed to destroy any mix.<br/>
-(sounds real phat and juicy on bass)<br/>
-<a class="demo" href="javascript:void(0);" onclick='popup_audio(6, "/pf/demo1.mp3", "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.")'>Demo 1</a>
-<a class="demo" href="javascript:void(0);" onclick='popup(7, "Plastic Funeral credits:@brMade by Ari Hanan (@a1https://unplug.red/@a2unplugred@a3)@brThanks to @a1https://laulaulau.bandcamp.com/@a2lau@a3 for creating the factory presets as well as providing quite a bit of help.@brThanks to @a1https://marina-magnolia.tumblr.com/@a2Marina Magnolia Venegas@a3 for doing testing and QA.")'>Credits</a>
+a type of effect that causes added harmonics as well as a gating effect.<br/>
+compared to typical gates and expanders, this one does not use an envelope follower for the gating effect, resulting in gating without pumping<br/>
+the added harmonics might not be noticable or even pleasant on an already dirty signal such as a guitar.<br/>
+as a result, this makes it great for applications such as removing humming on a direct guitar signal before applying heavy distortion.<br/>
+also sounds great on drum loops and results in a very choppy effect.<br/>
+APPLY BEFORE DISTORTION FOR IDEAL EFFECT.<br/>
 <br/>
-<br/>
-Cost: +0$<br/>
-Available for both windows and linux`,
+Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
 		paiddownload: "https://shop.unplug.red/b/wGlzc",
-		price: 5,
-		decoration: {width:90,height:380},
+		price: 10,
+		decoration: {width:200,height:182},
 		ui: {width:128,height:148,deg:40}
 	},{
 		title: "Red Bass",
@@ -137,38 +155,31 @@ Available for both windows and linux`,
 		rating: "(Good)",
 		tagline: "Low-end enchancer excellent for kicks and speech.",
 		description: `
-forget about warmth.<br/>
-this distortion gives off a harsh and metallic sound with an FM vibe that is guaranteed to destroy any mix.<br/>
-(sounds real phat and juicy on bass)<br/>
-<a class="demo" href="javascript:void(0);" onclick='popup_audio(8, "/pf/demo1.mp3", "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.")'>Demo 1</a>
-<a class="demo" href="javascript:void(0);" onclick='popup(9, "Plastic Funeral credits:@brMade by Ari Hanan (@a1https://unplug.red/@a2unplugred@a3)@brThanks to @a1https://laulaulau.bandcamp.com/@a2lau@a3 for creating the factory presets as well as providing quite a bit of help.@brThanks to @a1https://marina-magnolia.tumblr.com/@a2Marina Magnolia Venegas@a3 for doing testing and QA.")'>Credits</a>
+sub oscillator sidechained to incoming signal.<br/>
+put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
+apply with caution if not in a proper mixing environment.<br/>
 <br/>
+<center><iframe class="youtube" src="https://www.youtube.com/embed/4iIJjWvpb_s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
 <br/>
-Cost: +0$<br/>
-Available for both windows and linux`,
+Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
 		paiddownload: "https://shop.unplug.red/b/wGlzc",
 		price: 20,
-		decoration: {width:90,height:380},
+		decoration: {width:240,height:157},
 		ui: {width:322,height:408,deg:40}
 	},{
 		title: "MPaint",
 		id: "mp",
 		color: "teal",
-		rating: "(Good)",
 		tagline: "A sampler from a popular video game.",
 		description: `
-forget about warmth.<br/>
-this distortion gives off a harsh and metallic sound with an FM vibe that is guaranteed to destroy any mix.<br/>
-(sounds real phat and juicy on bass)<br/>
-<a class="demo" href="javascript:void(0);" onclick='popup_audio(10, "/pf/demo1.mp3", "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.")'>Demo 1</a>
-<a class="demo" href="javascript:void(0);" onclick='popup(11, "Plastic Funeral credits:@brMade by Ari Hanan (@a1https://unplug.red/@a2unplugred@a3)@brThanks to @a1https://laulaulau.bandcamp.com/@a2lau@a3 for creating the factory presets as well as providing quite a bit of help.@brThanks to @a1https://marina-magnolia.tumblr.com/@a2Marina Magnolia Venegas@a3 for doing testing and QA.")'>Credits</a>
+this one is a reproduction of a sampler present in a music making feature that was in a video game thats near and dear to my childhood.<br/>
+this plugin attempts to preserve the unique voice limitations of the original sampler,<br/>
+and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.<br/>
 <br/>
-<br/>
-Cost: +0$<br/>
-Available for both windows and linux`,
+Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
-		decoration: {width:90,height:380},
+		decoration: {width:131,height:208},
 		ui: {width:468,height:40,deg:40}
 	},{
 		title: "CRMBL",
@@ -176,11 +187,17 @@ Available for both windows and linux`,
 		color: "teal",
 		rating: "(Very good)",
 		tagline: "Delay for insane people.",
-		description: "",
+		description: `
+a highly versitile delay plugin with a large feature-set,<br/>
+which in the right hands can produce highly textural results.<br/>
+among the features are pitch shifting on the feedback, asymetric ping pong, reverse delay, and more...<br/>
+the parameters are highly automatable and can produce a dub delay effect when automating the time parameter.<br/>
+<br/>
+Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
 		paiddownload: "https://shop.unplug.red/b/wGlzc",
 		price: 25,
-		decoration: {width:90,height:380},
+		decoration: {width:240,height:231},
 		ui: {width:507,height:465,deg:30}
 	},{
 		title: "Prisma",
@@ -188,11 +205,19 @@ Available for both windows and linux`,
 		color: "teal",
 		rating: "(Very good)",
 		tagline: "Modular multiband distortion plugin.",
-		description: "",
+		description: `
+multiband distoriton plugin for advanced tone shaping.<br/>
+up to four modules can be added to any one of the four bands.<br/>
+as of writing, there are 16 modules available to choose from.<br/>
+in the right hands the plugin can produce highly complex and intricate tones.<br/>
+common usecases include very harsh distortions being applied on a narrow band to create more subtle effects,<br/>
+and bass recordings being distorted on the higher frequencies without hurting the low end.<br/>
+<br/>
+Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
 		paiddownload: "https://shop.unplug.red/b/wGlzc",
 		price: 30,
-		decoration: {width:90,height:380},
+		decoration: {width:138,height:267},
 		ui: {width:478,height:561,deg:20}
 	}
 ]

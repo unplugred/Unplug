@@ -5,7 +5,11 @@ if(process.env.NODE_ENV === 'production') {
 	global.protocol = "http://";
 	global.assets = "http://assets.localhost";
 }
+
+//i dont wanna hear anything about bad practice.
 const fs = require('fs');
+eval(fs.readFileSync(__dirname + '/static/vsts.js').toString());
+
 const express = require('express');
 const app = express();
 app.set('view engine', 'ejs');
@@ -33,11 +37,15 @@ app.use((req, res, next) => {
 		return res.type('text/css').set({
 			'Cache-Control':'public, max-age=2592000',
 			'Access-Control-Allow-Origin':'*'
-		}).render('stylesheet.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets});
+		}).render('stylesheet.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,vsts:vsts});
 	else if(req.path.startsWith("/newdesign"))
-		return res.render('newdesign.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path});
+		return res.render('newdesign.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
+	else if(process.env.NODE_ENV !== 'production' && req.path.startsWith("/setup"))
+		return res.render('setup.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
+	else if(process.env.NODE_ENV !== 'production' && req.path.startsWith("/opengraph"))
+		return res.render('opengraph.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
 	else
-		return res.render('index.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path});
+		return res.render('index.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
 });
 
 app.listen(6665, function(){
