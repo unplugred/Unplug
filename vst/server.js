@@ -42,8 +42,6 @@ app.use((req, res, next) => {
 		return res.render('newdesign.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
 	else if(process.env.NODE_ENV !== 'production' && req.path.startsWith("/setup"))
 		return res.render('setup.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
-	else if(process.env.NODE_ENV !== 'production' && req.path.startsWith("/opengraph"))
-		return res.render('opengraph.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
 	else
 		return res.render('index.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
 });
