@@ -1,13 +1,15 @@
 <%
 var currentselected = 0;
-for(let i = 0; i < vsts.length; i++) {
-	if(pagename.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase()))
-		currentselected = i;
-}
 var title = "Unplugred's Plugin Trove";
-var ogtitle = vsts[currentselected].title;
-if(vsts[currentselected].ui === undefined) ogtitle += " - Unplugred's Plugin Trove";
-else title = vsts[currentselected].title;
+var ogtitle = title;
+for(let i = 0; i < vsts.length; i++) {
+	if(pagename.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase())) {
+		currentselected = i;
+		ogtitle = vsts[currentselected].title;
+		if(vsts[currentselected].ui === undefined) ogtitle += " - Unplugred's Plugin Trove";
+		else title = vsts[currentselected].title;
+	}
+}
 %><html lang="en">
 	<head>
 		<meta charset="utf-8">
@@ -99,6 +101,12 @@ else title = vsts[currentselected].title;
 				top: 0;
 				right: 0;
 			}
+			.mobileselected #whitegradient {
+				display: none;
+			}
+			.mobile #whitegradient {
+				width: 100vw;
+			}
 			#whitegradient {
 				position: fixed;
 				left: 0;
@@ -109,6 +117,9 @@ else title = vsts[currentselected].title;
 				z-index: 50;
 				pointer-events: none;
 			}
+			.mobileselected #rainbow {
+				display: none;
+			}
 			#rainbow {
 				background: url(/rainbow.png?v=1);
 				height: 100vh;
@@ -117,6 +128,13 @@ else title = vsts[currentselected].title;
 				position: fixed;
 				z-index: 1000;
 				transition: 1s background-position-y;
+			}
+			.mobileselected #dots {
+				display: none;
+			}
+			.mobile #dots {
+				right: 0;
+				left: auto;
 			}
 			#dots {
 				position: fixed;
@@ -138,15 +156,37 @@ else title = vsts[currentselected].title;
 			#dotk { background-color: #000000; }
 
 			/* layout */
+			.mobile.single #content {
+				overflow-y: auto;
+				overflow-x: clip;
+				scrollbar-width: thin;
+				scrollbar-width: 4px;
+				scrollbar-color: black transparent;
+			}
+			.mobileselected #content {
+				left: 0;
+				width: 100vw;
+			}
 			#content {
-				display: flex;
-				justify-content: space-between;
 				position: fixed;
 				width: calc(100vw - 5px);
 				height: 100vh;
 				top: 0;
 				left: 5px;
 				z-index: 10000;
+				direction: rtl;
+			}
+			.mobile.single #contentwrap {
+				flex-direction: column;
+				min-height: 100vh;
+			}
+			#contentwrap {
+				direction: ltr;
+				display: flex;
+				justify-content: space-between;
+			}
+			.mobile.single .section {
+				width: 100%;
 			}
 			.section {
 				width: 100vw;
@@ -154,14 +194,22 @@ else title = vsts[currentselected].title;
 			}
 
 			/* left */
+			.mobileselected #left {
+				display: none;
+			}
+			.mobile.single #left {
+				font-size: 2.64vw;
+			}
+			.mobile #left {
+				font-size: 1.76vw;
+				width: calc(90vw - 13px);
+				max-width: none;
+			}
 			#left {
 				position: relative;
-				font-size: 1.8vh;
+				font-size: .88vw;
 				max-width: 23em;
 				width: 70vw;
-				padding: 4px 0 4px 8px;
-				overflow: clip auto;
-				direction: rtl;
 			}
 			#leftclip {
 				position: absolute;
@@ -169,6 +217,19 @@ else title = vsts[currentselected].title;
 				top: 0;
 				width: calc(100% - 17em + 100px);
 				height: 100vh;
+			}
+			#leftscroll {
+				width: 100%;
+				height: calc(100vh - 8px);
+				overflow: clip auto;
+				scrollbar-width: thin;
+				scrollbar-width: 4px;
+				scrollbar-color: #0006 transparent;
+				direction: rtl;
+				padding: 4px 0 4px 8px;
+			}
+			#leftscroll::-webkit-scrollbar-thumb{
+				background-color: #0006;
 			}
 			#leftwrap {
 				position: relative;
@@ -190,14 +251,20 @@ else title = vsts[currentselected].title;
 			.leftselected .lefttitle {
 				font-weight: bold !important;
 			}
-			.lefthover {
+			.mobile .leftselected .lefttitle {
+				font-weight: normal !important;
+			}
+			.lefthover, .mobile .leftitem:hover .leftiteminner {
 				animation: windowopen .2s ease-out;
 			}
-			.lefthover .teal {
+			.lefthover .teal, .mobile .leftitem:hover .teal {
 				color: #24A6B3 !important;
 			}
-			.lefthover .orange {
+			.lefthover .orange, .mobile .leftitem:hover .orange {
 				color: #FF8400 !important;
+			}
+			.mobile .lefthover:not(:hover) .leftiteminner {
+				color: black !important;
 			}
 			.leftiteminner {
 				display: flex;
@@ -214,8 +281,11 @@ else title = vsts[currentselected].title;
 				flex-shrink: 0;
 				filter: brightness(0);
 			}
-			.lefthover .lefticon {
+			.lefthover .lefticon, .mobile .leftitem:hover .lefticon {
 				filter: none;
+			}
+			.mobile .lefthover:not(:hover) .lefticon {
+				filter: brightness(0) !important;
 			}
 			.lefttitle {
 				font-size: 2em;
@@ -245,6 +315,41 @@ else title = vsts[currentselected].title;
 			}
 
 			/* center */
+			.mobileselected #back {
+				display: block;
+			}
+			#back {
+				display: none;
+				width: 30px;
+				height: 30px;
+				left: 5px;
+				background: url(/back.svg) no-repeat;
+				background-size: cover;
+				margin-bottom: -10px;
+				margin-top: 5px;
+				z-index: 10000;
+				position: relative;
+			}
+			#back:not(:hover) {
+				filter: brightness(0);
+			}
+			#back:hover {
+				animation: windowopen .2s ease-out;
+			}
+			.mobile.single #center {
+				flex-grow: 0;
+				flex-shrink: 0;
+				margin-bottom: 35px;
+			}
+			.mobileunselected #center {
+				display: none;
+			}
+			.mobile.single #center, .mobile.single .popup {
+				font-size: 4.5vw;
+			}
+			.mobile #center, .mobile .popup {
+				font-size: 2.25vw;
+			}
 			#center, .popup {
 				font-size: 1.5vw;
 			}
@@ -270,6 +375,13 @@ else title = vsts[currentselected].title;
 			}
 			.win-pos.green a {
 				color: #0000FF;
+			}
+			.mobile.single #info {
+				width: calc(100% - 12px);
+			}
+			.mobile #info {
+				width: calc(100% - 7px);
+				left: 5px;
 			}
 			#info {
 				left: 0;
@@ -319,12 +431,21 @@ else title = vsts[currentselected].title;
 				background-size: auto, cover;
 				background-attachment: fixed;
 			}
+			.mobile.single .windowcontent {
+				max-height: none;
+			}
+			.mobile .windowcontent {
+				max-height: calc(100vh - 77px);
+			}
 			.windowcontent {
 				width: calc(100% - 10px);
 				max-height: calc(100vh - 70px);
 				padding: 5px;
 				overflow-x: clip;
 				overflow-y: auto;
+				scrollbar-width: thin;
+				scrollbar-width: 4px;
+				scrollbar-color: black transparent;
 				position: relative;
 			}
 			#winicon {
@@ -387,8 +508,17 @@ else title = vsts[currentselected].title;
 			}
 
 			/* right */
+			.mobile.single #right {
+				flex-grow: 1;
+				flex-shrink: 0;
+				overflow: clip;
+			}
+			.mobileunselected #right {
+				display: none;
+			}
 			#right {
 				display: flex;
+				height: 100vh;
 			}
 			#uiwrap {
 				margin: auto;
@@ -436,10 +566,11 @@ else title = vsts[currentselected].title;
 			}
 			#pluginlogo {
 				position: absolute;
-				top: 25vh;
+				top: 25%;
 				width: 100%;
-				height: 50vh;
+				height: 50%;
 				image-rendering: crisp-edges;
+				image-rendering: pixelated;
 				animation: scrollright 60s infinite linear;
 				opacity: .12;
 				z-index: -50;
@@ -451,14 +582,14 @@ else title = vsts[currentselected].title;
 			#logoclip {
 				width: 100%;
 				position: absolute;
-				height: 100vh;
+				height: 100%;
 				overflow: clip;
 			}
 			#pluginlogo * {
 				background-repeat: no-repeat;
 				background-position: top left;
 				background-size: contain;
-				height: 50vh;
+				height: 100%;
 				width: 195%;
 			}
 			#pluginlogo1 {
@@ -501,6 +632,14 @@ else title = vsts[currentselected].title;
 				left: 0;
 				width: 0;
 				height: 0;
+			}
+			.mobile.single .popup {
+				width: 70vw;
+				margin-left: -100px;
+			}
+			.mobile .popup {
+				width: 50vw;
+				margin-left: -50px;
 			}
 			.popup {
 				width: 30vw;
@@ -584,51 +723,56 @@ else title = vsts[currentselected].title;
 		</div>
 
 		<div id="content">
-			<div id="left" class="section">
-				<div id="leftwrap"></div>
-				<div id="leftclip"></div>
-			</div>
-			<div id="center" class="section">
-				<div id="infowrap" class="win-wrap">
-					<div id="info" class="win-pos">
-						<div class="windowbgwrap">
-							<div class="windowbg windowbox"></div>
-							<div class="windowbg tab"></div>
-							<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
-						</div>
-						<div id="winicon"></div>
-						<div class="windowcontent">
-							<img id="gif"/>
-							<div id="title"></div>
-							<div id="desc"></div>
-							<center>
-								<a id="paiddownload" class="download" href="javascript:void(0)" target="_blank"></a><br/>
-								<a id="freedownload" class="download" href="javascript:void(0)" target="_blank">Download Free Version</a>
-							</center>
+			<div id="contentwrap">
+				<div id="left" class="section">
+					<div id="leftscroll">
+						<div id="leftwrap"></div>
+					</div>
+					<div id="leftclip"></div>
+				</div>
+				<div id="center" class="section">
+					<a id="back" href="javascript:void(0)" onclick="back()"></a>
+					<div id="infowrap" class="win-wrap">
+						<div id="info" class="win-pos">
+							<div class="windowbgwrap">
+								<div class="windowbg windowbox"></div>
+								<div class="windowbg tab"></div>
+								<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
+							</div>
+							<div id="winicon"></div>
+							<div class="windowcontent">
+								<img id="gif"/>
+								<div id="title"></div>
+								<div id="desc"></div>
+								<center>
+									<a id="paiddownload" class="download" href="javascript:void(0)" target="_blank"></a><br/>
+									<a id="freedownload" class="download" href="javascript:void(0)" target="_blank">Download Free Version</a>
+								</center>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<div id="right" class="section">
-				<div id="uiwrap">
-					<div id="uishadow"></div>
-					<div id="ui"></div>
-				</div>
-				<div id="logoclip"><div id="pluginlogo"><div id="pluginlogo1"></div><div id="pluginlogo2"></div></div></div>
-				<div id="blurredtext"><div id="blurredtext1">UnplugRed</div><div id="blurredtext2">UnplugRed</div></div>
-				<div id="note">
-					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
-						<defs>
-							<path id="rotatingtextpath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
-						</defs>
-						<circle cx="150" cy="100" r="75" fill="none"/>
-						<g>
-							<use xlink:href="#rotatingtextpath" fill="none"/>
-							<text fill="#000">
-								<textPath xlink:href="#rotatingtextpath">UnplugRed's VST Trove  UnplugRed's VST Trove</textPath>
-							</text>
-						</g>
-					</svg>
+				<div id="right" class="section">
+					<div id="uiwrap">
+						<div id="uishadow"></div>
+						<div id="ui"></div>
+					</div>
+					<div id="logoclip"><div id="pluginlogo"><div id="pluginlogo1"></div><div id="pluginlogo2"></div></div>
+					<div id="blurredtext"><div id="blurredtext1">UnplugRed</div><div id="blurredtext2">UnplugRed</div></div></div>
+					<div id="note">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+							<defs>
+								<path id="rotatingtextpath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
+							</defs>
+							<circle cx="150" cy="100" r="75" fill="none"/>
+							<g>
+								<use xlink:href="#rotatingtextpath" fill="none"/>
+								<text fill="#000">
+									<textPath xlink:href="#rotatingtextpath">UnplugRed's VST Trove  UnplugRed's VST Trove</textPath>
+								</text>
+							</g>
+						</svg>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -695,7 +839,73 @@ else title = vsts[currentselected].title;
 		<script type="text/javascript" src="<%= unplugassets %>/automatism/simplex.js"></script>
 		<script type="text/javascript" src="/vsts.js"></script>
 		<script>
-			var x = document.getElementById("popups").getElementsByClassName("win-pos");
+			var ui = {
+				title: document.getElementById("title"),
+				body: document.body,
+				window: document.getElementById("info"),
+				description: document.getElementById("desc"),
+				freedownload: document.getElementById("freedownload"),
+				paiddownload: document.getElementById("paiddownload"),
+				decoration: document.getElementById("gif"),
+				ui: document.getElementById("ui"),
+				uishadow: document.getElementById("uishadow"),
+				logo1: document.getElementById("pluginlogo1"),
+				logo2: document.getElementById("pluginlogo2"),
+				rainbow: document.getElementById("rainbow"),
+				winicon: document.getElementById("winicon")
+			}
+			var currentselected = 0;
+			var currenthover = -3;
+			var temporalhover = -1;
+			var triggerupdate = false;
+			var isselected = false;
+			var ismobile = document.documentElement.clientWidth <= 900;
+			var issingle = document.documentElement.clientWidth <= 600;
+			if(ismobile) {
+				document.body.className = "mobile mobileunselected";
+				if(issingle) document.body.className += " single";
+			}
+			var resized = false;
+			window.addEventListener('resize',function(){
+				if(resized) return;
+				resized = true;
+				setTimeout(updateresize,150);
+			});
+			function updateresize() {
+				resized = false;
+				var newmobile = document.documentElement.clientWidth <= 900;
+				var id = currenthover>=0?currenthover:currentselected;
+				var newsingle = (document.documentElement.clientWidth <= 600 || (newmobile && vsts[id].ui === undefined && isselected));
+				if((newmobile && !ismobile) || (newmobile && (newsingle !== issingle))) {
+					ismobile = true;
+					document.body.className = vsts[id].id + " mobile " + (isselected?"mobileselected":"mobileunselected");
+				} else if((!newmobile && ismobile) || (!newmobile && (newsingle !== issingle))) {
+					ismobile = false;
+					document.body.className = vsts[id].id;
+				}
+				if(newsingle && !issingle) {
+					issingle = true;
+					document.body.className += " single";
+					if(isselected)
+						document.getElementById("right").style.height = (vsts[id].ui == undefined ? "5px" : ((String)(vsts[id].ui.height + 10)+"px"));
+				} else if(!newsingle && issingle) {
+					issingle = false;
+					document.getElementById("right").style.height = null;
+				}
+			};
+			function back() {
+				if(!isselected) return;
+				isselected = false;
+				issingle = document.documentElement.clientWidth <= 600;
+				if(ismobile) {
+					document.body.className = vsts[currentselected].id + " mobile mobileunselected";
+					if(issingle) document.body.className += " single"
+				}
+				window.history.replaceState(null,"Unplugred's Plugin Trove","/newdesign");
+				//CHANGE THIS
+			}
+
+			let x = document.getElementById("popups").getElementsByClassName("win-pos");
 			for (var i = 0; i < x.length; i++) {
 				dragElement(x[i].parentNode, x[i]);
 			}
@@ -709,7 +919,7 @@ else title = vsts[currentselected].title;
 				let dt = timestamp - prevtime;
 				prevtime = timestamp;
 
-				if((currenthover != temporalhover && temporalhover != -1) || (temporalhover == -1 && currenthover != currentselected)) {
+				if((!ismobile || isselected) && ((currenthover != temporalhover && temporalhover != -1) || (temporalhover == -1 && currenthover != currentselected))) {
 					if(currenthover >= 0) vsts[currenthover].div.className = "leftitem";
 					if(temporalhover == -1) {
 						vsts[currentselected].div.className = "leftitem lefthover leftselected";
@@ -722,9 +932,9 @@ else title = vsts[currentselected].title;
 						currenthover = temporalhover;
 					}
 					updateui();
-				}
+				} else if(triggerupdate) updateui();
 
-				if(vsts[currenthover].ui !== undefined) {
+				if((!ismobile || isselected) && vsts[currenthover].ui !== undefined) {
 					open = Math.min(open+dt*.0005,1);
 					let openease = 1-Math.pow(1-open,5);
 					uielement.style.transform = "rotateX("+(String)(simplex(timestamp*.0003,0)*vsts[currenthover].ui.deg)+"deg) rotateY("+(String)(simplex(-30,timestamp*.0003)*vsts[currenthover].ui.deg*openease-90*(1-openease))+"deg) translateX(-50%) translateY(-50%)";
@@ -734,11 +944,19 @@ else title = vsts[currentselected].title;
 				requestAnimationFrame(update);
 			}
 
-			var currentselected = 0;
-			var currenthover = -3;
-			var temporalhover = -1;
 			function switchselected(id,addtohistory) {
-				if(currentselected == id) return;
+				isselected = true;
+
+				if(currentselected == id) {
+					if(ismobile) {
+						if(addtohistory)
+							window.history.replaceState(null,vsts[id].title,"/newdesign/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
+						//CHANGE THIS
+
+						triggerupdate = true;
+					}
+					return;
+				}
 
 				vsts[currentselected].div.className = "leftitem";
 				vsts[id].div.className = "leftitem lefthover leftselected";
@@ -746,13 +964,9 @@ else title = vsts[currentselected].title;
 				if(addtohistory)
 					window.history.replaceState(null,vsts[id].title,"/newdesign/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
 				//CHANGE THIS
-				if(vsts[currentselected].ui === undefined)
-					document.title = "Unplugred's Plugin Trove";
-				else
-					document.title = vsts[id].title;
 			}
 
-			var leftside = document.getElementById("leftwrap");
+			let leftside = document.getElementById("leftwrap");
 			for(let i = 0; i < vsts.length; i++) {
 				vsts[i].div = document.createElement('a');
 				vsts[i].div.onmousemove = function(){temporalhover = i};
@@ -777,7 +991,6 @@ else title = vsts[currentselected].title;
 
 				let titlediv = document.createElement('div');
 				titlediv.className = "lefttitle";
-				if(i == 0) titlediv.className += " lefthover leftselected";
 				titlediv.innerText = vsts[i].title;
 				iteminnerinnerdiv.appendChild(titlediv);
 
@@ -818,22 +1031,8 @@ else title = vsts[currentselected].title;
 			smilediv.innerText = ":)";
 			leftside.appendChild(smilediv);
 
-			var ui = {
-				title: document.getElementById("title"),
-				body: document.body,
-				window: document.getElementById("info"),
-				description: document.getElementById("desc"),
-				freedownload: document.getElementById("freedownload"),
-				paiddownload: document.getElementById("paiddownload"),
-				decoration: document.getElementById("gif"),
-				ui: document.getElementById("ui"),
-				uishadow: document.getElementById("uishadow"),
-				logo1: document.getElementById("pluginlogo1"),
-				logo2: document.getElementById("pluginlogo2"),
-				rainbow: document.getElementById("rainbow"),
-				winicon: document.getElementById("winicon")
-			}
 			function updateui() {
+				triggerupdate = false;
 				open = 0;
 				ui.window.style.animation = "none";
 				ui.ui.style.animation = "none";
@@ -846,6 +1045,18 @@ else title = vsts[currentselected].title;
 
 				ui.title.innerText = vsts[currenthover].title;
 				ui.body.className = vsts[currenthover].id;
+				issingle = (document.documentElement.clientWidth <= 600 || (ismobile && vsts[currenthover].ui === undefined && isselected));
+				if(ismobile) {
+					ui.body.className += " mobile " + (isselected?"mobileselected":"mobileunselected");
+					if(issingle) {
+						document.body.className += " single";
+						document.getElementById("right").style.height = (vsts[currenthover].ui == undefined ? "5px" : ((String)(vsts[currenthover].ui.height + 150)+"px"));
+					} else document.getElementById("right").style.height = null;
+				}
+				if(!isselected || vsts[currenthover].ui === undefined)
+					document.title = "Unplugred's Plugin Trove";
+				else
+					document.title = vsts[currenthover].title;
 				ui.window.className = "win-pos " + vsts[currenthover].color;
 				ui.description.innerHTML = vsts[currenthover].description;
 				if(vsts[currenthover].price === undefined) {
