@@ -786,9 +786,9 @@ for(let i = 0; i < vsts.length; i++) {
 						<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
 					</div>
 					<div class="windowcontent">
-						<div class="popupdesc" id="popuptextdesc"></div>
+						<div class="popupdesc"></div>
 					</div>
-					<a class="popupclose" href="javascript:void(0)" onclick="closetext()">
+					<a class="popupclose" href="javascript:void(0)" onclick="setpopup(0)">
 						<div class="popupclosewrap">
 							<div class="popupline1 popupline"></div>
 							<div class="popupline2 popupline"></div>
@@ -796,7 +796,7 @@ for(let i = 0; i < vsts.length; i++) {
 					</a>
 				</div>
 			</div>
-			<div id="popupaudio" class="win-wrap" style="z-index: 30000; display: none;">
+			<div id="popupmedia" class="win-wrap" style="z-index: 30000; display: none;">
 				<div class="popup win-pos green">
 					<div class="windowbgwrap">
 						<div class="windowbg windowbox"></div>
@@ -804,10 +804,11 @@ for(let i = 0; i < vsts.length; i++) {
 						<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
 					</div>
 					<div class="windowcontent">
-						<div class="popupdesc" id="popupaudiodesc"></div>
-						<audio controls controlslist="nodownload" id="popupplayer"></audio>
+						<div class="popupdesc"></div>
+						<iframe class="popupvideoplayer" style="display: none" src="about:blank" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<audio class="popupaudioplayer" style="display: none" controls controlslist="nodownload"></audio>
 					</div>
-					<a class="popupclose" href="javascript:void(0)" onclick="closeaudio()">
+					<a class="popupclose" href="javascript:void(0)" onclick="setpopup(1)">
 						<div class="popupclosewrap">
 							<div class="popupline1 popupline"></div>
 							<div class="popupline2 popupline"></div>
@@ -815,17 +816,17 @@ for(let i = 0; i < vsts.length; i++) {
 					</a>
 				</div>
 			</div>
-			<div class="win-wrap" style="z-index: 30000;">
-				<div id="everyweek" style="top: calc(-88px + 88vh); left: 50vw;" class="popup win-pos green">
+			<div id="popupeveryweek" class="win-wrap" style="z-index: 30000;">
+				<div style="top: calc(-88px + 88vh); left: 50vw;" class="popup win-pos green">
 					<div class="windowbgwrap">
 						<div class="windowbg windowbox"></div>
 						<div class="windowbg tab"></div>
 						<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
 					</div>
 					<div class="windowcontent">
-						<div class="popupdesc" id="popuptextdesc"><b>EMPTYING THE VAULTS!</b><br/>Releasing a new plugin every Sunday until I run out of unreleased plugins.</div>
+						<div class="popupdesc"><b>EMPTYING THE VAULTS!</b><br/>Releasing a new plugin every Sunday until I run out of unreleased plugins.</div>
 					</div>
-					<a class="popupclose" href="javascript:void(0)" onclick="closepopup(this.parentElement)">
+					<a class="popupclose" href="javascript:void(0)" onclick="setpopup(2)">
 						<div class="popupclosewrap">
 							<div class="popupline1 popupline"></div>
 							<div class="popupline2 popupline"></div>
@@ -837,7 +838,7 @@ for(let i = 0; i < vsts.length; i++) {
 
 		<script type="text/javascript" src="<%= unplugassets %>/window/movable.js"></script>
 		<script type="text/javascript" src="<%= unplugassets %>/automatism/simplex.js"></script>
-		<script type="text/javascript" src="/vsts.js"></script>
+		<script type="text/javascript" src="/vsts.js?v=1"></script>
 		<script>
 			var ui = {
 				title: document.getElementById("title"),
@@ -1103,96 +1104,74 @@ for(let i = 0; i < vsts.length; i++) {
 			}
 			update();
 
-			var popup_audio_id = -1;
-			var popup_audio_div = document.getElementById("popupaudio");
-			var popup_audio_text = document.getElementById("popupaudiodesc");
-			var popup_audio_player = document.getElementById("popupplayer");
-			function popup_audio(id, path, desc) {
-				if(id === popup_audio_id || id === -1) {
-					closeaudio();
-				} else {
-					setpopup(popup_audio_div, popup_audio_text, desc, popup_audio_player, path);
-					let animationdiv = popup_audio_div.getElementsByClassName("popup")[0];
-					animationdiv.style.animation = "none";
-					animationdiv.offsetWidth;
-					if(popup_audio_id == -1) {
-						animationdiv.style.animation = "popupopen .4s ease-in";
-						animationdiv.style.top = "calc((100vh - 100px) * "+(String)(.2+.6*Math.random())+")";
-						animationdiv.style.left = (String)(20+30*Math.random())+"vw";
-						popup_audio_div.style.top = "0";
-						popup_audio_div.style.left = "0";
-					} else {
-						animationdiv.style.animation = "windowopen .4s ease-out";
-					}
-					popup_audio_id = id;
-				}
+			var popups = [{
+				div: document.getElementById("popuptext") },{
+				div: document.getElementById("popupmedia") },{
+				div: document.getElementById("popupeveryweek") }];
+			for(let i = 0; i < popups.length; i++) {
+				popups[i].id = -1;
+				popups[i].innerdiv = popups[i].div.getElementsByClassName("popup")[0];
+				popups[i].text = popups[i].div.getElementsByClassName("popupdesc")[0];
+				popups[i].audioplayer = popups[i].div.getElementsByClassName("popupaudioplayer")[0];
+				popups[i].videoplayer = popups[i].div.getElementsByClassName("popupvideoplayer")[0];
+				popups[i].isaudio = false;
+				popups[i].isvideo = false;
 			}
-
-			var popup_id = -1;
-			var popup_div = document.getElementById("popuptext");
-			var popup_text = document.getElementById("popuptextdesc");
-			function popup(id, desc) {
-				if(id === popup_id || id === -1) {
-					closetext();
-				} else {
-					setpopup(popup_div, popup_text, desc);
-					let animationdiv = popup_div.getElementsByClassName("popup")[0];
-					animationdiv.style.animation = "none";
-					animationdiv.offsetWidth;
-					if(popup_id == -1) {
-						animationdiv.style.animation = "popupopen .4s ease-in";
-						animationdiv.style.top = "calc((100vh - 100px) * "+(String)(.2+.6*Math.random())+")";
-						animationdiv.style.left = (String)(20+30*Math.random())+"vw";
-						popup_div.style.top = "0";
-						popup_div.style.left = "0";
-					} else {
-						animationdiv.style.animation = "windowopen .4s ease-out";
-					}
-					popup_id = id;
+			function setpopup(index, id = -1, text = "", path = null, isaudio = false, isvideo = false) {
+				if(id === popups[index].id || id === -1) {
+					if(popups[index].isaudio)
+						popups[index].audioplayer.pause();
+					if(popups[index].isvideo)
+						popups[index].videoplayer.src = "about:blank";
+					popups[index].innerdiv.style.animation = "none";
+					popups[index].innerdiv.offsetWidth;
+					popups[index].innerdiv.style.animation = "popupopen .4s reverse ease-in forwards";
+					popups[index].id = -1;
+					setTimeout(function() {
+						if(popups[index].id == -1)
+							popups[index].innerdiv.parentElement.style.display = "none";
+					},400);
+					return;
 				}
-			}
-			function setpopup(div, divtext, text, divplayer = null, path = null) {
-				div.style.display = null;
-				divtext.innerHTML = text
+				popups[index].div.style.display = null;
+				popups[index].text.innerHTML = text
 					.replace(/@br/g,"<br/>")
 					.replace(/@a1/g,"<a target=\"_blank\" href=\"")
 					.replace(/@a2/g,"\">")
 					.replace(/@a3/g,"</a>");
-				if(divplayer !== null) {
-					divplayer.src = path;
-					divplayer.play();
+				if(popups[index].audioplayer !== undefined) {
+					if(isaudio) {
+						popups[index].audioplayer.style.display = null;
+						popups[index].audioplayer.src = path;
+						popups[index].audioplayer.play();
+					} else if(popups[index].isaudio) {
+						popups[index].audioplayer.pause();
+						popups[index].audioplayer.style.display = "none";
+					}
+					popups[index].isaudio = isaudio;
 				}
-			}
-			function closetext() {
-				let animationdiv = popup_div.getElementsByClassName("popup")[0];
-				animationdiv.style.animation = "none";
-				animationdiv.offsetWidth;
-				animationdiv.style.animation = "popupopen .4s reverse ease-in forwards";
-				popup_id = -1;
-				setTimeout(function() {
-					if(popup_id == -1)
-						popup_div.style.display = "none";
-				},5000);
-			}
-			function closeaudio() {
-				let animationdiv = popup_audio_div.getElementsByClassName("popup")[0];
-				animationdiv.style.animation = "none";
-				animationdiv.offsetWidth;
-				animationdiv.style.animation = "popupopen .4s reverse ease-in forwards";
-				popup_audio_player.pause();
-				popup_audio_id = -1;
-				setTimeout(function() {
-					if(popup_audio_id == -1)
-						popup_audio_div.style.display = "none";
-				},400);
-			}
-			function closepopup(element) {
-				element.style.animation = "none";
-				element.offsetWidth;
-				element.style.animation = "popupopen .4s reverse ease-in forwards";
-				setTimeout(function() {
-					element.parentElement.style.display = "none";
-				},400);
+				if(popups[index].videoplayer !== undefined) {
+					if(isvideo) {
+						popups[index].videoplayer.style.display = null;
+						popups[index].videoplayer.src = path;
+					} else if(popups[index].isvideo) {
+						popups[index].videoplayer.src = "about:blank";
+						popups[index].videoplayer.style.display = "none";
+					}
+					popups[index].isvideo = isvideo;
+				}
+				popups[index].innerdiv.style.animation = "none";
+				popups[index].innerdiv.offsetWidth;
+				if(popups[index].id == -1) {
+					popups[index].innerdiv.style.animation = "popupopen .4s ease-in";
+					popups[index].innerdiv.style.top = "calc((100vh - 100px) * "+(String)(.2+.6*Math.random())+")";
+					popups[index].innerdiv.style.left = (String)(20+30*Math.random())+"vw";
+					popups[index].div.style.top = "0";
+					popups[index].div.style.left = "0";
+				} else {
+					popups[index].innerdiv.style.animation = "windowopen .4s ease-out";
+				}
+				popups[index].id = id;
 			}
 		</script>
 	</body>

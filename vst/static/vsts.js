@@ -70,8 +70,7 @@ any amount will be greatly appreciated!<br/>
 forget about warmth.<br/>
 this refreshing take on fold distortion gives off a harsh and metallic sound that is guaranteed to destroy any mix.<br/>
 <br/>
-demo by <a href="https://soundcloud.com/the_real_astrodex" target="_blank">Astrodex</a>:<br/>
-<audio src="/pf/demo1.mp3" controls controlslist="nodownload"></audio><br/>
+<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)'>▶ Demo</a> (loud)</center><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
@@ -159,7 +158,7 @@ sub oscillator sidechained to incoming signal.<br/>
 put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
 apply with caution if not in a proper mixing environment.<br/>
 <br/>
-<center><iframe class="youtube" src="https://www.youtube.com/embed/4iIJjWvpb_s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s", false, true)'>▶ How to use</a> (demo video)</center><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
