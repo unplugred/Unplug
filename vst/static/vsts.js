@@ -58,7 +58,7 @@ if you appreciate my work and would like to support it (as most cool and handsom
 i research, develop, and maintain these plugins on my free time, so these funds allow me to dedicate more of my time to making these.<br/>
 any amount will be greatly appreciated!<br/>
 <br/>
-<center><a href="https://www.paypal.com/donate/?hosted_button_id=6MRYFTBHNU7V2" target="_blank"><img src="/donate.png"/></a></center>`,
+<center><a href="https://www.paypal.com/donate/?hosted_button_id=6MRYFTBHNU7V2" target="_blank"><img src="/donate.webp"/></a></center>`,
 		hideicon: true,
 		separator: true
 	},{

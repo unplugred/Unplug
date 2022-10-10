@@ -9,7 +9,7 @@
 				margin: 0;
 				width: 100vw;
 				height: 100vh;
-				background: url(/bg.png) 5px 0;
+				background: url(/bg.webp) 5px 0;
 				background-attachment: fixed;
 				font-family: 'Helvetica Neue', Arial, sans-serif;
 				font-size: 20px;
@@ -51,7 +51,7 @@
 				top: calc(50vh - 62.5vmin);
 			}
 			#testpattern {
-				background: url(/test.png);
+				background: url(/test.webp);
 				width: 16px;
 				height: 96px;
 				position: fixed;
@@ -69,7 +69,7 @@
 				pointer-events: none;
 			}
 			#rainbow {
-				background: url(/rainbow.png);
+				background: url(/rainbow.webp);
 				height: 100vh;
 				width: 4px;
 				border-right: 1px solid black;
@@ -271,7 +271,7 @@
 				stroke-width: 1px;
 			}
 			.windowbg {
-				background: url(/scanlines.png), url(/clouds.png);
+				background: url(/scanlines.webp), url(/clouds.webp);
 				background-size: auto, cover;
 				background-attachment: fixed;
 			}
@@ -530,7 +530,7 @@
 		</style>
 		<style>
 			html, body {
-				background: url(/bgsmol.png) 5px 0;
+				background: url(/bgsmol.webp) 5px 0;
 			}
 			#whitegradient {
 				width: 100vw;
@@ -693,7 +693,7 @@
 						document.getElementsByClassName("lefticon")[0].style.backgroundImage = "url(/"+vsts[i].id+"/icon.svg)";
 					document.getElementsByClassName("lefttitle")[0].innerText = vsts[i].title;
 					document.body.className = vsts[currentselected].id;
-					document.getElementById("pluginlogo1").style.backgroundImage = "url(/"+vsts[currentselected].id+"/text.png)";
+					document.getElementById("pluginlogo1").style.backgroundImage = "url(/"+vsts[currentselected].id+"/text.webp)";
 					document.getElementById("rainbow").style.backgroundPositionY = (String)((currentselected*-300)/vsts.length)+"vh";
 					document.title = vsts[currentselected].title;
 				}

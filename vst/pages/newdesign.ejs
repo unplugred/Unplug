@@ -41,8 +41,8 @@ for(let i = 0; i < vsts.length; i++) {
 		<meta name="twitter:image" content="<%= unplugassets %>/objects/c10.gif"><%
 	} else { %>
 		<meta name="twitter:card" content="summary_large_image">
-		<meta property="og:image" content="<%= assets %>/<%= vsts[currentselected].id %>/ui.png">
-		<meta name="twitter:image" content="<%= assets %>/<%= vsts[currentselected].id %>/ui.png"><%
+		<meta property="og:image" content="<%= assets %>/<%= vsts[currentselected].id %>/ui.webp">
+		<meta name="twitter:image" content="<%= assets %>/<%= vsts[currentselected].id %>/ui.webp"><%
 	} %>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -53,7 +53,7 @@ for(let i = 0; i < vsts.length; i++) {
 				margin: 0;
 				width: 100vw;
 				height: 100vh;
-				background: url(/bg.png) 5px 0;
+				background: url(/bg.webp) 5px 0;
 				background-attachment: fixed;
 				font-family: 'Helvetica Neue', Arial, sans-serif;
 				line-height: .95;
@@ -94,7 +94,7 @@ for(let i = 0; i < vsts.length; i++) {
 				top: calc(50vh - 62.5vmin);
 			}
 			#testpattern {
-				background: url(/test.png);
+				background: url(/test.webp);
 				width: 16px;
 				height: 96px;
 				position: fixed;
@@ -121,7 +121,7 @@ for(let i = 0; i < vsts.length; i++) {
 				display: none;
 			}
 			#rainbow {
-				background: url(/rainbow.png?v=1);
+				background: url(/rainbow.webp);
 				height: 100vh;
 				width: 4px;
 				border-right: 1px solid black;
@@ -427,7 +427,7 @@ for(let i = 0; i < vsts.length; i++) {
 				stroke-width: 1px;
 			}
 			.windowbg {
-				background: url(/scanlines.png), url(/clouds.png);
+				background: url(/scanlines.webp), url(/clouds.webp);
 				background-size: auto, cover;
 				background-attachment: fixed;
 			}
@@ -601,7 +601,7 @@ for(let i = 0; i < vsts.length; i++) {
 			}
 			#note {
 				position: absolute;
-				background: url(/about/gif.gif) center no-repeat;
+				background: url(/about/gif.webp) center no-repeat;
 				width: 200px;
 				height: 200px;
 				right: 0;
@@ -704,7 +704,7 @@ for(let i = 0; i < vsts.length; i++) {
 			}
 		</style><%
 	for(let i = 0; i < vsts.length; i++) if(vsts[i].decoration !== undefined) { %>
-		<link rel="prefetch" href="<%= assets %>/<%= vsts[i].id %>/gif.gif" /><%
+		<link rel="prefetch" href="<%= assets %>/<%= vsts[i].id %>/gif.webp" /><%
 	} %>
 	</head>
 	<body>
@@ -1084,7 +1084,7 @@ for(let i = 0; i < vsts.length; i++) {
 					ui.decoration.style.display = "none";
 				} else {
 					ui.decoration.style.display = null;
-					ui.decoration.src = "/"+vsts[currenthover].id+"/gif.gif";
+					ui.decoration.src = "/"+vsts[currenthover].id+"/gif.webp";
 				}
 				if(vsts[currenthover].ui === undefined) {
 					ui.ui.style.display = "none";
@@ -1092,15 +1092,15 @@ for(let i = 0; i < vsts.length; i++) {
 				} else {
 					ui.ui.style.display = null;
 					ui.uishadow.style.display = null;
-					ui.ui.style.background = "url(/"+vsts[currenthover].id+"/ui.png), black";
+					ui.ui.style.background = "url(/"+vsts[currenthover].id+"/ui.webp), black";
 					ui.ui.style.width = vsts[currenthover].ui.width+"px";
 					ui.uishadow.style.width = vsts[currenthover].ui.width+"px";
 					ui.ui.style.height = vsts[currenthover].ui.height+"px";
 					ui.uishadow.style.height = vsts[currenthover].ui.height+"px";
 					ui.ui.style.marginBottom = "calc(20vh - " + (String)(vsts[currenthover].ui.height*.2)+"px)";
 				}
-				ui.logo1.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.png?v=2)";
-				ui.logo2.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.png?v=2)";
+				ui.logo1.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
+				ui.logo2.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
 			}
 			update();
 
