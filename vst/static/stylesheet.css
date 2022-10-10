@@ -1,4 +1,10 @@
 /* bg */
+* {
+	cursor: url("default.png") 0 0, default;
+}
+a, a *{
+	cursor: url("pointer.png") 6 0, pointer !important;
+}
 html, body {
 	padding: 0;
 	margin: 0;
