@@ -10,14 +10,14 @@
 	left: -124px;
 }
 #plastic-funeral .win-inner {
-	background-image: url("ui.png?v=2");
+	background-image: url("ui.webp");
 }
 #plastic-funeral .desc {
 	border: solid 2px #000;
 	padding-left: 132px;
 }
 #rose {
-	background: url("gif.gif") no-repeat top center;
+	background: url("gif.webp") no-repeat top center;
 	bottom: 0;
 	right: 10px;
 	height: calc(100% + 20px);

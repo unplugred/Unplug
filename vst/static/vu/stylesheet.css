@@ -12,7 +12,7 @@
 	margin-left: calc(50% - 190px);
 }
 #vu .win-inner {
-	background-image: url("ui.png");
+	background-image: url("ui.webp");
 }
 #vu .desc {
 	border: solid 2px #19121d;
@@ -20,7 +20,7 @@
 	max-width: calc(100vw - 130px)!important;
 }
 #circuit {
-	background: url("gif.gif") no-repeat top center;
+	background: url("gif.webp") no-repeat top center;
 	bottom: -70px;
 	right: -50px;
 	height: 300px;

@@ -9,21 +9,21 @@ switch(pagename) {
 		single = true;
 		title = "Plastic Funeral VST";
 		desc = "Distortion/saturation that sounds like a laser beam";
-		css = assets + "/pf/stylesheet.css";
+		css = assets + "/pf/stylesheet.css?v=2";
 		og = assets + "/pf/og.png?v=2";
 		break;
 	case '/vu':
 		single = true;
 		title = "VU Meter VST";
 		desc = "a VU meter for your VU metering needs";
-		css = assets + "/vu/stylesheet.css";
+		css = assets + "/vu/stylesheet.css?v=2";
 		og = assets + "/vu/og.png";
 		break;
 	case '/clickbox':
 		single = true;
 		title = "ClickBox VST";
 		desc = "a VST that generates clicks";
-		css = assets + "/cb/stylesheet.css";
+		css = assets + "/cb/stylesheet.css?v=2";
 		og = assets + "/cb/og.png";
 		break;
 }
@@ -63,14 +63,14 @@ if(!single || og === null) { %>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link rel=StyleSheet href="<%= unplugassets %>/window/window.css?v=4" type="text/css" media=screen>
-		<link rel=StyleSheet href="/stylesheet.css?v=7" type="text/css" media=screen><%
+		<link rel=StyleSheet href="/stylesheet.css?v=8" type="text/css" media=screen><%
 if(single) { %>
 		<link rel=StyleSheet href="<%= css %>" type="text/css" media=screen><%
 } else { %>
-		<link rel=StyleSheet href="<%= assets %>/about/stylesheet.css" type="text/css" media=screen>
-		<link rel=StyleSheet href="<%= assets %>/cb/stylesheet.css" type="text/css" media=screen>
-		<link rel=StyleSheet href="<%= assets %>/vu/stylesheet.css" type="text/css" media=screen>
-		<link rel=StyleSheet href="<%= assets %>/pf/stylesheet.css" type="text/css" media=screen><%
+		<link rel=StyleSheet href="<%= assets %>/about/stylesheet.css?v=2" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/cb/stylesheet.css?v=2" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/vu/stylesheet.css?v=2" type="text/css" media=screen>
+		<link rel=StyleSheet href="<%= assets %>/pf/stylesheet.css?v=2" type="text/css" media=screen><%
 } %>
 		<style>.win-frame{filter:hue-rotate(<%=Math.random()%>turn);}</style>
 		<link rel="preconnect" href="https://fonts.gstatic.com">
