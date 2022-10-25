@@ -275,7 +275,7 @@ for(let i = 0; i < popups.length; i++) {
 	popups[i].isaudio = false;
 	popups[i].isvideo = false;
 }
-function setpopup(index, id = -1, text = "", path = null, isaudio = false, isvideo = false) {
+function setpopup(index, id = -1, text = "", path = null, isaudio = false, isvideo = false, videowidth = 20, videoheight = 15) {
 	if(id === popups[index].id || id === -1) {
 		if(popups[index].isaudio)
 			popups[index].audioplayer.pause();
@@ -311,6 +311,8 @@ function setpopup(index, id = -1, text = "", path = null, isaudio = false, isvid
 	if(popups[index].videoplayer !== undefined) {
 		if(isvideo) {
 			popups[index].videoplayer.style.display = null;
+			popups[index].videoplayer.style.width = (String)(videowidth)+"vw";
+			popups[index].videoplayer.style.height = (String)(videoheight)+"vw";
 			popups[index].videoplayer.src = path;
 		} else if(popups[index].isvideo) {
 			popups[index].videoplayer.src = "about:blank";

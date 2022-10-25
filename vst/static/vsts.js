@@ -166,7 +166,7 @@ sub oscillator sidechained to incoming signal.<br/>
 put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
 apply with caution if not in a proper mixing environment.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true)'>▶ How to use</a> (demo video)</center><br/>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
@@ -200,7 +200,7 @@ which in the right hands can produce highly textural results.<br/>
 among the features are pitch shifting on the feedback, asymetric ping pong, reverse delay, and more...<br/>
 the parameters are highly automatable and can produce a dub delay effect when automating the time parameter.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for CRMBL.", "https://www.youtube.com/embed/1E9sQJNHKg4?autoplay=1", false, true)'>▶ How to use</a> (demo video)</center><br/>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for CRMBL.", "https://www.youtube.com/embed/1E9sQJNHKg4?autoplay=1", false, true, 26.666, 15)'>▶ How to use</a> (demo video)</center><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
