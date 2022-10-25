@@ -7,7 +7,8 @@ var vsts = [
 im ari (they them). on the internet i release stuff under the name unplugred.<br/>
 after studying audio engineering i decided to make my own vst plugins for me and my friends because i was frustrated with the current offerrings.<br/>
 eventually i decided to release them onto the internet as open source because why not.<br/>
-i would like to make my own daw in the future.<br/>
+in here youd find no resistors, transitors, capacitors, or diodes modeled. no emulation of anything.<br/>
+these are completely a result of my own exploration of code and sound, and as a result some of them are good, while others not so much.<br/>
 i hope these bring you joy and would love to hear what u make with them.<br/>
 u can reach me on discord (red#3510) and email (unplugred@gmail.com).<br/>
 shout out to my friend lau she makes rly good music <a href="https://laulaulau.bandcamp.com/" target="_blank">check her out</a>.`,
@@ -43,11 +44,18 @@ A:</b> i intend on supporting clap once reaper supports it so i could begin test
 <b>Q: Can I get Mac support<br/>
 A:</b> i do not have the money to buy a mac to properly develop for it.<br/>
 <b>Q: Can I have ___ feature?<br/>
-A:</b> you are more than welcome to shoot me an email at unplugred@gmail.com, but do know that i am just one person, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
-custom versions of the plugins are an option with appropriate compensation.<br/>
+A:</b> you are more than welcome to shoot me an email at unplugred@gmail.com, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
+custom versions of the plugins are an option with appropriate financial compensation.<br/>
+<b>Q: How do you make these?<br/>
+A:</b> the plugins are made in C++ via the JUCE framework.<br/>
+ui is made with blender, paint.net, glimpse, and imagemagick.<br/>
+demo videos are made and edited in blender for no good reason.<br/>
+music is made in reaper.<br/>
+text editor is neovide (vim).<br/>
 <b>Q: I have a cat video to send you!! (its rly cute)<br/>
 A:</b> what are you waiting for??<br/>
-all cat videos are welcome at mail (unplugred@gmail.com) or discord (red#3510).`,
+all cat videos are welcome at mail (unplugred@gmail.com) or discord (red#3510).
+id also love to hear any music you made with my plugins, and feel free to send me any album recommendations of bands youd think id like as well.`,
 		hideicon: true
 	},{
 		title: "Donate",
@@ -158,7 +166,7 @@ sub oscillator sidechained to incoming signal.<br/>
 put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
 apply with caution if not in a proper mixing environment.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s", false, true)'>▶ How to use</a> (demo video)</center><br/>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true)'>▶ How to use</a> (demo video)</center><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
@@ -191,6 +199,8 @@ a highly versitile delay plugin with a large feature-set,<br/>
 which in the right hands can produce highly textural results.<br/>
 among the features are pitch shifting on the feedback, asymetric ping pong, reverse delay, and more...<br/>
 the parameters are highly automatable and can produce a dub delay effect when automating the time parameter.<br/>
+<br/>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for CRMBL.", "https://www.youtube.com/embed/1E9sQJNHKg4?autoplay=1", false, true)'>▶ How to use</a> (demo video)</center><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/wGlzc",
