@@ -252,12 +252,12 @@ html, body {
 .rating {
 	display: inline-block;
 	font-size: 1em;
-	letter-spacing: .09em;
+	letter-spacing: .05em;
 	transform: skewY(-16deg);
 	color: #FF00FF;
 	position: relative;
-	left: -.3em;
-	top: -.3em;
+	left: 0em;
+	top: -.5em;
 }
 .tagline {
 	display: inline-block;
