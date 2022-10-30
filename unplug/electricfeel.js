@@ -34,7 +34,8 @@ function openwin() {
 		alwaysOnTop: true,
 		webPreferences: {
 			nodeIntegration: true,
-			enableRemoteModule: true
+			enableRemoteModule: true,
+			contextIsolation: false
 		}
 	});
 	global.unplugWindow.removeMenu();
@@ -52,7 +53,8 @@ function openwin() {
 		frame: global.debug,
 		webPreferences: {
 			nodeIntegration: true,
-			enableRemoteModule: true
+			enableRemoteModule: true,
+			contextIsolation: false
 		},
 		show: false
 	});
@@ -70,7 +72,8 @@ function openwin() {
 		alwaysOnTop: true,
 		webPreferences: {
 			nodeIntegration: true,
-			enableRemoteModule: true
+			enableRemoteModule: true,
+			contextIsolation: false
 		},
 		show: false
 	});
