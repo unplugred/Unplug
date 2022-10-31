@@ -86,7 +86,7 @@ var dataa = [
 	},{
 		number: 50,
 		name: "Paper Boy Flyin' High",
-		submissions: 1927,
+		submissions: 1922,
 		overall: { rating: 3.69, amount: 23, place: 471 },
 		fun: { rating: 3.667, amount: 23, place: 377 },
 		innovation: { rating: 3.548, amount: 23, place: 442 },
@@ -95,5 +95,17 @@ var dataa = [
 		audio: { rating: 3.786, amount: 23, place: 271 },
 		humor: { rating: 2.735, amount: 19, place: 818 },
 		mood: { rating: 3.675, amount: 22, place: 488 }
+	},{
+		number: 51,
+		name: "Intern Inferno",
+		submissions: 1703,
+		overall: { rating: 4.575, amount: 22, place: 2 },
+		fun: { rating: 4.474, amount: 21, place: 4 },
+		innovation: { rating: 4.225, amount: 22, place: 33 },
+		theme: { rating: 4.65, amount: 22, place: 2 },
+		graphics: { rating: 4.675, amount: 22, place: 14 },
+		audio: { rating: 4.342, amount: 21, place: 29 },
+		humor: { rating: 4.579, amount: 21, place: 3 },
+		mood: { rating: 4.6, amount: 22, place: 9 }
 	}
 ];
