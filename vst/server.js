@@ -32,15 +32,7 @@ app.use(express.static(__dirname + '/static', {
 }));
 
 app.use((req, res, next) => {
-/*	VST---------------------*/
-	if(req.path == "/stylesheetold.css")
-		return res.type('text/css').set({
-			'Cache-Control':'public, max-age=2592000',
-			'Access-Control-Allow-Origin':'*'
-		}).render('stylesheetold.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,vsts:vsts});
-	else if(req.path.startsWith("/newdesign"))
-		return res.render('newdesign.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
-	else if(process.env.NODE_ENV !== 'production' && req.path.startsWith("/setup"))
+	if(process.env.NODE_ENV !== 'production' && req.path.startsWith("/setup"))
 		return res.render('setup.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
 	else
 		return res.render('index.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});

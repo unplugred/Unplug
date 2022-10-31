@@ -60,8 +60,7 @@ function back() {
 		document.body.className = vsts[currentselected].id + " mobile mobileunselected";
 		if(issingle) document.body.className += " single"
 	}
-	window.history.replaceState(null,"Unplugred's Plugin Trove","/newdesign");
-	//CHANGE THIS
+	window.history.replaceState(null,"Unplugred's Plugin Trove","/");
 }
 
 let x = document.getElementById("popups").getElementsByClassName("win-pos");
@@ -109,8 +108,7 @@ function switchselected(id,addtohistory) {
 	if(currentselected == id) {
 		if(ismobile) {
 			if(addtohistory)
-				window.history.replaceState(null,vsts[id].title,"/newdesign/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
-			//CHANGE THIS
+				window.history.replaceState(null,vsts[id].title,"/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
 
 			triggerupdate = true;
 		}
@@ -121,8 +119,7 @@ function switchselected(id,addtohistory) {
 	vsts[id].div.className = "leftitem lefthover leftselected";
 	currentselected = id;
 	if(addtohistory)
-		window.history.replaceState(null,vsts[id].title,"/newdesign/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
-	//CHANGE THIS
+		window.history.replaceState(null,vsts[id].title,"/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
 }
 
 let leftside = document.getElementById("leftwrap");
