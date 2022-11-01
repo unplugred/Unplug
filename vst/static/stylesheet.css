@@ -237,6 +237,7 @@ html, body {
 	flex-grow: 0;
 	flex-shrink: 0;
 	filter: brightness(0);
+	margin-right: 2px;
 }
 .lefthover .lefticon, .mobile .leftitem:hover .lefticon {
 	filter: none;
@@ -404,6 +405,7 @@ html, body {
 	scrollbar-width: 4px;
 	scrollbar-color: black transparent;
 	position: relative;
+	line-height: 1.1;
 }
 #winicon {
 	display: none;
@@ -428,6 +430,7 @@ html, body {
 	transform-origin: 0;
 	width: 33.3%;
 	line-height: .8;
+	margin-bottom: 3px;
 }
 #desc {
 	min-height: 300px;
