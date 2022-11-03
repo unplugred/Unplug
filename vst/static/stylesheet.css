@@ -505,9 +505,9 @@ iframe {
 	transform: rotate(-90deg) scaleY(1.8);
 	transform-origin: right bottom;
 	font-size: 20vh;
-	filter: blur(.6vh);
+	filter: blur(.03em);
 	opacity: .12;
-	letter-spacing: -2.3vh;
+	letter-spacing: -.115em;
 	font-weight: bold;
 	pointer-events: none;
 	animation: scrollup 30s infinite linear;

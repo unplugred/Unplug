@@ -1,0 +1,160 @@
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=11" type="text/css" media=screen>
+		<style>
+			html, body {
+				background: url(/bgsmol.webp) 5px 0;
+			}
+			#left {
+				font-size: 30px;
+				padding: 0;
+				overflow: visible;
+				line-height: .7;
+				direction: ltr;
+				transform: scaleX(1.4);
+				transform-origin: top left;
+				position: fixed;
+				bottom: 0;
+				margin: .2em;
+				max-width: none;
+				width: calc(71vw - 136px);
+			}
+			.leftiteminner {
+				margin-bottom: 0;
+			}
+			.lefticon {
+				margin-right: 0;
+			}
+			#dots {
+				right: 0;
+				left: auto;
+			}
+			#pluginlogo {
+				animation: none;
+				top: 15%;
+			}
+			#pluginlogo * {
+				background-position: 50% 50%;
+				background-size: 200%;
+				width: 100%;
+			}
+			#uiwrap {
+				width: auto;
+				height: auto;
+			}
+			#uishadow {
+				top: 8px;
+				left: 8px;
+				z-index: -1;
+			}
+			#note {
+				top: 0;
+				bottom: auto;
+				background-image: url("/icons/vst100.png");
+			}
+			#note svg {
+				animation: none;
+				transform: rotate(65deg);
+			}
+			.vu #pluginlogo {
+				height: 70%;
+			}
+			.vu #pluginlogo * {
+				background-size: 140%;
+			}
+			.pnch #pluginlogo {
+				top: 22%;
+			}
+			.pnch #pluginlogo * {
+				background-position: 15% 50%;
+			}
+			.rb #pluginlogo * {
+				background-position: 40% 50%;
+			}
+			.mp #pluginlogo {
+				top: 20%;
+			}
+			.mp #pluginlogo * {
+				background-position: 18% 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="bg">
+			<svg id="diagonal">
+				<line x1='0' y1='100%' x2='100%' y2='0'/>
+				<line x1='0' y1='0' x2='100%' y2='100%'/>
+			</svg>
+			<div id="circle"></div>
+			<div id="testpattern"></div>
+			<div id="rainbow"></div>
+			<div id="dots">
+				<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
+			</div>
+		</div>
+
+		<div id="content">
+			<div id="contentwrap">
+				<a id="left" class="leftitem lefthover leftselected" href="javascript:void(0)">
+					<div class="leftiteminner lefticonitem">
+						<div class="lefticon"></div>
+						<div class="leftiteminnerinner">
+							<div class="lefttitle"></div>
+						</div>
+					</div>
+				</a>
+				<div id="right" class="section">
+					<div id="uiwrap">
+						<div id="uishadow"></div>
+						<div id="ui"></div>
+					</div>
+					<div id="pluginlogo"><div id="pluginlogo1"></div></div>
+					<div id="note">
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
+							<defs>
+								<path id="rotatingtextpath" d=" M 150, 150 m -60, 0 a 60,60 0 0,1 120,0 a 60,60 0 0,1 -120,0 "/>
+							</defs>
+							<circle cx="150" cy="100" r="75" fill="none"/>
+							<g>
+								<use xlink:href="#rotatingtextpath" fill="none"/>
+								<text fill="#000">
+									<textPath xlink:href="#rotatingtextpath">UnplugRed's VST Trove  UnplugRed's VST Trove</textPath>
+								</text>
+							</g>
+						</svg>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="/vsts.js"></script>
+		<script>
+			var i = -1;
+			for(let m = 0; m < vsts.length; m++) {
+				if(location.pathname.toLowerCase().endsWith(vsts[m].title.replace(/\s/g,"").toLowerCase())) {
+					i = m;
+					break;
+				}
+			}
+			if(i !== -1) {
+				var ui = document.getElementById("ui");
+				var uishadow = document.getElementById("uishadow");
+				ui.style.background = "url(/"+vsts[i].id+"/ui.webp), black";
+				ui.style.width = vsts[i].ui.width+"px";
+				uishadow.style.width = vsts[i].ui.width+"px";
+				ui.style.height = vsts[i].ui.height+"px";
+				uishadow.style.height = vsts[i].ui.height+"px";
+				ui.style.marginBottom = "calc(5vh - " + (String)(vsts[i].ui.height*.05)+"px)";
+				document.getElementsByClassName("lefticon")[0].style.backgroundImage = "url(/"+vsts[i].id+"/icon.svg)";
+				document.getElementsByClassName("lefttitle")[0].innerText = vsts[i].title;
+				document.getElementsByClassName("leftiteminner")[0].className += " " + vsts[i].color;
+				document.body.className = vsts[i].id;
+				document.getElementById("pluginlogo1").style.backgroundImage = "url(/"+vsts[i].id+"/text.webp)";
+				document.getElementById("rainbow").style.backgroundPositionY = (String)((i*-300)/vsts.length)+"vh";
+				document.title = vsts[i].title;
+			}
+		</script>
+	</body>
+</html>
