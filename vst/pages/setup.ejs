@@ -24,6 +24,9 @@
 				left: 12px;
 				width: calc(100vh - 107px);
 			}
+			.lefticon {
+				margin-right: 0;
+			}
 			#dots {
 				right: 0;
 				left: auto;
@@ -126,7 +129,7 @@
 		<div id="content">
 			<div id="right" class="section">
 				<a id="left" class="leftitem lefthover leftselected" href="javascript:void(0)">
-					<div class="leftiteminner teal lefticonitem">
+					<div class="leftiteminner lefticonitem">
 						<div class="lefticon"></div>
 						<div class="leftiteminnerinner">
 							<div class="lefttitle"></div>
@@ -139,19 +142,21 @@
 
 		<script type="text/javascript" src="/vsts.js"></script>
 		<script>
-			var currentselected = 0;
-			for(let i = 0; i < vsts.length; i++) {
-				if(location.pathname.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase())) {
-					currentselected = i;
-
-					if(vsts[i].hideicon === undefined)
-						document.getElementsByClassName("lefticon")[0].style.backgroundImage = "url(/"+vsts[i].id+"/icon.svg)";
-					document.getElementsByClassName("lefttitle")[0].innerText = vsts[i].title;
-					document.body.className = vsts[currentselected].id;
-					document.getElementById("pluginlogo1").style.backgroundImage = "url(/"+vsts[currentselected].id+"/text.webp)";
-					document.getElementById("rainbow").style.backgroundPositionY = (String)((currentselected*-300)/vsts.length)+"vh";
-					document.title = vsts[currentselected].title;
+			var i = -1;
+			for(let m = 0; m < vsts.length; m++) {
+				if(location.pathname.toLowerCase().endsWith(vsts[m].title.replace(/\s/g,"").toLowerCase())) {
+					i = m;
+					break;
 				}
+			}
+			if(i !== -1) {
+				document.getElementsByClassName("lefticon")[0].style.backgroundImage = "url(/"+vsts[i].id+"/icon.svg)";
+				document.getElementsByClassName("lefttitle")[0].innerText = vsts[i].title;
+				document.getElementsByClassName("leftiteminner")[0].className += " " + vsts[i].color;
+				document.body.className = vsts[i].id;
+				document.getElementById("pluginlogo1").style.backgroundImage = "url(/"+vsts[i].id+"/text.webp)";
+				document.getElementById("rainbow").style.backgroundPositionY = (String)((i*-300)/vsts.length)+"vh";
+				document.title = vsts[i].title;
 			}
 		</script>
 	</body>
