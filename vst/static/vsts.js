@@ -41,7 +41,7 @@ A:</b> unfortunately i do not have the money to buy a pro tools license, nor do 
 i think these kind of measures make the end product worse, annoy the customer, and ultimately do not achieve their goal.<br/>
 <b>Q: Can I get CLAP support?<br/>
 A:</b> i intend on supporting clap once reaper supports it so i could begin testing.<br/>
-<b>Q: Can I get Mac support<br/>
+<b>Q: Can I get Mac support?<br/>
 A:</b> i do not have the money to buy a mac to properly develop for it.<br/>
 <b>Q: Can I have ___ feature?<br/>
 A:</b> you are more than welcome to shoot me an email at unplugred@gmail.com, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
@@ -52,6 +52,9 @@ ui is made with blender, paint.net, glimpse, and imagemagick.<br/>
 demo videos are made and edited in blender for no good reason.<br/>
 music is made in reaper.<br/>
 text editor is neovide (vim).<br/>
+<b>Q: Whats the difference between the free and paid versions?<br/>
+A:</b> in the paid version you support me and in the other u dont<br/>
+also using the paid version statistically means ur about 20% more handsome.<br/>
 <b>Q: I have a cat video to send you!! (its rly cute)<br/>
 A:</b> what are you waiting for??<br/>
 all cat videos are welcome at mail (unplugred@gmail.com) or discord (red#3510).
