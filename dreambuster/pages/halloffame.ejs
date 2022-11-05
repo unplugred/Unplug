@@ -29,17 +29,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<style>
-			html, body{
+			html, body {
 				margin: 0;
 				padding: 0;
 				width: 100vw;
 				height: 100vh;
-				overflow-y: auto;
-				overflow-x: hidden;
 				line-height: 0;
+				overflow-x: hidden;
+			}
+
+			html {
+				overflow-y: hidden;
 				background-color: #fff;
 				background-image: url("<%= assets %>/bgjerry.webp");
 				background-position: center center;
+			}
+
+			body {
+				overflow-y: auto;
+				scrollbar-width: thin;
+				scrollbar-width: 8px;
+				scrollbar-color: black transparent;
 			}
 
 			::selection {
