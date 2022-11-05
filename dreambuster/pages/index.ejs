@@ -435,7 +435,7 @@
 			{
 				var start = Date.UTC(2022, 3, 2, 01, 0, 0, 0);
 				if(start < Date.now()) {
-					start = Date.UTC(2022, 3, 5, 01, 0, 0, 0);
+					start += 259200000;
 					document.getElementById("counterdate").style.display = "none";
 				} else {
 					let startdate = new Date(start);
