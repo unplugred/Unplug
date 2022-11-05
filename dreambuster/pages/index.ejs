@@ -699,6 +699,8 @@
 				if(!dt) dt = timestamp;
 				let dtt = timestamp - dt;
 				dt = timestamp;
+				let scrollblend = Math.min(scrollspeed*dtt,1);
+				let gamesscrollblend = Math.min(gamesscrollspeed*dtt,1);
 
 				for(let i = 0; i < 16; i += 8) {
 					ps_text[i>4?0:1].style.transform = "translate("+((
@@ -708,12 +710,12 @@
 						Math.sin(ps_sines[i+6]+timestamp*ps_sines[i+7]))*1.5) + "%)";
 				}
 
-				fscroll = -document.documentElement.scrollTop*scrollspeed*dtt + fscroll*(1 - scrollspeed*dtt);
-				gamesscroll = -document.documentElement.scrollTop*gamesscrollspeed*dtt + gamesscroll*(1 - gamesscrollspeed*dtt);
+				fscroll = -document.documentElement.scrollTop*scrollblend + fscroll*(1 - scrollblend);
+				gamesscroll = -document.documentElement.scrollTop*gamesscrollblend + gamesscroll*(1 - gamesscrollblend);
 				scroll = Math.round(fscroll);
 
-				fscroll = -document.documentElement.scrollTop*scrollspeed*dtt + fscroll*(1 - scrollspeed*dtt);
-				gamesscroll = -document.documentElement.scrollTop*gamesscrollspeed*dtt + gamesscroll*(1 - gamesscrollspeed*dtt);
+				fscroll = -document.documentElement.scrollTop*scrollblend + fscroll*(1 - scrollblend);
+				gamesscroll = -document.documentElement.scrollTop*gamesscrollblend + gamesscroll*(1 - gamesscrollblend);
 				scroll = Math.round(fscroll);
 
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
