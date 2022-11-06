@@ -126,7 +126,6 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 	},{
 		title: "Pisstortion",
 		id: "ps",
-		comingsoon: true,
 		color: "teal",
 		tagline: "Advanced sinefold distortion plugin.",
 		description: `
