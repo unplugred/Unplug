@@ -36,7 +36,7 @@ A:</b> i sadly do not accept bug reports for the linux version.<br/>
 since these plugins are open source, you are welcome to <a href="https://github.com/unplugred/vsts" target="_blank">make a pull request</a>.<br/>
 <b>Q: Can I get 64bit support?<br/>
 A:</b> 32bit support is buggy currently but i do intend on getting it working in the future.<br/>
-<b>Q: Can I get AAX suppoprt?<br/>
+<b>Q: Can I get AAX support?<br/>
 A:</b> unfortunately i do not have the money to buy a pro tools license, nor do i intend on supporting their guidelines to get a developer license, which require anti piracy measures to be installed.<br/>
 i think these kind of measures make the end product worse, annoy the customer, and ultimately do not achieve their goal.<br/>
 <b>Q: Can I get CLAP support?<br/>
@@ -141,17 +141,18 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 	},{
 		title: "PNCH",
 		id: "pnch",
-		comingsoon: true,
 		rating: "(Good)",
 		color: "teal",
 		tagline: "Weird knob that makes ur stuff tight.",
 		description: `
 a type of effect that causes added harmonics as well as a gating effect.<br/>
 compared to typical gates and expanders, this one does not use an envelope follower for the gating effect, resulting in gating without pumping<br/>
-the added harmonics might not be noticable or even pleasant on an already dirty signal such as a guitar.<br/>
+the added harmonics might not be noticeable or even pleasant on an already dirty signal such as a guitar.<br/>
 as a result, this makes it great for applications such as removing humming on a direct guitar signal before applying heavy distortion.<br/>
 also sounds great on drum loops and results in a very choppy effect.<br/>
 APPLY BEFORE DISTORTION FOR IDEAL EFFECT.<br/>
+<br/>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 3, "PNCH demo.", "https://www.youtube.com/embed/UFdOg7CEaGQ?autoplay=1", false, true, 20, 15)'>▶ PNCH in action</a> (demo video)</center><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/pnchfree",
