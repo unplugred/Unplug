@@ -163,7 +163,6 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 	},{
 		title: "Red Bass",
 		id: "rb",
-		comingsoon: true,
 		color: "teal",
 		rating: "(Good)",
 		tagline: "Low-end enchancer excellent for kicks and speech.",
@@ -213,7 +212,7 @@ the parameters are highly automatable and can produce a dub delay effect when au
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/crmblfree",
 		paiddownload: "https://shop.unplug.red/b/crmbl",
-		price: 25,
+		price: 30,
 		decoration: {width:240,height:231},
 		ui: {width:507,height:465,deg:30}
 	},{
@@ -234,7 +233,7 @@ and bass recordings being distorted on the higher frequencies without hurting th
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/prismafree",
 		paiddownload: "https://shop.unplug.red/b/prisma",
-		price: 30,
+		price: 40,
 		decoration: {width:138,height:267},
 		ui: {width:478,height:561,deg:20}
 	}
