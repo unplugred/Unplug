@@ -182,7 +182,6 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 	},{
 		title: "MPaint",
 		id: "mp",
-		comingsoon: true,
 		color: "teal",
 		tagline: "A sampler from a popular video game.",
 		description: `
