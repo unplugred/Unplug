@@ -196,7 +196,6 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 	},{
 		title: "CRMBL",
 		id: "crmbl",
-		comingsoon: true,
 		color: "teal",
 		rating: "(Very good)",
 		tagline: "Delay for insane people.",
