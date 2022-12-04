@@ -55,7 +55,7 @@ for(let i = 0; i < vsts.length; i++) {
 		<link rel="prefetch" href="<%= assets %>/<%= vsts[i].id %>/gif.webp" /><%
 	} %>
 	</head>
-	<body>
+	<body class="<%= vsts[currentselected].id %>">
 		<div id="bg">
 			<svg id="diagonal">
 				<line x1='0' y1='100%' x2='100%' y2='0'/>
@@ -64,7 +64,7 @@ for(let i = 0; i < vsts.length; i++) {
 			<div id="circle"></div>
 			<div id="testpattern"></div>
 			<div id="whitegradient"></div>
-			<div id="rainbow"></div>
+			<div id="rainbow" style="background-position-y: <%= (currentselected*-50)/vsts.length %>vh"></div>
 			<div id="dots">
 				<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
 			</div>
@@ -81,20 +81,20 @@ for(let i = 0; i < vsts.length; i++) {
 				<div id="center" class="section">
 					<a id="back" href="javascript:void(0)" onclick="back()"></a>
 					<div id="infowrap" class="win-wrap">
-						<div id="info" class="win-pos">
+						<div id="info" class="win-pos <%= vsts[currentselected].color %><% if(vsts[currentselected].decoration === undefined) { %> winhasicon<% } %>">
 							<div class="windowbgwrap">
 								<div class="windowbg windowbox"></div>
 								<div class="windowbg tab"></div>
 								<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
 							</div>
-							<div id="winicon"></div>
+							<div id="winicon"<% if(vsts[currentselected].decoration === undefined) { %> style='background-image: url("/<%= vsts[currentselected].id %>/icon.svg")'<% } %>></div>
 							<div class="windowcontent">
-								<img id="gif"/>
-								<div id="title"></div>
-								<div id="desc"></div>
-								<center>
-									<a id="paiddownload" class="download" href="javascript:void(0)" target="_blank"></a><br/>
-									<a id="freedownload" class="download" href="javascript:void(0)" target="_blank">Download Free Version</a>
+								<img id="gif" <% if(vsts[currentselected].decoration === undefined) { %>style="display: none"<% } else { %>src="/<%= vsts[currentselected].id %>/gif.webp"<% } %>/>
+								<div id="title"><%= vsts[currentselected].title %></div>
+								<div id="desc"><%- vsts[currentselected].description %></div>
+								<center<% if((vsts[currentselected].comingsoon === undefined || !vsts[currentselected].comingsoon) && vsts[currentselected].price === undefined && vsts[currentselected].freedownload === undefined) { %> style="display: none"<% } %>>
+									<a id="paiddownload" class="download" target="_<% if(vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) { %>self" href="javascript:void(0)">Coming Soon!<% } else if(vsts[currentselected].price === undefined) { %>blank" href="javascript:void(0)" style="display: none"><% } else { %>blank" href="<%= vsts[currentselected].paiddownload %>">Download <%= vsts[currentselected].price %>$ Version<% } %></a><br/>
+									<a id="freedownload" class="download" target="_blank" href="<% if((vsts[currentselected].comingsoon === undefined || !vsts[currentselected].comingsoon) && vsts[currentselected].freedownload !== undefined) { %><%= vsts[currentselected].freedownload %><% } else { %>javascript:void(0)" style="display: none<% } %>">Download Free Version</a>
 								</center>
 							</div>
 						</div>
@@ -102,10 +102,10 @@ for(let i = 0; i < vsts.length; i++) {
 				</div>
 				<div id="right" class="section">
 					<div id="uiwrap">
-						<div id="uishadow"></div>
-						<div id="ui"></div>
+						<div id="uishadow"<% if(vsts[currentselected].ui === undefined) { %> style="display: none"<% } %>"></div>
+						<div id="ui" style=<% if(vsts[currentselected].ui === undefined) { %>"display: none"<% } else { %>'background: url("/<%= vsts[currentselected].id %>/ui.webp"), black'<% } %>></div>
 					</div>
-					<div id="logoclip"><div id="pluginlogo"><div id="pluginlogo1"></div><div id="pluginlogo2"></div></div>
+					<div id="logoclip"><div id="pluginlogo"><div id="pluginlogo1" style='background-image: url("/<%= vsts[currentselected].id %>/text.webp")'></div><div id="pluginlogo2" style='background-image: url("/<%= vsts[currentselected].id %>/text.webp")'></div></div>
 					<div id="blurredtext"><div id="blurredtext1">UnplugRed</div><div id="blurredtext2">UnplugRed</div></div></div>
 					<div id="note">
 						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300px" height="300px" viewBox="0 0 300 300" enable-background="new 0 0 300 300" xml:space="preserve">
