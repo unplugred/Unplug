@@ -223,32 +223,27 @@ function updateui() {
 	ui.window.className = "win-pos " + vsts[currenthover].color;
 	ui.description.innerHTML = vsts[currenthover].description;
 	if(vsts[currenthover].comingsoon === undefined || !vsts[currenthover].comingsoon) {
-		if(vsts[currenthover].price === undefined) {
+		if(vsts[currenthover].paiddownload === undefined) {
 			ui.paiddownload.style.display = "none";
 		} else {
 			ui.paiddownload.style.display = null;
 			//ui.paiddownload.style.pointerEvents = null;
-			ui.paiddownload.target = "_blank";
-			ui.paiddownload.innerText = "Download " + vsts[currenthover].price + "$ Version";
-			ui.paiddownload.href = vsts[currenthover].paiddownload;
+			ui.paiddownload.innerText = "Download " + vsts[currenthover].paiddownload.price + "$ Version";
 		}
 		if(vsts[currenthover].freedownload === undefined) {
 			ui.freedownload.style.display = "none";
-			if(vsts[currenthover].price === undefined)
+			if(vsts[currenthover].paiddownload === undefined)
 				ui.freedownload.parentNode.style.display = "none";
 			else
 				ui.freedownload.parentNode.style.display = null;
 		} else {
 			ui.freedownload.parentNode.style.display = null;
 			ui.freedownload.style.display = null;
-			ui.freedownload.href = vsts[currenthover].freedownload;
 		}
 	} else {
 		ui.paiddownload.style.display = null;
 		//ui.paiddownload.style.pointerEvents = "none";
 		ui.paiddownload.innerText = "Coming Soon!";
-		ui.paiddownload.href = "javascript:void(0)";
-		ui.paiddownload.target = "_self";
 		ui.freedownload.style.display = "none";
 		ui.freedownload.parentNode.style.display = null;
 	}
@@ -277,6 +272,15 @@ function updateui() {
 	ui.logo2.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
 }
 update();
+
+function paidclick() {
+	if((vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) || vsts[currentselected].paiddownload === undefined) return;
+	Payhip.Checkout.open({ product: vsts[currenthover].paiddownload.id });
+}
+function freeclick() {
+	if((vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) || vsts[currentselected].freedownload === undefined) return;
+	Payhip.Checkout.open({ product: vsts[currenthover].freedownload.id });
+}
 
 var popups = [{
 	div: document.getElementById("popuptext") },{
