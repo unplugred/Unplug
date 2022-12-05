@@ -216,7 +216,6 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 	},{
 		title: "Prisma",
 		id: "prsm",
-		comingsoon: true,
 		color: "teal",
 		rating: "(Very good)",
 		tagline: "Modular multiband distortion plugin.",
