@@ -42,7 +42,7 @@ i think these kind of measures make the end product worse, annoy the customer, a
 <b>Q: Can I get CLAP support?<br/>
 A:</b> i intend on supporting clap once reaper supports it so i could begin testing.<br/>
 <b>Q: Can I get Mac support?<br/>
-A:</b> i do not have the money to buy a mac to properly develop for it.<br/>
+A:</b> working on it!<br/>
 <b>Q: Can I have ___ feature?<br/>
 A:</b> you are more than welcome to shoot me an email at unplugred@gmail.com, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
 custom versions of the plugins are an option with appropriate financial compensation.<br/>
@@ -131,6 +131,9 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		description: `
 my take on sine fold distortion.<br/>
 sounds similar to plastic funeral but a bit softer.<br/>
+<br/>
+<i><b>Coming in a future update:</b><br/>
+ - Ability to toggle between fold and sine fold</i><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/pisstortionfree",
@@ -226,6 +229,15 @@ as of writing, there are 16 modules available to choose from.<br/>
 in the right hands the plugin can produce highly complex and intricate tones.<br/>
 common usecases include very harsh distortions being applied on a narrow band to create more subtle effects,<br/>
 and bass recordings being distorted on the higher frequencies without hurting the low end.<br/>
+<br/>
+<i><b>Coming in a future update:</b><br/>
+ - Dry/Wet module<br/>
+ - Ring Mod module<br/>
+ - Stereo DC module<br/>
+ - Stereo Rectify module<br/>
+ - Ability to drag modules<br/>
+ - Ability to change the amount of modules per band<br/>
+ - Prismon, a non multiband version of prisma</i><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: "https://shop.unplug.red/b/prismafree",
