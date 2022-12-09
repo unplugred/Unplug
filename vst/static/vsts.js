@@ -34,15 +34,15 @@ thanks again, greatly appreciated.<br/>
 <b>Q: I found a bug in the Linux version!<br/>
 A:</b> i sadly do not accept bug reports for the linux version.<br/>
 since these plugins are open source, you are welcome to <a href="https://github.com/unplugred/vsts" target="_blank">make a pull request</a>.<br/>
-<b>Q: Can I get 64bit support?<br/>
-A:</b> 32bit support is buggy currently but i do intend on getting it working in the future.<br/>
+<b>Q: Can I get 32bit support?<br/>
+A:</b> right now maintaining 32bit versions is not worth the effort.<br/>
 <b>Q: Can I get AAX support?<br/>
 A:</b> unfortunately i do not have the money to buy a pro tools license, nor do i intend on supporting their guidelines to get a developer license, which require anti piracy measures to be installed.<br/>
 i think these kind of measures make the end product worse, annoy the customer, and ultimately do not achieve their goal.<br/>
 <b>Q: Can I get CLAP support?<br/>
-A:</b> i intend on supporting clap once reaper supports it so i could begin testing.<br/>
+A:</b> coming soon!<br/>
 <b>Q: Can I get Mac support?<br/>
-A:</b> working on it!<br/>
+A:</b> it costs 99$ to obtain a developer license from apple, which is required in order to develop software for mac.<br/>
 <b>Q: Can I have ___ feature?<br/>
 A:</b> you are more than welcome to shoot me an email at unplugred@gmail.com, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
 custom versions of the plugins are an option with appropriate financial compensation.<br/>
@@ -133,6 +133,7 @@ sounds similar to plastic funeral but a bit softer.<br/>
 <br/>
 <i><b>Coming in a future update:</b><br/>
  - Ability to toggle between fold and sine fold</i><br/>
+ - Automatic gain compensation</i><br/>
 <br/>
 Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: {id:"b6lXi",url:"https://shop.unplug.red/b/pisstortionfree"},
@@ -230,6 +231,7 @@ and bass recordings being distorted on the higher frequencies without hurting th
  - Ring Mod module<br/>
  - Stereo DC module<br/>
  - Stereo Rectify module<br/>
+ - Possibly a noise module<br/>
  - Ability to drag modules<br/>
  - Ability to change the amount of modules per band<br/>
  - Prismon, a non multiband version of prisma</i><br/>
