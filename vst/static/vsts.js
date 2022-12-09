@@ -43,6 +43,7 @@ i think these kind of measures make the end product worse, annoy the customer, a
 A:</b> coming soon!<br/>
 <b>Q: Can I get Mac support?<br/>
 A:</b> it costs 99$ to obtain a developer license from apple, which is required in order to develop software for mac.<br/>
+right now i dont have that kind of money. might change in the future.<br/>
 <b>Q: Can I have ___ feature?<br/>
 A:</b> you are more than welcome to shoot me an email at unplugred@gmail.com, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
 custom versions of the plugins are an option with appropriate financial compensation.<br/>
@@ -126,6 +127,7 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		title: "Pisstortion",
 		id: "ps",
 		color: "teal",
+		rating: "(Very good)",
 		tagline: "Advanced sinefold distortion plugin.",
 		description: `
 my take on sine fold distortion.<br/>
@@ -165,7 +167,6 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		title: "Red Bass",
 		id: "rb",
 		color: "teal",
-		rating: "(Good)",
 		tagline: "Low-end enchancer excellent for kicks and speech.",
 		description: `
 sub oscillator sidechained to incoming signal.<br/>
@@ -183,6 +184,7 @@ Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
 		title: "MPaint",
 		id: "mp",
 		color: "teal",
+		rating: "(Good)",
 		tagline: "A sampler from a popular video game.",
 		description: `
 this one is a reproduction of a sampler present in a music making feature that was in a video game thats near and dear to my childhood.<br/>
