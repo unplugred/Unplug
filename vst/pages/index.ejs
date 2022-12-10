@@ -39,18 +39,18 @@ for(let i = 0; i < vsts.length; i++) {
 		<meta name="description" content="audio plugins vst format very cool"><%
 	 } %>
 		<meta property="og:type" content="article"><%
-	if(vsts[currentselected].ui === undefined) { %>
-		<meta name="twitter:card" content="summary">
-		<meta property="og:image" content="<%= unplugassets %>/objects/c10.gif">
-		<meta name="twitter:image" content="<%= unplugassets %>/objects/c10.gif"><%
-	} else { %>
+	if(vsts[currentselected].color === "teal") { %>
 		<meta name="twitter:card" content="summary_large_image">
 		<meta property="og:image" content="<%= assets %>/<%= vsts[currentselected].id %>/og.png">
 		<meta name="twitter:image" content="<%= assets %>/<%= vsts[currentselected].id %>/og.png"><%
+	} else { %>
+		<meta name="twitter:card" content="summary">
+		<meta property="og:image" content="<%= unplugassets %>/objects/c10.gif">
+		<meta name="twitter:image" content="<%= unplugassets %>/objects/c10.gif"><%
 	} %>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=11" type="text/css" media=screen><%
+		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=12" type="text/css" media=screen><%
 	for(let i = 0; i < vsts.length; i++) if(vsts[i].decoration !== undefined) { %>
 		<link rel="prefetch" href="<%= assets %>/<%= vsts[i].id %>/gif.webp" /><%
 	} %>

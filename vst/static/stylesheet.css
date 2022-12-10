@@ -248,7 +248,9 @@ html, body {
 .lefttitle {
 	font-size: 2em;
 	letter-spacing: -.11em;
-	display: inline;
+	display: inline-block;
+	line-height: .75;
+	margin-bottom: .18em;
 }
 .rating {
 	display: inline-block;
