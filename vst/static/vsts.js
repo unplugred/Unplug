@@ -61,17 +61,6 @@ also also using the paid version statistically means ur about 20% more handsome.
 A:</b> what are you waiting for??<br/>
 all cat videos are welcome at mail (unplugred@gmail.com) or discord (red#3510).
 id also love to hear any music you made with my plugins, and feel free to send me any album recommendations of bands youd think id like as well.`,
-		hideicon: true
-	},{
-		title: "Donate",
-		id: "donate",
-		color: "orange",
-		description: `
-if you appreciate my work and would like to support it (as most cool and handsome people do), you can donate either a one time donation or a monthly donation <a href="https://www.paypal.com/donate/?hosted_button_id=6MRYFTBHNU7V2" target="_blank">on my paypal</a>.<br/>
-i research, develop, and maintain these plugins on my free time, so these funds allow me to dedicate more of my time to making these.<br/>
-any amount will be greatly appreciated!<br/>
-<br/>
-<center><a href="https://www.paypal.com/donate/?hosted_button_id=6MRYFTBHNU7V2" target="_blank"><img src="/donate.webp"/></a></center>`,
 		hideicon: true,
 		separator: true
 	},{
@@ -85,7 +74,7 @@ this refreshing take on fold distortion gives off a harsh and metallic sound tha
 <br/>
 <center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)'>▶ Demo</a> (loud)</center><br/>
 <br/>
-Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: {id:"wGlzc",url:"https://shop.unplug.red/b/plasticfuneralfree"},
 		paiddownload: {id:"pq29M",url:"https://shop.unplug.red/b/plasticfuneral",price:5},
 		decoration: {width:90,height:370},
@@ -104,7 +93,7 @@ very simple and to the point vu meter. has:<br/>
 - adjustable nominal operation level (NoL)<br/>
 - peak led<br/>
 <br/>
-Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: {id:"kiV10",url:"https://shop.unplug.red/b/vufree"},
 		paiddownload: {id:"sE1Od",url:"https://shop.unplug.red/b/vu",price:10},
 		decoration: {width:288,height:300},
@@ -119,7 +108,7 @@ generates randomized digital clicks<br/>
 made after people complained i fixed the annoying clicking issue in my first vst, plastic funeral (why??)<br/>
 not useful for much but i made it so might as well put it out there.<br/>
 <br/>
-Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: {id:"GI9s7",url:"https://shop.unplug.red/b/clickbox"},
 		decoration: {width:150,height:300},
 		ui: {width:256,height:256,deg:40}
@@ -137,7 +126,7 @@ sounds similar to plastic funeral but a bit softer.<br/>
  - Ability to toggle between fold and sine fold</i><br/>
  - Automatic gain compensation</i><br/>
 <br/>
-Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: {id:"b6lXi",url:"https://shop.unplug.red/b/pisstortionfree"},
 		paiddownload: {id:"MgzNJ",url:"https://shop.unplug.red/b/pisstortion",price:5},
 		decoration: {width:94,height:300},
@@ -158,7 +147,7 @@ APPLY BEFORE DISTORTION FOR IDEAL EFFECT.<br/>
 <br/>
 <center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 3, "PNCH demo.", "https://www.youtube.com/embed/UFdOg7CEaGQ?autoplay=1", false, true, 20, 15)'>▶ PNCH in action</a> (demo video)</center><br/>
 <br/>
-Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: {id:"05Odt",url:"https://shop.unplug.red/b/pnchfree"},
 		paiddownload: {id:"sGw0T",url:"https://shop.unplug.red/b/pnch",price:10},
 		decoration: {width:200,height:182},
@@ -175,7 +164,7 @@ apply with caution if not in a proper mixing environment.<br/>
 <br/>
 <center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center><br/>
 <br/>
-Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: {id:"57CKW",url:"https://shop.unplug.red/b/redbassfree"},
 		paiddownload: {id:"Rz8aC",url:"https://shop.unplug.red/b/redbass",price:20},
 		decoration: {width:240,height:157},
@@ -191,7 +180,7 @@ this one is a reproduction of a sampler present in a music making feature that w
 this plugin attempts to preserve the unique voice limitations of the original sampler,<br/>
 and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.<br/>
 <br/>
-Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: {id:"8eD6Y",url:"https://shop.unplug.red/b/mpaint"},
 		decoration: {width:131,height:208},
 		ui: {width:468,height:40,deg:40}
@@ -209,7 +198,7 @@ the parameters are highly automatable and can produce a dub delay effect when au
 <br/>
 <center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for CRMBL.", "https://www.youtube.com/embed/1E9sQJNHKg4?autoplay=1", false, true, 26.666, 15)'>▶ How to use</a> (demo video)</center><br/>
 <br/>
-Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
 		freedownload: {id:"rAx4d",url:"https://shop.unplug.red/b/crmblfree"},
 		paiddownload: {id:"IyJoD",url:"https://shop.unplug.red/b/crmbl",price:30},
 		decoration: {width:240,height:231},
@@ -236,12 +225,25 @@ and bass recordings being distorted on the higher frequencies without hurting th
  - Possibly a noise module<br/>
  - Ability to drag modules<br/>
  - Ability to change the amount of modules per band<br/>
- - Prismon, a non multiband version of prisma</i><br/>
+ - Prismon, a non multiband version of prisma<br/>
+ - More</i><br/>
 <br/>
-Available for both windows and linux, in VST and VST3 formats, 64bit only.`,
-		freedownload: {id:"mK70t",url:"https://shop.unplug.red/b/prismafree"},
-		paiddownload: {id:"Tbrox",url:"https://shop.unplug.red/b/prisma",price:40},
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
+		freedownload: {id:"Tbrox",url:"https://shop.unplug.red/b/prismafree"},
+		paiddownload: {id:"mK70t",url:"https://shop.unplug.red/b/prisma",price:40},
 		decoration: {width:138,height:267},
 		ui: {width:478,height:561,deg:20}
+	},{
+		title: "Everything Bundle",
+		id: "bndl",
+		color: "teal",
+		tagline: "Think of the savings!",
+		description: `
+grammy winning producers dont want you to know this simple trick!<br/>
+get the paid versions of all of my plugins at a funny price.<br/>
+also saves u a few clicks as u can bulk download everything.<br/>
+<br/>
+Available for both Windows and Linux, in VST and VST3 formats, 64bit only.`,
+		paiddownload: {id:"agUFM",url:"https://shop.unplug.red/b/everything",price:100}
 	}
 ]

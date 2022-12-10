@@ -274,12 +274,15 @@ function updateui() {
 update();
 
 function paidclick() {
-	if((vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) || vsts[currentselected].paiddownload === undefined) return;
+	if((vsts[currenthover].comingsoon !== undefined && vsts[currenthover].comingsoon) || vsts[currenthover].paiddownload === undefined) return;
 	Payhip.Checkout.open({ product: vsts[currenthover].paiddownload.id });
 }
 function freeclick() {
-	if((vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) || vsts[currentselected].freedownload === undefined) return;
-	Payhip.Checkout.open({ product: vsts[currenthover].freedownload.id });
+	if((vsts[currenthover].comingsoon !== undefined && vsts[currenthover].comingsoon) || vsts[currenthover].freedownload === undefined) return;
+	if(vsts[currenthover].paiddownload === undefined)
+		Payhip.Checkout.open({ product: vsts[currenthover].freedownload.id });
+	else
+		Payhip.Checkout.open({ product: vsts[currenthover].freedownload.id, message: "Free version includes a non-intrusive banner." });
 }
 
 var popups = [{
