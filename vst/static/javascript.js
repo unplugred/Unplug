@@ -228,7 +228,9 @@ function updateui() {
 		} else {
 			ui.paiddownload.style.display = null;
 			//ui.paiddownload.style.pointerEvents = null;
+			ui.paiddownload.target = "_blank";
 			ui.paiddownload.innerText = "Download " + vsts[currenthover].paiddownload.price + "$ Version";
+			ui.paiddownload.href = vsts[currenthover].paiddownload.url;
 		}
 		if(vsts[currenthover].freedownload === undefined) {
 			ui.freedownload.style.display = "none";
@@ -239,11 +241,14 @@ function updateui() {
 		} else {
 			ui.freedownload.parentNode.style.display = null;
 			ui.freedownload.style.display = null;
+			ui.freedownload.href = vsts[currenthover].freedownload.url;
 		}
 	} else {
 		ui.paiddownload.style.display = null;
 		//ui.paiddownload.style.pointerEvents = "none";
 		ui.paiddownload.innerText = "Coming Soon!";
+		ui.paiddownload.href = "javascript:void(0)";
+		ui.paiddownload.target = "_self";
 		ui.freedownload.style.display = "none";
 		ui.freedownload.parentNode.style.display = null;
 	}
@@ -272,18 +277,6 @@ function updateui() {
 	ui.logo2.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
 }
 update();
-
-function paidclick() {
-	if((vsts[currenthover].comingsoon !== undefined && vsts[currenthover].comingsoon) || vsts[currenthover].paiddownload === undefined) return;
-	Payhip.Checkout.open({ product: vsts[currenthover].paiddownload.id });
-}
-function freeclick() {
-	if((vsts[currenthover].comingsoon !== undefined && vsts[currenthover].comingsoon) || vsts[currenthover].freedownload === undefined) return;
-	if(vsts[currenthover].paiddownload === undefined)
-		Payhip.Checkout.open({ product: vsts[currenthover].freedownload.id });
-	else
-		Payhip.Checkout.open({ product: vsts[currenthover].freedownload.id, message: "Free version includes a non-intrusive banner." });
-}
 
 var popups = [{
 	div: document.getElementById("popuptext") },{
