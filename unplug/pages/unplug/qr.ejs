@@ -1,0 +1,136 @@
+<%- include('../partials/header',{title:"QR"}) %>
+		<style>
+			html, body {
+				width: 100vw;
+				height: 100vh;
+				margin: 0;
+				padding: 0;
+				border: none;
+			}
+			body {
+				background: black;
+			}
+			#vid {
+				position: absolute;
+				width: 100vw;
+				height: 100vh;
+				z-index: -10000;
+				object-fit: cover;
+				filter: grayscale(1) brightness(1.4) contrast(2);
+			}
+			#overlay {
+				background: red;
+				width: 100vw;
+				height: 100vh;
+				mix-blend-mode: screen;
+			}
+			.qr {
+				width: 20vmin;
+				height: 20vmin;
+				margin-top: -10vmin;
+				margin-left: -10vmin;
+				image-rendering: crisp-edges;
+				image-rendering: pixelated;
+				position: fixed;
+			}
+		</style>
+	</head>
+	<body>
+		<video id="vid" autoplay="autoplay" muted="muted" loop="">
+			<source src="<%= assets %>/qr.webm" type="video/mp4">
+		</video>
+		<div id="overlay"></div>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<canvas class="qr" width="29" height="29"></canvas>
+		<script>
+			let canvas = document.getElementsByClassName("qr");
+			var ctx = [];
+			for(let i = 0; i < canvas.length; i++) {
+				ctx[i] = canvas[i].getContext("2d");
+				canvas[i].style.transform = "rotateZ(" + (Math.pow(Math.random()*.9,8)*(Math.random()>.5?1:-1)*90) + "deg)";
+				canvas[i].style.top = (Math.random()*100)+"vh";
+				canvas[i].style.left = (Math.random()*100)+"vw";
+			}
+			var pixels = [];
+			for(let x = 0; x < 29; x++) {
+				pixels[x] = [];
+				for(let y = 0; y < 29; y++) {
+					pixels[x][y] = {};
+					pixels[x][y].locked = false;
+					//pixels[x][y].value = ((x+y)%2) == 0;
+					pixels[x][y].value = Math.random()<(3/8);
+				}
+			}
+			for(let i = 0; i < 3; i++) {
+				for(let x = 0; x < 9; x++) {
+					let xx = (i%2)*22-1+x;
+					if(xx >= 0 && xx < 29) {
+						for(let y = 0; y < 9; y++) {
+							let yy = Math.floor(i/2)*22-1+y;
+							if(yy >= 0 && yy < 29) {
+								pixels[xx][yy].locked = true;
+								if(x == 0 || x == 8 || y == 0 || y == 8) pixels[xx][yy].value = false;
+								else if(x == 1 || x == 7 || y == 1 || y == 7) pixels[xx][yy].value = true;
+								else if(x == 2 || x == 6 || y == 2 || y == 6) pixels[xx][yy].value = false;
+								else pixels[xx][yy].value = true;
+							}
+						}
+					}
+				}
+			}
+			for(let x = 0; x < 5; x++) {
+				let xx = 21+x;
+				for(let y = 0; y < 5; y++) {
+					let yy = 21+y;
+					pixels[xx][yy].locked = true;
+					if(x == 0 || x == 4 || y == 0 || y == 4) pixels[xx][yy].value = true;
+					else if(x == 2 && y == 2) pixels[xx][yy].value = true;
+					else pixels[xx][yy].value = false;
+				}
+			}
+
+			const imagedata = ctx[0].getImageData(0,0,29,29);
+			const data = imagedata.data;
+			for(let x = 0; x < 29; x++) for(let y = 0; y < 29; y++) {
+				data[y*116+x*4] = 255;
+				data[y*116+x*4+1] = 255;
+				data[y*116+x*4+2] = 255;
+				data[y*116+x*4+3] = pixels[x][y].value ? 255 : 0;
+			}
+
+			function update() {
+				for(let x = 0; x < 29; x++) for(let y = 0; y < 29; y++) if(!pixels[x][y].locked) {
+					data[y*116+x*4+3] = pixels[x][y].value ? 255 : 0;
+
+					let neighbors = 0;
+					for(let xx = -1; xx < 2; xx++) for(let yy = -1; yy < 2; yy++)
+						if((xx != 0 || yy != 0) && data[((y+yy+28)%28)*116+((x+xx+28)%28)*4+3] > 100)
+							neighbors++;
+
+					if(neighbors <= 1 || neighbors >= 4) pixels[x][y].value = false;
+					else if(neighbors == 3) pixels[x][y].value = true;
+				}
+				for(let i = 0; i < ctx.length; i++) ctx[i].putImageData(imagedata,0,0);
+			}
+			update();
+			setInterval(update,200);
+		</script>
+<%- include('../partials/footer') %>

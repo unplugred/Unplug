@@ -1662,4 +1662,10 @@
 <priority>0.20</priority>
 </url>
 
+<url>
+<loc>https://unplug.red/qr</loc>
+<lastmod>2022-01-15T03:53:33+00:00</lastmod>
+<priority>0.20</priority>
+</url>
+
 </urlset>
