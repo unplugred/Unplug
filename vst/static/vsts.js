@@ -56,6 +56,18 @@ A:</b> what are you waiting for??<br/>
 all cat videos are welcome at mail (unplugred@gmail.com) or discord (red#3510).
 id also love to hear any music you made with my plugins, and feel free to send me any album recommendations of bands youd think id like as well.`,
 		hideicon: true,
+	},{
+		title: "Discord",
+		id: "discord",
+		color: "orange",
+		description: `
+<br/>
+<br/>
+<br/>
+<center>i have a discord if thats your kind of thing.<br/>
+<b><a href="https://discord.gg/EwMx5dnJrA" target="_blank">join</a></b></center>`,
+		url: "https://discord.gg/EwMx5dnJrA",
+		hideicon: true,
 		separator: true
 	},{
 		title: "Plastic Funeral",

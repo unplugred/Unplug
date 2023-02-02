@@ -129,7 +129,12 @@ for(let i = 0; i < vsts.length; i++) {
 	vsts[i].div.onmouseout = function(){temporalhover = -1};
 	vsts[i].div.onclick = function(){switchselected(i,true)};
 	vsts[i].div.className = "leftitem";
-	vsts[i].div.href = "javascript:void(0)";
+	if(vsts[i].url === undefined) {
+		vsts[i].div.href = "javascript:void(0)";
+	} else {
+		vsts[i].div.href = vsts[i].url;
+		vsts[i].div.target = "_blank";
+	}
 
 	let iteminnerdiv = document.createElement('div');
 	iteminnerdiv.className = "leftiteminner " + vsts[i].color;
