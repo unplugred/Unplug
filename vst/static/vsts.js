@@ -50,6 +50,8 @@ ui is made with blender, paint.net, glimpse, and imagemagick.<br/>
 demo videos are made and edited in blender for no good reason.<br/>
 music is made in reaper.<br/>
 text editor is neovide (vim).<br/>
+<b>Q: How do I make these???<br/>
+A:</b> <a href="https://www.kvraudio.com/forum/viewtopic.php?t=329696">theres an excellent thread on the kvr forums</a> about good entry points to audio plugin making and audio programming in general.<br/>
 <b>Q: Whats the difference between the free and paid versions?<br/>
 A:</b> in the paid version you support me and in the other u dont.<br/>
 also, the free version has a strip that says ur using the free version.<br/>
