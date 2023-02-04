@@ -10,7 +10,7 @@ eventually i decided to release them onto the internet as open source because wh
 in here youd find no resistors, transitors, capacitors, or diodes modeled. no emulation of anything.<br/>
 these are completely a result of my own exploration of code and sound, and as a result some of them are good, while others not so much.<br/>
 i hope these bring you joy and would love to hear what u make with them.<br/>
-u can reach me on discord (red#3510) and email (unplugred@gmail.com).<br/>
+u can reach me on discord (red#3510) and email (hello@unplug.red).<br/>
 shout out to my friend lau she makes rly good music <a href="https://laulaulau.bandcamp.com/" target="_blank">check her out</a>.`,
 		hideicon: true
 	},{
@@ -29,7 +29,7 @@ it would mean a lot for me if you could include:<br/>
 - vst2 or vst3?<br/>
 - detailed steps to reproduce the bug<br/>
 - a screenshot if applicable<br/>
-send the bug reports to either my mail (unplugred@gmail.com) or my discord (red#3510).<br/>
+send the bug reports to either my mail (hello@unplug.red) or my discord (red#3510).<br/>
 thanks again, greatly appreciated.<br/>
 <b>Q: Can I get 32bit support?<br/>
 A:</b> right now maintaining 32bit versions is not worth the effort.<br/>
@@ -42,7 +42,7 @@ A:</b> steinberg has stopped issueing developer licenses for vst2 in 2018, and u
 A:</b> logic uses the AU format, which i currently do not support.<br/>
 in order to properly test and support it, id need to buy a mac computer as well as a logic license, and well right now thats not in the options.<br/>
 <b>Q: Can I have ___ feature?<br/>
-A:</b> you are more than welcome to shoot me an email at unplugred@gmail.com, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
+A:</b> you are more than welcome to shoot me an email at hello@unplug.red, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
 custom versions of the plugins are an option with appropriate financial compensation.<br/>
 <b>Q: How do you make these?<br/>
 A:</b> the plugins are made in C++ via the JUCE framework.<br/>
@@ -56,7 +56,7 @@ also, the free version has a strip that says ur using the free version.<br/>
 also also using the paid version statistically means ur about 20% more handsome.<br/>
 <b>Q: I have a cat video to send you!! (its rly cute)<br/>
 A:</b> what are you waiting for??<br/>
-all cat videos are welcome at mail (unplugred@gmail.com) or discord (red#3510).
+all cat videos are welcome at mail (hello@unplug.red) or discord (red#3510).
 id also love to hear any music you made with my plugins, and feel free to send me any album recommendations of bands youd think id like as well.`,
 		hideicon: true,
 	},{
