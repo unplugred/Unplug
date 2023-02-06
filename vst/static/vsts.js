@@ -23,12 +23,12 @@ A:</b> THANK YOU for your effort to report bugs<br/>
 bug reports are always always appreciated.<br/>
 it would mean a lot for me if you could include:<br/>
 - graphics card model<br/>
-- cpu model<br/>
 - operating system<br/>
 - daw<br/>
-- vst2 or vst3?<br/>
+- vst3 or clap?<br/>
 - detailed steps to reproduce the bug<br/>
 - a screenshot if applicable<br/>
+- does it happen in other daws? (reaper has infinite trial)<br/>
 send the bug reports to either my mail (hello@unplug.red) or my discord (red#3510).<br/>
 thanks again, greatly appreciated.<br/>
 <b>Q: Can I get 32bit support?<br/>
