@@ -38,15 +38,16 @@ A:</b> unfortunately i do not have the money to buy a pro tools license, nor do 
 i think these kind of measures make the end product worse, annoy the customer, and ultimately do not achieve their goal.<br/>
 <b>Q: Can I get VST2 support?<br/>
 A:</b> steinberg has stopped issueing developer licenses for vst2 in 2018, and unfortunately its illegal for me to distribute vst2 versions without one.<br/>
-<b>Q: I use Logic and its not working!<br/>
-A:</b> logic uses the AU format, which i currently do not support.<br/>
+<b>Q: I use Logic/GarageBand and its not working!<br/>
+A:</b> logic and garage band use apple's AU format, which i currently do not support.<br/>
 in order to properly test and support it, id need to buy a mac computer as well as a logic license, and well right now thats not in the options.<br/>
 <b>Q: Can I have ___ feature?<br/>
 A:</b> you are more than welcome to shoot me an email at hello@unplug.red, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
 custom versions of the plugins are an option with appropriate financial compensation.<br/>
 <b>Q: How do you make these?<br/>
-A:</b> the plugins are made in C++ via the JUCE framework.<br/>
-ui is made with blender, paint.net, glimpse, and imagemagick.<br/>
+A:</b> the plugins are made in c++ via the juce framework and cmake.<br/>
+ui is made with blender, paint.net, glimpse, inkscape, and imagemagick.<br/>
+website runs in an ubuntu vps running an nginx reverse proxy redirected to nodejs instences running via pm2 that have express for routing and ejs for backend, with vanilla js, html and css for the front end.<br/>
 demo videos are made and edited in blender for no good reason.<br/>
 music is made in reaper.<br/>
 text editor is neovide (vim).<br/>
