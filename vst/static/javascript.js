@@ -234,7 +234,10 @@ function updateui() {
 			ui.paiddownload.style.display = null;
 			//ui.paiddownload.style.pointerEvents = null;
 			ui.paiddownload.target = "_blank";
-			ui.paiddownload.innerText = "Download " + vsts[currenthover].paiddownload.price + "$ Version";
+			if(vsts[currenthover].paiddownload.price == undefined)
+				ui.paiddownload.innerText = "Download Paid Version";
+			else
+				ui.paiddownload.innerText = "Download " + vsts[currenthover].paiddownload.price + "$ Version";
 			ui.paiddownload.href = vsts[currenthover].paiddownload.url;
 		}
 		if(vsts[currenthover].freedownload === undefined) {

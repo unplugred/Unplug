@@ -18,6 +18,7 @@ shout out to my friend lau she makes rly good music <a href="https://laulaulau.b
 		id: "faq",
 		color: "orange",
 		description: `
+<br/>
 <b>Q: I found a bug!<br/>
 A:</b> THANK YOU for your effort to report bugs<br/>
 bug reports are always always appreciated.<br/>
@@ -31,19 +32,25 @@ it would mean a lot for me if you could include:<br/>
 - does it happen in other daws? (reaper has infinite trial)<br/>
 send the bug reports to either my mail (hello@unplug.red) or my discord (red#3510).<br/>
 thanks again, greatly appreciated.<br/>
+<br/>
 <b>Q: Can I get 32bit support?<br/>
 A:</b> right now maintaining 32bit versions is not worth the effort.<br/>
+<br/>
 <b>Q: Can I get AAX support?<br/>
 A:</b> unfortunately i do not have the money to buy a pro tools license, nor do i intend on supporting their guidelines to get a developer license, which require anti piracy measures to be installed.<br/>
 i think these kind of measures make the end product worse, annoy the customer, and ultimately do not achieve their goal.<br/>
+<br/>
 <b>Q: Can I get VST2 support?<br/>
 A:</b> steinberg has stopped issueing developer licenses for vst2 in 2018, and unfortunately its illegal for me to distribute vst2 versions without one.<br/>
+<br/>
 <b>Q: I use Logic/GarageBand and its not working!<br/>
 A:</b> logic and garage band use apple's AU format, which i currently do not support.<br/>
 in order to properly test and support it, id need to buy a mac computer as well as a logic license, and well right now thats not in the options.<br/>
+<br/>
 <b>Q: Can I have ___ feature?<br/>
 A:</b> you are more than welcome to shoot me an email at hello@unplug.red, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
 custom versions of the plugins are an option with appropriate financial compensation.<br/>
+<br/>
 <b>Q: How do you make these?<br/>
 A:</b> the plugins are made in c++ via the juce framework and cmake.<br/>
 ui is made with blender, paint.net, glimpse, inkscape, and imagemagick.<br/>
@@ -51,12 +58,15 @@ website runs in an ubuntu vps running an nginx reverse proxy redirected to nodej
 demo videos are made and edited in blender for no good reason.<br/>
 music is made in reaper.<br/>
 text editor is neovide (vim).<br/>
+<br/>
 <b>Q: How do I make these???<br/>
 A:</b> <a href="https://www.kvraudio.com/forum/viewtopic.php?t=329696">theres an excellent thread on the kvr forums</a> about good entry points to audio plugin making and audio programming in general.<br/>
+<br/>
 <b>Q: Whats the difference between the free and paid versions?<br/>
 A:</b> in the paid version you support me and in the other u dont.<br/>
 also, the free version has a strip that says ur using the free version.<br/>
 also also using the paid version statistically means ur about 20% more handsome.<br/>
+<br/>
 <b>Q: I have a cat video to send you!! (its rly cute)<br/>
 A:</b> what are you waiting for??<br/>
 all cat videos are welcome at mail (hello@unplug.red) or discord (red#3510).
@@ -87,8 +97,8 @@ this refreshing take on fold distortion gives off a harsh and metallic sound tha
 <center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)'>▶ Demo</a> (loud)</center><br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		freedownload: {id:"wGlzc",url:"https://shop.unplug.red/b/plasticfuneralfree"},
-		paiddownload: {id:"pq29M",url:"https://shop.unplug.red/b/plasticfuneral",price:5},
+		freedownload: {url:"https://www.patreon.com/posts/plastic-funeral-78716847"},
+		paiddownload: {url:"https://www.patreon.com/posts/plastic-funeral-78717124"},
 		decoration: {width:90,height:370},
 		ui: {width:242,height:462,deg:40}
 	},{
@@ -106,8 +116,8 @@ very simple and to the point vu meter. has:<br/>
 - peak led<br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		freedownload: {id:"kiV10",url:"https://shop.unplug.red/b/vufree"},
-		paiddownload: {id:"sE1Od",url:"https://shop.unplug.red/b/vu",price:10},
+		freedownload: {url:"https://www.patreon.com/posts/vu-free-version-79085437"},
+		paiddownload: {url:"https://www.patreon.com/posts/vu-79085607"},
 		decoration: {width:288,height:300},
 		ui: {width:438,height:260,deg:40}
 	},{
@@ -121,7 +131,7 @@ made after people complained i fixed the annoying clicking issue in my first vst
 not useful for much but i made it so might as well put it out there.<br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		freedownload: {id:"GI9s7",url:"https://shop.unplug.red/b/clickbox"},
+		freedownload: {url:"https://www.patreon.com/posts/clickbox-79085747"},
 		decoration: {width:150,height:300},
 		ui: {width:256,height:256,deg:40}
 	},{
@@ -139,8 +149,8 @@ sounds similar to plastic funeral but a bit softer.<br/>
  - Automatic gain compensation</i><br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		freedownload: {id:"b6lXi",url:"https://shop.unplug.red/b/pisstortionfree"},
-		paiddownload: {id:"MgzNJ",url:"https://shop.unplug.red/b/pisstortion",price:5},
+		freedownload: {url:"https://www.patreon.com/posts/pisstortion-free-79085897"},
+		paiddownload: {url:"https://www.patreon.com/posts/pisstortion-79085974"},
 		decoration: {width:94,height:300},
 		ui: {width:242,height:462,deg:40}
 	},{
@@ -160,8 +170,8 @@ APPLY BEFORE DISTORTION FOR IDEAL EFFECT.<br/>
 <center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 3, "PNCH demo.", "https://www.youtube.com/embed/UFdOg7CEaGQ?autoplay=1", false, true, 20, 15)'>▶ PNCH in action</a> (demo video)</center><br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		freedownload: {id:"05Odt",url:"https://shop.unplug.red/b/pnchfree"},
-		paiddownload: {id:"sGw0T",url:"https://shop.unplug.red/b/pnch",price:10},
+		freedownload: {url:"https://www.patreon.com/posts/pnch-free-79086018"},
+		paiddownload: {url:"https://www.patreon.com/posts/pnch-79086091"},
 		decoration: {width:200,height:182},
 		ui: {width:128,height:148,deg:40}
 	},{
@@ -177,8 +187,8 @@ apply with caution if not in a proper mixing environment.<br/>
 <center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center><br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		freedownload: {id:"57CKW",url:"https://shop.unplug.red/b/redbassfree"},
-		paiddownload: {id:"Rz8aC",url:"https://shop.unplug.red/b/redbass",price:20},
+		freedownload: {url:"https://www.patreon.com/posts/red-bass-free-79087099"},
+		paiddownload: {url:"https://www.patreon.com/posts/red-bass-79087143"},
 		decoration: {width:240,height:157},
 		ui: {width:322,height:408,deg:40}
 	},{
@@ -193,7 +203,7 @@ this plugin attempts to preserve the unique voice limitations of the original sa
 and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.<br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		freedownload: {id:"8eD6Y",url:"https://shop.unplug.red/b/mpaint"},
+		freedownload: {url:"https://www.patreon.com/posts/mpaint-79087173"},
 		decoration: {width:131,height:208},
 		ui: {width:468,height:40,deg:40}
 	},{
@@ -211,8 +221,8 @@ the parameters are highly automatable and can produce a dub delay effect when au
 <center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for CRMBL.", "https://www.youtube.com/embed/1E9sQJNHKg4?autoplay=1", false, true, 26.666, 15)'>▶ How to use</a> (demo video)</center><br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		freedownload: {id:"rAx4d",url:"https://shop.unplug.red/b/crmblfree"},
-		paiddownload: {id:"IyJoD",url:"https://shop.unplug.red/b/crmbl",price:30},
+		freedownload: {url:"https://www.patreon.com/posts/crmbl-free-79099779"},
+		paiddownload: {url:"https://www.patreon.com/posts/crmbl-79099843"},
 		decoration: {width:240,height:231},
 		ui: {width:507,height:465,deg:30}
 	},{
@@ -241,8 +251,8 @@ and bass recordings being distorted on the higher frequencies without hurting th
  - More</i><br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		freedownload: {id:"Tbrox",url:"https://shop.unplug.red/b/prismafree"},
-		paiddownload: {id:"mK70t",url:"https://shop.unplug.red/b/prisma",price:40},
+		freedownload: {url:"https://www.patreon.com/posts/prisma-free-79099898"},
+		paiddownload: {url:"https://www.patreon.com/posts/prisma-79099945"},
 		decoration: {width:138,height:267},
 		ui: {width:478,height:561,deg:20}
 	},{
@@ -256,6 +266,6 @@ get the paid versions of all of my plugins at a funny price.<br/>
 also saves u a few clicks as u can bulk download everything.<br/>
 <br/>
 Available for Linux, Windows and Mac, in CLAP and VST3 formats, 64bit only.`,
-		paiddownload: {id:"agUFM",url:"https://shop.unplug.red/b/everything",price:100}
+		paiddownload: {url:"https://www.patreon.com/posts/everything-79100062"}
 	}
 ]
