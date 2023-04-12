@@ -43,10 +43,6 @@ i think these kind of measures make the end product worse, annoy the customer, a
 <b>Q: Can I get VST2 support?<br/>
 A:</b> steinberg has stopped issueing developer licenses for vst2 in 2018, and unfortunately its illegal for me to distribute vst2 versions without one.<br/>
 <br/>
-<b>Q: I use Logic/GarageBand and its not working!<br/>
-A:</b> logic and garage band use apple's AU format, which i currently do not support.<br/>
-in order to properly test and support it, id need to buy a mac computer as well as a logic license, and well right now thats not in the options.<br/>
-<br/>
 <b>Q: Can I have ___ feature?<br/>
 A:</b> you are more than welcome to shoot me an email at hello@unplug.red, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
 custom versions of the plugins are an option with appropriate financial compensation.<br/>
