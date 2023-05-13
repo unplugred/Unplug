@@ -252,6 +252,25 @@ Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`
 		decoration: {width:138,height:267},
 		ui: {width:478,height:561,deg:20}
 	},{
+		title: "SunBurnt",
+		id: "sb",
+		color: "teal",
+		comingsoon: true,
+		rating: "(Very good)",
+		tagline: "Multi-curve reverb delay.",
+		description: `
+unique reverb plugin whose characteristics you can draw in the form of a curve.<br/>
+for example, you can have a reverse reverb with an oscillating lowpass, with a tail that starts panned left and ends up panned right.<br/>
+or, you could have a reverb with a tail that goes wub wub wub wub and the end of the tail is pitched up an octave.<br/>
+<br/>
+more chaotic and textural results can be achieved by reducing the density parameter, and the plugin can also be used as a multi-tap delay by turning the density knob all the way down, with each point representing a tap.<br/>
+give it a try! stuff can get really interesting really fast.<br/>
+<br/>
+(beta available on patreon)<br/>
+Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+		decoration: {width:230,height:221},
+		ui: {width:552,height:501,deg:20}
+	},{
 		title: "Everything Bundle",
 		id: "bndl",
 		color: "teal",
