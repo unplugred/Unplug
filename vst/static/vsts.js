@@ -56,7 +56,7 @@ music is made in reaper.<br/>
 text editor is neovide (vim).<br/>
 <br/>
 <b>Q: How do I make these???<br/>
-A:</b> <a href="https://www.kvraudio.com/forum/viewtopic.php?t=329696">theres an excellent thread on the kvr forums</a> about good entry points to audio plugin making and audio programming in general.<br/>
+A:</b> <a href="https://www.kvraudio.com/forum/viewtopic.php?t=329696" target="_blank">theres an excellent thread on the kvr forums</a> about good entry points to audio plugin making and audio programming in general.<br/>
 <br/>
 <b>Q: Whats the difference between the free and paid versions?<br/>
 A:</b> in the paid version you support me and in the other u dont.<br/>
@@ -266,7 +266,7 @@ or, you could have a reverb with a tail that goes wub wub wub wub and the end of
 more chaotic and textural results can be achieved by reducing the density parameter, and the plugin can also be used as a multi-tap delay by turning the density knob all the way down, with each point representing a tap.<br/>
 give it a try! stuff can get really interesting really fast.<br/>
 <br/>
-(beta available on patreon)<br/>
+(<a href="https://www.patreon.com/posts/sunburnt-beta-1-82680800" target="_blank">beta available</a> in the 10$ patreon tier)<br/>
 Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
 		decoration: {width:230,height:221},
 		ui: {width:552,height:501,deg:20}
