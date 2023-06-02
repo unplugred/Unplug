@@ -90,9 +90,8 @@ id also love to hear any music you made with my plugins, and feel free to send m
 forget about warmth.<br/>
 this refreshing take on fold distortion gives off a harsh and metallic sound that is guaranteed to destroy any mix.<br/>
 <br/>
-<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)'>▶ Demo</a> (loud)</center><br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)'>▶ Demo</a> (loud)</center>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/plastic-funeral-78716847"},
 		paiddownload: {url:"https://www.patreon.com/posts/plastic-funeral-78717124"},
 		decoration: {width:90,height:370},
@@ -109,9 +108,8 @@ very simple and to the point vu meter. has:<br/>
 - scalable ui<br/>
 - adjustable reaction speed<br/>
 - adjustable nominal operation level (NoL)<br/>
-- peak led<br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+- peak led`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/vu-free-version-79085437"},
 		paiddownload: {url:"https://www.patreon.com/posts/vu-79085607"},
 		decoration: {width:288,height:300},
@@ -124,9 +122,8 @@ Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`
 		description: `
 generates randomized digital clicks<br/>
 made after people complained i fixed the annoying clicking issue in my first vst, plastic funeral (why??)<br/>
-not useful for much but i made it so might as well put it out there.<br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+not useful for much but i made it so might as well put it out there.`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/clickbox-79085747"},
 		decoration: {width:150,height:300},
 		ui: {width:256,height:256,deg:40}
@@ -142,9 +139,8 @@ sounds similar to plastic funeral but a bit softer.<br/>
 <br/>
 <i><b>Coming in a future update:</b><br/>
  - Ability to toggle between fold and sine fold</i><br/>
- - Automatic gain compensation</i><br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+ - Automatic gain compensation</i>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/pisstortion-free-79085897"},
 		paiddownload: {url:"https://www.patreon.com/posts/pisstortion-79085974"},
 		decoration: {width:94,height:300},
@@ -163,9 +159,8 @@ as a result, this makes it great for applications such as removing humming on a 
 also sounds great on drum loops and results in a very choppy effect.<br/>
 APPLY BEFORE DISTORTION FOR IDEAL EFFECT.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 3, "PNCH demo.", "https://www.youtube.com/embed/UFdOg7CEaGQ?autoplay=1", false, true, 20, 15)'>▶ PNCH in action</a> (demo video)</center><br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "PNCH demo.", "https://www.youtube.com/embed/UFdOg7CEaGQ?autoplay=1", false, true, 20, 15)'>▶ PNCH in action</a> (demo video)</center>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/pnch-free-79086018"},
 		paiddownload: {url:"https://www.patreon.com/posts/pnch-79086091"},
 		decoration: {width:200,height:182},
@@ -180,9 +175,8 @@ sub oscillator sidechained to incoming signal.<br/>
 put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
 apply with caution if not in a proper mixing environment.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center><br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/red-bass-free-79087099"},
 		paiddownload: {url:"https://www.patreon.com/posts/red-bass-79087143"},
 		decoration: {width:240,height:157},
@@ -196,9 +190,8 @@ Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`
 		description: `
 this one is a reproduction of a sampler present in a music making feature that was in a video game thats near and dear to my childhood.<br/>
 this plugin attempts to preserve the unique voice limitations of the original sampler,<br/>
-and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.<br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/mpaint-79087173"},
 		decoration: {width:131,height:208},
 		ui: {width:468,height:40,deg:40}
@@ -214,9 +207,10 @@ which in the right hands can produce highly textural results.<br/>
 among the features are pitch shifting on the feedback, asymetric ping pong, reverse delay, and more...<br/>
 the parameters are highly automatable and can produce a dub delay effect when automating the time parameter.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for CRMBL.", "https://www.youtube.com/embed/1E9sQJNHKg4?autoplay=1", false, true, 26.666, 15)'>▶ How to use</a> (demo video)</center><br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 3, "Instructional demo for CRMBL.", "https://www.youtube.com/embed/1E9sQJNHKg4?autoplay=1", false, true, 26.666, 15)'>▶ How to use</a> (demo video)<br/>
+<a class="demo" href="javascript:void(0);" onclick='setpopup(1, 4, "Demo made by @a1https://brobomusic.com@a2brobo@a3.", "/crmbl/demo1.mp3", true, false)'>▶ Demo by brobo</a><br/>
+<a class="demo" href="javascript:void(0);" onclick='setpopup(1, 5, "Demo made by @a1https://linktr.ee/woodthrush@a2woodthrush@a3.", "/crmbl/demo2.mp3", true, false)'>▶ Demo by woodthrush</a></center>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/crmbl-free-79099779"},
 		paiddownload: {url:"https://www.patreon.com/posts/crmbl-79099843"},
 		decoration: {width:240,height:231},
@@ -244,9 +238,8 @@ and bass recordings being distorted on the higher frequencies without hurting th
  - Ability to drag modules<br/>
  - Ability to change the amount of modules per band<br/>
  - Prismon, a non multiband version of prisma<br/>
- - More</i><br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+ - More</i>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/prisma-free-79099898"},
 		paiddownload: {url:"https://www.patreon.com/posts/prisma-79099945"},
 		decoration: {width:138,height:267},
@@ -266,8 +259,8 @@ or, you could have a reverb with a tail that goes wub wub wub wub and the end of
 more chaotic and textural results can be achieved by reducing the density parameter, and the plugin can also be used as a multi-tap delay by turning the density knob all the way down, with each point representing a tap.<br/>
 give it a try! stuff can get really interesting really fast.<br/>
 <br/>
-(<a href="https://www.patreon.com/posts/sunburnt-beta-1-82680800" target="_blank">beta available</a> in the 10$ patreon tier)<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+(<a href="https://www.patreon.com/posts/sunburnt-beta-1-82680800" target="_blank">beta available</a> in the 10$ patreon tier)`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		decoration: {width:230,height:221},
 		ui: {width:552,height:501,deg:20}
 	},{
@@ -278,9 +271,8 @@ Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`
 		description: `
 grammy winning producers dont want you to know this simple trick!<br/>
 get the paid versions of all of my plugins at a funny price.<br/>
-also saves u a few clicks as u can bulk download everything.<br/>
-<br/>
-Available for Linux, Windows and Mac, in CLAP, AU and VST3 formats, 64bit only.`,
+also saves u a few clicks as u can bulk download everything.`,
+		supported: ["Windows","MacOS","Linux","64 Bit","VST3","Audio Unit","CLAP"],
 		paiddownload: {url:"https://www.patreon.com/posts/everything-79100062"}
 	}
 ]

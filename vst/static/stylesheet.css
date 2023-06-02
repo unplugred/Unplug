@@ -445,6 +445,15 @@ html, body {
 	margin-left: -20px;
 	margin-bottom: -20px;
 }
+#supported {
+	margin-bottom: 7px;
+}
+.supportedicon {
+	height: 27px;
+	max-width: 36px;
+	margin: 1px;
+	display: inline-block;
+}
 .download {
 	display: inline-block;
 	font-size: .9em;
