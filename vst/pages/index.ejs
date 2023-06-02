@@ -50,7 +50,7 @@ for(let i = 0; i < vsts.length; i++) {
 	} %>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=12" type="text/css" media=screen><%
+		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=13" type="text/css" media=screen><%
 	for(let i = 0; i < vsts.length; i++) if(vsts[i].decoration !== undefined) { %>
 		<link rel="prefetch" href="<%= assets %>/<%= vsts[i].id %>/gif.webp" /><%
 	} %>
@@ -91,6 +91,7 @@ for(let i = 0; i < vsts.length; i++) {
 							<div class="windowcontent">
 								<img id="gif" <% if(vsts[currentselected].decoration === undefined) { %>style="display: none"<% } else { %>src="/<%= vsts[currentselected].id %>/gif.webp"<% } %>/>
 								<div id="title"><%= vsts[currentselected].title %></div>
+								<div id="supported"></div>
 								<div id="desc"><%- vsts[currentselected].description %></div>
 								<center<% if((vsts[currentselected].comingsoon === undefined || !vsts[currentselected].comingsoon) && vsts[currentselected].price === undefined && vsts[currentselected].freedownload === undefined) { %> style="display: none"<% } %>>
 									<a id="paiddownload" class="download" target="_<% if(vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) { %>self" href="javascript:void(0)">Coming Soon!<% } else if(vsts[currentselected].paiddownload === undefined) { %>blank" href="javascript:void(0)" style="display: none"><% } else { %>blank" href="<%= vsts[currentselected].paiddownload.url %>">Download <%= vsts[currentselected].paiddownload.price %>$ Version<% } %></a><br/>
@@ -186,7 +187,7 @@ for(let i = 0; i < vsts.length; i++) {
 
 		<script type="text/javascript" src="<%= unplugassets %>/window/movable.js"></script>
 		<script type="text/javascript" src="<%= unplugassets %>/automatism/simplex.js"></script>
-		<script type="text/javascript" src="/vsts.js?v=22"></script>
-		<script type="text/javascript" src="/javascript.js?v=7"></script>
+		<script type="text/javascript" src="/vsts.js?v=23"></script>
+		<script type="text/javascript" src="/javascript.js?v=8"></script>
 	</body>
 </html>

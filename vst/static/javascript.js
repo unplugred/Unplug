@@ -3,6 +3,7 @@ var ui = {
 	body: document.body,
 	window: document.getElementById("info"),
 	description: document.getElementById("desc"),
+	supported: document.getElementById("supported"),
 	freedownload: document.getElementById("freedownload"),
 	paiddownload: document.getElementById("paiddownload"),
 	decoration: document.getElementById("gif"),
@@ -283,6 +284,21 @@ function updateui() {
 	}
 	ui.logo1.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
 	ui.logo2.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
+	if(vsts[currenthover].supported === undefined) {
+		ui.supported.style.display = "none";
+	} else {
+		while(ui.supported.firstChild)
+			ui.supported.removeChild(ui.supported.firstChild);
+		ui.supported.style.display = null;
+		for(let i = 0; i < vsts[currenthover].supported.length; i++) {
+			let supporteddiv = document.createElement('img');
+			supporteddiv.className = "supportedicon supported"+vsts[currenthover].supported[i].toLowerCase().replace(" ","");
+			supporteddiv.src = "/supported/"+vsts[currenthover].supported[i].toLowerCase().replace(" ","")+".svg";
+			supporteddiv.alt = vsts[currenthover].supported[i];
+			supporteddiv.title = vsts[currenthover].supported[i];
+			ui.supported.appendChild(supporteddiv);
+		}
+	}
 }
 update();
 
