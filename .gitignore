@@ -11,6 +11,7 @@ Thumbs.db
 *.sublime-workspace
 savefile.json
 savefilebackup.json
+vst/builds
 
 # User-specific files
 *.suo

@@ -292,7 +292,8 @@ function updateui() {
 		ui.supported.style.display = null;
 		for(let i = 0; i < vsts[currenthover].supported.length; i++) {
 			let supporteddiv = document.createElement('img');
-			supporteddiv.className = "supportedicon supported"+vsts[currenthover].supported[i].toLowerCase().replace(" ","");
+			supporteddiv.className = "supportedicon"
+			supporteddiv.id = "supported"+vsts[currenthover].supported[i].toLowerCase().replace(" ","");
 			supporteddiv.src = "/supported/"+vsts[currenthover].supported[i].toLowerCase().replace(" ","")+".svg";
 			supporteddiv.alt = vsts[currenthover].supported[i];
 			supporteddiv.title = vsts[currenthover].supported[i];
