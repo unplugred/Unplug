@@ -155,7 +155,7 @@ app.use((req, res, next) => {
 		return res.render('partials/automatism/gallery.ejs',{assets:global.assets,host:global.protocol + req.headers.host,data:automatism});
 	} else if(req.path.startsWith('/automatism/0')) {
 		let autonum = Number(req.path.substring(12));
-		if(!isNaN(autonum) && autonum <= automatism.length)
+		if(!isNaN(autonum) && autonum <= automatism.length && autonum >= 1)
 			return res.render('partials/automatism/base.ejs',{assets:global.assets,host:global.protocol + req.headers.host,data:automatism[autonum-1],prevpage:autonum === 1 ? null : automatism[autonum-2].number,nextpage:autonum === automatism.length ? null : automatism[autonum].number});
 	}
 
