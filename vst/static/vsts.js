@@ -10,7 +10,7 @@ eventually i decided to release them onto the internet as open source because wh
 in here youd find no resistors, transitors, capacitors, or diodes modeled. no emulation of anything.<br/>
 these are completely a result of my own exploration of code and sound, and as a result some of them are good, while others not so much.<br/>
 i hope these bring you joy and would love to hear what u make with them.<br/>
-u can reach me via discord (@unplugred) and email (hello@unplug.red).<br/>
+u can reach me via discord (@unplugred) and email (melody@unplug.red).<br/>
 shout out to my friend lau she makes rly good music <a href="https://laulaulau.bandcamp.com/" target="_blank">check her out</a>.`,
 		hideicon: true
 	},{
@@ -30,7 +30,7 @@ it would mean a lot for me if you could include:<br/>
 - detailed steps to reproduce the bug<br/>
 - a screenshot if applicable<br/>
 - does it happen in other daws? (reaper has infinite trial)<br/>
-send the bug reports to either my mail (hello@unplug.red) or my discord (red#3510).<br/>
+send the bug reports to either my mail (melody@unplug.red) or my discord (@unplugred).<br/>
 thanks again, greatly appreciated.<br/>
 <br/>
 <b>Q: Can I get 32bit support?<br/>
@@ -44,13 +44,13 @@ i think these kind of measures make the end product worse, annoy the customer, a
 A:</b> steinberg has stopped issueing developer licenses for vst2 in 2018, and unfortunately its illegal for me to distribute vst2 versions without one.<br/>
 <br/>
 <b>Q: Can I have ___ feature?<br/>
-A:</b> you are more than welcome to shoot me an email at hello@unplug.red, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
+A:</b> you are more than welcome to shoot me an email at melody@unplug.red, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
 custom versions of the plugins are an option with appropriate financial compensation.<br/>
 <br/>
 <b>Q: How do you make these?<br/>
 A:</b> the plugins are made in c++ via the juce framework and cmake.<br/>
 ui is made with blender, paint.net, glimpse, inkscape, and imagemagick.<br/>
-website runs in an ubuntu vps running an nginx reverse proxy redirected to nodejs instences running via pm2 that have express for routing and ejs for backend, with vanilla js, html and css for the front end.<br/>
+website runs in an ubuntu vps running an nginx reverse proxy redirected to nodejs instances running via pm2 that have express for routing and ejs for backend, with vanilla js, html and css for the front end.<br/>
 demo videos are made and edited in blender for no good reason.<br/>
 music is made in reaper.<br/>
 text editor is neovide (vim).<br/>
@@ -65,7 +65,7 @@ also also using the paid version statistically means ur about 20% more handsome.
 <br/>
 <b>Q: I have a cat video to send you!! (its rly cute)<br/>
 A:</b> what are you waiting for??<br/>
-all cat videos are welcome at mail (hello@unplug.red) or discord (red#3510).
+all cat videos are welcome at mail (melody@unplug.red) or discord (@unplugred).
 id also love to hear any music you made with my plugins, and feel free to send me any album recommendations of bands youd think id like as well.`,
 		hideicon: true,
 	},{
