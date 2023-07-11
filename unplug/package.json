@@ -2,7 +2,7 @@
   "name": "unplug",
   "version": "1.0.0",
   "description": "unplug your mind for best experience.",
-  "author": "Ari Hanan",
+  "author": "Melody",
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.2"

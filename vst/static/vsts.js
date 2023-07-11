@@ -4,13 +4,13 @@ var vsts = [
 		id: "about",
 		color: "orange",
 		description: `hi! ✌<br/>
-im ari (they them). on the internet i release stuff under the name unplugred.<br/>
+im melody (they them). on the internet i release stuff under the name unplugred.<br/>
 after studying audio engineering i decided to make my own vst plugins for me and my friends because i was frustrated with the current offerrings.<br/>
 eventually i decided to release them onto the internet as open source because why not.<br/>
 in here youd find no resistors, transitors, capacitors, or diodes modeled. no emulation of anything.<br/>
 these are completely a result of my own exploration of code and sound, and as a result some of them are good, while others not so much.<br/>
 i hope these bring you joy and would love to hear what u make with them.<br/>
-u can reach me on discord (red#3510) and email (hello@unplug.red).<br/>
+u can reach me via discord (@unplugred) and email (hello@unplug.red).<br/>
 shout out to my friend lau she makes rly good music <a href="https://laulaulau.bandcamp.com/" target="_blank">check her out</a>.`,
 		hideicon: true
 	},{
