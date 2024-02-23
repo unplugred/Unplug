@@ -31,6 +31,7 @@ app.use(express.static(__dirname + '/static', {
 	}
 }));
 
+// yea im aware these are open source but whatever
 vstcodes = {
 	"w0zy59f5dmdc5uzs": "Plastic Funeral",
 	"n4bb7kg8xgyq0hpy": "Plastic Funeral Free",
@@ -48,6 +49,8 @@ vstcodes = {
 	"h32w79jrlagc1ou1": "CRMBL Free",
 	"s21e6vtwpbdn65dr": "Prisma",
 	"ov9zlfghbkpij81f": "Prisma Free",
+	"C5cs44t7ZpJ17VoX": "SunBurnt",
+	"67l3BwH7SKgCMVun": "SunBurnt Free",
 	"mmle2ls85rexid0m": "Everything Bundle"
 }
 app.use((req, res, next) => {
