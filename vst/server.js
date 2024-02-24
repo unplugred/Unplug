@@ -49,8 +49,8 @@ vstcodes = {
 	"h32w79jrlagc1ou1": "CRMBL Free",
 	"s21e6vtwpbdn65dr": "Prisma",
 	"ov9zlfghbkpij81f": "Prisma Free",
-	"C5cs44t7ZpJ17VoX": "SunBurnt",
-	"67l3BwH7SKgCMVun": "SunBurnt Free",
+	"1s1h4rjd5etv4mne": "SunBurnt",
+	"r89u1onfe5dj4tlz": "SunBurnt Free",
 	"mmle2ls85rexid0m": "Everything Bundle"
 }
 app.use((req, res, next) => {
