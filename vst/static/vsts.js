@@ -234,10 +234,10 @@ and bass recordings being distorted on the higher frequencies without hurting th
  - Ring Mod module<br/>
  - Stereo DC module<br/>
  - Stereo Rectify module<br/>
- - Possibly a noise module<br/>
  - Ability to drag modules<br/>
  - Ability to change the amount of modules per band<br/>
  - Prismon, a non multiband version of prisma<br/>
+ - Resizable UI<br/>
  - More</i>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/prisma-free-79099898"},
@@ -248,7 +248,6 @@ and bass recordings being distorted on the higher frequencies without hurting th
 		title: "SunBurnt",
 		id: "sb",
 		color: "teal",
-		comingsoon: true,
 		rating: "(Very good)",
 		tagline: "Multi-curve reverb delay.",
 		description: `
@@ -256,11 +255,14 @@ unique reverb plugin whose characteristics you can draw in the form of a curve.<
 for example, you can have a reverse reverb with an oscillating lowpass, with a tail that starts panned left and ends up panned right.<br/>
 or, you could have a reverb with a tail that goes wub wub wub wub and the end of the tail is pitched up an octave.<br/>
 <br/>
-more chaotic and textural results can be achieved by reducing the density parameter, and the plugin can also be used as a multi-tap delay by turning the density knob all the way down, with each point representing a tap.<br/>
-give it a try! stuff can get really interesting really fast.<br/>
+hold ctrl while dragging the length knob to sync to bpm.<br/>
+more chaotic and textural results can be achieved by reducing the density parameter, and the plugin can enter multi-tap delay mode by turning the density knob all the way down.<br/>
 <br/>
-(<a href="https://www.patreon.com/posts/sunburnt-beta-1-82680800" target="_blank">beta available</a> in the 10$ patreon tier)`,
+due to the plugin's extensive use of convolution, it is somewhat cpu heavy.<br/>
+if youre experiencing problems, try increasing the buffer size!`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/sunburnt-free-99259946"},
+		paiddownload: {url:"https://www.patreon.com/posts/sunburnt-99260540"},
 		decoration: {width:230,height:221},
 		ui: {width:552,height:501,deg:20}
 	},{
