@@ -4,7 +4,7 @@ var vsts = [
 		id: "about",
 		color: "orange",
 		description: `hi! ✌<br/>
-im melody (they them). on the internet i release stuff under the name unplugred.<br/>
+im melody (she they). on the internet i release stuff under the name unplugred.<br/>
 after studying audio engineering i decided to make my own vst plugins for me and my friends because i was frustrated with the current offerrings.<br/>
 eventually i decided to release them onto the internet as open source because why not.<br/>
 in here youd find no resistors, transitors, capacitors, or diodes modeled. no emulation of anything.<br/>
