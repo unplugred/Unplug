@@ -4,7 +4,7 @@
   "description": "Porting games from alternative dimensions since 372X.",
   "author": "Melody",
   "dependencies": {
-    "ejs": "^3.1.8",
+    "ejs": "^3.1.10",
     "express": "^4.19.2"
   }
 }
