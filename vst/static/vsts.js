@@ -19,6 +19,23 @@ shout out to my friend lau she makes rly good music <a href="https://laulaulau.b
 		color: "orange",
 		description: `
 <br/>
+<b>Q: Why Patreon?<br/>
+A:</b> i cannot afford to pay rent only some of the time.<br/>
+before i moved to patreon the income i got from this fluctuated a lot.<br/>
+patreon allows me to have a stable income i can rely on.<br/>
+<br/>
+<b>Q: But I dont like subscriptions<br/>
+A:</b> the everything bundle used to be worth 100$ before i moved to patreon.<br/>
+this is a low price considering people pay 90$ for a single plugin.<br/>
+if youre at the lowest tier of my patreon, it would take u 20 months to get to that amount.<br/>
+if having a reoccuring payment stresses you out thats understandable, but one time donations dont pay my rent.<br/>
+<br/>
+<b>Q: But I don't have money<br/>
+A:</b> music creation should not be gatekept by money.<br/>
+thats why i made the free versions.<br/>
+theres no shame in using them and they are fully functional.<br/>
+i promise i wont judge.<br/>
+<br/>
 <b>Q: I found a bug!<br/>
 A:</b> THANK YOU for your effort to report bugs<br/>
 bug reports are always always appreciated.<br/>
