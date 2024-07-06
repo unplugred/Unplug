@@ -28,7 +28,7 @@ patreon allows me to have a stable income i can rely on.<br/>
 A:</b> the everything bundle used to be worth 100$ before i moved to patreon.<br/>
 this is a low price considering people pay 90$ for a single plugin.<br/>
 if youre at the lowest tier of my patreon, it would take u 20 months to get to that amount.<br/>
-if having a reoccuring payment stresses you out thats understandable, but one time donations dont pay my rent.<br/>
+if having a reoccuring payment stresses you out thats understandable, but one time donations wont help me do this full time.<br/>
 <br/>
 <b>Q: But I don't have money<br/>
 A:</b> music creation should not be gatekept by money.<br/>
@@ -241,21 +241,11 @@ the parameters are highly automatable and can produce a dub delay effect when au
 		description: `
 multiband distoriton plugin for advanced tone shaping.<br/>
 up to four modules can be added to any one of the four bands.<br/>
-as of writing, there are 16 modules available to choose from.<br/>
+as of writing, there are 21 modules available to choose from.<br/>
 in the right hands the plugin can produce highly complex and intricate tones.<br/>
 common usecases include very harsh distortions being applied on a narrow band to create more subtle effects,<br/>
 and bass recordings being distorted on the higher frequencies without hurting the low end.<br/>
-<br/>
-<i><b>Coming in a future update:</b><br/>
- - Dry/Wet module<br/>
- - Ring Mod module<br/>
- - Stereo DC module<br/>
- - Stereo Rectify module<br/>
- - Ability to drag modules<br/>
- - Ability to change the amount of modules per band<br/>
- - Prismon, a non multiband version of prisma<br/>
- - Resizable UI<br/>
- - More</i>`,
+also included is a single band version called prismon.`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/prisma-free-79099898"},
 		paiddownload: {url:"https://www.patreon.com/posts/prisma-79099945"},
