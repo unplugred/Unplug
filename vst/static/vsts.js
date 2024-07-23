@@ -207,7 +207,9 @@ apply with caution if not in a proper mixing environment.<br/>
 		description: `
 this one is a reproduction of a sampler present in a music making feature that was in a video game thats near and dear to my childhood.<br/>
 this plugin attempts to preserve the unique voice limitations of the original sampler,<br/>
-and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.`,
+and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.<br/>
+<br/>
+<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://paperaviator.bandcamp.com/music@a2paper aviator@a3.", "/mp/demo1.mp3", true, false)'>▶ Demo</a></center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/mpaint-79087173"},
 		decoration: {width:131,height:208},
