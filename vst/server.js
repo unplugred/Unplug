@@ -51,6 +51,8 @@ vstcodes = {
 	"ov9zlfghbkpij81f": "Prisma Free",
 	"1s1h4rjd5etv4mne": "SunBurnt",
 	"r89u1onfe5dj4tlz": "SunBurnt Free",
+	"1343k2r2owvaa9v8": "Diet Audio",
+	"10j7dx45cyjqgnil": "Diet Audio Free",
 	"mmle2ls85rexid0m": "Everything Bundle"
 }
 app.use((req, res, next) => {
