@@ -275,6 +275,20 @@ if youre experiencing problems, try increasing the buffer size!`,
 		decoration: {width:230,height:221},
 		ui: {width:552,height:501,deg:20}
 	},{
+		title: "Diet Audio",
+		id: "da",
+		color: "teal",
+		tagline: "Spectral gate.",
+		description: `
+a spectral gate plugin with a unique sound, very good at separating transient information from the rest of the audio.<br/>
+two copies of the plugin can be used in order to process transients differently than the rest, for example by distorting only the transients.<br/>
+the plugin can also produce unique artifacts when used in fast release mode, which resemble mp3 compression.`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/diet-audio-free-112826556"},
+		paiddownload: {url:"https://www.patreon.com/posts/diet-audio-112826367"},
+		decoration: {width:402,height:219},
+		ui: {width:384,height:384,deg:20}
+	},{
 		title: "Everything Bundle",
 		id: "bndl",
 		color: "teal",
