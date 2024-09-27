@@ -241,7 +241,7 @@ the parameters are highly automatable and can produce a dub delay effect when au
 		rating: "(Very good)",
 		tagline: "Modular multiband distortion plugin.",
 		description: `
-multiband distoriton plugin for advanced tone shaping.<br/>
+multiband distortion plugin for advanced tone shaping.<br/>
 up to four modules can be added to any one of the four bands.<br/>
 as of writing, there are 21 modules available to choose from.<br/>
 in the right hands the plugin can produce highly complex and intricate tones.<br/>
