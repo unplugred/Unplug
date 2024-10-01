@@ -29,10 +29,13 @@ fs.readFile(__dirname + "/savefile.json", 'utf8', (err, jsonString) => {
 		console.log("ERROR READING SAVEFILE: ", err);
 	} else try {
 		savefile = JSON.parse(jsonString);
-		if(savefile.loaded === undefined)
-			savefile.loaded = true;
-		if(savefile.viscount === undefined)
+		if(savefile.loaded === undefined) {
+			savefile.loaded = false;
+		}
+		if(savefile.viscount === undefined) {
 			savefile.viscount = 152;
+			savefile.loaded = false;
+		}
 		console.log("visitor count according to main: " + savefile.viscount);
 	} catch(error) {
 		console.log("ERROR PARSING SAVEFILE: ", error);
@@ -51,8 +54,7 @@ fs.readFile(__dirname + "/savefile.json", 'utf8', (err, jsonString) => {
 			console.log("ERROR PARSING BACKUP SAVEFILE: ", error);
 		}
 
-		if(!savefile.loaded)
-			savefile.loaded = true;
+		if(!savefile.loaded) savefile.loaded = true;
 	});
 });
 
@@ -168,8 +170,6 @@ app.use((req, res, next) => {
 
 	//survey
 	if(req.originalUrl === '/survey?get') {
-		savefile.viscount++;
-		if(savefile.loaded) save();
 		let num = Math.floor(Math.random()*survey.length);
 		return res.send((num+1).toString().padStart(3,"0")+","+survey[num]);
 	}

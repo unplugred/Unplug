@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Metrics</title>
+		<style>
+			html, body {
+				padding: 0;
+				margin: 0;
+				width: 100vw;
+				height: 100vh;
+				background: url(bginvert.webp) 0 0;
+				background-attachment: fixed;
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				line-height: .95;
+				overflow: hidden;
+				font-size:16pt;
+			}
+			body {
+				display: flex;
+			}
+			a {
+				color: black;
+				text-decoration: none;
+			}
+			a:hover {
+				text-decoration: underline;
+			}
+			#wrap {
+				margin: auto;
+				background: url(metrics.webp) -50% -30%, white;
+				max-height: 100vh;
+				width: 1300px;
+				max-width: 100vw;
+				overflow-y: scroll;
+				border: 1px solid black;
+				box-shadow: 10px 10px 0px 0px rgba(0,0,0,0.2);
+			}
+			#graph {
+				margin: 2vw;
+				max-height: 600px;
+			}
+			#sels {
+				transform: scaleY(0.8);
+				margin-left: 1vw;
+			}
+			.seltitle {
+				display: inline-block;
+				font-weight: bold;
+				min-width: 100px;
+			}
+			.selopt {
+				display: inline-block;
+				padding: 3px 8px;
+			}
+			.selactive {
+				background: #FF8400;
+				color: white;
+				pointer-events: none;
+			}
+			#warning {
+				background: #BB0000;
+				color: white;
+				height: 50px;
+				transform: scaleY(0.8);
+				display: flex;
+				transform-origin: top;
+			}
+			#warningtext {
+				margin: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="warning" style="display: none;"><div id="warningtext">DATA LOADED INCORRECTLY</div></div>
+			<canvas id="graph"></canvas>
+			<div id="sels">
+				<div class="sel" id="seltime">
+					<div class="seltitle">Time:</div>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('time','daily')" id="seltimedaily">Daily</a>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('time','monthly')" id="seltimemonthly">Monthly</a>
+				</div>
+				<div class="sel" id="selcolorby">
+					<div class="seltitle">Color by:</div>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('colorby','plugin')" id="selcolorbyplugin">Plugin</a>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('colorby','platform')" id="selcolorbyplatform">Platform</a>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('colorby','version')" id="selcolorbyversion">Version</a>
+				</div>
+				<div class="sel" id="selplugin">
+					<div class="seltitle">Plugin:</div>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('plugin','all')" id="selpluginall">All</a>
+				</div>
+				<div class="sel" id="selplatform">
+					<div class="seltitle">Platform:</div>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('platform','all')" id="selplatformall">All</a>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('platform','linux')" id="selplatformlinux">Linux</a>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('platform','win64')" id="selplatformwin64">Win64</a>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('platform','mac')" id="selplatformmac">Mac</a>
+				</div>
+				<div class="sel" id="selversion">
+					<div class="seltitle">Version:</div>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('version','all')" id="selversionall">All</a>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('version','paid')" id="selversionpaid">Paid</a>
+					<a href="javascript:void(0)" class="selopt" onclick="updatesel('version','free')" id="selversionfree">Free</a>
+				</div>
+			</div>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js"></script>
+		<script>
+			var data = <%- JSON.stringify(metrics) %>;
+			if(data.loaded == undefined || data.loaded == false)
+				document.getElementById("warning").style.display = null;
+
+			var plugins = Object.keys(data.daily[0]);
+			while(plugins[0] == "day" || plugins[0] == "month" || plugins[0] == "name") plugins.shift();
+			let selplugin = document.getElementById("selplugin");
+			for(let i = 0; i < plugins.length; ++i) {
+				let div = document.createElement('a');
+				div.href = "javascript:void(0)";
+				div.className = "selopt";
+				let pluginname = plugins[i].toLowerCase().replace(' ','');
+				div.onclick = function(){ updatesel("plugin", pluginname) };
+				div.id = "selplugin"+pluginname;
+				div.innerText = plugins[i];
+				selplugin.appendChild(div);
+			}
+
+			var sel = {
+				time: "daily",
+				colorby: "plugin",
+				plugin: "all",
+				platform: "all",
+				version: "all"
+			}
+			const url = new URL(window.location.href);
+			let selkeys = Object.keys(sel);
+			for(let i = 0; i < selkeys.length; ++i) {
+				let getparam = url.searchParams.get(selkeys[i]);
+				if(getparam != null) sel[selkeys[i]] = getparam;
+				document.getElementById("sel"+selkeys[i]+sel[selkeys[i]]).classList.add("selactive");
+			}
+
+			function updatesel(category, value) {
+				if(sel[category] == value) return;
+				document.getElementById("sel"+category+sel[category]).classList.remove("selactive");
+				document.getElementById("sel"+category+value).classList.add("selactive");
+				sel[category] = value;
+				const url = new URL(window.location.href);
+				url.searchParams.set(category,value);
+				window.history.replaceState(null,'',url.toString());
+				calculate(category == "time",category == "colorby");
+			}
+
+			colors = ["#D46959","#569062","#585484","#D86780","#F2E971","#5A9BD6"];
+			function calculate(updatex = true, updatey = true) {
+				let labelsy = [];
+				if(sel.colorby == "plugin") labelsy = plugins;
+				else if(sel.colorby == "platform") labelsy = ["linux","win64","mac"];
+				else if(sel.colorby == "version") labelsy = ["paid","free"];
+
+				if(updatex) {
+					chart.data.labels = [];
+					for(let x = data[sel.time].length-1; x >= 0; --x)
+						chart.data.labels.push(data[sel.time][x].name);
+				}
+
+				if(updatey) chart.data.datasets = [];
+				for(let i = 0; i < labelsy.length; ++i) {
+					if(updatey) {
+						let arr = [];
+						for(let x = 0; x < data[sel.time].length; ++x)
+							arr.push(0);
+						chart.data.datasets.push({
+							label: labelsy[i],
+							data: arr,
+							borderColor: "transparent",
+							showLine: false,
+							backgroundColor: colors[i%6],
+							fill: 'origin',
+							tension: 0
+						});
+					} else {
+						let arr = [];
+						for(let x = 0; x < data[sel.time].length; ++x)
+							arr.push(0);
+						chart.data.datasets[i].data = arr;
+					}
+				}
+
+				let index = 0;
+				for(let x = 0; x < data[sel.time].length; ++x) {
+					let flippedx = data[sel.time].length-x-1;
+					if(sel.colorby == "plugin") index = 0;
+					for(let y = 0; y < plugins.length; ++y) {
+						if(data[sel.time][flippedx][plugins[y]] != undefined) {
+							for(let i = 0; i < 6; ++i) {
+								if((i%3) == 0 && sel.colorby == "platform") index = 0;
+								else if(sel.colorby == "version") index = i>=3?0:1;
+								if(
+									(sel.plugin == "all" || sel.plugin == plugins[y].toLowerCase().replace(' ','')) &&
+									(sel.platform == "all" || (sel.platform == "linux" && (i%3) == 0) || (sel.platform == "win64" && (i%3) == 1) || (sel.platform == "mac" && (i%3) == 2)) &&
+									(sel.version == "all" || (sel.version == (i>=3?"paid":"free"))))
+									chart.data.datasets[index].data[x] += data[sel.time][flippedx][plugins[y]][i];
+								if(sel.colorby == "platform") ++index;
+							}
+						}
+						if(sel.colorby == "plugin") ++index;
+					}
+				}
+
+				chart.update();
+			}
+
+			chart = new Chart("graph",{
+				type: "line",
+				data: {
+					labels: [],
+					datasets: []
+				},
+				options: {
+					interaction: { intersect: false, mode: 'index' },
+					showTooltips: true,
+					responsive: true,
+					maintainAspectRatio: false,
+					scales: { y: { stacked: true } },
+				},
+				defaults: {
+					font: {
+						family: "'Helvetica Neue', Arial, sans-serif"
+					}
+				}
+			});
+			calculate(true,true);
+		</script>
+	</body>
+</html>
