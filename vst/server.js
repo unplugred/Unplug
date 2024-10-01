@@ -10,6 +10,52 @@ if(process.env.NODE_ENV === 'production') {
 const fs = require('fs');
 eval(fs.readFileSync(__dirname + '/static/vsts.js').toString());
 
+var metrics = {
+	loaded: false,
+	hour: -1,
+	daily: [],
+	monthly: []
+}
+fs.readFile(__dirname + "/metrics.json", 'utf8', (err, jsonString) => {
+	if(err) {
+		console.log("ERROR READING METRICS: ", err);
+	} else try {
+		metrics = JSON.parse(jsonString);
+		if(metrics.loaded === undefined) {
+			metrics.loaded = false;
+		} if(metrics.hour === undefined) {
+			metrics.hour = -1;
+			metrics.loaded = false;
+		}
+	} catch(error) {
+		console.log("ERROR PARSING METRICS: ", error);
+	}
+
+	fs.readFile(__dirname + "/metricsbackup.json", 'utf8', (err, jsonString) => {
+		if(err){
+			console.log("ERROR READING BACKUP METRICS: ", err);
+		} else try {
+			let metricsbackup = JSON.parse(jsonString);
+			if((metricsbackup.hour > metrics.hour) || !metrics.loaded)
+				metrics = metricsbackup;
+		} catch(error) {
+			console.log("ERROR PARSING BACKUP METRICS: ", error);
+		}
+
+		if(!metrics.loaded) metrics.loaded = true;
+	});
+});
+
+function save() {
+	let jsonString = JSON.stringify(metrics);
+	fs.writeFile(__dirname + "/metrics.json", jsonString, err => {
+		if(err) console.log("ERROR WRITING METRICS: ", err);
+	});
+	fs.writeFile(__dirname + "/metricsbackup.json", jsonString, err => {
+		if(err) console.log("ERROR WRITING BACKUP METRICS: ", err);
+	});
+}
+
 const express = require('express');
 const app = express();
 app.set('view engine', 'ejs');
@@ -56,17 +102,103 @@ vstcodes = {
 	"mmle2ls85rexid0m": "Everything Bundle"
 }
 app.use((req, res, next) => {
-	if(process.env.NODE_ENV !== 'production' && req.path.startsWith("/setup"))
+	if(req.path.startsWith("/setup") && process.env.NODE_ENV !== 'production')
 		return res.render('setup.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
-	if(process.env.NODE_ENV !== 'production' && req.path.startsWith("/cover"))
+	if(req.path.startsWith("/cover") && process.env.NODE_ENV !== 'production')
 		return res.render('cover.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
-	else if(req.path.startsWith("/download/")) {
-		for(var key in vstcodes) if(req.path.includes("/"+key+"/")) {
+	if(req.path.startsWith("/metrics"))
+		return res.render('metrics.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts,metrics:metrics});
+	if(req.path.startsWith("/download/")) {
+		for(let key in vstcodes) if(req.path.includes("/"+key+"/")) {
 			var os = ""
 			if(req.path.includes("/linux")) os = "Linux"
 			if(req.path.includes("/win64")) os = "Win64"
 			if(req.path.includes("/mac")) os = "Mac"
-			if(os != "") return res.download(__dirname + '/builds/'+vstcodes[key]+' '+os+'.zip');
+			if(os != "") {
+				if(metrics.loaded) {
+					let shouldsave = false;
+					let hour = Math.floor(Date.now()/1000/60/60);
+					if(metrics.hour < hour) {
+						metrics.hour = hour;
+						let currentday = Math.floor(hour/24);
+						if(metrics.daily.length < 1 || metrics.daily[0].day != currentday) {
+							if(metrics.daily.length >= 1 && metrics.daily[0].day > currentday)
+								metrics.daily[0].day = currentday-1;
+							let delta = metrics.daily.length<1?1:(currentday-metrics.daily[0].day);
+							let date = new Date();
+							date.setDate(date.getDate()-delta);
+							for(let i = 0; i < delta; ++i) {
+								date.setDate(date.getDate()+1);
+								metrics.daily.unshift({
+									"day": currentday-(delta-i-1),
+									"name": String(date.getUTCDate())+'/'+String(date.getUTCMonth()+1),
+									"Plastic Funeral":		[0,0,0,0,0,0],
+									"VU":					[0,0,0,0,0,0],
+									"ClickBox":				[0,0,0,0,0,0],
+									"Pisstortion":			[0,0,0,0,0,0],
+									"PNCH":					[0,0,0,0,0,0],
+									"Red Bass":				[0,0,0,0,0,0],
+									"MPaint":				[0,0,0,0,0,0],
+									"CRMBL":				[0,0,0,0,0,0],
+									"Prisma":				[0,0,0,0,0,0],
+									"SunBurnt":				[0,0,0,0,0,0],
+									"Diet Audio":			[0,0,0,0,0,0],
+									"Everything Bundle":	[0,0,0,0,0,0]
+								});
+							}
+							while(metrics.daily.length > 90)
+								metrics.daily.pop();
+						}
+						date = new Date();
+						let currentmonth = date.getUTCMonth()+date.getUTCFullYear()*12;
+						if(metrics.monthly.length < 1 || metrics.monthly[0].month != currentmonth) {
+							if(metrics.monthly.length >= 1 && metrics.monthly[0].month > currentmonth)
+								metrics.monthly[0].month = currentmonth-1;
+							let delta = metrics.monthly.length<1?1:(currentmonth-metrics.monthly[0].month);
+							date.setMonth(date.getMonth()-delta);
+							for(let i = 0; i < delta; ++i) {
+								date.setMonth(date.getMonth()+1);
+								metrics.monthly.unshift({
+									"month": currentmonth-(delta-i-1),
+									"name": String(date.getUTCMonth()+1)+'/'+String(date.getUTCFullYear()),
+									"Plastic Funeral":		[0,0,0,0,0,0],
+									"VU":					[0,0,0,0,0,0],
+									"ClickBox":				[0,0,0,0,0,0],
+									"Pisstortion":			[0,0,0,0,0,0],
+									"PNCH":					[0,0,0,0,0,0],
+									"Red Bass":				[0,0,0,0,0,0],
+									"MPaint":				[0,0,0,0,0,0],
+									"CRMBL":				[0,0,0,0,0,0],
+									"Prisma":				[0,0,0,0,0,0],
+									"SunBurnt":				[0,0,0,0,0,0],
+									"Diet Audio":			[0,0,0,0,0,0],
+									"Everything Bundle":	[0,0,0,0,0,0]
+								});
+							}
+						}
+
+						shouldsave = true;
+					}
+
+					let dlindex = 3;
+					if(os == "Win64") dlindex = 4;
+					else if(os == "Mac") dlindex = 5;
+					let pluginname = vstcodes[key];
+					if(pluginname.endsWith(" Free")) {
+						pluginname = pluginname.substring(0,pluginname.length-5);
+						dlindex -= 3;
+					} else if(pluginname == "MPaint" || pluginname == "ClickBox") {
+						dlindex -= 3;
+					}
+
+					++metrics.daily[0][pluginname][dlindex];
+					++metrics.monthly[0][pluginname][dlindex];
+
+					if(shouldsave) save();
+				}
+
+				return res.download(__dirname + '/builds/'+vstcodes[key]+' '+os+'.zip');
+			}
 		}
 	}
 
@@ -76,3 +208,22 @@ app.use((req, res, next) => {
 app.listen(6665, function(){
 	console.log("VST server started on port 6665");
 });
+
+process.stdin.resume();
+var exited = false;
+function exitHandler(options, exitCode) {
+	if(exited) return;
+	exited = true;
+	let jsonString = JSON.stringify(metrics);
+	try {
+		fs.writeFileSync(__dirname + "/metrics.json", jsonString);
+	} catch(err) {
+		console.log("ERROR WRITING METRICS: ", err);
+	}
+	if(options.exit) process.exit();
+}
+process.on('exit', exitHandler.bind(null,{}));
+process.on('SIGINT', exitHandler.bind(null, {exit:true}));
+process.on('SIGUSR1', exitHandler.bind(null, {exit:true}));
+process.on('SIGUSR2', exitHandler.bind(null, {exit:true}));
+process.on('uncaughtException', exitHandler.bind(null, {exit:true}));
