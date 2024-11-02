@@ -392,3 +392,4 @@ for(let tier = 15; tier >= 10; tier -= 5) {
 	if(tier == 10) patronhtml += patronhtml;
 	document.getElementById("patrons"+String(tier)).innerHTML = patronhtml;
 }
+document.getElementById("patrons10").style.animationDelay = String(Math.random()*-30)+"s";
