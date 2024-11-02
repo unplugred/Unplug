@@ -668,3 +668,19 @@ audio {
 	border: solid 1px black;
 	background: #f3f3f3;
 }
+#patronsscroll {
+	height: 100px;
+	overflow-y: clip;
+	mask: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0) 90%, rgba(0,0,0,0) 100%);
+	margin-top: 4px;
+}
+#patrons10 {
+	animation: patronscroll 30s infinite linear;
+}
+#patrons10:hover {
+	animation-play-state: paused;
+}
+@keyframes patronscroll {
+	from { transform: translateY(0%); }
+	to { transform: translateY(-50%); }
+}
