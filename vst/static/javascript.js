@@ -374,3 +374,21 @@ function setpopup(index, id = -1, text = "", path = null, isaudio = false, isvid
 	}
 	popups[index].id = id;
 }
+
+function sanitize(string) {
+	const map = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;',"/":'&#x2F;'};
+	const reg = /[&<>"'/]/ig;
+	return string.replace(reg, (match)=>(map[match]));
+}
+for(let tier = 15; tier >= 10; tier -= 5) {
+	var patronhtml = "";
+	if(patrons[String(tier)] == undefined) continue;
+	for(let patron = 0; patron < patrons[String(tier)].length; ++patron) {
+		if(patrons[String(tier)][patron]["url"] == undefined)
+			patronhtml += sanitize(patrons[String(tier)][patron]["name"])+"<br/>"
+		else
+			patronhtml += "<a target=\"_blank\" href=\""+encodeURI(patrons[String(tier)][patron]["url"])+"\">"+sanitize(patrons[String(tier)][patron]["name"])+"</a><br/>"
+	}
+	if(tier == 10) patronhtml += patronhtml;
+	document.getElementById("patrons"+String(tier)).innerHTML = patronhtml;
+}

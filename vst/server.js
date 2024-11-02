@@ -56,6 +56,76 @@ function save() {
 	});
 }
 
+var pledges = [];
+var patrons = '{"10":[{"name":"FAILED TO READ PATREON DATA"}]}';
+var patrons_temp = {};
+var overrides = {};
+var last_checked_patreon = Math.floor(Date.now()/1000/60/60);
+function refresh_patrons(cursor = null) {
+	var url = "https://api.patreon.com/oauth2/api/campaigns/"+String(keys['campaign_id'])+"/pledges?page%5Bcount%5D=25";
+	if(cursor != null) url += "&page%5Bcursor%5D="+cursor;
+	url += "&include=patron,reward&fields%5Buser%5D=full_name,first_name,last_name&fields%5Bpledge%5D=null&fields%5Breward%5D=null&fields%5Bcampaign%5D=null";
+	fetch(url, {
+		method: 'GET',
+		headers: { 'Authorization': "Bearer "+keys['creator_id'] }
+	}).then(response => response.json()).then((data) => {
+		for(let pledge = 0; pledge < data['data'].length; ++pledge) {
+			let tier = 0;
+			if(data['data'][pledge]['relationships']['reward']['data'] != null)
+				tier = keys['tier_ids'][data['data'][pledge]['relationships']['reward']['data']['id']];
+			if(tier < 10) continue;
+
+			let userdata = { "name": null };
+			for(let user = 0; user < data['included'].length; ++user) {
+				if(data['included'][user]['id'] != data['data'][pledge]['relationships']['patron']['data']['id'])
+					continue;
+
+				if(data['included'][user]['attributes']['full_name'] != undefined) {
+					userdata['name'] = data['included'][user]['attributes']['full_name'];
+				} else if(data['included'][user]['attributes']['first_name'] != undefined) {
+					userdata['name'] = data['included'][user]['attributes']['first_name'];
+					if(data['included'][user]['attributes']['last_name'] != undefined)
+						userdata['name'] += data['included'][user]['attributes']['last_name'];
+				}
+				break;
+			}
+			if(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined)
+				for (const [key, value] of Object.entries(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])]))
+					userdata[key] = value;
+			if(userdata['name'] == null) continue;
+
+			if(patrons_temp[String(tier)] == undefined)
+				patrons_temp[String(tier)] = [];
+			patrons_temp[String(tier)].push(userdata);
+		}
+		if(data["links"]["next"] != undefined && data["links"]["next"].includes("page%5Bcursor%5D=")) {
+			refresh_patrons(data["links"]["next"].split('page%5Bcursor%5D=',2)[1].split("&",1)[0]);
+		} else {
+			patrons = JSON.stringify(patrons_temp);
+			patrons_temp = {};
+		}
+	}).catch(error => console.error('ERROR FETCHING PATREON DATA:', error));
+}
+var keys = {
+	creator_id: "",
+	campaign_id: 0,
+	tier_ids: {}
+};
+fs.readFile(__dirname + "/patreon.json", 'utf8', (err, jsonString) => {
+	if(err) {
+		console.log("ERROR READING PATREON DATA: ", err);
+	} else {
+		try {
+			let obj = JSON.parse(jsonString);
+			keys = obj['keys'];
+			patrons = obj['cache'];
+			overrides = obj['overrides'];
+		} catch(error) {
+			console.log("ERROR PARSING PATREON DATA: ", error);
+		}
+	}
+});
+
 const express = require('express');
 const app = express();
 app.set('view engine', 'ejs');
@@ -78,7 +148,7 @@ app.use(express.static(__dirname + '/static', {
 }));
 
 // yea im aware these are open source but whatever
-vstcodes = {
+var vstcodes = {
 	"w0zy59f5dmdc5uzs": "Plastic Funeral",
 	"n4bb7kg8xgyq0hpy": "Plastic Funeral Free",
 	"v6urdk6rkdhdphiy": "VU",
@@ -202,7 +272,13 @@ app.use((req, res, next) => {
 		}
 	}
 
-	return res.render('index.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
+	let hour = Math.floor(Date.now()/1000/60/60);
+	if(hour != last_checked_patreon) {
+		last_checked_patreon = hour;
+		refresh_patrons();
+	}
+
+	return res.render('index.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts,patrons:patrons});
 });
 
 app.listen(6665, function(){
@@ -214,11 +290,19 @@ var exited = false;
 function exitHandler(options, exitCode) {
 	if(exited) return;
 	exited = true;
-	let jsonString = JSON.stringify(metrics);
 	try {
-		fs.writeFileSync(__dirname + "/metrics.json", jsonString);
+		fs.writeFileSync(__dirname + "/metrics.json", JSON.stringify(metrics));
 	} catch(err) {
 		console.log("ERROR WRITING METRICS: ", err);
+	}
+	try {
+		fs.writeFileSync(__dirname + "/patreon.json", JSON.stringify({
+			"keys": keys,
+			"cache": patrons,
+			"overrides": overrides
+		}));
+	} catch(err) {
+		console.log("ERROR WRITING PATREON DATA: ", err);
 	}
 	if(options.exit) process.exit();
 }

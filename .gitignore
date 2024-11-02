@@ -13,6 +13,7 @@ savefile.json
 savefilebackup.json
 metrics.json
 metricsbackup.json
+patreon.json
 vst/builds
 
 # User-specific files
