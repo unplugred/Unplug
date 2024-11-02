@@ -99,126 +99,38 @@ id also love to hear any music you made with my plugins, and feel free to send m
 		hideicon: true,
 		separator: true
 	},{
-		title: "Plastic Funeral",
-		id: "pf",
+		title: "Everything Bundle",
+		id: "bndl",
 		color: "teal",
-		tagline: "Distortion that sounds like a laser beam.",
+		tagline: "Think of the savings!",
 		description: `
-forget about warmth.<br/>
-this refreshing take on fold distortion gives off a harsh and metallic sound that is guaranteed to destroy any mix.<br/>
-<br/>
-<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)'>▶ Demo</a> (loud)</center>`,
+grammy winning producers dont want you to know this simple trick!<br/>
+get the paid versions of all of my plugins at a funny price.<br/>
+also saves u a few clicks as u can bulk download everything.`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/plastic-funeral-78716847"},
-		paiddownload: {url:"https://www.patreon.com/posts/plastic-funeral-78717124"},
-		decoration: {width:90,height:370},
-		ui: {width:242,height:462,deg:40}
+		paiddownload: {url:"https://www.patreon.com/posts/everything-79100062"}
 	},{
-		title: "VU",
-		id: "vu",
+		title: "Prisma",
+		id: "prsm",
 		color: "teal",
-		rating: "(Good)",
-		tagline: "VU meter for your VU metering needs.",
+		tagline: "Modular multiband distortion plugin.",
 		description: `
-very simple and to the point vu meter. has:<br/>
-- stereo and mono modes<br/>
-- scalable ui<br/>
-- adjustable reaction speed<br/>
-- adjustable nominal operation level (NoL)<br/>
-- peak led`,
+multiband distortion plugin for advanced tone shaping.<br/>
+up to four modules can be added to any one of the four bands.<br/>
+as of writing, there are 21 modules available to choose from.<br/>
+in the right hands the plugin can produce highly complex and intricate tones.<br/>
+common usecases include very harsh distortions being applied on a narrow band to create more subtle effects,<br/>
+and bass recordings being distorted on the higher frequencies without hurting the low end.<br/>
+also included is a single band version called prismon.`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/vu-free-version-79085437"},
-		paiddownload: {url:"https://www.patreon.com/posts/vu-79085607"},
-		decoration: {width:288,height:300},
-		ui: {width:438,height:260,deg:40}
-	},{
-		title: "ClickBox",
-		id: "cb",
-		color: "teal",
-		tagline: "Randomized click generator.",
-		description: `
-generates randomized digital clicks<br/>
-made after people complained i fixed the annoying clicking issue in my first vst, plastic funeral (why??)<br/>
-not useful for much but i made it so might as well put it out there.`,
-		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/clickbox-79085747"},
-		decoration: {width:150,height:300},
-		ui: {width:256,height:256,deg:40}
-	},{
-		title: "Pisstortion",
-		id: "ps",
-		color: "teal",
-		rating: "(Very good)",
-		tagline: "Advanced sinefold distortion plugin.",
-		description: `
-my take on sine fold distortion.<br/>
-sounds similar to plastic funeral but a bit softer.<br/>
-<br/>
-<i><b>Coming in a future update:</b><br/>
- - Ability to toggle between fold and sine fold</i><br/>
- - Automatic gain compensation</i>`,
-		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/pisstortion-free-79085897"},
-		paiddownload: {url:"https://www.patreon.com/posts/pisstortion-79085974"},
-		decoration: {width:94,height:300},
-		ui: {width:242,height:462,deg:40}
-	},{
-		title: "PNCH",
-		id: "pnch",
-		rating: "(Good)",
-		color: "teal",
-		tagline: "Weird knob that makes ur stuff tight.",
-		description: `
-a type of effect that causes added harmonics as well as a gating effect.<br/>
-compared to typical gates and expanders, this one does not use an envelope follower for the gating effect, resulting in gating without pumping<br/>
-the added harmonics might not be noticeable or even pleasant on an already dirty signal such as a guitar.<br/>
-as a result, this makes it great for applications such as removing humming on a direct guitar signal before applying heavy distortion.<br/>
-also sounds great on drum loops and results in a very choppy effect.<br/>
-APPLY BEFORE DISTORTION FOR IDEAL EFFECT.<br/>
-<br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "PNCH demo.", "https://www.youtube.com/embed/UFdOg7CEaGQ?autoplay=1", false, true, 20, 15)'>▶ PNCH in action</a> (demo video)</center>`,
-		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/pnch-free-79086018"},
-		paiddownload: {url:"https://www.patreon.com/posts/pnch-79086091"},
-		decoration: {width:200,height:182},
-		ui: {width:128,height:148,deg:40}
-	},{
-		title: "Red Bass",
-		id: "rb",
-		color: "teal",
-		tagline: "Low-end enchancer excellent for kicks and speech.",
-		description: `
-sub oscillator sidechained to incoming signal.<br/>
-put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
-apply with caution if not in a proper mixing environment.<br/>
-<br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center>`,
-		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/red-bass-free-79087099"},
-		paiddownload: {url:"https://www.patreon.com/posts/red-bass-79087143"},
-		decoration: {width:240,height:157},
-		ui: {width:322,height:408,deg:40}
-	},{
-		title: "MPaint",
-		id: "mp",
-		color: "teal",
-		rating: "(Good)",
-		tagline: "A sampler from a popular video game.",
-		description: `
-this one is a reproduction of a sampler present in a music making feature that was in a video game thats near and dear to my childhood.<br/>
-this plugin attempts to preserve the unique voice limitations of the original sampler,<br/>
-and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.<br/>
-<br/>
-<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://paperaviator.bandcamp.com/music@a2paper aviator@a3.", "/mp/demo1.mp3", true, false)'>▶ Demo</a></center>`,
-		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/mpaint-79087173"},
-		decoration: {width:131,height:208},
-		ui: {width:468,height:40,deg:40}
+		freedownload: {url:"https://www.patreon.com/posts/prisma-free-79099898"},
+		paiddownload: {url:"https://www.patreon.com/posts/prisma-79099945"},
+		decoration: {width:138,height:267},
+		ui: {width:478,height:561,deg:20}
 	},{
 		title: "CRMBL",
 		id: "crmbl",
 		color: "teal",
-		rating: "(Very good)",
 		tagline: "Delay for insane people.",
 		description: `
 a highly versitile delay plugin with a large feature-set,<br/>
@@ -235,29 +147,9 @@ the parameters are highly automatable and can produce a dub delay effect when au
 		decoration: {width:240,height:231},
 		ui: {width:507,height:465,deg:30}
 	},{
-		title: "Prisma",
-		id: "prsm",
-		color: "teal",
-		rating: "(Very good)",
-		tagline: "Modular multiband distortion plugin.",
-		description: `
-multiband distortion plugin for advanced tone shaping.<br/>
-up to four modules can be added to any one of the four bands.<br/>
-as of writing, there are 21 modules available to choose from.<br/>
-in the right hands the plugin can produce highly complex and intricate tones.<br/>
-common usecases include very harsh distortions being applied on a narrow band to create more subtle effects,<br/>
-and bass recordings being distorted on the higher frequencies without hurting the low end.<br/>
-also included is a single band version called prismon.`,
-		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/prisma-free-79099898"},
-		paiddownload: {url:"https://www.patreon.com/posts/prisma-79099945"},
-		decoration: {width:138,height:267},
-		ui: {width:478,height:561,deg:20}
-	},{
 		title: "SunBurnt",
 		id: "sb",
 		color: "teal",
-		rating: "(Very good)",
 		tagline: "Multi-curve reverb delay.",
 		description: `
 unique reverb plugin whose characteristics you can draw in the form of a curve.<br/>
@@ -275,6 +167,41 @@ if youre experiencing problems, try increasing the buffer size!`,
 		decoration: {width:230,height:221},
 		ui: {width:552,height:501,deg:20}
 	},{
+		title: "Red Bass",
+		id: "rb",
+		color: "teal",
+		tagline: "Low-end enchancer excellent for kicks and speech.",
+		description: `
+sub oscillator sidechained to incoming signal.<br/>
+put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
+apply with caution if not in a proper mixing environment.<br/>
+<br/>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/red-bass-free-79087099"},
+		paiddownload: {url:"https://www.patreon.com/posts/red-bass-79087143"},
+		decoration: {width:240,height:157},
+		ui: {width:322,height:408,deg:40}
+	},{
+		title: "PNCH",
+		id: "pnch",
+		color: "teal",
+		tagline: "Weird knob that makes ur stuff tight.",
+		description: `
+a type of effect that causes added harmonics as well as a gating effect.<br/>
+compared to typical gates and expanders, this one does not use an envelope follower for the gating effect, resulting in gating without pumping<br/>
+the added harmonics might not be noticeable or even pleasant on an already dirty signal such as a guitar.<br/>
+as a result, this makes it great for applications such as removing humming on a direct guitar signal before applying heavy distortion.<br/>
+also sounds great on drum loops and results in a very choppy effect.<br/>
+APPLY BEFORE DISTORTION FOR IDEAL EFFECT.<br/>
+<br/>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "PNCH demo.", "https://www.youtube.com/embed/UFdOg7CEaGQ?autoplay=1", false, true, 20, 15)'>▶ PNCH in action</a> (demo video)</center>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/pnch-free-79086018"},
+		paiddownload: {url:"https://www.patreon.com/posts/pnch-79086091"},
+		decoration: {width:200,height:182},
+		ui: {width:128,height:148,deg:40}
+	},{
 		title: "Diet Audio",
 		id: "da",
 		color: "teal",
@@ -289,15 +216,81 @@ the plugin can also produce unique artifacts when used in fast release mode, whi
 		decoration: {width:402,height:219},
 		ui: {width:384,height:384,deg:20}
 	},{
-		title: "Everything Bundle",
-		id: "bndl",
+		title: "MPaint",
+		id: "mp",
 		color: "teal",
-		tagline: "Think of the savings!",
+		tagline: "A sampler from a popular video game.",
 		description: `
-grammy winning producers dont want you to know this simple trick!<br/>
-get the paid versions of all of my plugins at a funny price.<br/>
-also saves u a few clicks as u can bulk download everything.`,
+this one is a reproduction of a sampler present in a music making feature that was in a video game thats near and dear to my childhood.<br/>
+this plugin attempts to preserve the unique voice limitations of the original sampler,<br/>
+and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.<br/>
+<br/>
+<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://paperaviator.bandcamp.com/music@a2paper aviator@a3.", "/mp/demo1.mp3", true, false)'>▶ Demo</a></center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		paiddownload: {url:"https://www.patreon.com/posts/everything-79100062"}
+		freedownload: {url:"https://www.patreon.com/posts/mpaint-79087173"},
+		decoration: {width:131,height:208},
+		ui: {width:468,height:40,deg:40}
+	},{
+		title: "Pisstortion",
+		id: "ps",
+		color: "teal",
+		tagline: "Advanced sinefold distortion plugin.",
+		description: `
+my take on sine fold distortion.<br/>
+sounds similar to plastic funeral but a bit softer.<br/>
+<br/>
+<i><b>Coming in a future update:</b><br/>
+ - Ability to toggle between fold and sine fold</i><br/>
+ - Automatic gain compensation</i>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/pisstortion-free-79085897"},
+		paiddownload: {url:"https://www.patreon.com/posts/pisstortion-79085974"},
+		decoration: {width:94,height:300},
+		ui: {width:242,height:462,deg:40}
+	},{
+		title: "VU",
+		id: "vu",
+		color: "teal",
+		tagline: "VU meter for your VU metering needs.",
+		description: `
+very simple and to the point vu meter. has:<br/>
+- stereo and mono modes<br/>
+- scalable ui<br/>
+- adjustable reaction speed<br/>
+- adjustable nominal operation level (NoL)<br/>
+- peak led`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/vu-free-version-79085437"},
+		paiddownload: {url:"https://www.patreon.com/posts/vu-79085607"},
+		decoration: {width:288,height:300},
+		ui: {width:438,height:260,deg:40}
+	},{
+		title: "Plastic Funeral",
+		id: "pf",
+		color: "teal",
+		tagline: "Distortion that sounds like a laser beam.",
+		description: `
+forget about warmth.<br/>
+this refreshing take on fold distortion gives off a harsh and metallic sound that is guaranteed to destroy any mix.<br/>
+<br/>
+<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)'>▶ Demo</a> (loud)</center>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/plastic-funeral-78716847"},
+		paiddownload: {url:"https://www.patreon.com/posts/plastic-funeral-78717124"},
+		decoration: {width:90,height:370},
+		ui: {width:242,height:462,deg:40}
+	},{
+		title: "ClickBox",
+		id: "cb",
+		color: "teal",
+		tagline: "Randomized click generator.",
+		description: `
+generates randomized digital clicks<br/>
+made after people complained i fixed the annoying clicking issue in my first vst, plastic funeral (why??)<br/>
+not useful for much but i made it so might as well put it out there.`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/clickbox-79085747"},
+		decoration: {width:150,height:300},
+		ui: {width:256,height:256,deg:40}
 	}
 ]
