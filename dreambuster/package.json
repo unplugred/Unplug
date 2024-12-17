@@ -5,6 +5,6 @@
   "author": "Melody",
   "dependencies": {
     "ejs": "^3.1.10",
-    "express": "^4.21.1"
+    "express": "^4.21.2"
   }
 }
