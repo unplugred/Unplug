@@ -69,9 +69,13 @@ function refresh_patrons(cursor = null) {
 		method: 'GET',
 		headers: { 'Authorization': "Bearer "+keys['creator_id'] }
 	}).then(response => response.json()).then((data) => {
+		if(data['errors'] !== undefined) {
+			for(let error = 0; error < data['errors'].length; ++error)
+				console.error(data['errors'][error]['detail']);
+		}
 		if(data['data'] === undefined) {
 			console.error('Undefined response from Patreon');
-			return
+			return;
 		}
 		for(let pledge = 0; pledge < data['data'].length; ++pledge) {
 			let tier = 0;
@@ -128,6 +132,8 @@ fs.readFile(__dirname + "/patreon.json", 'utf8', (err, jsonString) => {
 			console.log("ERROR PARSING PATREON DATA: ", error);
 		}
 	}
+	if(patrons.includes("FAILED TO READ PATREON DATA"))
+		refresh_patrons();
 });
 
 const express = require('express');
@@ -299,14 +305,16 @@ function exitHandler(options, exitCode) {
 	} catch(err) {
 		console.log("ERROR WRITING METRICS: ", err);
 	}
-	try {
-		fs.writeFileSync(__dirname + "/patreon.json", JSON.stringify({
-			"keys": keys,
-			"cache": patrons,
-			"overrides": overrides
-		}));
-	} catch(err) {
-		console.log("ERROR WRITING PATREON DATA: ", err);
+	if(!patrons.includes("FAILED TO READ PATREON DATA")) {
+		try {
+			fs.writeFileSync(__dirname + "/patreon.json", JSON.stringify({
+				"keys": keys,
+				"cache": patrons,
+				"overrides": overrides
+			}));
+		} catch(err) {
+			console.log("ERROR WRITING PATREON DATA: ", err);
+		}
 	}
 	if(options.exit) process.exit();
 }
