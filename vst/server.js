@@ -69,6 +69,10 @@ function refresh_patrons(cursor = null) {
 		method: 'GET',
 		headers: { 'Authorization': "Bearer "+keys['creator_id'] }
 	}).then(response => response.json()).then((data) => {
+		if(data['data'] === undefined) {
+			console.error('Undefined response from Patreon');
+			return
+		}
 		for(let pledge = 0; pledge < data['data'].length; ++pledge) {
 			let tier = 0;
 			if(data['data'][pledge]['relationships']['reward']['data'] != null)
