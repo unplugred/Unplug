@@ -179,6 +179,8 @@ var vstcodes = {
 	"r89u1onfe5dj4tlz": "SunBurnt Free",
 	"1343k2r2owvaa9v8": "Diet Audio",
 	"10j7dx45cyjqgnil": "Diet Audio Free",
+	"uy34w22vn4k29gug": "Scope",
+	"39y5hl5rr4tvmy0y": "Scope Free",
 	"mmle2ls85rexid0m": "Everything Bundle"
 }
 app.use((req, res, next) => {
