@@ -225,6 +225,7 @@ app.use((req, res, next) => {
 									"Prisma":				[0,0,0,0,0,0],
 									"SunBurnt":				[0,0,0,0,0,0],
 									"Diet Audio":			[0,0,0,0,0,0],
+									"Scope":				[0,0,0,0,0,0],
 									"Everything Bundle":	[0,0,0,0,0,0]
 								});
 							}
@@ -254,6 +255,7 @@ app.use((req, res, next) => {
 									"Prisma":				[0,0,0,0,0,0],
 									"SunBurnt":				[0,0,0,0,0,0],
 									"Diet Audio":			[0,0,0,0,0,0],
+									"Scope":				[0,0,0,0,0,0],
 									"Everything Bundle":	[0,0,0,0,0,0]
 								});
 							}
@@ -273,6 +275,10 @@ app.use((req, res, next) => {
 						dlindex -= 3;
 					}
 
+					if(metrics.daily[0][pluginname] == undefined)
+						metrics.daily[0][pluginname] = [0,0,0,0,0,0];
+					if(metrics.monthly[0][pluginname] == undefined)
+						metrics.monthly[0][pluginname] = [0,0,0,0,0,0];
 					++metrics.daily[0][pluginname][dlindex];
 					++metrics.monthly[0][pluginname][dlindex];
 
