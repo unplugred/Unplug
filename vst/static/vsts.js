@@ -228,8 +228,8 @@ included inside are:<br/>
  - waveform mode in addition to stereo-field xy panorama mode<br/>
  - adjustable colors and customizability`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:""},
-		paiddownload: {url:""},
+		freedownload: {url:"https://www.patreon.com/posts/scope-free-118560672"},
+		paiddownload: {url:"https://www.patreon.com/posts/scope-118561181"},
 		decoration: {width:286,height:300},
 		ui: {width:533,height:400,deg:20}
 	},{
