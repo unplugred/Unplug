@@ -216,6 +216,23 @@ the plugin can also produce unique artifacts when used in fast release mode, whi
 		decoration: {width:402,height:219},
 		ui: {width:384,height:384,deg:20}
 	},{
+		title: "Scope",
+		id: "sp",
+		color: "teal",
+		tagline: "Cool oscilloscope.",
+		description: `
+a neat oscilloscope with a skewmorphic design inspired by the electron beam scopes of the past.<br/>
+<br/>
+included inside are:<br/>
+ - advanced sync algorithm that produces stable waves<br/>
+ - waveform mode in addition to stereo-field xy panorama mode<br/>
+ - adjustable colors and customizability`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:""},
+		paiddownload: {url:""},
+		decoration: {width:286,height:300},
+		ui: {width:533,height:400,deg:20}
+	},{
 		title: "MPaint",
 		id: "mp",
 		color: "teal",
@@ -256,9 +273,9 @@ sounds similar to plastic funeral but a bit softer.<br/>
 very simple and to the point vu meter. has:<br/>
 - stereo and mono modes<br/>
 - scalable ui<br/>
-- adjustable reaction speed<br/>
+- adjustable rise and decay speed<br/>
 - adjustable nominal operation level (NoL)<br/>
-- peak led`,
+- peak indicator`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/vu-free-version-79085437"},
 		paiddownload: {url:"https://www.patreon.com/posts/vu-79085607"},
