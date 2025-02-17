@@ -181,6 +181,8 @@ var vstcodes = {
 	"10j7dx45cyjqgnil": "Diet Audio Free",
 	"uy34w22vn4k29gug": "Scope",
 	"39y5hl5rr4tvmy0y": "Scope Free",
+	"643q1m286fto7wan": "Magic Carpet",
+	"2e7k8zug41gaq6nv": "Magic Carpet Free",
 	"mmle2ls85rexid0m": "Everything Bundle"
 }
 app.use((req, res, next) => {
