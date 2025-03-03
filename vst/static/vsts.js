@@ -126,7 +126,7 @@ also included is a single band version called prismon.`,
 		freedownload: {url:"https://www.patreon.com/posts/prisma-free-79099898"},
 		paiddownload: {url:"https://www.patreon.com/posts/prisma-79099945"},
 		decoration: {width:138,height:267},
-		ui: {width:478,height:561,deg:20}
+		ui: {width:478,height:561,deg:15}
 	},{
 		title: "CRMBL",
 		id: "crmbl",
@@ -145,7 +145,7 @@ the parameters are highly automatable and can produce a dub delay effect when au
 		freedownload: {url:"https://www.patreon.com/posts/crmbl-free-79099779"},
 		paiddownload: {url:"https://www.patreon.com/posts/crmbl-79099843"},
 		decoration: {width:240,height:231},
-		ui: {width:507,height:465,deg:30}
+		ui: {width:507,height:465,deg:20}
 	},{
 		title: "SunBurnt",
 		id: "sb",
@@ -165,23 +165,7 @@ if youre experiencing problems, try increasing the buffer size!`,
 		freedownload: {url:"https://www.patreon.com/posts/sunburnt-free-99259946"},
 		paiddownload: {url:"https://www.patreon.com/posts/sunburnt-99260540"},
 		decoration: {width:230,height:221},
-		ui: {width:552,height:501,deg:20}
-	},{
-		title: "Red Bass",
-		id: "rb",
-		color: "teal",
-		tagline: "Low-end enchancer excellent for kicks and speech.",
-		description: `
-sub oscillator sidechained to incoming signal.<br/>
-put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
-apply with caution if not in a proper mixing environment.<br/>
-<br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center>`,
-		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/red-bass-free-79087099"},
-		paiddownload: {url:"https://www.patreon.com/posts/red-bass-79087143"},
-		decoration: {width:240,height:157},
-		ui: {width:322,height:408,deg:40}
+		ui: {width:552,height:501,deg:15}
 	},{
 		title: "PNCH",
 		id: "pnch",
@@ -202,6 +186,20 @@ APPLY BEFORE DISTORTION FOR IDEAL EFFECT.<br/>
 		decoration: {width:200,height:182},
 		ui: {width:128,height:148,deg:40}
 	},{
+		title: "Magic Carpet",
+		id: "mc",
+		color: "teal",
+		tagline: "Three delays feedbacking into the atmosphere.",
+		description: `
+three delay lines with a shared feedback path, makes a delay that starts sparse but continues to get denser with each feedback.<br/>
+the result is a very full-sounding delay with not a lot of gaps.<br/>
+can also be used to create noise by enabling noise mode via the right click menu, which raises the feedback to unstable levels (loud)`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/"},
+		paiddownload: {url:"https://www.patreon.com/posts/"},
+		decoration: {width:300,height:198},
+		ui: {width:360,height:420,deg:15}
+	},{
 		title: "Diet Audio",
 		id: "da",
 		color: "teal",
@@ -215,6 +213,22 @@ the plugin can also produce unique artifacts when used in fast release mode, whi
 		paiddownload: {url:"https://www.patreon.com/posts/diet-audio-112826367"},
 		decoration: {width:402,height:219},
 		ui: {width:384,height:384,deg:20}
+	},{
+		title: "Red Bass",
+		id: "rb",
+		color: "teal",
+		tagline: "Low-end enchancer excellent for kicks and speech.",
+		description: `
+sub oscillator sidechained to incoming signal.<br/>
+put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
+apply with caution if not in a proper mixing environment.<br/>
+<br/>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center>`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/red-bass-free-79087099"},
+		paiddownload: {url:"https://www.patreon.com/posts/red-bass-79087143"},
+		decoration: {width:240,height:157},
+		ui: {width:322,height:408,deg:20}
 	},{
 		title: "Scope",
 		id: "sp",
@@ -231,7 +245,7 @@ included inside are:<br/>
 		freedownload: {url:"https://www.patreon.com/posts/scope-free-118560672"},
 		paiddownload: {url:"https://www.patreon.com/posts/scope-118561181"},
 		decoration: {width:286,height:300},
-		ui: {width:533,height:400,deg:20}
+		ui: {width:533,height:400,deg:15}
 	},{
 		title: "MPaint",
 		id: "mp",
@@ -253,17 +267,14 @@ and the samples were recorded with a high quality reproduction of the soundcard 
 		color: "teal",
 		tagline: "Advanced sinefold distortion plugin.",
 		description: `
-my take on sine fold distortion.<br/>
-sounds similar to plastic funeral but a bit softer.<br/>
-<br/>
-<i><b>Coming in a future update:</b><br/>
- - Ability to toggle between fold and sine fold</i><br/>
- - Automatic gain compensation</i>`,
+a better attempt at achieving what plastic funeral tried to achieve.<br/>
+harsh and metallic fold distortion with a lot of controls and an innovative stereo widening algorithm.<br/>
+guarenteed to destroy any mix.`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/pisstortion-free-79085897"},
 		paiddownload: {url:"https://www.patreon.com/posts/pisstortion-79085974"},
 		decoration: {width:94,height:300},
-		ui: {width:242,height:462,deg:40}
+		ui: {width:242,height:462,deg:25}
 	},{
 		title: "VU",
 		id: "vu",
@@ -280,7 +291,7 @@ very simple and to the point vu meter. has:<br/>
 		freedownload: {url:"https://www.patreon.com/posts/vu-free-version-79085437"},
 		paiddownload: {url:"https://www.patreon.com/posts/vu-79085607"},
 		decoration: {width:288,height:300},
-		ui: {width:438,height:260,deg:40}
+		ui: {width:438,height:260,deg:30}
 	},{
 		title: "Plastic Funeral",
 		id: "pf",
@@ -289,13 +300,14 @@ very simple and to the point vu meter. has:<br/>
 		description: `
 forget about warmth.<br/>
 this refreshing take on fold distortion gives off a harsh and metallic sound that is guaranteed to destroy any mix.<br/>
+this plugin has been mostly replaced by pisstortion.<br/>
 <br/>
 <center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)'>▶ Demo</a> (loud)</center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/plastic-funeral-78716847"},
 		paiddownload: {url:"https://www.patreon.com/posts/plastic-funeral-78717124"},
 		decoration: {width:90,height:370},
-		ui: {width:242,height:462,deg:40}
+		ui: {width:242,height:462,deg:25}
 	},{
 		title: "ClickBox",
 		id: "cb",
@@ -304,10 +316,12 @@ this refreshing take on fold distortion gives off a harsh and metallic sound tha
 		description: `
 generates randomized digital clicks<br/>
 made after people complained i fixed the annoying clicking issue in my first vst, plastic funeral (why??)<br/>
-not useful for much but i made it so might as well put it out there.`,
+not useful for much but i made it so might as well put it out there.<br/>
+<br/>
+winner of the britpop awards <a href="https://www.instagram.com/p/DGdrw-wI3ae/?img_index=7" target="_blank">plugin of the decade</a> ????`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/clickbox-79085747"},
 		decoration: {width:150,height:300},
-		ui: {width:256,height:256,deg:40}
+		ui: {width:256,height:256,deg:35}
 	}
 ]
