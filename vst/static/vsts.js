@@ -195,8 +195,8 @@ three delay lines with a shared feedback path, makes a delay that starts sparse 
 the result is a very full-sounding delay with not a lot of gaps.<br/>
 can also be used to create noise by enabling noise mode via the right click menu, which raises the feedback to unstable levels (loud)`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.patreon.com/posts/"},
-		paiddownload: {url:"https://www.patreon.com/posts/"},
+		freedownload: {url:"https://www.patreon.com/posts/magic-carpet-123519153"},
+		paiddownload: {url:"https://www.patreon.com/posts/magic-carpet-123519610"},
 		decoration: {width:300,height:198},
 		ui: {width:360,height:420,deg:15}
 	},{
