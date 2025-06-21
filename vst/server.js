@@ -183,6 +183,8 @@ var vstcodes = {
 	"39y5hl5rr4tvmy0y": "Scope Free",
 	"643q1m286fto7wan": "Magic Carpet",
 	"2e7k8zug41gaq6nv": "Magic Carpet Free",
+	"9b88oa7123xnhtqt": "ModMan",
+	"4h3v8w25whu8emtp": "ModMan Free",
 	"mmle2ls85rexid0m": "Everything Bundle"
 }
 app.use((req, res, next) => {
