@@ -148,6 +148,21 @@ the parameters are highly automatable and can produce a dub delay effect when au
 		decoration: {width:240,height:231},
 		ui: {width:507,height:465,deg:20}
 	},{
+		title: "ModMan",
+		id: "mm",
+		color: "teal",
+		tagline: "Adds movement.",
+		description: `
+modulation effect that produces organic and ever changing randomized movements, based on a perlin noise algorithm.<br/>
+allows modulating a tape drift, low pass and its resonance, saturation, and amplitude.<br/>
+with this effect you can add movement to a pad, widen the stereo field, create a tape style effect, or experiment with bizzare settings to create interesting textures.<br/>
+its cool!`,
+		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
+		freedownload: {url:"https://www.patreon.com/posts/modman-free-136081903"},
+		paiddownload: {url:"https://www.patreon.com/posts/modman-136081521"},
+		decoration: {width:163,height:324},
+		ui: {width:660,height:330,deg:15}
+	},{
 		title: "SunBurnt",
 		id: "sb",
 		color: "teal",
@@ -171,7 +186,7 @@ if youre experiencing problems, try increasing the buffer size!`,
 		title: "PNCH",
 		id: "pnch",
 		color: "teal",
-		tagline: "Weird knob that makes ur stuff tight.",
+		tagline: "Knob that makes ur stuff tight.",
 		description: `
 a type of effect that causes added harmonics as well as a gating effect.<br/>
 compared to typical gates and expanders, this one does not use an envelope follower for the gating effect, resulting in gating without pumping<br/>
