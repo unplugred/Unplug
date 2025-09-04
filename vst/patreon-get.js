@@ -12,14 +12,23 @@ function refresh_patrons(cursor = null) {
 		method: 'GET',
 		headers: { 'Authorization': "Bearer "+keys['creator_id'] }
 	}).then(response => response.json()).then((data) => {
+		if(data['errors'] !== undefined) {
+			for(let error = 0; error < data['errors'].length; ++error)
+				console.error(data['errors'][error]['detail']);
+		}
+		if(data['data'] === undefined) {
+			console.error('Undefined response from Patreon');
+			return;
+		}
 		for(let pledge = 0; pledge < data['data'].length; ++pledge) {
 			let tier = 0;
 			if(data['data'][pledge]['relationships']['reward']['data'] != null)
 				tier = keys['tier_ids'][data['data'][pledge]['relationships']['reward']['data']['id']];
+			//if(tier < 10) continue;
 
 			let userdata = { "id": data['data'][pledge]['relationships']['patron']['data']['id'], "name": null };
 			for(let user = 0; user < data['included'].length; ++user) {
-				if(data['included'][user]['id'] != data['data'][pledge]['relationships']['patron']['data']['id'])
+				if(data['included'][user]['id'] != userdata['id'])
 					continue;
 
 				if(data['included'][user]['attributes']['full_name'] != undefined) {
@@ -31,8 +40,8 @@ function refresh_patrons(cursor = null) {
 				}
 				break;
 			}
-			if(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined)
-				for (const [key, value] of Object.entries(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])]))
+			if(overrides[String(userdata['id'])] != undefined)
+				for (const [key, value] of Object.entries(overrides[String(userdata['id'])]))
 					userdata[key] = value;
 			if(userdata['name'] == null) continue;
 

@@ -83,9 +83,9 @@ function refresh_patrons(cursor = null) {
 				tier = keys['tier_ids'][data['data'][pledge]['relationships']['reward']['data']['id']];
 			if(tier < 10) continue;
 
-			let userdata = { "name": null };
+			let userdata = { "id": data['data'][pledge]['relationships']['patron']['data']['id'], "name": null };
 			for(let user = 0; user < data['included'].length; ++user) {
-				if(data['included'][user]['id'] != data['data'][pledge]['relationships']['patron']['data']['id'])
+				if(data['included'][user]['id'] != userdata['id'])
 					continue;
 
 				if(data['included'][user]['attributes']['full_name'] != undefined) {
@@ -97,8 +97,8 @@ function refresh_patrons(cursor = null) {
 				}
 				break;
 			}
-			if(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined)
-				for (const [key, value] of Object.entries(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])]))
+			if(overrides[String(userdata['id'])] != undefined)
+				for (const [key, value] of Object.entries(overrides[String(userdata['id'])]))
 					userdata[key] = value;
 			if(userdata['name'] == null) continue;
 
