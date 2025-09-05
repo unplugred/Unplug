@@ -325,12 +325,14 @@ function exitHandler(options, exitCode) {
 	}
 	if(!patrons.includes("FAILED TO READ PATREON DATA")) {
 		try {
+			//*/
 			fs.writeFileSync(__dirname + "/patreon.json", JSON.stringify({
 				"refresh_rate": patreon_refresh_rate,
 				"keys": keys,
 				"cache": patrons,
 				"overrides": overrides
 			}));
+			//*/
 		} catch(err) {
 			console.log("ERROR WRITING PATREON DATA: ", err);
 		}
