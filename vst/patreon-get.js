@@ -28,7 +28,7 @@ function refresh_patrons(cursor = null) {
 
 			let userdata = { "id": data['data'][pledge]['relationships']['patron']['data']['id'], "name": null };
 			for(let user = 0; user < data['included'].length; ++user) {
-				if(data['included'][user]['id'] != userdata['id'])
+				if(data['included'][user]['id'] != data['data'][pledge]['relationships']['patron']['data']['id'])
 					continue;
 
 				if(data['included'][user]['attributes']['full_name'] != undefined) {
@@ -40,8 +40,8 @@ function refresh_patrons(cursor = null) {
 				}
 				break;
 			}
-			if(overrides[String(userdata['id'])] != undefined)
-				for (const [key, value] of Object.entries(overrides[String(userdata['id'])]))
+			if(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined)
+				for (const [key, value] of Object.entries(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])]))
 					userdata[key] = value;
 			if(userdata['name'] == null) continue;
 

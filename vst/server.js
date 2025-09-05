@@ -59,8 +59,9 @@ function save() {
 var pledges = [];
 var patrons = '{"10":[{"name":"FAILED TO READ PATREON DATA"}]}';
 var patrons_temp = {};
+var patreon_refresh_rate = 1;
 var overrides = {};
-var last_checked_patreon = Math.floor(Date.now()/1000/60/60);
+var last_checked_patreon = Math.floor(Date.now()/1000/60/60/patreon_refresh_rate);
 function refresh_patrons(cursor = null) {
 	var url = "https://api.patreon.com/oauth2/api/campaigns/"+String(keys['campaign_id'])+"/pledges?page%5Bcount%5D=25";
 	if(cursor != null) url += "&page%5Bcursor%5D="+cursor;
@@ -83,9 +84,9 @@ function refresh_patrons(cursor = null) {
 				tier = keys['tier_ids'][data['data'][pledge]['relationships']['reward']['data']['id']];
 			if(tier < 10) continue;
 
-			let userdata = { "id": data['data'][pledge]['relationships']['patron']['data']['id'], "name": null };
+			let userdata = { "name": null };
 			for(let user = 0; user < data['included'].length; ++user) {
-				if(data['included'][user]['id'] != userdata['id'])
+				if(data['included'][user]['id'] != data['data'][pledge]['relationships']['patron']['data']['id'])
 					continue;
 
 				if(data['included'][user]['attributes']['full_name'] != undefined) {
@@ -97,8 +98,8 @@ function refresh_patrons(cursor = null) {
 				}
 				break;
 			}
-			if(overrides[String(userdata['id'])] != undefined)
-				for (const [key, value] of Object.entries(overrides[String(userdata['id'])]))
+			if(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined)
+				for (const [key, value] of Object.entries(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])]))
 					userdata[key] = value;
 			if(userdata['name'] == null) continue;
 
@@ -125,6 +126,7 @@ fs.readFile(__dirname + "/patreon.json", 'utf8', (err, jsonString) => {
 	} else {
 		try {
 			let obj = JSON.parse(jsonString);
+			patreon_refresh_rate = obj['refresh_rate']
 			keys = obj['keys'];
 			patrons = obj['cache'];
 			overrides = obj['overrides'];
@@ -298,7 +300,7 @@ app.use((req, res, next) => {
 		}
 	}
 
-	let hour = Math.floor(Date.now()/1000/60/60);
+	let hour = Math.floor(Date.now()/1000/60/60/patreon_refresh_rate);
 	if(hour != last_checked_patreon) {
 		last_checked_patreon = hour;
 		refresh_patrons();
@@ -324,6 +326,7 @@ function exitHandler(options, exitCode) {
 	if(!patrons.includes("FAILED TO READ PATREON DATA")) {
 		try {
 			fs.writeFileSync(__dirname + "/patreon.json", JSON.stringify({
+				"refresh_rate": patreon_refresh_rate,
 				"keys": keys,
 				"cache": patrons,
 				"overrides": overrides
