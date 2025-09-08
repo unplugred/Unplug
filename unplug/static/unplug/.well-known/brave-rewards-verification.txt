@@ -1,4 +1,0 @@
-This is a Brave Rewards publisher verification file.
-
-Domain: unplug.red
-Token: 6924d93f8084f4c80509017e01be2b88eea5848de6ca71e9c4be1fef3f25ca95
