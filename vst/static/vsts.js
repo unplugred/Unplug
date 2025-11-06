@@ -11,7 +11,7 @@ in here youd find no resistors, transitors, capacitors, or diodes modeled. no em
 these are completely a result of my own exploration of code and sound, and as a result some of them are good, while others not so much.<br/>
 i hope these bring you joy and would love to hear what u make with them.<br/>
 u can reach me via discord (@unplugred) and email (melody@unplug.red).<br/>
-also! our discord community made two collaborative albums !! <a href="https://unplugcord.bandcamp.com/album/selected-unplug-works-1" target="_blank">check them out!</a><br/>
+also! our discord community made two collaborative albums !! <a href="https://unplugcord.bandcamp.com/" target="_blank">check them out!</a><br/>
 lastly, thanks to <a href="https://laulaulau.bandcamp.com/" target="_blank">lau</a>, this wouldnt exist without her.`,
 		hideicon: true
 	},{
