@@ -71,9 +71,21 @@ fs.readFile(__dirname + "/patreon.json", 'utf8', (err, jsonString) => {
 			let obj = JSON.parse(jsonString);
 			keys = obj['keys'];
 			patrons = obj['patrons'];
-			overrides = obj['overrides'];
 		} catch(error) {
 			console.log("ERROR PARSING KEYS: ", error);
+		}
+		refresh_patrons();
+	}
+});
+fs.readFile(__dirname + "/patreonoverride.json", 'utf8', (err, jsonString) => {
+	if(err) {
+		console.log("ERROR READING PATREON OVERRIDE KEYS: ", err);
+	} else {
+		try {
+			let obj = JSON.parse(jsonString);
+			overrides = obj['overrides'];
+		} catch(error) {
+			console.log("ERROR PARSING OVERRIDE KEYS: ", error);
 		}
 		refresh_patrons();
 	}

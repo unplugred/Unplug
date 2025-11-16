@@ -98,10 +98,8 @@ function refresh_patrons(cursor = null) {
 				}
 				break;
 			}
-			if(overrides[string(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined) {
-				if(overrides[string(data['data'][pledge]['relationships']['patron']['data']['id'])]['hide'] != undefined && overrides[string(data['data'][pledge]['relationships']['patron']['data']['id'])]['hide'] == true)
-					
-				for(const [key, value] of Object.entries(overrides[string(data['data'][pledge]['relationships']['patron']['data']['id'])]))
+			if(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined) {
+				for(const [key, value] of Object.entries(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])]))
 					userdata[key] = value;
 			}
 			if(userdata['name'] == null) continue;
