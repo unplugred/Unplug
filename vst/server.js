@@ -98,9 +98,12 @@ function refresh_patrons(cursor = null) {
 				}
 				break;
 			}
-			if(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined)
-				for (const [key, value] of Object.entries(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])]))
+			if(overrides[string(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined) {
+				if(overrides[string(data['data'][pledge]['relationships']['patron']['data']['id'])]['hide'] != undefined && overrides[string(data['data'][pledge]['relationships']['patron']['data']['id'])]['hide'] == true)
+					
+				for(const [key, value] of Object.entries(overrides[string(data['data'][pledge]['relationships']['patron']['data']['id'])]))
 					userdata[key] = value;
+			}
 			if(userdata['name'] == null) continue;
 
 			if(patrons_temp[String(tier)] == undefined)
@@ -126,16 +129,27 @@ fs.readFile(__dirname + "/patreon.json", 'utf8', (err, jsonString) => {
 	} else {
 		try {
 			let obj = JSON.parse(jsonString);
-			patreon_refresh_rate = obj['refresh_rate']
 			keys = obj['keys'];
 			patrons = obj['cache'];
-			overrides = obj['overrides'];
 		} catch(error) {
 			console.log("ERROR PARSING PATREON DATA: ", error);
 		}
 	}
 	if(patrons.includes("FAILED TO READ PATREON DATA"))
 		refresh_patrons();
+});
+fs.readFile(__dirname + "/patreonoverride.json", 'utf8', (err, jsonString) => {
+	if(err) {
+		console.log("ERROR READING PATREON OVERRIDE DATA: ", err);
+	} else {
+		try {
+			let obj = JSON.parse(jsonString);
+			patreon_refresh_rate = obj['refresh_rate']
+			overrides = obj['overrides'];
+		} catch(error) {
+			console.log("ERROR PARSING PATREON OVERRIDE DATA: ", error);
+		}
+	}
 });
 
 const express = require('express');
@@ -327,10 +341,8 @@ function exitHandler(options, exitCode) {
 		try {
 			//*/
 			fs.writeFileSync(__dirname + "/patreon.json", JSON.stringify({
-				"refresh_rate": patreon_refresh_rate,
 				"keys": keys,
-				"cache": patrons,
-				"overrides": overrides
+				"cache": patrons
 			}));
 			//*/
 		} catch(err) {
