@@ -1,6 +1,7 @@
 <%- include('../partials/header',{title:"projects",color:"#dfdfdf"}) %>
 		<style>
 			body {
+				background: #dfdfdf;
 				display: flex;
 				font-family: monospace;
 				font-size: 13px;
@@ -9,13 +10,17 @@
 				scrollbar-width: thin;
 				scrollbar-color: #353535 transparent;
 			}
-			#projectslist {
+			a {
+				color: #2f2f2f;
+			}
+			#itemslist {
 				margin: auto;
 				display: inline-block;
 				padding-top: 5px;
 				padding-bottom: 30px;
 				padding-left: 14px;
 				max-width: 800px;
+				position: relative;
 			}
 			#title {
 				background: white;
@@ -24,101 +29,45 @@
 				margin: 6px -10px;
 				font-size: 20px;
 			}
-			.project {
+			.item {
 				display: inline;
 				background: white;
-				padding-right: 4px;
 			}
-			.projectlink, .projecttime, .projectdesc {
+			.itemlink, .itemtime, .itemdesc {
 				display: inline;
 			}
-			a {
-				color: #2f2f2f;
-				padding: 0 4px;
-			}
-			a:hover {
-				background-color: #df1b1b;
-				color: white;
-			}
-			.projecttime {
+			.itemtime {
 				font-style: italic;
 				color: #9b9b9b;
 				margin-left: -4px;
 			}
+			.itemdesc {
+				padding-right: 4px;
+			}
+			.itemlink {
+				padding: 0 4px;
+			}
+			.itemlinkunder {
+				position: absolute;
+				pointer-events: none;
+			}
+			.itemlinkover {
+				background-color: #df1b1b;
+				color: white;
+				display: inline-block;
+				mask-image: linear-gradient(to left, black 50%, transparent 50%);
+				mask-position: 0 0;
+				mask-size: 200% 100%;
+				transition: .15s mask-position;
+			}
+			.itemlinkover:hover, .itemlinkover:focus {
+				mask-position: -100% 0;
+			}
 		</style>
 	</head>
 	<body>
-		<div id="projectslist">
+		<div id="itemslist">
 			<h3 id="title">projects</h3><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/sunburnt">sunburnt</a> <div class="projecttime">(2024)</div> - <div class="projectdesc">multi-curve reverb delay</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/prisma">prisma</a> <div class="projecttime">(2022)</div> - <div class="projectdesc">modular multiband distortion vst plugin</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/crmbl">crmbl</a> <div class="projecttime">(2022)</div> - <div class="projectdesc">delay vst for insane people</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/mpaint">mpaint</a> <div class="projecttime">(2022)</div> - <div class="projectdesc">a sampler vst from a popular video game</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/redbass">red bass</a> <div class="projecttime">(2022)</div> - <div class="projectdesc">low end enhancer vst excellent for kicks and speech</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/pnch">pnch</a> <div class="projecttime">(2022)</div> - <div class="projectdesc">weird vst knob that makes ur stuff tight</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/pisstortion">pisstortion</a> <div class="projecttime">(2022)</div> - <div class="projectdesc">advanced sinefold distortion vst plugin</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/duck-optimizer-pro-2021">intern inferno</a> <div class="projecttime">(2022)</div> - <div class="projectdesc">a dreambuster game for ludum dare 51</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/duck-optimizer-pro-2021">paper boy flyin' high</a> <div class="projecttime">(2022)</div> - <div class="projectdesc">a dreambuster game for ludum dare 50</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://youtu.be/Q6CfBiz5Z98">lau - fearz (visualizer)</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">music video for electronic musician lau</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/duck-optimizer-pro-2021">duck optimizer pro 2021</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">a dreambuster game for ludum dare 49</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/clickbox">clickbox</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">randomized click generator vst</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/vu">vu</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">vu meter vst for your metering needs</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/psycho-stellar">psycho stellar</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">a dreambuster game for ludum dare 48</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://vst.unplug.red/plasticfuneral">plastic funeral</a> <div class="projecttime">(2021)</div> - <div class="projectdesc">distortion vst that sounds like a lazer beam</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/record-runner">record runner</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">a dreambuster game for ludum dare 47</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://github.com/unplugred/borderless">borderless</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">a lightweight ui-less image viewer</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/gameplay">gameplay</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">anxiety inducing snake game</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/avtw">a very talented worm</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">a dreambuster game for ludum dare 46</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.github.io/calque-desktop/">calque desktop</a> <div class="projecttime">(2020)</div> - <div class="projectdesc">a desktop electron fork of calque, a reactive calculator</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/waterweek">waterweek</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a game i made after an awful experience</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/bmcp">bruno's mind control project</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a dreambuster game for ludum dare 45</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://fermentum-tempus.itch.io/rediger">rediger</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a text based experiment in mood creation and story telling through abstract visuals</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/planet">planet</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a procedural planet with procedural music</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/attack-on-jerry">attack on jerry</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">a dreambuster game for ludum dare 44</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/hyperaction">hyperaction</a> <div class="projecttime">(2019)</div> - <div class="projectdesc">speaks for itself i think</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/air-compressor">air compressor</a> <div class="projecttime">(2018)</div> - <div class="projectdesc">a game im especially proud of</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://dreambuster.itch.io/car-destruction-racer-xiv">car destruction racer xiv</a> <div class="projecttime">(2018)</div> - <div class="projectdesc">a dreambuster game for ludum dare 43</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/headspace">headspace</a> <div class="projecttime">(2018)</div> - <div class="projectdesc">a random sentence generator with a procedural background</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplug.red">unplug</a> <div class="projecttime">(2018-present)</div> - <div class="projectdesc">a collection of webpages arranged in a maze like fashion, inspired by the merzbau project by jurt schwitters</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/rooms">rooms</a> <div class="projecttime">(2018)</div> - <div class="projectdesc">a collection of ideas arranged into a game</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/worse-for-the-better">worse for the better</a> <div class="projecttime">(2017)</div> - <div class="projectdesc">stuff</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://unplugred.itch.io/uselessflower">useless flower</a> <div class="projecttime">(2017)</div> - <div class="projectdesc">a game i made initially in gamemaker which was then remade in unity. based on an art piece from the art blog</div></div><br/>
-
-			<div class="project"><a class="projectlink" href="https://tumblr.unplug.red">art</a> <div class="projecttime">(2016-present)</div> - <div class="projectdesc">a blog of automatist art i made as a form of catharsis. now migrated to <a href="/automatism">/automatism</a></div></div>
-
 		</div>
 		<script>
 			function update() {
@@ -126,5 +75,262 @@
 			}
 			update();
 			setInterval(update,5000);
+
+			data = [{
+				"desc": "audio plugins:"
+			},{
+				"link": "https://vst.unplug.red/modman",
+				"linktext": "modman",
+				"time": "2025",
+				"desc": "perlin noise based processor"
+			},{
+				"link": "https://vst.unplug.red/magiccarpet",
+				"linktext": "magic carpet",
+				"time": "2025",
+				"desc": "three tap delay with a shared feedback"
+			},{
+				"link": "https://vst.unplug.red/scope",
+				"linktext": "scope",
+				"time": "2024",
+				"desc": "skewmorphic oscilloscope"
+			},{
+				"link": "https://vst.unplug.red/dietaudio",
+				"linktext": "diet audio",
+				"time": "2024",
+				"desc": "spectral gate"
+			},{
+				"link": "https://vst.unplug.red/sunburnt",
+				"linktext": "sunburnt",
+				"time": "2024",
+				"desc": "multi-curve convolution reverb/delay"
+			},{
+				"link": "https://vst.unplug.red/prisma",
+				"linktext": "prisma",
+				"time": "2022",
+				"desc": "modular multiband distortion"
+			},{
+				"link": "https://vst.unplug.red/crmbl",
+				"linktext": "crmbl",
+				"time": "2022",
+				"desc": "experimental delay"
+			},{
+				"link": "https://vst.unplug.red/mpaint",
+				"linktext": "mpaint",
+				"time": "2022",
+				"desc": "a sampler from a popular video game"
+			},{
+				"link": "https://vst.unplug.red/redbass",
+				"linktext": "red bass",
+				"time": "2022",
+				"desc": "sub oscillator for kicks"
+			},{
+				"link": "https://vst.unplug.red/pnch",
+				"linktext": "pnch",
+				"time": "2022",
+				"desc": "non linear gate"
+			},{
+				"link": "https://vst.unplug.red/pisstortion",
+				"linktext": "pisstortion",
+				"time": "2022",
+				"desc": "unique take on sine fold distortion"
+			},{
+				"link": "https://vst.unplug.red/clickbox",
+				"linktext": "clickbox",
+				"time": "2021",
+				"desc": "randomized click generator"
+			},{
+				"link": "https://vst.unplug.red/vu",
+				"linktext": "vu",
+				"time": "2021",
+				"desc": "vu meter"
+			},{
+				"link": "https://vst.unplug.red/plasticfuneral",
+				"linktext": "plastic funeral",
+				"time": "2021",
+				"desc": "unique take on fold distortion"
+			},{
+				"divider": true
+			},{
+				"desc": "game jams:"
+			},{
+				"link": "https://dreambuster.itch.io/duck-optimizer-pro-2021",
+				"linktext": "intern inferno",
+				"time": "2022",
+				"desc": "a dreambuster game for ludum dare 51"
+			},{
+				"link": "https://dreambuster.itch.io/duck-optimizer-pro-2021",
+				"linktext": "paper boy flyin' high",
+				"time": "2022",
+				"desc": "a dreambuster game for ludum dare 50"
+			},{
+				"link": "https://dreambuster.itch.io/duck-optimizer-pro-2021",
+				"linktext": "duck optimizer pro 2021",
+				"time": "2021",
+				"desc": "a dreambuster game for ludum dare 49"
+			},{
+				"link": "https://dreambuster.itch.io/psycho-stellar",
+				"linktext": "psycho stellar",
+				"time": "2021",
+				"desc": "a dreambuster game for ludum dare 48"
+			},{
+				"link": "https://dreambuster.itch.io/record-runner",
+				"linktext": "record runner",
+				"time": "2020",
+				"desc": "a dreambuster game for ludum dare 47"
+			},{
+				"link": "https://dreambuster.itch.io/avtw",
+				"linktext": "a very talented worm",
+				"time": "2020",
+				"desc": "a dreambuster game for ludum dare 46"
+			},{
+				"link": "https://dreambuster.itch.io/bmcp",
+				"linktext": "bruno's mind control project",
+				"time": "2019",
+				"desc": "a dreambuster game for ludum dare 45"
+			},{
+				"link": "https://dreambuster.itch.io/attack-on-jerry",
+				"linktext": "attack on jerry",
+				"time": "2019",
+				"desc": "a dreambuster game for ludum dare 44"
+			},{
+				"link": "https://dreambuster.itch.io/car-destruction-racer-xiv",
+				"linktext": "car destruction racer xiv",
+				"time": "2018",
+				"desc": "a dreambuster game for ludum dare 43"
+			},{
+				"divider": true
+			},{
+				"desc": "games:"
+			},{
+				"link": "https://unplugred.itch.io/gameplay",
+				"linktext": "gameplay",
+				"time": "2020",
+				"desc": "anxiety inducing snake game"
+			},{
+				"link": "https://unplugred.itch.io/waterweek",
+				"linktext": "waterweek",
+				"time": "2019",
+				"desc": "a game i made after an awful experience"
+			},{
+				"link": "https://fermentum-tempus.itch.io/rediger",
+				"linktext": "rediger",
+				"time": "2019",
+				"desc": "text adventure with a bunch of shaders"
+			},{
+				"link": "https://unplugred.itch.io/planet",
+				"linktext": "planet",
+				"time": "2019",
+				"desc": "procedural planet with procedural music"
+			},{
+				"link": "https://unplugred.itch.io/hyperaction",
+				"linktext": "hyperaction",
+				"time": "2019"
+			},{
+				"link": "https://unplugred.itch.io/air-compressor",
+				"linktext": "air compressor",
+				"time": "2018",
+				"desc": "abstract point and click"
+			},{
+				"link": "https://unplugred.itch.io/headspace",
+				"linktext": "headspace",
+				"time": "2018",
+				"desc": "speaks for itself"
+			},{
+				"link": "https://unplugred.itch.io/rooms",
+				"linktext": "rooms",
+				"time": "2018",
+				"desc": "four scenes"
+			},{
+				"link": "https://unplugred.itch.io/worse-for-the-better",
+				"linktext": "worse for the better",
+				"time": "2017"
+			},{
+				"link": "https://unplugred.itch.io/uselessflower",
+				"linktext": "useless flower",
+				"time": "2017"
+			},{
+				"divider": true
+			},{
+				"desc": "other:"
+			},{
+				"link": "https://github.com/unplugred/daisy",
+				"linktext": "daisy",
+				"time": "2025",
+				"desc": "programs for electrosmith's daisy arm microcontroller, made for live performamces"
+			},{
+				"link": "https://github.com/unplugred/borderless",
+				"linktext": "borderless",
+				"time": "2020",
+				"desc": "lightweight ui-less image viewer"
+			},{
+				"link": "https://unplugred.github.io/calque-desktop/",
+				"linktext": "calque desktop",
+				"time": "2020",
+				"desc": "desktop electron fork of calque, a reactive calculator"
+			},{
+				"link": "https://unplug.red/",
+				"linktext": "unplug",
+				"time": "2018-present",
+				"desc": "collection of web experiments arranged in a maze like fashion, inspired by the merzbau project by jurt schwitters"
+			},{
+				"link": "https://tumblr.unplug.red/",
+				"linktext": "automatism",
+				"time": "2016-2021",
+				"desc": "digital art i made as a teenager"
+			}]
+
+			var listdiv = document.getElementById("itemslist");
+			var hiddenitems = [];
+			for(let i = 0; i < data.length; ++i) {
+				listdiv.appendChild(document.createElement("br"));
+
+				if(data[i].divider === true) continue;
+
+				let itemdiv = document.createElement("div");
+				itemdiv.className = "item";
+				itemdiv.style.visibility = "hidden";
+
+				if(data[i].linktext !== undefined) {
+					let itemlinkdivunder = document.createElement("a");
+					let itemlinkdivover  = document.createElement("a");
+					itemlinkdivunder.innerHTML = data[i].linktext;
+					itemlinkdivover .innerHTML = data[i].linktext;
+					itemlinkdivunder.className = "itemlink itemlinkunder";
+					itemlinkdivover .className = "itemlink itemlinkover";
+					itemlinkdivunder.tabIndex = -1;
+					itemlinkdivunder.href = "javascript:void(0)";
+					itemlinkdivover.href = data[i].link===undefined?"javascript:void(0)":data[i].link;
+					itemdiv.appendChild(itemlinkdivunder);
+					itemdiv.appendChild(itemlinkdivover );
+				}
+
+				if(data[i].time !== undefined) {
+					if(data[i].linktext !== undefined)
+						itemdiv.appendChild(document.createTextNode(" "));
+					let itemtimediv = document.createElement("div");
+					itemtimediv.className = "itemtime";
+					itemtimediv.innerHTML = "("+data[i].time+")";
+					itemdiv.appendChild(itemtimediv);
+				}
+
+				if(data[i].desc !== undefined) {
+					if(data[i].linktext !== undefined)
+						itemdiv.appendChild(document.createTextNode(" - "));
+					let itemdescdiv = document.createElement("div");
+					itemdescdiv.className = "itemdesc";
+					itemdescdiv.innerHTML = data[i].desc;
+					itemdiv.appendChild(itemdescdiv);
+				}
+
+				listdiv.appendChild(itemdiv);
+				hiddenitems.push(itemdiv);
+			}
+
+			var unhideinterval;
+			function unhideitem() {
+				hiddenitems.shift().style.visibility = null;
+				if(hiddenitems.length == 0) clearInterval(unhideinterval);
+			}
+			unhideinterval = setInterval(unhideitem,7);
 		</script>
 <%- include('../partials/footer') %>
