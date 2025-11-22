@@ -79,7 +79,7 @@
 					setTimeout(switchded, 2000 + Math.random()*2000);
 				} else {
 					dedon = true;
-					dednum = (dednum + 1)%5;
+					dednum = (dednum + 1)%4;
 					dedplacement.style.backgroundImage = "url('<%= assets %>/gameplay/ded" + dednum + ".gif')";
 					dedplacement.href = dedlinks[dednum];
 					dedplacement.style.pointerEvents = null;
