@@ -103,16 +103,18 @@
 				else return;
 			});
 
+			var dotinterval;
 			function adddot(){
 				count--;
 				dot.style.width = (count*8)+"px";
 				link.style.left = "calc(50vw - "+(count*4+71)+"px)";
 				
-				if(count <= 0)
+				if(count <= 0) {
 					window.location = "/chat";
+					clearInterval(dotinterval);
+				}
 			}
-			setInterval(adddot,200);
-			adddot();
+			dotinterval = setInterval(adddot,200);
 
 			var dt = null;
 			function update(timestamp){
