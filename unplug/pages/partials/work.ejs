@@ -1,0 +1,78 @@
+<%
+var index = 0;
+for(let i = 1; i < workdata.length; ++i) {
+	if(pagename.toLowerCase().endsWith(workdata[i].url)) {
+		index = i;
+		break;
+	}
+}
+%><!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title><%- workdata[index].title %></title>
+
+		<link rel="apple-touch-icon" href="https://unplug.red/icons/red152.png" sizes="152x152">
+		<link rel="apple-touch-icon" href="https://unplug.red/icons/red180.png" sizes="180x180">
+		<link rel="shortcut icon" href="https://unplug.red/icons/red196.png" sizes="196x196">
+		<link rel="icon" type="image/png" href="https://unplug.red/icons/red32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="https://unplug.red/icons/red192.png" sizes="192x192">
+
+		<meta name="theme-color" content="#dfdfdf">
+		<meta name="dcterms.rightsHolder" content="Melody">
+		<meta property="og:site_name" content="unplugred">
+		<meta name="twitter:site" content="@unplugred">
+		<meta property="og:url" content="https://work.unplug.red/">
+		<meta name="twitter:url" content="https://work.unplug.red/">
+		<meta property="og:type" content="article">
+		<meta name="twitter:card" content="summary">
+		<meta property="og:title" content="<%- workdata[index].title %>">
+		<meta name="twitter:title" content="<%- workdata[index].title %>">
+		<meta property="og:description" content="hi!">
+		<meta name="twitter:description" content="hi!">
+		<meta name="description" content="hi!">
+		<meta property="og:image" content="<%= assets %>/work/moon.webp">
+		<meta name="twitter:image" content="<%= assets %>/work/moon.webp">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="robots" content="noindex, nofollow" />
+		<link rel="StyleSheet" href="<%= assets %>/work/stylesheet.css" type="text/css" media="screen">
+	</head>
+	<body>
+		<div id="itemslist">
+			<h3 id="title"><%- workdata[index].title %></h3><%
+for(let i = 0; i < workdata[index].items.length; ++i) {
+%><br/><%
+	if(workdata[index].items[i].divider === true) continue; %>
+			<div class="item" style="visibility: hidden"><%
+	if(workdata[index].items[i].linktext !== undefined) {
+		%><a class="itemlink itemlinkunder" href="javascript:void(0)" tabindex="-1"><%= workdata[index].items[i].linktext %></a><a class="itemlink itemlinkover" href="<%
+		if(workdata[index].items[i].topage === undefined) {
+			%><%= workdata[index].items[i].link===undefined?"javascript:void(0)":workdata[index].items[i].link %><%
+		} else {
+			%>javascript:void(0)" onclick="updatepage(<%= workdata[index].items[i].topage %>,true)<%
+		} %>"><%= workdata[index].items[i].linktext %></a><%
+	}
+
+	if(workdata[index].items[i].time !== undefined) {
+		if(workdata[index].items[i].linktext !== undefined) { %> <% }
+		%><div class="itemtime">(<%= workdata[index].items[i].time %>)</div><%
+	}
+
+	if(workdata[index].items[i].desc !== undefined) {
+		if(workdata[index].items[i].linktext !== undefined) { %> - <% }
+		%><div class="itemdesc"><%= workdata[index].items[i].desc %></div><%
+	}
+
+	%></div><%
+} %>
+		</div>
+		<img id="moon" src="<%= assets %>/work/moon.webp">
+		<img id="cursor" src="<%= assets %>/work/cursor.png">
+		<canvas id="canvas"></canvas>
+		<script type="text/javascript" src="/work.js"></script>
+		<script type="text/javascript" src="<%= assets %>/automatism/simplex.js"></script>
+		<script type="text/javascript" src="<%= assets %>/work/javascript.js"></script>
+	</body>
+</html>

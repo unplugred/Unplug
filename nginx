@@ -8,7 +8,7 @@ server {
 
 server {
 	listen 80;
-	server_name localhost unplug.red www.* assets.*;
+	server_name localhost unplug.red www.* assets.* work.*;
 	rewrite ^/(.*)/$ /$1 permanent;
 
 	location ~ /feed {

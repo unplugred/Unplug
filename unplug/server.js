@@ -57,6 +57,14 @@ fs.readFile(__dirname + "/savefile.json", 'utf8', (err, jsonString) => {
 		if(!savefile.loaded) savefile.loaded = true;
 	});
 });
+var workdata = [];
+fs.readFile(__dirname + '/static/partials/work.js', 'utf8', (err, jsString) => {
+	if(err) {
+		console.log("ERROR READING WORK DATA: ", err);
+	} else {
+		eval(jsString.substring(4));
+	}
+});
 
 function save() {
 	let jsonString = JSON.stringify(savefile);
@@ -111,6 +119,15 @@ app.use((req, res, next) => {
 //favicon
 	if(req.path === "/favicon.ico")
 		return res.sendFile(__dirname + '/static/assets/favicon.ico');
+
+/*	WORK--------------------------*/
+	if(req.headers.host === 'work.' + global.domain) {
+		if(req.path === "/work.js")
+			return res.sendFile(__dirname + '/static/partials/work.js');
+		else if(req.path === "/robots.txt")
+			return res.sendFile(__dirname + '/static/partials/dontindex.txt');
+		return res.render('partials/work.ejs',{assets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,workdata:workdata});
+	}
 
 /*	ASSETS--------------------------*/
 	if(req.headers.host === 'assets.' + global.domain) {

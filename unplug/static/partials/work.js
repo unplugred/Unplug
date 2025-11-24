@@ -1,0 +1,258 @@
+var workdata = [{
+	"title": "melody vivienne",
+	"url": "/",
+	"items": [
+		{
+			"desc": "software developer, designer"
+		},{
+			"divider": true
+		},{
+			"link": "https://vst.unplug.red/",
+			"linktext": "audio plugins"
+		},{
+			"link": "https://unplug.red/",
+			"linktext": "the old website"
+		},{
+			"link": "https://dreambuster.unplug.red/",
+			"linktext": "dream buster"
+		},{
+			"divider": true
+		},{
+			"linktext": "about",
+			"topage": 1
+		},{
+			"linktext": "projects",
+			"topage": 2
+		}
+	],
+},{
+	"title": "about",
+	"url": "/about",
+	"items": [
+		  { "desc": "hi, im mel :)"
+		},{ "desc": "im a software engineer with an affection for audio and graphics development."
+		},{ "desc": "at uni i studied audio engineering, where i developed my love for signal processing."
+		},{ "desc": "lately ive been coding in c++, javscript, python, and c#."
+		},{ "desc": "in my free time i enjoy dark room photography, ceramics, and playing the cello."
+		},{ "divider": true
+		},{ "desc": "send me an email if youre looking for a hire!"
+		},{ "link": "mailto:melody@unplug.red", "linktext": "melody@unplug.red"
+		},{ "divider": true
+		},{ "link": "https://github.com/unplugred/", "linktext": "my github"
+		},{ "divider": true
+		},{ "linktext": "back", "topage": 0
+		}
+	]
+},{
+	"title": "projects",
+	"url": "/projects",
+	"items": [
+		{
+			"desc": "audio plugins:"
+		},{
+			"link": "https://vst.unplug.red/modman",
+			"linktext": "modman",
+			"time": "2025",
+			"desc": "perlin noise based processor"
+		},{
+			"link": "https://vst.unplug.red/magiccarpet",
+			"linktext": "magic carpet",
+			"time": "2025",
+			"desc": "three tap delay with a shared feedback"
+		},{
+			"link": "https://vst.unplug.red/scope",
+			"linktext": "scope",
+			"time": "2024",
+			"desc": "skewmorphic oscilloscope"
+		},{
+			"link": "https://vst.unplug.red/dietaudio",
+			"linktext": "diet audio",
+			"time": "2024",
+			"desc": "spectral gate"
+		},{
+			"link": "https://vst.unplug.red/sunburnt",
+			"linktext": "sunburnt",
+			"time": "2024",
+			"desc": "multi-curve convolution reverb/delay"
+		},{
+			"link": "https://vst.unplug.red/prisma",
+			"linktext": "prisma",
+			"time": "2022",
+			"desc": "modular multiband distortion"
+		},{
+			"link": "https://vst.unplug.red/crmbl",
+			"linktext": "crmbl",
+			"time": "2022",
+			"desc": "experimental delay"
+		},{
+			"link": "https://vst.unplug.red/mpaint",
+			"linktext": "mpaint",
+			"time": "2022",
+			"desc": "a sampler from a popular video game"
+		},{
+			"link": "https://vst.unplug.red/redbass",
+			"linktext": "red bass",
+			"time": "2022",
+			"desc": "sub oscillator for kicks"
+		},{
+			"link": "https://vst.unplug.red/pnch",
+			"linktext": "pnch",
+			"time": "2022",
+			"desc": "non linear gate"
+		},{
+			"link": "https://vst.unplug.red/pisstortion",
+			"linktext": "pisstortion",
+			"time": "2022",
+			"desc": "unique take on sine fold distortion"
+		},{
+			"link": "https://vst.unplug.red/clickbox",
+			"linktext": "clickbox",
+			"time": "2021",
+			"desc": "randomized click generator"
+		},{
+			"link": "https://vst.unplug.red/vu",
+			"linktext": "vu",
+			"time": "2021",
+			"desc": "vu meter"
+		},{
+			"link": "https://vst.unplug.red/plasticfuneral",
+			"linktext": "plastic funeral",
+			"time": "2021",
+			"desc": "unique take on fold distortion"
+		},{
+			"divider": true
+		},{
+			"desc": "game jams:"
+		},{
+			"link": "https://dreambuster.itch.io/duck-optimizer-pro-2021",
+			"linktext": "intern inferno",
+			"time": "2022",
+			"desc": "a dreambuster game for ludum dare 51"
+		},{
+			"link": "https://dreambuster.itch.io/duck-optimizer-pro-2021",
+			"linktext": "paper boy flyin' high",
+			"time": "2022",
+			"desc": "a dreambuster game for ludum dare 50"
+		},{
+			"link": "https://dreambuster.itch.io/duck-optimizer-pro-2021",
+			"linktext": "duck optimizer pro 2021",
+			"time": "2021",
+			"desc": "a dreambuster game for ludum dare 49"
+		},{
+			"link": "https://dreambuster.itch.io/psycho-stellar",
+			"linktext": "psycho stellar",
+			"time": "2021",
+			"desc": "a dreambuster game for ludum dare 48"
+		},{
+			"link": "https://dreambuster.itch.io/record-runner",
+			"linktext": "record runner",
+			"time": "2020",
+			"desc": "a dreambuster game for ludum dare 47"
+		},{
+			"link": "https://dreambuster.itch.io/avtw",
+			"linktext": "a very talented worm",
+			"time": "2020",
+			"desc": "a dreambuster game for ludum dare 46"
+		},{
+			"link": "https://dreambuster.itch.io/bmcp",
+			"linktext": "bruno's mind control project",
+			"time": "2019",
+			"desc": "a dreambuster game for ludum dare 45"
+		},{
+			"link": "https://dreambuster.itch.io/attack-on-jerry",
+			"linktext": "attack on jerry",
+			"time": "2019",
+			"desc": "a dreambuster game for ludum dare 44"
+		},{
+			"link": "https://dreambuster.itch.io/car-destruction-racer-xiv",
+			"linktext": "car destruction racer xiv",
+			"time": "2018",
+			"desc": "a dreambuster game for ludum dare 43"
+		},{
+			"divider": true
+		},{
+			"desc": "games:"
+		},{
+			"link": "https://unplugred.itch.io/gameplay",
+			"linktext": "gameplay",
+			"time": "2020",
+			"desc": "anxiety-inducing snake game"
+		},{
+			"link": "https://unplugred.itch.io/waterweek",
+			"linktext": "waterweek",
+			"time": "2019",
+			"desc": "a game i made after an awful experience"
+		},{
+			"link": "https://fermentum-tempus.itch.io/rediger",
+			"linktext": "rediger",
+			"time": "2019",
+			"desc": "text adventure with a bunch of shaders"
+		},{
+			"link": "https://unplugred.itch.io/planet",
+			"linktext": "planet",
+			"time": "2019",
+			"desc": "procedural planet with procedural music"
+		},{
+			"link": "https://unplugred.itch.io/hyperaction",
+			"linktext": "hyperaction",
+			"time": "2019"
+		},{
+			"link": "https://unplugred.itch.io/air-compressor",
+			"linktext": "air compressor",
+			"time": "2018",
+			"desc": "abstract point and click"
+		},{
+			"link": "https://unplugred.itch.io/headspace",
+			"linktext": "headspace",
+			"time": "2018",
+			"desc": "speaks for itself"
+		},{
+			"link": "https://unplugred.itch.io/rooms",
+			"linktext": "rooms",
+			"time": "2018",
+			"desc": "four scenes"
+		},{
+			"link": "https://unplugred.itch.io/worse-for-the-better",
+			"linktext": "worse for the better",
+			"time": "2017"
+		},{
+			"link": "https://unplugred.itch.io/uselessflower",
+			"linktext": "useless flower",
+			"time": "2017"
+		},{
+			"divider": true
+		},{
+			"desc": "other:"
+		},{
+			"link": "https://github.com/unplugred/daisy",
+			"linktext": "daisy",
+			"time": "2025",
+			"desc": "programs for electrosmith's daisy arm microcontroller, made for live performances"
+		},{
+			"link": "https://github.com/unplugred/borderless",
+			"linktext": "borderless",
+			"time": "2020",
+			"desc": "lightweight ui-less image viewer"
+		},{
+			"link": "https://unplugred.github.io/calque-desktop/",
+			"linktext": "calque desktop",
+			"time": "2020",
+			"desc": "desktop electron fork of calque, a reactive calculator"
+		},{
+			"link": "https://unplug.red/",
+			"linktext": "unplug",
+			"time": "2018-present",
+			"desc": "collection of web experiments arranged in a maze-like fashion, inspired by the merzbau project by jurt schwitters"
+		},{
+			"link": "https://tumblr.unplug.red/",
+			"linktext": "automatism",
+			"time": "2016-2021",
+			"desc": "digital art i made as a teenager"
+		},{
+			"divider": true
+		},{
+			"linktext": "back",
+			"topage": 0
+		}
+	]
+}];

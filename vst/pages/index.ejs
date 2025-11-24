@@ -2,12 +2,13 @@
 var currentselected = 0;
 var title = "Unplugred's Plugin Trove";
 var ogtitle = title;
-for(let i = 0; i < vsts.length; i++) {
+for(let i = 0; i < vsts.length; ++i) {
 	if(pagename.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase())) {
 		currentselected = i;
 		ogtitle = vsts[currentselected].title;
 		if(vsts[currentselected].ui === undefined) ogtitle += " - Unplugred's Plugin Trove";
 		else title = vsts[currentselected].title;
+		break;
 	}
 }
 %><!DOCTYPE html>

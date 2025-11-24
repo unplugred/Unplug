@@ -1,5 +1,13 @@
 <%- include('../partials/header',{title:"projects",color:"#dfdfdf"}) %>
 		<style>
+			::selection {
+				color: white;
+				background: #df1b1bfe;
+			}
+			::-webkit-scrollbar-thumb {
+				background-color: #353535;
+				border: 3px #dfdfdf solid;
+			}
 			body {
 				background: #dfdfdf;
 				display: flex;
@@ -59,6 +67,7 @@
 				mask-position: 0 0;
 				mask-size: 200% 100%;
 				transition: .15s mask-position;
+				user-select: none;
 			}
 			.itemlinkover:hover, .itemlinkover:focus {
 				mask-position: -100% 0;
@@ -67,7 +76,7 @@
 	</head>
 	<body>
 		<div id="itemslist">
-			<h3 id="title">projects</h3><br/>
+			<h3 id="title">projects</h3>
 		</div>
 		<script>
 			function update() {
@@ -205,7 +214,7 @@
 				"link": "https://unplugred.itch.io/gameplay",
 				"linktext": "gameplay",
 				"time": "2020",
-				"desc": "anxiety inducing snake game"
+				"desc": "anxiety-inducing snake game"
 			},{
 				"link": "https://unplugred.itch.io/waterweek",
 				"linktext": "waterweek",
@@ -256,7 +265,7 @@
 				"link": "https://github.com/unplugred/daisy",
 				"linktext": "daisy",
 				"time": "2025",
-				"desc": "programs for electrosmith's daisy arm microcontroller, made for live performamces"
+				"desc": "programs for electrosmith's daisy arm microcontroller, made for live performances"
 			},{
 				"link": "https://github.com/unplugred/borderless",
 				"linktext": "borderless",
@@ -271,7 +280,7 @@
 				"link": "https://unplug.red/",
 				"linktext": "unplug",
 				"time": "2018-present",
-				"desc": "collection of web experiments arranged in a maze like fashion, inspired by the merzbau project by jurt schwitters"
+				"desc": "collection of web experiments arranged in a maze-like fashion, inspired by the merzbau project by jurt schwitters"
 			},{
 				"link": "https://tumblr.unplug.red/",
 				"linktext": "automatism",
