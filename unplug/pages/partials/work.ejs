@@ -40,11 +40,14 @@ for(let i = 1; i < workdata.length; ++i) {
 		<link rel="StyleSheet" href="<%= assets %>/work/stylesheet.css" type="text/css" media="screen">
 	</head>
 	<body>
+		<!-- hii !!! -->
 		<div id="itemslist">
 			<h3 id="title"><%- workdata[index].title %></h3><%
 for(let i = 0; i < workdata[index].items.length; ++i) {
-%><br/><%
-	if(workdata[index].items[i].divider === true) continue; %>
+	%><br/><%
+	if(workdata[index].items[i].divider === true) { %>
+			<% continue;
+	}%>
 			<div class="item" style="visibility: hidden"><%
 	if(workdata[index].items[i].linktext !== undefined) {
 		%><a class="itemlink itemlinkunder" href="javascript:void(0)" tabindex="-1"><%= workdata[index].items[i].linktext %></a><a class="itemlink itemlinkover" href="<%
