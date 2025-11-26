@@ -4,14 +4,14 @@ var vsts = [
 		id: "about",
 		color: "orange",
 		description: `hi! ✌<br/>
-im melody (she they). on the internet i release stuff under the name unplugred.<br/>
-after studying audio engineering i decided to make my own vst plugins for me and my friends because i was frustrated with the current offerrings.<br/>
-eventually i decided to release them onto the internet as open source because why not.<br/>
-in here youd find no resistors, transitors, capacitors, or diodes modeled. no emulation of anything.<br/>
+im melody. on the internet i release stuff under the name unplugred.<br/>
+after studying audio engineering i decided to make my own vst plugins for me and my friends because i didnt have money to buy them and almost nothing was available on linux.<br/>
+i decided to release them onto the internet as open source after my friends convinced me theyre good and begged me to put them out there.<br/>
+in here youd find no modeling of capacitors or diodes. no emulation of anything.<br/>
 these are completely a result of my own exploration of code and sound, and as a result some of them are good, while others not so much.<br/>
 i hope these bring you joy and would love to hear what u make with them.<br/>
 u can reach me via discord (@unplugred) and email (melody@unplug.red).<br/>
-also! our discord community made two collaborative albums !! <a href="https://unplugcord.bandcamp.com/" target="_blank">check them out!</a><br/>
+also! our discord community made two collaborative albums. <a href="https://unplugcord.bandcamp.com/" target="_blank">check them out!</a><br/>
 lastly, thanks to <a href="https://laulaulau.bandcamp.com/" target="_blank">lau</a>, this wouldnt exist without her.`,
 		hideicon: true
 	},{
@@ -28,8 +28,9 @@ patreon allows me to have a stable income i can rely on.<br/>
 <b>Q: But I dont like subscriptions<br/>
 A:</b> the everything bundle used to be worth 100$ before i moved to patreon.<br/>
 this is a low price considering people pay 90$ for a single plugin.<br/>
-if youre at the lowest tier of my patreon, it would take u 20 months to get to that amount.<br/>
-if having a reoccuring payment stresses you out thats understandable, but one time donations wont help me do this full time.<br/>
+if youre at the lowest tier of my patreon, it would take u 3 years to get to that same amount.<br/>
+if having a reoccuring payment stresses you out, u are welcomed to use the free version for now.<br/>
+though i appreciate your willingness to help, one time donations wont help me do this full time.<br/>
 <br/>
 <b>Q: But I don't have money<br/>
 A:</b> music creation should not be gatekept by money.<br/>
@@ -62,16 +63,16 @@ i think these kind of measures make the end product worse, annoy the customer, a
 A:</b> steinberg has stopped issueing developer licenses for vst2 in 2018, and unfortunately its illegal for me to distribute vst2 versions without one.<br/>
 <br/>
 <b>Q: Can I have ___ feature?<br/>
-A:</b> you are more than welcome to shoot me an email at melody@unplug.red, but do know that i am just one person and i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
+A:</b> you are more than welcome to shoot me an email at melody@unplug.red, but do know that i am just one person.<br/>
+i dont do this full time, and i cant afford to add every requested feature as they take a lot of time to make.<br/>
 custom versions of the plugins are an option with appropriate financial compensation.<br/>
 <br/>
 <b>Q: How do you make these?<br/>
-A:</b> the plugins are made in c++ via the juce framework and cmake.<br/>
-ui is made with blender, paint.net, glimpse, inkscape, and imagemagick.<br/>
-website runs in an ubuntu vps running an nginx reverse proxy redirected to nodejs instances running via pm2 that have express for routing and ejs for backend, with vanilla js, html and css for the front end.<br/>
+A:</b> the plugins are made in c++ via the juce framework.<br/>
+ui is made with blender, paint.net, gimp, and inkscape.<br/>
+website is written with vanilla js, html and css, with a little bit of nodejs.<br/>
 demo videos are made and edited in blender for no good reason.<br/>
 music is made in reaper.<br/>
-text editor is neovide (vim).<br/>
 <br/>
 <b>Q: How do I make these???<br/>
 A:</b> <a href="https://www.kvraudio.com/forum/viewtopic.php?t=329696" target="_blank">theres an excellent thread on the kvr forums</a> about good entry points to audio plugin making and audio programming in general.<br/>
@@ -83,7 +84,7 @@ also also using the paid version statistically means ur about 20% more handsome.
 <br/>
 <b>Q: I have a cat video to send you!! (its rly cute)<br/>
 A:</b> what are you waiting for??<br/>
-all cat videos are welcome at mail (melody@unplug.red) or discord (@unplugred).
+any and all cat videos are welcome at mail (melody@unplug.red) or discord (@unplugred).
 id also love to hear any music you made with my plugins, and feel free to send me any album recommendations of bands youd think id like as well.`,
 		hideicon: true,
 	},{
