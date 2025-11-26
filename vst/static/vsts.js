@@ -6,7 +6,7 @@ var vsts = [
 		description: `hi! ✌<br/>
 im melody. on the internet i release stuff under the name unplugred.<br/>
 after studying audio engineering i decided to make my own vst plugins for me and my friends because i didnt have money to buy them and almost nothing was available on linux.<br/>
-i decided to release them onto the internet as open source after my friends convinced me theyre good and begged me to put them out there.<br/>
+i decided to release them onto the internet as open source after my friends convinced me theyre good and implored me to put them out there.<br/>
 in here youd find no modeling of capacitors or diodes. no emulation of anything.<br/>
 these are completely a result of my own exploration of code and sound, and as a result some of them are good, while others not so much.<br/>
 i hope these bring you joy and would love to hear what u make with them.<br/>
