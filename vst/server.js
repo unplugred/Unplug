@@ -208,6 +208,8 @@ app.use((req, res, next) => {
 		return res.render('cover.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
 	if(req.path.startsWith("/metrics"))
 		return res.render('metrics.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts,metrics:metrics});
+	if(req.path.startsWith("/census25"))
+		return res.render('census25.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path});
 	if(req.path.startsWith("/download/")) {
 		for(let key in vstcodes) if(req.path.includes("/"+key+"/")) {
 			var os = ""

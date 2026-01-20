@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>census 25</title>
+
+		<link rel="apple-touch-icon" href="/icons/vst152.png" sizes="152x152">
+		<link rel="apple-touch-icon" href="/icons/vst180.png" sizes="180x180">
+		<link rel="shortcut icon" href="/icons/vst196.png" sizes="196x196">
+		<link rel="icon" type="image/png" href="/icons/vst32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/icons/vst192.png" sizes="192x192">
+
+		<meta name="theme-color" content="#B76673">
+		<meta name="dcterms.rightsHolder" content="Melody">
+		<meta name="og:site" content="Unplugred's VST Trove">
+		<meta name="twitter:site" content="@unplugred">
+		<meta property="og:url" content="<%= host %>/">
+		<meta name="twitter:url" content="<%= host %>/">
+		<meta property="og:title" content="census 25">
+		<meta name="twitter:title" content="census 25">
+		<meta property="og:description" content="unplugred census 2025">
+		<meta name="twitter:description" content="unplugred census 2025">
+		<meta property="og:type" content="article">
+		<meta name="twitter:card" content="summary">
+		<meta property="og:image" content="<%= unplugassets %>/objects/c10.gif">
+		<meta name="twitter:image" content="<%= unplugassets %>/objects/c10.gif">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<style type="text/css">
+html {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	background: url("<%= assets %>/census/bg.png"), #63639c;
+	background-attachment: fixed;
+	animation-name: bganim;
+	animation-duration: 16s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+@keyframes bganim {
+	from {
+		background-position: 0px 0px;
+	}
+	to {
+		background-position: 128px 128px;
+	}
+}
+body {
+	font-family: 'Helvetica Neue', Arial, sans-serif;
+	max-width: calc(100vw - 40px);
+	width: 800px;
+	padding: 80px 20px;
+	margin: auto;
+	background: white;
+	color: black;
+	font-size: 16px;
+}
+h1 {
+	text-align: center;
+	margin-bottom: 10vh;
+	transform: scaleY(.6);
+	letter-spacing: 9px;
+	font-size: 45px;
+	text-shadow: #bbb 5px 7px;
+}
+h2 {
+	text-align: center;
+	margin-top: 84px;
+	font-style: italic;
+	letter-spacing: -1.5px;
+	opacity: 0.65;
+	font-size: 24px;
+}
+img {
+	max-width: 100%;
+}
+		</style>
+	</head>
+
+	<body>
+		<h1>unplugred census 2025</h1>
+		<p>
+			hello all.<br/>
+			last month i asked you some questions, as promised here are the results!
+		</p>
+		<p>
+			<b><i>disclaimer:</i></b><br/>
+			all questions were optional, as well as the form itself.<br/>
+			the answers are completely anonymised.<br/>
+			as always, <b>i do not collect any personal data</b>, and this was my way of anonymously and consensually get to know my audience.<br/>
+			if you have any concerns, you are welcomed to reach out at <a href="mailto:melody@unplug.red">melody@unplug.red</a>, or via discord (@unplugred).<br/>
+			thank you to all responders !!!!!
+		</p>
+		<h2>starting off with beverages</h2>
+		<p>
+			the most important category.
+		</p>
+		<br/>
+		<img alt="beverage of choice. 214 responses." src="<%= assets %>/census/25/image19.png" title="beverage of choice">
+		<img alt="pick a monster. 217 responses." src="<%= assets %>/census/25/image6.png" title="pick a monster">
+		<p>
+			very happy to see the amount of chocolate milk drinkers in my audience.<br/>
+			surprising marketshare for mango loco as well as regular, i would have expected pipeline punch to rank higher.
+		</p>
+		<h2>next up, audio setup preferences</h2>
+		<img alt="preferred daw. 217 responses." src="<%= assets %>/census/25/image7.png" title="preferred daw">
+		<p>
+			in the other category: many people typing ardour and studio one, surprising amount of people are using a daw called waveform (never heard of it!), and also, &quot;fl studio but cooler&quot;
+		</p>
+		<img alt="operating system. 217 responses." src="<%= assets %>/census/25/image30.png" title="operating system">
+		<p>
+			linux is very over-represented here compared to my downloads counter,<br/>
+			with 11.5% of responders using linux compared to linux versions getting 4.8% of downloads.<br/>
+			27.6% of responders are using mac compared to 25.7% of downloads,<br/>
+			and 60% of responders are using windows compared to 69.6% of downloads.
+		</p>
+		<img alt="windows version (if relevant). 186 responses." src="<%= assets %>/census/25/image8.png" title="windows version (if relevant)">
+		<p>
+			comprising of 1.6% of responders, i can comfortably drop support for windows 7
+		</p>
+		<img alt="mac version (if relevant). 149 responses." src="<%= assets %>/census/25/image16.png" title="mac version (if relevant)">
+		<p>
+			i have failed 2.7% of responders who cannot use my plugins as they are only supported on macos 11+
+		</p>
+		<img alt="linux distro (if relevant). 143 responses." src="<%= assets %>/census/25/image31.png" title="linux distro (if relevant)">
+		<p>
+			surprising marketshare for ubuntu and mint among my audience
+		</p>
+		<img alt="preferred plugin format. 212 responses." src="<%= assets %>/census/25/image13.png" title="preferred plugin format">
+		<p>
+			interesting to see the preference for audio units (6.1%) is lower than the preference for logic (8.8%) in a phenomenon i can only describe as plugin format dysphoria.
+		</p>
+		<img alt="preferred sampling rate. 215 responses." src="<%= assets %>/census/25/image14.png" title="preferred sampling rate">
+		<p>
+			very surprising to see 48 getting the majority considering all streaming services only support 44.1.
+		</p>
+		<img alt="commonly used buffer size. 200 responses." src="<%= assets %>/census/25/image11.png" title="commonly used buffer size">
+		<p>
+			amongst the other category: many people expressing general confusion, one person picking 192, and one person picking 16 ???
+		</p>
+		<h2>discovery and reach</h2>
+		<img alt="patreon tier. 210 responses." src="<%= assets %>/census/25/image26.png" title="patreon tier">
+		<p>
+			paid users are greatly overrepresented in responders, with 3.3% of downloads being of the paid version compared to 27.6% paying responders.<br/>
+			thank you so much for your support !!! and even if u cant support me, i love and appreciate you for caring about my silly software.
+		</p>
+		<img alt="i make music. 214 responses." src="<%= assets %>/census/25/image5.png" title="i make music">
+		<img alt="i use unplugred plugins. 215 responses." src="<%= assets %>/census/25/image28.png" title="i use unplugred plugins">
+		<img alt="i use audio software for my job. 215 responses." src="<%= assets %>/census/25/image24.png" title="i use audio software for my job">
+		<p>
+			a surprising 27.9% of responders have managed to make a living off of audio in some capacity.</p>
+		<img alt="when have you first heard about me (roughly). 216 responses." src="<%= assets %>/census/25/image25.png" title="when have you first heard about me (roughly)">
+		<p>
+			very happy to see a large percentage of newcomers, very much so hoping this trend continues!<br/>
+			to the 4 people who knew me before i was making plugins, hi! i probably know u personally.
+		</p>
+		<img alt="how have you first heard about me?. 214 responses." src="<%= assets %>/census/25/image10.png" title="how have you first heard about me?">
+		<p>
+			very large amount of people who know me from youtube, followed by a personal recommendation, instagram, discord server, and reddit.<br/>
+			if you ever recommended my plugins to others, thank you !<br/>
+			notable among the typed responses: many people coming from linux related websites, google searches, one person coming from free99 <a href="https://xfree99x.bandcamp.com/album/trauma-reduction-prayer">(go listen to free99 !!!)</a>, one from ewan bristow <a href="https://ewanbristow.com">(go download !!!)</a>, and one from &quot;famous musician alexander guy cook&quot;
+		</p>
+		<img alt="i often discover new plugins from: (select multiple). 207 responses." src="<%= assets %>/census/25/image27.png" title="i often discover new plugins from: (select multiple)">
+		<p>
+			was not aware the reddit plugin community was this big<br/>
+			notable among the typed responses: google, linux spaces.<br/>
+			&quot;piracy websites&quot; and &quot;qbittorrent&quot; also showed up, which i guess is an edge paid plugins have over me.
+		</p>
+		<img alt="the plugin i first heard about:. 206 responses." src="<%= assets %>/census/25/image32.png" title="the plugin i first heard about:">
+		<img alt="personal favourite. 201 responses." src="<%= assets %>/census/25/image21.png" title="personal favourite">
+		<p>
+			prisma taking quite a bit of marketshare, with crmbl following.<br/>
+			by subtracting the two charts we can see that prisma is the most overrated plugin, with pnch being the most underrated one.
+		</p>
+		<img src="<%= assets %>/census/25/image12.png">
+		<h2>demographics</h2>
+		<img alt="i have education in music / audio. 216 responses." src="<%= assets %>/census/25/image18.png" title="i have education in music / audio">
+		<img alt="age. 212 responses." src="<%= assets %>/census/25/image33.png" title="age">
+		<p>
+			majority of responders are young adults, with a surprising percentage in the higher age ranges.
+		</p>
+		<img alt="gender. 209 responses." src="<%= assets %>/census/25/image20.png" title="gender">
+		<p>
+			13.9% of responders are non binary, greatly overrepresented over the general population.<br/>
+			we love and respect you!
+		</p>
+		<img alt="sexuality. 207 responses." src="<%= assets %>/census/25/image2.png" title="sexuality">
+		<p>
+			my userbase seems very bisexual, which somehow feels correct.
+		</p>
+		<img alt="gender alignment. 201 responses." src="<%= assets %>/census/25/image3.png" title="gender alignment">
+		<p>
+			with 59.7% of my audience being cis, we are a very gender queer community. trans rights are human rights !
+		</p>
+		<img alt="neuro diversity. 207 responses." src="<%= assets %>/census/25/image23.png" title="neuro diversity">
+		<p>
+			a very large percentage of neurodiverse people, with people being frustrated they couldnt pick both adhd and autism.
+		</p>
+		<img alt="location. 209 responses." src="<%= assets %>/census/25/image15.png" title="location">
+		<img alt="race / ethnicity. 209 responses." src="<%= assets %>/census/25/image22.png" title="race / ethnicity">
+		<p>
+			at 78.5%, we are a very white community.
+		</p>
+		<img alt="income. 204 responses." src="<%= assets %>/census/25/image29.png" title="income">
+		<p>
+			with a surprising amount of high earners and a large majority of low earners, the income among responders seems polarised.
+		</p>
+		<img alt="ideology. 203 responses." src="<%= assets %>/census/25/image1.png" title="ideology">
+		<p>
+			with 5 conservative responders, my audience heavily leans left.
+		</p>
+		<img alt="height. 200 responses." src="<%= assets %>/census/25/image17.png" title="height">
+		<img alt="religion. 203 responses." src="<%= assets %>/census/25/image9.png" title="religion">
+		<p>
+			very small representation of religious people.<br/>
+			did not expect other to have such a share... what is your belief system?
+		</p>
+		<img alt="diet. 210 responses." src="<%= assets %>/census/25/image4.png" title="diet">
+		<p>
+			this is perhaps the most disappointing graph of them all.....no comment.
+		</p>
+		<h2>takeaways</h2>
+		<ul>
+			<li>the average user is a 24-years-old unemployed leftist bisexual white man with adhd, who loves coffee. as most of my friends are, i guess.<br></li>
+			<li>i should do the majority of my testing in 44.1khz, 256 buffer size, ableton, with windows 11.</li>
+			<li>i should possibly look into audio production reddit.</li>
+			<li>pisstortion should be placed higher on my website.</li>
+			<li>i should look up the &quot;waveform&quot; daw.</li>
+			<li>though they take up a small majority of downloads, my linux users are more dedicated supporters.</li>
+			<li>my audience grows rapidly!</li>
+			<li>i have a cool and awesome community.</li>
+		</ul>
+	</body>
+</html>
