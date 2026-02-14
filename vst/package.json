@@ -4,7 +4,7 @@
   "description": "vsts created by unplugred",
   "author": "Melody",
   "dependencies": {
-    "ejs": "^3.1.10",
-    "express": "^4.21.2"
+    "ejs": "^4.0.1",
+    "express": "^5.2.1"
   }
 }
