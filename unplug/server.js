@@ -169,6 +169,14 @@ app.use((req, res, next) => {
 	if(req.path === '/important.txt')
 		return res.download(__dirname + '/static/unplug/important.txt');
 
+	//manifesto.txt
+	if(req.path === '/manifesto/pdf')
+		return res.download(__dirname + '/static/unplug/manifesto/tnsm.pdf');
+	if(req.path === '/manifesto/poster')
+		return res.download(__dirname + '/static/unplug/manifesto/tnsm_poster.zip');
+	if(req.path === '/manifesto/zine')
+		return res.download(__dirname + '/static/unplug/manifesto/tnsm_zine.zip');
+
 	//automatism
 	if(req.path === '/automatism/gallery') {
 		return res.render('partials/automatism/gallery.ejs',{assets:global.assets,host:global.protocol + req.headers.host,data:automatism});
