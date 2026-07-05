@@ -249,6 +249,7 @@ app.use((req, res, next) => {
 									"Scope":				[0,0,0,0,0,0],
 									"Magic Carpet":			[0,0,0,0,0,0],
 									"ModMan":				[0,0,0,0,0,0],
+									"Sucrose":				[0,0,0,0,0,0],
 									"Everything Bundle":	[0,0,0,0,0,0]
 								});
 							}
@@ -281,6 +282,7 @@ app.use((req, res, next) => {
 									"Scope":				[0,0,0,0,0,0],
 									"Magic Carpet":			[0,0,0,0,0,0],
 									"ModMan":				[0,0,0,0,0,0],
+									"Sucrose":				[0,0,0,0,0,0],
 									"Everything Bundle":	[0,0,0,0,0,0]
 								});
 							}
