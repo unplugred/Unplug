@@ -201,7 +201,7 @@ sucrose is a collaboration between me and the amazing and talented blepfx.<br/>
 the dsp was made by her, and the ui by me !<br/>
 it was created as an entry for (and currently participating in) the <a href="https://www.kvraudio.com/kvr-developer-challenge/2026/" target="_blank">2026 kvr developer challenge</a>.`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
-		freedownload: {url:"https://www.kvraudio.com/product/sucrose-by-unplugred/downloads"},
+		freedownload: {url:"https://www.kvraudio.com/kvr-developer-challenge/2026/#dc26-36294"},
 		decoration: {width:163,height:324},
 		ui: {width:534,height:573,deg:15}
 	},{
