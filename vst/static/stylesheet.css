@@ -10,7 +10,7 @@ html, body {
 	margin: 0;
 	width: 100vw;
 	height: 100vh;
-	background: url(bg.webp) 5px 0;
+	background: url(bg.webp) 5px 0, #FFF;
 	background-attachment: fixed;
 	font-family: 'Helvetica Neue', Arial, sans-serif;
 	line-height: .95;
@@ -24,7 +24,7 @@ html, body {
 	background-color: transparent;
 }
 ::-webkit-scrollbar-thumb{
-	background-color: black;
+	background-color: #000;
 	outline: none;
 }
 ::-webkit-scrollbar-corner{
@@ -36,7 +36,7 @@ html, body {
 }
 #diagonal {
 	position: fixed;
-	stroke: #ccc;
+	stroke: #CCC;
 	stroke-width: 1px;
 	width: 100vw;
 	height: 100vh;
@@ -44,7 +44,7 @@ html, body {
 #circle {
 	border-radius: 100%;
 	position: fixed;
-	border: 1px solid #ccc;
+	border: 1px solid #CCC;
 	width: 125vmin;
 	height: 125vmin;
 	left: calc(50vw - 62.5vmin);
@@ -70,7 +70,7 @@ html, body {
 	top: 0;
 	width: 30vw;
 	height: 100vh;
-	background: linear-gradient(to right, #ffffff, transparent);
+	background: linear-gradient(to right, #FFF, transparent);
 	z-index: 50;
 	pointer-events: none;
 }
@@ -78,10 +78,10 @@ html, body {
 	display: none;
 }
 #rainbow {
-	background: url(rainbow.webp);
+	background: url(rainbow.webp), #F00;
 	height: 100vh;
 	width: 4px;
-	border-right: 1px solid black;
+	border-right: 1px solid #000;
 	position: fixed;
 	z-index: 20000;
 	transition: 1s background-position-y;
@@ -105,12 +105,12 @@ html, body {
 	border-radius: 100%;
 	margin-right: 5px;
 	display: inline-block;
-	border: 1px solid black;
+	border: 1px solid #000;
 }
-#dotc { background-color: #00FFFF; }
-#doty { background-color: #FFFF00; }
-#dotm { background-color: #FF00FF; }
-#dotk { background-color: #000000; }
+#dotc { background-color: #0FF; }
+#doty { background-color: #FF0; }
+#dotm { background-color: #F0F; }
+#dotk { background-color: #000; }
 
 /* layout */
 .mobile.single #content {
@@ -118,7 +118,7 @@ html, body {
 	overflow-x: clip;
 	scrollbar-width: thin;
 	scrollbar-width: 4px;
-	scrollbar-color: black transparent;
+	scrollbar-color: #000 transparent;
 }
 .mobileselected #content {
 	left: 0;
@@ -200,7 +200,7 @@ html, body {
 .leftitem {
 	padding-top: .25em;
 	padding-bottom: .25em;
-	color: black;
+	color: #000;
 	font-weight: normal;
 	display: block;
 	text-decoration: none;
@@ -221,7 +221,7 @@ html, body {
 	color: #FF8400 !important;
 }
 .mobile .lefthover:not(:hover) .leftiteminner {
-	color: black !important;
+	color: #000 !important;
 }
 .leftiteminner {
 	display: flex;
@@ -257,7 +257,7 @@ html, body {
 	font-size: 1em;
 	letter-spacing: .05em;
 	transform: skewY(-16deg);
-	color: #FF00FF;
+	color: #F0F;
 	position: relative;
 	left: .2em;
 	top: -.5em;
@@ -319,7 +319,7 @@ html, body {
 }
 .win-pos {
 	position: relative;
-	border: 1px solid black;
+	border: 1px solid #000;
 	animation: windowopen .4s ease-out;
 	min-width: 200px;
 }
@@ -328,13 +328,13 @@ html, body {
 	100% { filter: brightness(1) hue-rotate(0turn) contrast(1); }
 }
 .win-pos.teal a {
-	color: #FF00FF;
+	color: #F0F;
 }
 .win-pos.orange a {
-	color: #008800;
+	color: #080;
 }
 .win-pos.green a {
-	color: #0000FF;
+	color: #00F;
 }
 .mobile.single #info {
 	width: calc(100% - 12px);
@@ -372,7 +372,7 @@ html, body {
 	left: -1px;
 	height: 20.4px;
 	width: 100px;
-	border: 1px solid black;
+	border: 1px solid #000;
 	border-bottom: none;
 	border-right: none;
 	clip-path: polygon(0% 100%, 0% 0%, 80% 0%, 100% 100%);
@@ -383,11 +383,11 @@ html, body {
 	left: 79.5px;
 	width: 21px;
 	height: 21px;
-	stroke: black;
+	stroke: #000;
 	stroke-width: 1px;
 }
 .windowbg {
-	background: url(scanlines.webp), url(clouds.webp);
+	background: url(scanlines.webp), url(clouds.webp), #65acc3;
 	background-size: auto, cover;
 	background-attachment: fixed;
 }
@@ -405,7 +405,7 @@ html, body {
 	overflow-y: auto;
 	scrollbar-width: thin;
 	scrollbar-width: 4px;
-	scrollbar-color: black transparent;
+	scrollbar-color: #000 transparent;
 	position: relative;
 	line-height: 1.1;
 }
@@ -457,25 +457,25 @@ html, body {
 .download {
 	display: inline-block;
 	font-size: .9em;
-	color: white!important;
-	background-color: black;
+	color: #FFF !important;
+	background-color: #000;
 	font-variant: petite-caps;
 	text-decoration: none;
 	transform: skewX(-24deg);
 	margin-top: 4px;
 }
 .download:hover {
-	background-color: #FF00FF;
+	background-color: #F0F;
 	animation: windowopen .2s ease-out;
 }
 iframe {
 	width: 20vw;
 	height: 15vw;
 	max-width: calc(100% - 5px);
-	background: black;
+	background: #000;
 	min-width: 200px;
 	min-height: 150px;
-	border: 1px solid black;
+	border: 1px solid #000;
 }
 
 /* right */
@@ -499,8 +499,8 @@ iframe {
 	height: 0;
 }
 #ui {
-	border: 1px solid black;
-	background: black;
+	border: 1px solid #000;
+	background: #000;
 	animation: windowopen 1s ease-out;
 	transform-origin: top left;
 }
@@ -644,7 +644,7 @@ iframe {
 	transform: rotate(45deg);
 }
 .popupline {
-	background-color: black;
+	background-color: #000;
 	position: absolute;
 }
 .popupline1 {
@@ -665,13 +665,13 @@ audio {
 	margin-top: 2px;
 	max-width: calc(100% - 3px);
 	filter: saturate(0);
-	border: solid 1px black;
+	border: solid 1px #000;
 	background: #f3f3f3;
 }
 #patronsscroll {
 	height: 100px;
 	overflow-y: clip;
-	mask: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgb(0, 0, 0) 10%, rgb(0, 0, 0) 90%, rgba(0,0,0,0) 100%);
+	mask: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgb(0,0,0) 10%, rgb(0,0,0) 90%, rgba(0,0,0,0) 100%);
 	margin-top: 4px;
 }
 #patrons10 {
