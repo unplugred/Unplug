@@ -12,6 +12,7 @@ var ui = {
 	logo1: document.getElementById("pluginlogo1"),
 	logo2: document.getElementById("pluginlogo2"),
 	rainbow: document.getElementById("rainbow"),
+	right: document.getElementById("right"),
 	winicon: document.getElementById("winicon")
 }
 var currentselected = 0;
@@ -19,26 +20,27 @@ var currenthover = -3;
 var temporalhover = -1;
 var triggerupdate = false;
 var isselected = false;
-var ismobile = document.documentElement.clientWidth <= 900;
-var issingle = document.documentElement.clientWidth <= 600;
+var guicutoff = [900, 1200];
+var ismobile = document.documentElement.clientWidth <= guicutoff[1];
+var issingle = document.documentElement.clientWidth <= guicutoff[0];
 if(ismobile) {
 	document.body.className = "mobile mobileunselected";
 	if(issingle) document.body.className += " single";
 }
 var resized = false;
-window.addEventListener('resize',function(){
+window.addEventListener('resize',function() {
 	if(resized) return;
 	resized = true;
 	setTimeout(updateresize,150);
 });
 function updateresize() {
 	resized = false;
-	var newmobile = document.documentElement.clientWidth <= 900;
+	var newmobile = document.documentElement.clientWidth<=guicutoff[1];
 	var id = currenthover>=0?currenthover:currentselected;
-	var newsingle = (document.documentElement.clientWidth <= 600 || (newmobile && vsts[id].ui === undefined && isselected));
+	var newsingle = (document.documentElement.clientWidth<=guicutoff[0]||(newmobile&&vsts[id].ui===undefined&&isselected));
 	if((newmobile && !ismobile) || (newmobile && (newsingle !== issingle))) {
 		ismobile = true;
-		document.body.className = vsts[id].id + " mobile " + (isselected?"mobileselected":"mobileunselected");
+		document.body.className = vsts[id].id+" mobile "+(isselected?"mobileselected":"mobileunselected");
 	} else if((!newmobile && ismobile) || (!newmobile && (newsingle !== issingle))) {
 		ismobile = false;
 		document.body.className = vsts[id].id;
@@ -46,17 +48,33 @@ function updateresize() {
 	if(newsingle && !issingle) {
 		issingle = true;
 		document.body.className += " single";
-		if(isselected)
-			document.getElementById("right").style.height = (vsts[id].ui == undefined ? "5px" : ((String)(vsts[id].ui.height + 10)+"px"));
 	} else if(!newsingle && issingle) {
 		issingle = false;
-		document.getElementById("right").style.height = null;
+		ui.right.style.height = null;
 	}
+
+	document.getElementById("patrons").style.marginTop = ((String)(Math.floor(document.getElementById("patrons").offsetHeight*.3)))+"px";
+
+	if(vsts[id].ui !== undefined) {
+		let uiw = vsts[id].ui.width;
+		let uih = vsts[id].ui.height/uiw;
+		uiw = Math.min(uiw,ui.right.offsetWidth*.9);
+		uih *= uiw;
+
+		ui.ui      .style.width  = ((String)(uiw))+"px";
+		ui.uishadow.style.width  = ((String)(uiw))+"px";
+		ui.ui      .style.height = ((String)(uih))+"px";
+		ui.uishadow.style.height = ((String)(uih))+"px";
+		ui.ui.style.marginBottom = "calc(20vh - "+((String)(uih*.2))+"px)";
+
+		if(issingle && isselected) ui.right.style.height = ((String)(uih+150))+"px";
+	} else if(issingle && isselected) ui.right.style.height = "5px";
 };
+setTimeout(updateresize,150);
 function back() {
 	if(!isselected) return;
 	isselected = false;
-	issingle = document.documentElement.clientWidth <= 600;
+	issingle = document.documentElement.clientWidth <= guicutoff[0];
 	if(ismobile) {
 		document.body.className = vsts[currentselected].id + " mobile mobileunselected";
 		if(issingle) document.body.className += " single"
@@ -69,8 +87,6 @@ for (var i = 0; i < x.length; i++) {
 	dragElement(x[i].parentNode, x[i]);
 }
 
-var uielement = document.getElementById("ui");
-var uishadow = document.getElementById("uishadow");
 var prevtime = 0;
 var open = 0;
 function update(timestamp) {
@@ -98,9 +114,9 @@ function update(timestamp) {
 
 	if((!ismobile || isselected) && vsts[currenthover].ui !== undefined) {
 		open = Math.min(open+dt*.0005,1);
-		let openease = 1-Math.pow(1-open,5);
-		uielement.style.transform = "rotateX("+(String)(simplex(timestamp*.0003,0)*vsts[currenthover].ui.deg)+"deg) rotateY("+(String)(simplex(-30,timestamp*.0003)*vsts[currenthover].ui.deg*openease-90*(1-openease))+"deg) translateX(-50%) translateY(-50%)";
-		uishadow.style.transform = "translateX(7px) translateY(12px) " + uielement.style.transform;
+		let openease = 1-Math.pow(1-open,5)*.9;
+		ui.ui.style.transform = "rotateX("+(String)(simplex(timestamp*.0003,0)*vsts[currenthover].ui.deg)+"deg) rotateY("+(String)(simplex(-30,timestamp*.0003)*vsts[currenthover].ui.deg*openease-90*(1-openease))+"deg) translateX(-50%) translateY(-50%)";
+		ui.uishadow.style.transform = "translateX(7px) translateY(12px) " + ui.ui.style.transform;
 	}
 
 	requestAnimationFrame(update);
@@ -221,17 +237,17 @@ function updateui() {
 	ui.window.style.animation = null;
 	ui.ui.style.animation = null;
 
-	ui.rainbow.style.backgroundPositionY = (String)((currenthover*-50)/vsts.length)+"vh";
+	ui.rainbow.style.backgroundPositionY = (String)((currenthover*100)/vsts.length)+"vh";
 
 	ui.title.innerText = vsts[currenthover].title;
 	ui.body.className = vsts[currenthover].id;
-	issingle = (document.documentElement.clientWidth <= 600 || (ismobile && vsts[currenthover].ui === undefined && isselected));
+	issingle = (document.documentElement.clientWidth<=guicutoff[0]||(ismobile&&vsts[currenthover].ui===undefined&&isselected));
 	if(ismobile) {
-		ui.body.className += " mobile " + (isselected?"mobileselected":"mobileunselected");
+		ui.body.className += " mobile "+(isselected?"mobileselected":"mobileunselected");
 		if(issingle) {
 			document.body.className += " single";
-			document.getElementById("right").style.height = (vsts[currenthover].ui == undefined ? "5px" : ((String)(vsts[currenthover].ui.height + 150)+"px"));
-		} else document.getElementById("right").style.height = null;
+			ui.right.style.height = vsts[currenthover].ui==undefined?"5px":((String)(vsts[currenthover].ui.height+150)+"px");
+		} else ui.right.style.height = null;
 	}
 	if(!isselected || vsts[currenthover].ui === undefined)
 		document.title = "Unplugred's Plugin Trove";
@@ -286,12 +302,18 @@ function updateui() {
 	} else {
 		ui.ui.style.display = null;
 		ui.uishadow.style.display = null;
-		ui.ui.style.background = "url(/"+vsts[currenthover].id+"/ui.webp), black";
-		ui.ui.style.width = vsts[currenthover].ui.width+"px";
-		ui.uishadow.style.width = vsts[currenthover].ui.width+"px";
-		ui.ui.style.height = vsts[currenthover].ui.height+"px";
-		ui.uishadow.style.height = vsts[currenthover].ui.height+"px";
-		ui.ui.style.marginBottom = "calc(20vh - " + (String)(vsts[currenthover].ui.height*.2)+"px)";
+		ui.ui.style.backgroundImage = "url(/"+vsts[currenthover].id+"/ui.webp)";
+
+		let uiw = vsts[currenthover].ui.width;
+		let uih = vsts[currenthover].ui.height/uiw;
+		uiw = Math.min(uiw,ui.right.offsetWidth*.9);
+		uih *= uiw;
+
+		ui.ui      .style.width  = ((String)(uiw))+"px";
+		ui.uishadow.style.width  = ((String)(uiw))+"px";
+		ui.ui      .style.height = ((String)(uih))+"px";
+		ui.uishadow.style.height = ((String)(uih))+"px";
+		ui.ui.style.marginBottom = "calc(20vh - "+((String)(uih*.2))+"px)";
 	}
 	ui.logo1.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
 	ui.logo2.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
@@ -391,16 +413,24 @@ function sanitize(string) {
 	const reg = /[&<>"'/]/ig;
 	return string.replace(reg, (match)=>(map[match]));
 }
+document.getElementById("patrons").innerHTML = "<b>Supported on patreon by:</b>";
 for(let tier = 15; tier >= 10; tier -= 5) {
 	var patronhtml = "";
 	if(patrons[String(tier)] == undefined) continue;
 	for(let patron = 0; patron < patrons[String(tier)].length; ++patron) {
+		if(tier == 15) patronhtml += "<div class=\"patron15\">";
 		if(patrons[String(tier)][patron]["url"] == undefined)
-			patronhtml += sanitize(patrons[String(tier)][patron]["name"])+"<br/>"
+			patronhtml += sanitize(patrons[String(tier)][patron]["name"])
 		else
-			patronhtml += "<a target=\"_blank\" href=\""+encodeURI(patrons[String(tier)][patron]["url"])+"\">"+sanitize(patrons[String(tier)][patron]["name"])+"</a><br/>"
+			patronhtml += "<a target=\"_blank\" href=\""+encodeURI(patrons[String(tier)][patron]["url"])+"\">"+sanitize(patrons[String(tier)][patron]["name"])+"</a>"
+		if(tier == 15) patronhtml += "</div>";
+		patronhtml += " ★ ";
 	}
-	if(tier == 10) patronhtml += patronhtml;
-	document.getElementById("patrons"+String(tier)).innerHTML = patronhtml;
+	if(tier == 15) {
+		document.getElementById("patrons").innerHTML += patronhtml;
+	} else if(tier == 10) {
+		patronhtml += patronhtml;
+		document.getElementById("patrons").innerHTML += "<div style=\"flex: 1 0 auto; display: flex;\"><div id=\"patronsscroll\"><div id=\"patrons10\">"+patronhtml+"</div></div><i>Thank you!</i></div>";
+	}
 }
-document.getElementById("patrons10").style.animationDelay = String(Math.random()*-30)+"s";
+document.getElementById("patrons10").style.animationDelay = String(Math.random()*-50)+"s";

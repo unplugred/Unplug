@@ -52,33 +52,34 @@ for(let i = 0; i < vsts.length; ++i) {
 	} %>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=16" type="text/css" media=screen><%
+		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=17" type="text/css" media=screen><%
 	for(let i = 0; i < vsts.length; i++) if(vsts[i].decoration !== undefined) { %>
 		<link rel="prefetch" href="<%= assets %>/<%= vsts[i].id %>/gif.webp" /><%
 	} %>
 	</head>
 	<body class="<%= vsts[currentselected].id %>">
-		<div id="bg">
-			<svg id="diagonal">
-				<line x1='0' y1='100%' x2='100%' y2='0'/>
-				<line x1='0' y1='0' x2='100%' y2='100%'/>
-			</svg>
-			<div id="circle"></div>
-			<div id="testpattern"></div>
-			<div id="whitegradient"></div>
-			<div id="rainbow" style="background-position-y: <%= (currentselected*-50)/vsts.length %>vh"></div>
-			<div id="dots">
-				<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
-			</div>
-		</div>
-
 		<div id="content">
+			<div id="bg">
+				<svg id="diagonal">
+					<line x1='0' y1='100%' x2='100%' y2='0'/>
+					<line x1='0' y1='0' x2='100%' y2='100%'/>
+				</svg>
+				<div id="circle"></div>
+				<div id="testpattern"></div>
+				<div id="whitegradient"></div>
+				<div id="rainbow" style="background-position-y: <%= (currentselected*-50)/vsts.length %>vh"></div>
+				<div id="dots">
+					<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
+				</div>
+			</div>
+
 			<div id="contentwrap">
 				<div id="left" class="section">
 					<div id="leftscroll">
-						<div id="leftwrap"></div>
+						<div id="leftwrap">
+							<div id="leftclip"></div>
+						</div>
 					</div>
-					<div id="leftclip"></div>
 				</div>
 				<div id="center" class="section">
 					<a id="back" href="javascript:void(0)" onclick="back()"></a>
@@ -106,7 +107,7 @@ for(let i = 0; i < vsts.length; ++i) {
 				<div id="right" class="section">
 					<div id="uiwrap">
 						<div id="uishadow"<% if(vsts[currentselected].ui === undefined) { %> style="display: none"<% } %>></div>
-						<div id="ui" style=<% if(vsts[currentselected].ui === undefined) { %>"display: none"<% } else { %>'background: url("/<%= vsts[currentselected].id %>/ui.webp"), black'<% } %>></div>
+						<div id="ui" style=<% if(vsts[currentselected].ui === undefined) { %>"display: none"<% } else { %>'background-image: url("/<%= vsts[currentselected].id %>/ui.webp")'<% } %>></div>
 					</div>
 					<div id="logoclip"><div id="pluginlogo"><div id="pluginlogo1" style='background-image: url("/<%= vsts[currentselected].id %>/text.webp")'></div><div id="pluginlogo2" style='background-image: url("/<%= vsts[currentselected].id %>/text.webp")'></div></div>
 					<div id="blurredtext"><div id="blurredtext1">UnplugRed</div><div id="blurredtext2">UnplugRed</div></div></div>
@@ -127,6 +128,8 @@ for(let i = 0; i < vsts.length; ++i) {
 				</div>
 			</div>
 		</div>
+
+		<div id="patrons"></div>
 
 		<div id="popups">
 			<div id="popuptext" class="win-wrap" style="z-index: 20000; display: none">
@@ -175,7 +178,7 @@ for(let i = 0; i < vsts.length; ++i) {
 						<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
 					</div>
 					<div class="windowcontent">
-						<div class="popupdesc">Our discord made yet another <a href="https://unplugcord.bandcamp.com/album/psychedelics" target="_blank">collab album!</a><br/><br/><b style="font-variant: petite-caps;">Supported on patreon by:</b><br/><div id="patrons15"></div><div id="patronsscroll"><div id="patrons10"></div></div><center><i>Thank you!</i></center></div>
+						<div class="popupdesc">26-07-11 //<br/>new plugin sucrose!!<br/>made in collab with <a href="https://fx.amee.ee/" target="_blank">blepfx</a></div>
 					</div>
 					<a class="popupclose" href="javascript:void(0)" onclick="setpopup(2)">
 						<div class="popupclosewrap">
@@ -191,6 +194,6 @@ for(let i = 0; i < vsts.length; ++i) {
 		<script type="text/javascript" src="<%= unplugassets %>/automatism/simplex.js"></script>
 		<script type="text/javascript" src="/vsts.js?v=46"></script>
 		<script type="text/javascript">var patrons=<%- patrons %>;</script>
-		<script type="text/javascript" src="/javascript.js?v=11"></script>
+		<script type="text/javascript" src="/javascript.js?v=12"></script>
 	</body>
 </html>
