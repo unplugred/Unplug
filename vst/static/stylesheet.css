@@ -57,6 +57,9 @@ body {
 	top: 0;
 	left: 0;
 }
+.mobileselected.single #bg {
+	position: sticky;
+}
 #diagonal {
 	position: absolute;
 	stroke: #CCC;
@@ -126,6 +129,7 @@ body {
 	z-index: 20;
 	pointer-events: none;
 	height: 22px;
+	direction: initial;
 }
 .dot {
 	width: 20px;
@@ -474,6 +478,9 @@ body {
 	float: right;
 	margin-left: -20px;
 	margin-bottom: -20px;
+	max-width: 70%;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
 }
 #supported {
 	margin-bottom: 7px;
