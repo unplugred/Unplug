@@ -207,6 +207,8 @@ app.use((req, res, next) => {
 		return res.render('setup.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
 	if(req.path.startsWith("/cover") && process.env.NODE_ENV !== 'production')
 		return res.render('cover.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
+	if(req.path.startsWith("/icon") && process.env.NODE_ENV !== 'production')
+		return res.render('icon.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts});
 	if(req.path.startsWith("/metrics"))
 		return res.render('metrics.ejs', {assets:global.protocol + req.headers.host,unplugassets:global.assets,host:global.protocol + req.headers.host,pagename:req.path,vsts:vsts,metrics:metrics});
 	if(req.path.startsWith("/census25"))

@@ -5,14 +5,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel=StyleSheet href="<%= assets %>/stylesheet.css" type="text/css" media=screen>
 		<style>
-			html, body {
-				background: url(/bgsmol.webp) 5px 0;
+			body {
+				background: #FFF;
+				width: 100vw;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+			}
+			#content {
 				width: 202px;
 				height: 386px;
-				border-right: 1px solid black;
-				border-bottom: 1px solid black;
-				overflow: hidden;
+				background: url(/bgsmol.webp) 5px 0px;
+				border: .5px dashed #888;
 				image-rendering: pixelated;
+				flex: 0 0 auto;
+				overflow: clip;
 			}
 			#circle {
 				width: 252.5px;
@@ -22,7 +29,7 @@
 			}
 			#whitegradient {
 				width: 100%;
-				background: linear-gradient(to left, #fff, transparent);
+				background: linear-gradient(to left, #FFF, transparent);
 			}
 			#right {
 				width: 100%;

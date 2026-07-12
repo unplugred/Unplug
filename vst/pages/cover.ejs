@@ -5,13 +5,20 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=11" type="text/css" media=screen>
 		<style>
-			html, body {
-				background: url(/bgsmol.webp) 5px 0;
+			body {
+				background: #FFF;
+				width: 100vw;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+			}
+			#content {
 				width: 700px;
 				height: 700px;
-				border-right: 1px solid black;
-				border-bottom: 1px solid black;
-				overflow: hidden;
+				background: url(/bgsmol.webp) 5px 0;
+				border: 1px dashed #888;
+				flex: 0 0 auto;
+				overflow: clip;
 			}
 			#circle {
 				width: 875px;

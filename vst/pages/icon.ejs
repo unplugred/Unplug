@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=11" type="text/css" media=screen>
+		<style>
+			body {
+				background: #FFF;
+				width: 100vw;
+				height: 100vh;
+				justify-content: center;
+				align-items: center;
+			}
+			.lefthover {
+				border: 1px dashed #888;
+				background: #FFF;
+				width: 159px;
+				height: 159px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				animation: none;
+			}
+			.lefticon {
+				width: 120px;
+				height: 120px;
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="lefthover">
+			<div class="lefticon"></div>
+		</div>
+
+		<script type="text/javascript" src="/vsts.js"></script>
+		<script>
+			var i = -1;
+			for(let m = 0; m < vsts.length; m++) {
+				if(location.pathname.toLowerCase().endsWith(vsts[m].title.replace(/\s/g,"").toLowerCase())) {
+					i = m;
+					break;
+				}
+			}
+			if(i !== -1) {
+				document.getElementsByClassName("lefticon")[0].style.backgroundImage = "url(/"+vsts[i].id+"/icon.svg)";
+				document.getElementsByClassName("lefticon")[0].className += " " + vsts[i].color;
+				document.body.className = vsts[i].id;
+				document.title = vsts[i].title;
+			}
+		</script>
+	</body>
+</html>
