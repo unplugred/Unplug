@@ -1,15 +1,22 @@
 <%
 var currentselected = 0;
+var selected = false;
 var title = "Unplugred's Plugin Trove";
 var ogtitle = title;
 for(let i = 0; i < vsts.length; ++i) {
 	if(pagename.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase())) {
+		selected = true;
 		currentselected = i;
 		ogtitle = vsts[currentselected].title;
 		if(vsts[currentselected].ui === undefined) ogtitle += " - Unplugred's Plugin Trove";
 		else title = vsts[currentselected].title;
 		break;
 	}
+}
+function sanitize(string) {
+	const map = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;',"/":'&#x2F;'};
+	const reg = /[&<>"'/]/ig;
+	return string.replace(reg, (match)=>(map[match]));
 }
 %><!DOCTYPE html>
 <html lang="en">
@@ -52,12 +59,12 @@ for(let i = 0; i < vsts.length; ++i) {
 	} %>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=19" type="text/css" media=screen><%
+		<link rel=StyleSheet href="<%= assets %>/stylesheet.css?v=20" type="text/css" media=screen><%
 	for(let i = 0; i < vsts.length; i++) if(vsts[i].decoration !== undefined) { %>
 		<link rel="prefetch" href="<%= assets %>/<%= vsts[i].id %>/gif.webp" /><%
 	} %>
 	</head>
-	<body class="<%= vsts[currentselected].id %>">
+	<body class="<%= vsts[currentselected].id %> <% if(!selected) { %>un<% } %>selected">
 		<div id="content">
 			<div id="bg">
 				<svg id="diagonal">
@@ -67,7 +74,7 @@ for(let i = 0; i < vsts.length; ++i) {
 				<div id="circle"></div>
 				<div id="testpattern"></div>
 				<div id="whitegradient"></div>
-				<div id="rainbow" style="background-position-y: <%= (currentselected*-50)/vsts.length %>vh"></div>
+				<div id="rainbow" style="background-position-y: <%= (currentselected*100)/vsts.length %>vh"></div>
 				<div id="dots">
 					<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
 				</div>
@@ -76,13 +83,41 @@ for(let i = 0; i < vsts.length; ++i) {
 			<div id="contentwrap">
 				<div id="left" class="section">
 					<div id="leftscroll">
-						<div id="leftwrap">
+						<div id="leftwrap"><%
+					for(let i = 0; i < vsts.length; i++) {
+						if(vsts[i].hidden) continue; %>
+							<a class="leftitem<% if(i == currentselected) { %> lefthover leftselected<% } %>" onmousemove="hoveritem(<%= i %>)" onmouseout="hoveritem(-1)" onclick="clickitem(<%= i %>)" href="<%- vsts[i].url===undefined?("/"+vsts[i].title.replace(/\s/g,"").toLowerCase()):(vsts[i].url+"\" target=\"_blank") %>">
+								<div class="leftiteminner <%= vsts[i].color %><%
+								if(vsts[i].hideicon === undefined || vsts[i].hideicon === false) { %> lefticonitem">
+									<div class="lefticon" style="background-image: url(/<%= vsts[i].id %>/icon.svg)"></div><%
+								} else { %>"><% } %>
+									<div class="leftiteminnerinner">
+										<div class="lefttitle"><%= vsts[i].title %></div><%
+								if(vsts[i].comingsoon === undefined || !vsts[i].comingsoon) {
+									if(vsts[i].rating !== undefined) { %>
+										<div class="rating"><%= vsts[i].rating %></div><%
+									}
+								} else { %>
+										<div class="rating comingsoon">Out soon!</div><%
+								}
+								if(vsts[i].tagline !== undefined) { %><br/>
+										<div class="tagline"><%= vsts[i].tagline %></div><%
+								} %>
+									</div>
+								</div>
+							</a><%
+								if(vsts[i].separator !== undefined && vsts[i].separator == true) { %>
+							<div class="leftseparator"></div><%
+								}
+							} %>
+							<div class="leftseparator"></div>
+							<div class="leftitem lefttitle">:)</div>
 							<div id="leftclip"></div>
 						</div>
 					</div>
 				</div>
 				<div id="center" class="section">
-					<a id="back" href="javascript:void(0)" onclick="back()"></a>
+					<a id="back" href="/" onclick="clickitem(-1)"></a>
 					<div id="infowrap" class="win-wrap">
 						<div id="info" class="win-pos <%= vsts[currentselected].color %><% if(vsts[currentselected].decoration === undefined) { %> winhasicon<% } %>">
 							<div class="windowbgwrap">
@@ -97,17 +132,23 @@ for(let i = 0; i < vsts.length; ++i) {
 								<div id="supported"></div>
 								<div id="desc"><%- vsts[currentselected].description %></div>
 								<center<% if((vsts[currentselected].comingsoon === undefined || !vsts[currentselected].comingsoon) && vsts[currentselected].price === undefined && vsts[currentselected].freedownload === undefined) { %> style="display: none"<% } %>>
-									<a id="paiddownload" class="download" target="_<% if(vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) { %>self" href="javascript:void(0)">Coming Soon!<% } else if(vsts[currentselected].paiddownload === undefined) { %>blank" href="javascript:void(0)" style="display: none"><% } else { %>blank" href="<%= vsts[currentselected].paiddownload.url %>">Download <%= vsts[currentselected].paiddownload.price %>$ Version<% } %></a><br/>
+									<a id="paiddownload" class="download" target="_<% if(vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) { %>self" href="javascript:void(0)">Coming Soon!<% } else if(vsts[currentselected].paiddownload === undefined) { %>blank" href="javascript:void(0)" style="display: none"><% } else { %>blank" href="<%= vsts[currentselected].paiddownload.url %>">Download <%= vsts[currentselected].paiddownload.price==undefined?"Paid":(vsts[currentselected].paiddownload.price+"$") %> Version<% } %></a><br/>
 									<a id="freedownload" class="download" target="_blank" href="<% if((vsts[currentselected].comingsoon === undefined || !vsts[currentselected].comingsoon) && vsts[currentselected].freedownload !== undefined) { %><%= vsts[currentselected].freedownload.url %><% } else { %>javascript:void(0)" style="display: none<% } %>">Download Free Version</a>
 								</center>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div id="right" class="section">
-					<div id="uiwrap">
-						<div id="uishadow"<% if(vsts[currentselected].ui === undefined) { %> style="display: none"<% } %>></div>
-						<div id="ui" style=<% if(vsts[currentselected].ui === undefined) { %>"display: none"<% } else { %>'background-image: url("/<%= vsts[currentselected].id %>/ui.webp")'<% } %>></div>
+				<div id="right" class="section"><%
+				if(vsts[currentselected].ui === undefined) { %>
+					<div id="uiwrap" style="display: none">
+						<div id="uishadow"></div>
+						<div id="ui"></div><%
+				} else { %>
+					<div id="uiwrap" style="margin: <%= vsts[currentselected].ui.height*.5+75 %>px auto">
+						<div id="uishadow" style="width: <%= vsts[currentselected].ui.width %>px;height: <%= vsts[currentselected].ui.height %>px;"></div>
+						<div id="ui" style="width: <%= vsts[currentselected].ui.width %>px;height: <%= vsts[currentselected].ui.height; %>px;margin-bottom: calc(20vh - <%= vsts[currentselected].ui.height*.2 %>px);background-image: url('/<%= vsts[currentselected].id %>/ui.webp');"></div><%
+				} %>
 					</div>
 					<div id="logoclip"><div id="pluginlogo"><div id="pluginlogo1" style='background-image: url("/<%= vsts[currentselected].id %>/text.webp")'></div><div id="pluginlogo2" style='background-image: url("/<%= vsts[currentselected].id %>/text.webp")'></div></div>
 					<div id="blurredtext"><div id="blurredtext1">UnplugRed</div><div id="blurredtext2">UnplugRed</div></div></div>
@@ -129,7 +170,28 @@ for(let i = 0; i < vsts.length; ++i) {
 			</div>
 		</div>
 
-		<div id="patrons"></div>
+		<div id="patrons">
+			<b>Supported on patreon by:</b><%
+for(let tier = 15; tier >= 10; tier -= 5) {
+	var patronhtml = "";
+	if(patrons[String(tier)] == undefined) continue;
+	for(let patron = 0; patron < patrons[String(tier)].length; ++patron) {
+		if(tier == 15) patronhtml += "<div class=\"patron15\">";
+		if(patrons[String(tier)][patron]["url"] == undefined)
+			patronhtml += sanitize(patrons[String(tier)][patron]["name"])
+		else
+			patronhtml += "<a target=\"_blank\" href=\""+encodeURI(patrons[String(tier)][patron]["url"])+"\">"+sanitize(patrons[String(tier)][patron]["name"])+"</a>"
+		if(tier == 15) patronhtml += "</div>";
+		patronhtml += " ★ ";
+	}
+	if(tier == 15) {
+		%><%- patronhtml; %><%
+	} else if(tier == 10) {
+		patronhtml += patronhtml;
+			%><div style="flex: 1 0 auto; display: flex;"><div id="patronsscroll"><div id="patrons10" style="animation-delay: <%= Math.floor(Math.random()*-50) %>s"><%- patronhtml %></div></div><i>Thank you!</i></div><%
+	}
+} %>
+		</div>
 
 		<div id="popups">
 			<div id="popuptext" class="win-wrap" style="z-index: 20000; display: none">
@@ -170,7 +232,7 @@ for(let i = 0; i < vsts.length; ++i) {
 					</a>
 				</div>
 			</div>
-			<div id="popupeveryweek" class="win-wrap" style="z-index: 30000;">
+			<div id="popupnews" class="win-wrap" style="z-index: 30000;">
 				<div style="top: calc(-200px + 88vh); left: 55vw; width: 21vw;" class="popup win-pos green">
 					<div class="windowbgwrap">
 						<div class="windowbg windowbox"></div>
@@ -178,7 +240,7 @@ for(let i = 0; i < vsts.length; ++i) {
 						<svg class="line"><line x1='0' y1='0' x2='20px' y2='20.4px'/></svg>
 					</div>
 					<div class="windowcontent">
-						<div class="popupdesc">26-07-11 //<br/>new plugin sucrose!!<br/>made in collab with <a href="https://fx.amee.ee/" target="_blank">blepfx</a></div>
+						<div class="popupdesc"><b>26-07-11 //</b><br/>new plugin sucrose!!<br/>made in collab with <a href="https://fx.amee.ee/" target="_blank">blepfx</a></div>
 					</div>
 					<a class="popupclose" href="javascript:void(0)" onclick="setpopup(2)">
 						<div class="popupclosewrap">
@@ -193,7 +255,6 @@ for(let i = 0; i < vsts.length; ++i) {
 		<script type="text/javascript" src="<%= unplugassets %>/window/movable.js"></script>
 		<script type="text/javascript" src="<%= unplugassets %>/automatism/simplex.js"></script>
 		<script type="text/javascript" src="/vsts.js?v=46"></script>
-		<script type="text/javascript">var patrons=<%- patrons %>;</script>
-		<script type="text/javascript" src="/javascript.js?v=12"></script>
+		<script type="text/javascript" src="/javascript.js?v=13"></script>
 	</body>
 </html>

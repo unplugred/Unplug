@@ -13,48 +13,24 @@ var ui = {
 	logo2: document.getElementById("pluginlogo2"),
 	rainbow: document.getElementById("rainbow"),
 	right: document.getElementById("right"),
-	winicon: document.getElementById("winicon")
+	uiwrap: document.getElementById("uiwrap"),
+	winicon: document.getElementById("winicon"),
+	patrons: document.getElementById("patrons")
 }
 var currentselected = 0;
-var currenthover = -3;
-var temporalhover = -1;
-var triggerupdate = false;
+var currentdisplay = 0;
+var currenthover = -1;
 var isselected = false;
-var guicutoff = [900, 1200];
-var ismobile = document.documentElement.clientWidth <= guicutoff[1];
-var issingle = document.documentElement.clientWidth <= guicutoff[0];
-if(ismobile) {
-	document.body.className = "mobile mobileunselected";
-	if(issingle) document.body.className += " single";
-}
-var resized = false;
-window.addEventListener('resize',function() {
-	if(resized) return;
-	resized = true;
-	setTimeout(updateresize,150);
-});
+var resized = true;
+var prevtime = 0;
+var open = 0;
+
 function updateresize() {
 	resized = false;
-	var newmobile = document.documentElement.clientWidth<=guicutoff[1];
-	var id = currenthover>=0?currenthover:currentselected;
-	var newsingle = (document.documentElement.clientWidth<=guicutoff[0]||(newmobile&&vsts[id].ui===undefined&&isselected));
-	if((newmobile && !ismobile) || (newmobile && (newsingle !== issingle))) {
-		ismobile = true;
-		document.body.className = vsts[id].id+" mobile "+(isselected?"mobileselected":"mobileunselected");
-	} else if((!newmobile && ismobile) || (!newmobile && (newsingle !== issingle))) {
-		ismobile = false;
-		document.body.className = vsts[id].id;
-	}
-	if(newsingle && !issingle) {
-		issingle = true;
-		document.body.className += " single";
-	} else if(!newsingle && issingle) {
-		issingle = false;
-		ui.right.style.height = null;
-	}
 
-	document.getElementById("patrons").style.marginTop = ((String)(Math.floor(document.getElementById("patrons").offsetHeight*.3)))+"px";
+	ui.patrons.style.marginTop = ((String)(Math.floor(ui.patrons.offsetHeight*.3)))+"px";
 
+	let id = currentdisplay>=0?currentdisplay:currentselected;
 	if(vsts[id].ui !== undefined) {
 		let uiw = vsts[id].ui.width;
 		let uih = vsts[id].ui.height/uiw;
@@ -67,168 +43,75 @@ function updateresize() {
 		ui.uishadow.style.height = ((String)(uih))+"px";
 		ui.ui.style.marginBottom = "calc(20vh - "+((String)(uih*.2))+"px)";
 
-		if(issingle && isselected) ui.right.style.height = ((String)(uih+150))+"px";
-	} else if(issingle && isselected) ui.right.style.height = "5px";
+		ui.uiwrap.style.margin = ((String)(uih*.5+75))+"px auto";
+	} else ui.uiwrap.style.margin = null;
 };
-setTimeout(updateresize,150);
-function back() {
-	if(!isselected) return;
-	isselected = false;
-	issingle = document.documentElement.clientWidth <= guicutoff[0];
-	if(ismobile) {
-		document.body.className = vsts[currentselected].id + " mobile mobileunselected";
-		if(issingle) document.body.className += " single"
+
+function clickitem(id) {
+	if(isselected !== (id>=0)) {
+		isselected = id>=0;
+		ui.body.className = vsts[currentdisplay].id+(isselected?" ":" un")+"selected";
+		resized = true;
+		setTimeout(updateresize,150);
 	}
-	window.history.replaceState(null,"Unplugred's Plugin Trove","/");
+
+	if(id >= 0)
+		window.history.replaceState(null,vsts[id].title,"/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
+	else
+		window.history.replaceState(null,"Unplugred's Plugin Trove","/");
+
+	if(currentselected === Math.max(0,id)) return;
+
+	if(!vsts[currentselected].hidden)
+		vsts[currentselected].div.className = "leftitem";
+	currentselected = Math.max(0,id);
+	if(!vsts[currentselected].hidden)
+		vsts[currentselected].div.className = "leftitem lefthover leftselected";
+
+	if(currentdisplay === currentselected) return;
+
+	currentdisplay = currentselected;
+	currenthover = currentselected;
+	updateui();
+}
+function hoveritem(id) {
+	currenthover = id
 }
 
-let x = document.getElementById("popups").getElementsByClassName("win-pos");
-for (var i = 0; i < x.length; i++) {
-	dragElement(x[i].parentNode, x[i]);
-}
-
-var prevtime = 0;
-var open = 0;
 function update(timestamp) {
 	if(timestamp === undefined) timestamp = 0;
-	let dt = timestamp - prevtime;
+	let dt = timestamp-prevtime;
 	prevtime = timestamp;
 
-	if((!ismobile || isselected) && ((currenthover != temporalhover && temporalhover != -1) || (temporalhover == -1 && currenthover != currentselected))) {
-		if(currenthover >= 0 && !vsts[currenthover].hidden)
-			vsts[currenthover].div.className = "leftitem";
-		if(temporalhover == -1) {
+	if((currenthover==-1?currentselected:currenthover) != currentdisplay) {
+		if(!vsts[currentdisplay].hidden)
+			vsts[currentdisplay].div.className = "leftitem";
+		if(currenthover == -1) {
 			if(!vsts[currentselected].hidden)
 				vsts[currentselected].div.className = "leftitem lefthover leftselected";
-			currenthover = currentselected;
-			temporalhover = currentselected;
+			currentdisplay = currentselected;
 		} else {
-			if(currentselected == currenthover && currenthover >= 0 && !vsts[currenthover].hidden)
+			if(!vsts[currentdisplay].hidden && currentselected == currentdisplay)
+				vsts[currentdisplay].div.className += " leftselected";
+			vsts[currenthover].div.className = "leftitem lefthover";
+			if(currentselected == currenthover)
 				vsts[currenthover].div.className += " leftselected";
-			vsts[temporalhover].div.className = "leftitem lefthover";
-			if(currentselected == temporalhover) vsts[temporalhover].div.className += " leftselected";
-			currenthover = temporalhover;
+			currentdisplay = currenthover;
 		}
 		updateui();
-	} else if(triggerupdate) updateui();
+	}
 
-	if((!ismobile || isselected) && vsts[currenthover].ui !== undefined) {
+	if(vsts[currentdisplay].ui !== undefined) {
 		open = Math.min(open+dt*.0005,1);
 		let openease = 1-Math.pow(1-open,5)*.9;
-		ui.ui.style.transform = "rotateX("+(String)(simplex(timestamp*.0003,0)*vsts[currenthover].ui.deg)+"deg) rotateY("+(String)(simplex(-30,timestamp*.0003)*vsts[currenthover].ui.deg*openease-90*(1-openease))+"deg) translateX(-50%) translateY(-50%)";
+		ui.ui.style.transform = "rotateX("+(String)(simplex(timestamp*.0003,0)*vsts[currentdisplay].ui.deg)+"deg) rotateY("+(String)(simplex(-30,timestamp*.0003)*vsts[currentdisplay].ui.deg*openease-90*(1-openease))+"deg) translateX(-50%) translateY(-50%)";
 		ui.uishadow.style.transform = "translateX(7px) translateY(12px) " + ui.ui.style.transform;
 	}
 
 	requestAnimationFrame(update);
 }
 
-function switchselected(id,addtohistory) {
-	isselected = true;
-
-	if(currentselected == id) {
-		if(ismobile) {
-			if(addtohistory)
-				window.history.replaceState(null,vsts[id].title,"/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
-
-			triggerupdate = true;
-		}
-		return;
-	}
-
-	if(!vsts[currentselected].hidden)
-		vsts[currentselected].div.className = "leftitem";
-	if(!vsts[id].hidden)
-		vsts[id].div.className = "leftitem lefthover leftselected";
-	currentselected = id;
-	if(addtohistory)
-		window.history.replaceState(null,vsts[id].title,"/"+vsts[id].title.replace(/\s/g,"").toLowerCase());
-}
-
-let leftside = document.getElementById("leftwrap");
-for(let i = 0; i < vsts.length; i++) {
-	if(vsts[i].hidden) {
-		if(location.pathname.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase()))
-			switchselected(i,false);
-		continue;
-	}
-
-	vsts[i].div = document.createElement('a');
-	vsts[i].div.onmousemove = function(){temporalhover = i};
-	vsts[i].div.onmouseout = function(){temporalhover = -1};
-	vsts[i].div.onclick = function(){switchselected(i,true)};
-	vsts[i].div.className = "leftitem";
-	if(vsts[i].url === undefined) {
-		vsts[i].div.href = "javascript:void(0)";
-	} else {
-		vsts[i].div.href = vsts[i].url;
-		vsts[i].div.target = "_blank";
-	}
-
-	let iteminnerdiv = document.createElement('div');
-	iteminnerdiv.className = "leftiteminner " + vsts[i].color;
-
-	let iteminnerinnerdiv = document.createElement('div');
-	iteminnerinnerdiv.className = "leftiteminnerinner";
-
-	if(vsts[i].hideicon === undefined || vsts[i].hideicon === false) {
-		let icondiv = document.createElement('div');
-		icondiv.className = "lefticon";
-		icondiv.style.backgroundImage = "url(/"+vsts[i].id+"/icon.svg)";
-		iteminnerdiv.className += " lefticonitem";
-		iteminnerdiv.appendChild(icondiv);
-	}
-
-	let titlediv = document.createElement('div');
-	titlediv.className = "lefttitle";
-	titlediv.innerText = vsts[i].title;
-	iteminnerinnerdiv.appendChild(titlediv);
-
-	if(vsts[i].comingsoon === undefined || !vsts[i].comingsoon) {
-		if(vsts[i].rating !== undefined) {
-			let ratingdiv = document.createElement("div");
-			ratingdiv.className = "rating";
-			ratingdiv.innerText = vsts[i].rating;
-			iteminnerinnerdiv.appendChild(ratingdiv);
-		}
-	} else {
-		let ratingdiv = document.createElement("div");
-		ratingdiv.className = "rating comingsoon";
-		ratingdiv.innerText = "Out soon!";
-		iteminnerinnerdiv.appendChild(ratingdiv);
-	}
-
-	if(vsts[i].tagline !== undefined) {
-		let taglinediv = document.createElement("div");
-		taglinediv.className = "tagline";
-		taglinediv.innerText = vsts[i].tagline;
-		iteminnerinnerdiv.appendChild(document.createElement("br"));
-		iteminnerinnerdiv.appendChild(taglinediv);
-	}
-
-	iteminnerdiv.appendChild(iteminnerinnerdiv);
-	vsts[i].div.appendChild(iteminnerdiv);
-	leftside.appendChild(vsts[i].div);
-
-	if(vsts[i].separator !== undefined && vsts[i].separator == true) {
-		let separatordiv = document.createElement("div");
-		separatordiv.className = "leftseparator";
-		leftside.appendChild(separatordiv);
-	}
-
-	if(location.pathname.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase()))
-		switchselected(i,false);
-}
-let separatordiv = document.createElement("div");
-separatordiv.className = "leftseparator";
-leftside.appendChild(separatordiv);
-
-let smilediv = document.createElement("center");
-smilediv.className = "leftitem lefttitle";
-smilediv.innerText = ":)";
-leftside.appendChild(smilediv);
-
 function updateui() {
-	triggerupdate = false;
 	open = 0;
 	ui.window.style.animation = "none";
 	ui.ui.style.animation = "none";
@@ -237,47 +120,44 @@ function updateui() {
 	ui.window.style.animation = null;
 	ui.ui.style.animation = null;
 
-	ui.rainbow.style.backgroundPositionY = (String)((currenthover*100)/vsts.length)+"vh";
+	ui.rainbow.style.backgroundPositionY = (String)((currentdisplay*100)/vsts.length)+"vh";
 
-	ui.title.innerText = vsts[currenthover].title;
-	ui.body.className = vsts[currenthover].id;
-	issingle = (document.documentElement.clientWidth<=guicutoff[0]||(ismobile&&vsts[currenthover].ui===undefined&&isselected));
-	if(ismobile) {
-		ui.body.className += " mobile "+(isselected?"mobileselected":"mobileunselected");
-		if(issingle) {
-			document.body.className += " single";
-			ui.right.style.height = vsts[currenthover].ui==undefined?"5px":((String)(vsts[currenthover].ui.height+150)+"px");
-		} else ui.right.style.height = null;
-	}
-	if(!isselected || vsts[currenthover].ui === undefined)
+	ui.title.innerText = vsts[currentdisplay].title;
+	if(isselected) {
+		ui.body.className = vsts[currentdisplay].id+" selected";
+		if(vsts[currentdisplay].ui === undefined)
+			document.title = vsts[currentdisplay].title+" - Unplugred's Plugin Trove";
+		else
+			document.title = vsts[currentdisplay].title;
+	} else {
+		ui.body.className = vsts[currentdisplay].id+" unselected";
 		document.title = "Unplugred's Plugin Trove";
-	else
-		document.title = vsts[currenthover].title;
-	ui.window.className = "win-pos " + vsts[currenthover].color;
-	ui.description.innerHTML = vsts[currenthover].description;
-	if(vsts[currenthover].comingsoon === undefined || !vsts[currenthover].comingsoon) {
-		if(vsts[currenthover].paiddownload === undefined) {
+	}
+	ui.window.className = "win-pos " + vsts[currentdisplay].color;
+	ui.description.innerHTML = vsts[currentdisplay].description;
+	if(vsts[currentdisplay].comingsoon === undefined || !vsts[currentdisplay].comingsoon) {
+		if(vsts[currentdisplay].paiddownload === undefined) {
 			ui.paiddownload.style.display = "none";
 		} else {
 			ui.paiddownload.style.display = null;
 			//ui.paiddownload.style.pointerEvents = null;
 			ui.paiddownload.target = "_blank";
-			if(vsts[currenthover].paiddownload.price == undefined)
+			if(vsts[currentdisplay].paiddownload.price == undefined)
 				ui.paiddownload.innerText = "Download Paid Version";
 			else
-				ui.paiddownload.innerText = "Download " + vsts[currenthover].paiddownload.price + "$ Version";
-			ui.paiddownload.href = vsts[currenthover].paiddownload.url;
+				ui.paiddownload.innerText = "Download " + vsts[currentdisplay].paiddownload.price + "$ Version";
+			ui.paiddownload.href = vsts[currentdisplay].paiddownload.url;
 		}
-		if(vsts[currenthover].freedownload === undefined) {
+		if(vsts[currentdisplay].freedownload === undefined) {
 			ui.freedownload.style.display = "none";
-			if(vsts[currenthover].paiddownload === undefined)
+			if(vsts[currentdisplay].paiddownload === undefined)
 				ui.freedownload.parentNode.style.display = "none";
 			else
 				ui.freedownload.parentNode.style.display = null;
 		} else {
 			ui.freedownload.parentNode.style.display = null;
 			ui.freedownload.style.display = null;
-			ui.freedownload.href = vsts[currenthover].freedownload.url;
+			ui.freedownload.href = vsts[currentdisplay].freedownload.url;
 		}
 	} else {
 		ui.paiddownload.style.display = null;
@@ -288,24 +168,19 @@ function updateui() {
 		ui.freedownload.style.display = "none";
 		ui.freedownload.parentNode.style.display = null;
 	}
-	if(vsts[currenthover].decoration === undefined) {
+	if(vsts[currentdisplay].decoration === undefined) {
 		ui.window.className += " winhasicon";
-		ui.winicon.style.backgroundImage = "url(/"+vsts[currenthover].id+"/icon.svg)";
+		ui.winicon.style.backgroundImage = "url(/"+vsts[currentdisplay].id+"/icon.svg)";
 		ui.decoration.style.display = "none";
 	} else {
 		ui.decoration.style.display = null;
-		ui.decoration.src = "/"+vsts[currenthover].id+"/gif.webp";
+		ui.decoration.src = "/"+vsts[currentdisplay].id+"/gif.webp";
 	}
-	if(vsts[currenthover].ui === undefined) {
-		ui.ui.style.display = "none";
-		ui.uishadow.style.display = "none";
-	} else {
-		ui.ui.style.display = null;
-		ui.uishadow.style.display = null;
-		ui.ui.style.backgroundImage = "url(/"+vsts[currenthover].id+"/ui.webp)";
+	if(vsts[currentdisplay].ui !== undefined) {
+		ui.ui.style.backgroundImage = "url(/"+vsts[currentdisplay].id+"/ui.webp)";
 
-		let uiw = vsts[currenthover].ui.width;
-		let uih = vsts[currenthover].ui.height/uiw;
+		let uiw = vsts[currentdisplay].ui.width;
+		let uih = vsts[currentdisplay].ui.height/uiw;
 		uiw = Math.min(uiw,ui.right.offsetWidth*.9);
 		uih *= uiw;
 
@@ -314,32 +189,64 @@ function updateui() {
 		ui.ui      .style.height = ((String)(uih))+"px";
 		ui.uishadow.style.height = ((String)(uih))+"px";
 		ui.ui.style.marginBottom = "calc(20vh - "+((String)(uih*.2))+"px)";
+		ui.uiwrap.style.margin = ((String)(uih*.5+75))+"px auto";
+		ui.uiwrap.style.display = null;
+	} else {
+		ui.uiwrap.style.margin = null;
+		ui.uiwrap.style.display = "none";
 	}
-	ui.logo1.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
-	ui.logo2.style.backgroundImage = "url(/"+vsts[currenthover].id+"/text.webp)";
-	if(vsts[currenthover].supported === undefined) {
+	ui.logo1.style.backgroundImage = "url(/"+vsts[currentdisplay].id+"/text.webp)";
+	ui.logo2.style.backgroundImage = "url(/"+vsts[currentdisplay].id+"/text.webp)";
+	if(vsts[currentdisplay].supported === undefined) {
 		ui.supported.style.display = "none";
 	} else {
 		while(ui.supported.firstChild)
 			ui.supported.removeChild(ui.supported.firstChild);
 		ui.supported.style.display = null;
-		for(let i = 0; i < vsts[currenthover].supported.length; i++) {
+		for(let i = 0; i < vsts[currentdisplay].supported.length; i++) {
 			let supporteddiv = document.createElement('img');
 			supporteddiv.className = "supportedicon"
-			supporteddiv.id = "supported"+vsts[currenthover].supported[i].toLowerCase().replace(" ","");
-			supporteddiv.src = "/supported/"+vsts[currenthover].supported[i].toLowerCase().replace(" ","")+".svg";
-			supporteddiv.alt = vsts[currenthover].supported[i];
-			supporteddiv.title = vsts[currenthover].supported[i];
+			supporteddiv.id = "supported"+vsts[currentdisplay].supported[i].toLowerCase().replace(" ","");
+			supporteddiv.src = "/supported/"+vsts[currentdisplay].supported[i].toLowerCase().replace(" ","")+".svg";
+			supporteddiv.alt = vsts[currentdisplay].supported[i];
+			supporteddiv.title = vsts[currentdisplay].supported[i];
 			ui.supported.appendChild(supporteddiv);
 		}
 	}
 }
+
+let leftitems = document.getElementsByClassName("leftitem");
+let divn = 0;
+for(let i = 0; i < vsts.length; i++) {
+	if(!vsts[i].hidden) {
+		vsts[i].div = leftitems[divn++];
+		if(vsts[i].url === undefined)
+			vsts[i].div.href = "javascript:void(0)";
+	}
+	if(location.pathname.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase())) {
+		currentselected = i;
+		currentdisplay = i;
+		isselected = true;
+	}
+}
 update();
+window.addEventListener('resize',function() {
+	if(resized) return;
+	resized = true;
+	setTimeout(updateresize,150);
+});
+setTimeout(updateresize,150);
+document.getElementById("back").href = "javascript:void(0)";
+
+let x = document.getElementById("popups").getElementsByClassName("win-pos");
+for(let i = 0; i < x.length; i++) dragElement(x[i].parentNode, x[i]);
+x = document.getElementById("popups").getElementsByClassName("popupclose");
+for(let i = 0; i < x.length; i++) x[i].style.display = "block";
 
 var popups = [{
 	div: document.getElementById("popuptext") },{
 	div: document.getElementById("popupmedia") },{
-	div: document.getElementById("popupeveryweek") }];
+	div: document.getElementById("popupnews") }];
 for(let i = 0; i < popups.length; i++) {
 	popups[i].id = -1;
 	popups[i].innerdiv = popups[i].div.getElementsByClassName("popup")[0];
@@ -407,30 +314,3 @@ function setpopup(index, id = -1, text = "", path = null, isaudio = false, isvid
 	}
 	popups[index].id = id;
 }
-
-function sanitize(string) {
-	const map = {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#x27;',"/":'&#x2F;'};
-	const reg = /[&<>"'/]/ig;
-	return string.replace(reg, (match)=>(map[match]));
-}
-document.getElementById("patrons").innerHTML = "<b>Supported on patreon by:</b>";
-for(let tier = 15; tier >= 10; tier -= 5) {
-	var patronhtml = "";
-	if(patrons[String(tier)] == undefined) continue;
-	for(let patron = 0; patron < patrons[String(tier)].length; ++patron) {
-		if(tier == 15) patronhtml += "<div class=\"patron15\">";
-		if(patrons[String(tier)][patron]["url"] == undefined)
-			patronhtml += sanitize(patrons[String(tier)][patron]["name"])
-		else
-			patronhtml += "<a target=\"_blank\" href=\""+encodeURI(patrons[String(tier)][patron]["url"])+"\">"+sanitize(patrons[String(tier)][patron]["name"])+"</a>"
-		if(tier == 15) patronhtml += "</div>";
-		patronhtml += " ★ ";
-	}
-	if(tier == 15) {
-		document.getElementById("patrons").innerHTML += patronhtml;
-	} else if(tier == 10) {
-		patronhtml += patronhtml;
-		document.getElementById("patrons").innerHTML += "<div style=\"flex: 1 0 auto; display: flex;\"><div id=\"patronsscroll\"><div id=\"patrons10\">"+patronhtml+"</div></div><i>Thank you!</i></div>";
-	}
-}
-document.getElementById("patrons10").style.animationDelay = String(Math.random()*-50)+"s";

@@ -57,7 +57,7 @@ function save() {
 }
 
 var pledges = [];
-var patrons = '{"10":[{"name":"FAILED TO READ PATREON DATA"}]}';
+var patrons = {"10":[{"name":"FAILED TO READ PATREON DATA"}]};
 var patrons_temp = {};
 var patreon_refresh_rate = 1;
 var overrides = {};
@@ -111,7 +111,7 @@ function refresh_patrons(cursor = null) {
 		if(data["links"]["next"] != undefined && data["links"]["next"].includes("page%5Bcursor%5D=")) {
 			refresh_patrons(data["links"]["next"].split('page%5Bcursor%5D=',2)[1].split("&",1)[0]);
 		} else {
-			patrons = JSON.stringify(patrons_temp);
+			patrons = patrons_temp;
 			patrons_temp = {};
 		}
 	}).catch(error => console.error('ERROR FETCHING PATREON DATA:', error));
@@ -133,7 +133,7 @@ fs.readFile(__dirname + "/patreon.json", 'utf8', (err, jsonString) => {
 			console.log("ERROR PARSING PATREON DATA: ", error);
 		}
 	}
-	if(patrons.includes("FAILED TO READ PATREON DATA"))
+	if(patrons["10"].length === 1)
 		refresh_patrons();
 });
 fs.readFile(__dirname + "/patreonoverride.json", 'utf8', (err, jsonString) => {
@@ -342,7 +342,7 @@ function exitHandler(options, exitCode) {
 	} catch(err) {
 		console.log("ERROR WRITING METRICS: ", err);
 	}
-	if(!patrons.includes("FAILED TO READ PATREON DATA")) {
+	if(patrons["10"].length !== 1) {
 		try {
 			//*/
 			fs.writeFileSync(__dirname + "/patreon.json", JSON.stringify({
