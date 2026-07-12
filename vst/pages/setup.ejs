@@ -7,23 +7,40 @@
 		<style>
 			html, body {
 				background: url(/bgsmol.webp) 5px 0;
+				width: 202px;
+				height: 386px;
+				border-right: 1px solid black;
+				border-bottom: 1px solid black;
+				overflow: hidden;
 				image-rendering: pixelated;
 			}
+			#circle {
+				width: 252.5px;
+				height: 252.5px;
+				left: calc(50% - 126.25px);
+				top: calc(50% - 126.25px);
+			}
 			#whitegradient {
-				width: 100vw;
+				width: 100%;
 				background: linear-gradient(to left, #fff, transparent);
 			}
+			#right {
+				width: 100%;
+				height: 100%;
+			}
 			#left {
-				font-size: 12vw;
+				font-size: 26px;
 				padding: 0;
 				overflow: visible;
 				direction: ltr;
 				transform: rotatez(-90deg) scaleX(1.4);
 				transform-origin: top left;
-				position: fixed;
+				position: absolute;
 				bottom: -68px;
 				left: 10px;
 				width: calc(100vh - 107px);
+				z-index: 2;
+				margin-bottom: -5px;
 			}
 			.lefttitle {
 				line-height: .7;
@@ -39,6 +56,7 @@
 			#pluginlogo {
 				animation: none;
 				top: 2vh;
+				z-index: 1;
 			}
 			#pluginlogo * {
 				background-position: 9% top;
@@ -150,20 +168,20 @@
 		</style>
 	</head>
 	<body>
-		<div id="bg">
-			<svg id="diagonal">
-				<line x1='0' y1='100%' x2='100%' y2='0'/>
-				<line x1='0' y1='0' x2='100%' y2='100%'/>
-			</svg>
-			<div id="circle"></div>
-			<div id="whitegradient"></div>
-			<div id="rainbow"></div>
-			<div id="dots">
-				<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
-			</div>
-		</div>
-
 		<div id="content">
+			<div id="bg">
+				<svg id="diagonal">
+					<line x1='0' y1='100%' x2='100%' y2='0'/>
+					<line x1='0' y1='0' x2='100%' y2='100%'/>
+				</svg>
+				<div id="circle"></div>
+				<div id="whitegradient"></div>
+				<div id="rainbow"></div>
+				<div id="dots">
+					<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
+				</div>
+			</div>
+
 			<div id="right" class="section">
 				<a id="left" class="leftitem lefthover leftselected" href="javascript:void(0)">
 					<div class="leftiteminner lefticonitem">
@@ -174,7 +192,7 @@
 					</div>
 				</a>
 				<div id="pluginlogo"><div id="pluginlogo1"></div></div>
-			<div>
+			</div>
 		</div>
 
 		<script type="text/javascript" src="/vsts.js"></script>

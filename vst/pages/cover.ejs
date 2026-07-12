@@ -7,20 +7,32 @@
 		<style>
 			html, body {
 				background: url(/bgsmol.webp) 5px 0;
+				width: 700px;
+				height: 700px;
+				border-right: 1px solid black;
+				border-bottom: 1px solid black;
+				overflow: hidden;
+			}
+			#circle {
+				width: 875px;
+				height: 875px;
+				left: calc(50% - 437.5px);
+				top: calc(50% - 437.5px);
 			}
 			#left {
-				font-size: 30px;
+				font-size: 33px;
 				padding: 0;
 				overflow: visible;
 				line-height: .7;
 				direction: ltr;
 				transform: scaleX(1.4);
 				transform-origin: top left;
-				position: fixed;
+				position: absolute;
 				bottom: 0;
+				left: 5px;
 				margin: .2em;
 				max-width: none;
-				width: calc(71vw - 136px);
+				width: calc(71% - 136px);
 			}
 			.leftiteminner {
 				margin-bottom: 0;
@@ -81,29 +93,34 @@
 				background-position: 18% 50%;
 			}
 			.sb #pluginlogo * {
-				background-size: 200%;
 				height: 125%;
 			}
 			.mm .lefttitle {
 				margin-top: 5px;
 			}
+			.scrs #pluginlogo * {
+				height: 159%;
+			}
+			.scrs .lefttitle {
+				margin-top: 22px;
+			}
 		</style>
 	</head>
 	<body>
-		<div id="bg">
-			<svg id="diagonal">
-				<line x1='0' y1='100%' x2='100%' y2='0'/>
-				<line x1='0' y1='0' x2='100%' y2='100%'/>
-			</svg>
-			<div id="circle"></div>
-			<div id="testpattern"></div>
-			<div id="rainbow"></div>
-			<div id="dots">
-				<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
-			</div>
-		</div>
-
 		<div id="content">
+			<div id="bg">
+				<svg id="diagonal">
+					<line x1='0' y1='100%' x2='100%' y2='0'/>
+					<line x1='0' y1='0' x2='100%' y2='100%'/>
+				</svg>
+				<div id="circle"></div>
+				<div id="testpattern"></div>
+				<div id="rainbow"></div>
+				<div id="dots">
+					<div id="dotc" class="dot"></div><div id="doty" class="dot"></div><div id="dotm" class="dot"></div><div id="dotk" class="dot"></div>
+				</div>
+			</div>
+
 			<div id="contentwrap">
 				<a id="left" class="leftitem lefthover leftselected" href="javascript:void(0)">
 					<div class="leftiteminner lefticonitem">
