@@ -84,6 +84,8 @@ body {
 	top: 0;
 	right: 0;
 	z-index: 1;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
 }
 .mobileselected #whitegradient {
 	display: none;
