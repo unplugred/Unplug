@@ -256,7 +256,7 @@ for(let i = 0; i < popups.length; i++) {
 	popups[i].isaudio = false;
 	popups[i].isvideo = false;
 }
-function setpopup(index, id = -1, text = "", path = null, isaudio = false, isvideo = false, videowidth = 20, videoheight = 15) {
+function setpopup(index, id = -1, text = "", path = null, isaudio = false, isvideo = false, videowidth = 30, videoheight = 20) {
 	if(id === popups[index].id || id === -1) {
 		if(popups[index].isaudio)
 			popups[index].audioplayer.pause();

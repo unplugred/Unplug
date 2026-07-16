@@ -199,7 +199,9 @@ utilize the subharmonic knob to make basses and kicks beefy, or increase the 2nd
 sucrose is a collaboration between me and the amazing and talented blepfx.<br/>
 <a href="https://fx.amee.ee/" target="_blank"> you should definitely check her out</a>, shes the best in the game.<br/>
 the dsp was made by her, and the ui by me !<br/>
-it was created as an entry for (and currently participating in) the <a href="https://www.kvraudio.com/kvr-developer-challenge/2026/" target="_blank">2026 kvr developer challenge</a>.`,
+it was created as an entry for (and currently participating in) the <a href="https://www.kvraudio.com/kvr-developer-challenge/2026/" target="_blank">2026 kvr developer challenge</a>.<br/>
+<br/>
+<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 3, "Demo for Sucrose.", "https://www.youtube.com/embed/rbyEZmgBPJg?autoplay=1", false, true)'>▶ demo video</a></center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.kvraudio.com/kvr-developer-challenge/2026/#dc26-36294"},
 		decoration: {width:163,height:324},
