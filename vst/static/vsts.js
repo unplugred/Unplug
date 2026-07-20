@@ -91,6 +91,7 @@ id also love to hear any music you made with my plugins, and feel free to send m
 		title: "Everything Bundle",
 		id: "bndl",
 		color: "teal",
+		emoji: "📦",
 		tagline: "Think of the savings!",
 		description: `
 grammy winning producers dont want you to know this simple trick!<br/>

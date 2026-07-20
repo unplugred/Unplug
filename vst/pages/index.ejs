@@ -5,8 +5,8 @@ var title = "Unplugred's Plugin Trove";
 var ogtitle = title;
 for(let i = 0; i < vsts.length; ++i) {
 	if(pagename.toLowerCase().endsWith(vsts[i].title.replace(/\s/g,"").toLowerCase())) {
-		selected = true;
 		currentselected = i;
+		selected = true;
 		ogtitle = vsts[currentselected].title;
 		if(vsts[currentselected].ui === undefined) ogtitle += " - Unplugred's Plugin Trove";
 		else title = vsts[currentselected].title;
@@ -131,7 +131,7 @@ function sanitize(string) {
 								<div id="title"><%= vsts[currentselected].title %></div>
 								<div id="supported"></div>
 								<div id="desc"><%- vsts[currentselected].description %></div>
-								<center<% if((vsts[currentselected].comingsoon === undefined || !vsts[currentselected].comingsoon) && vsts[currentselected].price === undefined && vsts[currentselected].freedownload === undefined) { %> style="display: none"<% } %>>
+								<center<% if((vsts[currentselected].comingsoon === undefined || !vsts[currentselected].comingsoon) && vsts[currentselected].paiddownload === undefined && vsts[currentselected].freedownload === undefined) { %> style="display: none"<% } %>>
 									<a id="paiddownload" class="download" target="_<% if(vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) { %>self" href="javascript:void(0)">Coming Soon!<% } else if(vsts[currentselected].paiddownload === undefined) { %>blank" href="javascript:void(0)" style="display: none"><% } else { %>blank" href="<%= vsts[currentselected].paiddownload.url %>">Download <%= vsts[currentselected].paiddownload.price==undefined?"Paid":(vsts[currentselected].paiddownload.price+"$") %> Version<% } %></a><br/>
 									<a id="freedownload" class="download" target="_blank" href="<% if((vsts[currentselected].comingsoon === undefined || !vsts[currentselected].comingsoon) && vsts[currentselected].freedownload !== undefined) { %><%= vsts[currentselected].freedownload.url %><% } else { %>javascript:void(0)" style="display: none<% } %>">Download Free Version</a>
 								</center>
