@@ -67,7 +67,7 @@ const handleRequest = (req,res) => {
 		req.url.startsWith("gemini://localhost/assets/") ||
 		req.url.startsWith("gemini://www.localhost/assets/") ||
 		req.url.startsWith("gemini://unplug.red/assets/") ||
-		req.url.startsWith("gemini://www.unplug.red/assets/")) ||
+		req.url.startsWith("gemini://www.unplug.red/assets/") ||
 		req.url.startsWith("gemini://g.unplug.red/assets/") ||
 		req.url.startsWith("gemini://www.g.unplug.red/assets/")) {
 		host = "assets";
@@ -77,14 +77,14 @@ const handleRequest = (req,res) => {
 		req.url.startsWith("gemini://localhost") ||
 		req.url.startsWith("gemini://www.localhost") ||
 		req.url.startsWith("gemini://unplug.red") ||
-		req.url.startsWith("gemini://www.unplug.red")) ||
+		req.url.startsWith("gemini://www.unplug.red") ||
 		req.url.startsWith("gemini://g.unplug.red") ||
 		req.url.startsWith("gemini://www.g.unplug.red")) {
 		host = "unplug";
 		dirs = [path.resolve(__dirname,"unplug"),path.resolve(__dirname,"..","unplug","static","unplug")];
 	} else if(
 		req.url.startsWith("gemini://vst.localhost") ||
-		req.url.startsWith("gemini://vst.unplug.red")) ||
+		req.url.startsWith("gemini://vst.unplug.red") ||
 		req.url.startsWith("gemini://vst.g.unplug.red")) {
 		host = "vst";
 
