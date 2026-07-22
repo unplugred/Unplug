@@ -14,7 +14,6 @@ u can reach me via discord (@unplugred) and email (melody@unplug.red).<br/>
 all of my plugins follow the guiding principles of <a href="https://unplug.red/manifesto" target="_blank">the new software manifesto</a>, and no ai was used to create them.<br/>
 <br/>
 also! our discord community made three collaborative albums. <a href="https://unplugcord.bandcamp.com/" target="_blank">check them out!</a><br/>
-also also! this server is accessible via the gemini protocol at <a href="gemini://g.unplug.red/" target="_blank">gemini://g.unplug.red/</a>. (<a href="https://geminiprotocol.net/" target="_blank">what is gemini?</a>)<br/>
 lastly, thanks to <a href="https://laulaulau.bandcamp.com/" target="_blank">lau</a>, this wouldnt exist without her.`,
 		gemdescription: `hi! ✌
 im melody. on the internet i release stuff under the name unplugred.
