@@ -14,7 +14,23 @@ u can reach me via discord (@unplugred) and email (melody@unplug.red).<br/>
 all of my plugins follow the guiding principles of <a href="https://unplug.red/manifesto" target="_blank">the new software manifesto</a>, and no ai was used to create them.<br/>
 <br/>
 also! our discord community made three collaborative albums. <a href="https://unplugcord.bandcamp.com/" target="_blank">check them out!</a><br/>
+also also! <a href="gemini://vst.unplug.red/" target="_blank">this server is accessible via the gemini protocol</a>. (<a href="https://geminiprotocol.net/" target="_blank">what is gemini?</a>)<br/>
 lastly, thanks to <a href="https://laulaulau.bandcamp.com/" target="_blank">lau</a>, this wouldnt exist without her.`,
+		gemdescription: `hi! ✌
+im melody. on the internet i release stuff under the name unplugred.
+after studying audio engineering i decided to make my own vst plugins for me and my friends because i didnt have money to buy them and almost nothing was available on linux.
+i released them onto the internet as open source after my friends convinced me theyre good and implored me to put them out there.
+in here youd find no modeling of capacitors or diodes. no emulation of anything.
+these are completely a result of my own exploration of code and sound, and as a result some of them are good, while others not so much.
+i hope these bring you joy and would love to hear what u make with them.
+u can reach me via discord (@unplugred) and email (melody@unplug.red).
+=> gemini://unplug.red/manifesto        all of my plugins follow the guiding principles of the new software manifesto,
+and no ai was used to create them.
+
+=> https://unplugcord.bandcamp.com/    also! our discord community made three collaborative albums. check them out!
+lastly,
+=> https://laulaulau.bandcamp.com/     thanks to lau.
+this wouldnt exist without her.`,
 		hideicon: true
 	},{
 		title: "FAQ",
@@ -128,9 +144,9 @@ which in the right hands can produce highly textural results.<br/>
 among the features are pitch shifting on the feedback, asymetric ping pong, reverse delay, and more...<br/>
 the parameters are highly automatable and can produce a dub delay effect when automating the time parameter.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 3, "Instructional demo for CRMBL.", "https://www.youtube.com/embed/1E9sQJNHKg4?autoplay=1", false, true, 26.666, 15)'>▶ How to use</a> (demo video)<br/>
-<a class="demo" href="javascript:void(0);" onclick='setpopup(1, 4, "Demo made by @a1https://brobomusic.com@a2brobo@a3.", "/crmbl/demo1.mp3", true, false)'>▶ Demo by brobo</a><br/>
-<a class="demo" href="javascript:void(0);" onclick='setpopup(1, 5, "Demo made by @a1https://linktr.ee/woodthrush@a2woodthrush@a3.", "/crmbl/demo2.mp3", true, false)'>▶ Demo by woodthrush</a></center>`,
+<center><a class="demovid" href="https://www.youtube.com/watch?v=1E9sQJNHKg4" onclick='setpopup(1, 3, "Instructional demo for CRMBL.", "https://www.youtube.com/embed/1E9sQJNHKg4?autoplay=1", false, true, 26.666, 15)' target="_blank">▶ How to use</a> (demo video)<br/>
+<a class="demo" href="/crmbl/demo1.mp3" onclick='setpopup(1, 4, "Demo made by @a1https://brobomusic.com@a2brobo@a3.", "/crmbl/demo1.mp3", true, false)' target="_blank">▶ Demo by brobo</a><br/>
+<a class="demo" href="/crmbl/demo2.mp3" onclick='setpopup(1, 5, "Demo made by @a1https://linktr.ee/woodthrush@a2woodthrush@a3.", "/crmbl/demo2.mp3", true, false)' target="_blank">▶ Demo by woodthrush</a></center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/crmbl-free-79099779"},
 		paiddownload: {url:"https://www.patreon.com/posts/crmbl-79099843"},
@@ -202,7 +218,7 @@ sucrose is a collaboration between me and the amazing and talented blepfx.<br/>
 the dsp was made by her, and the ui by me !<br/>
 it was created as an entry for (and currently participating in) the <a href="https://www.kvraudio.com/kvr-developer-challenge/2026/" target="_blank">2026 kvr developer challenge</a>.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 3, "Demo for Sucrose.", "https://www.youtube.com/embed/rbyEZmgBPJg?autoplay=1", false, true)'>▶ demo video</a></center>`,
+<center><a class="demovid" href="https://www.youtube.com/watch?v=rbyEZmgBPJg" onclick='setpopup(1, 3, "Demo for Sucrose.", "https://www.youtube.com/embed/rbyEZmgBPJg?autoplay=1", false, true)' target="_blank">▶ demo video</a></center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.kvraudio.com/kvr-developer-challenge/2026/#dc26-36294"},
 		decoration: {width:163,height:324},
@@ -220,7 +236,7 @@ as a result, this makes it great for applications such as removing humming on a 
 also sounds great on drum loops and results in a very choppy effect.<br/>
 APPLY BEFORE DISTORTION FOR IDEAL EFFECT.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 1, "PNCH demo.", "https://www.youtube.com/embed/UFdOg7CEaGQ?autoplay=1", false, true, 20, 15)'>▶ PNCH in action</a> (demo video)</center>`,
+<center><a class="demovid" href="https://www.youtube.com/watch?v=UFdOg7CEaGQ" onclick='setpopup(1, 1, "PNCH demo.", "https://www.youtube.com/embed/UFdOg7CEaGQ?autoplay=1", false, true, 20, 15)' target="_blank">▶ PNCH in action</a> (demo video)</center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/pnch-free-79086018"},
 		paiddownload: {url:"https://www.patreon.com/posts/pnch-79086091"},
@@ -236,7 +252,7 @@ sub oscillator sidechained to incoming signal.<br/>
 put a drum loop or a kick thats lacking some oompth in there and the result will be instantly thick.<br/>
 apply with caution if not in a proper mixing environment.<br/>
 <br/>
-<center><a class="demovid" href="javascript:void(0);" onclick='setpopup(1, 2, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)'>▶ How to use</a> (demo video)</center>`,
+<center><a class="demovid" href="https://www.youtube.com/watch?v=4iIJjWvpb_s" onclick='setpopup(1, 2, "Instructional demo for Red Bass.", "https://www.youtube.com/embed/4iIJjWvpb_s?autoplay=1", false, true, 20, 15)' target="_blank">▶ How to use</a> (demo video)</center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/red-bass-free-79087099"},
 		paiddownload: {url:"https://www.patreon.com/posts/red-bass-79087143"},
@@ -297,7 +313,7 @@ this one is a reproduction of a sampler present in a music making feature that w
 this plugin attempts to preserve the unique voice limitations of the original sampler,<br/>
 and the samples were recorded with a high quality reproduction of the soundcard of the originating console, preserving the unique artefacts of the digital to analog conversion of the original chip.<br/>
 <br/>
-<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://paperaviator.bandcamp.com/music@a2paper aviator@a3.", "/mp/demo1.mp3", true, false)'>▶ Demo</a></center>`,
+<center><a class="demo" href="/mp/demo1.mp3" onclick='setpopup(1, 0, "Demo made by @a1https://paperaviator.bandcamp.com/music@a2paper aviator@a3.", "/mp/demo1.mp3", true, false)' target="_blank">▶ Demo</a></center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/mpaint-79087173"},
 		decoration: {width:131,height:208},
@@ -329,7 +345,7 @@ forget about warmth.<br/>
 this refreshing take on fold distortion gives off a harsh and metallic sound that is guaranteed to destroy any mix.<br/>
 this plugin has been mostly replaced by pisstortion.<br/>
 <br/>
-<center><a class="demo" href="javascript:void(0);" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)'>▶ Demo</a> (loud)</center>`,
+<center><a class="demo" href="/pf/demo1.mp3" onclick='setpopup(1, 0, "Demo made by @a1https://soundcloud.com/the_real_astrodex@a2Astrodex@a3.", "/pf/demo1.mp3", true, false)' target="_blank">▶ Demo</a> (loud)</center>`,
 		supported: ["Windows","MacOS","Linux","64 Bit","Open Source","VST3","Audio Unit","CLAP"],
 		freedownload: {url:"https://www.patreon.com/posts/plastic-funeral-78716847"},
 		paiddownload: {url:"https://www.patreon.com/posts/plastic-funeral-78717124"},

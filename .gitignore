@@ -1,4 +1,3 @@
-#added by me
 Thumbs.db
 savefile.json
 savefilebackup.json
@@ -10,3 +9,4 @@ vst/builds
 .direnv/
 node_modules/
 logs/
+cert.json

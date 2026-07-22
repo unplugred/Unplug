@@ -1,0 +1,10 @@
+{
+  "name": "unplugvst",
+  "version": "1.0.0",
+  "description": "vsts created by unplugred",
+  "author": "Melody",
+  "dependencies": {
+    "@derhuerst/gemini": "^2.0.1",
+    "ejs": "^6.0.1"
+  }
+}

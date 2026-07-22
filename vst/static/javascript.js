@@ -101,6 +101,17 @@ function update(timestamp) {
 		updateui();
 	}
 
+	if(open == 0) {
+		let links = ui.description.getElementsByTagName("a");
+		for(let i = 0; i < links.length; ++i) {
+			if(links[i].className.startsWith("demo")) {
+				links[i].href = "javascript:void(0)";
+				links[i].target = "_self";
+			}
+		}
+		open = .0001;
+	}
+
 	if(vsts[currentdisplay].ui !== undefined) {
 		open = Math.min(open+dt*.0005,1);
 		let openease = 1-Math.pow(1-open,5)*.9;

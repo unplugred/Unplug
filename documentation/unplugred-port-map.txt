@@ -1,5 +1,6 @@
 0080 nginx
 0443 https
+1965 gemini
 6660 ssh
 6661 dream buster
 6662 radio

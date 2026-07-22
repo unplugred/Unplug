@@ -1,0 +1,314 @@
+<%
+var currentselected = 0;
+var selected = false;
+var download = false;
+for(let i = 0; i < vsts.length; ++i) {
+	let urlname = vsts[i].title.replace(/\s/g,"").toLowerCase();
+	if(pagename.toLowerCase().endsWith(urlname)) {
+		currentselected = i;
+		download = pagename.startsWith("/download/");
+		selected = true;
+	}
+}
+
+var cyberlarge =
+{ " ": [
+"     ",
+"     ",
+"     "
+], "+": [
+"   _    ",
+"___|___ ",
+"   |    "
+], "a": [
+"_______ ",
+"|_____| ",
+"|     | "
+], "b": [
+"______  ",
+"|_____] ",
+"|_____] "
+], "c": [
+" ______ ",
+"|       ",
+"|_____  "
+], "d": [
+"______  ",
+"|     \\ ",
+"|_____/ "
+], "e": [
+"_______ ",
+"|______ ",
+"|______ "
+], "f": [
+"_______ ",
+"|______ ",
+"|       "
+], "g": [
+" ______ ",
+"|  ____ ",
+"|_____| "
+], "h": [
+"_     _ ",
+"|_____| ",
+"|     | "
+], "i": [
+"_____ ",
+"  |   ",
+"__|__ "
+], "j": [
+"_____ ",
+"  |   ",
+"__|   "
+], "k": [
+"_     _ ",
+"|____/  ",
+"|    \\_ "
+], "l": [
+"       ",
+"|      ",
+"|_____ "
+], "m": [
+"_______ ",
+"|  |  | ",
+"|  |  | "
+], "n": [
+"__   _ ",
+"| \\  | ",
+"|  \\_| "
+], "o": [
+" _____  ",
+"|     | ",
+"|_____| "
+], "p": [
+"______  ",
+"|_____] ",
+"|       "
+], "q": [
+" _____  ",
+"|   __| ",
+"|____\\| "
+], "r": [
+" ______ ",
+"|_____/ ",
+"|    \\_ "
+], "s": [
+" ______ ",
+"|______ ",
+"______| "
+], "t": [
+"_______ ",
+"   |    ",
+"   |    "
+], "u": [
+"_     _ ",
+"|     | ",
+"|_____| "
+], "v": [
+"_    _ ",
+" \\  /  ",
+"  \\/   "
+], "w": [
+"_  _  _ ",
+"|  |  | ",
+"|__|__| "
+], "x": [
+"_     _ ",
+" \\___/  ",
+"_/   \\_ "
+], "y": [
+"__   __ ",
+"  \\_/   ",
+"   |    "
+], "z": [
+"______ ",
+" ____/ ",
+"/_____ "
+]};
+function rendercyberlarge(str) {
+	let strlower = str.toLowerCase().split("\n");
+	let strsplit = [];
+	let spacelength = cyberlarge[" "][0].length;
+	for(let l = 0; l < strlower.length; ++l) {
+		let spacesplit = strlower[l].split(" ");
+		let lengths = [];
+		for(let i = 0; i < spacesplit.length; ++i) {
+			lengths[i] = 0;
+			for(let n = 0; n < spacesplit[i].length; ++n)
+				lengths[i] += cyberlarge[spacesplit[i][n]][0].length;
+		}
+
+		let currentline = "";
+		let currentlength = 0;
+		for(let i = 0; i < spacesplit.length; ++i) {
+			currentline += spacesplit[i];
+			currentlength += lengths[i];
+			if(i < (spacesplit.length-1)) {
+				if((currentlength+spacelength+lengths[i+1]) > 80) {
+					strsplit.push(currentline);
+					currentline = "";
+					currentlength = 0;
+				} else {
+					currentline += " ";
+					currentlength += spacelength;
+				}
+			}
+		}
+		strsplit.push(currentline);
+	}
+	let out = "";
+	for(let l = 0; l < strsplit.length; ++l) {
+		for(let r = 0; r < 3; ++r) {
+			let currentline = "";
+			for(let i = 0; i < strsplit[l].length; ++i)
+				currentline += cyberlarge[strsplit[l][i]][r];
+			out += currentline.substring(0,currentline.length-1)+"\n";
+		}
+	}
+	return out.substring(0,out.length-1);
+}
+
+function gemify(str) {
+	let out = str.replaceAll("\n","").replaceAll("<br/>","\n").replaceAll("\n<b>","\n### ").replaceAll("<b>","").replaceAll("</b>","").replaceAll("</a>\n","\n").replaceAll("</a> ","\n").replaceAll("</a>","\n").replace("<center>","").replace("</center>","")
+
+	let a = out.indexOf("<a ");
+	if(a != -1 && (out[a-1] == "\n" || out[a-1] == " ")) --a;
+
+	while(a != -1) {
+		let atag = out.substring(a);
+		atag = atag.substring(0,atag.indexOf(">")+1);
+
+		let hrefindex = atag.indexOf("href=")+6;
+		let bracket = atag[hrefindex-1];
+		let href = atag.substring(hrefindex);
+		href = href.substring(0,href.indexOf(bracket));
+
+		out = out.replace(atag,"\n=> "+href.padEnd(54)+"  ");
+
+		a = out.indexOf("<a ");
+		if(a != -1 && out[a-1] == "\n") --a;
+	}
+	return out;
+}
+
+if(download) {
+	var link = vsts[currentselected].title.replace(/\s/g,"").toLowerCase()+(vsts[currentselected].paiddownload===undefined?"":"_free");
+
+	%>=> /<%= vsts[currentselected].title.replace(/\s/g,"").toLowerCase() %>  back
+
+# <%= vsts[currentselected].title %> download
+
+### Choose your OS:
+=> /download/<%= link %>_linux.zip    Linux
+=> /download/<%= link %>_win64.zip    Windows
+=> /download/<%= link %>_mac.zip      MacOS<%
+
+} else {
+if(!selected) {
+
+%>```UNPLUGRED'S VST TROVE
+  ▄• ▄▌ ▐ ▄  ▄▄▄·▄▄▌  ▄• ▄▌ ▄▄ • ▄▄▄  ▄▄▄ .·▄▄▄▄ ▐▌.▄▄ · 
+  █▪██▌•█▌▐█▐█ ▄███•  █▪██▌▐█ ▀ ▪▀▄ █·▀▄.▀·██▪ ██·▌▐█ ▀. 
+  █▌▐█▌▐█▐▐▌ ██▀·██▪  █▌▐█▌▄█ ▀█▄▐▀▀▄ ▐▀▀▪▄▐█· ▐█▌ ▄▀▀▀█▄
+  ▐█▄█▌██▐█▌▐█▪·•▐█▌▐▌▐█▄█▌▐█▄▪▐█▐█•█▌▐█▄▄▌██. ██ •▐█▄▪▐█
+   ▀▀▀ ▀▀ █▪.▀   .▀▀▀  ▀▀▀ ·▀▀▀▀ .▀  ▀ ▀▀▀ ▀▀▀▀▀ ▪  ▀▀▀▀ 
+       ▌ ▐·.▄▄ · ▄▄▄▄▄    ▄▄▄▄▄▄▄▄         ▌ ▐·▄▄▄ .     
+      ▪█·█▌▐█ ▀. •██      •██  ▀▄ █·▪     ▪█·█▌▀▄.▀·     
+      ▐█▐█•▄▀▀▀█▄ ▐█.▪     ▐█.▪▐▀▀▄  ▄█▀▄ ▐█▐█•▐▀▀▪▄     
+       ███ ▐█▄▪▐█ ▐█▌·     ▐█▌·▐█•█▌▐█▌.▐▌ ███ ▐█▄▄▌     
+      . ▀   ▀▀▀▀  ▀▀▀      ▀▀▀ .▀  ▀ ▀█▄▀▪. ▀   ▀▀▀      
+```
+<%
+	for(let i = 0; i < vsts.length; i++) {
+		if(vsts[i].hidden) continue;
+
+		%>
+
+=> <%- (vsts[i].url===undefined?("/"+vsts[i].title.replace(/\s/g,"").toLowerCase()):vsts[i].url).padEnd(20) %>  <%
+
+		if(vsts[i].emoji !== undefined) {
+			%><%= vsts[i].emoji %> <%
+		} else if(vsts[i].hideicon === undefined || vsts[i].hideicon === false) {
+			%>🔌 <%
+		}
+
+		%><%= vsts[i].title %><%
+
+		if(vsts[i].comingsoon === undefined || !vsts[i].comingsoon) {
+			if(vsts[i].rating !== undefined) {
+				%> (<%= vsts[i].rating %>)<%
+			}
+		} else {
+			%> (Out soon!)<%
+		}
+
+		if(vsts[i].tagline !== undefined) { %>
+<%= vsts[i].tagline %><%
+		}
+
+		if(vsts[i].separator !== undefined && vsts[i].separator == true) { %>
+
+
+## •☽────✧˖°˖☆˖°˖✧────☾•
+<%
+		}
+	}
+
+} else {
+
+	%>=> /  back
+
+```<%= vsts[currentselected].title %>
+<%- rendercyberlarge(vsts[currentselected].title) %>
+```
+
+
+<%- vsts[currentselected].gemdescription===undefined?gemify(vsts[currentselected].description):vsts[currentselected].gemdescription %><%
+
+	if((vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) || vsts[currentselected].paiddownload !== undefined || vsts[currentselected].freedownload !== undefined || vsts[currentselected].ui !== undefined) { %>
+
+<%
+		if(vsts[currentselected].ui !== undefined) {
+			%>
+=> <%= ("/"+vsts[currentselected].id+"/ui.png").padEnd(54) %>  📷 View screenshot<%
+		}
+
+		if(vsts[currentselected].comingsoon !== undefined && vsts[currentselected].comingsoon) {
+			%>
+Coming Soon!<%
+		} else if(vsts[currentselected].paiddownload !== undefined) {
+			%>
+=> <%= vsts[currentselected].paiddownload.url.padEnd(54) %>  💾 Download <%= vsts[currentselected].paiddownload.price==undefined?"Paid":(vsts[currentselected].paiddownload.price+"$") %> Version<%
+		}
+
+		if((vsts[currentselected].comingsoon === undefined || !vsts[currentselected].comingsoon) && vsts[currentselected].freedownload !== undefined) {
+			%>
+=> <%= ("/download/"+vsts[currentselected].title.replace(/\s/g,"").toLowerCase()).padEnd(54) %>  💾 Download Free Version<%
+		}
+	}
+} %>
+
+
+## •☽────✧˖°˖☆˖°˖✧────☾•
+
+
+### SUPPORTED ON PATREON BY:
+<%
+for(let tier = 15; tier >= 10; tier -= 5) {
+	if(patrons[String(tier)] == undefined) continue;
+	for(let patron = 0; patron < patrons[String(tier)].length; ++patron) {
+		if(patrons[String(tier)][patron]["url"] !== undefined) {
+			%>=> <%= encodeURI(patrons[String(tier)][patron]["url"]).padEnd(40) %>  <%
+		}
+		%>★ <%= patrons[String(tier)][patron]["name"] %><%
+		if(tier == 15) {
+			%> ★
+<%
+		} else {
+			%> <%
+		}
+	}
+} %>★
+
+Thank you!<%
+} %>

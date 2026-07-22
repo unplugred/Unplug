@@ -46,22 +46,13 @@ fs.readFile(__dirname + "/metrics.json", 'utf8', (err, jsonString) => {
 	});
 });
 
-function save() {
-	let jsonString = JSON.stringify(metrics);
-	fs.writeFile(__dirname + "/metrics.json", jsonString, err => {
-		if(err) console.log("ERROR WRITING METRICS: ", err);
-	});
-	fs.writeFile(__dirname + "/metricsbackup.json", jsonString, err => {
-		if(err) console.log("ERROR WRITING BACKUP METRICS: ", err);
-	});
-}
-
 var pledges = [];
 var patrons = {"10":[{"name":"FAILED TO READ PATREON DATA"}]};
 var patrons_temp = {};
 var patreon_refresh_rate = 1;
 var overrides = {};
 var last_checked_patreon = Math.floor(Date.now()/1000/60/60/patreon_refresh_rate);
+var last_checked_patreon_str = '-';
 function refresh_patrons(cursor = null) {
 	var url = "https://api.patreon.com/oauth2/api/campaigns/"+String(keys['campaign_id'])+"/pledges?page%5Bcount%5D=25";
 	if(cursor != null) url += "&page%5Bcursor%5D="+cursor;
@@ -76,6 +67,7 @@ function refresh_patrons(cursor = null) {
 		}
 		if(data['data'] === undefined) {
 			console.error('Undefined response from Patreon');
+			save_data();
 			return;
 		}
 		for(let pledge = 0; pledge < data['data'].length; ++pledge) {
@@ -113,6 +105,9 @@ function refresh_patrons(cursor = null) {
 		} else {
 			patrons = patrons_temp;
 			patrons_temp = {};
+			let now = new Date(Date.now());
+			last_checked_patreon_str = now.toISOString();
+			save_data();
 		}
 	}).catch(error => console.error('ERROR FETCHING PATREON DATA:', error));
 }
@@ -129,6 +124,7 @@ fs.readFile(__dirname + "/patreon.json", 'utf8', (err, jsonString) => {
 			let obj = JSON.parse(jsonString);
 			keys = obj['keys'];
 			patrons = obj['cache'];
+			last_checked_patreon_str = obj['last_checked'];
 		} catch(error) {
 			console.log("ERROR PARSING PATREON DATA: ", error);
 		}
@@ -149,6 +145,56 @@ fs.readFile(__dirname + "/patreonoverride.json", 'utf8', (err, jsonString) => {
 		}
 	}
 });
+function save_data() {
+	if(metrics.loaded) {
+		let jsonString = JSON.stringify(metrics);
+		fs.writeFile(__dirname + "/metrics.json", jsonString, err => {
+			if(err) console.log("ERROR WRITING METRICS: ", err);
+		});
+		fs.writeFile(__dirname + "/metricsbackup.json", jsonString, err => {
+			if(err) console.log("ERROR WRITING BACKUP METRICS: ", err);
+		});
+	}
+	if(patrons["10"].length !== 1) {
+		//*/
+		fs.writeFile(__dirname + "/patreon.json", JSON.stringify({
+			"keys": keys,
+			"cache": patrons,
+			"last_checked": last_checked_patreon_str
+		}), err => {
+			if(err) console.log("ERROR WRITING PATREON DATA: ", err);
+		});
+		//*/
+	}
+}
+function save_data_sync() {
+	if(metrics.loaded) {
+		let jsonString = JSON.stringify(metrics);
+		try {
+			fs.writeFileSync(__dirname + "/metrics.json", jsonString);
+		} catch(err) {
+			console.log("ERROR WRITING METRICS: ", err);
+		}
+		try {
+			fs.writeFileSync(__dirname + "/metricsbackup.json", jsonString);
+		} catch(err) {
+			console.log("ERROR WRITING BACKUP METRICS: ", err);
+		}
+	}
+	if(patrons["10"].length !== 1) {
+		try {
+			//*/
+			fs.writeFileSync(__dirname + "/patreon.json", JSON.stringify({
+				"keys": keys,
+				"cache": patrons,
+				"last_checked": last_checked_patreon_str
+			}));
+			//*/
+		} catch(err) {
+			console.log("ERROR WRITING PATREON DATA: ", err);
+		}
+	}
+}
 
 const express = require('express');
 const app = express();
@@ -221,7 +267,6 @@ app.use((req, res, next) => {
 			if(req.path.includes("/mac")) os = "Mac"
 			if(os != "") {
 				if(metrics.loaded) {
-					let shouldsave = false;
 					let hour = Math.floor(Date.now()/1000/60/60);
 					if(metrics.hour < hour) {
 						metrics.hour = hour;
@@ -289,8 +334,6 @@ app.use((req, res, next) => {
 								});
 							}
 						}
-
-						shouldsave = true;
 					}
 
 					let dlindex = 3;
@@ -310,8 +353,6 @@ app.use((req, res, next) => {
 						metrics.monthly[0][pluginname] = [0,0,0,0,0,0];
 					++metrics.daily[0][pluginname][dlindex];
 					++metrics.monthly[0][pluginname][dlindex];
-
-					if(shouldsave) save();
 				}
 
 				return res.download(__dirname + '/builds/'+vstcodes[key]+' '+os+'.zip');
@@ -337,23 +378,7 @@ var exited = false;
 function exitHandler(options, exitCode) {
 	if(exited) return;
 	exited = true;
-	try {
-		fs.writeFileSync(__dirname + "/metrics.json", JSON.stringify(metrics));
-	} catch(err) {
-		console.log("ERROR WRITING METRICS: ", err);
-	}
-	if(patrons["10"].length !== 1) {
-		try {
-			//*/
-			fs.writeFileSync(__dirname + "/patreon.json", JSON.stringify({
-				"keys": keys,
-				"cache": patrons
-			}));
-			//*/
-		} catch(err) {
-			console.log("ERROR WRITING PATREON DATA: ", err);
-		}
-	}
+	save_data_sync();
 	if(options.exit) process.exit();
 }
 process.on('exit', exitHandler.bind(null,{}));
