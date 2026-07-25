@@ -74,24 +74,22 @@ const handleRequest = (req,res) => {
 		searchpath = searchpath.substring(7).replace(/^\/+/,'');
 		dirs = [path.resolve(__dirname,"..","unplug","static","assets")];
 	} else if(
-		req.url.startsWith("gemini://localhost") ||
-		req.url.startsWith("gemini://www.localhost") ||
-		req.url.startsWith("gemini://unplug.red") ||
-		req.url.startsWith("gemini://www.unplug.red") ||
-		req.url.startsWith("gemini://g.unplug.red") ||
-		req.url.startsWith("gemini://www.g.unplug.red")) {
-		host = "unplug";
-		dirs = [path.resolve(__dirname,"unplug"),path.resolve(__dirname,"..","unplug","static","unplug")];
-	} else if(
 		req.url.startsWith("gemini://vst.localhost") ||
 		req.url.startsWith("gemini://vst.unplug.red") ||
-		req.url.startsWith("gemini://vst.g.unplug.red")) {
+		req.url.startsWith("gemini://vst.g.unplug.red") ||
+		req.url.startsWith("gemini://localhost/vst") ||
+		req.url.startsWith("gemini://unplug.red/vst") ||
+		req.url.startsWith("gemini://www.unplug.red/vst") ||
+		req.url.startsWith("gemini://g.unplug.red/vst") ||
+		req.url.startsWith("gemini://www.g.unplug.red/vst")) {
 		host = "vst";
+		if(searchpath.startsWith("vst"))
+			searchpath = searchpath.substring(4).replace(/^\/+/,'');
 
 		if(extension === ".zip") {
 			for(let i = 0; i < vsts.length; ++i) {
-				if(req.path.startsWith("/download/"+vsts[i].title.replace(/\s/g,"").toLowerCase()) && vsts[i].freedownload !== undefined) {
-					let dlpath = "/download/"+vsts[i].title.replace(/\s/g,"").toLowerCase()+(vsts[i].paiddownload===undefined?"_":"_free_");
+				if(req.path.startsWith("/vst/download/"+vsts[i].title.replace(/\s/g,"").toLowerCase()) && vsts[i].freedownload !== undefined) {
+					let dlpath = "/vst/download/"+vsts[i].title.replace(/\s/g,"").toLowerCase()+(vsts[i].paiddownload===undefined?"_":"_free_");
 					let os = "";
 					if(req.path == (dlpath+"linux.zip")) os = "Linux";
 					if(req.path == (dlpath+"win64.zip")) os = "Win64";
@@ -106,6 +104,15 @@ const handleRequest = (req,res) => {
 		}
 
 		dirs = [path.resolve(__dirname,"vst"),path.resolve(__dirname,"..","vst","static")];
+	} else if(
+		req.url.startsWith("gemini://localhost") ||
+		req.url.startsWith("gemini://www.localhost") ||
+		req.url.startsWith("gemini://unplug.red") ||
+		req.url.startsWith("gemini://www.unplug.red") ||
+		req.url.startsWith("gemini://g.unplug.red") ||
+		req.url.startsWith("gemini://www.g.unplug.red")) {
+		host = "unplug";
+		dirs = [path.resolve(__dirname,"unplug"),path.resolve(__dirname,"..","unplug","static","unplug")];
 	} else {
 		return res.notFound();
 	}

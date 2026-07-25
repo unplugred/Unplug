@@ -23,7 +23,7 @@ in here youd find no modeling of capacitors or diodes. no emulation of anything.
 these are completely a result of my own exploration of code and sound, and as a result some of them are good, while others not so much.
 i hope these bring you joy and would love to hear what u make with them.
 u can reach me via discord (@unplugred) and email (melody@unplug.red).
-=> gemini://unplug.red/manifesto        all of my plugins follow the guiding principles of the new software manifesto,
+=> /manifesto    all of my plugins follow the guiding principles of the new software manifesto,
 and no ai was used to create them.
 
 => https://unplugcord.bandcamp.com/    also! our discord community made three collaborative albums. check them out!
