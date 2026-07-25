@@ -144,8 +144,10 @@ const handleRequest = (req,res) => {
 	}
 };
 
-eval(fs.readFileSync(__dirname+"/cert.json").toString());
-const app = gemini.createServer(certs,handleRequest);
+const app = gemini.createServer({
+	cert: fs.readFileSync(path.resolve(__dirname,"cert.pem")),
+	key : fs.readFileSync(path.resolve(__dirname,"key.pem"))
+},handleRequest);
 app.listen(1965);
 app.on('error',console.error);
 console.log("gemini server started on port 1965");

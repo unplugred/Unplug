@@ -9,4 +9,5 @@ vst/builds
 .direnv/
 node_modules/
 logs/
-cert.json
+cert.pem
+key.pem
