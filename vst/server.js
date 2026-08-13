@@ -245,7 +245,7 @@ var vstcodes = {
 	"2e7k8zug41gaq6nv": "Magic Carpet Free",
 	"9b88oa7123xnhtqt": "ModMan",
 	"4h3v8w25whu8emtp": "ModMan Free",
-	"704bfY2JvWLKFHbU": "Sucrose",
+	"la8s4i11ynzti2cg": "Sucrose",
 	"mmle2ls85rexid0m": "Everything Bundle"
 }
 app.use((req, res, next) => {
