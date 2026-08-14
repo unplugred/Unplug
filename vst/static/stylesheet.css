@@ -659,7 +659,7 @@ audio {
 }
 #patrons10 {
 	width: max-content;
-	animation: patronscroll 50s infinite linear;
+	animation: patronscroll 35s infinite linear;
 }
 #patrons10:hover {
 	animation-play-state: paused;

@@ -46,7 +46,6 @@ fs.readFile(__dirname + "/metrics.json", 'utf8', (err, jsonString) => {
 	});
 });
 
-var pledges = [];
 var patrons = {"10":[{"name":"FAILED TO READ PATREON DATA"}]};
 var patrons_temp = {};
 var patreon_refresh_rate = 1;
@@ -54,9 +53,9 @@ var overrides = {};
 var last_checked_patreon = Math.floor(Date.now()/1000/60/60/patreon_refresh_rate);
 var last_checked_patreon_str = '-';
 function refresh_patrons(cursor = null) {
-	var url = "https://api.patreon.com/oauth2/api/campaigns/"+String(keys['campaign_id'])+"/pledges?page%5Bcount%5D=25";
-	if(cursor != null) url += "&page%5Bcursor%5D="+cursor;
-	url += "&include=patron,reward&fields%5Buser%5D=full_name,first_name,last_name&fields%5Bpledge%5D=null&fields%5Breward%5D=null&fields%5Bcampaign%5D=null";
+	var url = cursor;
+	if(url == null)
+		url = "https://api.patreon.com/oauth2/v2/campaigns/"+String(keys['campaign_id'])+"/members?page%5Bcount%5D=1000&include=currently_entitled_tiers&fields%5Bmember%5D=full_name";
 	fetch(url, {
 		method: 'GET',
 		headers: { 'Authorization': "Bearer "+keys['creator_id'] }
@@ -70,38 +69,30 @@ function refresh_patrons(cursor = null) {
 			save_data();
 			return;
 		}
-		for(let pledge = 0; pledge < data['data'].length; ++pledge) {
-			let tier = 0;
-			if(data['data'][pledge]['relationships']['reward']['data'] != null)
-				tier = keys['tier_ids'][data['data'][pledge]['relationships']['reward']['data']['id']];
-			if(tier < 10) continue;
-
-			let userdata = { "name": null };
-			for(let user = 0; user < data['included'].length; ++user) {
-				if(data['included'][user]['id'] != data['data'][pledge]['relationships']['patron']['data']['id'])
-					continue;
-
-				if(data['included'][user]['attributes']['full_name'] != undefined) {
-					userdata['name'] = data['included'][user]['attributes']['full_name'];
-				} else if(data['included'][user]['attributes']['first_name'] != undefined) {
-					userdata['name'] = data['included'][user]['attributes']['first_name'];
-					if(data['included'][user]['attributes']['last_name'] != undefined)
-						userdata['name'] += data['included'][user]['attributes']['last_name'];
+		for(let member = 0; member < data['data'].length; ++member) {
+			let htier = 0;
+			if(data['data'][member]['relationships']['currently_entitled_tiers']['data'] != null) {
+				for(let tier = 0; tier < data['data'][member]['relationships']['currently_entitled_tiers']['data'].length; ++tier) {
+					let c = keys['tier_ids'][data['data'][member]['relationships']['currently_entitled_tiers']['data'][tier]['id']];
+					if(c != undefined && c > htier) htier = c;
 				}
-				break;
 			}
-			if(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])] != undefined) {
-				for(const [key, value] of Object.entries(overrides[String(data['data'][pledge]['relationships']['patron']['data']['id'])]))
-					userdata[key] = value;
-			}
-			if(userdata['name'] == null) continue;
+			if(htier < 10) continue;
 
-			if(patrons_temp[String(tier)] == undefined)
-				patrons_temp[String(tier)] = [];
-			patrons_temp[String(tier)].push(userdata);
+			let userdata = { "name": data['data'][member]['attributes']['full_name'] };
+			if(overrides[String(data['data'][member]['id'])] != undefined)
+				for(const [key, value] of Object.entries(overrides[String(data['data'][member]['id'])]))
+					userdata[key] = value;
+			if(userdata['name'] == undefined || userdata['name'] == null) continue;
+
+			if(patrons_temp[String(htier)] == undefined)
+				patrons_temp[String(htier)] = [];
+			patrons_temp[String(htier)].push(userdata);
 		}
-		if(data["links"]["next"] != undefined && data["links"]["next"].includes("page%5Bcursor%5D=")) {
-			refresh_patrons(data["links"]["next"].split('page%5Bcursor%5D=',2)[1].split("&",1)[0]);
+		if(data["links"] != undefined && data["links"]["next"] != undefined) {
+			setTimeout(function() {
+				refresh_patrons(data["links"]["next"]);
+			},1000);
 		} else {
 			patrons = patrons_temp;
 			patrons_temp = {};
