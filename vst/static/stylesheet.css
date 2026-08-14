@@ -661,7 +661,7 @@ audio {
 	width: max-content;
 	animation: patronscroll 35s infinite linear;
 }
-#patrons10:hover {
+#patronsscroll:hover #patrons10 {
 	animation-play-state: paused;
 }
 @keyframes patronscroll {
